@@ -57,13 +57,13 @@ class VolumesPrunePostResponse200Normalizer implements DenormalizerInterface, No
         $dataArray = [];
         if (array_key_exists('volumesDeleted', get_object_vars($data)) && null !== ($data->volumesDeleted ?? null)) {
             $values = [];
-            foreach ($data->volumesDeleted ?? null as $value) {
+            foreach ($data->volumesDeleted as $value) {
                 $values[] = $value;
             }
             $dataArray['VolumesDeleted'] = $values;
         }
         if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
-            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumesPrunePostResponse200Constraint());

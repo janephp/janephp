@@ -49,7 +49,7 @@ class SciSciProfileListExtraNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('sciEnabled', get_object_vars($data)) && null !== ($data->sciEnabled ?? null)) {
-            $dataArray['sciEnabled'] = $data->sciEnabled ?? null;
+            $dataArray['sciEnabled'] = $data->sciEnabled;
         }
         return $dataArray;
     }

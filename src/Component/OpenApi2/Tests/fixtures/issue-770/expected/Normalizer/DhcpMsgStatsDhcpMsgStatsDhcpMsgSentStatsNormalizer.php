@@ -52,13 +52,13 @@ class DhcpMsgStatsDhcpMsgStatsDhcpMsgSentStatsNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('dhcpOffer', get_object_vars($data)) && null !== ($data->dhcpOffer ?? null)) {
-            $dataArray['dhcpOffer'] = $data->dhcpOffer ?? null;
+            $dataArray['dhcpOffer'] = $data->dhcpOffer;
         }
         if (array_key_exists('dhcpAck', get_object_vars($data)) && null !== ($data->dhcpAck ?? null)) {
-            $dataArray['dhcpAck'] = $data->dhcpAck ?? null;
+            $dataArray['dhcpAck'] = $data->dhcpAck;
         }
         if (array_key_exists('dhcpNak', get_object_vars($data)) && null !== ($data->dhcpNak ?? null)) {
-            $dataArray['dhcpNak'] = $data->dhcpNak ?? null;
+            $dataArray['dhcpNak'] = $data->dhcpNak;
         }
         return $dataArray;
     }

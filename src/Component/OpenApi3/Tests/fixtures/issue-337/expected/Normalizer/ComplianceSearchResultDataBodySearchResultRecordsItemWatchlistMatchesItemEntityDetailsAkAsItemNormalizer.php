@@ -64,16 +64,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     {
         $dataArray = [];
         if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
-            $dataArray['category'] = $data->category ?? null;
+            $dataArray['category'] = $data->category;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = ($data->name ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name ?? null, 'json', $context));
+            $dataArray['name'] = $data->name === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

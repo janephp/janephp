@@ -64,16 +64,16 @@ class PartnerAttachmentBgpNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('localAsn', get_object_vars($data)) && null !== ($data->localAsn ?? null)) {
-            $dataArray['local_asn'] = $data->localAsn ?? null;
+            $dataArray['local_asn'] = $data->localAsn;
         }
         if (array_key_exists('peerAsn', get_object_vars($data)) && null !== ($data->peerAsn ?? null)) {
-            $dataArray['peer_asn'] = $data->peerAsn ?? null;
+            $dataArray['peer_asn'] = $data->peerAsn;
         }
         if (array_key_exists('localRouterIp', get_object_vars($data)) && null !== ($data->localRouterIp ?? null)) {
-            $dataArray['local_router_ip'] = $data->localRouterIp ?? null;
+            $dataArray['local_router_ip'] = $data->localRouterIp;
         }
         if (array_key_exists('peerRouterIp', get_object_vars($data)) && null !== ($data->peerRouterIp ?? null)) {
-            $dataArray['peer_router_ip'] = $data->peerRouterIp ?? null;
+            $dataArray['peer_router_ip'] = $data->peerRouterIp;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

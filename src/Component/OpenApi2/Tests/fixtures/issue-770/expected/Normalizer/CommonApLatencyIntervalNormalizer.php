@@ -49,7 +49,7 @@ class CommonApLatencyIntervalNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('pingEnabled', get_object_vars($data)) && null !== ($data->pingEnabled ?? null)) {
-            $dataArray['pingEnabled'] = $data->pingEnabled ?? null;
+            $dataArray['pingEnabled'] = $data->pingEnabled;
         }
         return $dataArray;
     }

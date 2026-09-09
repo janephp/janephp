@@ -45,7 +45,7 @@ class SocialMediaLoginProfileWhitelistedDomainNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domain'] = $data->domain ?? null;
+        $dataArray['domain'] = $data->domain;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

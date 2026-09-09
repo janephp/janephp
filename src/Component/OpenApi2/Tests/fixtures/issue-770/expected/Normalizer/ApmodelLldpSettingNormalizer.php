@@ -60,15 +60,15 @@ class ApmodelLldpSettingNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['enabled'] = $data->enabled;
         if (array_key_exists('advertiseIntervalInSec', get_object_vars($data)) && null !== ($data->advertiseIntervalInSec ?? null)) {
-            $dataArray['advertiseIntervalInSec'] = $data->advertiseIntervalInSec ?? null;
+            $dataArray['advertiseIntervalInSec'] = $data->advertiseIntervalInSec;
         }
         if (array_key_exists('holdTimeInSec', get_object_vars($data)) && null !== ($data->holdTimeInSec ?? null)) {
-            $dataArray['holdTimeInSec'] = $data->holdTimeInSec ?? null;
+            $dataArray['holdTimeInSec'] = $data->holdTimeInSec;
         }
         if (array_key_exists('managementIPTLVEnabled', get_object_vars($data)) && null !== ($data->managementIPTLVEnabled ?? null)) {
-            $dataArray['managementIPTLVEnabled'] = $data->managementIPTLVEnabled ?? null;
+            $dataArray['managementIPTLVEnabled'] = $data->managementIPTLVEnabled;
         }
         return $dataArray;
     }

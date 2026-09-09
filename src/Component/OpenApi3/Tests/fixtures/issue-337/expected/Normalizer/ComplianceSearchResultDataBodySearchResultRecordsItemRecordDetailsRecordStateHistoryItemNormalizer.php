@@ -64,16 +64,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     {
         $dataArray = [];
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = $data->date ?? null;
+            $dataArray['date'] = $data->date;
         }
         if (array_key_exists('event', get_object_vars($data)) && null !== ($data->event ?? null)) {
-            $dataArray['event'] = $data->event ?? null;
+            $dataArray['event'] = $data->event;
         }
         if (array_key_exists('note', get_object_vars($data)) && null !== ($data->note ?? null)) {
-            $dataArray['note'] = $data->note ?? null;
+            $dataArray['note'] = $data->note;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

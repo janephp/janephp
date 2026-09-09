@@ -67,16 +67,16 @@ class SystemStatisticListItemDiskNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
-            $dataArray['total'] = $data->total ?? null;
+            $dataArray['total'] = $data->total;
         }
         if (array_key_exists('free', get_object_vars($data)) && null !== ($data->free ?? null)) {
-            $dataArray['free'] = $data->free ?? null;
+            $dataArray['free'] = $data->free;
         }
         if (array_key_exists('maxFree', get_object_vars($data)) && null !== ($data->maxFree ?? null)) {
-            $dataArray['maxFree'] = $data->maxFree ?? null;
+            $dataArray['maxFree'] = $data->maxFree;
         }
         if (array_key_exists('minFree', get_object_vars($data)) && null !== ($data->minFree ?? null)) {
-            $dataArray['minFree'] = $data->minFree ?? null;
+            $dataArray['minFree'] = $data->minFree;
         }
         return $dataArray;
     }

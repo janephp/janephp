@@ -59,10 +59,10 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['message'] = $data->message ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['message'] = $data->message;
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['request_id'] = $data->requestId ?? null;
+            $dataArray['request_id'] = $data->requestId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

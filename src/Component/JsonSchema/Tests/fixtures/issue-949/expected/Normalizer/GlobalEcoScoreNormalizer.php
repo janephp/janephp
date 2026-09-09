@@ -61,18 +61,18 @@ class GlobalEcoScoreNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->emissionFactors ?? null;
-        if (is_array($data->emissionFactors ?? null)) {
+        $value = $data->emissionFactors;
+        if (is_array($data->emissionFactors)) {
             $values = [];
-            foreach ($data->emissionFactors ?? null as $value_1) {
+            foreach ($data->emissionFactors as $value_1) {
                 $values[] = $value_1;
             }
             $value = $values;
-        } elseif (is_null($data->emissionFactors ?? null)) {
-            $value = $data->emissionFactors ?? null;
+        } elseif (is_null($data->emissionFactors)) {
+            $value = $data->emissionFactors;
         }
         $dataArray['emission_factors'] = $value;
-        $dataArray['tracingId'] = $data->tracingId ?? null;
+        $dataArray['tracingId'] = $data->tracingId;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

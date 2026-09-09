@@ -55,11 +55,11 @@ class PortalserviceVenueNameNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->language ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['language'] = $data->language;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('venueUrls', get_object_vars($data)) && null !== ($data->venueUrls ?? null)) {
             $values = [];
-            foreach ($data->venueUrls ?? null as $value) {
+            foreach ($data->venueUrls as $value) {
                 $values[] = $value;
             }
             $dataArray['venueUrls'] = $values;

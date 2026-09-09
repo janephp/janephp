@@ -45,7 +45,7 @@ class SystemIpv6SecondaryInterfaceNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipAddress'] = $data->ipAddress ?? null;
+        $dataArray['ipAddress'] = $data->ipAddress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

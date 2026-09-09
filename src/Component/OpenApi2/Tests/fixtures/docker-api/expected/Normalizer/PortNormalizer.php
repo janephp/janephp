@@ -58,13 +58,13 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if (array_key_exists('iP', get_object_vars($data)) && null !== ($data->iP ?? null)) {
-            $dataArray['IP'] = $data->iP ?? null;
+            $dataArray['IP'] = $data->iP;
         }
-        $dataArray['PrivatePort'] = $data->privatePort ?? null;
+        $dataArray['PrivatePort'] = $data->privatePort;
         if (array_key_exists('publicPort', get_object_vars($data)) && null !== ($data->publicPort ?? null)) {
-            $dataArray['PublicPort'] = $data->publicPort ?? null;
+            $dataArray['PublicPort'] = $data->publicPort;
         }
-        $dataArray['Type'] = $data->type ?? null;
+        $dataArray['Type'] = $data->type;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PortConstraint());
         }

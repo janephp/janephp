@@ -105,35 +105,35 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
-            $dataArray['fieldId'] = $data->fieldId ?? null;
+            $dataArray['fieldId'] = $data->fieldId;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('indexFields', get_object_vars($data)) && null !== ($data->indexFields ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->indexFields ?? null as $key => $value) {
+            foreach ($data->indexFields as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['indexFields'] = $values;
         }
         if (array_key_exists('simpleSearchFields', get_object_vars($data)) && null !== ($data->simpleSearchFields ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->simpleSearchFields ?? null as $key_1 => $value_1) {
+            foreach ($data->simpleSearchFields as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['simpleSearchFields'] = $values_1;
         }
-        $dataArray['boost'] = $data->boost ?? null;
-        $dataArray['ignoreForSearch'] = $data->ignoreForSearch ?? null;
+        $dataArray['boost'] = $data->boost;
+        $dataArray['ignoreForSearch'] = $data->ignoreForSearch;
         if (array_key_exists('nestedPath', get_object_vars($data)) && null !== ($data->nestedPath ?? null)) {
-            $dataArray['nestedPath'] = $data->nestedPath ?? null;
+            $dataArray['nestedPath'] = $data->nestedPath;
         }
         if (array_key_exists('sortField', get_object_vars($data)) && null !== ($data->sortField ?? null)) {
-            $dataArray['sortField'] = $data->sortField ?? null;
+            $dataArray['sortField'] = $data->sortField;
         }
         return $dataArray;
     }

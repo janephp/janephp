@@ -60,10 +60,10 @@ class UserSettingsAclItemNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['topic'] = $data->topic ?? null;
-        $dataArray['permission'] = $data->permission ?? null;
+        $dataArray['topic'] = $data->topic;
+        $dataArray['permission'] = $data->permission;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

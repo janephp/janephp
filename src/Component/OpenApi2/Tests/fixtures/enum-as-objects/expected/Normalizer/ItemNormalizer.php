@@ -51,8 +51,8 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['status'] = ($data->status ?? null)->value;
-        $dataArray['priority'] = ($data->priority ?? null)->value;
+        $dataArray['status'] = $data->status->value;
+        $dataArray['priority'] = $data->priority->value;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi2\Tests\EnumAsObjects\Validator\ItemConstraint());
         }

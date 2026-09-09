@@ -136,91 +136,91 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['Id'] = $data->id ?? null;
+            $dataArray['Id'] = $data->id;
         }
         if (array_key_exists('created', get_object_vars($data)) && null !== ($data->created ?? null)) {
-            $dataArray['Created'] = $data->created ?? null;
+            $dataArray['Created'] = $data->created;
         }
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['Path'] = $data->path ?? null;
+            $dataArray['Path'] = $data->path;
         }
         if (array_key_exists('args', get_object_vars($data)) && null !== ($data->args ?? null)) {
             $values = [];
-            foreach ($data->args ?? null as $value) {
+            foreach ($data->args as $value) {
                 $values[] = $value;
             }
             $dataArray['Args'] = $values;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = ($data->state ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->state ?? null, 'json', $context));
+            $dataArray['State'] = $data->state === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->state, 'json', $context));
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['Image'] = $data->image ?? null;
+            $dataArray['Image'] = $data->image;
         }
         if (array_key_exists('resolvConfPath', get_object_vars($data)) && null !== ($data->resolvConfPath ?? null)) {
-            $dataArray['ResolvConfPath'] = $data->resolvConfPath ?? null;
+            $dataArray['ResolvConfPath'] = $data->resolvConfPath;
         }
         if (array_key_exists('hostnamePath', get_object_vars($data)) && null !== ($data->hostnamePath ?? null)) {
-            $dataArray['HostnamePath'] = $data->hostnamePath ?? null;
+            $dataArray['HostnamePath'] = $data->hostnamePath;
         }
         if (array_key_exists('hostsPath', get_object_vars($data)) && null !== ($data->hostsPath ?? null)) {
-            $dataArray['HostsPath'] = $data->hostsPath ?? null;
+            $dataArray['HostsPath'] = $data->hostsPath;
         }
         if (array_key_exists('logPath', get_object_vars($data)) && null !== ($data->logPath ?? null)) {
-            $dataArray['LogPath'] = $data->logPath ?? null;
+            $dataArray['LogPath'] = $data->logPath;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('restartCount', get_object_vars($data)) && null !== ($data->restartCount ?? null)) {
-            $dataArray['RestartCount'] = $data->restartCount ?? null;
+            $dataArray['RestartCount'] = $data->restartCount;
         }
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver ?? null;
+            $dataArray['Driver'] = $data->driver;
         }
         if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
-            $dataArray['Platform'] = $data->platform ?? null;
+            $dataArray['Platform'] = $data->platform;
         }
         if (array_key_exists('mountLabel', get_object_vars($data)) && null !== ($data->mountLabel ?? null)) {
-            $dataArray['MountLabel'] = $data->mountLabel ?? null;
+            $dataArray['MountLabel'] = $data->mountLabel;
         }
         if (array_key_exists('processLabel', get_object_vars($data)) && null !== ($data->processLabel ?? null)) {
-            $dataArray['ProcessLabel'] = $data->processLabel ?? null;
+            $dataArray['ProcessLabel'] = $data->processLabel;
         }
         if (array_key_exists('appArmorProfile', get_object_vars($data)) && null !== ($data->appArmorProfile ?? null)) {
-            $dataArray['AppArmorProfile'] = $data->appArmorProfile ?? null;
+            $dataArray['AppArmorProfile'] = $data->appArmorProfile;
         }
         if (array_key_exists('execIDs', get_object_vars($data)) && null !== ($data->execIDs ?? null)) {
             $values_1 = [];
-            foreach ($data->execIDs ?? null as $value_1) {
+            foreach ($data->execIDs as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['ExecIDs'] = $values_1;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = ($data->hostConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig ?? null, 'json', $context));
+            $dataArray['HostConfig'] = $data->hostConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
         }
         if (array_key_exists('graphDriver', get_object_vars($data)) && null !== ($data->graphDriver ?? null)) {
-            $dataArray['GraphDriver'] = ($data->graphDriver ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver ?? null, 'json', $context));
+            $dataArray['GraphDriver'] = $data->graphDriver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver, 'json', $context));
         }
         if (array_key_exists('sizeRw', get_object_vars($data)) && null !== ($data->sizeRw ?? null)) {
-            $dataArray['SizeRw'] = $data->sizeRw ?? null;
+            $dataArray['SizeRw'] = $data->sizeRw;
         }
         if (array_key_exists('sizeRootFs', get_object_vars($data)) && null !== ($data->sizeRootFs ?? null)) {
-            $dataArray['SizeRootFs'] = $data->sizeRootFs ?? null;
+            $dataArray['SizeRootFs'] = $data->sizeRootFs;
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_2 = [];
-            foreach ($data->mounts ?? null as $value_2) {
+            foreach ($data->mounts as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['Mounts'] = $values_2;
         }
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['Config'] = ($data->config ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            $dataArray['Config'] = $data->config === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         }
         if (array_key_exists('networkSettings', get_object_vars($data)) && null !== ($data->networkSettings ?? null)) {
-            $dataArray['NetworkSettings'] = ($data->networkSettings ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings ?? null, 'json', $context));
+            $dataArray['NetworkSettings'] = $data->networkSettings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdJsonGetResponse200Constraint());

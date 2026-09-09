@@ -104,48 +104,48 @@ class ApiCreateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('anthropicKeyUuid', get_object_vars($data)) && null !== ($data->anthropicKeyUuid ?? null)) {
-            $dataArray['anthropic_key_uuid'] = $data->anthropicKeyUuid ?? null;
+            $dataArray['anthropic_key_uuid'] = $data->anthropicKeyUuid;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('instruction', get_object_vars($data)) && null !== ($data->instruction ?? null)) {
-            $dataArray['instruction'] = $data->instruction ?? null;
+            $dataArray['instruction'] = $data->instruction;
         }
         if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
             $values = [];
-            foreach ($data->knowledgeBaseUuid ?? null as $value) {
+            foreach ($data->knowledgeBaseUuid as $value) {
                 $values[] = $value;
             }
             $dataArray['knowledge_base_uuid'] = $values;
         }
         if (array_key_exists('modelProviderKeyUuid', get_object_vars($data)) && null !== ($data->modelProviderKeyUuid ?? null)) {
-            $dataArray['model_provider_key_uuid'] = $data->modelProviderKeyUuid ?? null;
+            $dataArray['model_provider_key_uuid'] = $data->modelProviderKeyUuid;
         }
         if (array_key_exists('modelUuid', get_object_vars($data)) && null !== ($data->modelUuid ?? null)) {
-            $dataArray['model_uuid'] = $data->modelUuid ?? null;
+            $dataArray['model_uuid'] = $data->modelUuid;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('openAiKeyUuid', get_object_vars($data)) && null !== ($data->openAiKeyUuid ?? null)) {
-            $dataArray['open_ai_key_uuid'] = $data->openAiKeyUuid ?? null;
+            $dataArray['open_ai_key_uuid'] = $data->openAiKeyUuid;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_1) {
+            foreach ($data->tags as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
-            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
+            $dataArray['workspace_uuid'] = $data->workspaceUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

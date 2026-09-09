@@ -76,25 +76,25 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('additionalInfo', get_object_vars($data)) && null !== ($data->additionalInfo ?? null)) {
-            $dataArray['additionalInfo'] = $data->additionalInfo ?? null;
+            $dataArray['additionalInfo'] = $data->additionalInfo;
         }
         if (array_key_exists('telephoneNumber', get_object_vars($data)) && null !== ($data->telephoneNumber ?? null)) {
-            $dataArray['telephoneNumber'] = $data->telephoneNumber ?? null;
+            $dataArray['telephoneNumber'] = $data->telephoneNumber;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $dataArray['address'] = $data->address === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
         }
         if (array_key_exists('regNo', get_object_vars($data)) && null !== ($data->regNo ?? null)) {
-            $dataArray['regNo'] = $data->regNo ?? null;
+            $dataArray['regNo'] = $data->regNo;
         }
         if (array_key_exists('vatNo', get_object_vars($data)) && null !== ($data->vatNo ?? null)) {
-            $dataArray['vatNo'] = $data->vatNo ?? null;
+            $dataArray['vatNo'] = $data->vatNo;
         }
         if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
-            $dataArray['countryCode'] = $data->countryCode ?? null;
+            $dataArray['countryCode'] = $data->countryCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

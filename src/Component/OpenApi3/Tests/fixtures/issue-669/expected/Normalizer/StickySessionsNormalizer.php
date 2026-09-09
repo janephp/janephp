@@ -60,13 +60,13 @@ class StickySessionsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('cookieName', get_object_vars($data)) && null !== ($data->cookieName ?? null)) {
-            $dataArray['cookie_name'] = $data->cookieName ?? null;
+            $dataArray['cookie_name'] = $data->cookieName;
         }
         if (array_key_exists('cookieTtlSeconds', get_object_vars($data)) && null !== ($data->cookieTtlSeconds ?? null)) {
-            $dataArray['cookie_ttl_seconds'] = $data->cookieTtlSeconds ?? null;
+            $dataArray['cookie_ttl_seconds'] = $data->cookieTtlSeconds;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

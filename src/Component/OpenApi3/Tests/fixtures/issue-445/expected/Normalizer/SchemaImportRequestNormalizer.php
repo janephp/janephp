@@ -57,9 +57,9 @@ class SchemaImportRequestNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['importListItems'] = $data->importListItems ?? null;
+        $dataArray['fileTransferId'] = $data->fileTransferId;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['importListItems'] = $data->importListItems;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

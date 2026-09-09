@@ -81,19 +81,19 @@ class BookingsPostJsonResponse201Normalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('tripId', get_object_vars($data)) && null !== ($data->tripId ?? null)) {
-            $dataArray['trip_id'] = $data->tripId ?? null;
+            $dataArray['trip_id'] = $data->tripId;
         }
         if (array_key_exists('passengerName', get_object_vars($data)) && null !== ($data->passengerName ?? null)) {
-            $dataArray['passenger_name'] = $data->passengerName ?? null;
+            $dataArray['passenger_name'] = $data->passengerName;
         }
         if (array_key_exists('hasBicycle', get_object_vars($data)) && null !== ($data->hasBicycle ?? null)) {
-            $dataArray['has_bicycle'] = $data->hasBicycle ?? null;
+            $dataArray['has_bicycle'] = $data->hasBicycle;
         }
         if (array_key_exists('hasDog', get_object_vars($data)) && null !== ($data->hasDog ?? null)) {
-            $dataArray['has_dog'] = $data->hasDog ?? null;
+            $dataArray['has_dog'] = $data->hasDog;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

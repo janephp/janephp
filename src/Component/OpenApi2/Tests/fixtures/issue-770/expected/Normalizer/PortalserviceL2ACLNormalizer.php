@@ -65,23 +65,23 @@ class PortalserviceL2ACLNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('restriction', get_object_vars($data)) && null !== ($data->restriction ?? null)) {
-            $dataArray['restriction'] = $data->restriction ?? null;
+            $dataArray['restriction'] = $data->restriction;
         }
         if (array_key_exists('ruleMacs', get_object_vars($data)) && null !== ($data->ruleMacs ?? null)) {
             $values = [];
-            foreach ($data->ruleMacs ?? null as $value) {
+            foreach ($data->ruleMacs as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleMacs'] = $values;

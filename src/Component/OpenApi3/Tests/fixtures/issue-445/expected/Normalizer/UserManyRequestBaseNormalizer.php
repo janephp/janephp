@@ -50,7 +50,7 @@ class UserManyRequestBaseNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->userIds ?? null as $value) {
+        foreach ($data->userIds as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;

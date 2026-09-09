@@ -77,20 +77,20 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('limit', get_object_vars($data)) && null !== ($data->limit ?? null)) {
-            $dataArray['limit'] = $data->limit ?? null;
+            $dataArray['limit'] = $data->limit;
         }
         if (array_key_exists('offset', get_object_vars($data)) && null !== ($data->offset ?? null)) {
-            $dataArray['offset'] = $data->offset ?? null;
+            $dataArray['offset'] = $data->offset;
         }
         if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
-            $dataArray['total'] = $data->total ?? null;
+            $dataArray['total'] = $data->total;
         }
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $value = $data->next ?? null;
-            if (is_string($data->next ?? null)) {
-                $value = $data->next ?? null;
-            } elseif (is_null($data->next ?? null)) {
-                $value = $data->next ?? null;
+            $value = $data->next;
+            if (is_string($data->next)) {
+                $value = $data->next;
+            } elseif (is_null($data->next)) {
+                $value = $data->next;
             }
             $dataArray['next'] = $value;
         }

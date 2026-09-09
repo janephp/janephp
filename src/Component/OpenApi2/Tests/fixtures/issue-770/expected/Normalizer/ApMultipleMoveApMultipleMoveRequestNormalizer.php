@@ -55,12 +55,12 @@ class ApMultipleMoveApMultipleMoveRequestNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['targetZoneId'] = $data->targetZoneId ?? null;
+        $dataArray['targetZoneId'] = $data->targetZoneId;
         if (array_key_exists('targetApGroupId', get_object_vars($data)) && null !== ($data->targetApGroupId ?? null)) {
-            $dataArray['targetApGroupId'] = $data->targetApGroupId ?? null;
+            $dataArray['targetApGroupId'] = $data->targetApGroupId;
         }
         $values = [];
-        foreach ($data->apMacs ?? null as $value) {
+        foreach ($data->apMacs as $value) {
             $values[] = $value;
         }
         $dataArray['apMacs'] = $values;

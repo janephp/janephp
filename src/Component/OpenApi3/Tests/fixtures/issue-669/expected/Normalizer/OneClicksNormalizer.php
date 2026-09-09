@@ -55,8 +55,8 @@ class OneClicksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['slug'] = $data->slug ?? null;
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['slug'] = $data->slug;
+        $dataArray['type'] = $data->type;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

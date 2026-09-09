@@ -61,19 +61,19 @@ class DpskWlanDpskSettingNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('dpskEnabled', get_object_vars($data)) && null !== ($data->dpskEnabled ?? null)) {
-            $dataArray['dpskEnabled'] = $data->dpskEnabled ?? null;
+            $dataArray['dpskEnabled'] = $data->dpskEnabled;
         }
         if (array_key_exists('length', get_object_vars($data)) && null !== ($data->length ?? null)) {
-            $dataArray['length'] = $data->length ?? null;
+            $dataArray['length'] = $data->length;
         }
         if (array_key_exists('dpskType', get_object_vars($data)) && null !== ($data->dpskType ?? null)) {
-            $dataArray['dpskType'] = $data->dpskType ?? null;
+            $dataArray['dpskType'] = $data->dpskType;
         }
         if (array_key_exists('expiration', get_object_vars($data)) && null !== ($data->expiration ?? null)) {
-            $dataArray['expiration'] = $data->expiration ?? null;
+            $dataArray['expiration'] = $data->expiration;
         }
         if (array_key_exists('dpskFromType', get_object_vars($data)) && null !== ($data->dpskFromType ?? null)) {
-            $dataArray['dpskFromType'] = $data->dpskFromType ?? null;
+            $dataArray['dpskFromType'] = $data->dpskFromType;
         }
         return $dataArray;
     }

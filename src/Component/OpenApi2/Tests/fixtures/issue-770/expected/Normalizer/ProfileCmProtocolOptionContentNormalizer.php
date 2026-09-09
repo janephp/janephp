@@ -63,18 +63,18 @@ class ProfileCmProtocolOptionContentNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['cmpDhcpOpt43Subcode'] = $data->cmpDhcpOpt43Subcode ?? null;
+        $dataArray['cmpDhcpOpt43Subcode'] = $data->cmpDhcpOpt43Subcode;
         if (array_key_exists('cmpServerAddr', get_object_vars($data)) && null !== ($data->cmpServerAddr ?? null)) {
-            $dataArray['cmpServerAddr'] = $data->cmpServerAddr ?? null;
+            $dataArray['cmpServerAddr'] = $data->cmpServerAddr;
         }
         if (array_key_exists('cmpServerPath', get_object_vars($data)) && null !== ($data->cmpServerPath ?? null)) {
-            $dataArray['cmpServerPath'] = $data->cmpServerPath ?? null;
+            $dataArray['cmpServerPath'] = $data->cmpServerPath;
         }
         if (array_key_exists('cmpDhcpOpt43SubcodeRecipient', get_object_vars($data)) && null !== ($data->cmpDhcpOpt43SubcodeRecipient ?? null)) {
-            $dataArray['cmpDhcpOpt43SubcodeRecipient'] = $data->cmpDhcpOpt43SubcodeRecipient ?? null;
+            $dataArray['cmpDhcpOpt43SubcodeRecipient'] = $data->cmpDhcpOpt43SubcodeRecipient;
         }
         if (array_key_exists('cmpRecipient', get_object_vars($data)) && null !== ($data->cmpRecipient ?? null)) {
-            $dataArray['cmpRecipient'] = $data->cmpRecipient ?? null;
+            $dataArray['cmpRecipient'] = $data->cmpRecipient;
         }
         return $dataArray;
     }

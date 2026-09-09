@@ -60,11 +60,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     {
         $dataArray = [];
         if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
-            $dataArray['classification'] = $data->classification ?? null;
+            $dataArray['classification'] = $data->classification;
         }
         if (array_key_exists('activities', get_object_vars($data)) && null !== ($data->activities ?? null)) {
             $values = [];
-            foreach ($data->activities ?? null as $value) {
+            foreach ($data->activities as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activities'] = $values;

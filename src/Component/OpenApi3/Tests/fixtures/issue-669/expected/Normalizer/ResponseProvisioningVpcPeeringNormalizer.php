@@ -57,7 +57,7 @@ class ResponseProvisioningVpcPeeringNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('vpcPeering', get_object_vars($data)) && null !== ($data->vpcPeering ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->vpcPeering ?? null as $key => $value) {
+            foreach ($data->vpcPeering as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['vpc_peering'] = $values;

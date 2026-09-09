@@ -73,34 +73,34 @@ class IdentityUsernamePasswordCredentialsImplDtoNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('loginName', get_object_vars($data)) && null !== ($data->loginName ?? null)) {
-            $dataArray['loginName'] = $data->loginName ?? null;
+            $dataArray['loginName'] = $data->loginName;
         }
         if (array_key_exists('loginPassword', get_object_vars($data)) && null !== ($data->loginPassword ?? null)) {
-            $dataArray['loginPassword'] = $data->loginPassword ?? null;
+            $dataArray['loginPassword'] = $data->loginPassword;
         }
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('serviceProviderId', get_object_vars($data)) && null !== ($data->serviceProviderId ?? null)) {
-            $dataArray['serviceProviderId'] = $data->serviceProviderId ?? null;
+            $dataArray['serviceProviderId'] = $data->serviceProviderId;
         }
         if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
-            $dataArray['creationDate'] = $data->creationDate ?? null;
+            $dataArray['creationDate'] = $data->creationDate;
         }
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
-            $dataArray['expirationDate'] = $data->expirationDate ?? null;
+            $dataArray['expirationDate'] = $data->expirationDate;
         }
         if (array_key_exists('authenticationMethod', get_object_vars($data)) && null !== ($data->authenticationMethod ?? null)) {
-            $dataArray['authenticationMethod'] = $data->authenticationMethod ?? null;
+            $dataArray['authenticationMethod'] = $data->authenticationMethod;
         }
         if (array_key_exists('authenticationServerConfig', get_object_vars($data)) && null !== ($data->authenticationServerConfig ?? null)) {
-            $dataArray['authenticationServerConfig'] = ($data->authenticationServerConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationServerConfig ?? null, 'json', $context));
+            $dataArray['authenticationServerConfig'] = $data->authenticationServerConfig === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationServerConfig, 'json', $context));
         }
         if (array_key_exists('passwordCreation', get_object_vars($data)) && null !== ($data->passwordCreation ?? null)) {
-            $dataArray['passwordCreation'] = $data->passwordCreation ?? null;
+            $dataArray['passwordCreation'] = $data->passwordCreation;
         }
         if (array_key_exists('passwordExpiration', get_object_vars($data)) && null !== ($data->passwordExpiration ?? null)) {
-            $dataArray['passwordExpiration'] = $data->passwordExpiration ?? null;
+            $dataArray['passwordExpiration'] = $data->passwordExpiration;
         }
         return $dataArray;
     }

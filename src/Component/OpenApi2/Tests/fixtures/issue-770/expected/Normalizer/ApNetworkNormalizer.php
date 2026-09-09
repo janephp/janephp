@@ -61,22 +61,22 @@ class ApNetworkNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
-            $dataArray['ipType'] = $data->ipType ?? null;
+            $dataArray['ipType'] = $data->ipType;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
-            $dataArray['netmask'] = $data->netmask ?? null;
+            $dataArray['netmask'] = $data->netmask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('primaryDns', get_object_vars($data)) && null !== ($data->primaryDns ?? null)) {
-            $dataArray['primaryDns'] = $data->primaryDns ?? null;
+            $dataArray['primaryDns'] = $data->primaryDns;
         }
         if (array_key_exists('secondaryDns', get_object_vars($data)) && null !== ($data->secondaryDns ?? null)) {
-            $dataArray['secondaryDns'] = $data->secondaryDns ?? null;
+            $dataArray['secondaryDns'] = $data->secondaryDns;
         }
         return $dataArray;
     }

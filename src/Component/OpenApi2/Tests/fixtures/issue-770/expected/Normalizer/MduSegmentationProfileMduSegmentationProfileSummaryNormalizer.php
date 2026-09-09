@@ -71,26 +71,26 @@ class MduSegmentationProfileMduSegmentationProfileSummaryNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['domainId'] = $data->domainId ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['domainId'] = $data->domainId;
+        $dataArray['name'] = $data->name;
         $values = [];
-        foreach ($data->dpInfoList ?? null as $value) {
+        foreach ($data->dpInfoList as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['dpInfoList'] = $values;
         if (array_key_exists('apGroupInfoList', get_object_vars($data)) && null !== ($data->apGroupInfoList ?? null)) {
             $values_1 = [];
-            foreach ($data->apGroupInfoList ?? null as $value_1) {
+            foreach ($data->apGroupInfoList as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['apGroupInfoList'] = $values_1;
         }
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = ($data->networkSegmentationSwitchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo ?? null, 'json', $context));
+            $dataArray['networkSegmentationSwitchInfo'] = $data->networkSegmentationSwitchInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
         }
         if (array_key_exists('reviewData', get_object_vars($data)) && null !== ($data->reviewData ?? null)) {
-            $dataArray['reviewData'] = ($data->reviewData ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->reviewData ?? null, 'json', $context));
+            $dataArray['reviewData'] = $data->reviewData === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->reviewData, 'json', $context));
         }
         return $dataArray;
     }

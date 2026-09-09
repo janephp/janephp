@@ -49,10 +49,10 @@ class CommonApRebootTimeoutNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('gatewayLossTimeoutInSec', get_object_vars($data)) && null !== ($data->gatewayLossTimeoutInSec ?? null)) {
-            $dataArray['gatewayLossTimeoutInSec'] = $data->gatewayLossTimeoutInSec ?? null;
+            $dataArray['gatewayLossTimeoutInSec'] = $data->gatewayLossTimeoutInSec;
         }
         if (array_key_exists('serverLossTimeoutInSec', get_object_vars($data)) && null !== ($data->serverLossTimeoutInSec ?? null)) {
-            $dataArray['serverLossTimeoutInSec'] = $data->serverLossTimeoutInSec ?? null;
+            $dataArray['serverLossTimeoutInSec'] = $data->serverLossTimeoutInSec;
         }
         return $dataArray;
     }

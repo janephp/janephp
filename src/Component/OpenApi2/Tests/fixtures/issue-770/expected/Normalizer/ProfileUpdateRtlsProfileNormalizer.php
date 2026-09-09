@@ -64,19 +64,19 @@ class ProfileUpdateRtlsProfileNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('ekahauEnabled', get_object_vars($data)) && null !== ($data->ekahauEnabled ?? null)) {
-            $dataArray['ekahauEnabled'] = $data->ekahauEnabled ?? null;
+            $dataArray['ekahauEnabled'] = $data->ekahauEnabled;
         }
         if (array_key_exists('ekahauIp', get_object_vars($data)) && null !== ($data->ekahauIp ?? null)) {
-            $dataArray['ekahauIp'] = $data->ekahauIp ?? null;
+            $dataArray['ekahauIp'] = $data->ekahauIp;
         }
         if (array_key_exists('ekahauPort', get_object_vars($data)) && null !== ($data->ekahauPort ?? null)) {
-            $dataArray['ekahauPort'] = $data->ekahauPort ?? null;
+            $dataArray['ekahauPort'] = $data->ekahauPort;
         }
         if (array_key_exists('stanleyEnabled', get_object_vars($data)) && null !== ($data->stanleyEnabled ?? null)) {
-            $dataArray['stanleyEnabled'] = $data->stanleyEnabled ?? null;
+            $dataArray['stanleyEnabled'] = $data->stanleyEnabled;
         }
         return $dataArray;
     }

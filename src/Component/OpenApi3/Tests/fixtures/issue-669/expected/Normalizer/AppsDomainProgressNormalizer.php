@@ -61,7 +61,7 @@ class AppsDomainProgressNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
-            foreach ($data->steps ?? null as $value) {
+            foreach ($data->steps as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

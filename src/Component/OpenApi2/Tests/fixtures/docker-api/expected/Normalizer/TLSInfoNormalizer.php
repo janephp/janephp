@@ -55,13 +55,13 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('trustRoot', get_object_vars($data)) && null !== ($data->trustRoot ?? null)) {
-            $dataArray['TrustRoot'] = $data->trustRoot ?? null;
+            $dataArray['TrustRoot'] = $data->trustRoot;
         }
         if (array_key_exists('certIssuerSubject', get_object_vars($data)) && null !== ($data->certIssuerSubject ?? null)) {
-            $dataArray['CertIssuerSubject'] = $data->certIssuerSubject ?? null;
+            $dataArray['CertIssuerSubject'] = $data->certIssuerSubject;
         }
         if (array_key_exists('certIssuerPublicKey', get_object_vars($data)) && null !== ($data->certIssuerPublicKey ?? null)) {
-            $dataArray['CertIssuerPublicKey'] = $data->certIssuerPublicKey ?? null;
+            $dataArray['CertIssuerPublicKey'] = $data->certIssuerPublicKey;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TLSInfoConstraint());

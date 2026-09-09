@@ -76,24 +76,24 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->provisioningProtocals ?? null as $value) {
+        foreach ($data->provisioningProtocals as $value) {
             $values[] = $value;
         }
         $dataArray['provisioningProtocals'] = $values;
-        $dataArray['osuServiceUrl'] = $data->osuServiceUrl ?? null;
-        $dataArray['osuNaiRealm'] = $data->osuNaiRealm ?? null;
+        $dataArray['osuServiceUrl'] = $data->osuServiceUrl;
+        $dataArray['osuNaiRealm'] = $data->osuNaiRealm;
         if (array_key_exists('singleSsidNai', get_object_vars($data)) && null !== ($data->singleSsidNai ?? null)) {
-            $dataArray['singleSsidNai'] = $data->singleSsidNai ?? null;
+            $dataArray['singleSsidNai'] = $data->singleSsidNai;
         }
-        $dataArray['commonLanguageIcon'] = $data->commonLanguageIcon ?? null;
+        $dataArray['commonLanguageIcon'] = $data->commonLanguageIcon;
         $values_1 = [];
-        foreach ($data->subscriptionDescriptions ?? null as $value_1) {
+        foreach ($data->subscriptionDescriptions as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['subscriptionDescriptions'] = $values_1;
         if (array_key_exists('whitelistedDomains', get_object_vars($data)) && null !== ($data->whitelistedDomains ?? null)) {
             $values_2 = [];
-            foreach ($data->whitelistedDomains ?? null as $value_2) {
+            foreach ($data->whitelistedDomains as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['whitelistedDomains'] = $values_2;

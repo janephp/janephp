@@ -54,7 +54,7 @@ class ContainersIdUpdatePostResponse200Normalizer implements DenormalizerInterfa
         $dataArray = [];
         if (array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values = [];
-            foreach ($data->warnings ?? null as $value) {
+            foreach ($data->warnings as $value) {
                 $values[] = $value;
             }
             $dataArray['Warnings'] = $values;

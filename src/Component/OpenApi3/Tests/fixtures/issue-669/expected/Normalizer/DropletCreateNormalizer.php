@@ -147,19 +147,19 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
-        $dataArray['size'] = $data->size ?? null;
-        $value = $data->image ?? null;
-        if (is_string($data->image ?? null)) {
-            $value = $data->image ?? null;
-        } elseif (is_int($data->image ?? null)) {
-            $value = $data->image ?? null;
+        $dataArray['size'] = $data->size;
+        $value = $data->image;
+        if (is_string($data->image)) {
+            $value = $data->image;
+        } elseif (is_int($data->image)) {
+            $value = $data->image;
         }
         $dataArray['image'] = $value;
         if (array_key_exists('sshKeys', get_object_vars($data)) && null !== ($data->sshKeys ?? null)) {
             $values = [];
-            foreach ($data->sshKeys ?? null as $value_1) {
+            foreach ($data->sshKeys as $value_1) {
                 $value_2 = $value_1;
                 if (is_string($value_1)) {
                     $value_2 = $value_1;
@@ -171,42 +171,42 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['ssh_keys'] = $values;
         }
         if (array_key_exists('backups', get_object_vars($data)) && null !== ($data->backups ?? null)) {
-            $dataArray['backups'] = $data->backups ?? null;
+            $dataArray['backups'] = $data->backups;
         }
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = ($data->backupPolicy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy ?? null, 'json', $context));
+            $dataArray['backup_policy'] = $data->backupPolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
-            $dataArray['ipv6'] = $data->ipv6 ?? null;
+            $dataArray['ipv6'] = $data->ipv6;
         }
         if (array_key_exists('monitoring', get_object_vars($data)) && null !== ($data->monitoring ?? null)) {
-            $dataArray['monitoring'] = $data->monitoring ?? null;
+            $dataArray['monitoring'] = $data->monitoring;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_3) {
+            foreach ($data->tags as $value_3) {
                 $values_1[] = $value_3;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('userData', get_object_vars($data)) && null !== ($data->userData ?? null)) {
-            $dataArray['user_data'] = $data->userData ?? null;
+            $dataArray['user_data'] = $data->userData;
         }
         if (array_key_exists('privateNetworking', get_object_vars($data)) && null !== ($data->privateNetworking ?? null)) {
-            $dataArray['private_networking'] = $data->privateNetworking ?? null;
+            $dataArray['private_networking'] = $data->privateNetworking;
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_2 = [];
-            foreach ($data->volumes ?? null as $value_4) {
+            foreach ($data->volumes as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['volumes'] = $values_2;
         }
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('withDropletAgent', get_object_vars($data)) && null !== ($data->withDropletAgent ?? null)) {
-            $dataArray['with_droplet_agent'] = $data->withDropletAgent ?? null;
+            $dataArray['with_droplet_agent'] = $data->withDropletAgent;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

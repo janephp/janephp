@@ -63,13 +63,13 @@ class AppsGithubSourceSpecNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('branch', get_object_vars($data)) && null !== ($data->branch ?? null)) {
-            $dataArray['branch'] = $data->branch ?? null;
+            $dataArray['branch'] = $data->branch;
         }
         if (array_key_exists('deployOnPush', get_object_vars($data)) && null !== ($data->deployOnPush ?? null)) {
-            $dataArray['deploy_on_push'] = $data->deployOnPush ?? null;
+            $dataArray['deploy_on_push'] = $data->deployOnPush;
         }
         if (array_key_exists('repo', get_object_vars($data)) && null !== ($data->repo ?? null)) {
-            $dataArray['repo'] = $data->repo ?? null;
+            $dataArray['repo'] = $data->repo;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

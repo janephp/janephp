@@ -52,10 +52,10 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('credentialSpec', get_object_vars($data)) && null !== ($data->credentialSpec ?? null)) {
-            $dataArray['CredentialSpec'] = ($data->credentialSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->credentialSpec ?? null, 'json', $context));
+            $dataArray['CredentialSpec'] = $data->credentialSpec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->credentialSpec, 'json', $context));
         }
         if (array_key_exists('sELinuxContext', get_object_vars($data)) && null !== ($data->sELinuxContext ?? null)) {
-            $dataArray['SELinuxContext'] = ($data->sELinuxContext ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->sELinuxContext ?? null, 'json', $context));
+            $dataArray['SELinuxContext'] = $data->sELinuxContext === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->sELinuxContext, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesConstraint());

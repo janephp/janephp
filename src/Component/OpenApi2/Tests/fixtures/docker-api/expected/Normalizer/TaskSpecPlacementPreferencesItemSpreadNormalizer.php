@@ -49,7 +49,7 @@ class TaskSpecPlacementPreferencesItemSpreadNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('spreadDescriptor', get_object_vars($data)) && null !== ($data->spreadDescriptor ?? null)) {
-            $dataArray['SpreadDescriptor'] = $data->spreadDescriptor ?? null;
+            $dataArray['SpreadDescriptor'] = $data->spreadDescriptor;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemSpreadConstraint());

@@ -60,13 +60,13 @@ class V2DatabasesDatabaseClusterUuidSchemaRegistryPostBodyNormalizer implements 
     {
         $dataArray = [];
         if (array_key_exists('subjectName', get_object_vars($data)) && null !== ($data->subjectName ?? null)) {
-            $dataArray['subject_name'] = $data->subjectName ?? null;
+            $dataArray['subject_name'] = $data->subjectName;
         }
         if (array_key_exists('schemaType', get_object_vars($data)) && null !== ($data->schemaType ?? null)) {
-            $dataArray['schema_type'] = $data->schemaType ?? null;
+            $dataArray['schema_type'] = $data->schemaType;
         }
         if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
-            $dataArray['schema'] = $data->schema ?? null;
+            $dataArray['schema'] = $data->schema;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

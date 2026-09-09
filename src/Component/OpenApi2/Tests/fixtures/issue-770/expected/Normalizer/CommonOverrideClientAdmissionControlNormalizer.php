@@ -61,16 +61,16 @@ class CommonOverrideClientAdmissionControlNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('maxRadioLoadPercent', get_object_vars($data)) && null !== ($data->maxRadioLoadPercent ?? null)) {
-            $dataArray['maxRadioLoadPercent'] = $data->maxRadioLoadPercent ?? null;
+            $dataArray['maxRadioLoadPercent'] = $data->maxRadioLoadPercent;
         }
         if (array_key_exists('minClientCount', get_object_vars($data)) && null !== ($data->minClientCount ?? null)) {
-            $dataArray['minClientCount'] = $data->minClientCount ?? null;
+            $dataArray['minClientCount'] = $data->minClientCount;
         }
         if (array_key_exists('minClientThroughputMbps', get_object_vars($data)) && null !== ($data->minClientThroughputMbps ?? null)) {
-            $dataArray['minClientThroughputMbps'] = $data->minClientThroughputMbps ?? null;
+            $dataArray['minClientThroughputMbps'] = $data->minClientThroughputMbps;
         }
         return $dataArray;
     }

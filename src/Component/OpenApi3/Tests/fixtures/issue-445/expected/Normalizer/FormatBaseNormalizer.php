@@ -102,64 +102,64 @@ class FormatBaseNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ImageFormatBase' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ImageFormatBase' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'OriginalFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'OriginalFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'JpegFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'JpegFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'PngFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'PngFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'TiffFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TiffFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'VideoFormatBase' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'VideoFormatBase' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AudioFormatBase' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AudioFormatBase' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'Mp4VideoFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'Mp4VideoFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'VideoSpriteFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'VideoSpriteFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'VideoStillFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'VideoStillFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AacAudioFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AacAudioFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AudioStillFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AudioStillFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'Mp3AudioFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'Mp3AudioFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'DocumentFormatBase' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'DocumentFormatBase' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'DocumentStillFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'DocumentStillFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'PdfFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'PdfFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'VectorFormatBase' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'VectorFormatBase' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'SvgFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'SvgFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'VectorStillFormat' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'VectorStillFormat' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -46,7 +46,7 @@ class DpskDeleteDpskResultNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('resultCount', get_object_vars($data)) && null !== ($data->resultCount ?? null)) {
-            $dataArray['resultCount'] = $data->resultCount ?? null;
+            $dataArray['resultCount'] = $data->resultCount;
         }
         return $dataArray;
     }

@@ -82,19 +82,19 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d');
+            $dataArray['date'] = $data->date->format('Y-m-d');
         }
         if (array_key_exists('dateOrNull', get_object_vars($data)) && null !== ($data->dateOrNull ?? null)) {
-            $dataArray['dateOrNull'] = ($data->dateOrNull ?? null)?->format('Y-m-d');
+            $dataArray['dateOrNull'] = $data->dateOrNull?->format('Y-m-d');
         }
         if (array_key_exists('dateOrNullOrInt', get_object_vars($data)) && null !== ($data->dateOrNullOrInt ?? null)) {
-            $value = $data->dateOrNullOrInt ?? null;
-            if (is_object($data->dateOrNullOrInt ?? null)) {
-                $value = ($data->dateOrNullOrInt ?? null)->format('Y-m-d');
-            } elseif (is_null($data->dateOrNullOrInt ?? null)) {
-                $value = $data->dateOrNullOrInt ?? null;
-            } elseif (is_int($data->dateOrNullOrInt ?? null)) {
-                $value = $data->dateOrNullOrInt ?? null;
+            $value = $data->dateOrNullOrInt;
+            if (is_object($data->dateOrNullOrInt)) {
+                $value = $data->dateOrNullOrInt->format('Y-m-d');
+            } elseif (is_null($data->dateOrNullOrInt)) {
+                $value = $data->dateOrNullOrInt;
+            } elseif (is_int($data->dateOrNullOrInt)) {
+                $value = $data->dateOrNullOrInt;
             }
             $dataArray['dateOrNullOrInt'] = $value;
         }

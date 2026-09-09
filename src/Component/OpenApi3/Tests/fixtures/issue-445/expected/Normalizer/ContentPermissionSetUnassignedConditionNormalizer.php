@@ -68,11 +68,11 @@ class ContentPermissionSetUnassignedConditionNormalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('permissionSetId', get_object_vars($data)) && null !== ($data->permissionSetId ?? null)) {
-            $dataArray['permissionSetId'] = $data->permissionSetId ?? null;
+            $dataArray['permissionSetId'] = $data->permissionSetId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

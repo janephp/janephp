@@ -68,29 +68,29 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('binariesInfo', get_object_vars($data)) && null !== ($data->binariesInfo ?? null)) {
             $values = [];
-            foreach ($data->binariesInfo ?? null as $value) {
+            foreach ($data->binariesInfo as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['binariesInfo'] = $values;
         }
         if (array_key_exists('checkLatestInstallableSettings', get_object_vars($data)) && null !== ($data->checkLatestInstallableSettings ?? null)) {
-            $dataArray['checkLatestInstallableSettings'] = ($data->checkLatestInstallableSettings ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings ?? null, 'json', $context));
+            $dataArray['checkLatestInstallableSettings'] = $data->checkLatestInstallableSettings === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context));
         }
         if (array_key_exists('latestInstallable', get_object_vars($data)) && null !== ($data->latestInstallable ?? null)) {
-            $dataArray['latestInstallable'] = ($data->latestInstallable ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable ?? null, 'json', $context));
+            $dataArray['latestInstallable'] = $data->latestInstallable === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable, 'json', $context));
         }
         return $dataArray;
     }

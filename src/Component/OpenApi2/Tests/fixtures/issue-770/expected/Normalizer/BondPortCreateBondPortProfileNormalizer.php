@@ -57,14 +57,14 @@ class BondPortCreateBondPortProfileNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['untagId'] = $data->untagId ?? null;
+        $dataArray['type'] = $data->type;
+        $dataArray['untagId'] = $data->untagId;
         if (array_key_exists('vlanMembers', get_object_vars($data)) && null !== ($data->vlanMembers ?? null)) {
-            $dataArray['vlanMembers'] = $data->vlanMembers ?? null;
+            $dataArray['vlanMembers'] = $data->vlanMembers;
         }
         return $dataArray;
     }

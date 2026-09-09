@@ -56,10 +56,10 @@ class KubernetesRegionNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
-            $dataArray['slug'] = $data->slug ?? null;
+            $dataArray['slug'] = $data->slug;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

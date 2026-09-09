@@ -96,54 +96,54 @@ class ProfileReturnDPGroupNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('profileType', get_object_vars($data)) && null !== ($data->profileType ?? null)) {
-            $dataArray['profileType'] = $data->profileType ?? null;
+            $dataArray['profileType'] = $data->profileType;
         }
         if (array_key_exists('dpGroupList', get_object_vars($data)) && null !== ($data->dpGroupList ?? null)) {
             $values = [];
-            foreach ($data->dpGroupList ?? null as $value) {
+            foreach ($data->dpGroupList as $value) {
                 $values[] = $value;
             }
             $dataArray['dpGroupList'] = $values;
         }
         if (array_key_exists('dpGroupListWithPriority', get_object_vars($data)) && null !== ($data->dpGroupListWithPriority ?? null)) {
             $values_1 = [];
-            foreach ($data->dpGroupListWithPriority ?? null as $value_1) {
+            foreach ($data->dpGroupListWithPriority as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dpGroupListWithPriority'] = $values_1;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         if (array_key_exists('isDpVersionConsistent', get_object_vars($data)) && null !== ($data->isDpVersionConsistent ?? null)) {
-            $dataArray['isDpVersionConsistent'] = $data->isDpVersionConsistent ?? null;
+            $dataArray['isDpVersionConsistent'] = $data->isDpVersionConsistent;
         }
         if (array_key_exists('baseDpVersion', get_object_vars($data)) && null !== ($data->baseDpVersion ?? null)) {
-            $dataArray['baseDpVersion'] = $data->baseDpVersion ?? null;
+            $dataArray['baseDpVersion'] = $data->baseDpVersion;
         }
         return $dataArray;
     }

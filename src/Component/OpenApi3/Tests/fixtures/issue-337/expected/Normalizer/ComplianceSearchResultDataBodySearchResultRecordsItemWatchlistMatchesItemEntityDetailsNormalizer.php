@@ -105,49 +105,49 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         $dataArray = [];
         if (array_key_exists('additionalInfo', get_object_vars($data)) && null !== ($data->additionalInfo ?? null)) {
             $values = [];
-            foreach ($data->additionalInfo ?? null as $value) {
+            foreach ($data->additionalInfo as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['additionalInfo'] = $values;
         }
         if (array_key_exists('addresses', get_object_vars($data)) && null !== ($data->addresses ?? null)) {
             $values_1 = [];
-            foreach ($data->addresses ?? null as $value_1) {
+            foreach ($data->addresses as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['addresses'] = $values_1;
         }
         if (array_key_exists('akAs', get_object_vars($data)) && null !== ($data->akAs ?? null)) {
             $values_2 = [];
-            foreach ($data->akAs ?? null as $value_2) {
+            foreach ($data->akAs as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['akAs'] = $values_2;
         }
         if (array_key_exists('comments', get_object_vars($data)) && null !== ($data->comments ?? null)) {
-            $dataArray['comments'] = $data->comments ?? null;
+            $dataArray['comments'] = $data->comments;
         }
         if (array_key_exists('dateListed', get_object_vars($data)) && null !== ($data->dateListed ?? null)) {
-            $dataArray['dateListed'] = $data->dateListed ?? null;
+            $dataArray['dateListed'] = $data->dateListed;
         }
         if (array_key_exists('entityType', get_object_vars($data)) && null !== ($data->entityType ?? null)) {
-            $dataArray['entityType'] = $data->entityType ?? null;
+            $dataArray['entityType'] = $data->entityType;
         }
         if (array_key_exists('iDs', get_object_vars($data)) && null !== ($data->iDs ?? null)) {
             $values_3 = [];
-            foreach ($data->iDs ?? null as $value_3) {
+            foreach ($data->iDs as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['iDs'] = $values_3;
         }
         if (array_key_exists('listReferenceNumber', get_object_vars($data)) && null !== ($data->listReferenceNumber ?? null)) {
-            $dataArray['listReferenceNumber'] = $data->listReferenceNumber ?? null;
+            $dataArray['listReferenceNumber'] = $data->listReferenceNumber;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = ($data->name ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name ?? null, 'json', $context));
+            $dataArray['name'] = $data->name === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
         }
         if (array_key_exists('reasonListed', get_object_vars($data)) && null !== ($data->reasonListed ?? null)) {
-            $dataArray['reasonListed'] = $data->reasonListed ?? null;
+            $dataArray['reasonListed'] = $data->reasonListed;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

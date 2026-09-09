@@ -65,11 +65,11 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
-            $value = $data->users ?? null;
-            if (is_object($data->users ?? null)) {
-                $value = ($data->users ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\JsonObject($this->normalizer->normalize($data->users ?? null, 'json', $context));
-            } elseif (is_null($data->users ?? null)) {
-                $value = $data->users ?? null;
+            $value = $data->users;
+            if (is_object($data->users)) {
+                $value = $data->users === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\JsonObject($this->normalizer->normalize($data->users, 'json', $context));
+            } elseif (is_null($data->users)) {
+                $value = $data->users;
             }
             $dataArray['users'] = $value;
         }

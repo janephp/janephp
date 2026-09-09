@@ -67,24 +67,24 @@ class ProfileBonjourFencingRuleNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['deviceType'] = $data->deviceType ?? null;
+        $dataArray['deviceType'] = $data->deviceType;
         if (array_key_exists('deviceMacList', get_object_vars($data)) && null !== ($data->deviceMacList ?? null)) {
             $values = [];
-            foreach ($data->deviceMacList ?? null as $value) {
+            foreach ($data->deviceMacList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['deviceMacList'] = $values;
         }
         if (array_key_exists('closestAp', get_object_vars($data)) && null !== ($data->closestAp ?? null)) {
-            $dataArray['closestAp'] = $data->closestAp ?? null;
+            $dataArray['closestAp'] = $data->closestAp;
         }
-        $dataArray['serviceType'] = $data->serviceType ?? null;
+        $dataArray['serviceType'] = $data->serviceType;
         if (array_key_exists('customServiceName', get_object_vars($data)) && null !== ($data->customServiceName ?? null)) {
-            $dataArray['customServiceName'] = $data->customServiceName ?? null;
+            $dataArray['customServiceName'] = $data->customServiceName;
         }
-        $dataArray['fencingRange'] = $data->fencingRange ?? null;
+        $dataArray['fencingRange'] = $data->fencingRange;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

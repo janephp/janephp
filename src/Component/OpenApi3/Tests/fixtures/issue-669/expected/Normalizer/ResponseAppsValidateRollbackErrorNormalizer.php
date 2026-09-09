@@ -64,14 +64,14 @@ class ResponseAppsValidateRollbackErrorNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->components ?? null as $value) {
+            foreach ($data->components as $value) {
                 $values[] = $value;
             }
             $dataArray['components'] = $values;

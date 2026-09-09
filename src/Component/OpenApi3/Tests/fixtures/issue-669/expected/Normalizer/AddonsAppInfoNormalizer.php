@@ -67,11 +67,11 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_slug'] = $data->appSlug ?? null;
-        $dataArray['tos'] = $data->tos ?? null;
-        $dataArray['eula'] = $data->eula ?? null;
+        $dataArray['app_slug'] = $data->appSlug;
+        $dataArray['tos'] = $data->tos;
+        $dataArray['eula'] = $data->eula;
         $values = [];
-        foreach ($data->plans ?? null as $value) {
+        foreach ($data->plans as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['plans'] = $values;

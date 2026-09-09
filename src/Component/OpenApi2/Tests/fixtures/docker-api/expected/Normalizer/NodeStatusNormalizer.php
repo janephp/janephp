@@ -55,13 +55,13 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = $data->state ?? null;
+            $dataArray['State'] = $data->state;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['Message'] = $data->message ?? null;
+            $dataArray['Message'] = $data->message;
         }
         if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
-            $dataArray['Addr'] = $data->addr ?? null;
+            $dataArray['Addr'] = $data->addr;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeStatusConstraint());

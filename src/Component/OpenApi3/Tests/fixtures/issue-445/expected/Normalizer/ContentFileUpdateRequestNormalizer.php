@@ -45,7 +45,7 @@ class ContentFileUpdateRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
+        $dataArray['fileTransferId'] = $data->fileTransferId;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

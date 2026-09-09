@@ -67,10 +67,10 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('outputDocId', get_object_vars($data)) && null !== ($data->outputDocId ?? null)) {
-            $dataArray['outputDocId'] = $data->outputDocId ?? null;
+            $dataArray['outputDocId'] = $data->outputDocId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

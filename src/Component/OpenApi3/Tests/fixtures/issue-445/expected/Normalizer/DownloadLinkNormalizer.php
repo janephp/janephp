@@ -48,8 +48,8 @@ class DownloadLinkNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['downloadToken'] = $data->downloadToken ?? null;
-        $dataArray['downloadUrl'] = $data->downloadUrl ?? null;
+        $dataArray['downloadToken'] = $data->downloadToken;
+        $dataArray['downloadUrl'] = $data->downloadUrl;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

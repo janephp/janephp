@@ -76,37 +76,37 @@ class AdministrationUpgradeHistorySummaryNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('startTime', get_object_vars($data)) && null !== ($data->startTime ?? null)) {
-            $dataArray['startTime'] = $data->startTime ?? null;
+            $dataArray['startTime'] = $data->startTime;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('cbVersion', get_object_vars($data)) && null !== ($data->cbVersion ?? null)) {
-            $dataArray['cbVersion'] = $data->cbVersion ?? null;
+            $dataArray['cbVersion'] = $data->cbVersion;
         }
         if (array_key_exists('dpVersion', get_object_vars($data)) && null !== ($data->dpVersion ?? null)) {
-            $dataArray['dpVersion'] = $data->dpVersion ?? null;
+            $dataArray['dpVersion'] = $data->dpVersion;
         }
         if (array_key_exists('apFwVersion', get_object_vars($data)) && null !== ($data->apFwVersion ?? null)) {
-            $dataArray['apFwVersion'] = $data->apFwVersion ?? null;
+            $dataArray['apFwVersion'] = $data->apFwVersion;
         }
         if (array_key_exists('oldVersion', get_object_vars($data)) && null !== ($data->oldVersion ?? null)) {
-            $dataArray['oldVersion'] = $data->oldVersion ?? null;
+            $dataArray['oldVersion'] = $data->oldVersion;
         }
         if (array_key_exists('oldCbVersion', get_object_vars($data)) && null !== ($data->oldCbVersion ?? null)) {
-            $dataArray['oldCbVersion'] = $data->oldCbVersion ?? null;
+            $dataArray['oldCbVersion'] = $data->oldCbVersion;
         }
         if (array_key_exists('oldDpVersion', get_object_vars($data)) && null !== ($data->oldDpVersion ?? null)) {
-            $dataArray['oldDpVersion'] = $data->oldDpVersion ?? null;
+            $dataArray['oldDpVersion'] = $data->oldDpVersion;
         }
         if (array_key_exists('oldApFwVersion', get_object_vars($data)) && null !== ($data->oldApFwVersion ?? null)) {
-            $dataArray['oldApFwVersion'] = $data->oldApFwVersion ?? null;
+            $dataArray['oldApFwVersion'] = $data->oldApFwVersion;
         }
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('elapsedSeconds', get_object_vars($data)) && null !== ($data->elapsedSeconds ?? null)) {
-            $dataArray['elapsedSeconds'] = $data->elapsedSeconds ?? null;
+            $dataArray['elapsedSeconds'] = $data->elapsedSeconds;
         }
         return $dataArray;
     }

@@ -49,10 +49,10 @@ class IdentityMaxDevicesNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('maxDevicesAllowed', get_object_vars($data)) && null !== ($data->maxDevicesAllowed ?? null)) {
-            $dataArray['maxDevicesAllowed'] = $data->maxDevicesAllowed ?? null;
+            $dataArray['maxDevicesAllowed'] = $data->maxDevicesAllowed;
         }
         if (array_key_exists('maxDevicesNumber', get_object_vars($data)) && null !== ($data->maxDevicesNumber ?? null)) {
-            $dataArray['maxDevicesNumber'] = $data->maxDevicesNumber ?? null;
+            $dataArray['maxDevicesNumber'] = $data->maxDevicesNumber;
         }
         return $dataArray;
     }

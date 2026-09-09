@@ -55,16 +55,16 @@ class DpProfileDpDhcpProfileOptionBONormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('functionName', get_object_vars($data)) && null !== ($data->functionName ?? null)) {
-            $dataArray['functionName'] = $data->functionName ?? null;
+            $dataArray['functionName'] = $data->functionName;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('codeNumber', get_object_vars($data)) && null !== ($data->codeNumber ?? null)) {
-            $dataArray['codeNumber'] = $data->codeNumber ?? null;
+            $dataArray['codeNumber'] = $data->codeNumber;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         return $dataArray;
     }

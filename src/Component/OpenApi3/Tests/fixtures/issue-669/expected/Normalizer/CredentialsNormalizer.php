@@ -84,22 +84,22 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('server', get_object_vars($data)) && null !== ($data->server ?? null)) {
-            $dataArray['server'] = $data->server ?? null;
+            $dataArray['server'] = $data->server;
         }
         if (array_key_exists('certificateAuthorityData', get_object_vars($data)) && null !== ($data->certificateAuthorityData ?? null)) {
-            $dataArray['certificate_authority_data'] = $data->certificateAuthorityData ?? null;
+            $dataArray['certificate_authority_data'] = $data->certificateAuthorityData;
         }
         if (array_key_exists('clientCertificateData', get_object_vars($data)) && null !== ($data->clientCertificateData ?? null)) {
-            $dataArray['client_certificate_data'] = $data->clientCertificateData ?? null;
+            $dataArray['client_certificate_data'] = $data->clientCertificateData;
         }
         if (array_key_exists('clientKeyData', get_object_vars($data)) && null !== ($data->clientKeyData ?? null)) {
-            $dataArray['client_key_data'] = $data->clientKeyData ?? null;
+            $dataArray['client_key_data'] = $data->clientKeyData;
         }
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
-            $dataArray['token'] = $data->token ?? null;
+            $dataArray['token'] = $data->token;
         }
         if (array_key_exists('expiresAt', get_object_vars($data)) && null !== ($data->expiresAt ?? null)) {
-            $dataArray['expires_at'] = ($data->expiresAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['expires_at'] = $data->expiresAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

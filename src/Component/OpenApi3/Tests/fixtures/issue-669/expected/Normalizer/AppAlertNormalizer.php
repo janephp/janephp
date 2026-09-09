@@ -84,30 +84,30 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('componentName', get_object_vars($data)) && null !== ($data->componentName ?? null)) {
-            $dataArray['component_name'] = $data->componentName ?? null;
+            $dataArray['component_name'] = $data->componentName;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+            $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
             $values = [];
-            foreach ($data->emails ?? null as $value) {
+            foreach ($data->emails as $value) {
                 $values[] = $value;
             }
             $dataArray['emails'] = $values;
         }
         if (array_key_exists('slackWebhooks', get_object_vars($data)) && null !== ($data->slackWebhooks ?? null)) {
             $values_1 = [];
-            foreach ($data->slackWebhooks ?? null as $value_1) {
+            foreach ($data->slackWebhooks as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['slack_webhooks'] = $values_1;
         }
         if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
-            $dataArray['phase'] = $data->phase ?? null;
+            $dataArray['phase'] = $data->phase;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = ($data->progress ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress ?? null, 'json', $context));
+            $dataArray['progress'] = $data->progress === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

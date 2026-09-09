@@ -69,21 +69,21 @@ class AdministrationActiveDirectoryServerNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->realm ?? null;
+        $dataArray['realm'] = $data->realm;
         if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
-            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
+            $dataArray['tlsEnabled'] = $data->tlsEnabled;
         }
         if (array_key_exists('cnIdentity', get_object_vars($data)) && null !== ($data->cnIdentity ?? null)) {
-            $dataArray['cnIdentity'] = $data->cnIdentity ?? null;
+            $dataArray['cnIdentity'] = $data->cnIdentity;
         }
-        $dataArray['ip'] = $data->ip ?? null;
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['windowsDomainName'] = $data->windowsDomainName ?? null;
+        $dataArray['ip'] = $data->ip;
+        $dataArray['port'] = $data->port;
+        $dataArray['windowsDomainName'] = $data->windowsDomainName;
         if (array_key_exists('proxyUserPrincipalName', get_object_vars($data)) && null !== ($data->proxyUserPrincipalName ?? null)) {
-            $dataArray['proxyUserPrincipalName'] = $data->proxyUserPrincipalName ?? null;
+            $dataArray['proxyUserPrincipalName'] = $data->proxyUserPrincipalName;
         }
         if (array_key_exists('proxyUserPassword', get_object_vars($data)) && null !== ($data->proxyUserPassword ?? null)) {
-            $dataArray['proxyUserPassword'] = $data->proxyUserPassword ?? null;
+            $dataArray['proxyUserPassword'] = $data->proxyUserPassword;
         }
         return $dataArray;
     }

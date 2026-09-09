@@ -72,13 +72,13 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
-            $value = $data->condition ?? null;
-            if (is_object($data->condition ?? null)) {
-                $value = ($data->condition ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition ?? null, 'json', $context));
+            $value = $data->condition;
+            if (is_object($data->condition)) {
+                $value = $data->condition === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition, 'json', $context));
             }
             $dataArray['condition'] = $value;
         }

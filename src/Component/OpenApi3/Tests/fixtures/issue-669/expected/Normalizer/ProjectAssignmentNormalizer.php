@@ -57,7 +57,7 @@ class ProjectAssignmentNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
             $values = [];
-            foreach ($data->resources ?? null as $value) {
+            foreach ($data->resources as $value) {
                 $values[] = $value;
             }
             $dataArray['resources'] = $values;

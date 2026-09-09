@@ -67,16 +67,16 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ruleCode'] = $data->ruleCode ?? null;
-        $dataArray['isActive'] = $data->isActive ?? null;
+        $dataArray['ruleCode'] = $data->ruleCode;
+        $dataArray['isActive'] = $data->isActive;
         if (array_key_exists('param0', get_object_vars($data)) && null !== ($data->param0 ?? null)) {
-            $dataArray['param0'] = $data->param0 ?? null;
+            $dataArray['param0'] = $data->param0;
         }
         if (array_key_exists('param1', get_object_vars($data)) && null !== ($data->param1 ?? null)) {
-            $dataArray['param1'] = $data->param1 ?? null;
+            $dataArray['param1'] = $data->param1;
         }
         if (array_key_exists('param2', get_object_vars($data)) && null !== ($data->param2 ?? null)) {
-            $dataArray['param2...'] = $data->param2 ?? null;
+            $dataArray['param2...'] = $data->param2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -97,40 +97,40 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['Status'] = $data->status ?? null;
+            $dataArray['Status'] = $data->status;
         }
         if (array_key_exists('running', get_object_vars($data)) && null !== ($data->running ?? null)) {
-            $dataArray['Running'] = $data->running ?? null;
+            $dataArray['Running'] = $data->running;
         }
         if (array_key_exists('paused', get_object_vars($data)) && null !== ($data->paused ?? null)) {
-            $dataArray['Paused'] = $data->paused ?? null;
+            $dataArray['Paused'] = $data->paused;
         }
         if (array_key_exists('restarting', get_object_vars($data)) && null !== ($data->restarting ?? null)) {
-            $dataArray['Restarting'] = $data->restarting ?? null;
+            $dataArray['Restarting'] = $data->restarting;
         }
         if (array_key_exists('oOMKilled', get_object_vars($data)) && null !== ($data->oOMKilled ?? null)) {
-            $dataArray['OOMKilled'] = $data->oOMKilled ?? null;
+            $dataArray['OOMKilled'] = $data->oOMKilled;
         }
         if (array_key_exists('dead', get_object_vars($data)) && null !== ($data->dead ?? null)) {
-            $dataArray['Dead'] = $data->dead ?? null;
+            $dataArray['Dead'] = $data->dead;
         }
         if (array_key_exists('pid', get_object_vars($data)) && null !== ($data->pid ?? null)) {
-            $dataArray['Pid'] = $data->pid ?? null;
+            $dataArray['Pid'] = $data->pid;
         }
         if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
-            $dataArray['ExitCode'] = $data->exitCode ?? null;
+            $dataArray['ExitCode'] = $data->exitCode;
         }
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['Error'] = $data->error ?? null;
+            $dataArray['Error'] = $data->error;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['StartedAt'] = $data->startedAt ?? null;
+            $dataArray['StartedAt'] = $data->startedAt;
         }
         if (array_key_exists('finishedAt', get_object_vars($data)) && null !== ($data->finishedAt ?? null)) {
-            $dataArray['FinishedAt'] = $data->finishedAt ?? null;
+            $dataArray['FinishedAt'] = $data->finishedAt;
         }
         if (array_key_exists('health', get_object_vars($data)) && null !== ($data->health ?? null)) {
-            $dataArray['Health'] = ($data->health ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->health ?? null, 'json', $context));
+            $dataArray['Health'] = $data->health === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->health, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainerStateConstraint());

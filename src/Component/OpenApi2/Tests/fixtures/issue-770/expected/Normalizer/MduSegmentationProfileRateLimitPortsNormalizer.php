@@ -49,10 +49,10 @@ class MduSegmentationProfileRateLimitPortsNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
-            $dataArray['ports'] = $data->ports ?? null;
+            $dataArray['ports'] = $data->ports;
         }
         if (array_key_exists('limit', get_object_vars($data)) && null !== ($data->limit ?? null)) {
-            $dataArray['limit'] = $data->limit ?? null;
+            $dataArray['limit'] = $data->limit;
         }
         return $dataArray;
     }

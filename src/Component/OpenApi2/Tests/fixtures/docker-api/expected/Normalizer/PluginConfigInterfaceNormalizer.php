@@ -59,13 +59,13 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->types ?? null as $value) {
+        foreach ($data->types as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Types'] = $values;
-        $dataArray['Socket'] = $data->socket ?? null;
+        $dataArray['Socket'] = $data->socket;
         if (array_key_exists('protocolScheme', get_object_vars($data)) && null !== ($data->protocolScheme ?? null)) {
-            $dataArray['ProtocolScheme'] = $data->protocolScheme ?? null;
+            $dataArray['ProtocolScheme'] = $data->protocolScheme;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigInterfaceConstraint());

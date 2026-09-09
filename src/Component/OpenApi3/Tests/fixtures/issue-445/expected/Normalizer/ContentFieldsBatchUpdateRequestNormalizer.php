@@ -82,15 +82,15 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->changeCommands ?? null as $value) {
+        foreach ($data->changeCommands as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
+        $dataArray['kind'] = $data->kind;
         $values_1 = [];
-        foreach ($data->contentIds ?? null as $value_1) {
+        foreach ($data->contentIds as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['contentIds'] = $values_1;

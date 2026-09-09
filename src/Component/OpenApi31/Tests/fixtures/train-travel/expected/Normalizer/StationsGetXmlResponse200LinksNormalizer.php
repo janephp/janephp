@@ -63,13 +63,13 @@ class StationsGetXmlResponse200LinksNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('self', get_object_vars($data)) && null !== ($data->self ?? null)) {
-            $dataArray['self'] = $data->self ?? null;
+            $dataArray['self'] = $data->self;
         }
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $dataArray['next'] = $data->next ?? null;
+            $dataArray['next'] = $data->next;
         }
         if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
-            $dataArray['prev'] = $data->prev ?? null;
+            $dataArray['prev'] = $data->prev;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

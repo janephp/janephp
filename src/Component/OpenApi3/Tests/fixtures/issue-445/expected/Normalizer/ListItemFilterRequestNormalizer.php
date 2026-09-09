@@ -92,33 +92,33 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
-            $dataArray['searchString'] = $data->searchString ?? null;
+            $dataArray['searchString'] = $data->searchString;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
+        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren;
         if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values = [];
-            foreach ($data->schemaIds ?? null as $value_1) {
+            foreach ($data->schemaIds as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['schemaIds'] = $values;
         }
         if (array_key_exists('searchLanguages', get_object_vars($data)) && null !== ($data->searchLanguages ?? null)) {
             $values_1 = [];
-            foreach ($data->searchLanguages ?? null as $value_2) {
+            foreach ($data->searchLanguages as $value_2) {
                 $values_1[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_1;
         }
-        $value_3 = $data->brokenDependenciesFilter ?? null;
-        if (is_string($data->brokenDependenciesFilter ?? null)) {
-            $value_3 = $data->brokenDependenciesFilter ?? null;
+        $value_3 = $data->brokenDependenciesFilter;
+        if (is_string($data->brokenDependenciesFilter)) {
+            $value_3 = $data->brokenDependenciesFilter;
         }
         $dataArray['brokenDependenciesFilter'] = $value_3;
         return $dataArray;

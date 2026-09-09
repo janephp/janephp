@@ -79,15 +79,15 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['index'] = $data->index ?? null;
-        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
-        $dataArray['sortable'] = $data->sortable ?? null;
-        $dataArray['boost'] = $data->boost ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['index'] = $data->index;
+        $dataArray['simpleSearch'] = $data->simpleSearch;
+        $dataArray['sortable'] = $data->sortable;
+        $dataArray['boost'] = $data->boost;
         if (array_key_exists('relatedSchemaIndexing', get_object_vars($data)) && null !== ($data->relatedSchemaIndexing ?? null)) {
-            $value = $data->relatedSchemaIndexing ?? null;
-            if (is_object($data->relatedSchemaIndexing ?? null)) {
-                $value = ($data->relatedSchemaIndexing ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->relatedSchemaIndexing ?? null, 'json', $context));
+            $value = $data->relatedSchemaIndexing;
+            if (is_object($data->relatedSchemaIndexing)) {
+                $value = $data->relatedSchemaIndexing === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->relatedSchemaIndexing, 'json', $context));
             }
             $dataArray['relatedSchemaIndexing'] = $value;
         }

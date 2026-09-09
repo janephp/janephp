@@ -54,13 +54,13 @@ class WlanFastInitialLinkSetupNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encryptionType'] = $data->encryptionType ?? null;
-        $dataArray['dhcpServerIp'] = $data->dhcpServerIp ?? null;
+        $dataArray['encryptionType'] = $data->encryptionType;
+        $dataArray['dhcpServerIp'] = $data->dhcpServerIp;
         if (array_key_exists('hlpTimeout', get_object_vars($data)) && null !== ($data->hlpTimeout ?? null)) {
-            $dataArray['hlpTimeout'] = $data->hlpTimeout ?? null;
+            $dataArray['hlpTimeout'] = $data->hlpTimeout;
         }
         if (array_key_exists('realmProfileId', get_object_vars($data)) && null !== ($data->realmProfileId ?? null)) {
-            $dataArray['realmProfileId'] = $data->realmProfileId ?? null;
+            $dataArray['realmProfileId'] = $data->realmProfileId;
         }
         return $dataArray;
     }

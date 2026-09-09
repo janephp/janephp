@@ -74,22 +74,22 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->mounts ?? null as $value) {
+        foreach ($data->mounts as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Mounts'] = $values;
         $values_1 = [];
-        foreach ($data->env ?? null as $value_1) {
+        foreach ($data->env as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['Env'] = $values_1;
         $values_2 = [];
-        foreach ($data->args ?? null as $value_2) {
+        foreach ($data->args as $value_2) {
             $values_2[] = $value_2;
         }
         $dataArray['Args'] = $values_2;
         $values_3 = [];
-        foreach ($data->devices ?? null as $value_3) {
+        foreach ($data->devices as $value_3) {
             $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['Devices'] = $values_3;

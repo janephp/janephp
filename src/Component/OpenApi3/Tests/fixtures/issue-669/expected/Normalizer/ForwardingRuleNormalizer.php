@@ -74,15 +74,15 @@ class ForwardingRuleNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['entry_protocol'] = $data->entryProtocol ?? null;
-        $dataArray['entry_port'] = $data->entryPort ?? null;
-        $dataArray['target_protocol'] = $data->targetProtocol ?? null;
-        $dataArray['target_port'] = $data->targetPort ?? null;
+        $dataArray['entry_protocol'] = $data->entryProtocol;
+        $dataArray['entry_port'] = $data->entryPort;
+        $dataArray['target_protocol'] = $data->targetProtocol;
+        $dataArray['target_port'] = $data->targetPort;
         if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
-            $dataArray['certificate_id'] = $data->certificateId ?? null;
+            $dataArray['certificate_id'] = $data->certificateId;
         }
         if (array_key_exists('tlsPassthrough', get_object_vars($data)) && null !== ($data->tlsPassthrough ?? null)) {
-            $dataArray['tls_passthrough'] = $data->tlsPassthrough ?? null;
+            $dataArray['tls_passthrough'] = $data->tlsPassthrough;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

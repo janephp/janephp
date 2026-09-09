@@ -71,17 +71,17 @@ class ApiWebCrawlerDataSourceNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('baseUrl', get_object_vars($data)) && null !== ($data->baseUrl ?? null)) {
-            $dataArray['base_url'] = $data->baseUrl ?? null;
+            $dataArray['base_url'] = $data->baseUrl;
         }
         if (array_key_exists('crawlingOption', get_object_vars($data)) && null !== ($data->crawlingOption ?? null)) {
-            $dataArray['crawling_option'] = $data->crawlingOption ?? null;
+            $dataArray['crawling_option'] = $data->crawlingOption;
         }
         if (array_key_exists('embedMedia', get_object_vars($data)) && null !== ($data->embedMedia ?? null)) {
-            $dataArray['embed_media'] = $data->embedMedia ?? null;
+            $dataArray['embed_media'] = $data->embedMedia;
         }
         if (array_key_exists('excludeTags', get_object_vars($data)) && null !== ($data->excludeTags ?? null)) {
             $values = [];
-            foreach ($data->excludeTags ?? null as $value) {
+            foreach ($data->excludeTags as $value) {
                 $values[] = $value;
             }
             $dataArray['exclude_tags'] = $values;

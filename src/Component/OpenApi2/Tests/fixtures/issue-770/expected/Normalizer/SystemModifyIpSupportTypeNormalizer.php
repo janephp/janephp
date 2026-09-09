@@ -45,7 +45,7 @@ class SystemModifyIpSupportTypeNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipMode'] = $data->ipMode ?? null;
+        $dataArray['ipMode'] = $data->ipMode;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

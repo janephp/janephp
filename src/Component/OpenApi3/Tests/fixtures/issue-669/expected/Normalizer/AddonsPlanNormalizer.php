@@ -132,31 +132,31 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['app_id'] = $data->appId ?? null;
-        $dataArray['display_name'] = $data->displayName ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['app_id'] = $data->appId;
+        $dataArray['display_name'] = $data->displayName;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['slug'] = $data->slug ?? null;
-        $dataArray['price_per_month'] = $data->pricePerMonth ?? null;
-        $dataArray['active'] = $data->active ?? null;
-        $dataArray['state'] = $data->state ?? null;
+        $dataArray['slug'] = $data->slug;
+        $dataArray['price_per_month'] = $data->pricePerMonth;
+        $dataArray['active'] = $data->active;
+        $dataArray['state'] = $data->state;
         if (array_key_exists('features', get_object_vars($data)) && null !== ($data->features ?? null)) {
             $values = [];
-            foreach ($data->features ?? null as $value) {
+            foreach ($data->features as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['features'] = $values;
         }
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['available'] = $data->available ?? null;
-        $dataArray['uuid'] = $data->uuid ?? null;
-        $dataArray['by_default'] = $data->byDefault ?? null;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
+        $dataArray['available'] = $data->available;
+        $dataArray['uuid'] = $data->uuid;
+        $dataArray['by_default'] = $data->byDefault;
         if (array_key_exists('dimensions', get_object_vars($data)) && null !== ($data->dimensions ?? null)) {
             $values_1 = [];
-            foreach ($data->dimensions ?? null as $value_1) {
+            foreach ($data->dimensions as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dimensions'] = $values_1;

@@ -80,25 +80,25 @@ class RepositoryTagNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
-            $dataArray['registry_name'] = $data->registryName ?? null;
+            $dataArray['registry_name'] = $data->registryName;
         }
         if (array_key_exists('repository', get_object_vars($data)) && null !== ($data->repository ?? null)) {
-            $dataArray['repository'] = $data->repository ?? null;
+            $dataArray['repository'] = $data->repository;
         }
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = $data->tag ?? null;
+            $dataArray['tag'] = $data->tag;
         }
         if (array_key_exists('manifestDigest', get_object_vars($data)) && null !== ($data->manifestDigest ?? null)) {
-            $dataArray['manifest_digest'] = $data->manifestDigest ?? null;
+            $dataArray['manifest_digest'] = $data->manifestDigest;
         }
         if (array_key_exists('compressedSizeBytes', get_object_vars($data)) && null !== ($data->compressedSizeBytes ?? null)) {
-            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes ?? null;
+            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes;
         }
         if (array_key_exists('sizeBytes', get_object_vars($data)) && null !== ($data->sizeBytes ?? null)) {
-            $dataArray['size_bytes'] = $data->sizeBytes ?? null;
+            $dataArray['size_bytes'] = $data->sizeBytes;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

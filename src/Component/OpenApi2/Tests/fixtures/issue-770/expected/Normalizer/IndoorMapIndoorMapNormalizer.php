@@ -94,43 +94,43 @@ class IndoorMapIndoorMapNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['description'] = $data->description ?? null;
-        $dataArray['groupType'] = $data->groupType ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['description'] = $data->description;
+        $dataArray['groupType'] = $data->groupType;
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address ?? null;
+            $dataArray['address'] = $data->address;
         }
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
-            $dataArray['latitude'] = $data->latitude ?? null;
+            $dataArray['latitude'] = $data->latitude;
         }
         if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
-            $dataArray['longitude'] = $data->longitude ?? null;
+            $dataArray['longitude'] = $data->longitude;
         }
         if (array_key_exists('orientation', get_object_vars($data)) && null !== ($data->orientation ?? null)) {
-            $dataArray['orientation'] = $data->orientation ?? null;
+            $dataArray['orientation'] = $data->orientation;
         }
         if (array_key_exists('imageData', get_object_vars($data)) && null !== ($data->imageData ?? null)) {
-            $dataArray['imageData'] = $data->imageData ?? null;
+            $dataArray['imageData'] = $data->imageData;
         }
         if (array_key_exists('imageFileName', get_object_vars($data)) && null !== ($data->imageFileName ?? null)) {
-            $dataArray['imageFileName'] = $data->imageFileName ?? null;
+            $dataArray['imageFileName'] = $data->imageFileName;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
-            $dataArray['tenantId'] = $data->tenantId ?? null;
+            $dataArray['tenantId'] = $data->tenantId;
         }
         if (array_key_exists('scale', get_object_vars($data)) && null !== ($data->scale ?? null)) {
-            $dataArray['scale'] = ($data->scale ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->scale ?? null, 'json', $context));
+            $dataArray['scale'] = $data->scale === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->scale, 'json', $context));
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
-            $dataArray['apGroupId'] = $data->apGroupId ?? null;
+            $dataArray['apGroupId'] = $data->apGroupId;
         }
         return $dataArray;
     }

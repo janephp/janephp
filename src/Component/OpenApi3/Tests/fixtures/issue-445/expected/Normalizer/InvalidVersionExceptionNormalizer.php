@@ -108,29 +108,29 @@ class InvalidVersionExceptionNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('component', get_object_vars($data)) && null !== ($data->component ?? null)) {
-            $dataArray['component'] = $data->component ?? null;
+            $dataArray['component'] = $data->component;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('expectedVersion', get_object_vars($data)) && null !== ($data->expectedVersion ?? null)) {
-            $dataArray['expectedVersion'] = $data->expectedVersion ?? null;
+            $dataArray['expectedVersion'] = $data->expectedVersion;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

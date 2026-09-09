@@ -60,11 +60,11 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
-            $dataArray['correlationId'] = $data->correlationId ?? null;
+            $dataArray['correlationId'] = $data->correlationId;
         }
         if (array_key_exists('countryAccess', get_object_vars($data)) && null !== ($data->countryAccess ?? null)) {
             $values = [];
-            foreach ($data->countryAccess ?? null as $value) {
+            foreach ($data->countryAccess as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['countryAccess'] = $values;

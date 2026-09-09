@@ -52,7 +52,7 @@ class AppsDeploymentResponseNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('deployment', get_object_vars($data)) && null !== ($data->deployment ?? null)) {
-            $dataArray['deployment'] = ($data->deployment ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment ?? null, 'json', $context));
+            $dataArray['deployment'] = $data->deployment === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

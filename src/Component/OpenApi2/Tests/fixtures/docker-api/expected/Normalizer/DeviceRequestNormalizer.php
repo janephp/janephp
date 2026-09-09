@@ -77,21 +77,21 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver ?? null;
+            $dataArray['Driver'] = $data->driver;
         }
         if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
-            $dataArray['Count'] = $data->count ?? null;
+            $dataArray['Count'] = $data->count;
         }
         if (array_key_exists('deviceIDs', get_object_vars($data)) && null !== ($data->deviceIDs ?? null)) {
             $values = [];
-            foreach ($data->deviceIDs ?? null as $value) {
+            foreach ($data->deviceIDs as $value) {
                 $values[] = $value;
             }
             $dataArray['DeviceIDs'] = $values;
         }
         if (array_key_exists('capabilities', get_object_vars($data)) && null !== ($data->capabilities ?? null)) {
             $values_1 = [];
-            foreach ($data->capabilities ?? null as $value_1) {
+            foreach ($data->capabilities as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
                     $values_2[] = $value_2;
@@ -102,7 +102,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->options ?? null as $key => $value_3) {
+            foreach ($data->options as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
             $dataArray['Options'] = $values_3;

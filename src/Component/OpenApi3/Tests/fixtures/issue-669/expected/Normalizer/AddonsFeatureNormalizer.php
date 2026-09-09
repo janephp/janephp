@@ -91,23 +91,23 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
-            $dataArray['unit'] = $data->unit ?? null;
+            $dataArray['unit'] = $data->unit;
         }
-        $value = $data->value ?? null;
-        if (is_string($data->value ?? null)) {
-            $value = $data->value ?? null;
-        } elseif (is_bool($data->value ?? null)) {
-            $value = $data->value ?? null;
-        } elseif (is_string($data->value ?? null)) {
-            $value = $data->value ?? null;
+        $value = $data->value;
+        if (is_string($data->value)) {
+            $value = $data->value;
+        } elseif (is_bool($data->value)) {
+            $value = $data->value;
+        } elseif (is_string($data->value)) {
+            $value = $data->value;
         }
         $dataArray['value'] = $value;
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

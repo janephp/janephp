@@ -243,131 +243,131 @@ class OpensearchAdvancedConfigNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('httpMaxContentLengthBytes', get_object_vars($data)) && null !== ($data->httpMaxContentLengthBytes ?? null)) {
-            $dataArray['http_max_content_length_bytes'] = $data->httpMaxContentLengthBytes ?? null;
+            $dataArray['http_max_content_length_bytes'] = $data->httpMaxContentLengthBytes;
         }
         if (array_key_exists('httpMaxHeaderSizeBytes', get_object_vars($data)) && null !== ($data->httpMaxHeaderSizeBytes ?? null)) {
-            $dataArray['http_max_header_size_bytes'] = $data->httpMaxHeaderSizeBytes ?? null;
+            $dataArray['http_max_header_size_bytes'] = $data->httpMaxHeaderSizeBytes;
         }
         if (array_key_exists('httpMaxInitialLineLengthBytes', get_object_vars($data)) && null !== ($data->httpMaxInitialLineLengthBytes ?? null)) {
-            $dataArray['http_max_initial_line_length_bytes'] = $data->httpMaxInitialLineLengthBytes ?? null;
+            $dataArray['http_max_initial_line_length_bytes'] = $data->httpMaxInitialLineLengthBytes;
         }
         if (array_key_exists('indicesQueryBoolMaxClauseCount', get_object_vars($data)) && null !== ($data->indicesQueryBoolMaxClauseCount ?? null)) {
-            $dataArray['indices_query_bool_max_clause_count'] = $data->indicesQueryBoolMaxClauseCount ?? null;
+            $dataArray['indices_query_bool_max_clause_count'] = $data->indicesQueryBoolMaxClauseCount;
         }
         if (array_key_exists('indicesFielddataCacheSizePercentage', get_object_vars($data)) && null !== ($data->indicesFielddataCacheSizePercentage ?? null)) {
-            $dataArray['indices_fielddata_cache_size_percentage'] = $data->indicesFielddataCacheSizePercentage ?? null;
+            $dataArray['indices_fielddata_cache_size_percentage'] = $data->indicesFielddataCacheSizePercentage;
         }
         if (array_key_exists('indicesMemoryIndexBufferSizePercentage', get_object_vars($data)) && null !== ($data->indicesMemoryIndexBufferSizePercentage ?? null)) {
-            $dataArray['indices_memory_index_buffer_size_percentage'] = $data->indicesMemoryIndexBufferSizePercentage ?? null;
+            $dataArray['indices_memory_index_buffer_size_percentage'] = $data->indicesMemoryIndexBufferSizePercentage;
         }
         if (array_key_exists('indicesMemoryMinIndexBufferSizeMb', get_object_vars($data)) && null !== ($data->indicesMemoryMinIndexBufferSizeMb ?? null)) {
-            $dataArray['indices_memory_min_index_buffer_size_mb'] = $data->indicesMemoryMinIndexBufferSizeMb ?? null;
+            $dataArray['indices_memory_min_index_buffer_size_mb'] = $data->indicesMemoryMinIndexBufferSizeMb;
         }
         if (array_key_exists('indicesMemoryMaxIndexBufferSizeMb', get_object_vars($data)) && null !== ($data->indicesMemoryMaxIndexBufferSizeMb ?? null)) {
-            $dataArray['indices_memory_max_index_buffer_size_mb'] = $data->indicesMemoryMaxIndexBufferSizeMb ?? null;
+            $dataArray['indices_memory_max_index_buffer_size_mb'] = $data->indicesMemoryMaxIndexBufferSizeMb;
         }
         if (array_key_exists('indicesQueriesCacheSizePercentage', get_object_vars($data)) && null !== ($data->indicesQueriesCacheSizePercentage ?? null)) {
-            $dataArray['indices_queries_cache_size_percentage'] = $data->indicesQueriesCacheSizePercentage ?? null;
+            $dataArray['indices_queries_cache_size_percentage'] = $data->indicesQueriesCacheSizePercentage;
         }
         if (array_key_exists('indicesRecoveryMaxMbPerSec', get_object_vars($data)) && null !== ($data->indicesRecoveryMaxMbPerSec ?? null)) {
-            $dataArray['indices_recovery_max_mb_per_sec'] = $data->indicesRecoveryMaxMbPerSec ?? null;
+            $dataArray['indices_recovery_max_mb_per_sec'] = $data->indicesRecoveryMaxMbPerSec;
         }
         if (array_key_exists('indicesRecoveryMaxConcurrentFileChunks', get_object_vars($data)) && null !== ($data->indicesRecoveryMaxConcurrentFileChunks ?? null)) {
-            $dataArray['indices_recovery_max_concurrent_file_chunks'] = $data->indicesRecoveryMaxConcurrentFileChunks ?? null;
+            $dataArray['indices_recovery_max_concurrent_file_chunks'] = $data->indicesRecoveryMaxConcurrentFileChunks;
         }
         if (array_key_exists('threadPoolSearchSize', get_object_vars($data)) && null !== ($data->threadPoolSearchSize ?? null)) {
-            $dataArray['thread_pool_search_size'] = $data->threadPoolSearchSize ?? null;
+            $dataArray['thread_pool_search_size'] = $data->threadPoolSearchSize;
         }
         if (array_key_exists('threadPoolSearchThrottledSize', get_object_vars($data)) && null !== ($data->threadPoolSearchThrottledSize ?? null)) {
-            $dataArray['thread_pool_search_throttled_size'] = $data->threadPoolSearchThrottledSize ?? null;
+            $dataArray['thread_pool_search_throttled_size'] = $data->threadPoolSearchThrottledSize;
         }
         if (array_key_exists('threadPoolGetSize', get_object_vars($data)) && null !== ($data->threadPoolGetSize ?? null)) {
-            $dataArray['thread_pool_get_size'] = $data->threadPoolGetSize ?? null;
+            $dataArray['thread_pool_get_size'] = $data->threadPoolGetSize;
         }
         if (array_key_exists('threadPoolAnalyzeSize', get_object_vars($data)) && null !== ($data->threadPoolAnalyzeSize ?? null)) {
-            $dataArray['thread_pool_analyze_size'] = $data->threadPoolAnalyzeSize ?? null;
+            $dataArray['thread_pool_analyze_size'] = $data->threadPoolAnalyzeSize;
         }
         if (array_key_exists('threadPoolWriteSize', get_object_vars($data)) && null !== ($data->threadPoolWriteSize ?? null)) {
-            $dataArray['thread_pool_write_size'] = $data->threadPoolWriteSize ?? null;
+            $dataArray['thread_pool_write_size'] = $data->threadPoolWriteSize;
         }
         if (array_key_exists('threadPoolForceMergeSize', get_object_vars($data)) && null !== ($data->threadPoolForceMergeSize ?? null)) {
-            $dataArray['thread_pool_force_merge_size'] = $data->threadPoolForceMergeSize ?? null;
+            $dataArray['thread_pool_force_merge_size'] = $data->threadPoolForceMergeSize;
         }
         if (array_key_exists('threadPoolSearchQueueSize', get_object_vars($data)) && null !== ($data->threadPoolSearchQueueSize ?? null)) {
-            $dataArray['thread_pool_search_queue_size'] = $data->threadPoolSearchQueueSize ?? null;
+            $dataArray['thread_pool_search_queue_size'] = $data->threadPoolSearchQueueSize;
         }
         if (array_key_exists('threadPoolSearchThrottledQueueSize', get_object_vars($data)) && null !== ($data->threadPoolSearchThrottledQueueSize ?? null)) {
-            $dataArray['thread_pool_search_throttled_queue_size'] = $data->threadPoolSearchThrottledQueueSize ?? null;
+            $dataArray['thread_pool_search_throttled_queue_size'] = $data->threadPoolSearchThrottledQueueSize;
         }
         if (array_key_exists('threadPoolGetQueueSize', get_object_vars($data)) && null !== ($data->threadPoolGetQueueSize ?? null)) {
-            $dataArray['thread_pool_get_queue_size'] = $data->threadPoolGetQueueSize ?? null;
+            $dataArray['thread_pool_get_queue_size'] = $data->threadPoolGetQueueSize;
         }
         if (array_key_exists('threadPoolAnalyzeQueueSize', get_object_vars($data)) && null !== ($data->threadPoolAnalyzeQueueSize ?? null)) {
-            $dataArray['thread_pool_analyze_queue_size'] = $data->threadPoolAnalyzeQueueSize ?? null;
+            $dataArray['thread_pool_analyze_queue_size'] = $data->threadPoolAnalyzeQueueSize;
         }
         if (array_key_exists('threadPoolWriteQueueSize', get_object_vars($data)) && null !== ($data->threadPoolWriteQueueSize ?? null)) {
-            $dataArray['thread_pool_write_queue_size'] = $data->threadPoolWriteQueueSize ?? null;
+            $dataArray['thread_pool_write_queue_size'] = $data->threadPoolWriteQueueSize;
         }
         if (array_key_exists('ismEnabled', get_object_vars($data)) && null !== ($data->ismEnabled ?? null)) {
-            $dataArray['ism_enabled'] = $data->ismEnabled ?? null;
+            $dataArray['ism_enabled'] = $data->ismEnabled;
         }
         if (array_key_exists('ismHistoryEnabled', get_object_vars($data)) && null !== ($data->ismHistoryEnabled ?? null)) {
-            $dataArray['ism_history_enabled'] = $data->ismHistoryEnabled ?? null;
+            $dataArray['ism_history_enabled'] = $data->ismHistoryEnabled;
         }
         if (array_key_exists('ismHistoryMaxAgeHours', get_object_vars($data)) && null !== ($data->ismHistoryMaxAgeHours ?? null)) {
-            $dataArray['ism_history_max_age_hours'] = $data->ismHistoryMaxAgeHours ?? null;
+            $dataArray['ism_history_max_age_hours'] = $data->ismHistoryMaxAgeHours;
         }
         if (array_key_exists('ismHistoryMaxDocs', get_object_vars($data)) && null !== ($data->ismHistoryMaxDocs ?? null)) {
-            $dataArray['ism_history_max_docs'] = $data->ismHistoryMaxDocs ?? null;
+            $dataArray['ism_history_max_docs'] = $data->ismHistoryMaxDocs;
         }
         if (array_key_exists('ismHistoryRolloverCheckPeriodHours', get_object_vars($data)) && null !== ($data->ismHistoryRolloverCheckPeriodHours ?? null)) {
-            $dataArray['ism_history_rollover_check_period_hours'] = $data->ismHistoryRolloverCheckPeriodHours ?? null;
+            $dataArray['ism_history_rollover_check_period_hours'] = $data->ismHistoryRolloverCheckPeriodHours;
         }
         if (array_key_exists('ismHistoryRolloverRetentionPeriodDays', get_object_vars($data)) && null !== ($data->ismHistoryRolloverRetentionPeriodDays ?? null)) {
-            $dataArray['ism_history_rollover_retention_period_days'] = $data->ismHistoryRolloverRetentionPeriodDays ?? null;
+            $dataArray['ism_history_rollover_retention_period_days'] = $data->ismHistoryRolloverRetentionPeriodDays;
         }
         if (array_key_exists('searchMaxBuckets', get_object_vars($data)) && null !== ($data->searchMaxBuckets ?? null)) {
-            $dataArray['search_max_buckets'] = $data->searchMaxBuckets ?? null;
+            $dataArray['search_max_buckets'] = $data->searchMaxBuckets;
         }
         if (array_key_exists('actionAutoCreateIndexEnabled', get_object_vars($data)) && null !== ($data->actionAutoCreateIndexEnabled ?? null)) {
-            $dataArray['action_auto_create_index_enabled'] = $data->actionAutoCreateIndexEnabled ?? null;
+            $dataArray['action_auto_create_index_enabled'] = $data->actionAutoCreateIndexEnabled;
         }
         if (array_key_exists('enableSecurityAudit', get_object_vars($data)) && null !== ($data->enableSecurityAudit ?? null)) {
-            $dataArray['enable_security_audit'] = $data->enableSecurityAudit ?? null;
+            $dataArray['enable_security_audit'] = $data->enableSecurityAudit;
         }
         if (array_key_exists('actionDestructiveRequiresName', get_object_vars($data)) && null !== ($data->actionDestructiveRequiresName ?? null)) {
-            $dataArray['action_destructive_requires_name'] = $data->actionDestructiveRequiresName ?? null;
+            $dataArray['action_destructive_requires_name'] = $data->actionDestructiveRequiresName;
         }
         if (array_key_exists('clusterMaxShardsPerNode', get_object_vars($data)) && null !== ($data->clusterMaxShardsPerNode ?? null)) {
-            $dataArray['cluster_max_shards_per_node'] = $data->clusterMaxShardsPerNode ?? null;
+            $dataArray['cluster_max_shards_per_node'] = $data->clusterMaxShardsPerNode;
         }
         if (array_key_exists('overrideMainResponseVersion', get_object_vars($data)) && null !== ($data->overrideMainResponseVersion ?? null)) {
-            $dataArray['override_main_response_version'] = $data->overrideMainResponseVersion ?? null;
+            $dataArray['override_main_response_version'] = $data->overrideMainResponseVersion;
         }
         if (array_key_exists('scriptMaxCompilationsRate', get_object_vars($data)) && null !== ($data->scriptMaxCompilationsRate ?? null)) {
-            $dataArray['script_max_compilations_rate'] = $data->scriptMaxCompilationsRate ?? null;
+            $dataArray['script_max_compilations_rate'] = $data->scriptMaxCompilationsRate;
         }
         if (array_key_exists('clusterRoutingAllocationNodeConcurrentRecoveries', get_object_vars($data)) && null !== ($data->clusterRoutingAllocationNodeConcurrentRecoveries ?? null)) {
-            $dataArray['cluster_routing_allocation_node_concurrent_recoveries'] = $data->clusterRoutingAllocationNodeConcurrentRecoveries ?? null;
+            $dataArray['cluster_routing_allocation_node_concurrent_recoveries'] = $data->clusterRoutingAllocationNodeConcurrentRecoveries;
         }
         if (array_key_exists('reindexRemoteWhitelist', get_object_vars($data)) && null !== ($data->reindexRemoteWhitelist ?? null)) {
             $values = [];
-            foreach ($data->reindexRemoteWhitelist ?? null as $value) {
+            foreach ($data->reindexRemoteWhitelist as $value) {
                 $values[] = $value;
             }
             $dataArray['reindex_remote_whitelist'] = $values;
         }
         if (array_key_exists('pluginsAlertingFilterByBackendRolesEnabled', get_object_vars($data)) && null !== ($data->pluginsAlertingFilterByBackendRolesEnabled ?? null)) {
-            $dataArray['plugins_alerting_filter_by_backend_roles_enabled'] = $data->pluginsAlertingFilterByBackendRolesEnabled ?? null;
+            $dataArray['plugins_alerting_filter_by_backend_roles_enabled'] = $data->pluginsAlertingFilterByBackendRolesEnabled;
         }
         if (array_key_exists('knnMemoryCircuitBreakerEnabled', get_object_vars($data)) && null !== ($data->knnMemoryCircuitBreakerEnabled ?? null)) {
-            $dataArray['knn_memory_circuit_breaker_enabled'] = $data->knnMemoryCircuitBreakerEnabled ?? null;
+            $dataArray['knn_memory_circuit_breaker_enabled'] = $data->knnMemoryCircuitBreakerEnabled;
         }
         if (array_key_exists('knnMemoryCircuitBreakerLimit', get_object_vars($data)) && null !== ($data->knnMemoryCircuitBreakerLimit ?? null)) {
-            $dataArray['knn_memory_circuit_breaker_limit'] = $data->knnMemoryCircuitBreakerLimit ?? null;
+            $dataArray['knn_memory_circuit_breaker_limit'] = $data->knnMemoryCircuitBreakerLimit;
         }
         if (array_key_exists('keepIndexRefreshInterval', get_object_vars($data)) && null !== ($data->keepIndexRefreshInterval ?? null)) {
-            $dataArray['keep_index_refresh_interval'] = $data->keepIndexRefreshInterval ?? null;
+            $dataArray['keep_index_refresh_interval'] = $data->keepIndexRefreshInterval;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

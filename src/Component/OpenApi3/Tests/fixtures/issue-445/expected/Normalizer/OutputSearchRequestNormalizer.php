@@ -91,34 +91,34 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['limit'] = $data->limit ?? null;
+        $dataArray['limit'] = $data->limit;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         if (array_key_exists('contentIds', get_object_vars($data)) && null !== ($data->contentIds ?? null)) {
             $values = [];
-            foreach ($data->contentIds ?? null as $value) {
+            foreach ($data->contentIds as $value) {
                 $values[] = $value;
             }
             $dataArray['contentIds'] = $values;
         }
         if (array_key_exists('renderingStates', get_object_vars($data)) && null !== ($data->renderingStates ?? null)) {
             $values_1 = [];
-            foreach ($data->renderingStates ?? null as $value_1) {
+            foreach ($data->renderingStates as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['renderingStates'] = $values_1;
         }
         if (array_key_exists('fileExtensions', get_object_vars($data)) && null !== ($data->fileExtensions ?? null)) {
             $values_2 = [];
-            foreach ($data->fileExtensions ?? null as $value_2) {
+            foreach ($data->fileExtensions as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['fileExtensions'] = $values_2;
         }
         if (array_key_exists('outputFormatIds', get_object_vars($data)) && null !== ($data->outputFormatIds ?? null)) {
             $values_3 = [];
-            foreach ($data->outputFormatIds ?? null as $value_3) {
+            foreach ($data->outputFormatIds as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['outputFormatIds'] = $values_3;

@@ -68,18 +68,18 @@ class NorthboundDataStreamingNorthboundDataStreamingSettingsNormalizer implement
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['northboundDataStreamingEnabled'] = $data->northboundDataStreamingEnabled ?? null;
-        $dataArray['streamingByDomainZoneEnabled'] = $data->streamingByDomainZoneEnabled ?? null;
+        $dataArray['northboundDataStreamingEnabled'] = $data->northboundDataStreamingEnabled;
+        $dataArray['streamingByDomainZoneEnabled'] = $data->streamingByDomainZoneEnabled;
         if (array_key_exists('streamingDomainIds', get_object_vars($data)) && null !== ($data->streamingDomainIds ?? null)) {
             $values = [];
-            foreach ($data->streamingDomainIds ?? null as $value) {
+            foreach ($data->streamingDomainIds as $value) {
                 $values[] = $value;
             }
             $dataArray['streamingDomainIds'] = $values;
         }
         if (array_key_exists('streamingZoneIds', get_object_vars($data)) && null !== ($data->streamingZoneIds ?? null)) {
             $values_1 = [];
-            foreach ($data->streamingZoneIds ?? null as $value_1) {
+            foreach ($data->streamingZoneIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['streamingZoneIds'] = $values_1;

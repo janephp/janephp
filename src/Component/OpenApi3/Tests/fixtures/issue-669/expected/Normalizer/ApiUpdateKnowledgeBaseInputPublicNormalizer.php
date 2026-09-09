@@ -76,26 +76,26 @@ class ApiUpdateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('databaseId', get_object_vars($data)) && null !== ($data->databaseId ?? null)) {
-            $dataArray['database_id'] = $data->databaseId ?? null;
+            $dataArray['database_id'] = $data->databaseId;
         }
         if (array_key_exists('embeddingModelUuid', get_object_vars($data)) && null !== ($data->embeddingModelUuid ?? null)) {
-            $dataArray['embedding_model_uuid'] = $data->embeddingModelUuid ?? null;
+            $dataArray['embedding_model_uuid'] = $data->embeddingModelUuid;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

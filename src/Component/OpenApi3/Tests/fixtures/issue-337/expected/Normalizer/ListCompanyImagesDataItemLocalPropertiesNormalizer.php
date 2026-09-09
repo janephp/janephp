@@ -52,7 +52,7 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('accountRefNumber', get_object_vars($data)) && null !== ($data->accountRefNumber ?? null)) {
-            $dataArray['accountRefNumber'] = $data->accountRefNumber ?? null;
+            $dataArray['accountRefNumber'] = $data->accountRefNumber;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

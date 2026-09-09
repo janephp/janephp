@@ -52,7 +52,7 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
-            $dataArray['baz'] = $data->baz ?? null;
+            $dataArray['baz'] = $data->baz;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -68,19 +68,19 @@ class InvoicePreviewNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('invoiceUuid', get_object_vars($data)) && null !== ($data->invoiceUuid ?? null)) {
-            $dataArray['invoice_uuid'] = $data->invoiceUuid ?? null;
+            $dataArray['invoice_uuid'] = $data->invoiceUuid;
         }
         if (array_key_exists('invoiceId', get_object_vars($data)) && null !== ($data->invoiceId ?? null)) {
-            $dataArray['invoice_id'] = $data->invoiceId ?? null;
+            $dataArray['invoice_id'] = $data->invoiceId;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('invoicePeriod', get_object_vars($data)) && null !== ($data->invoicePeriod ?? null)) {
-            $dataArray['invoice_period'] = $data->invoicePeriod ?? null;
+            $dataArray['invoice_period'] = $data->invoicePeriod;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = $data->updatedAt ?? null;
+            $dataArray['updated_at'] = $data->updatedAt;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

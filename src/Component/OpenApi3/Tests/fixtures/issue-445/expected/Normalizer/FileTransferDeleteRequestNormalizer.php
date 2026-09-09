@@ -52,9 +52,9 @@ class FileTransferDeleteRequestNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferId'] = $data->transferId ?? null;
+        $dataArray['transferId'] = $data->transferId;
         $values = [];
-        foreach ($data->fileTransferIds ?? null as $value) {
+        foreach ($data->fileTransferIds as $value) {
             $values[] = $value;
         }
         $dataArray['fileTransferIds'] = $values;

@@ -62,10 +62,10 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
     {
         $dataArray = [];
         if (array_key_exists('disqualified', get_object_vars($data)) && null !== ($data->disqualified ?? null)) {
-            $dataArray['disqualified'] = $data->disqualified ?? null;
+            $dataArray['disqualified'] = $data->disqualified;
         }
         if (array_key_exists('disqualifiedException', get_object_vars($data)) && null !== ($data->disqualifiedException ?? null)) {
-            $dataArray['disqualifiedException'] = $data->disqualifiedException ?? null;
+            $dataArray['disqualifiedException'] = $data->disqualifiedException;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

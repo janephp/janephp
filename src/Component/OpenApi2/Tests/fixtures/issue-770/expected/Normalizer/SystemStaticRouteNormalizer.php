@@ -51,9 +51,9 @@ class SystemStaticRouteNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['networkAddress'] = $data->networkAddress ?? null;
-        $dataArray['subnetMask'] = $data->subnetMask ?? null;
-        $dataArray['gateway'] = $data->gateway ?? null;
+        $dataArray['networkAddress'] = $data->networkAddress;
+        $dataArray['subnetMask'] = $data->subnetMask;
+        $dataArray['gateway'] = $data->gateway;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

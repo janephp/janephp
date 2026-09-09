@@ -70,29 +70,29 @@ class CertificateCreateCertNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['data'] = $data->data ?? null;
+        $dataArray['data'] = $data->data;
         if (array_key_exists('intermediateData', get_object_vars($data)) && null !== ($data->intermediateData ?? null)) {
             $values = [];
-            foreach ($data->intermediateData ?? null as $value) {
+            foreach ($data->intermediateData as $value) {
                 $values[] = $value;
             }
             $dataArray['intermediateData'] = $values;
         }
         if (array_key_exists('rootData', get_object_vars($data)) && null !== ($data->rootData ?? null)) {
-            $dataArray['rootData'] = $data->rootData ?? null;
+            $dataArray['rootData'] = $data->rootData;
         }
         if (array_key_exists('privateKeyData', get_object_vars($data)) && null !== ($data->privateKeyData ?? null)) {
-            $dataArray['privateKeyData'] = $data->privateKeyData ?? null;
+            $dataArray['privateKeyData'] = $data->privateKeyData;
         }
         if (array_key_exists('certificasSigningRequest', get_object_vars($data)) && null !== ($data->certificasSigningRequest ?? null)) {
-            $dataArray['certificasSigningRequest'] = ($data->certificasSigningRequest ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificasSigningRequest ?? null, 'json', $context));
+            $dataArray['certificasSigningRequest'] = $data->certificasSigningRequest === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificasSigningRequest, 'json', $context));
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
-            $dataArray['passphrase'] = $data->passphrase ?? null;
+            $dataArray['passphrase'] = $data->passphrase;
         }
         return $dataArray;
     }

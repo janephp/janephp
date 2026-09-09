@@ -66,19 +66,19 @@ class AppComponentInstanceBaseNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('instanceCount', get_object_vars($data)) && null !== ($data->instanceCount ?? null)) {
-            $dataArray['instance_count'] = $data->instanceCount ?? null;
+            $dataArray['instance_count'] = $data->instanceCount;
         }
         if (array_key_exists('instanceSizeSlug', get_object_vars($data)) && null !== ($data->instanceSizeSlug ?? null)) {
-            $value = $data->instanceSizeSlug ?? null;
-            if (is_string($data->instanceSizeSlug ?? null)) {
-                $value = $data->instanceSizeSlug ?? null;
-            } elseif (is_string($data->instanceSizeSlug ?? null)) {
-                $value = $data->instanceSizeSlug ?? null;
+            $value = $data->instanceSizeSlug;
+            if (is_string($data->instanceSizeSlug)) {
+                $value = $data->instanceSizeSlug;
+            } elseif (is_string($data->instanceSizeSlug)) {
+                $value = $data->instanceSizeSlug;
             }
             $dataArray['instance_size_slug'] = $value;
         }
         if (array_key_exists('autoscaling', get_object_vars($data)) && null !== ($data->autoscaling ?? null)) {
-            $dataArray['autoscaling'] = ($data->autoscaling ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling ?? null, 'json', $context));
+            $dataArray['autoscaling'] = $data->autoscaling === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

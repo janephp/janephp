@@ -69,15 +69,15 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['version'] = $data->version ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['version'] = $data->version;
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = $data->error ?? null;
+            $dataArray['error'] = $data->error;
         }
-        $dataArray['succeeded'] = $data->succeeded ?? null;
-        $dataArray['status'] = $data->status ?? null;
+        $dataArray['succeeded'] = $data->succeeded;
+        $dataArray['status'] = $data->status;
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
         return $dataArray;
     }

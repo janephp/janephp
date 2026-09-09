@@ -61,13 +61,13 @@ class ApiMoveAgentsToWorkspaceInputPublicNormalizer implements DenormalizerInter
         $dataArray = [];
         if (array_key_exists('agentUuids', get_object_vars($data)) && null !== ($data->agentUuids ?? null)) {
             $values = [];
-            foreach ($data->agentUuids ?? null as $value) {
+            foreach ($data->agentUuids as $value) {
                 $values[] = $value;
             }
             $dataArray['agent_uuids'] = $values;
         }
         if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
-            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
+            $dataArray['workspace_uuid'] = $data->workspaceUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

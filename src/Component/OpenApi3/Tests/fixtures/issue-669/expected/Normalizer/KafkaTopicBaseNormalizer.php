@@ -60,13 +60,13 @@ class KafkaTopicBaseNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('replicationFactor', get_object_vars($data)) && null !== ($data->replicationFactor ?? null)) {
-            $dataArray['replication_factor'] = $data->replicationFactor ?? null;
+            $dataArray['replication_factor'] = $data->replicationFactor;
         }
         if (array_key_exists('partitionCount', get_object_vars($data)) && null !== ($data->partitionCount ?? null)) {
-            $dataArray['partition_count'] = $data->partitionCount ?? null;
+            $dataArray['partition_count'] = $data->partitionCount;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

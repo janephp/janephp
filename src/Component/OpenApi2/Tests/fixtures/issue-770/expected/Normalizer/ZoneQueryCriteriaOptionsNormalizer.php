@@ -52,10 +52,10 @@ class ZoneQueryCriteriaOptionsNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('zoneIpmode', get_object_vars($data)) && null !== ($data->zoneIpmode ?? null)) {
-            $dataArray['zone_ipmode'] = $data->zoneIpmode ?? null;
+            $dataArray['zone_ipmode'] = $data->zoneIpmode;
         }
         if (array_key_exists('includeSharedResources', get_object_vars($data)) && null !== ($data->includeSharedResources ?? null)) {
-            $dataArray['includeSharedResources'] = $data->includeSharedResources ?? null;
+            $dataArray['includeSharedResources'] = $data->includeSharedResources;
         }
         return $dataArray;
     }

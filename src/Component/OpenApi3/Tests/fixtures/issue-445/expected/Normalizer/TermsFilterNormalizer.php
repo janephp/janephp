@@ -63,10 +63,10 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['field'] = $data->field ?? null;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['field'] = $data->field;
         $values = [];
-        foreach ($data->terms ?? null as $value) {
+        foreach ($data->terms as $value) {
             $values[] = $value;
         }
         $dataArray['terms'] = $values;

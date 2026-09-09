@@ -63,13 +63,13 @@ class FirewallPendingChangesItemNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('dropletId', get_object_vars($data)) && null !== ($data->dropletId ?? null)) {
-            $dataArray['droplet_id'] = $data->dropletId ?? null;
+            $dataArray['droplet_id'] = $data->dropletId;
         }
         if (array_key_exists('removing', get_object_vars($data)) && null !== ($data->removing ?? null)) {
-            $dataArray['removing'] = $data->removing ?? null;
+            $dataArray['removing'] = $data->removing;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

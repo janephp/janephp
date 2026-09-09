@@ -136,39 +136,39 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
-            $dataArray['customerId'] = $data->customerId ?? null;
+            $dataArray['customerId'] = $data->customerId;
         }
         if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
-            $dataArray['customerAlias'] = $data->customerAlias ?? null;
+            $dataArray['customerAlias'] = $data->customerAlias;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('referenceItemId', get_object_vars($data)) && null !== ($data->referenceItemId ?? null)) {
-            $dataArray['referenceItemId'] = $data->referenceItemId ?? null;
+            $dataArray['referenceItemId'] = $data->referenceItemId;
         }
         if (array_key_exists('referenceType', get_object_vars($data)) && null !== ($data->referenceType ?? null)) {
-            $dataArray['referenceType'] = $data->referenceType ?? null;
+            $dataArray['referenceType'] = $data->referenceType;
         }
         if (array_key_exists('exceptions', get_object_vars($data)) && null !== ($data->exceptions ?? null)) {
             $values = [];
-            foreach ($data->exceptions ?? null as $value) {
+            foreach ($data->exceptions as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['exceptions'] = $values;

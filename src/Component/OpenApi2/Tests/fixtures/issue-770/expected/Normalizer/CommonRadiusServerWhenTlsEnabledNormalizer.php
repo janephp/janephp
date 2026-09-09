@@ -55,13 +55,13 @@ class CommonRadiusServerWhenTlsEnabledNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
-        $dataArray['port'] = $data->port ?? null;
+        $dataArray['port'] = $data->port;
         if (array_key_exists('sharedSecret', get_object_vars($data)) && null !== ($data->sharedSecret ?? null)) {
-            $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+            $dataArray['sharedSecret'] = $data->sharedSecret;
         }
-        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
+        $dataArray['ipFqdn'] = $data->ipFqdn;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

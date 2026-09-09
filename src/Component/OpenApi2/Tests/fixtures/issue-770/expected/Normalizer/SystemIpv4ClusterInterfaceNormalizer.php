@@ -55,16 +55,16 @@ class SystemIpv4ClusterInterfaceNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
-            $dataArray['ipMode'] = $data->ipMode ?? null;
+            $dataArray['ipMode'] = $data->ipMode;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         return $dataArray;
     }

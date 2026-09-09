@@ -54,13 +54,13 @@ class AlertClearBulkAlarmsNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         if (array_key_exists('idList', get_object_vars($data)) && null !== ($data->idList ?? null)) {
             $values = [];
-            foreach ($data->idList ?? null as $value) {
+            foreach ($data->idList as $value) {
                 $values[] = $value;
             }
             $dataArray['idList'] = $values;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         return $dataArray;
     }

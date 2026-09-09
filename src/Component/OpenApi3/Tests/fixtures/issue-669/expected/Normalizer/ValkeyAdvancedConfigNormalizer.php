@@ -106,43 +106,43 @@ class ValkeyAdvancedConfigNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('valkeyMaxmemoryPolicy', get_object_vars($data)) && null !== ($data->valkeyMaxmemoryPolicy ?? null)) {
-            $dataArray['valkey_maxmemory_policy'] = $data->valkeyMaxmemoryPolicy ?? null;
+            $dataArray['valkey_maxmemory_policy'] = $data->valkeyMaxmemoryPolicy;
         }
         if (array_key_exists('valkeyPubsubClientOutputBufferLimit', get_object_vars($data)) && null !== ($data->valkeyPubsubClientOutputBufferLimit ?? null)) {
-            $dataArray['valkey_pubsub_client_output_buffer_limit'] = $data->valkeyPubsubClientOutputBufferLimit ?? null;
+            $dataArray['valkey_pubsub_client_output_buffer_limit'] = $data->valkeyPubsubClientOutputBufferLimit;
         }
         if (array_key_exists('valkeyNumberOfDatabases', get_object_vars($data)) && null !== ($data->valkeyNumberOfDatabases ?? null)) {
-            $dataArray['valkey_number_of_databases'] = $data->valkeyNumberOfDatabases ?? null;
+            $dataArray['valkey_number_of_databases'] = $data->valkeyNumberOfDatabases;
         }
         if (array_key_exists('valkeyIoThreads', get_object_vars($data)) && null !== ($data->valkeyIoThreads ?? null)) {
-            $dataArray['valkey_io_threads'] = $data->valkeyIoThreads ?? null;
+            $dataArray['valkey_io_threads'] = $data->valkeyIoThreads;
         }
         if (array_key_exists('valkeyLfuLogFactor', get_object_vars($data)) && null !== ($data->valkeyLfuLogFactor ?? null)) {
-            $dataArray['valkey_lfu_log_factor'] = $data->valkeyLfuLogFactor ?? null;
+            $dataArray['valkey_lfu_log_factor'] = $data->valkeyLfuLogFactor;
         }
         if (array_key_exists('valkeyLfuDecayTime', get_object_vars($data)) && null !== ($data->valkeyLfuDecayTime ?? null)) {
-            $dataArray['valkey_lfu_decay_time'] = $data->valkeyLfuDecayTime ?? null;
+            $dataArray['valkey_lfu_decay_time'] = $data->valkeyLfuDecayTime;
         }
         if (array_key_exists('valkeySsl', get_object_vars($data)) && null !== ($data->valkeySsl ?? null)) {
-            $dataArray['valkey_ssl'] = $data->valkeySsl ?? null;
+            $dataArray['valkey_ssl'] = $data->valkeySsl;
         }
         if (array_key_exists('valkeyTimeout', get_object_vars($data)) && null !== ($data->valkeyTimeout ?? null)) {
-            $dataArray['valkey_timeout'] = $data->valkeyTimeout ?? null;
+            $dataArray['valkey_timeout'] = $data->valkeyTimeout;
         }
         if (array_key_exists('valkeyNotifyKeyspaceEvents', get_object_vars($data)) && null !== ($data->valkeyNotifyKeyspaceEvents ?? null)) {
-            $dataArray['valkey_notify_keyspace_events'] = $data->valkeyNotifyKeyspaceEvents ?? null;
+            $dataArray['valkey_notify_keyspace_events'] = $data->valkeyNotifyKeyspaceEvents;
         }
         if (array_key_exists('valkeyPersistence', get_object_vars($data)) && null !== ($data->valkeyPersistence ?? null)) {
-            $dataArray['valkey_persistence'] = $data->valkeyPersistence ?? null;
+            $dataArray['valkey_persistence'] = $data->valkeyPersistence;
         }
         if (array_key_exists('valkeyAclChannelsDefault', get_object_vars($data)) && null !== ($data->valkeyAclChannelsDefault ?? null)) {
-            $dataArray['valkey_acl_channels_default'] = $data->valkeyAclChannelsDefault ?? null;
+            $dataArray['valkey_acl_channels_default'] = $data->valkeyAclChannelsDefault;
         }
         if (array_key_exists('frequentSnapshots', get_object_vars($data)) && null !== ($data->frequentSnapshots ?? null)) {
-            $dataArray['frequent_snapshots'] = $data->frequentSnapshots ?? null;
+            $dataArray['frequent_snapshots'] = $data->frequentSnapshots;
         }
         if (array_key_exists('valkeyActiveExpireEffort', get_object_vars($data)) && null !== ($data->valkeyActiveExpireEffort ?? null)) {
-            $dataArray['valkey_active_expire_effort'] = $data->valkeyActiveExpireEffort ?? null;
+            $dataArray['valkey_active_expire_effort'] = $data->valkeyActiveExpireEffort;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -66,25 +66,25 @@ class ToolSpeedFlexNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['tool'] = $data->tool ?? null;
-        $dataArray['protocol'] = $data->protocol ?? null;
+        $dataArray['tool'] = $data->tool;
+        $dataArray['protocol'] = $data->protocol;
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('clientIp', get_object_vars($data)) && null !== ($data->clientIp ?? null)) {
-            $dataArray['clientIp'] = $data->clientIp ?? null;
+            $dataArray['clientIp'] = $data->clientIp;
         }
         if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
-            $dataArray['clientMac'] = $data->clientMac ?? null;
+            $dataArray['clientMac'] = $data->clientMac;
         }
         if (array_key_exists('serverIp', get_object_vars($data)) && null !== ($data->serverIp ?? null)) {
-            $dataArray['serverIp'] = $data->serverIp ?? null;
+            $dataArray['serverIp'] = $data->serverIp;
         }
         if (array_key_exists('serverMac', get_object_vars($data)) && null !== ($data->serverMac ?? null)) {
-            $dataArray['serverMac'] = $data->serverMac ?? null;
+            $dataArray['serverMac'] = $data->serverMac;
         }
         if (array_key_exists('syspmtu', get_object_vars($data)) && null !== ($data->syspmtu ?? null)) {
-            $dataArray['syspmtu'] = $data->syspmtu ?? null;
+            $dataArray['syspmtu'] = $data->syspmtu;
         }
         return $dataArray;
     }

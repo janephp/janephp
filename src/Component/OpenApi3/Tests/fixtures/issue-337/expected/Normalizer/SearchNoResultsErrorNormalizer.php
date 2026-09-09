@@ -67,17 +67,17 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
-            $dataArray['totalSize'] = $data->totalSize ?? null;
+            $dataArray['totalSize'] = $data->totalSize;
         }
         if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = new \CreditSafe\API\Runtime\JsonObject();
-            foreach ($data->companies ?? null as $key => $value) {
+            foreach ($data->companies as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['companies'] = $values;
         }
         if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
-            $dataArray['messages'] = ($data->messages ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->messages ?? null, 'json', $context));
+            $dataArray['messages'] = $data->messages === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->messages, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

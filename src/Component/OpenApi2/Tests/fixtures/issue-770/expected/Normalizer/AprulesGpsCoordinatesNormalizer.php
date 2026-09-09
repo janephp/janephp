@@ -61,13 +61,13 @@ class AprulesGpsCoordinatesNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
-            $dataArray['latitude'] = $data->latitude ?? null;
+            $dataArray['latitude'] = $data->latitude;
         }
         if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
-            $dataArray['longitude'] = $data->longitude ?? null;
+            $dataArray['longitude'] = $data->longitude;
         }
         if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
-            $dataArray['distance'] = $data->distance ?? null;
+            $dataArray['distance'] = $data->distance;
         }
         return $dataArray;
     }

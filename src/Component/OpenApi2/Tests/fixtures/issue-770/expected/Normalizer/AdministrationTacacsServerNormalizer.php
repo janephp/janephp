@@ -54,10 +54,10 @@ class AdministrationTacacsServerNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['service'] = $data->service ?? null;
-        $dataArray['ip'] = $data->ip ?? null;
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+        $dataArray['service'] = $data->service;
+        $dataArray['ip'] = $data->ip;
+        $dataArray['port'] = $data->port;
+        $dataArray['sharedSecret'] = $data->sharedSecret;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

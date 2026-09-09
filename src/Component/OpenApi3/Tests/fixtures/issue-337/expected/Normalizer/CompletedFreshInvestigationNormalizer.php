@@ -96,29 +96,29 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('chargeReference', get_object_vars($data)) && null !== ($data->chargeReference ?? null)) {
-            $dataArray['chargeReference'] = $data->chargeReference ?? null;
+            $dataArray['chargeReference'] = $data->chargeReference;
         }
         if (array_key_exists('contactDetails', get_object_vars($data)) && null !== ($data->contactDetails ?? null)) {
-            $dataArray['contactDetails'] = ($data->contactDetails ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactDetails ?? null, 'json', $context));
+            $dataArray['contactDetails'] = $data->contactDetails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactDetails, 'json', $context));
         }
         if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
-            $dataArray['creationDate'] = $data->creationDate ?? null;
+            $dataArray['creationDate'] = $data->creationDate;
         }
         if (array_key_exists('lastStatusChangeDate', get_object_vars($data)) && null !== ($data->lastStatusChangeDate ?? null)) {
-            $dataArray['lastStatusChangeDate'] = $data->lastStatusChangeDate ?? null;
+            $dataArray['lastStatusChangeDate'] = $data->lastStatusChangeDate;
         }
         if (array_key_exists('orderID', get_object_vars($data)) && null !== ($data->orderID ?? null)) {
-            $dataArray['orderID'] = $data->orderID ?? null;
+            $dataArray['orderID'] = $data->orderID;
         }
         if (array_key_exists('reportDate', get_object_vars($data)) && null !== ($data->reportDate ?? null)) {
-            $dataArray['reportDate'] = $data->reportDate ?? null;
+            $dataArray['reportDate'] = $data->reportDate;
         }
         if (array_key_exists('searchCriteria', get_object_vars($data)) && null !== ($data->searchCriteria ?? null)) {
-            $dataArray['searchCriteria'] = ($data->searchCriteria ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria ?? null, 'json', $context));
+            $dataArray['searchCriteria'] = $data->searchCriteria === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria, 'json', $context));
         }
         if (array_key_exists('sections', get_object_vars($data)) && null !== ($data->sections ?? null)) {
             $values = [];
-            foreach ($data->sections ?? null as $value) {
+            foreach ($data->sections as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $value_1 = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
@@ -128,10 +128,10 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $dataArray['sections'] = $values;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = ($data->status ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->status ?? null, 'json', $context));
+            $dataArray['status'] = $data->status === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
         }
         if (array_key_exists('transactionID', get_object_vars($data)) && null !== ($data->transactionID ?? null)) {
-            $dataArray['transactionID'] = $data->transactionID ?? null;
+            $dataArray['transactionID'] = $data->transactionID;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -70,16 +70,16 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
-            $dataArray['currency'] = $data->currency ?? null;
+            $dataArray['currency'] = $data->currency;
         }
         if (array_key_exists('discount', get_object_vars($data)) && null !== ($data->discount ?? null)) {
-            $dataArray['discount'] = $data->discount ?? null;
+            $dataArray['discount'] = $data->discount;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

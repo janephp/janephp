@@ -52,7 +52,7 @@ class ApiGetEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('evaluationTestCase', get_object_vars($data)) && null !== ($data->evaluationTestCase ?? null)) {
-            $dataArray['evaluation_test_case'] = ($data->evaluationTestCase ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationTestCase ?? null, 'json', $context));
+            $dataArray['evaluation_test_case'] = $data->evaluationTestCase === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationTestCase, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

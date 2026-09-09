@@ -57,7 +57,7 @@ class AppInstancesNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         if (array_key_exists('instances', get_object_vars($data)) && null !== ($data->instances ?? null)) {
             $values = [];
-            foreach ($data->instances ?? null as $value) {
+            foreach ($data->instances as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['instances'] = $values;

@@ -65,23 +65,23 @@ class ZoneDiffServConfigurationNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('uplinkDiffServ', get_object_vars($data)) && null !== ($data->uplinkDiffServ ?? null)) {
-            $dataArray['uplinkDiffServ'] = ($data->uplinkDiffServ ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkDiffServ ?? null, 'json', $context));
+            $dataArray['uplinkDiffServ'] = $data->uplinkDiffServ === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkDiffServ, 'json', $context));
         }
         if (array_key_exists('downlinkDiffServ', get_object_vars($data)) && null !== ($data->downlinkDiffServ ?? null)) {
-            $dataArray['downlinkDiffServ'] = ($data->downlinkDiffServ ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkDiffServ ?? null, 'json', $context));
+            $dataArray['downlinkDiffServ'] = $data->downlinkDiffServ === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkDiffServ, 'json', $context));
         }
         if (array_key_exists('preservedList', get_object_vars($data)) && null !== ($data->preservedList ?? null)) {
             $values = [];
-            foreach ($data->preservedList ?? null as $value) {
+            foreach ($data->preservedList as $value) {
                 $values[] = $value;
             }
             $dataArray['preservedList'] = $values;

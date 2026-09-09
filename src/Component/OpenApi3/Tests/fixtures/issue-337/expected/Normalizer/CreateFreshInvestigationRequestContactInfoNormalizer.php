@@ -64,16 +64,16 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         if (array_key_exists('telephoneNumber', get_object_vars($data)) && null !== ($data->telephoneNumber ?? null)) {
-            $dataArray['telephoneNumber'] = $data->telephoneNumber ?? null;
+            $dataArray['telephoneNumber'] = $data->telephoneNumber;
         }
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
+            $dataArray['company'] = $data->company === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

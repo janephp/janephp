@@ -55,13 +55,13 @@ class SystemFtpGlobalSettingNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('ftpInterval', get_object_vars($data)) && null !== ($data->ftpInterval ?? null)) {
-            $dataArray['ftpInterval'] = $data->ftpInterval ?? null;
+            $dataArray['ftpInterval'] = $data->ftpInterval;
         }
         if (array_key_exists('ftpId', get_object_vars($data)) && null !== ($data->ftpId ?? null)) {
-            $dataArray['ftpId'] = $data->ftpId ?? null;
+            $dataArray['ftpId'] = $data->ftpId;
         }
         return $dataArray;
     }

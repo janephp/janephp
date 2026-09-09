@@ -60,13 +60,13 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPositionNormalizer imp
     {
         $dataArray = [];
         if (array_key_exists('resignationDate', get_object_vars($data)) && null !== ($data->resignationDate ?? null)) {
-            $dataArray['resignationDate'] = $data->resignationDate ?? null;
+            $dataArray['resignationDate'] = $data->resignationDate;
         }
         if (array_key_exists('dateAppointed', get_object_vars($data)) && null !== ($data->dateAppointed ?? null)) {
-            $dataArray['dateAppointed'] = $data->dateAppointed ?? null;
+            $dataArray['dateAppointed'] = $data->dateAppointed;
         }
         if (array_key_exists('positionName', get_object_vars($data)) && null !== ($data->positionName ?? null)) {
-            $dataArray['positionName'] = $data->positionName ?? null;
+            $dataArray['positionName'] = $data->positionName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

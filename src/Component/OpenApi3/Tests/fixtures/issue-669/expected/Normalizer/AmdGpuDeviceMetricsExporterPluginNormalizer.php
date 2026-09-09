@@ -55,7 +55,7 @@ class AmdGpuDeviceMetricsExporterPluginNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

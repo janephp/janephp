@@ -65,16 +65,16 @@ class ApiCreateScheduledIndexingInputPublicNormalizer implements DenormalizerInt
         $dataArray = [];
         if (array_key_exists('days', get_object_vars($data)) && null !== ($data->days ?? null)) {
             $values = [];
-            foreach ($data->days ?? null as $value) {
+            foreach ($data->days as $value) {
                 $values[] = $value;
             }
             $dataArray['days'] = $values;
         }
         if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
-            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid;
         }
         if (array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
-            $dataArray['time'] = $data->time ?? null;
+            $dataArray['time'] = $data->time;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

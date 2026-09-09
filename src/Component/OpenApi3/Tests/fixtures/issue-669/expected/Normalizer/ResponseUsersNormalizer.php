@@ -57,7 +57,7 @@ class ResponseUsersNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $values = [];
-            foreach ($data->users ?? null as $value) {
+            foreach ($data->users as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['users'] = $values;

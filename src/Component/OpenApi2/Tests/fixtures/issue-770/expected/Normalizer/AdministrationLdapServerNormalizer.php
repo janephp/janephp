@@ -75,20 +75,20 @@ class AdministrationLdapServerNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->realm ?? null;
+        $dataArray['realm'] = $data->realm;
         if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
-            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
+            $dataArray['tlsEnabled'] = $data->tlsEnabled;
         }
         if (array_key_exists('cnIdentity', get_object_vars($data)) && null !== ($data->cnIdentity ?? null)) {
-            $dataArray['cnIdentity'] = $data->cnIdentity ?? null;
+            $dataArray['cnIdentity'] = $data->cnIdentity;
         }
-        $dataArray['ip'] = $data->ip ?? null;
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['baseDomainName'] = $data->baseDomainName ?? null;
-        $dataArray['adminDomainName'] = $data->adminDomainName ?? null;
-        $dataArray['adminPassword'] = $data->adminPassword ?? null;
-        $dataArray['keyAttribute'] = $data->keyAttribute ?? null;
-        $dataArray['searchFilter'] = $data->searchFilter ?? null;
+        $dataArray['ip'] = $data->ip;
+        $dataArray['port'] = $data->port;
+        $dataArray['baseDomainName'] = $data->baseDomainName;
+        $dataArray['adminDomainName'] = $data->adminDomainName;
+        $dataArray['adminPassword'] = $data->adminPassword;
+        $dataArray['keyAttribute'] = $data->keyAttribute;
+        $dataArray['searchFilter'] = $data->searchFilter;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

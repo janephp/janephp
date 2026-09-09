@@ -56,10 +56,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
     {
         $dataArray = [];
         if (array_key_exists('commentaryText', get_object_vars($data)) && null !== ($data->commentaryText ?? null)) {
-            $dataArray['commentaryText'] = $data->commentaryText ?? null;
+            $dataArray['commentaryText'] = $data->commentaryText;
         }
         if (array_key_exists('positiveNegative', get_object_vars($data)) && null !== ($data->positiveNegative ?? null)) {
-            $dataArray['positiveNegative'] = $data->positiveNegative ?? null;
+            $dataArray['positiveNegative'] = $data->positiveNegative;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

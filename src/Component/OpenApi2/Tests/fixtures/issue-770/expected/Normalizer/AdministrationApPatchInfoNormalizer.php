@@ -59,17 +59,17 @@ class AdministrationApPatchInfoNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         if (array_key_exists('apVersion', get_object_vars($data)) && null !== ($data->apVersion ?? null)) {
-            $dataArray['apVersion'] = $data->apVersion ?? null;
+            $dataArray['apVersion'] = $data->apVersion;
         }
         if (array_key_exists('apModels', get_object_vars($data)) && null !== ($data->apModels ?? null)) {
             $values = [];
-            foreach ($data->apModels ?? null as $value) {
+            foreach ($data->apModels as $value) {
                 $values[] = $value;
             }
             $dataArray['apModels'] = $values;

@@ -119,77 +119,77 @@ class IdentityUserConfigurationCredentialsGuestPassDtoNormalizer implements Deno
     {
         $dataArray = [];
         if (array_key_exists('authenticationMethod', get_object_vars($data)) && null !== ($data->authenticationMethod ?? null)) {
-            $dataArray['authenticationMethod'] = $data->authenticationMethod ?? null;
+            $dataArray['authenticationMethod'] = $data->authenticationMethod;
         }
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('serviceProviderId', get_object_vars($data)) && null !== ($data->serviceProviderId ?? null)) {
-            $dataArray['serviceProviderId'] = $data->serviceProviderId ?? null;
+            $dataArray['serviceProviderId'] = $data->serviceProviderId;
         }
         if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
-            $dataArray['creationDate'] = $data->creationDate ?? null;
+            $dataArray['creationDate'] = $data->creationDate;
         }
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
-            $dataArray['expirationDate'] = $data->expirationDate ?? null;
+            $dataArray['expirationDate'] = $data->expirationDate;
         }
         if (array_key_exists('userKey', get_object_vars($data)) && null !== ($data->userKey ?? null)) {
-            $dataArray['userKey'] = $data->userKey ?? null;
+            $dataArray['userKey'] = $data->userKey;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
-            $dataArray['displayName'] = $data->displayName ?? null;
+            $dataArray['displayName'] = $data->displayName;
         }
         if (array_key_exists('loginPassword', get_object_vars($data)) && null !== ($data->loginPassword ?? null)) {
-            $dataArray['loginPassword'] = $data->loginPassword ?? null;
+            $dataArray['loginPassword'] = $data->loginPassword;
         }
         if (array_key_exists('guestExpiration', get_object_vars($data)) && null !== ($data->guestExpiration ?? null)) {
-            $dataArray['guestExpiration'] = $data->guestExpiration ?? null;
+            $dataArray['guestExpiration'] = $data->guestExpiration;
         }
         if (array_key_exists('wlan', get_object_vars($data)) && null !== ($data->wlan ?? null)) {
-            $dataArray['wlan'] = $data->wlan ?? null;
+            $dataArray['wlan'] = $data->wlan;
         }
         if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
-            $dataArray['wlanName'] = $data->wlanName ?? null;
+            $dataArray['wlanName'] = $data->wlanName;
         }
         if (array_key_exists('maxDevices', get_object_vars($data)) && null !== ($data->maxDevices ?? null)) {
-            $dataArray['maxDevices'] = $data->maxDevices ?? null;
+            $dataArray['maxDevices'] = $data->maxDevices;
         }
         if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
-            $dataArray['expirationValue'] = $data->expirationValue ?? null;
+            $dataArray['expirationValue'] = $data->expirationValue;
         }
         if (array_key_exists('expirationUnit', get_object_vars($data)) && null !== ($data->expirationUnit ?? null)) {
-            $dataArray['expirationUnit'] = $data->expirationUnit ?? null;
+            $dataArray['expirationUnit'] = $data->expirationUnit;
         }
         if (array_key_exists('sessionUnit', get_object_vars($data)) && null !== ($data->sessionUnit ?? null)) {
-            $dataArray['sessionUnit'] = $data->sessionUnit ?? null;
+            $dataArray['sessionUnit'] = $data->sessionUnit;
         }
         if (array_key_exists('sessionValue', get_object_vars($data)) && null !== ($data->sessionValue ?? null)) {
-            $dataArray['sessionValue'] = $data->sessionValue ?? null;
+            $dataArray['sessionValue'] = $data->sessionValue;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('expireAfterIfNotUsed', get_object_vars($data)) && null !== ($data->expireAfterIfNotUsed ?? null)) {
-            $dataArray['expireAfterIfNotUsed'] = $data->expireAfterIfNotUsed ?? null;
+            $dataArray['expireAfterIfNotUsed'] = $data->expireAfterIfNotUsed;
         }
         if (array_key_exists('macAddressList', get_object_vars($data)) && null !== ($data->macAddressList ?? null)) {
             $values = [];
-            foreach ($data->macAddressList ?? null as $value) {
+            foreach ($data->macAddressList as $value) {
                 $values[] = $value;
             }
             $dataArray['macAddressList'] = $values;
         }
         if (array_key_exists('autoGeneratePassword', get_object_vars($data)) && null !== ($data->autoGeneratePassword ?? null)) {
-            $dataArray['autoGeneratePassword'] = $data->autoGeneratePassword ?? null;
+            $dataArray['autoGeneratePassword'] = $data->autoGeneratePassword;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         return $dataArray;
     }

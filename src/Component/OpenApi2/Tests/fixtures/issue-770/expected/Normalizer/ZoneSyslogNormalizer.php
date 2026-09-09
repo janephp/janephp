@@ -76,37 +76,37 @@ class ZoneSyslogNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('syslogConfigType', get_object_vars($data)) && null !== ($data->syslogConfigType ?? null)) {
-            $dataArray['syslogConfigType'] = $data->syslogConfigType ?? null;
+            $dataArray['syslogConfigType'] = $data->syslogConfigType;
         }
         if (array_key_exists('syslogServerProfileId', get_object_vars($data)) && null !== ($data->syslogServerProfileId ?? null)) {
-            $dataArray['syslogServerProfileId'] = $data->syslogServerProfileId ?? null;
+            $dataArray['syslogServerProfileId'] = $data->syslogServerProfileId;
         }
         if (array_key_exists('flowLevel', get_object_vars($data)) && null !== ($data->flowLevel ?? null)) {
-            $dataArray['flowLevel'] = $data->flowLevel ?? null;
+            $dataArray['flowLevel'] = $data->flowLevel;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address ?? null;
+            $dataArray['address'] = $data->address;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('secondaryAddress', get_object_vars($data)) && null !== ($data->secondaryAddress ?? null)) {
-            $dataArray['secondaryAddress'] = $data->secondaryAddress ?? null;
+            $dataArray['secondaryAddress'] = $data->secondaryAddress;
         }
         if (array_key_exists('secondaryPort', get_object_vars($data)) && null !== ($data->secondaryPort ?? null)) {
-            $dataArray['secondaryPort'] = $data->secondaryPort ?? null;
+            $dataArray['secondaryPort'] = $data->secondaryPort;
         }
         if (array_key_exists('secondaryProtocol', get_object_vars($data)) && null !== ($data->secondaryProtocol ?? null)) {
-            $dataArray['secondaryProtocol'] = $data->secondaryProtocol ?? null;
+            $dataArray['secondaryProtocol'] = $data->secondaryProtocol;
         }
         if (array_key_exists('facility', get_object_vars($data)) && null !== ($data->facility ?? null)) {
-            $dataArray['facility'] = $data->facility ?? null;
+            $dataArray['facility'] = $data->facility;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         return $dataArray;
     }

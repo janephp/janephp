@@ -68,19 +68,19 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
-            $dataArray['companyName'] = $data->companyName ?? null;
+            $dataArray['companyName'] = $data->companyName;
         }
         if (array_key_exists('companyNumber', get_object_vars($data)) && null !== ($data->companyNumber ?? null)) {
-            $dataArray['companyNumber'] = $data->companyNumber ?? null;
+            $dataArray['companyNumber'] = $data->companyNumber;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('regNo', get_object_vars($data)) && null !== ($data->regNo ?? null)) {
-            $dataArray['regNo'] = $data->regNo ?? null;
+            $dataArray['regNo'] = $data->regNo;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

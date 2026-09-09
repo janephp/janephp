@@ -60,13 +60,13 @@ class ApiFileUploadDataSourceNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
-            $dataArray['original_file_name'] = $data->originalFileName ?? null;
+            $dataArray['original_file_name'] = $data->originalFileName;
         }
         if (array_key_exists('sizeInBytes', get_object_vars($data)) && null !== ($data->sizeInBytes ?? null)) {
-            $dataArray['size_in_bytes'] = $data->sizeInBytes ?? null;
+            $dataArray['size_in_bytes'] = $data->sizeInBytes;
         }
         if (array_key_exists('storedObjectKey', get_object_vars($data)) && null !== ($data->storedObjectKey ?? null)) {
-            $dataArray['stored_object_key'] = $data->storedObjectKey ?? null;
+            $dataArray['stored_object_key'] = $data->storedObjectKey;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

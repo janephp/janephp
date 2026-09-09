@@ -107,47 +107,47 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
     {
         $dataArray = [];
         if (array_key_exists('acceptListID', get_object_vars($data)) && null !== ($data->acceptListID ?? null)) {
-            $dataArray['acceptListID'] = $data->acceptListID ?? null;
+            $dataArray['acceptListID'] = $data->acceptListID;
         }
         if (array_key_exists('addedToAcceptList', get_object_vars($data)) && null !== ($data->addedToAcceptList ?? null)) {
-            $dataArray['addedToAcceptList'] = $data->addedToAcceptList ?? null;
+            $dataArray['addedToAcceptList'] = $data->addedToAcceptList;
         }
         if (array_key_exists('division', get_object_vars($data)) && null !== ($data->division ?? null)) {
-            $dataArray['division'] = $data->division ?? null;
+            $dataArray['division'] = $data->division;
         }
         if (array_key_exists('dppa', get_object_vars($data)) && null !== ($data->dppa ?? null)) {
-            $dataArray['dppa'] = $data->dppa ?? null;
+            $dataArray['dppa'] = $data->dppa;
         }
         if (array_key_exists('eftType', get_object_vars($data)) && null !== ($data->eftType ?? null)) {
-            $dataArray['eftType'] = $data->eftType ?? null;
+            $dataArray['eftType'] = $data->eftType;
         }
         if (array_key_exists('entityType', get_object_vars($data)) && null !== ($data->entityType ?? null)) {
-            $dataArray['entityType'] = $data->entityType ?? null;
+            $dataArray['entityType'] = $data->entityType;
         }
         if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
-            $dataArray['gender'] = $data->gender ?? null;
+            $dataArray['gender'] = $data->gender;
         }
         if (array_key_exists('glb', get_object_vars($data)) && null !== ($data->glb ?? null)) {
-            $dataArray['glb'] = $data->glb ?? null;
+            $dataArray['glb'] = $data->glb;
         }
         if (array_key_exists('iDs', get_object_vars($data)) && null !== ($data->iDs ?? null)) {
             $values = [];
-            foreach ($data->iDs ?? null as $value) {
+            foreach ($data->iDs as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['iDs'] = $values;
         }
         if (array_key_exists('lastUpdatedDate', get_object_vars($data)) && null !== ($data->lastUpdatedDate ?? null)) {
-            $dataArray['lastUpdatedDate'] = $data->lastUpdatedDate ?? null;
+            $dataArray['lastUpdatedDate'] = $data->lastUpdatedDate;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = ($data->name ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name ?? null, 'json', $context));
+            $dataArray['name'] = $data->name === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
         }
         if (array_key_exists('recordState', get_object_vars($data)) && null !== ($data->recordState ?? null)) {
-            $dataArray['recordState'] = ($data->recordState ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState ?? null, 'json', $context));
+            $dataArray['recordState'] = $data->recordState === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState, 'json', $context));
         }
         if (array_key_exists('searchDate', get_object_vars($data)) && null !== ($data->searchDate ?? null)) {
-            $dataArray['searchDate'] = $data->searchDate ?? null;
+            $dataArray['searchDate'] = $data->searchDate;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

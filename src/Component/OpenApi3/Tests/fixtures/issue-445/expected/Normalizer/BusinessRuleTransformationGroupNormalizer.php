@@ -76,23 +76,23 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
         $dataArray = [];
         if (array_key_exists('inputs', get_object_vars($data)) && null !== ($data->inputs ?? null)) {
             $values = [];
-            foreach ($data->inputs ?? null as $value) {
+            foreach ($data->inputs as $value) {
                 $values[] = $value;
             }
             $dataArray['inputs'] = $values;
         }
         if (array_key_exists('transformations', get_object_vars($data)) && null !== ($data->transformations ?? null)) {
             $values_1 = [];
-            foreach ($data->transformations ?? null as $value_1) {
+            foreach ($data->transformations as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['transformations'] = $values_1;
         }
         if (array_key_exists('storeIn', get_object_vars($data)) && null !== ($data->storeIn ?? null)) {
-            $dataArray['storeIn'] = $data->storeIn ?? null;
+            $dataArray['storeIn'] = $data->storeIn;
         }
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
         return $dataArray;
     }

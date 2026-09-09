@@ -79,20 +79,20 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->url ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['url'] = $data->url;
+        $dataArray['kind'] = $data->kind;
         $values = [];
-        foreach ($data->mailRecipients ?? null as $value) {
+        foreach ($data->mailRecipients as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['mailRecipients'] = $values;
         $values_1 = [];
-        foreach ($data->internalRecipients ?? null as $value_1) {
+        foreach ($data->internalRecipients as $value_1) {
             $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['internalRecipients'] = $values_1;
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

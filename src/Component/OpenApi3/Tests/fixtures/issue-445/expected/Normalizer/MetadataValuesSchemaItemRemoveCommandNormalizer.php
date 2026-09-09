@@ -67,11 +67,11 @@ class MetadataValuesSchemaItemRemoveCommandNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->schemaId ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['fieldPath'] = $data->fieldPath ?? null;
-        $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
-        $dataArray['referenceId'] = $data->referenceId ?? null;
+        $dataArray['schemaId'] = $data->schemaId;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['fieldPath'] = $data->fieldPath;
+        $dataArray['fieldNamespace'] = $data->fieldNamespace;
+        $dataArray['referenceId'] = $data->referenceId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

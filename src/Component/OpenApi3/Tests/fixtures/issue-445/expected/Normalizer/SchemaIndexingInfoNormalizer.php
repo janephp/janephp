@@ -54,7 +54,7 @@ class SchemaIndexingInfoNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
             $values = [];
-            foreach ($data->fields ?? null as $value) {
+            foreach ($data->fields as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['fields'] = $values;

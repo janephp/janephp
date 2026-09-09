@@ -59,12 +59,12 @@ class AppIngressSpecRuleRoutingComponentNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('preservePathPrefix', get_object_vars($data)) && null !== ($data->preservePathPrefix ?? null)) {
-            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix ?? null;
+            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix;
         }
         if (array_key_exists('rewrite', get_object_vars($data)) && null !== ($data->rewrite ?? null)) {
-            $dataArray['rewrite'] = $data->rewrite ?? null;
+            $dataArray['rewrite'] = $data->rewrite;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

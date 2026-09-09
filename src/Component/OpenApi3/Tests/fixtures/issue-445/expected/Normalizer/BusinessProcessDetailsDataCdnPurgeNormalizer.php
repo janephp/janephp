@@ -63,10 +63,10 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['serializedCdnConfiguration'] = $data->serializedCdnConfiguration ?? null;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['serializedCdnConfiguration'] = $data->serializedCdnConfiguration;
         $values = [];
-        foreach ($data->jobs ?? null as $value) {
+        foreach ($data->jobs as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['jobs'] = $values;

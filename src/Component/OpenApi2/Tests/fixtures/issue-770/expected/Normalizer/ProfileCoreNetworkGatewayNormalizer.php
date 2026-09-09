@@ -61,22 +61,22 @@ class ProfileCoreNetworkGatewayNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('primaryGateway', get_object_vars($data)) && null !== ($data->primaryGateway ?? null)) {
-            $dataArray['primaryGateway'] = $data->primaryGateway ?? null;
+            $dataArray['primaryGateway'] = $data->primaryGateway;
         }
         if (array_key_exists('secondaryGateway', get_object_vars($data)) && null !== ($data->secondaryGateway ?? null)) {
-            $dataArray['secondaryGateway'] = $data->secondaryGateway ?? null;
+            $dataArray['secondaryGateway'] = $data->secondaryGateway;
         }
         if (array_key_exists('tunnelMTU', get_object_vars($data)) && null !== ($data->tunnelMTU ?? null)) {
-            $dataArray['tunnelMTU'] = $data->tunnelMTU ?? null;
+            $dataArray['tunnelMTU'] = $data->tunnelMTU;
         }
         if (array_key_exists('tunnelMTUSize', get_object_vars($data)) && null !== ($data->tunnelMTUSize ?? null)) {
-            $dataArray['tunnelMTUSize'] = $data->tunnelMTUSize ?? null;
+            $dataArray['tunnelMTUSize'] = $data->tunnelMTUSize;
         }
         if (array_key_exists('keepAlivePeriod', get_object_vars($data)) && null !== ($data->keepAlivePeriod ?? null)) {
-            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
+            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod;
         }
         if (array_key_exists('keepAliveRetry', get_object_vars($data)) && null !== ($data->keepAliveRetry ?? null)) {
-            $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
+            $dataArray['keepAliveRetry'] = $data->keepAliveRetry;
         }
         return $dataArray;
     }

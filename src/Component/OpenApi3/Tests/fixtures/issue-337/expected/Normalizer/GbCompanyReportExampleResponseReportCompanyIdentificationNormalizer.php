@@ -68,18 +68,18 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     {
         $dataArray = [];
         if (array_key_exists('basicInformation', get_object_vars($data)) && null !== ($data->basicInformation ?? null)) {
-            $dataArray['basicInformation'] = ($data->basicInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation ?? null, 'json', $context));
+            $dataArray['basicInformation'] = $data->basicInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation, 'json', $context));
         }
         if (array_key_exists('activityClassifications', get_object_vars($data)) && null !== ($data->activityClassifications ?? null)) {
             $values = [];
-            foreach ($data->activityClassifications ?? null as $value) {
+            foreach ($data->activityClassifications as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activityClassifications'] = $values;
         }
         if (array_key_exists('previousNames', get_object_vars($data)) && null !== ($data->previousNames ?? null)) {
             $values_1 = [];
-            foreach ($data->previousNames ?? null as $value_1) {
+            foreach ($data->previousNames as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['previousNames'] = $values_1;

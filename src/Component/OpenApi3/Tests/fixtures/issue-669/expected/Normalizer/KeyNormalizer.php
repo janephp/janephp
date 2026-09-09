@@ -72,11 +72,11 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('grants', get_object_vars($data)) && null !== ($data->grants ?? null)) {
             $values = [];
-            foreach ($data->grants ?? null as $value) {
+            foreach ($data->grants as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['grants'] = $values;

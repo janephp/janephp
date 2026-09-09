@@ -80,25 +80,25 @@ class OpensearchIndexNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
-            $dataArray['index_name'] = $data->indexName ?? null;
+            $dataArray['index_name'] = $data->indexName;
         }
         if (array_key_exists('numberOfShards', get_object_vars($data)) && null !== ($data->numberOfShards ?? null)) {
-            $dataArray['number_of_shards'] = $data->numberOfShards ?? null;
+            $dataArray['number_of_shards'] = $data->numberOfShards;
         }
         if (array_key_exists('numberOfReplicas', get_object_vars($data)) && null !== ($data->numberOfReplicas ?? null)) {
-            $dataArray['number_of_replicas'] = $data->numberOfReplicas ?? null;
+            $dataArray['number_of_replicas'] = $data->numberOfReplicas;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('createdTime', get_object_vars($data)) && null !== ($data->createdTime ?? null)) {
-            $dataArray['created_time'] = ($data->createdTime ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_time'] = $data->createdTime->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('health', get_object_vars($data)) && null !== ($data->health ?? null)) {
-            $dataArray['health'] = $data->health ?? null;
+            $dataArray['health'] = $data->health;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

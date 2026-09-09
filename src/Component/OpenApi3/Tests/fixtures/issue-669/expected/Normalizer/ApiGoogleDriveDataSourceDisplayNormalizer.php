@@ -56,10 +56,10 @@ class ApiGoogleDriveDataSourceDisplayNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('folderId', get_object_vars($data)) && null !== ($data->folderId ?? null)) {
-            $dataArray['folder_id'] = $data->folderId ?? null;
+            $dataArray['folder_id'] = $data->folderId;
         }
         if (array_key_exists('folderName', get_object_vars($data)) && null !== ($data->folderName ?? null)) {
-            $dataArray['folder_name'] = $data->folderName ?? null;
+            $dataArray['folder_name'] = $data->folderName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

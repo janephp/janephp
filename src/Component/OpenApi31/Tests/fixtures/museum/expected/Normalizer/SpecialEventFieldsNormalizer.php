@@ -82,23 +82,23 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = $data->location ?? null;
+            $dataArray['location'] = $data->location;
         }
         if (array_key_exists('eventDescription', get_object_vars($data)) && null !== ($data->eventDescription ?? null)) {
-            $dataArray['eventDescription'] = $data->eventDescription ?? null;
+            $dataArray['eventDescription'] = $data->eventDescription;
         }
         if (array_key_exists('dates', get_object_vars($data)) && null !== ($data->dates ?? null)) {
             $values = [];
-            foreach ($data->dates ?? null as $value) {
+            foreach ($data->dates as $value) {
                 $values[] = $value->format('Y-m-d');
             }
             $dataArray['dates'] = $values;
         }
         if (array_key_exists('price', get_object_vars($data)) && null !== ($data->price ?? null)) {
-            $dataArray['price'] = $data->price ?? null;
+            $dataArray['price'] = $data->price;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

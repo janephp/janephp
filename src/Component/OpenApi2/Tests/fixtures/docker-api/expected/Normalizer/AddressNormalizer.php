@@ -52,10 +52,10 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
-            $dataArray['Addr'] = $data->addr ?? null;
+            $dataArray['Addr'] = $data->addr;
         }
         if (array_key_exists('prefixLen', get_object_vars($data)) && null !== ($data->prefixLen ?? null)) {
-            $dataArray['PrefixLen'] = $data->prefixLen ?? null;
+            $dataArray['PrefixLen'] = $data->prefixLen;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\AddressConstraint());

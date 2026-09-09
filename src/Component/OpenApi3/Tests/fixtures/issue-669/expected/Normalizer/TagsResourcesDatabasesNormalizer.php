@@ -56,10 +56,10 @@ class TagsResourcesDatabasesNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
-            $dataArray['count'] = $data->count ?? null;
+            $dataArray['count'] = $data->count;
         }
         if (array_key_exists('lastTaggedUri', get_object_vars($data)) && null !== ($data->lastTaggedUri ?? null)) {
-            $dataArray['last_tagged_uri'] = $data->lastTaggedUri ?? null;
+            $dataArray['last_tagged_uri'] = $data->lastTaggedUri;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

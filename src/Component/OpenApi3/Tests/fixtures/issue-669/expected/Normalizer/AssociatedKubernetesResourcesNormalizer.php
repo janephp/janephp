@@ -73,21 +73,21 @@ class AssociatedKubernetesResourcesNormalizer implements DenormalizerInterface, 
         $dataArray = [];
         if (array_key_exists('loadBalancers', get_object_vars($data)) && null !== ($data->loadBalancers ?? null)) {
             $values = [];
-            foreach ($data->loadBalancers ?? null as $value) {
+            foreach ($data->loadBalancers as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['load_balancers'] = $values;
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_1 = [];
-            foreach ($data->volumes ?? null as $value_1) {
+            foreach ($data->volumes as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['volumes'] = $values_1;
         }
         if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
             $values_2 = [];
-            foreach ($data->volumeSnapshots ?? null as $value_2) {
+            foreach ($data->volumeSnapshots as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['volume_snapshots'] = $values_2;

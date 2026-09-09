@@ -67,14 +67,14 @@ class ClusterAutoscalerConfigurationNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('scaleDownUtilizationThreshold', get_object_vars($data)) && null !== ($data->scaleDownUtilizationThreshold ?? null)) {
-            $dataArray['scale_down_utilization_threshold'] = $data->scaleDownUtilizationThreshold ?? null;
+            $dataArray['scale_down_utilization_threshold'] = $data->scaleDownUtilizationThreshold;
         }
         if (array_key_exists('scaleDownUnneededTime', get_object_vars($data)) && null !== ($data->scaleDownUnneededTime ?? null)) {
-            $dataArray['scale_down_unneeded_time'] = $data->scaleDownUnneededTime ?? null;
+            $dataArray['scale_down_unneeded_time'] = $data->scaleDownUnneededTime;
         }
         if (array_key_exists('expanders', get_object_vars($data)) && null !== ($data->expanders ?? null)) {
             $values = [];
-            foreach ($data->expanders ?? null as $value) {
+            foreach ($data->expanders as $value) {
                 $values[] = $value;
             }
             $dataArray['expanders'] = $values;

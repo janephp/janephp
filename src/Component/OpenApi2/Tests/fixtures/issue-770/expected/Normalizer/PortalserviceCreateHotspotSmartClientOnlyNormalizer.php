@@ -85,39 +85,39 @@ class PortalserviceCreateHotspotSmartClientOnlyNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['smartClientInfo'] = $data->smartClientInfo ?? null;
+        $dataArray['smartClientInfo'] = $data->smartClientInfo;
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = ($data->location ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
+            $dataArray['location'] = $data->location === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->location, 'json', $context));
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
+            $dataArray['redirect'] = $data->redirect === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
         }
         if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
-            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
+            $dataArray['userSession'] = $data->userSession === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession, 'json', $context));
         }
         if (array_key_exists('walledGardens', get_object_vars($data)) && null !== ($data->walledGardens ?? null)) {
             $values = [];
-            foreach ($data->walledGardens ?? null as $value) {
+            foreach ($data->walledGardens as $value) {
                 $values[] = $value;
             }
             $dataArray['walledGardens'] = $values;
         }
         if (array_key_exists('trafficClassProfileId', get_object_vars($data)) && null !== ($data->trafficClassProfileId ?? null)) {
-            $dataArray['trafficClassProfileId'] = $data->trafficClassProfileId ?? null;
+            $dataArray['trafficClassProfileId'] = $data->trafficClassProfileId;
         }
         if (array_key_exists('signatureSigningKey', get_object_vars($data)) && null !== ($data->signatureSigningKey ?? null)) {
-            $dataArray['signatureSigningKey'] = $data->signatureSigningKey ?? null;
+            $dataArray['signatureSigningKey'] = $data->signatureSigningKey;
         }
         if (array_key_exists('internalNode', get_object_vars($data)) && null !== ($data->internalNode ?? null)) {
-            $dataArray['internalNode'] = $data->internalNode ?? null;
+            $dataArray['internalNode'] = $data->internalNode;
         }
-        $dataArray['macAddressFormat'] = $data->macAddressFormat ?? null;
+        $dataArray['macAddressFormat'] = $data->macAddressFormat;
         if (array_key_exists('httpsRedirect', get_object_vars($data)) && null !== ($data->httpsRedirect ?? null)) {
-            $dataArray['httpsRedirect'] = $data->httpsRedirect ?? null;
+            $dataArray['httpsRedirect'] = $data->httpsRedirect;
         }
         return $dataArray;
     }

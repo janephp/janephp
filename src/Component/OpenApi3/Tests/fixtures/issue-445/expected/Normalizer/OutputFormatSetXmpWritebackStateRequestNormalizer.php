@@ -48,7 +48,7 @@ class OutputFormatSetXmpWritebackStateRequestNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['enabled'] = $data->enabled;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

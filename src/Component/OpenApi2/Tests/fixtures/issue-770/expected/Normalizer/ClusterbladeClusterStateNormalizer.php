@@ -72,30 +72,30 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['clusterName'] = $data->clusterName ?? null;
+            $dataArray['clusterName'] = $data->clusterName;
         }
         if (array_key_exists('clusterState', get_object_vars($data)) && null !== ($data->clusterState ?? null)) {
-            $dataArray['clusterState'] = $data->clusterState ?? null;
+            $dataArray['clusterState'] = $data->clusterState;
         }
         if (array_key_exists('clusterRole', get_object_vars($data)) && null !== ($data->clusterRole ?? null)) {
-            $dataArray['clusterRole'] = $data->clusterRole ?? null;
+            $dataArray['clusterRole'] = $data->clusterRole;
         }
         if (array_key_exists('currentNodeId', get_object_vars($data)) && null !== ($data->currentNodeId ?? null)) {
-            $dataArray['currentNodeId'] = $data->currentNodeId ?? null;
+            $dataArray['currentNodeId'] = $data->currentNodeId;
         }
         if (array_key_exists('currentNodeName', get_object_vars($data)) && null !== ($data->currentNodeName ?? null)) {
-            $dataArray['currentNodeName'] = $data->currentNodeName ?? null;
+            $dataArray['currentNodeName'] = $data->currentNodeName;
         }
         if (array_key_exists('nodeStateList', get_object_vars($data)) && null !== ($data->nodeStateList ?? null)) {
             $values = [];
-            foreach ($data->nodeStateList ?? null as $value) {
+            foreach ($data->nodeStateList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['nodeStateList'] = $values;
         }
         if (array_key_exists('managementServiceStateList', get_object_vars($data)) && null !== ($data->managementServiceStateList ?? null)) {
             $values_1 = [];
-            foreach ($data->managementServiceStateList ?? null as $value_1) {
+            foreach ($data->managementServiceStateList as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['managementServiceStateList'] = $values_1;

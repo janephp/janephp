@@ -57,7 +57,7 @@ class ResponseDatabasesNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('dbs', get_object_vars($data)) && null !== ($data->dbs ?? null)) {
             $values = [];
-            foreach ($data->dbs ?? null as $value) {
+            foreach ($data->dbs as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['dbs'] = $values;

@@ -61,16 +61,16 @@ class SystemFtpTestResponseNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('success', get_object_vars($data)) && null !== ($data->success ?? null)) {
-            $dataArray['success'] = $data->success ?? null;
+            $dataArray['success'] = $data->success;
         }
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = $data->error ?? null;
+            $dataArray['error'] = $data->error;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
-            $dataArray['data'] = $data->data ?? null;
+            $dataArray['data'] = $data->data;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = $data->extra ?? null;
+            $dataArray['extra'] = $data->extra;
         }
         return $dataArray;
     }

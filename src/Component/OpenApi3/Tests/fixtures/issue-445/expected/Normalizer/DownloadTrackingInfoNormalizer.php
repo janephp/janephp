@@ -70,18 +70,18 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
-            $dataArray['contentId'] = $data->contentId ?? null;
+            $dataArray['contentId'] = $data->contentId;
         }
         if (array_key_exists('outputFormatId', get_object_vars($data)) && null !== ($data->outputFormatId ?? null)) {
-            $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+            $dataArray['outputFormatId'] = $data->outputFormatId;
         }
         if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
-            $dataArray['width'] = $data->width ?? null;
+            $dataArray['width'] = $data->width;
         }
         if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
-            $dataArray['height'] = $data->height ?? null;
+            $dataArray['height'] = $data->height;
         }
-        $dataArray['contentDisposition'] = $data->contentDisposition ?? null;
+        $dataArray['contentDisposition'] = $data->contentDisposition;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

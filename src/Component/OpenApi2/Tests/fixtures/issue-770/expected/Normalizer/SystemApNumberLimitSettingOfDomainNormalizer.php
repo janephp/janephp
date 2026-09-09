@@ -58,16 +58,16 @@ class SystemApNumberLimitSettingOfDomainNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
-            $dataArray['domainName'] = $data->domainName ?? null;
+            $dataArray['domainName'] = $data->domainName;
         }
         if (array_key_exists('numberLimit', get_object_vars($data)) && null !== ($data->numberLimit ?? null)) {
-            $dataArray['numberLimit'] = $data->numberLimit ?? null;
+            $dataArray['numberLimit'] = $data->numberLimit;
         }
         if (array_key_exists('shared', get_object_vars($data)) && null !== ($data->shared ?? null)) {
-            $dataArray['shared'] = $data->shared ?? null;
+            $dataArray['shared'] = $data->shared;
         }
         return $dataArray;
     }

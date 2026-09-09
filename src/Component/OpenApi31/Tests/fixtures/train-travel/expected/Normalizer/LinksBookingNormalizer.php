@@ -55,7 +55,7 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('booking', get_object_vars($data)) && null !== ($data->booking ?? null)) {
-            $dataArray['booking'] = $data->booking ?? null;
+            $dataArray['booking'] = $data->booking;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

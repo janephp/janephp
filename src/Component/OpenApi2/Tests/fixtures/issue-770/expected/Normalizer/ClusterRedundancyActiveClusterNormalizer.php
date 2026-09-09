@@ -56,14 +56,14 @@ class ClusterRedundancyActiveClusterNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('targetClusterAdminPassword', get_object_vars($data)) && null !== ($data->targetClusterAdminPassword ?? null)) {
-            $dataArray['targetClusterAdminPassword'] = $data->targetClusterAdminPassword ?? null;
+            $dataArray['targetClusterAdminPassword'] = $data->targetClusterAdminPassword;
         }
         if (array_key_exists('managementEntryList', get_object_vars($data)) && null !== ($data->managementEntryList ?? null)) {
             $values = [];
-            foreach ($data->managementEntryList ?? null as $value) {
+            foreach ($data->managementEntryList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;

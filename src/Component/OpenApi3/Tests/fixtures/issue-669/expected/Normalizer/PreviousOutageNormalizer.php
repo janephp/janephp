@@ -64,16 +64,16 @@ class PreviousOutageNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['started_at'] = $data->startedAt ?? null;
+            $dataArray['started_at'] = $data->startedAt;
         }
         if (array_key_exists('endedAt', get_object_vars($data)) && null !== ($data->endedAt ?? null)) {
-            $dataArray['ended_at'] = $data->endedAt ?? null;
+            $dataArray['ended_at'] = $data->endedAt;
         }
         if (array_key_exists('durationSeconds', get_object_vars($data)) && null !== ($data->durationSeconds ?? null)) {
-            $dataArray['duration_seconds'] = $data->durationSeconds ?? null;
+            $dataArray['duration_seconds'] = $data->durationSeconds;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -75,19 +75,19 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('imageUrl', get_object_vars($data)) && null !== ($data->imageUrl ?? null)) {
-            $dataArray['imageUrl'] = $data->imageUrl ?? null;
+            $dataArray['imageUrl'] = $data->imageUrl;
         }
         if (array_key_exists('uploadedAt', get_object_vars($data)) && null !== ($data->uploadedAt ?? null)) {
-            $dataArray['uploadedAt'] = ($data->uploadedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['uploadedAt'] = $data->uploadedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         if (array_key_exists('mimeType', get_object_vars($data)) && null !== ($data->mimeType ?? null)) {
-            $dataArray['mimeType'] = $data->mimeType ?? null;
+            $dataArray['mimeType'] = $data->mimeType;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

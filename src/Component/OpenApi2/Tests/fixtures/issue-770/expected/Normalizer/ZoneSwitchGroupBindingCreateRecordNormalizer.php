@@ -55,13 +55,13 @@ class ZoneSwitchGroupBindingCreateRecordNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('switchGroupId', get_object_vars($data)) && null !== ($data->switchGroupId ?? null)) {
-            $dataArray['switchGroupId'] = $data->switchGroupId ?? null;
+            $dataArray['switchGroupId'] = $data->switchGroupId;
         }
         if (array_key_exists('link', get_object_vars($data)) && null !== ($data->link ?? null)) {
-            $dataArray['link'] = $data->link ?? null;
+            $dataArray['link'] = $data->link;
         }
         return $dataArray;
     }

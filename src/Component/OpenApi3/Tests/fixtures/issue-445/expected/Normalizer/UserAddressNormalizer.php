@@ -91,28 +91,28 @@ class UserAddressNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = $data->company ?? null;
+            $dataArray['company'] = $data->company;
         }
         if (array_key_exists('department', get_object_vars($data)) && null !== ($data->department ?? null)) {
-            $dataArray['department'] = $data->department ?? null;
+            $dataArray['department'] = $data->department;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address ?? null;
+            $dataArray['address'] = $data->address;
         }
         if (array_key_exists('alternativeAddress', get_object_vars($data)) && null !== ($data->alternativeAddress ?? null)) {
-            $dataArray['alternativeAddress'] = $data->alternativeAddress ?? null;
+            $dataArray['alternativeAddress'] = $data->alternativeAddress;
         }
         if (array_key_exists('zip', get_object_vars($data)) && null !== ($data->zip ?? null)) {
-            $dataArray['zip'] = $data->zip ?? null;
+            $dataArray['zip'] = $data->zip;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
-            $dataArray['phone'] = $data->phone ?? null;
+            $dataArray['phone'] = $data->phone;
         }
         if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
-            $dataArray['countryCode'] = $data->countryCode ?? null;
+            $dataArray['countryCode'] = $data->countryCode;
         }
         return $dataArray;
     }

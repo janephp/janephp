@@ -76,16 +76,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
     {
         $dataArray = [];
         if (array_key_exists('netCashFlowFromOperations', get_object_vars($data)) && null !== ($data->netCashFlowFromOperations ?? null)) {
-            $dataArray['netCashFlowFromOperations'] = $data->netCashFlowFromOperations ?? null;
+            $dataArray['netCashFlowFromOperations'] = $data->netCashFlowFromOperations;
         }
         if (array_key_exists('netCashFlowBeforeFinancing', get_object_vars($data)) && null !== ($data->netCashFlowBeforeFinancing ?? null)) {
-            $dataArray['netCashFlowBeforeFinancing'] = $data->netCashFlowBeforeFinancing ?? null;
+            $dataArray['netCashFlowBeforeFinancing'] = $data->netCashFlowBeforeFinancing;
         }
         if (array_key_exists('netCashFlowFromFinancing', get_object_vars($data)) && null !== ($data->netCashFlowFromFinancing ?? null)) {
-            $dataArray['netCashFlowFromFinancing'] = $data->netCashFlowFromFinancing ?? null;
+            $dataArray['netCashFlowFromFinancing'] = $data->netCashFlowFromFinancing;
         }
         if (array_key_exists('increaseInCash', get_object_vars($data)) && null !== ($data->increaseInCash ?? null)) {
-            $dataArray['increaseInCash'] = $data->increaseInCash ?? null;
+            $dataArray['increaseInCash'] = $data->increaseInCash;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

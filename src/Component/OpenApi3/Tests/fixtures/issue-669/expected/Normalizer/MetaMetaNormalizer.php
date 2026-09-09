@@ -52,7 +52,7 @@ class MetaMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
-            $dataArray['total'] = $data->total ?? null;
+            $dataArray['total'] = $data->total;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

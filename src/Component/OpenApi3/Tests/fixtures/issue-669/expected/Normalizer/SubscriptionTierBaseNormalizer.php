@@ -83,28 +83,28 @@ class SubscriptionTierBaseNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
-            $dataArray['slug'] = $data->slug ?? null;
+            $dataArray['slug'] = $data->slug;
         }
         if (array_key_exists('includedRepositories', get_object_vars($data)) && null !== ($data->includedRepositories ?? null)) {
-            $dataArray['included_repositories'] = $data->includedRepositories ?? null;
+            $dataArray['included_repositories'] = $data->includedRepositories;
         }
         if (array_key_exists('includedStorageBytes', get_object_vars($data)) && null !== ($data->includedStorageBytes ?? null)) {
-            $dataArray['included_storage_bytes'] = $data->includedStorageBytes ?? null;
+            $dataArray['included_storage_bytes'] = $data->includedStorageBytes;
         }
         if (array_key_exists('allowStorageOverage', get_object_vars($data)) && null !== ($data->allowStorageOverage ?? null)) {
-            $dataArray['allow_storage_overage'] = $data->allowStorageOverage ?? null;
+            $dataArray['allow_storage_overage'] = $data->allowStorageOverage;
         }
         if (array_key_exists('includedBandwidthBytes', get_object_vars($data)) && null !== ($data->includedBandwidthBytes ?? null)) {
-            $dataArray['included_bandwidth_bytes'] = $data->includedBandwidthBytes ?? null;
+            $dataArray['included_bandwidth_bytes'] = $data->includedBandwidthBytes;
         }
         if (array_key_exists('monthlyPriceInCents', get_object_vars($data)) && null !== ($data->monthlyPriceInCents ?? null)) {
-            $dataArray['monthly_price_in_cents'] = $data->monthlyPriceInCents ?? null;
+            $dataArray['monthly_price_in_cents'] = $data->monthlyPriceInCents;
         }
         if (array_key_exists('storageOveragePriceInCents', get_object_vars($data)) && null !== ($data->storageOveragePriceInCents ?? null)) {
-            $dataArray['storage_overage_price_in_cents'] = $data->storageOveragePriceInCents ?? null;
+            $dataArray['storage_overage_price_in_cents'] = $data->storageOveragePriceInCents;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

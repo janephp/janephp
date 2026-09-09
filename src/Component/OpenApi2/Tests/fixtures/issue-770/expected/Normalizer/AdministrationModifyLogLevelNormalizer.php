@@ -49,10 +49,10 @@ class AdministrationModifyLogLevelNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
-            $dataArray['applicationName'] = $data->applicationName ?? null;
+            $dataArray['applicationName'] = $data->applicationName;
         }
         if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
-            $dataArray['logLevel'] = $data->logLevel ?? null;
+            $dataArray['logLevel'] = $data->logLevel;
         }
         return $dataArray;
     }

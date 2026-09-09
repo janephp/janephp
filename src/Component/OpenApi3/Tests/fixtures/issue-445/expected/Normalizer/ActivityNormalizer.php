@@ -63,10 +63,10 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
-            $dataArray['creationDate'] = ($data->creationDate ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['creationDate'] = $data->creationDate?->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('modificationDate', get_object_vars($data)) && null !== ($data->modificationDate ?? null)) {
-            $dataArray['modificationDate'] = ($data->modificationDate ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['modificationDate'] = $data->modificationDate?->format('Y-m-d\TH:i:sP');
         }
         return $dataArray;
     }

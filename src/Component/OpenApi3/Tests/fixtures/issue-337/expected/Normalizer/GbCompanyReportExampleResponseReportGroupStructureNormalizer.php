@@ -57,7 +57,7 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
         $dataArray = [];
         if (array_key_exists('subsidiaryCompanies', get_object_vars($data)) && null !== ($data->subsidiaryCompanies ?? null)) {
             $values = [];
-            foreach ($data->subsidiaryCompanies ?? null as $value) {
+            foreach ($data->subsidiaryCompanies as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['subsidiaryCompanies'] = $values;

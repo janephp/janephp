@@ -58,12 +58,12 @@ class FileTransferOutputNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
-            $dataArray['filePath'] = $data->filePath ?? null;
+            $dataArray['filePath'] = $data->filePath;
         }
-        $dataArray['outputSource'] = $data->outputSource ?? null;
+        $dataArray['outputSource'] = $data->outputSource;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -63,11 +63,11 @@ class ParentFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['parentType'] = $data->parentType ?? null;
-        $value = $data->filter ?? null;
-        if (is_object($data->filter ?? null)) {
-            $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['parentType'] = $data->parentType;
+        $value = $data->filter;
+        if (is_object($data->filter)) {
+            $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
         }
         $dataArray['filter'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

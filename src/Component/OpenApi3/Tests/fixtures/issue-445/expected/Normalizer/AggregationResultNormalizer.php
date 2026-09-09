@@ -61,13 +61,13 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('sumOtherDocCount', get_object_vars($data)) && null !== ($data->sumOtherDocCount ?? null)) {
-            $dataArray['sumOtherDocCount'] = $data->sumOtherDocCount ?? null;
+            $dataArray['sumOtherDocCount'] = $data->sumOtherDocCount;
         }
         if (array_key_exists('aggregationResultItems', get_object_vars($data)) && null !== ($data->aggregationResultItems ?? null)) {
             $values = [];
-            foreach ($data->aggregationResultItems ?? null as $value) {
+            foreach ($data->aggregationResultItems as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aggregationResultItems'] = $values;

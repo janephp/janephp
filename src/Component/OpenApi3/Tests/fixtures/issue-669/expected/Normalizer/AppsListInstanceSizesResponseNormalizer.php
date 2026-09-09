@@ -63,11 +63,11 @@ class AppsListInstanceSizesResponseNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('discountPercent', get_object_vars($data)) && null !== ($data->discountPercent ?? null)) {
-            $dataArray['discount_percent'] = $data->discountPercent ?? null;
+            $dataArray['discount_percent'] = $data->discountPercent;
         }
         if (array_key_exists('instanceSizes', get_object_vars($data)) && null !== ($data->instanceSizes ?? null)) {
             $values = [];
-            foreach ($data->instanceSizes ?? null as $value) {
+            foreach ($data->instanceSizes as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['instance_sizes'] = $values;

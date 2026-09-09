@@ -52,10 +52,10 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['bar'] = $data->bar ?? null;
+            $dataArray['bar'] = $data->bar;
         }
         if (array_key_exists('fooBar', get_object_vars($data)) && null !== ($data->fooBar ?? null)) {
-            $dataArray['fooBar'] = $data->fooBar ?? null;
+            $dataArray['fooBar'] = $data->fooBar;
         }
         return $dataArray;
     }

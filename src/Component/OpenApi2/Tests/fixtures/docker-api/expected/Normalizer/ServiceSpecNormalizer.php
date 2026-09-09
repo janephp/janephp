@@ -78,36 +78,36 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value) {
+            foreach ($data->labels as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('taskTemplate', get_object_vars($data)) && null !== ($data->taskTemplate ?? null)) {
-            $dataArray['TaskTemplate'] = ($data->taskTemplate ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskTemplate ?? null, 'json', $context));
+            $dataArray['TaskTemplate'] = $data->taskTemplate === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskTemplate, 'json', $context));
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = ($data->mode ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->mode ?? null, 'json', $context));
+            $dataArray['Mode'] = $data->mode === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->mode, 'json', $context));
         }
         if (array_key_exists('updateConfig', get_object_vars($data)) && null !== ($data->updateConfig ?? null)) {
-            $dataArray['UpdateConfig'] = ($data->updateConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateConfig ?? null, 'json', $context));
+            $dataArray['UpdateConfig'] = $data->updateConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateConfig, 'json', $context));
         }
         if (array_key_exists('rollbackConfig', get_object_vars($data)) && null !== ($data->rollbackConfig ?? null)) {
-            $dataArray['RollbackConfig'] = ($data->rollbackConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rollbackConfig ?? null, 'json', $context));
+            $dataArray['RollbackConfig'] = $data->rollbackConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rollbackConfig, 'json', $context));
         }
         if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values_1 = [];
-            foreach ($data->networks ?? null as $value_1) {
+            foreach ($data->networks as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Networks'] = $values_1;
         }
         if (array_key_exists('endpointSpec', get_object_vars($data)) && null !== ($data->endpointSpec ?? null)) {
-            $dataArray['EndpointSpec'] = ($data->endpointSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointSpec ?? null, 'json', $context));
+            $dataArray['EndpointSpec'] = $data->endpointSpec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointSpec, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecConstraint());

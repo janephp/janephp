@@ -72,10 +72,10 @@ class FirewallRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['value'] = $data->value ?? null;
+        $dataArray['type'] = $data->type;
+        $dataArray['value'] = $data->value;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

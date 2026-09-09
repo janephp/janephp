@@ -216,76 +216,76 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
     {
         $dataArray = [];
         if (array_key_exists('tangibleAssets', get_object_vars($data)) && null !== ($data->tangibleAssets ?? null)) {
-            $dataArray['tangibleAssets'] = $data->tangibleAssets ?? null;
+            $dataArray['tangibleAssets'] = $data->tangibleAssets;
         }
         if (array_key_exists('intangibleAssets', get_object_vars($data)) && null !== ($data->intangibleAssets ?? null)) {
-            $dataArray['intangibleAssets'] = $data->intangibleAssets ?? null;
+            $dataArray['intangibleAssets'] = $data->intangibleAssets;
         }
         if (array_key_exists('totalFixedAssets', get_object_vars($data)) && null !== ($data->totalFixedAssets ?? null)) {
-            $dataArray['totalFixedAssets'] = $data->totalFixedAssets ?? null;
+            $dataArray['totalFixedAssets'] = $data->totalFixedAssets;
         }
         if (array_key_exists('stock', get_object_vars($data)) && null !== ($data->stock ?? null)) {
-            $dataArray['stock'] = $data->stock ?? null;
+            $dataArray['stock'] = $data->stock;
         }
         if (array_key_exists('tradeDebtors', get_object_vars($data)) && null !== ($data->tradeDebtors ?? null)) {
-            $dataArray['tradeDebtors'] = $data->tradeDebtors ?? null;
+            $dataArray['tradeDebtors'] = $data->tradeDebtors;
         }
         if (array_key_exists('otherDebtors', get_object_vars($data)) && null !== ($data->otherDebtors ?? null)) {
-            $dataArray['otherDebtors'] = $data->otherDebtors ?? null;
+            $dataArray['otherDebtors'] = $data->otherDebtors;
         }
         if (array_key_exists('cash', get_object_vars($data)) && null !== ($data->cash ?? null)) {
-            $dataArray['cash'] = $data->cash ?? null;
+            $dataArray['cash'] = $data->cash;
         }
         if (array_key_exists('miscCurrentAssets', get_object_vars($data)) && null !== ($data->miscCurrentAssets ?? null)) {
-            $dataArray['miscCurrentAssets'] = $data->miscCurrentAssets ?? null;
+            $dataArray['miscCurrentAssets'] = $data->miscCurrentAssets;
         }
         if (array_key_exists('totalCurrentAssets', get_object_vars($data)) && null !== ($data->totalCurrentAssets ?? null)) {
-            $dataArray['totalCurrentAssets'] = $data->totalCurrentAssets ?? null;
+            $dataArray['totalCurrentAssets'] = $data->totalCurrentAssets;
         }
         if (array_key_exists('totalAssets', get_object_vars($data)) && null !== ($data->totalAssets ?? null)) {
-            $dataArray['totalAssets'] = $data->totalAssets ?? null;
+            $dataArray['totalAssets'] = $data->totalAssets;
         }
         if (array_key_exists('tradeCreditors', get_object_vars($data)) && null !== ($data->tradeCreditors ?? null)) {
-            $dataArray['tradeCreditors'] = $data->tradeCreditors ?? null;
+            $dataArray['tradeCreditors'] = $data->tradeCreditors;
         }
         if (array_key_exists('bankBorrowingsCurrent', get_object_vars($data)) && null !== ($data->bankBorrowingsCurrent ?? null)) {
-            $dataArray['bankBorrowingsCurrent'] = $data->bankBorrowingsCurrent ?? null;
+            $dataArray['bankBorrowingsCurrent'] = $data->bankBorrowingsCurrent;
         }
         if (array_key_exists('otherShortTermFinance', get_object_vars($data)) && null !== ($data->otherShortTermFinance ?? null)) {
-            $dataArray['otherShortTermFinance'] = $data->otherShortTermFinance ?? null;
+            $dataArray['otherShortTermFinance'] = $data->otherShortTermFinance;
         }
         if (array_key_exists('miscCurrentLiabilities', get_object_vars($data)) && null !== ($data->miscCurrentLiabilities ?? null)) {
-            $dataArray['miscCurrentLiabilities'] = $data->miscCurrentLiabilities ?? null;
+            $dataArray['miscCurrentLiabilities'] = $data->miscCurrentLiabilities;
         }
         if (array_key_exists('totalCurrentLiabilities', get_object_vars($data)) && null !== ($data->totalCurrentLiabilities ?? null)) {
-            $dataArray['totalCurrentLiabilities'] = $data->totalCurrentLiabilities ?? null;
+            $dataArray['totalCurrentLiabilities'] = $data->totalCurrentLiabilities;
         }
         if (array_key_exists('otherLongTermFinance', get_object_vars($data)) && null !== ($data->otherLongTermFinance ?? null)) {
-            $dataArray['otherLongTermFinance'] = $data->otherLongTermFinance ?? null;
+            $dataArray['otherLongTermFinance'] = $data->otherLongTermFinance;
         }
         if (array_key_exists('totalLongTermLiabilities', get_object_vars($data)) && null !== ($data->totalLongTermLiabilities ?? null)) {
-            $dataArray['totalLongTermLiabilities'] = $data->totalLongTermLiabilities ?? null;
+            $dataArray['totalLongTermLiabilities'] = $data->totalLongTermLiabilities;
         }
         if (array_key_exists('totalLiabilities', get_object_vars($data)) && null !== ($data->totalLiabilities ?? null)) {
-            $dataArray['totalLiabilities'] = $data->totalLiabilities ?? null;
+            $dataArray['totalLiabilities'] = $data->totalLiabilities;
         }
         if (array_key_exists('netAssets', get_object_vars($data)) && null !== ($data->netAssets ?? null)) {
-            $dataArray['netAssets'] = $data->netAssets ?? null;
+            $dataArray['netAssets'] = $data->netAssets;
         }
         if (array_key_exists('issuedShareCapital', get_object_vars($data)) && null !== ($data->issuedShareCapital ?? null)) {
-            $dataArray['issuedShareCapital'] = $data->issuedShareCapital ?? null;
+            $dataArray['issuedShareCapital'] = $data->issuedShareCapital;
         }
         if (array_key_exists('revaluationReserve', get_object_vars($data)) && null !== ($data->revaluationReserve ?? null)) {
-            $dataArray['revaluationReserve'] = $data->revaluationReserve ?? null;
+            $dataArray['revaluationReserve'] = $data->revaluationReserve;
         }
         if (array_key_exists('revenueReserves', get_object_vars($data)) && null !== ($data->revenueReserves ?? null)) {
-            $dataArray['revenueReserves'] = $data->revenueReserves ?? null;
+            $dataArray['revenueReserves'] = $data->revenueReserves;
         }
         if (array_key_exists('otherReserves', get_object_vars($data)) && null !== ($data->otherReserves ?? null)) {
-            $dataArray['otherReserves'] = $data->otherReserves ?? null;
+            $dataArray['otherReserves'] = $data->otherReserves;
         }
         if (array_key_exists('totalShareholdersEquity', get_object_vars($data)) && null !== ($data->totalShareholdersEquity ?? null)) {
-            $dataArray['totalShareholdersEquity'] = $data->totalShareholdersEquity ?? null;
+            $dataArray['totalShareholdersEquity'] = $data->totalShareholdersEquity;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

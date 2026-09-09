@@ -52,7 +52,7 @@ class LinkToNextPageNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $dataArray['next'] = $data->next ?? null;
+            $dataArray['next'] = $data->next;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -59,9 +59,9 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['cron'] = $data->cron ?? null;
+        $dataArray['cron'] = $data->cron;
         if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
-            $dataArray['body'] = ($data->body ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body ?? null, 'json', $context));
+            $dataArray['body'] = $data->body === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

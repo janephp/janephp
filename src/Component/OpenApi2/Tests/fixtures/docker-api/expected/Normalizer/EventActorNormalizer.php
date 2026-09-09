@@ -56,11 +56,11 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
-            $dataArray['ID'] = $data->iD ?? null;
+            $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->attributes ?? null as $key => $value) {
+            foreach ($data->attributes as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Attributes'] = $values;

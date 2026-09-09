@@ -84,26 +84,26 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         if (array_key_exists('userRoleIds', get_object_vars($data)) && null !== ($data->userRoleIds ?? null)) {
             $values = [];
-            foreach ($data->userRoleIds ?? null as $value) {
+            foreach ($data->userRoleIds as $value) {
                 $values[] = $value;
             }
             $dataArray['userRoleIds'] = $values;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $value_1 = $data->address ?? null;
-            if (is_object($data->address ?? null)) {
-                $value_1 = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $value_1 = $data->address;
+            if (is_object($data->address)) {
+                $value_1 = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value_1;
         }

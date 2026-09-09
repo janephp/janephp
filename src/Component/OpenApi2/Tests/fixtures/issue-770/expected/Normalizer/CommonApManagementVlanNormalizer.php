@@ -49,10 +49,10 @@ class CommonApManagementVlanNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['mode'] = $data->mode ?? null;
+            $dataArray['mode'] = $data->mode;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         return $dataArray;
     }

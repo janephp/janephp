@@ -49,10 +49,10 @@ class CommonTrafficClassRefNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('whitelists', get_object_vars($data)) && null !== ($data->whitelists ?? null)) {
-            $dataArray['whitelists'] = $data->whitelists ?? null;
+            $dataArray['whitelists'] = $data->whitelists;
         }
         return $dataArray;
     }

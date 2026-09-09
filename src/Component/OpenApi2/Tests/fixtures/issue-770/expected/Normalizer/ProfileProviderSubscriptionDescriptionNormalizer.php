@@ -54,13 +54,13 @@ class ProfileProviderSubscriptionDescriptionNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->language ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['language'] = $data->language;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('icon', get_object_vars($data)) && null !== ($data->icon ?? null)) {
-            $dataArray['icon'] = $data->icon ?? null;
+            $dataArray['icon'] = $data->icon;
         }
         return $dataArray;
     }

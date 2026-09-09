@@ -75,33 +75,33 @@ class PortalserviceModifyWechatNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('authUrl', get_object_vars($data)) && null !== ($data->authUrl ?? null)) {
-            $dataArray['authUrl'] = $data->authUrl ?? null;
+            $dataArray['authUrl'] = $data->authUrl;
         }
         if (array_key_exists('dnatDestination', get_object_vars($data)) && null !== ($data->dnatDestination ?? null)) {
-            $dataArray['dnatDestination'] = $data->dnatDestination ?? null;
+            $dataArray['dnatDestination'] = $data->dnatDestination;
         }
         if (array_key_exists('gracePeriod', get_object_vars($data)) && null !== ($data->gracePeriod ?? null)) {
-            $dataArray['gracePeriod'] = $data->gracePeriod ?? null;
+            $dataArray['gracePeriod'] = $data->gracePeriod;
         }
         if (array_key_exists('blackList', get_object_vars($data)) && null !== ($data->blackList ?? null)) {
-            $dataArray['blackList'] = $data->blackList ?? null;
+            $dataArray['blackList'] = $data->blackList;
         }
         if (array_key_exists('whiteList', get_object_vars($data)) && null !== ($data->whiteList ?? null)) {
             $values = [];
-            foreach ($data->whiteList ?? null as $value) {
+            foreach ($data->whiteList as $value) {
                 $values[] = $value;
             }
             $dataArray['whiteList'] = $values;
         }
         if (array_key_exists('dnatPortMapping', get_object_vars($data)) && null !== ($data->dnatPortMapping ?? null)) {
             $values_1 = [];
-            foreach ($data->dnatPortMapping ?? null as $value_1) {
+            foreach ($data->dnatPortMapping as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dnatPortMapping'] = $values_1;

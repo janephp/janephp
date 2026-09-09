@@ -100,31 +100,31 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
-            $dataArray['searchString'] = $data->searchString ?? null;
+            $dataArray['searchString'] = $data->searchString;
         }
         if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->searchBehaviors ?? null as $value) {
+            foreach ($data->searchBehaviors as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_1 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_1 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_1 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }
         if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values_1 = [];
-            foreach ($data->aggregationFilters ?? null as $value_2) {
+            foreach ($data->aggregationFilters as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
         $values_2 = [];
-        foreach ($data->aggregators ?? null as $value_3) {
+        foreach ($data->aggregators as $value_3) {
             $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['aggregators'] = $values_2;

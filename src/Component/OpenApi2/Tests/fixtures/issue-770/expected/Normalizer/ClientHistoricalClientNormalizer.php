@@ -97,58 +97,58 @@ class ClientHistoricalClientNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('sessionStartTime', get_object_vars($data)) && null !== ($data->sessionStartTime ?? null)) {
-            $dataArray['sessionStartTime'] = $data->sessionStartTime ?? null;
+            $dataArray['sessionStartTime'] = $data->sessionStartTime;
         }
         if (array_key_exists('sessionEndTime', get_object_vars($data)) && null !== ($data->sessionEndTime ?? null)) {
-            $dataArray['sessionEndTime'] = $data->sessionEndTime ?? null;
+            $dataArray['sessionEndTime'] = $data->sessionEndTime;
         }
         if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
-            $dataArray['clientMac'] = $data->clientMac ?? null;
+            $dataArray['clientMac'] = $data->clientMac;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('ipv6Address', get_object_vars($data)) && null !== ($data->ipv6Address ?? null)) {
-            $dataArray['ipv6Address'] = $data->ipv6Address ?? null;
+            $dataArray['ipv6Address'] = $data->ipv6Address;
         }
         if (array_key_exists('coreNetworkType', get_object_vars($data)) && null !== ($data->coreNetworkType ?? null)) {
-            $dataArray['coreNetworkType'] = $data->coreNetworkType ?? null;
+            $dataArray['coreNetworkType'] = $data->coreNetworkType;
         }
         if (array_key_exists('hostname', get_object_vars($data)) && null !== ($data->hostname ?? null)) {
-            $dataArray['hostname'] = $data->hostname ?? null;
+            $dataArray['hostname'] = $data->hostname;
         }
         if (array_key_exists('osType', get_object_vars($data)) && null !== ($data->osType ?? null)) {
-            $dataArray['osType'] = $data->osType ?? null;
+            $dataArray['osType'] = $data->osType;
         }
         if (array_key_exists('modelName', get_object_vars($data)) && null !== ($data->modelName ?? null)) {
-            $dataArray['modelName'] = $data->modelName ?? null;
+            $dataArray['modelName'] = $data->modelName;
         }
         if (array_key_exists('mvnoName', get_object_vars($data)) && null !== ($data->mvnoName ?? null)) {
-            $dataArray['mvnoName'] = $data->mvnoName ?? null;
+            $dataArray['mvnoName'] = $data->mvnoName;
         }
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
-            $dataArray['ssid'] = $data->ssid ?? null;
+            $dataArray['ssid'] = $data->ssid;
         }
         if (array_key_exists('txBytes', get_object_vars($data)) && null !== ($data->txBytes ?? null)) {
-            $dataArray['txBytes'] = $data->txBytes ?? null;
+            $dataArray['txBytes'] = $data->txBytes;
         }
         if (array_key_exists('rxBytes', get_object_vars($data)) && null !== ($data->rxBytes ?? null)) {
-            $dataArray['rxBytes'] = $data->rxBytes ?? null;
+            $dataArray['rxBytes'] = $data->rxBytes;
         }
         if (array_key_exists('txFrames', get_object_vars($data)) && null !== ($data->txFrames ?? null)) {
-            $dataArray['txFrames'] = $data->txFrames ?? null;
+            $dataArray['txFrames'] = $data->txFrames;
         }
         if (array_key_exists('rxFrames', get_object_vars($data)) && null !== ($data->rxFrames ?? null)) {
-            $dataArray['rxFrames'] = $data->rxFrames ?? null;
+            $dataArray['rxFrames'] = $data->rxFrames;
         }
         if (array_key_exists('txDrops', get_object_vars($data)) && null !== ($data->txDrops ?? null)) {
-            $dataArray['txDrops'] = $data->txDrops ?? null;
+            $dataArray['txDrops'] = $data->txDrops;
         }
         if (array_key_exists('rxDrops', get_object_vars($data)) && null !== ($data->rxDrops ?? null)) {
-            $dataArray['rxDrops'] = $data->rxDrops ?? null;
+            $dataArray['rxDrops'] = $data->rxDrops;
         }
         return $dataArray;
     }

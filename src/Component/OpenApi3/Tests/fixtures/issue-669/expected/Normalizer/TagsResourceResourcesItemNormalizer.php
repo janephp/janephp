@@ -56,10 +56,10 @@ class TagsResourceResourcesItemNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('resourceId', get_object_vars($data)) && null !== ($data->resourceId ?? null)) {
-            $dataArray['resource_id'] = $data->resourceId ?? null;
+            $dataArray['resource_id'] = $data->resourceId;
         }
         if (array_key_exists('resourceType', get_object_vars($data)) && null !== ($data->resourceType ?? null)) {
-            $dataArray['resource_type'] = $data->resourceType ?? null;
+            $dataArray['resource_type'] = $data->resourceType;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

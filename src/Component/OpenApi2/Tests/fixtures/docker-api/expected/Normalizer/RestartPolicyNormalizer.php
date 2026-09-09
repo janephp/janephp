@@ -52,10 +52,10 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('maximumRetryCount', get_object_vars($data)) && null !== ($data->maximumRetryCount ?? null)) {
-            $dataArray['MaximumRetryCount'] = $data->maximumRetryCount ?? null;
+            $dataArray['MaximumRetryCount'] = $data->maximumRetryCount;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\RestartPolicyConstraint());

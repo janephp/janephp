@@ -113,46 +113,46 @@ class AppsInstanceSizeNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('bandwidthAllowanceGib', get_object_vars($data)) && null !== ($data->bandwidthAllowanceGib ?? null)) {
-            $dataArray['bandwidth_allowance_gib'] = $data->bandwidthAllowanceGib ?? null;
+            $dataArray['bandwidth_allowance_gib'] = $data->bandwidthAllowanceGib;
         }
         if (array_key_exists('cpuType', get_object_vars($data)) && null !== ($data->cpuType ?? null)) {
-            $dataArray['cpu_type'] = $data->cpuType ?? null;
+            $dataArray['cpu_type'] = $data->cpuType;
         }
         if (array_key_exists('cpus', get_object_vars($data)) && null !== ($data->cpus ?? null)) {
-            $dataArray['cpus'] = $data->cpus ?? null;
+            $dataArray['cpus'] = $data->cpus;
         }
         if (array_key_exists('deprecationIntent', get_object_vars($data)) && null !== ($data->deprecationIntent ?? null)) {
-            $dataArray['deprecation_intent'] = $data->deprecationIntent ?? null;
+            $dataArray['deprecation_intent'] = $data->deprecationIntent;
         }
         if (array_key_exists('memoryBytes', get_object_vars($data)) && null !== ($data->memoryBytes ?? null)) {
-            $dataArray['memory_bytes'] = $data->memoryBytes ?? null;
+            $dataArray['memory_bytes'] = $data->memoryBytes;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('scalable', get_object_vars($data)) && null !== ($data->scalable ?? null)) {
-            $dataArray['scalable'] = $data->scalable ?? null;
+            $dataArray['scalable'] = $data->scalable;
         }
         if (array_key_exists('singleInstanceOnly', get_object_vars($data)) && null !== ($data->singleInstanceOnly ?? null)) {
-            $dataArray['single_instance_only'] = $data->singleInstanceOnly ?? null;
+            $dataArray['single_instance_only'] = $data->singleInstanceOnly;
         }
         if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
-            $dataArray['slug'] = $data->slug ?? null;
+            $dataArray['slug'] = $data->slug;
         }
         if (array_key_exists('tierDowngradeTo', get_object_vars($data)) && null !== ($data->tierDowngradeTo ?? null)) {
-            $dataArray['tier_downgrade_to'] = $data->tierDowngradeTo ?? null;
+            $dataArray['tier_downgrade_to'] = $data->tierDowngradeTo;
         }
         if (array_key_exists('tierSlug', get_object_vars($data)) && null !== ($data->tierSlug ?? null)) {
-            $dataArray['tier_slug'] = $data->tierSlug ?? null;
+            $dataArray['tier_slug'] = $data->tierSlug;
         }
         if (array_key_exists('tierUpgradeTo', get_object_vars($data)) && null !== ($data->tierUpgradeTo ?? null)) {
-            $dataArray['tier_upgrade_to'] = $data->tierUpgradeTo ?? null;
+            $dataArray['tier_upgrade_to'] = $data->tierUpgradeTo;
         }
         if (array_key_exists('usdPerMonth', get_object_vars($data)) && null !== ($data->usdPerMonth ?? null)) {
-            $dataArray['usd_per_month'] = $data->usdPerMonth ?? null;
+            $dataArray['usd_per_month'] = $data->usdPerMonth;
         }
         if (array_key_exists('usdPerSecond', get_object_vars($data)) && null !== ($data->usdPerSecond ?? null)) {
-            $dataArray['usd_per_second'] = $data->usdPerSecond ?? null;
+            $dataArray['usd_per_second'] = $data->usdPerSecond;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

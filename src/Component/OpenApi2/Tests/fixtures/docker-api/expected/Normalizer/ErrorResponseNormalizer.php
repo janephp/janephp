@@ -48,7 +48,7 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['message'] = $data->message ?? null;
+        $dataArray['message'] = $data->message;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ErrorResponseConstraint());
         }

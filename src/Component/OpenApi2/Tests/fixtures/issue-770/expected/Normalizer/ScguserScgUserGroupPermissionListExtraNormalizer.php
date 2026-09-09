@@ -55,10 +55,10 @@ class ScguserScgUserGroupPermissionListExtraNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('isSuperAdmin', get_object_vars($data)) && null !== ($data->isSuperAdmin ?? null)) {
-            $dataArray['isSuperAdmin'] = $data->isSuperAdmin ?? null;
+            $dataArray['isSuperAdmin'] = $data->isSuperAdmin;
         }
         if (array_key_exists('isSuperAdminOfDomain', get_object_vars($data)) && null !== ($data->isSuperAdminOfDomain ?? null)) {
-            $dataArray['isSuperAdminOfDomain'] = $data->isSuperAdminOfDomain ?? null;
+            $dataArray['isSuperAdminOfDomain'] = $data->isSuperAdminOfDomain;
         }
         return $dataArray;
     }

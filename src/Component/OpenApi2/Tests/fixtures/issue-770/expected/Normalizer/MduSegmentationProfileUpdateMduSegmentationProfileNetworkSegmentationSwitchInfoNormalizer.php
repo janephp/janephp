@@ -71,27 +71,27 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitc
         $dataArray = [];
         if (array_key_exists('switchGroupList', get_object_vars($data)) && null !== ($data->switchGroupList ?? null)) {
             $values = [];
-            foreach ($data->switchGroupList ?? null as $value) {
+            foreach ($data->switchGroupList as $value) {
                 $values[] = $value;
             }
             $dataArray['switchGroupList'] = $values;
         }
         if (array_key_exists('distributionSwitches', get_object_vars($data)) && null !== ($data->distributionSwitches ?? null)) {
             $values_1 = [];
-            foreach ($data->distributionSwitches ?? null as $value_1) {
+            foreach ($data->distributionSwitches as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['distributionSwitches'] = $values_1;
         }
         if (array_key_exists('accessSwitches', get_object_vars($data)) && null !== ($data->accessSwitches ?? null)) {
             $values_2 = [];
-            foreach ($data->accessSwitches ?? null as $value_2) {
+            foreach ($data->accessSwitches as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['accessSwitches'] = $values_2;
         }
         if (array_key_exists('forceOverwriteReboot', get_object_vars($data)) && null !== ($data->forceOverwriteReboot ?? null)) {
-            $dataArray['forceOverwriteReboot'] = $data->forceOverwriteReboot ?? null;
+            $dataArray['forceOverwriteReboot'] = $data->forceOverwriteReboot;
         }
         return $dataArray;
     }

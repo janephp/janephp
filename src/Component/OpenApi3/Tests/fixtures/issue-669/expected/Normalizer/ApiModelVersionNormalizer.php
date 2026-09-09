@@ -60,13 +60,13 @@ class ApiModelVersionNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('major', get_object_vars($data)) && null !== ($data->major ?? null)) {
-            $dataArray['major'] = $data->major ?? null;
+            $dataArray['major'] = $data->major;
         }
         if (array_key_exists('minor', get_object_vars($data)) && null !== ($data->minor ?? null)) {
-            $dataArray['minor'] = $data->minor ?? null;
+            $dataArray['minor'] = $data->minor;
         }
         if (array_key_exists('patch', get_object_vars($data)) && null !== ($data->patch ?? null)) {
-            $dataArray['patch'] = $data->patch ?? null;
+            $dataArray['patch'] = $data->patch;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -55,13 +55,13 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['Config'] = $data->config ?? null;
+            $dataArray['Config'] = $data->config;
         }
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['File'] = $data->file ?? null;
+            $dataArray['File'] = $data->file;
         }
         if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
-            $dataArray['Registry'] = $data->registry ?? null;
+            $dataArray['Registry'] = $data->registry;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecConstraint());

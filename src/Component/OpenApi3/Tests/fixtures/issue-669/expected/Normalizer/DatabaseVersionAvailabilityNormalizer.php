@@ -68,13 +68,13 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('endOfLife', get_object_vars($data)) && null !== ($data->endOfLife ?? null)) {
-            $dataArray['end_of_life'] = $data->endOfLife ?? null;
+            $dataArray['end_of_life'] = $data->endOfLife;
         }
         if (array_key_exists('endOfAvailability', get_object_vars($data)) && null !== ($data->endOfAvailability ?? null)) {
-            $dataArray['end_of_availability'] = $data->endOfAvailability ?? null;
+            $dataArray['end_of_availability'] = $data->endOfAvailability;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

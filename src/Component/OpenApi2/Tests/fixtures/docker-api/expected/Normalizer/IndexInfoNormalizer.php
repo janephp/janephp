@@ -68,20 +68,20 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('mirrors', get_object_vars($data)) && null !== ($data->mirrors ?? null)) {
             $values = [];
-            foreach ($data->mirrors ?? null as $value) {
+            foreach ($data->mirrors as $value) {
                 $values[] = $value;
             }
             $dataArray['Mirrors'] = $values;
         }
         if (array_key_exists('secure', get_object_vars($data)) && null !== ($data->secure ?? null)) {
-            $dataArray['Secure'] = $data->secure ?? null;
+            $dataArray['Secure'] = $data->secure;
         }
         if (array_key_exists('official', get_object_vars($data)) && null !== ($data->official ?? null)) {
-            $dataArray['Official'] = $data->official ?? null;
+            $dataArray['Official'] = $data->official;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\IndexInfoConstraint());

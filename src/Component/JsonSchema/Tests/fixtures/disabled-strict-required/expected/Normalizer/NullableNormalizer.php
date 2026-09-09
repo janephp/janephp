@@ -79,26 +79,26 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('onlyNull', get_object_vars($data)) && null !== ($data->onlyNull ?? null)) {
-            $dataArray['onlyNull'] = $data->onlyNull ?? null;
+            $dataArray['onlyNull'] = $data->onlyNull;
         }
         if (array_key_exists('nullOrString', get_object_vars($data)) && null !== ($data->nullOrString ?? null)) {
-            $value = $data->nullOrString ?? null;
-            if (is_string($data->nullOrString ?? null)) {
-                $value = $data->nullOrString ?? null;
-            } elseif (is_null($data->nullOrString ?? null)) {
-                $value = $data->nullOrString ?? null;
+            $value = $data->nullOrString;
+            if (is_string($data->nullOrString)) {
+                $value = $data->nullOrString;
+            } elseif (is_null($data->nullOrString)) {
+                $value = $data->nullOrString;
             }
             $dataArray['nullOrString'] = $value;
         }
         if (null !== ($data->required ?? null)) {
-            $dataArray['required'] = $data->required ?? null;
+            $dataArray['required'] = $data->required;
         }
         if (null !== ($data->requiredNull ?? null)) {
-            $value_1 = $data->requiredNull ?? null;
-            if (is_string($data->requiredNull ?? null)) {
-                $value_1 = $data->requiredNull ?? null;
-            } elseif (is_null($data->requiredNull ?? null)) {
-                $value_1 = $data->requiredNull ?? null;
+            $value_1 = $data->requiredNull;
+            if (is_string($data->requiredNull)) {
+                $value_1 = $data->requiredNull;
+            } elseif (is_null($data->requiredNull)) {
+                $value_1 = $data->requiredNull;
             }
             $dataArray['requiredNull'] = $value_1;
         }

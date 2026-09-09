@@ -61,20 +61,20 @@ class ProfileCreateL3AccessControlPolicyNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['defaultAction'] = $data->defaultAction ?? null;
+        $dataArray['defaultAction'] = $data->defaultAction;
         if (array_key_exists('l3AclRuleList', get_object_vars($data)) && null !== ($data->l3AclRuleList ?? null)) {
             $values = [];
-            foreach ($data->l3AclRuleList ?? null as $value) {
+            foreach ($data->l3AclRuleList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['l3AclRuleList'] = $values;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

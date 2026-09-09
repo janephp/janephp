@@ -58,16 +58,16 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
-            $dataArray['Condition'] = $data->condition ?? null;
+            $dataArray['Condition'] = $data->condition;
         }
         if (array_key_exists('delay', get_object_vars($data)) && null !== ($data->delay ?? null)) {
-            $dataArray['Delay'] = $data->delay ?? null;
+            $dataArray['Delay'] = $data->delay;
         }
         if (array_key_exists('maxAttempts', get_object_vars($data)) && null !== ($data->maxAttempts ?? null)) {
-            $dataArray['MaxAttempts'] = $data->maxAttempts ?? null;
+            $dataArray['MaxAttempts'] = $data->maxAttempts;
         }
         if (array_key_exists('window', get_object_vars($data)) && null !== ($data->window ?? null)) {
-            $dataArray['Window'] = $data->window ?? null;
+            $dataArray['Window'] = $data->window;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecRestartPolicyConstraint());

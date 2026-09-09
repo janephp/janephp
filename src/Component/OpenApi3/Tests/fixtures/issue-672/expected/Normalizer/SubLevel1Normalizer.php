@@ -52,7 +52,7 @@ class SubLevel1Normalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('subLevel2', get_object_vars($data)) && null !== ($data->subLevel2 ?? null)) {
-            $dataArray['subLevel-2'] = ($data->subLevel2 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($this->normalizer->normalize($data->subLevel2 ?? null, 'json', $context));
+            $dataArray['subLevel-2'] = $data->subLevel2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($this->normalizer->normalize($data->subLevel2, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

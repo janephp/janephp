@@ -66,13 +66,13 @@ class AppMaintenanceSpecNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('archive', get_object_vars($data)) && null !== ($data->archive ?? null)) {
-            $dataArray['archive'] = $data->archive ?? null;
+            $dataArray['archive'] = $data->archive;
         }
         if (array_key_exists('offlinePageUrl', get_object_vars($data)) && null !== ($data->offlinePageUrl ?? null)) {
-            $dataArray['offline_page_url'] = $data->offlinePageUrl ?? null;
+            $dataArray['offline_page_url'] = $data->offlinePageUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

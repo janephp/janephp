@@ -143,52 +143,52 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('colorProfile', get_object_vars($data)) && null !== ($data->colorProfile ?? null)) {
-            $value = $data->colorProfile ?? null;
-            if (is_string($data->colorProfile ?? null)) {
-                $value = $data->colorProfile ?? null;
+            $value = $data->colorProfile;
+            if (is_string($data->colorProfile)) {
+                $value = $data->colorProfile;
             }
             $dataArray['colorProfile'] = $value;
         }
         if (array_key_exists('colorTransformationIntent', get_object_vars($data)) && null !== ($data->colorTransformationIntent ?? null)) {
-            $value_1 = $data->colorTransformationIntent ?? null;
-            if (is_string($data->colorTransformationIntent ?? null)) {
-                $value_1 = $data->colorTransformationIntent ?? null;
+            $value_1 = $data->colorTransformationIntent;
+            if (is_string($data->colorTransformationIntent)) {
+                $value_1 = $data->colorTransformationIntent;
             }
             $dataArray['colorTransformationIntent'] = $value_1;
         }
         if (array_key_exists('horizontalResolution', get_object_vars($data)) && null !== ($data->horizontalResolution ?? null)) {
-            $dataArray['horizontalResolution'] = $data->horizontalResolution ?? null;
+            $dataArray['horizontalResolution'] = $data->horizontalResolution;
         }
         if (array_key_exists('verticalResolution', get_object_vars($data)) && null !== ($data->verticalResolution ?? null)) {
-            $dataArray['verticalResolution'] = $data->verticalResolution ?? null;
+            $dataArray['verticalResolution'] = $data->verticalResolution;
         }
         if (array_key_exists('keepClippingPath', get_object_vars($data)) && null !== ($data->keepClippingPath ?? null)) {
-            $dataArray['keepClippingPath'] = $data->keepClippingPath ?? null;
+            $dataArray['keepClippingPath'] = $data->keepClippingPath;
         }
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
-            $value_2 = $data->resizeAction ?? null;
-            if (is_object($data->resizeAction ?? null)) {
-                $value_2 = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
+            $value_2 = $data->resizeAction;
+            if (is_object($data->resizeAction)) {
+                $value_2 = $data->resizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
             }
             $dataArray['resizeAction'] = $value_2;
         }
         if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
-            foreach ($data->actions ?? null as $value_3) {
+            foreach ($data->actions as $value_3) {
                 $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['actions'] = $values;
         }
         if (array_key_exists('quality', get_object_vars($data)) && null !== ($data->quality ?? null)) {
-            $dataArray['quality'] = $data->quality ?? null;
+            $dataArray['quality'] = $data->quality;
         }
         if (array_key_exists('chromaSubsamplingEnabled', get_object_vars($data)) && null !== ($data->chromaSubsamplingEnabled ?? null)) {
-            $dataArray['chromaSubsamplingEnabled'] = $data->chromaSubsamplingEnabled ?? null;
+            $dataArray['chromaSubsamplingEnabled'] = $data->chromaSubsamplingEnabled;
         }
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

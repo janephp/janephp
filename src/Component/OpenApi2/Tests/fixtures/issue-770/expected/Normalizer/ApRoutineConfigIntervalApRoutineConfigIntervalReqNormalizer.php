@@ -46,7 +46,7 @@ class ApRoutineConfigIntervalApRoutineConfigIntervalReqNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('apRoutineConfigInterval', get_object_vars($data)) && null !== ($data->apRoutineConfigInterval ?? null)) {
-            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval ?? null;
+            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval;
         }
         return $dataArray;
     }

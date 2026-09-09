@@ -57,7 +57,7 @@ class ResponseStatusMessagesNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
             $values = [];
-            foreach ($data->messages ?? null as $value) {
+            foreach ($data->messages as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['messages'] = $values;

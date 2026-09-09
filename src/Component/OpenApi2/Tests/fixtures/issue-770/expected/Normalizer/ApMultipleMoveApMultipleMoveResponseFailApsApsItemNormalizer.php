@@ -49,10 +49,10 @@ class ApMultipleMoveApMultipleMoveResponseFailApsApsItemNormalizer implements De
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
-            $dataArray['errorMessage'] = $data->errorMessage ?? null;
+            $dataArray['errorMessage'] = $data->errorMessage;
         }
         return $dataArray;
     }

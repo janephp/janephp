@@ -58,13 +58,13 @@ class CommonDoAssignIpSiteApsItemNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('apServerEnabled', get_object_vars($data)) && null !== ($data->apServerEnabled ?? null)) {
-            $dataArray['apServerEnabled'] = $data->apServerEnabled ?? null;
+            $dataArray['apServerEnabled'] = $data->apServerEnabled;
         }
         if (array_key_exists('apServerPrimary', get_object_vars($data)) && null !== ($data->apServerPrimary ?? null)) {
-            $dataArray['apServerPrimary'] = $data->apServerPrimary ?? null;
+            $dataArray['apServerPrimary'] = $data->apServerPrimary;
         }
         return $dataArray;
     }

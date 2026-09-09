@@ -52,9 +52,9 @@ class StatusOfSearchIndexStateNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['state'] = $data->state ?? null;
+        $dataArray['state'] = $data->state;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

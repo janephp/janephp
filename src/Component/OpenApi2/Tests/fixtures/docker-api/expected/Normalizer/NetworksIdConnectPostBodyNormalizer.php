@@ -52,10 +52,10 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('container', get_object_vars($data)) && null !== ($data->container ?? null)) {
-            $dataArray['Container'] = $data->container ?? null;
+            $dataArray['Container'] = $data->container;
         }
         if (array_key_exists('endpointConfig', get_object_vars($data)) && null !== ($data->endpointConfig ?? null)) {
-            $dataArray['EndpointConfig'] = ($data->endpointConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointConfig ?? null, 'json', $context));
+            $dataArray['EndpointConfig'] = $data->endpointConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointConfig, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworksIdConnectPostBodyConstraint());

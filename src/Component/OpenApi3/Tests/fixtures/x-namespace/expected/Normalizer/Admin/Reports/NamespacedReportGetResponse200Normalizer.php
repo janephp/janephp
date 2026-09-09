@@ -52,7 +52,7 @@ class NamespacedReportGetResponse200Normalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

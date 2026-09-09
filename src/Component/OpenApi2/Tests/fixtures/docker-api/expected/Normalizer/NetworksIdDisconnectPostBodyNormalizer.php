@@ -55,10 +55,10 @@ class NetworksIdDisconnectPostBodyNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('container', get_object_vars($data)) && null !== ($data->container ?? null)) {
-            $dataArray['Container'] = $data->container ?? null;
+            $dataArray['Container'] = $data->container;
         }
         if (array_key_exists('force', get_object_vars($data)) && null !== ($data->force ?? null)) {
-            $dataArray['Force'] = $data->force ?? null;
+            $dataArray['Force'] = $data->force;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworksIdDisconnectPostBodyConstraint());

@@ -89,44 +89,44 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
-            $dataArray['Platform'] = ($data->platform ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform ?? null, 'json', $context));
+            $dataArray['Platform'] = $data->platform === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform, 'json', $context));
         }
         if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->components ?? null as $value) {
+            foreach ($data->components as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Components'] = $values;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['Version'] = $data->version ?? null;
+            $dataArray['Version'] = $data->version;
         }
         if (array_key_exists('apiVersion', get_object_vars($data)) && null !== ($data->apiVersion ?? null)) {
-            $dataArray['ApiVersion'] = $data->apiVersion ?? null;
+            $dataArray['ApiVersion'] = $data->apiVersion;
         }
         if (array_key_exists('minAPIVersion', get_object_vars($data)) && null !== ($data->minAPIVersion ?? null)) {
-            $dataArray['MinAPIVersion'] = $data->minAPIVersion ?? null;
+            $dataArray['MinAPIVersion'] = $data->minAPIVersion;
         }
         if (array_key_exists('gitCommit', get_object_vars($data)) && null !== ($data->gitCommit ?? null)) {
-            $dataArray['GitCommit'] = $data->gitCommit ?? null;
+            $dataArray['GitCommit'] = $data->gitCommit;
         }
         if (array_key_exists('goVersion', get_object_vars($data)) && null !== ($data->goVersion ?? null)) {
-            $dataArray['GoVersion'] = $data->goVersion ?? null;
+            $dataArray['GoVersion'] = $data->goVersion;
         }
         if (array_key_exists('os', get_object_vars($data)) && null !== ($data->os ?? null)) {
-            $dataArray['Os'] = $data->os ?? null;
+            $dataArray['Os'] = $data->os;
         }
         if (array_key_exists('arch', get_object_vars($data)) && null !== ($data->arch ?? null)) {
-            $dataArray['Arch'] = $data->arch ?? null;
+            $dataArray['Arch'] = $data->arch;
         }
         if (array_key_exists('kernelVersion', get_object_vars($data)) && null !== ($data->kernelVersion ?? null)) {
-            $dataArray['KernelVersion'] = $data->kernelVersion ?? null;
+            $dataArray['KernelVersion'] = $data->kernelVersion;
         }
         if (array_key_exists('experimental', get_object_vars($data)) && null !== ($data->experimental ?? null)) {
-            $dataArray['Experimental'] = $data->experimental ?? null;
+            $dataArray['Experimental'] = $data->experimental;
         }
         if (array_key_exists('buildTime', get_object_vars($data)) && null !== ($data->buildTime ?? null)) {
-            $dataArray['BuildTime'] = $data->buildTime ?? null;
+            $dataArray['BuildTime'] = $data->buildTime;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SystemVersionConstraint());

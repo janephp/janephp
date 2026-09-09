@@ -58,10 +58,10 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('detach', get_object_vars($data)) && null !== ($data->detach ?? null)) {
-            $dataArray['Detach'] = $data->detach ?? null;
+            $dataArray['Detach'] = $data->detach;
         }
         if (array_key_exists('tty', get_object_vars($data)) && null !== ($data->tty ?? null)) {
-            $dataArray['Tty'] = $data->tty ?? null;
+            $dataArray['Tty'] = $data->tty;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());

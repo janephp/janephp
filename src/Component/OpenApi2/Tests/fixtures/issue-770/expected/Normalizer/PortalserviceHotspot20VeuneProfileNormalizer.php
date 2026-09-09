@@ -80,32 +80,32 @@ class PortalserviceHotspot20VeuneProfileNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
-            $dataArray['group'] = $data->group ?? null;
+            $dataArray['group'] = $data->group;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('downlinkSpeedInKbps', get_object_vars($data)) && null !== ($data->downlinkSpeedInKbps ?? null)) {
-            $dataArray['downlinkSpeedInKbps'] = $data->downlinkSpeedInKbps ?? null;
+            $dataArray['downlinkSpeedInKbps'] = $data->downlinkSpeedInKbps;
         }
         if (array_key_exists('uplinkSpeedInKbps', get_object_vars($data)) && null !== ($data->uplinkSpeedInKbps ?? null)) {
-            $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps ?? null;
+            $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps;
         }
         if (array_key_exists('venueNames', get_object_vars($data)) && null !== ($data->venueNames ?? null)) {
             $values = [];
-            foreach ($data->venueNames ?? null as $value) {
+            foreach ($data->venueNames as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['venueNames'] = $values;

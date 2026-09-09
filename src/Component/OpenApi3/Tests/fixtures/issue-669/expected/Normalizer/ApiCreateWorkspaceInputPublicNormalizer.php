@@ -65,16 +65,16 @@ class ApiCreateWorkspaceInputPublicNormalizer implements DenormalizerInterface, 
         $dataArray = [];
         if (array_key_exists('agentUuids', get_object_vars($data)) && null !== ($data->agentUuids ?? null)) {
             $values = [];
-            foreach ($data->agentUuids ?? null as $value) {
+            foreach ($data->agentUuids as $value) {
                 $values[] = $value;
             }
             $dataArray['agent_uuids'] = $values;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

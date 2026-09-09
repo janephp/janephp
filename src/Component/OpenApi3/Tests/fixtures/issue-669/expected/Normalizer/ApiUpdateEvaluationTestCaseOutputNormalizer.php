@@ -56,10 +56,10 @@ class ApiUpdateEvaluationTestCaseOutputNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
-            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
+            $dataArray['test_case_uuid'] = $data->testCaseUuid;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

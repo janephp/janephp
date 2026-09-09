@@ -54,7 +54,7 @@ class PermissionSetDeleteManyRequestNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('permissionSetIds', get_object_vars($data)) && null !== ($data->permissionSetIds ?? null)) {
             $values = [];
-            foreach ($data->permissionSetIds ?? null as $value) {
+            foreach ($data->permissionSetIds as $value) {
                 $values[] = $value;
             }
             $dataArray['permissionSetIds'] = $values;

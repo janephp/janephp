@@ -223,124 +223,124 @@ class KafkaAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('compressionType', get_object_vars($data)) && null !== ($data->compressionType ?? null)) {
-            $dataArray['compression_type'] = $data->compressionType ?? null;
+            $dataArray['compression_type'] = $data->compressionType;
         }
         if (array_key_exists('groupInitialRebalanceDelayMs', get_object_vars($data)) && null !== ($data->groupInitialRebalanceDelayMs ?? null)) {
-            $dataArray['group_initial_rebalance_delay_ms'] = $data->groupInitialRebalanceDelayMs ?? null;
+            $dataArray['group_initial_rebalance_delay_ms'] = $data->groupInitialRebalanceDelayMs;
         }
         if (array_key_exists('groupMinSessionTimeoutMs', get_object_vars($data)) && null !== ($data->groupMinSessionTimeoutMs ?? null)) {
-            $dataArray['group_min_session_timeout_ms'] = $data->groupMinSessionTimeoutMs ?? null;
+            $dataArray['group_min_session_timeout_ms'] = $data->groupMinSessionTimeoutMs;
         }
         if (array_key_exists('groupMaxSessionTimeoutMs', get_object_vars($data)) && null !== ($data->groupMaxSessionTimeoutMs ?? null)) {
-            $dataArray['group_max_session_timeout_ms'] = $data->groupMaxSessionTimeoutMs ?? null;
+            $dataArray['group_max_session_timeout_ms'] = $data->groupMaxSessionTimeoutMs;
         }
         if (array_key_exists('connectionsMaxIdleMs', get_object_vars($data)) && null !== ($data->connectionsMaxIdleMs ?? null)) {
-            $dataArray['connections_max_idle_ms'] = $data->connectionsMaxIdleMs ?? null;
+            $dataArray['connections_max_idle_ms'] = $data->connectionsMaxIdleMs;
         }
         if (array_key_exists('maxIncrementalFetchSessionCacheSlots', get_object_vars($data)) && null !== ($data->maxIncrementalFetchSessionCacheSlots ?? null)) {
-            $dataArray['max_incremental_fetch_session_cache_slots'] = $data->maxIncrementalFetchSessionCacheSlots ?? null;
+            $dataArray['max_incremental_fetch_session_cache_slots'] = $data->maxIncrementalFetchSessionCacheSlots;
         }
         if (array_key_exists('messageMaxBytes', get_object_vars($data)) && null !== ($data->messageMaxBytes ?? null)) {
-            $dataArray['message_max_bytes'] = $data->messageMaxBytes ?? null;
+            $dataArray['message_max_bytes'] = $data->messageMaxBytes;
         }
         if (array_key_exists('offsetsRetentionMinutes', get_object_vars($data)) && null !== ($data->offsetsRetentionMinutes ?? null)) {
-            $dataArray['offsets_retention_minutes'] = $data->offsetsRetentionMinutes ?? null;
+            $dataArray['offsets_retention_minutes'] = $data->offsetsRetentionMinutes;
         }
         if (array_key_exists('logCleanerDeleteRetentionMs', get_object_vars($data)) && null !== ($data->logCleanerDeleteRetentionMs ?? null)) {
-            $dataArray['log_cleaner_delete_retention_ms'] = $data->logCleanerDeleteRetentionMs ?? null;
+            $dataArray['log_cleaner_delete_retention_ms'] = $data->logCleanerDeleteRetentionMs;
         }
         if (array_key_exists('logCleanerMinCleanableRatio', get_object_vars($data)) && null !== ($data->logCleanerMinCleanableRatio ?? null)) {
-            $dataArray['log_cleaner_min_cleanable_ratio'] = $data->logCleanerMinCleanableRatio ?? null;
+            $dataArray['log_cleaner_min_cleanable_ratio'] = $data->logCleanerMinCleanableRatio;
         }
         if (array_key_exists('logCleanerMaxCompactionLagMs', get_object_vars($data)) && null !== ($data->logCleanerMaxCompactionLagMs ?? null)) {
-            $dataArray['log_cleaner_max_compaction_lag_ms'] = $data->logCleanerMaxCompactionLagMs ?? null;
+            $dataArray['log_cleaner_max_compaction_lag_ms'] = $data->logCleanerMaxCompactionLagMs;
         }
         if (array_key_exists('logCleanerMinCompactionLagMs', get_object_vars($data)) && null !== ($data->logCleanerMinCompactionLagMs ?? null)) {
-            $dataArray['log_cleaner_min_compaction_lag_ms'] = $data->logCleanerMinCompactionLagMs ?? null;
+            $dataArray['log_cleaner_min_compaction_lag_ms'] = $data->logCleanerMinCompactionLagMs;
         }
         if (array_key_exists('logCleanupPolicy', get_object_vars($data)) && null !== ($data->logCleanupPolicy ?? null)) {
-            $dataArray['log_cleanup_policy'] = $data->logCleanupPolicy ?? null;
+            $dataArray['log_cleanup_policy'] = $data->logCleanupPolicy;
         }
         if (array_key_exists('logFlushIntervalMessages', get_object_vars($data)) && null !== ($data->logFlushIntervalMessages ?? null)) {
-            $dataArray['log_flush_interval_messages'] = $data->logFlushIntervalMessages ?? null;
+            $dataArray['log_flush_interval_messages'] = $data->logFlushIntervalMessages;
         }
         if (array_key_exists('logFlushIntervalMs', get_object_vars($data)) && null !== ($data->logFlushIntervalMs ?? null)) {
-            $dataArray['log_flush_interval_ms'] = $data->logFlushIntervalMs ?? null;
+            $dataArray['log_flush_interval_ms'] = $data->logFlushIntervalMs;
         }
         if (array_key_exists('logIndexIntervalBytes', get_object_vars($data)) && null !== ($data->logIndexIntervalBytes ?? null)) {
-            $dataArray['log_index_interval_bytes'] = $data->logIndexIntervalBytes ?? null;
+            $dataArray['log_index_interval_bytes'] = $data->logIndexIntervalBytes;
         }
         if (array_key_exists('logIndexSizeMaxBytes', get_object_vars($data)) && null !== ($data->logIndexSizeMaxBytes ?? null)) {
-            $dataArray['log_index_size_max_bytes'] = $data->logIndexSizeMaxBytes ?? null;
+            $dataArray['log_index_size_max_bytes'] = $data->logIndexSizeMaxBytes;
         }
         if (array_key_exists('logMessageDownconversionEnable', get_object_vars($data)) && null !== ($data->logMessageDownconversionEnable ?? null)) {
-            $dataArray['log_message_downconversion_enable'] = $data->logMessageDownconversionEnable ?? null;
+            $dataArray['log_message_downconversion_enable'] = $data->logMessageDownconversionEnable;
         }
         if (array_key_exists('logMessageTimestampType', get_object_vars($data)) && null !== ($data->logMessageTimestampType ?? null)) {
-            $dataArray['log_message_timestamp_type'] = $data->logMessageTimestampType ?? null;
+            $dataArray['log_message_timestamp_type'] = $data->logMessageTimestampType;
         }
         if (array_key_exists('logMessageTimestampDifferenceMaxMs', get_object_vars($data)) && null !== ($data->logMessageTimestampDifferenceMaxMs ?? null)) {
-            $dataArray['log_message_timestamp_difference_max_ms'] = $data->logMessageTimestampDifferenceMaxMs ?? null;
+            $dataArray['log_message_timestamp_difference_max_ms'] = $data->logMessageTimestampDifferenceMaxMs;
         }
         if (array_key_exists('logPreallocate', get_object_vars($data)) && null !== ($data->logPreallocate ?? null)) {
-            $dataArray['log_preallocate'] = $data->logPreallocate ?? null;
+            $dataArray['log_preallocate'] = $data->logPreallocate;
         }
         if (array_key_exists('logRetentionBytes', get_object_vars($data)) && null !== ($data->logRetentionBytes ?? null)) {
-            $dataArray['log_retention_bytes'] = $data->logRetentionBytes ?? null;
+            $dataArray['log_retention_bytes'] = $data->logRetentionBytes;
         }
         if (array_key_exists('logRetentionHours', get_object_vars($data)) && null !== ($data->logRetentionHours ?? null)) {
-            $dataArray['log_retention_hours'] = $data->logRetentionHours ?? null;
+            $dataArray['log_retention_hours'] = $data->logRetentionHours;
         }
         if (array_key_exists('logRetentionMs', get_object_vars($data)) && null !== ($data->logRetentionMs ?? null)) {
-            $dataArray['log_retention_ms'] = $data->logRetentionMs ?? null;
+            $dataArray['log_retention_ms'] = $data->logRetentionMs;
         }
         if (array_key_exists('logRollJitterMs', get_object_vars($data)) && null !== ($data->logRollJitterMs ?? null)) {
-            $dataArray['log_roll_jitter_ms'] = $data->logRollJitterMs ?? null;
+            $dataArray['log_roll_jitter_ms'] = $data->logRollJitterMs;
         }
         if (array_key_exists('logRollMs', get_object_vars($data)) && null !== ($data->logRollMs ?? null)) {
-            $dataArray['log_roll_ms'] = $data->logRollMs ?? null;
+            $dataArray['log_roll_ms'] = $data->logRollMs;
         }
         if (array_key_exists('logSegmentBytes', get_object_vars($data)) && null !== ($data->logSegmentBytes ?? null)) {
-            $dataArray['log_segment_bytes'] = $data->logSegmentBytes ?? null;
+            $dataArray['log_segment_bytes'] = $data->logSegmentBytes;
         }
         if (array_key_exists('logSegmentDeleteDelayMs', get_object_vars($data)) && null !== ($data->logSegmentDeleteDelayMs ?? null)) {
-            $dataArray['log_segment_delete_delay_ms'] = $data->logSegmentDeleteDelayMs ?? null;
+            $dataArray['log_segment_delete_delay_ms'] = $data->logSegmentDeleteDelayMs;
         }
         if (array_key_exists('autoCreateTopicsEnable', get_object_vars($data)) && null !== ($data->autoCreateTopicsEnable ?? null)) {
-            $dataArray['auto_create_topics_enable'] = $data->autoCreateTopicsEnable ?? null;
+            $dataArray['auto_create_topics_enable'] = $data->autoCreateTopicsEnable;
         }
         if (array_key_exists('minInsyncReplicas', get_object_vars($data)) && null !== ($data->minInsyncReplicas ?? null)) {
-            $dataArray['min_insync_replicas'] = $data->minInsyncReplicas ?? null;
+            $dataArray['min_insync_replicas'] = $data->minInsyncReplicas;
         }
         if (array_key_exists('numPartitions', get_object_vars($data)) && null !== ($data->numPartitions ?? null)) {
-            $dataArray['num_partitions'] = $data->numPartitions ?? null;
+            $dataArray['num_partitions'] = $data->numPartitions;
         }
         if (array_key_exists('defaultReplicationFactor', get_object_vars($data)) && null !== ($data->defaultReplicationFactor ?? null)) {
-            $dataArray['default_replication_factor'] = $data->defaultReplicationFactor ?? null;
+            $dataArray['default_replication_factor'] = $data->defaultReplicationFactor;
         }
         if (array_key_exists('replicaFetchMaxBytes', get_object_vars($data)) && null !== ($data->replicaFetchMaxBytes ?? null)) {
-            $dataArray['replica_fetch_max_bytes'] = $data->replicaFetchMaxBytes ?? null;
+            $dataArray['replica_fetch_max_bytes'] = $data->replicaFetchMaxBytes;
         }
         if (array_key_exists('replicaFetchResponseMaxBytes', get_object_vars($data)) && null !== ($data->replicaFetchResponseMaxBytes ?? null)) {
-            $dataArray['replica_fetch_response_max_bytes'] = $data->replicaFetchResponseMaxBytes ?? null;
+            $dataArray['replica_fetch_response_max_bytes'] = $data->replicaFetchResponseMaxBytes;
         }
         if (array_key_exists('maxConnectionsPerIp', get_object_vars($data)) && null !== ($data->maxConnectionsPerIp ?? null)) {
-            $dataArray['max_connections_per_ip'] = $data->maxConnectionsPerIp ?? null;
+            $dataArray['max_connections_per_ip'] = $data->maxConnectionsPerIp;
         }
         if (array_key_exists('producerPurgatoryPurgeIntervalRequests', get_object_vars($data)) && null !== ($data->producerPurgatoryPurgeIntervalRequests ?? null)) {
-            $dataArray['producer_purgatory_purge_interval_requests'] = $data->producerPurgatoryPurgeIntervalRequests ?? null;
+            $dataArray['producer_purgatory_purge_interval_requests'] = $data->producerPurgatoryPurgeIntervalRequests;
         }
         if (array_key_exists('socketRequestMaxBytes', get_object_vars($data)) && null !== ($data->socketRequestMaxBytes ?? null)) {
-            $dataArray['socket_request_max_bytes'] = $data->socketRequestMaxBytes ?? null;
+            $dataArray['socket_request_max_bytes'] = $data->socketRequestMaxBytes;
         }
         if (array_key_exists('transactionStateLogSegmentBytes', get_object_vars($data)) && null !== ($data->transactionStateLogSegmentBytes ?? null)) {
-            $dataArray['transaction_state_log_segment_bytes'] = $data->transactionStateLogSegmentBytes ?? null;
+            $dataArray['transaction_state_log_segment_bytes'] = $data->transactionStateLogSegmentBytes;
         }
         if (array_key_exists('transactionRemoveExpiredTransactionCleanupIntervalMs', get_object_vars($data)) && null !== ($data->transactionRemoveExpiredTransactionCleanupIntervalMs ?? null)) {
-            $dataArray['transaction_remove_expired_transaction_cleanup_interval_ms'] = $data->transactionRemoveExpiredTransactionCleanupIntervalMs ?? null;
+            $dataArray['transaction_remove_expired_transaction_cleanup_interval_ms'] = $data->transactionRemoveExpiredTransactionCleanupIntervalMs;
         }
         if (array_key_exists('schemaRegistry', get_object_vars($data)) && null !== ($data->schemaRegistry ?? null)) {
-            $dataArray['schema_registry'] = $data->schemaRegistry ?? null;
+            $dataArray['schema_registry'] = $data->schemaRegistry;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

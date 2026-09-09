@@ -57,7 +57,7 @@ class ApiListEvaluationMetricsOutputNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
-            foreach ($data->metrics ?? null as $value) {
+            foreach ($data->metrics as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metrics'] = $values;

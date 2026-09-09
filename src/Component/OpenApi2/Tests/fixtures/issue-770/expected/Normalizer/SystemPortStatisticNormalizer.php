@@ -115,40 +115,40 @@ class SystemPortStatisticNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('rxBps', get_object_vars($data)) && null !== ($data->rxBps ?? null)) {
-            $dataArray['rxBps'] = $data->rxBps ?? null;
+            $dataArray['rxBps'] = $data->rxBps;
         }
         if (array_key_exists('rxBpsMax', get_object_vars($data)) && null !== ($data->rxBpsMax ?? null)) {
-            $dataArray['rxBpsMax'] = $data->rxBpsMax ?? null;
+            $dataArray['rxBpsMax'] = $data->rxBpsMax;
         }
         if (array_key_exists('rxBpsMin', get_object_vars($data)) && null !== ($data->rxBpsMin ?? null)) {
-            $dataArray['rxBpsMin'] = $data->rxBpsMin ?? null;
+            $dataArray['rxBpsMin'] = $data->rxBpsMin;
         }
         if (array_key_exists('rxBytes', get_object_vars($data)) && null !== ($data->rxBytes ?? null)) {
-            $dataArray['rxBytes'] = $data->rxBytes ?? null;
+            $dataArray['rxBytes'] = $data->rxBytes;
         }
         if (array_key_exists('rxDropped', get_object_vars($data)) && null !== ($data->rxDropped ?? null)) {
-            $dataArray['rxDropped'] = $data->rxDropped ?? null;
+            $dataArray['rxDropped'] = $data->rxDropped;
         }
         if (array_key_exists('rxPackets', get_object_vars($data)) && null !== ($data->rxPackets ?? null)) {
-            $dataArray['rxPackets'] = $data->rxPackets ?? null;
+            $dataArray['rxPackets'] = $data->rxPackets;
         }
         if (array_key_exists('txBps', get_object_vars($data)) && null !== ($data->txBps ?? null)) {
-            $dataArray['txBps'] = $data->txBps ?? null;
+            $dataArray['txBps'] = $data->txBps;
         }
         if (array_key_exists('txBpsMax', get_object_vars($data)) && null !== ($data->txBpsMax ?? null)) {
-            $dataArray['txBpsMax'] = $data->txBpsMax ?? null;
+            $dataArray['txBpsMax'] = $data->txBpsMax;
         }
         if (array_key_exists('txBpsMin', get_object_vars($data)) && null !== ($data->txBpsMin ?? null)) {
-            $dataArray['txBpsMin'] = $data->txBpsMin ?? null;
+            $dataArray['txBpsMin'] = $data->txBpsMin;
         }
         if (array_key_exists('txBytes', get_object_vars($data)) && null !== ($data->txBytes ?? null)) {
-            $dataArray['txBytes'] = $data->txBytes ?? null;
+            $dataArray['txBytes'] = $data->txBytes;
         }
         if (array_key_exists('txDropped', get_object_vars($data)) && null !== ($data->txDropped ?? null)) {
-            $dataArray['txDropped'] = $data->txDropped ?? null;
+            $dataArray['txDropped'] = $data->txDropped;
         }
         if (array_key_exists('txPackets', get_object_vars($data)) && null !== ($data->txPackets ?? null)) {
-            $dataArray['txPackets'] = $data->txPackets ?? null;
+            $dataArray['txPackets'] = $data->txPackets;
         }
         return $dataArray;
     }

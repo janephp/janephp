@@ -55,7 +55,7 @@ class VpcDefaultNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('default', get_object_vars($data)) && null !== ($data->default ?? null)) {
-            $dataArray['default'] = $data->default ?? null;
+            $dataArray['default'] = $data->default;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

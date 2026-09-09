@@ -60,10 +60,10 @@ class MaintenancePolicyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('startTime', get_object_vars($data)) && null !== ($data->startTime ?? null)) {
-            $dataArray['start_time'] = $data->startTime ?? null;
+            $dataArray['start_time'] = $data->startTime;
         }
         if (array_key_exists('day', get_object_vars($data)) && null !== ($data->day ?? null)) {
-            $dataArray['day'] = $data->day ?? null;
+            $dataArray['day'] = $data->day;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

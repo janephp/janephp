@@ -82,17 +82,17 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('separators', get_object_vars($data)) && null !== ($data->separators ?? null)) {
-            $dataArray['separators'] = $data->separators ?? null;
+            $dataArray['separators'] = $data->separators;
         }
         if (array_key_exists('keepEmpty', get_object_vars($data)) && null !== ($data->keepEmpty ?? null)) {
-            $dataArray['keepEmpty'] = $data->keepEmpty ?? null;
+            $dataArray['keepEmpty'] = $data->keepEmpty;
         }
         if (array_key_exists('trim', get_object_vars($data)) && null !== ($data->trim ?? null)) {
-            $dataArray['trim'] = $data->trim ?? null;
+            $dataArray['trim'] = $data->trim;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

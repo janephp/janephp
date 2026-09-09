@@ -52,10 +52,10 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('current', get_object_vars($data)) && null !== ($data->current ?? null)) {
-            $dataArray['current'] = $data->current ?? null;
+            $dataArray['current'] = $data->current;
         }
         if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
-            $dataArray['total'] = $data->total ?? null;
+            $dataArray['total'] = $data->total;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ProgressDetailConstraint());

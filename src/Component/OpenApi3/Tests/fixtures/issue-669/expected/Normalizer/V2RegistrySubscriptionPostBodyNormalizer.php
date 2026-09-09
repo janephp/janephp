@@ -52,7 +52,7 @@ class V2RegistrySubscriptionPostBodyNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('tierSlug', get_object_vars($data)) && null !== ($data->tierSlug ?? null)) {
-            $dataArray['tier_slug'] = $data->tierSlug ?? null;
+            $dataArray['tier_slug'] = $data->tierSlug;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

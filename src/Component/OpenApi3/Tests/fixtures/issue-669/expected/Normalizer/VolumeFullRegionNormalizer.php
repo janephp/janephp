@@ -78,16 +78,16 @@ class VolumeFullRegionNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['slug'] = $data->slug ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['slug'] = $data->slug;
         $values = [];
-        foreach ($data->features ?? null as $value) {
+        foreach ($data->features as $value) {
             $values[] = $value;
         }
         $dataArray['features'] = $values;
-        $dataArray['available'] = $data->available ?? null;
+        $dataArray['available'] = $data->available;
         $values_1 = [];
-        foreach ($data->sizes ?? null as $value_1) {
+        foreach ($data->sizes as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['sizes'] = $values_1;

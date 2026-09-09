@@ -61,13 +61,13 @@ class AppsGetLogsResponseNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         if (array_key_exists('historicUrls', get_object_vars($data)) && null !== ($data->historicUrls ?? null)) {
             $values = [];
-            foreach ($data->historicUrls ?? null as $value) {
+            foreach ($data->historicUrls as $value) {
                 $values[] = $value;
             }
             $dataArray['historic_urls'] = $values;
         }
         if (array_key_exists('liveUrl', get_object_vars($data)) && null !== ($data->liveUrl ?? null)) {
-            $dataArray['live_url'] = $data->liveUrl ?? null;
+            $dataArray['live_url'] = $data->liveUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

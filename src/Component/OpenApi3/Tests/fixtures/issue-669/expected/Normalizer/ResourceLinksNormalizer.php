@@ -52,7 +52,7 @@ class ResourceLinksNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('self', get_object_vars($data)) && null !== ($data->self ?? null)) {
-            $dataArray['self'] = $data->self ?? null;
+            $dataArray['self'] = $data->self;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

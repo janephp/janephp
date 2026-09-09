@@ -71,16 +71,16 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('searchIndex', get_object_vars($data)) && null !== ($data->searchIndex ?? null)) {
-            $dataArray['searchIndex'] = $data->searchIndex ?? null;
+            $dataArray['searchIndex'] = $data->searchIndex;
         }
         if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
-            $dataArray['items'] = $data->items ?? null;
+            $dataArray['items'] = $data->items;
         }
         if (array_key_exists('duration', get_object_vars($data)) && null !== ($data->duration ?? null)) {
-            $dataArray['duration'] = $data->duration ?? null;
+            $dataArray['duration'] = $data->duration;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -55,13 +55,13 @@ class OCIDescriptorNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('mediaType', get_object_vars($data)) && null !== ($data->mediaType ?? null)) {
-            $dataArray['mediaType'] = $data->mediaType ?? null;
+            $dataArray['mediaType'] = $data->mediaType;
         }
         if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
-            $dataArray['digest'] = $data->digest ?? null;
+            $dataArray['digest'] = $data->digest;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\OCIDescriptorConstraint());

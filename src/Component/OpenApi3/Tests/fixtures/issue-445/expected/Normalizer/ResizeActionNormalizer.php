@@ -55,11 +55,11 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['width'] = $data->width ?? null;
-        $dataArray['height'] = $data->height ?? null;
-        $value = $data->resizeMode ?? null;
-        if (is_string($data->resizeMode ?? null)) {
-            $value = $data->resizeMode ?? null;
+        $dataArray['width'] = $data->width;
+        $dataArray['height'] = $data->height;
+        $value = $data->resizeMode;
+        if (is_string($data->resizeMode)) {
+            $value = $data->resizeMode;
         }
         $dataArray['resizeMode'] = $value;
         return $dataArray;

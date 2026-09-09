@@ -48,9 +48,9 @@ class SystemNtpServerValidationNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ntpServer'] = $data->ntpServer ?? null;
+        $dataArray['ntpServer'] = $data->ntpServer;
         if (array_key_exists('authenticationKey', get_object_vars($data)) && null !== ($data->authenticationKey ?? null)) {
-            $dataArray['authenticationKey'] = ($data->authenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey ?? null, 'json', $context));
+            $dataArray['authenticationKey'] = $data->authenticationKey === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey, 'json', $context));
         }
         return $dataArray;
     }

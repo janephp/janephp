@@ -76,14 +76,14 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
-            $dataArray['fieldPath'] = $data->fieldPath ?? null;
+            $dataArray['fieldPath'] = $data->fieldPath;
         }
         if (array_key_exists('expectedValue', get_object_vars($data)) && null !== ($data->expectedValue ?? null)) {
-            $dataArray['expectedValue'] = $data->expectedValue ?? null;
+            $dataArray['expectedValue'] = $data->expectedValue;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

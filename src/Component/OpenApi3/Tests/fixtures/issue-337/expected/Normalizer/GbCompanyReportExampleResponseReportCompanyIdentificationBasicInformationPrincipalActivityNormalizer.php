@@ -56,10 +56,10 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationP
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
-            $dataArray['classification'] = $data->classification ?? null;
+            $dataArray['classification'] = $data->classification;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

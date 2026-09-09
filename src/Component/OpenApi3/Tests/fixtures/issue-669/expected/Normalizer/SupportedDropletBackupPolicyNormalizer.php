@@ -76,24 +76,24 @@ class SupportedDropletBackupPolicyNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('possibleWindowStarts', get_object_vars($data)) && null !== ($data->possibleWindowStarts ?? null)) {
             $values = [];
-            foreach ($data->possibleWindowStarts ?? null as $value) {
+            foreach ($data->possibleWindowStarts as $value) {
                 $values[] = $value;
             }
             $dataArray['possible_window_starts'] = $values;
         }
         if (array_key_exists('windowLengthHours', get_object_vars($data)) && null !== ($data->windowLengthHours ?? null)) {
-            $dataArray['window_length_hours'] = $data->windowLengthHours ?? null;
+            $dataArray['window_length_hours'] = $data->windowLengthHours;
         }
         if (array_key_exists('retentionPeriodDays', get_object_vars($data)) && null !== ($data->retentionPeriodDays ?? null)) {
-            $dataArray['retention_period_days'] = $data->retentionPeriodDays ?? null;
+            $dataArray['retention_period_days'] = $data->retentionPeriodDays;
         }
         if (array_key_exists('possibleDays', get_object_vars($data)) && null !== ($data->possibleDays ?? null)) {
             $values_1 = [];
-            foreach ($data->possibleDays ?? null as $value_1) {
+            foreach ($data->possibleDays as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['possible_days'] = $values_1;

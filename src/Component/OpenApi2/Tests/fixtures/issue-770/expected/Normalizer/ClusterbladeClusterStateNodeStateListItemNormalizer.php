@@ -52,13 +52,13 @@ class ClusterbladeClusterStateNodeStateListItemNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('nodeId', get_object_vars($data)) && null !== ($data->nodeId ?? null)) {
-            $dataArray['nodeId'] = $data->nodeId ?? null;
+            $dataArray['nodeId'] = $data->nodeId;
         }
         if (array_key_exists('nodeName', get_object_vars($data)) && null !== ($data->nodeName ?? null)) {
-            $dataArray['nodeName'] = $data->nodeName ?? null;
+            $dataArray['nodeName'] = $data->nodeName;
         }
         if (array_key_exists('nodeState', get_object_vars($data)) && null !== ($data->nodeState ?? null)) {
-            $dataArray['nodeState'] = $data->nodeState ?? null;
+            $dataArray['nodeState'] = $data->nodeState;
         }
         return $dataArray;
     }

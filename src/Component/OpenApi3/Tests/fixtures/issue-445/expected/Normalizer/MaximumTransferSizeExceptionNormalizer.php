@@ -100,29 +100,29 @@ class MaximumTransferSizeExceptionNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('transferSize', get_object_vars($data)) && null !== ($data->transferSize ?? null)) {
-            $dataArray['transferSize'] = $data->transferSize ?? null;
+            $dataArray['transferSize'] = $data->transferSize;
         }
         if (array_key_exists('maximumTransferSize', get_object_vars($data)) && null !== ($data->maximumTransferSize ?? null)) {
-            $dataArray['maximumTransferSize'] = $data->maximumTransferSize ?? null;
+            $dataArray['maximumTransferSize'] = $data->maximumTransferSize;
         }
         if (array_key_exists('transferId', get_object_vars($data)) && null !== ($data->transferId ?? null)) {
-            $dataArray['transferId'] = $data->transferId ?? null;
+            $dataArray['transferId'] = $data->transferId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

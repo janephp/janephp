@@ -61,13 +61,13 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
         $dataArray = [];
         if (array_key_exists('matches', get_object_vars($data)) && null !== ($data->matches ?? null)) {
             $values = [];
-            foreach ($data->matches ?? null as $value) {
+            foreach ($data->matches as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['matches'] = $values;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

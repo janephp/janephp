@@ -52,7 +52,7 @@ class AuthenticationSuccessResponseNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
-            $dataArray['token'] = $data->token ?? null;
+            $dataArray['token'] = $data->token;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -57,13 +57,13 @@ class ProfileRogueApRuleListNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
-        $dataArray['priority'] = $data->priority ?? null;
-        $dataArray['classification'] = $data->classification ?? null;
+        $dataArray['priority'] = $data->priority;
+        $dataArray['classification'] = $data->classification;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -114,22 +114,22 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('parentSchemaId', get_object_vars($data)) && null !== ($data->parentSchemaId ?? null)) {
-            $dataArray['parentSchemaId'] = $data->parentSchemaId ?? null;
+            $dataArray['parentSchemaId'] = $data->parentSchemaId;
         }
         if (array_key_exists('types', get_object_vars($data)) && null !== ($data->types ?? null)) {
             $values = [];
-            foreach ($data->types ?? null as $value) {
+            foreach ($data->types as $value) {
                 $values[] = $value;
             }
             $dataArray['types'] = $values;
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value_1 = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value_1 = $data->names;
+            if (is_object($data->names)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_2) {
+                foreach ($data->names as $key => $value_2) {
                     $values_1[$key] = $value_2;
                 }
                 $value_1 = $values_1;
@@ -137,10 +137,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['names'] = $value_1;
         }
         if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
-            $value_3 = $data->descriptions ?? null;
-            if (is_object($data->descriptions ?? null)) {
+            $value_3 = $data->descriptions;
+            if (is_object($data->descriptions)) {
                 $values_2 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->descriptions ?? null as $key_1 => $value_4) {
+                foreach ($data->descriptions as $key_1 => $value_4) {
                     $values_2[$key_1] = $value_4;
                 }
                 $value_3 = $values_2;
@@ -149,15 +149,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_3 = [];
-            foreach ($data->layerSchemaIds ?? null as $value_5) {
+            foreach ($data->layerSchemaIds as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['layerSchemaIds'] = $values_3;
         }
-        $dataArray['fieldCount'] = $data->fieldCount ?? null;
-        $dataArray['childCount'] = $data->childCount ?? null;
-        $dataArray['level'] = $data->level ?? null;
-        $dataArray['system'] = $data->system ?? null;
+        $dataArray['fieldCount'] = $data->fieldCount;
+        $dataArray['childCount'] = $data->childCount;
+        $dataArray['level'] = $data->level;
+        $dataArray['system'] = $data->system;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

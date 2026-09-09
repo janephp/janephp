@@ -79,34 +79,34 @@ class DpskDpskInfoItemNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
-            $dataArray['wlanId'] = $data->wlanId ?? null;
+            $dataArray['wlanId'] = $data->wlanId;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('macAddress', get_object_vars($data)) && null !== ($data->macAddress ?? null)) {
-            $dataArray['macAddress'] = $data->macAddress ?? null;
+            $dataArray['macAddress'] = $data->macAddress;
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
-            $dataArray['passphrase'] = $data->passphrase ?? null;
+            $dataArray['passphrase'] = $data->passphrase;
         }
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('groupDpsk', get_object_vars($data)) && null !== ($data->groupDpsk ?? null)) {
-            $dataArray['groupDpsk'] = $data->groupDpsk ?? null;
+            $dataArray['groupDpsk'] = $data->groupDpsk;
         }
         if (array_key_exists('creationDateTime', get_object_vars($data)) && null !== ($data->creationDateTime ?? null)) {
-            $dataArray['creationDateTime'] = $data->creationDateTime ?? null;
+            $dataArray['creationDateTime'] = $data->creationDateTime;
         }
         if (array_key_exists('expirationDateTime', get_object_vars($data)) && null !== ($data->expirationDateTime ?? null)) {
-            $dataArray['expirationDateTime'] = $data->expirationDateTime ?? null;
+            $dataArray['expirationDateTime'] = $data->expirationDateTime;
         }
         return $dataArray;
     }

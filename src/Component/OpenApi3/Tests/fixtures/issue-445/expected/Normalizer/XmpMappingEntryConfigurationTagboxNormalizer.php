@@ -73,14 +73,14 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         $values = [];
-        foreach ($data->keyFieldIds ?? null as $value) {
+        foreach ($data->keyFieldIds as $value) {
             $values[] = $value;
         }
         $dataArray['keyFieldIds'] = $values;
-        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
-        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
+        $dataArray['caseSensitive'] = $data->caseSensitive;
+        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

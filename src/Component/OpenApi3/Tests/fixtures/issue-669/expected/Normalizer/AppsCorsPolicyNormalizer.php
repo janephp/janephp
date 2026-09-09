@@ -92,37 +92,37 @@ class AppsCorsPolicyNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         if (array_key_exists('allowOrigins', get_object_vars($data)) && null !== ($data->allowOrigins ?? null)) {
             $values = [];
-            foreach ($data->allowOrigins ?? null as $value) {
+            foreach ($data->allowOrigins as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['allow_origins'] = $values;
         }
         if (array_key_exists('allowMethods', get_object_vars($data)) && null !== ($data->allowMethods ?? null)) {
             $values_1 = [];
-            foreach ($data->allowMethods ?? null as $value_1) {
+            foreach ($data->allowMethods as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['allow_methods'] = $values_1;
         }
         if (array_key_exists('allowHeaders', get_object_vars($data)) && null !== ($data->allowHeaders ?? null)) {
             $values_2 = [];
-            foreach ($data->allowHeaders ?? null as $value_2) {
+            foreach ($data->allowHeaders as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['allow_headers'] = $values_2;
         }
         if (array_key_exists('exposeHeaders', get_object_vars($data)) && null !== ($data->exposeHeaders ?? null)) {
             $values_3 = [];
-            foreach ($data->exposeHeaders ?? null as $value_3) {
+            foreach ($data->exposeHeaders as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['expose_headers'] = $values_3;
         }
         if (array_key_exists('maxAge', get_object_vars($data)) && null !== ($data->maxAge ?? null)) {
-            $dataArray['max_age'] = $data->maxAge ?? null;
+            $dataArray['max_age'] = $data->maxAge;
         }
         if (array_key_exists('allowCredentials', get_object_vars($data)) && null !== ($data->allowCredentials ?? null)) {
-            $dataArray['allow_credentials'] = $data->allowCredentials ?? null;
+            $dataArray['allow_credentials'] = $data->allowCredentials;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

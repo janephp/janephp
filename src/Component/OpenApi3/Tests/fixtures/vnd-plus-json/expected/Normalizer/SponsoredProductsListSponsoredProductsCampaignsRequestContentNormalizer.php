@@ -64,13 +64,13 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
     {
         $dataArray = [];
         if (array_key_exists('maxResults', get_object_vars($data)) && null !== ($data->maxResults ?? null)) {
-            $dataArray['maxResults'] = $data->maxResults ?? null;
+            $dataArray['maxResults'] = $data->maxResults;
         }
         if (array_key_exists('nextToken', get_object_vars($data)) && null !== ($data->nextToken ?? null)) {
-            $dataArray['nextToken'] = $data->nextToken ?? null;
+            $dataArray['nextToken'] = $data->nextToken;
         }
         if (array_key_exists('includeExtendedDataFields', get_object_vars($data)) && null !== ($data->includeExtendedDataFields ?? null)) {
-            $dataArray['includeExtendedDataFields'] = $data->includeExtendedDataFields ?? null;
+            $dataArray['includeExtendedDataFields'] = $data->includeExtendedDataFields;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

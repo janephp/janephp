@@ -61,16 +61,16 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->userEmail ?? null;
-        if (is_object($data->userEmail ?? null)) {
-            $value = ($data->userEmail ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userEmail ?? null, 'json', $context));
+        $value = $data->userEmail;
+        if (is_object($data->userEmail)) {
+            $value = $data->userEmail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userEmail, 'json', $context));
         }
         $dataArray['userEmail'] = $value;
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
-            $dataArray['token'] = $data->token ?? null;
+            $dataArray['token'] = $data->token;
         }
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         return $dataArray;
     }

@@ -61,19 +61,19 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
-            $dataArray['Timestamp'] = $data->timestamp ?? null;
+            $dataArray['Timestamp'] = $data->timestamp;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = $data->state ?? null;
+            $dataArray['State'] = $data->state;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['Message'] = $data->message ?? null;
+            $dataArray['Message'] = $data->message;
         }
         if (array_key_exists('err', get_object_vars($data)) && null !== ($data->err ?? null)) {
-            $dataArray['Err'] = $data->err ?? null;
+            $dataArray['Err'] = $data->err;
         }
         if (array_key_exists('containerStatus', get_object_vars($data)) && null !== ($data->containerStatus ?? null)) {
-            $dataArray['ContainerStatus'] = ($data->containerStatus ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerStatus ?? null, 'json', $context));
+            $dataArray['ContainerStatus'] = $data->containerStatus === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerStatus, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskStatusConstraint());

@@ -70,20 +70,20 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         if (array_key_exists('systemLanguages', get_object_vars($data)) && null !== ($data->systemLanguages ?? null)) {
             $values = [];
-            foreach ($data->systemLanguages ?? null as $value) {
+            foreach ($data->systemLanguages as $value) {
                 $values[] = $value;
             }
             $dataArray['systemLanguages'] = $values;
         }
         if (array_key_exists('metadataLanguages', get_object_vars($data)) && null !== ($data->metadataLanguages ?? null)) {
             $values_1 = [];
-            foreach ($data->metadataLanguages ?? null as $value_1) {
+            foreach ($data->metadataLanguages as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['metadataLanguages'] = $values_1;
         }
         if (array_key_exists('defaultLanguage', get_object_vars($data)) && null !== ($data->defaultLanguage ?? null)) {
-            $dataArray['defaultLanguage'] = $data->defaultLanguage ?? null;
+            $dataArray['defaultLanguage'] = $data->defaultLanguage;
         }
         return $dataArray;
     }

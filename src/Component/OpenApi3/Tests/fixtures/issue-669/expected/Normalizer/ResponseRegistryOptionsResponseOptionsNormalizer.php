@@ -65,14 +65,14 @@ class ResponseRegistryOptionsResponseOptionsNormalizer implements DenormalizerIn
         $dataArray = [];
         if (array_key_exists('availableRegions', get_object_vars($data)) && null !== ($data->availableRegions ?? null)) {
             $values = [];
-            foreach ($data->availableRegions ?? null as $value) {
+            foreach ($data->availableRegions as $value) {
                 $values[] = $value;
             }
             $dataArray['available_regions'] = $values;
         }
         if (array_key_exists('subscriptionTiers', get_object_vars($data)) && null !== ($data->subscriptionTiers ?? null)) {
             $values_1 = [];
-            foreach ($data->subscriptionTiers ?? null as $value_1) {
+            foreach ($data->subscriptionTiers as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['subscription_tiers'] = $values_1;

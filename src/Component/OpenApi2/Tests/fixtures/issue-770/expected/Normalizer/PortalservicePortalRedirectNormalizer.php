@@ -46,7 +46,7 @@ class PortalservicePortalRedirectNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         return $dataArray;
     }

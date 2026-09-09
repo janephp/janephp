@@ -67,16 +67,16 @@ class ApiUpdateLinkedAgentOutputNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
-            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid;
         }
         if (array_key_exists('parentAgentUuid', get_object_vars($data)) && null !== ($data->parentAgentUuid ?? null)) {
-            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid ?? null;
+            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid;
         }
         if (array_key_exists('rollback', get_object_vars($data)) && null !== ($data->rollback ?? null)) {
-            $dataArray['rollback'] = $data->rollback ?? null;
+            $dataArray['rollback'] = $data->rollback;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

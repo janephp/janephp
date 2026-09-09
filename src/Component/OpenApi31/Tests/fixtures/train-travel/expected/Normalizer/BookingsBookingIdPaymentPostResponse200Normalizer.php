@@ -78,16 +78,16 @@ class BookingsBookingIdPaymentPostResponse200Normalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
-            $dataArray['currency'] = $data->currency ?? null;
+            $dataArray['currency'] = $data->currency;
         }
         if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
-            $dataArray['source'] = $data->source ?? null;
+            $dataArray['source'] = $data->source;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

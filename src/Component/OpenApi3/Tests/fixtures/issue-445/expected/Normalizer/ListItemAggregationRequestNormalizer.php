@@ -147,56 +147,56 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
-            $dataArray['searchString'] = $data->searchString ?? null;
+            $dataArray['searchString'] = $data->searchString;
         }
         if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->searchBehaviors ?? null as $value) {
+            foreach ($data->searchBehaviors as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_1 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_1 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_1 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }
         if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values_1 = [];
-            foreach ($data->aggregationFilters ?? null as $value_2) {
+            foreach ($data->aggregationFilters as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
-        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
-        $value_3 = $data->brokenDependenciesFilter ?? null;
-        if (is_string($data->brokenDependenciesFilter ?? null)) {
-            $value_3 = $data->brokenDependenciesFilter ?? null;
+        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren;
+        $value_3 = $data->brokenDependenciesFilter;
+        if (is_string($data->brokenDependenciesFilter)) {
+            $value_3 = $data->brokenDependenciesFilter;
         }
         $dataArray['brokenDependenciesFilter'] = $value_3;
         if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values_2 = [];
-            foreach ($data->schemaIds ?? null as $value_4) {
+            foreach ($data->schemaIds as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['schemaIds'] = $values_2;
         }
         if (array_key_exists('searchLanguages', get_object_vars($data)) && null !== ($data->searchLanguages ?? null)) {
             $values_3 = [];
-            foreach ($data->searchLanguages ?? null as $value_5) {
+            foreach ($data->searchLanguages as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['searchLanguages'] = $values_3;
         }
-        $value_6 = $data->lifeCycleFilter ?? null;
-        if (is_string($data->lifeCycleFilter ?? null)) {
-            $value_6 = $data->lifeCycleFilter ?? null;
+        $value_6 = $data->lifeCycleFilter;
+        if (is_string($data->lifeCycleFilter)) {
+            $value_6 = $data->lifeCycleFilter;
         }
         $dataArray['lifeCycleFilter'] = $value_6;
         $values_4 = [];
-        foreach ($data->aggregators ?? null as $value_7) {
+        foreach ($data->aggregators as $value_7) {
             $values_4[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
         }
         $dataArray['aggregators'] = $values_4;

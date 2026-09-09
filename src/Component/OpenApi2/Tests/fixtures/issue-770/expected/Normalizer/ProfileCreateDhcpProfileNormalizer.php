@@ -75,23 +75,23 @@ class ProfileCreateDhcpProfileNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['vlanId'] = $data->vlanId ?? null;
-        $dataArray['subnetNetworkIp'] = $data->subnetNetworkIp ?? null;
-        $dataArray['subnetMask'] = $data->subnetMask ?? null;
-        $dataArray['poolStartIp'] = $data->poolStartIp ?? null;
-        $dataArray['poolEndIp'] = $data->poolEndIp ?? null;
+        $dataArray['vlanId'] = $data->vlanId;
+        $dataArray['subnetNetworkIp'] = $data->subnetNetworkIp;
+        $dataArray['subnetMask'] = $data->subnetMask;
+        $dataArray['poolStartIp'] = $data->poolStartIp;
+        $dataArray['poolEndIp'] = $data->poolEndIp;
         if (array_key_exists('primaryDnsIp', get_object_vars($data)) && null !== ($data->primaryDnsIp ?? null)) {
-            $dataArray['primaryDnsIp'] = $data->primaryDnsIp ?? null;
+            $dataArray['primaryDnsIp'] = $data->primaryDnsIp;
         }
         if (array_key_exists('secondaryDnsIp', get_object_vars($data)) && null !== ($data->secondaryDnsIp ?? null)) {
-            $dataArray['secondaryDnsIp'] = $data->secondaryDnsIp ?? null;
+            $dataArray['secondaryDnsIp'] = $data->secondaryDnsIp;
         }
-        $dataArray['leaseTimeHours'] = $data->leaseTimeHours ?? null;
-        $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes ?? null;
+        $dataArray['leaseTimeHours'] = $data->leaseTimeHours;
+        $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

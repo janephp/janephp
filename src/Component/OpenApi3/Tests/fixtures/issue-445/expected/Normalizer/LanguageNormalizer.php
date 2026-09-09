@@ -74,24 +74,24 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->name ?? null;
-        if (is_object($data->name ?? null)) {
+        $value = $data->name;
+        if (is_object($data->name)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->name ?? null as $key => $value_1) {
+            foreach ($data->name as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
         }
         $dataArray['name'] = $value;
-        $dataArray['ietf'] = $data->ietf ?? null;
+        $dataArray['ietf'] = $data->ietf;
         if (array_key_exists('twoLetterISOLanguageName', get_object_vars($data)) && null !== ($data->twoLetterISOLanguageName ?? null)) {
-            $dataArray['twoLetterISOLanguageName'] = $data->twoLetterISOLanguageName ?? null;
+            $dataArray['twoLetterISOLanguageName'] = $data->twoLetterISOLanguageName;
         }
         if (array_key_exists('threeLetterISOLanguageName', get_object_vars($data)) && null !== ($data->threeLetterISOLanguageName ?? null)) {
-            $dataArray['threeLetterISOLanguageName'] = $data->threeLetterISOLanguageName ?? null;
+            $dataArray['threeLetterISOLanguageName'] = $data->threeLetterISOLanguageName;
         }
         if (array_key_exists('regionCode', get_object_vars($data)) && null !== ($data->regionCode ?? null)) {
-            $dataArray['regionCode'] = $data->regionCode ?? null;
+            $dataArray['regionCode'] = $data->regionCode;
         }
         return $dataArray;
     }

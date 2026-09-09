@@ -74,19 +74,19 @@ class GenaiapiRegionNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('inferenceUrl', get_object_vars($data)) && null !== ($data->inferenceUrl ?? null)) {
-            $dataArray['inference_url'] = $data->inferenceUrl ?? null;
+            $dataArray['inference_url'] = $data->inferenceUrl;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('servesBatch', get_object_vars($data)) && null !== ($data->servesBatch ?? null)) {
-            $dataArray['serves_batch'] = $data->servesBatch ?? null;
+            $dataArray['serves_batch'] = $data->servesBatch;
         }
         if (array_key_exists('servesInference', get_object_vars($data)) && null !== ($data->servesInference ?? null)) {
-            $dataArray['serves_inference'] = $data->servesInference ?? null;
+            $dataArray['serves_inference'] = $data->servesInference;
         }
         if (array_key_exists('streamInferenceUrl', get_object_vars($data)) && null !== ($data->streamInferenceUrl ?? null)) {
-            $dataArray['stream_inference_url'] = $data->streamInferenceUrl ?? null;
+            $dataArray['stream_inference_url'] = $data->streamInferenceUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

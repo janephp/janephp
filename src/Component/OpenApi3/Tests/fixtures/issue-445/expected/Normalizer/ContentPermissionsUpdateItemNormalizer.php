@@ -65,12 +65,12 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
         $dataArray = [];
         if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values = [];
-            foreach ($data->contentPermissionSetIds ?? null as $value) {
+            foreach ($data->contentPermissionSetIds as $value) {
                 $values[] = $value;
             }
             $dataArray['contentPermissionSetIds'] = $values;
         }
-        $dataArray['contentId'] = $data->contentId ?? null;
+        $dataArray['contentId'] = $data->contentId;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

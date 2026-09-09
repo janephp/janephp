@@ -58,19 +58,19 @@ class WhiteLabelCustomizationWhiteLabelCustomizationNormalizer implements Denorm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
-            $dataArray['companyName'] = $data->companyName ?? null;
+            $dataArray['companyName'] = $data->companyName;
         }
         if (array_key_exists('favIconImage', get_object_vars($data)) && null !== ($data->favIconImage ?? null)) {
-            $dataArray['favIconImage'] = $data->favIconImage ?? null;
+            $dataArray['favIconImage'] = $data->favIconImage;
         }
         if (array_key_exists('homeLogoImage', get_object_vars($data)) && null !== ($data->homeLogoImage ?? null)) {
-            $dataArray['homeLogoImage'] = $data->homeLogoImage ?? null;
+            $dataArray['homeLogoImage'] = $data->homeLogoImage;
         }
         return $dataArray;
     }

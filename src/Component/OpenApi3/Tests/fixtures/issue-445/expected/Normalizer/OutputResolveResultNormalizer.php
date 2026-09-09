@@ -74,18 +74,18 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
-        $dataArray['contentId'] = $data->contentId ?? null;
-        $value = $data->renderingState ?? null;
-        if (is_string($data->renderingState ?? null)) {
-            $value = $data->renderingState ?? null;
+        $dataArray['outputFormatId'] = $data->outputFormatId;
+        $dataArray['contentId'] = $data->contentId;
+        $value = $data->renderingState;
+        if (is_string($data->renderingState)) {
+            $value = $data->renderingState;
         }
         $dataArray['renderingState'] = $value;
-        $dataArray['dynamicRendering'] = $data->dynamicRendering ?? null;
+        $dataArray['dynamicRendering'] = $data->dynamicRendering;
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         return $dataArray;
     }

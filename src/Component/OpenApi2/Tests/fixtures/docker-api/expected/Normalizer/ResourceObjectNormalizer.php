@@ -59,14 +59,14 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('nanoCPUs', get_object_vars($data)) && null !== ($data->nanoCPUs ?? null)) {
-            $dataArray['NanoCPUs'] = $data->nanoCPUs ?? null;
+            $dataArray['NanoCPUs'] = $data->nanoCPUs;
         }
         if (array_key_exists('memoryBytes', get_object_vars($data)) && null !== ($data->memoryBytes ?? null)) {
-            $dataArray['MemoryBytes'] = $data->memoryBytes ?? null;
+            $dataArray['MemoryBytes'] = $data->memoryBytes;
         }
         if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values = [];
-            foreach ($data->genericResources ?? null as $value) {
+            foreach ($data->genericResources as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['GenericResources'] = $values;

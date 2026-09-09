@@ -131,42 +131,42 @@ class IndexedFieldThresholdExceededExceptionNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
-            $dataArray['customerId'] = $data->customerId ?? null;
+            $dataArray['customerId'] = $data->customerId;
         }
         if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
-            $dataArray['customerAlias'] = $data->customerAlias ?? null;
+            $dataArray['customerAlias'] = $data->customerAlias;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values = [];
-            foreach ($data->schemaIds ?? null as $value) {
+            foreach ($data->schemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['schemaIds'] = $values;
         }
         if (array_key_exists('indexedFieldCount', get_object_vars($data)) && null !== ($data->indexedFieldCount ?? null)) {
-            $dataArray['indexedFieldCount'] = $data->indexedFieldCount ?? null;
+            $dataArray['indexedFieldCount'] = $data->indexedFieldCount;
         }
         if (array_key_exists('indexedFieldThreshold', get_object_vars($data)) && null !== ($data->indexedFieldThreshold ?? null)) {
-            $dataArray['indexedFieldThreshold'] = $data->indexedFieldThreshold ?? null;
+            $dataArray['indexedFieldThreshold'] = $data->indexedFieldThreshold;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,16 +58,16 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Type'] = $data->type ?? null;
+        $dataArray['Type'] = $data->type;
         if (array_key_exists('layers', get_object_vars($data)) && null !== ($data->layers ?? null)) {
             $values = [];
-            foreach ($data->layers ?? null as $value) {
+            foreach ($data->layers as $value) {
                 $values[] = $value;
             }
             $dataArray['Layers'] = $values;
         }
         if (array_key_exists('baseLayer', get_object_vars($data)) && null !== ($data->baseLayer ?? null)) {
-            $dataArray['BaseLayer'] = $data->baseLayer ?? null;
+            $dataArray['BaseLayer'] = $data->baseLayer;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageRootFSConstraint());

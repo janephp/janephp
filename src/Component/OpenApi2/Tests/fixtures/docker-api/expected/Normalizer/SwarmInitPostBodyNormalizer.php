@@ -77,32 +77,32 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('listenAddr', get_object_vars($data)) && null !== ($data->listenAddr ?? null)) {
-            $dataArray['ListenAddr'] = $data->listenAddr ?? null;
+            $dataArray['ListenAddr'] = $data->listenAddr;
         }
         if (array_key_exists('advertiseAddr', get_object_vars($data)) && null !== ($data->advertiseAddr ?? null)) {
-            $dataArray['AdvertiseAddr'] = $data->advertiseAddr ?? null;
+            $dataArray['AdvertiseAddr'] = $data->advertiseAddr;
         }
         if (array_key_exists('dataPathAddr', get_object_vars($data)) && null !== ($data->dataPathAddr ?? null)) {
-            $dataArray['DataPathAddr'] = $data->dataPathAddr ?? null;
+            $dataArray['DataPathAddr'] = $data->dataPathAddr;
         }
         if (array_key_exists('dataPathPort', get_object_vars($data)) && null !== ($data->dataPathPort ?? null)) {
-            $dataArray['DataPathPort'] = $data->dataPathPort ?? null;
+            $dataArray['DataPathPort'] = $data->dataPathPort;
         }
         if (array_key_exists('defaultAddrPool', get_object_vars($data)) && null !== ($data->defaultAddrPool ?? null)) {
             $values = [];
-            foreach ($data->defaultAddrPool ?? null as $value) {
+            foreach ($data->defaultAddrPool as $value) {
                 $values[] = $value;
             }
             $dataArray['DefaultAddrPool'] = $values;
         }
         if (array_key_exists('forceNewCluster', get_object_vars($data)) && null !== ($data->forceNewCluster ?? null)) {
-            $dataArray['ForceNewCluster'] = $data->forceNewCluster ?? null;
+            $dataArray['ForceNewCluster'] = $data->forceNewCluster;
         }
         if (array_key_exists('subnetSize', get_object_vars($data)) && null !== ($data->subnetSize ?? null)) {
-            $dataArray['SubnetSize'] = $data->subnetSize ?? null;
+            $dataArray['SubnetSize'] = $data->subnetSize;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = ($data->spec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+            $dataArray['Spec'] = $data->spec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());

@@ -63,16 +63,16 @@ class OutputFormatRenderingSpecificationNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
-            $value = $data->sourceOutputFormats ?? null;
-            if (is_object($data->sourceOutputFormats ?? null)) {
-                $value = ($data->sourceOutputFormats ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats ?? null, 'json', $context));
+            $value = $data->sourceOutputFormats;
+            if (is_object($data->sourceOutputFormats)) {
+                $value = $data->sourceOutputFormats === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats, 'json', $context));
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
         if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
-            $value_1 = $data->format ?? null;
-            if (is_object($data->format ?? null)) {
-                $value_1 = ($data->format ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format ?? null, 'json', $context));
+            $value_1 = $data->format;
+            if (is_object($data->format)) {
+                $value_1 = $data->format === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format, 'json', $context));
             }
             $dataArray['format'] = $value_1;
         }

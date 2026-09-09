@@ -56,14 +56,14 @@ class MduSegmentationProfileMduProfileApGroupInfoNormalizer implements Denormali
     {
         $dataArray = [];
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
-            $dataArray['apGroupId'] = $data->apGroupId ?? null;
+            $dataArray['apGroupId'] = $data->apGroupId;
         }
         if (array_key_exists('ethProfileId', get_object_vars($data)) && null !== ($data->ethProfileId ?? null)) {
-            $dataArray['ethProfileId'] = $data->ethProfileId ?? null;
+            $dataArray['ethProfileId'] = $data->ethProfileId;
         }
         if (array_key_exists('wlanList', get_object_vars($data)) && null !== ($data->wlanList ?? null)) {
             $values = [];
-            foreach ($data->wlanList ?? null as $value) {
+            foreach ($data->wlanList as $value) {
                 $values[] = $value;
             }
             $dataArray['wlanList'] = $values;

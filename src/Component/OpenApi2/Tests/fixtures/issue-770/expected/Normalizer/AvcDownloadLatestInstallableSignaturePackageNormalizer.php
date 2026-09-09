@@ -52,13 +52,13 @@ class AvcDownloadLatestInstallableSignaturePackageNormalizer implements Denormal
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('latestInstallable', get_object_vars($data)) && null !== ($data->latestInstallable ?? null)) {
-            $dataArray['latestInstallable'] = ($data->latestInstallable ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable ?? null, 'json', $context));
+            $dataArray['latestInstallable'] = $data->latestInstallable === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable, 'json', $context));
         }
         return $dataArray;
     }

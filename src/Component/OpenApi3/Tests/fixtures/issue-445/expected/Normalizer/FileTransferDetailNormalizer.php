@@ -119,36 +119,36 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
-            $dataArray['identifier'] = $data->identifier ?? null;
+            $dataArray['identifier'] = $data->identifier;
         }
-        $dataArray['requestId'] = $data->requestId ?? null;
-        $dataArray['transferId'] = $data->transferId ?? null;
-        $value = $data->state ?? null;
-        if (is_string($data->state ?? null)) {
-            $value = $data->state ?? null;
+        $dataArray['requestId'] = $data->requestId;
+        $dataArray['transferId'] = $data->transferId;
+        $value = $data->state;
+        if (is_string($data->state)) {
+            $value = $data->state;
         }
         $dataArray['state'] = $value;
         if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
-            $dataArray['contentId'] = $data->contentId ?? null;
+            $dataArray['contentId'] = $data->contentId;
         }
-        $value_1 = $data->audit ?? null;
-        if (is_object($data->audit ?? null)) {
-            $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+        $value_1 = $data->audit;
+        if (is_object($data->audit)) {
+            $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('fileMetadata', get_object_vars($data)) && null !== ($data->fileMetadata ?? null)) {
-            $value_2 = $data->fileMetadata ?? null;
-            if (is_object($data->fileMetadata ?? null)) {
-                $value_2 = ($data->fileMetadata ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata ?? null, 'json', $context));
+            $value_2 = $data->fileMetadata;
+            if (is_object($data->fileMetadata)) {
+                $value_2 = $data->fileMetadata === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata, 'json', $context));
             }
             $dataArray['fileMetadata'] = $value_2;
         }
         if (array_key_exists('outputItems', get_object_vars($data)) && null !== ($data->outputItems ?? null)) {
             $values = [];
-            foreach ($data->outputItems ?? null as $value_3) {
+            foreach ($data->outputItems as $value_3) {
                 $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['outputItems'] = $values;

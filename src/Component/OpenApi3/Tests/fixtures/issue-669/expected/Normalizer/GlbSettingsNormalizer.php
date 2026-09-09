@@ -72,23 +72,23 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('targetProtocol', get_object_vars($data)) && null !== ($data->targetProtocol ?? null)) {
-            $dataArray['target_protocol'] = $data->targetProtocol ?? null;
+            $dataArray['target_protocol'] = $data->targetProtocol;
         }
         if (array_key_exists('targetPort', get_object_vars($data)) && null !== ($data->targetPort ?? null)) {
-            $dataArray['target_port'] = $data->targetPort ?? null;
+            $dataArray['target_port'] = $data->targetPort;
         }
         if (array_key_exists('cdn', get_object_vars($data)) && null !== ($data->cdn ?? null)) {
-            $dataArray['cdn'] = ($data->cdn ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cdn ?? null, 'json', $context));
+            $dataArray['cdn'] = $data->cdn === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cdn, 'json', $context));
         }
         if (array_key_exists('regionPriorities', get_object_vars($data)) && null !== ($data->regionPriorities ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->regionPriorities ?? null as $key => $value) {
+            foreach ($data->regionPriorities as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['region_priorities'] = $values;
         }
         if (array_key_exists('failoverThreshold', get_object_vars($data)) && null !== ($data->failoverThreshold ?? null)) {
-            $dataArray['failover_threshold'] = $data->failoverThreshold ?? null;
+            $dataArray['failover_threshold'] = $data->failoverThreshold;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

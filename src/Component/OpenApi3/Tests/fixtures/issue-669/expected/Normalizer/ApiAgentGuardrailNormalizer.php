@@ -118,47 +118,47 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
-            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
+            $dataArray['agent_uuid'] = $data->agentUuid;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('defaultResponse', get_object_vars($data)) && null !== ($data->defaultResponse ?? null)) {
-            $dataArray['default_response'] = $data->defaultResponse ?? null;
+            $dataArray['default_response'] = $data->defaultResponse;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('guardrailUuid', get_object_vars($data)) && null !== ($data->guardrailUuid ?? null)) {
-            $dataArray['guardrail_uuid'] = $data->guardrailUuid ?? null;
+            $dataArray['guardrail_uuid'] = $data->guardrailUuid;
         }
         if (array_key_exists('isAttached', get_object_vars($data)) && null !== ($data->isAttached ?? null)) {
-            $dataArray['is_attached'] = $data->isAttached ?? null;
+            $dataArray['is_attached'] = $data->isAttached;
         }
         if (array_key_exists('isDefault', get_object_vars($data)) && null !== ($data->isDefault ?? null)) {
-            $dataArray['is_default'] = $data->isDefault ?? null;
+            $dataArray['is_default'] = $data->isDefault;
         }
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->metadata ?? null as $key => $value) {
+            foreach ($data->metadata as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['metadata'] = $values;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

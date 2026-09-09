@@ -103,24 +103,24 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['retries'] = $data->retries ?? null;
-        $dataArray['priority'] = $data->priority ?? null;
-        $dataArray['deduplicate'] = $data->deduplicate ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['retries'] = $data->retries;
+        $dataArray['priority'] = $data->priority;
+        $dataArray['deduplicate'] = $data->deduplicate;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('command', get_object_vars($data)) && null !== ($data->command ?? null)) {
-            $dataArray['command'] = $data->command ?? null;
+            $dataArray['command'] = $data->command;
         }
         if (array_key_exists('arguments', get_object_vars($data)) && null !== ($data->arguments ?? null)) {
             $values = [];
-            foreach ($data->arguments ?? null as $value) {
+            foreach ($data->arguments as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['arguments'] = $values;
         }
         if (array_key_exists('targetQueue', get_object_vars($data)) && null !== ($data->targetQueue ?? null)) {
-            $dataArray['targetQueue'] = $data->targetQueue ?? null;
+            $dataArray['targetQueue'] = $data->targetQueue;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

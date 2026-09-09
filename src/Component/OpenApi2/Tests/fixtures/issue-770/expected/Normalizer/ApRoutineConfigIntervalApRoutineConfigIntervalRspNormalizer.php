@@ -52,13 +52,13 @@ class ApRoutineConfigIntervalApRoutineConfigIntervalRspNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('apRoutineConfigInterval', get_object_vars($data)) && null !== ($data->apRoutineConfigInterval ?? null)) {
-            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval ?? null;
+            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval;
         }
         if (array_key_exists('upperBound', get_object_vars($data)) && null !== ($data->upperBound ?? null)) {
-            $dataArray['upperBound'] = $data->upperBound ?? null;
+            $dataArray['upperBound'] = $data->upperBound;
         }
         if (array_key_exists('lowerBound', get_object_vars($data)) && null !== ($data->lowerBound ?? null)) {
-            $dataArray['lowerBound'] = $data->lowerBound ?? null;
+            $dataArray['lowerBound'] = $data->lowerBound;
         }
         return $dataArray;
     }

@@ -52,10 +52,10 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('architecture', get_object_vars($data)) && null !== ($data->architecture ?? null)) {
-            $dataArray['Architecture'] = $data->architecture ?? null;
+            $dataArray['Architecture'] = $data->architecture;
         }
         if (array_key_exists('oS', get_object_vars($data)) && null !== ($data->oS ?? null)) {
-            $dataArray['OS'] = $data->oS ?? null;
+            $dataArray['OS'] = $data->oS;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PlatformConstraint());

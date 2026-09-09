@@ -72,18 +72,18 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->userIds ?? null as $value) {
+        foreach ($data->userIds as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;
         $values_1 = [];
-        foreach ($data->userRoleIds ?? null as $value_1) {
+        foreach ($data->userRoleIds as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['userRoleIds'] = $values_1;
-        $value_2 = $data->operation ?? null;
-        if (is_string($data->operation ?? null)) {
-            $value_2 = $data->operation ?? null;
+        $value_2 = $data->operation;
+        if (is_string($data->operation)) {
+            $value_2 = $data->operation;
         }
         $dataArray['operation'] = $value_2;
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {

@@ -79,22 +79,22 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('spriteResizeAction', get_object_vars($data)) && null !== ($data->spriteResizeAction ?? null)) {
-            $value = $data->spriteResizeAction ?? null;
-            if (is_object($data->spriteResizeAction ?? null)) {
-                $value = ($data->spriteResizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction ?? null, 'json', $context));
+            $value = $data->spriteResizeAction;
+            if (is_object($data->spriteResizeAction)) {
+                $value = $data->spriteResizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction, 'json', $context));
             }
             $dataArray['spriteResizeAction'] = $value;
         }
         if (array_key_exists('maxNumberOfSprites', get_object_vars($data)) && null !== ($data->maxNumberOfSprites ?? null)) {
-            $dataArray['maxNumberOfSprites'] = $data->maxNumberOfSprites ?? null;
+            $dataArray['maxNumberOfSprites'] = $data->maxNumberOfSprites;
         }
         if (array_key_exists('quality', get_object_vars($data)) && null !== ($data->quality ?? null)) {
-            $dataArray['quality'] = $data->quality ?? null;
+            $dataArray['quality'] = $data->quality;
         }
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

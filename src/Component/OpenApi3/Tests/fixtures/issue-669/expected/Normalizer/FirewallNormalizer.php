@@ -120,32 +120,32 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('dropletIds', get_object_vars($data)) && null !== ($data->dropletIds ?? null)) {
             $values = [];
-            foreach ($data->dropletIds ?? null as $value) {
+            foreach ($data->dropletIds as $value) {
                 $values[] = $value;
             }
             $dataArray['droplet_ids'] = $values;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_1) {
+            foreach ($data->tags as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('inboundRules', get_object_vars($data)) && null !== ($data->inboundRules ?? null)) {
             $values_2 = [];
-            foreach ($data->inboundRules ?? null as $value_2) {
+            foreach ($data->inboundRules as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['inbound_rules'] = $values_2;
         }
         if (array_key_exists('outboundRules', get_object_vars($data)) && null !== ($data->outboundRules ?? null)) {
             $values_3 = [];
-            foreach ($data->outboundRules ?? null as $value_3) {
+            foreach ($data->outboundRules as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['outbound_rules'] = $values_3;

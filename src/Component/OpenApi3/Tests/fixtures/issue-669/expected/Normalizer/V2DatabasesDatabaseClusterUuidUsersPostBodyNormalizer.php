@@ -82,15 +82,15 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
-            $dataArray['mysql_settings'] = ($data->mysqlSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings ?? null, 'json', $context));
+            $dataArray['mysql_settings'] = $data->mysqlSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings, 'json', $context));
         }
         if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
-            $dataArray['settings'] = ($data->settings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings ?? null, 'json', $context));
+            $dataArray['settings'] = $data->settings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
         }
         if (array_key_exists('readonly', get_object_vars($data)) && null !== ($data->readonly ?? null)) {
-            $dataArray['readonly'] = $data->readonly ?? null;
+            $dataArray['readonly'] = $data->readonly;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

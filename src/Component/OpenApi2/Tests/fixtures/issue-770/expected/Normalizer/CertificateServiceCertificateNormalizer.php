@@ -48,9 +48,9 @@ class CertificateServiceCertificateNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['service'] = $data->service ?? null;
+        $dataArray['service'] = $data->service;
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
-            $dataArray['certificate'] = ($data->certificate ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificate ?? null, 'json', $context));
+            $dataArray['certificate'] = $data->certificate === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
         }
         return $dataArray;
     }

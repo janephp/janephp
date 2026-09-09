@@ -91,23 +91,23 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('downloadInfos', get_object_vars($data)) && null !== ($data->downloadInfos ?? null)) {
             $values = [];
-            foreach ($data->downloadInfos ?? null as $value) {
+            foreach ($data->downloadInfos as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['downloadInfos'] = $values;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         if (array_key_exists('shareToken', get_object_vars($data)) && null !== ($data->shareToken ?? null)) {
-            $dataArray['shareToken'] = $data->shareToken ?? null;
+            $dataArray['shareToken'] = $data->shareToken;
         }
         if (array_key_exists('range', get_object_vars($data)) && null !== ($data->range ?? null)) {
-            $dataArray['range'] = $data->range ?? null;
+            $dataArray['range'] = $data->range;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

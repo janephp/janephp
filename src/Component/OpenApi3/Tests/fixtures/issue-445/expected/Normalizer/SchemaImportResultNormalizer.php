@@ -71,19 +71,19 @@ class SchemaImportResultNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['importedSchemaCount'] = $data->importedSchemaCount ?? null;
-        $dataArray['skippedSchemaCount'] = $data->skippedSchemaCount ?? null;
-        $dataArray['totalSchemaCount'] = $data->totalSchemaCount ?? null;
+        $dataArray['importedSchemaCount'] = $data->importedSchemaCount;
+        $dataArray['skippedSchemaCount'] = $data->skippedSchemaCount;
+        $dataArray['totalSchemaCount'] = $data->totalSchemaCount;
         if (array_key_exists('skippedSchemaIds', get_object_vars($data)) && null !== ($data->skippedSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->skippedSchemaIds ?? null as $value) {
+            foreach ($data->skippedSchemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['skippedSchemaIds'] = $values;
         }
         if (array_key_exists('importedSchemaIds', get_object_vars($data)) && null !== ($data->importedSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->importedSchemaIds ?? null as $value_1) {
+            foreach ($data->importedSchemaIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['importedSchemaIds'] = $values_1;

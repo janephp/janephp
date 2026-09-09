@@ -146,46 +146,46 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalize
     {
         $dataArray = [];
         if (array_key_exists('preTaxProfitMargin', get_object_vars($data)) && null !== ($data->preTaxProfitMargin ?? null)) {
-            $dataArray['preTaxProfitMargin'] = $data->preTaxProfitMargin ?? null;
+            $dataArray['preTaxProfitMargin'] = $data->preTaxProfitMargin;
         }
         if (array_key_exists('returnOnCapitalEmployed', get_object_vars($data)) && null !== ($data->returnOnCapitalEmployed ?? null)) {
-            $dataArray['returnOnCapitalEmployed'] = $data->returnOnCapitalEmployed ?? null;
+            $dataArray['returnOnCapitalEmployed'] = $data->returnOnCapitalEmployed;
         }
         if (array_key_exists('returnOnTotalAssetsEmployed', get_object_vars($data)) && null !== ($data->returnOnTotalAssetsEmployed ?? null)) {
-            $dataArray['returnOnTotalAssetsEmployed'] = $data->returnOnTotalAssetsEmployed ?? null;
+            $dataArray['returnOnTotalAssetsEmployed'] = $data->returnOnTotalAssetsEmployed;
         }
         if (array_key_exists('returnOnNetAssetsEmployed', get_object_vars($data)) && null !== ($data->returnOnNetAssetsEmployed ?? null)) {
-            $dataArray['returnOnNetAssetsEmployed'] = $data->returnOnNetAssetsEmployed ?? null;
+            $dataArray['returnOnNetAssetsEmployed'] = $data->returnOnNetAssetsEmployed;
         }
         if (array_key_exists('salesOrNetWorkingCapital', get_object_vars($data)) && null !== ($data->salesOrNetWorkingCapital ?? null)) {
-            $dataArray['salesOrNetWorkingCapital'] = $data->salesOrNetWorkingCapital ?? null;
+            $dataArray['salesOrNetWorkingCapital'] = $data->salesOrNetWorkingCapital;
         }
         if (array_key_exists('stockTurnoverRatio', get_object_vars($data)) && null !== ($data->stockTurnoverRatio ?? null)) {
-            $dataArray['stockTurnoverRatio'] = $data->stockTurnoverRatio ?? null;
+            $dataArray['stockTurnoverRatio'] = $data->stockTurnoverRatio;
         }
         if (array_key_exists('debtorDays', get_object_vars($data)) && null !== ($data->debtorDays ?? null)) {
-            $dataArray['debtorDays'] = $data->debtorDays ?? null;
+            $dataArray['debtorDays'] = $data->debtorDays;
         }
         if (array_key_exists('creditorDays', get_object_vars($data)) && null !== ($data->creditorDays ?? null)) {
-            $dataArray['creditorDays'] = $data->creditorDays ?? null;
+            $dataArray['creditorDays'] = $data->creditorDays;
         }
         if (array_key_exists('currentRatio', get_object_vars($data)) && null !== ($data->currentRatio ?? null)) {
-            $dataArray['currentRatio'] = $data->currentRatio ?? null;
+            $dataArray['currentRatio'] = $data->currentRatio;
         }
         if (array_key_exists('liquidityRatioOrAcidTest', get_object_vars($data)) && null !== ($data->liquidityRatioOrAcidTest ?? null)) {
-            $dataArray['liquidityRatioOrAcidTest'] = $data->liquidityRatioOrAcidTest ?? null;
+            $dataArray['liquidityRatioOrAcidTest'] = $data->liquidityRatioOrAcidTest;
         }
         if (array_key_exists('currentDebtRatio', get_object_vars($data)) && null !== ($data->currentDebtRatio ?? null)) {
-            $dataArray['currentDebtRatio'] = $data->currentDebtRatio ?? null;
+            $dataArray['currentDebtRatio'] = $data->currentDebtRatio;
         }
         if (array_key_exists('gearing', get_object_vars($data)) && null !== ($data->gearing ?? null)) {
-            $dataArray['gearing'] = $data->gearing ?? null;
+            $dataArray['gearing'] = $data->gearing;
         }
         if (array_key_exists('equityInPercentage', get_object_vars($data)) && null !== ($data->equityInPercentage ?? null)) {
-            $dataArray['equityInPercentage'] = $data->equityInPercentage ?? null;
+            $dataArray['equityInPercentage'] = $data->equityInPercentage;
         }
         if (array_key_exists('totalDebtRatio', get_object_vars($data)) && null !== ($data->totalDebtRatio ?? null)) {
-            $dataArray['totalDebtRatio'] = $data->totalDebtRatio ?? null;
+            $dataArray['totalDebtRatio'] = $data->totalDebtRatio;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

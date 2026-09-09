@@ -75,23 +75,23 @@ class V2UptimeChecksPostBodyNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('target', get_object_vars($data)) && null !== ($data->target ?? null)) {
-            $dataArray['target'] = $data->target ?? null;
+            $dataArray['target'] = $data->target;
         }
         if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->regions ?? null as $value) {
+            foreach ($data->regions as $value) {
                 $values[] = $value;
             }
             $dataArray['regions'] = $values;
         }
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

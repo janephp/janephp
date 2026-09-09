@@ -56,10 +56,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItemN
     {
         $dataArray = [];
         if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
-            $dataArray['number'] = $data->number ?? null;
+            $dataArray['number'] = $data->number;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

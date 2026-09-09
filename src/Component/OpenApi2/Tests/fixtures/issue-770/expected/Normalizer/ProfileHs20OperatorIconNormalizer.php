@@ -51,11 +51,11 @@ class ProfileHs20OperatorIconNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->language ?? null;
+        $dataArray['language'] = $data->language;
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
-        $dataArray['icon'] = $data->icon ?? null;
+        $dataArray['icon'] = $data->icon;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

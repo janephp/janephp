@@ -65,13 +65,13 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
         $dataArray = [];
         if (array_key_exists('appBandwidthUsage', get_object_vars($data)) && null !== ($data->appBandwidthUsage ?? null)) {
             $values = [];
-            foreach ($data->appBandwidthUsage ?? null as $value) {
+            foreach ($data->appBandwidthUsage as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['app_bandwidth_usage'] = $values;
         }
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->date->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

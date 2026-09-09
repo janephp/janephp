@@ -62,12 +62,12 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = $data->path ?? null;
+            $dataArray['path'] = $data->path;
         }
-        $dataArray['isWritable'] = $data->isWritable ?? null;
-        $value = $data->dataType ?? null;
-        if (is_string($data->dataType ?? null)) {
-            $value = $data->dataType ?? null;
+        $dataArray['isWritable'] = $data->isWritable;
+        $value = $data->dataType;
+        if (is_string($data->dataType)) {
+            $value = $data->dataType;
         }
         $dataArray['dataType'] = $value;
         return $dataArray;

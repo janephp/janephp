@@ -60,13 +60,13 @@ class SearchNoResultsErrorMessagesNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
-            $dataArray['text'] = $data->text ?? null;
+            $dataArray['text'] = $data->text;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -63,10 +63,10 @@ class AddonsDimensionVolumeWithPriceNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['low_volume'] = $data->lowVolume ?? null;
-        $dataArray['max_volume'] = $data->maxVolume ?? null;
-        $dataArray['price_per_unit'] = $data->pricePerUnit ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['low_volume'] = $data->lowVolume;
+        $dataArray['max_volume'] = $data->maxVolume;
+        $dataArray['price_per_unit'] = $data->pricePerUnit;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

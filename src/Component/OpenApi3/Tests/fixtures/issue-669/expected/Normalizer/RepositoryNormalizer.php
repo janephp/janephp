@@ -64,16 +64,16 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
-            $dataArray['registry_name'] = $data->registryName ?? null;
+            $dataArray['registry_name'] = $data->registryName;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('latestTag', get_object_vars($data)) && null !== ($data->latestTag ?? null)) {
-            $dataArray['latest_tag'] = ($data->latestTag ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->latestTag ?? null, 'json', $context));
+            $dataArray['latest_tag'] = $data->latestTag === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->latestTag, 'json', $context));
         }
         if (array_key_exists('tagCount', get_object_vars($data)) && null !== ($data->tagCount ?? null)) {
-            $dataArray['tag_count'] = $data->tagCount ?? null;
+            $dataArray['tag_count'] = $data->tagCount;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

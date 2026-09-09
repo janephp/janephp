@@ -64,16 +64,16 @@ class AppInstanceNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('componentName', get_object_vars($data)) && null !== ($data->componentName ?? null)) {
-            $dataArray['component_name'] = $data->componentName ?? null;
+            $dataArray['component_name'] = $data->componentName;
         }
         if (array_key_exists('componentType', get_object_vars($data)) && null !== ($data->componentType ?? null)) {
-            $dataArray['component_type'] = $data->componentType ?? null;
+            $dataArray['component_type'] = $data->componentType;
         }
         if (array_key_exists('instanceName', get_object_vars($data)) && null !== ($data->instanceName ?? null)) {
-            $dataArray['instance_name'] = $data->instanceName ?? null;
+            $dataArray['instance_name'] = $data->instanceName;
         }
         if (array_key_exists('instanceAlias', get_object_vars($data)) && null !== ($data->instanceAlias ?? null)) {
-            $dataArray['instance_alias'] = $data->instanceAlias ?? null;
+            $dataArray['instance_alias'] = $data->instanceAlias;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

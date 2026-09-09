@@ -105,7 +105,7 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->data ?? null as $value) {
+            foreach ($data->data as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $value_1 = $value === null ? null : new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
@@ -119,11 +119,11 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['data'] = $values;
         }
         if (array_key_exists('includes', get_object_vars($data)) && null !== ($data->includes ?? null)) {
-            $dataArray['includes'] = ($data->includes ?? null) === null ? null : new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($data->includes ?? null, 'json', $context));
+            $dataArray['includes'] = $data->includes === null ? null : new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($data->includes, 'json', $context));
         }
         if (array_key_exists('errors', get_object_vars($data)) && null !== ($data->errors ?? null)) {
             $values_1 = [];
-            foreach ($data->errors ?? null as $value_2) {
+            foreach ($data->errors as $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
                     $value_3 = $value_2 === null ? null : new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));

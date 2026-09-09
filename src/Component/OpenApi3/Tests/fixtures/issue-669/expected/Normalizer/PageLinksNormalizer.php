@@ -53,7 +53,7 @@ class PageLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
-            $value = $data->pages ?? null;
+            $value = $data->pages;
             $dataArray['pages'] = $value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

@@ -74,29 +74,29 @@ class ClusterbladeUploadPatchInfoNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         if (array_key_exists('fileUploadPath', get_object_vars($data)) && null !== ($data->fileUploadPath ?? null)) {
-            $dataArray['fileUploadPath'] = $data->fileUploadPath ?? null;
+            $dataArray['fileUploadPath'] = $data->fileUploadPath;
         }
         if (array_key_exists('controlbladeVersion', get_object_vars($data)) && null !== ($data->controlbladeVersion ?? null)) {
-            $dataArray['controlbladeVersion'] = $data->controlbladeVersion ?? null;
+            $dataArray['controlbladeVersion'] = $data->controlbladeVersion;
         }
         if (array_key_exists('databladeVersion', get_object_vars($data)) && null !== ($data->databladeVersion ?? null)) {
-            $dataArray['databladeVersion'] = $data->databladeVersion ?? null;
+            $dataArray['databladeVersion'] = $data->databladeVersion;
         }
         if (array_key_exists('apVersion', get_object_vars($data)) && null !== ($data->apVersion ?? null)) {
-            $dataArray['apVersion'] = $data->apVersion ?? null;
+            $dataArray['apVersion'] = $data->apVersion;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('allowVersions', get_object_vars($data)) && null !== ($data->allowVersions ?? null)) {
             $values = [];
-            foreach ($data->allowVersions ?? null as $value) {
+            foreach ($data->allowVersions as $value) {
                 $values[] = $value;
             }
             $dataArray['allowVersions'] = $values;

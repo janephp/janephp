@@ -48,8 +48,8 @@ class LinkInvoiceLinkNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['invoiceId'] = $data->invoiceId ?? null;
-        $dataArray['discriminator'] = $data->discriminator ?? null;
+        $dataArray['invoiceId'] = $data->invoiceId;
+        $dataArray['discriminator'] = $data->discriminator;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

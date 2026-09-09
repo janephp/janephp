@@ -57,11 +57,11 @@ class CommonHealthCheckPolicyNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['responseWindow'] = $data->responseWindow ?? null;
-        $dataArray['reviveInterval'] = $data->reviveInterval ?? null;
-        $dataArray['zombiePeriod'] = $data->zombiePeriod ?? null;
+        $dataArray['responseWindow'] = $data->responseWindow;
+        $dataArray['reviveInterval'] = $data->reviveInterval;
+        $dataArray['zombiePeriod'] = $data->zombiePeriod;
         if (array_key_exists('responseFail', get_object_vars($data)) && null !== ($data->responseFail ?? null)) {
-            $dataArray['responseFail'] = $data->responseFail ?? null;
+            $dataArray['responseFail'] = $data->responseFail;
         }
         return $dataArray;
     }

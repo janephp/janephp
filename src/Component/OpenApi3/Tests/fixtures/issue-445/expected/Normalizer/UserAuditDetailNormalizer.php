@@ -76,19 +76,19 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['creationDate'] = ($data->creationDate ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['modificationDate'] = ($data->modificationDate ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['creationDate'] = $data->creationDate->format('Y-m-d\TH:i:sP');
+        $dataArray['modificationDate'] = $data->modificationDate->format('Y-m-d\TH:i:sP');
         if (array_key_exists('createdByUser', get_object_vars($data)) && null !== ($data->createdByUser ?? null)) {
-            $value = $data->createdByUser ?? null;
-            if (is_object($data->createdByUser ?? null)) {
-                $value = ($data->createdByUser ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->createdByUser ?? null, 'json', $context));
+            $value = $data->createdByUser;
+            if (is_object($data->createdByUser)) {
+                $value = $data->createdByUser === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->createdByUser, 'json', $context));
             }
             $dataArray['createdByUser'] = $value;
         }
         if (array_key_exists('modifiedByUser', get_object_vars($data)) && null !== ($data->modifiedByUser ?? null)) {
-            $value_1 = $data->modifiedByUser ?? null;
-            if (is_object($data->modifiedByUser ?? null)) {
-                $value_1 = ($data->modifiedByUser ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->modifiedByUser ?? null, 'json', $context));
+            $value_1 = $data->modifiedByUser;
+            if (is_object($data->modifiedByUser)) {
+                $value_1 = $data->modifiedByUser === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->modifiedByUser, 'json', $context));
             }
             $dataArray['modifiedByUser'] = $value_1;
         }

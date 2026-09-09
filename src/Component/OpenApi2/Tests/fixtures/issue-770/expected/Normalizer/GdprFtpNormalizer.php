@@ -60,19 +60,19 @@ class GdprFtpNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ftpHost'] = $data->ftpHost ?? null;
-        $dataArray['ftpPort'] = $data->ftpPort ?? null;
+        $dataArray['ftpHost'] = $data->ftpHost;
+        $dataArray['ftpPort'] = $data->ftpPort;
         if (array_key_exists('ftpRemoteDirectory', get_object_vars($data)) && null !== ($data->ftpRemoteDirectory ?? null)) {
-            $dataArray['ftpRemoteDirectory'] = $data->ftpRemoteDirectory ?? null;
+            $dataArray['ftpRemoteDirectory'] = $data->ftpRemoteDirectory;
         }
         if (array_key_exists('ftpUserName', get_object_vars($data)) && null !== ($data->ftpUserName ?? null)) {
-            $dataArray['ftpUserName'] = $data->ftpUserName ?? null;
+            $dataArray['ftpUserName'] = $data->ftpUserName;
         }
         if (array_key_exists('ftpPassword', get_object_vars($data)) && null !== ($data->ftpPassword ?? null)) {
-            $dataArray['ftpPassword'] = $data->ftpPassword ?? null;
+            $dataArray['ftpPassword'] = $data->ftpPassword;
         }
         if (array_key_exists('ftpProtocol', get_object_vars($data)) && null !== ($data->ftpProtocol ?? null)) {
-            $dataArray['ftpProtocol'] = $data->ftpProtocol ?? null;
+            $dataArray['ftpProtocol'] = $data->ftpProtocol;
         }
         return $dataArray;
     }

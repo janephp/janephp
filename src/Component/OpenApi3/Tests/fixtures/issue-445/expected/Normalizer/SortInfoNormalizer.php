@@ -56,11 +56,11 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('field', get_object_vars($data)) && null !== ($data->field ?? null)) {
-            $dataArray['field'] = $data->field ?? null;
+            $dataArray['field'] = $data->field;
         }
-        $value = $data->direction ?? null;
-        if (is_string($data->direction ?? null)) {
-            $value = $data->direction ?? null;
+        $value = $data->direction;
+        if (is_string($data->direction)) {
+            $value = $data->direction;
         }
         $dataArray['direction'] = $value;
         return $dataArray;

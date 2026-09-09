@@ -100,55 +100,55 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('includeSharedResources', get_object_vars($data)) && null !== ($data->includeSharedResources ?? null)) {
-            $dataArray['includeSharedResources'] = $data->includeSharedResources ?? null;
+            $dataArray['includeSharedResources'] = $data->includeSharedResources;
         }
         if (array_key_exists('iNCLUDERBACMETADATA', get_object_vars($data)) && null !== ($data->iNCLUDERBACMETADATA ?? null)) {
-            $dataArray['INCLUDE_RBAC_METADATA'] = $data->iNCLUDERBACMETADATA ?? null;
+            $dataArray['INCLUDE_RBAC_METADATA'] = $data->iNCLUDERBACMETADATA;
         }
         if (array_key_exists('tENANTID', get_object_vars($data)) && null !== ($data->tENANTID ?? null)) {
-            $dataArray['TENANT_ID'] = $data->tENANTID ?? null;
+            $dataArray['TENANT_ID'] = $data->tENANTID;
         }
         if (array_key_exists('globalFilterId', get_object_vars($data)) && null !== ($data->globalFilterId ?? null)) {
-            $dataArray['globalFilterId'] = $data->globalFilterId ?? null;
+            $dataArray['globalFilterId'] = $data->globalFilterId;
         }
         if (array_key_exists('localUserAuditTime', get_object_vars($data)) && null !== ($data->localUserAuditTime ?? null)) {
-            $dataArray['localUser_auditTime'] = ($data->localUserAuditTime ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->localUserAuditTime ?? null, 'json', $context));
+            $dataArray['localUser_auditTime'] = $data->localUserAuditTime === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->localUserAuditTime, 'json', $context));
         }
         if (array_key_exists('localUserFirstName', get_object_vars($data)) && null !== ($data->localUserFirstName ?? null)) {
-            $dataArray['localUser_firstName'] = $data->localUserFirstName ?? null;
+            $dataArray['localUser_firstName'] = $data->localUserFirstName;
         }
         if (array_key_exists('localUserLastName', get_object_vars($data)) && null !== ($data->localUserLastName ?? null)) {
-            $dataArray['localUser_lastName'] = $data->localUserLastName ?? null;
+            $dataArray['localUser_lastName'] = $data->localUserLastName;
         }
         if (array_key_exists('localUserMailAddress', get_object_vars($data)) && null !== ($data->localUserMailAddress ?? null)) {
-            $dataArray['localUser_mailAddress'] = $data->localUserMailAddress ?? null;
+            $dataArray['localUser_mailAddress'] = $data->localUserMailAddress;
         }
         if (array_key_exists('localUserPrimaryPhoneNumber', get_object_vars($data)) && null !== ($data->localUserPrimaryPhoneNumber ?? null)) {
-            $dataArray['localUser_primaryPhoneNumber'] = $data->localUserPrimaryPhoneNumber ?? null;
+            $dataArray['localUser_primaryPhoneNumber'] = $data->localUserPrimaryPhoneNumber;
         }
         if (array_key_exists('localUserDisplayName', get_object_vars($data)) && null !== ($data->localUserDisplayName ?? null)) {
-            $dataArray['localUser_displayName'] = $data->localUserDisplayName ?? null;
+            $dataArray['localUser_displayName'] = $data->localUserDisplayName;
         }
         if (array_key_exists('localUserUserName', get_object_vars($data)) && null !== ($data->localUserUserName ?? null)) {
-            $dataArray['localUser_userName'] = $data->localUserUserName ?? null;
+            $dataArray['localUser_userName'] = $data->localUserUserName;
         }
         if (array_key_exists('localUserUserSource', get_object_vars($data)) && null !== ($data->localUserUserSource ?? null)) {
-            $dataArray['localUser_userSource'] = $data->localUserUserSource ?? null;
+            $dataArray['localUser_userSource'] = $data->localUserUserSource;
         }
         if (array_key_exists('localUserSubscriberType', get_object_vars($data)) && null !== ($data->localUserSubscriberType ?? null)) {
-            $dataArray['localUser_subscriberType'] = $data->localUserSubscriberType ?? null;
+            $dataArray['localUser_subscriberType'] = $data->localUserSubscriberType;
         }
         if (array_key_exists('localUserStatus', get_object_vars($data)) && null !== ($data->localUserStatus ?? null)) {
-            $dataArray['localUser_status'] = $data->localUserStatus ?? null;
+            $dataArray['localUser_status'] = $data->localUserStatus;
         }
         if (array_key_exists('guestPassDisplayName', get_object_vars($data)) && null !== ($data->guestPassDisplayName ?? null)) {
-            $dataArray['guestPass_displayName'] = $data->guestPassDisplayName ?? null;
+            $dataArray['guestPass_displayName'] = $data->guestPassDisplayName;
         }
         if (array_key_exists('guestPassExpiration', get_object_vars($data)) && null !== ($data->guestPassExpiration ?? null)) {
-            $dataArray['guestPass_expiration'] = ($data->guestPassExpiration ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->guestPassExpiration ?? null, 'json', $context));
+            $dataArray['guestPass_expiration'] = $data->guestPassExpiration === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->guestPassExpiration, 'json', $context));
         }
         if (array_key_exists('guestPassWlan', get_object_vars($data)) && null !== ($data->guestPassWlan ?? null)) {
-            $dataArray['guestPass_wlan'] = $data->guestPassWlan ?? null;
+            $dataArray['guestPass_wlan'] = $data->guestPassWlan;
         }
         return $dataArray;
     }

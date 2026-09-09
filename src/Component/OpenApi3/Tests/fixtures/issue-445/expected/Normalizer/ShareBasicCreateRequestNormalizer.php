@@ -126,41 +126,41 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
-            $dataArray['expirationDate'] = ($data->expirationDate ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['expirationDate'] = $data->expirationDate?->format('Y-m-d\TH:i:sP');
         }
         $values = [];
-        foreach ($data->contents ?? null as $value) {
+        foreach ($data->contents as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contents'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->layerSchemaIds ?? null as $value_1) {
+            foreach ($data->layerSchemaIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $value_2 = $data->outputAccess ?? null;
-        if (is_string($data->outputAccess ?? null)) {
-            $value_2 = $data->outputAccess ?? null;
+        $value_2 = $data->outputAccess;
+        if (is_string($data->outputAccess)) {
+            $value_2 = $data->outputAccess;
         }
         $dataArray['outputAccess'] = $value_2;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('recipientEmails', get_object_vars($data)) && null !== ($data->recipientEmails ?? null)) {
             $values_2 = [];
-            foreach ($data->recipientEmails ?? null as $value_3) {
+            foreach ($data->recipientEmails as $value_3) {
                 $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['recipientEmails'] = $values_2;
         }
-        $dataArray['languageCode'] = $data->languageCode ?? null;
+        $dataArray['languageCode'] = $data->languageCode;
         if (array_key_exists('suppressNotifications', get_object_vars($data)) && null !== ($data->suppressNotifications ?? null)) {
-            $dataArray['suppressNotifications'] = $data->suppressNotifications ?? null;
+            $dataArray['suppressNotifications'] = $data->suppressNotifications;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

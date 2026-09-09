@@ -76,25 +76,25 @@ class ApiAuditHeaderNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('actorId', get_object_vars($data)) && null !== ($data->actorId ?? null)) {
-            $dataArray['actor_id'] = $data->actorId ?? null;
+            $dataArray['actor_id'] = $data->actorId;
         }
         if (array_key_exists('actorIp', get_object_vars($data)) && null !== ($data->actorIp ?? null)) {
-            $dataArray['actor_ip'] = $data->actorIp ?? null;
+            $dataArray['actor_ip'] = $data->actorIp;
         }
         if (array_key_exists('actorUuid', get_object_vars($data)) && null !== ($data->actorUuid ?? null)) {
-            $dataArray['actor_uuid'] = $data->actorUuid ?? null;
+            $dataArray['actor_uuid'] = $data->actorUuid;
         }
         if (array_key_exists('contextUrn', get_object_vars($data)) && null !== ($data->contextUrn ?? null)) {
-            $dataArray['context_urn'] = $data->contextUrn ?? null;
+            $dataArray['context_urn'] = $data->contextUrn;
         }
         if (array_key_exists('originApplication', get_object_vars($data)) && null !== ($data->originApplication ?? null)) {
-            $dataArray['origin_application'] = $data->originApplication ?? null;
+            $dataArray['origin_application'] = $data->originApplication;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['user_id'] = $data->userId ?? null;
+            $dataArray['user_id'] = $data->userId;
         }
         if (array_key_exists('userUuid', get_object_vars($data)) && null !== ($data->userUuid ?? null)) {
-            $dataArray['user_uuid'] = $data->userUuid ?? null;
+            $dataArray['user_uuid'] = $data->userUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

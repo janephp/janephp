@@ -46,7 +46,7 @@ class ProfileBonjourFencingRuleDeviceMacNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         return $dataArray;
     }

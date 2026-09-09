@@ -106,29 +106,29 @@ class ListItemNamedCacheConfigurationNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['caseSensitive'] = $data->caseSensitive;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schemaId'] = $data->schemaId ?? null;
+            $dataArray['schemaId'] = $data->schemaId;
         }
         if (array_key_exists('keyFields', get_object_vars($data)) && null !== ($data->keyFields ?? null)) {
             $values = [];
-            foreach ($data->keyFields ?? null as $value) {
+            foreach ($data->keyFields as $value) {
                 $values[] = $value;
             }
             $dataArray['keyFields'] = $values;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_1 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_1 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_1 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }
         if (array_key_exists('includeAllSchemaChildren', get_object_vars($data)) && null !== ($data->includeAllSchemaChildren ?? null)) {
-            $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
+            $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

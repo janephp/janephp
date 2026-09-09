@@ -51,7 +51,7 @@ class MysqlSettingsNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['auth_plugin'] = $data->authPlugin ?? null;
+        $dataArray['auth_plugin'] = $data->authPlugin;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -68,26 +68,26 @@ class DpskBatchGenUnboundNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('passphraseList', get_object_vars($data)) && null !== ($data->passphraseList ?? null)) {
             $values = [];
-            foreach ($data->passphraseList ?? null as $value) {
+            foreach ($data->passphraseList as $value) {
                 $values[] = $value;
             }
             $dataArray['passphraseList'] = $values;
         }
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('groupDpsk', get_object_vars($data)) && null !== ($data->groupDpsk ?? null)) {
-            $dataArray['groupDpsk'] = $data->groupDpsk ?? null;
+            $dataArray['groupDpsk'] = $data->groupDpsk;
         }
         return $dataArray;
     }

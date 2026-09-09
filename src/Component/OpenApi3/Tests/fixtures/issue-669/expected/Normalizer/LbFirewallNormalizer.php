@@ -65,14 +65,14 @@ class LbFirewallNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         if (array_key_exists('deny', get_object_vars($data)) && null !== ($data->deny ?? null)) {
             $values = [];
-            foreach ($data->deny ?? null as $value) {
+            foreach ($data->deny as $value) {
                 $values[] = $value;
             }
             $dataArray['deny'] = $values;
         }
         if (array_key_exists('allow', get_object_vars($data)) && null !== ($data->allow ?? null)) {
             $values_1 = [];
-            foreach ($data->allow ?? null as $value_1) {
+            foreach ($data->allow as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['allow'] = $values_1;

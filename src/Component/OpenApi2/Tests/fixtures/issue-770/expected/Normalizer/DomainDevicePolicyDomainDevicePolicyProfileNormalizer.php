@@ -62,20 +62,20 @@ class DomainDevicePolicyDomainDevicePolicyProfileNormalizer implements Denormali
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('defaultAction', get_object_vars($data)) && null !== ($data->defaultAction ?? null)) {
-            $dataArray['defaultAction'] = $data->defaultAction ?? null;
+            $dataArray['defaultAction'] = $data->defaultAction;
         }
         if (array_key_exists('rule', get_object_vars($data)) && null !== ($data->rule ?? null)) {
             $values = [];
-            foreach ($data->rule ?? null as $value) {
+            foreach ($data->rule as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rule'] = $values;

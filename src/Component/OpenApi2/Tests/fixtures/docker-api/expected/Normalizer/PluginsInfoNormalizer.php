@@ -75,28 +75,28 @@ class PluginsInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         if (array_key_exists('volume', get_object_vars($data)) && null !== ($data->volume ?? null)) {
             $values = [];
-            foreach ($data->volume ?? null as $value) {
+            foreach ($data->volume as $value) {
                 $values[] = $value;
             }
             $dataArray['Volume'] = $values;
         }
         if (array_key_exists('network', get_object_vars($data)) && null !== ($data->network ?? null)) {
             $values_1 = [];
-            foreach ($data->network ?? null as $value_1) {
+            foreach ($data->network as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Network'] = $values_1;
         }
         if (array_key_exists('authorization', get_object_vars($data)) && null !== ($data->authorization ?? null)) {
             $values_2 = [];
-            foreach ($data->authorization ?? null as $value_2) {
+            foreach ($data->authorization as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Authorization'] = $values_2;
         }
         if (array_key_exists('log', get_object_vars($data)) && null !== ($data->log ?? null)) {
             $values_3 = [];
-            foreach ($data->log ?? null as $value_3) {
+            foreach ($data->log as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['Log'] = $values_3;

@@ -60,11 +60,11 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->addonSlugs ?? null as $value) {
+        foreach ($data->addonSlugs as $value) {
             $values[] = $value;
         }
         $dataArray['addon_slugs'] = $values;
-        $dataArray['cluster_uuid'] = $data->clusterUuid ?? null;
+        $dataArray['cluster_uuid'] = $data->clusterUuid;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

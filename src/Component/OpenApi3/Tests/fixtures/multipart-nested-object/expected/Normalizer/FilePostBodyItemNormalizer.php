@@ -59,10 +59,10 @@ class FilePostBodyItemNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('itemId', get_object_vars($data)) && null !== ($data->itemId ?? null)) {
-            $dataArray['itemId'] = $data->itemId ?? null;
+            $dataArray['itemId'] = $data->itemId;
         }
         if (array_key_exists('itemType', get_object_vars($data)) && null !== ($data->itemType ?? null)) {
-            $dataArray['itemType'] = $data->itemType ?? null;
+            $dataArray['itemType'] = $data->itemType;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

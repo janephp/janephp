@@ -55,13 +55,13 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('naiRealm', get_object_vars($data)) && null !== ($data->naiRealm ?? null)) {
-            $dataArray['naiRealm'] = ($data->naiRealm ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm ?? null, 'json', $context));
+            $dataArray['naiRealm'] = $data->naiRealm === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm, 'json', $context));
         }
         if (array_key_exists('planInformations', get_object_vars($data)) && null !== ($data->planInformations ?? null)) {
             $values = [];
-            foreach ($data->planInformations ?? null as $value) {
+            foreach ($data->planInformations as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['planInformations'] = $values;

@@ -89,35 +89,35 @@ class SelectiveDestroyAssociatedResourceNormalizer implements DenormalizerInterf
         $dataArray = [];
         if (array_key_exists('floatingIps', get_object_vars($data)) && null !== ($data->floatingIps ?? null)) {
             $values = [];
-            foreach ($data->floatingIps ?? null as $value) {
+            foreach ($data->floatingIps as $value) {
                 $values[] = $value;
             }
             $dataArray['floating_ips'] = $values;
         }
         if (array_key_exists('reservedIps', get_object_vars($data)) && null !== ($data->reservedIps ?? null)) {
             $values_1 = [];
-            foreach ($data->reservedIps ?? null as $value_1) {
+            foreach ($data->reservedIps as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['reserved_ips'] = $values_1;
         }
         if (array_key_exists('snapshots', get_object_vars($data)) && null !== ($data->snapshots ?? null)) {
             $values_2 = [];
-            foreach ($data->snapshots ?? null as $value_2) {
+            foreach ($data->snapshots as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['snapshots'] = $values_2;
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_3 = [];
-            foreach ($data->volumes ?? null as $value_3) {
+            foreach ($data->volumes as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['volumes'] = $values_3;
         }
         if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
             $values_4 = [];
-            foreach ($data->volumeSnapshots ?? null as $value_4) {
+            foreach ($data->volumeSnapshots as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['volume_snapshots'] = $values_4;

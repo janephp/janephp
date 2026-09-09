@@ -206,109 +206,109 @@ class MysqlAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('backupHour', get_object_vars($data)) && null !== ($data->backupHour ?? null)) {
-            $dataArray['backup_hour'] = $data->backupHour ?? null;
+            $dataArray['backup_hour'] = $data->backupHour;
         }
         if (array_key_exists('backupMinute', get_object_vars($data)) && null !== ($data->backupMinute ?? null)) {
-            $dataArray['backup_minute'] = $data->backupMinute ?? null;
+            $dataArray['backup_minute'] = $data->backupMinute;
         }
         if (array_key_exists('sqlMode', get_object_vars($data)) && null !== ($data->sqlMode ?? null)) {
-            $dataArray['sql_mode'] = $data->sqlMode ?? null;
+            $dataArray['sql_mode'] = $data->sqlMode;
         }
         if (array_key_exists('connectTimeout', get_object_vars($data)) && null !== ($data->connectTimeout ?? null)) {
-            $dataArray['connect_timeout'] = $data->connectTimeout ?? null;
+            $dataArray['connect_timeout'] = $data->connectTimeout;
         }
         if (array_key_exists('defaultTimeZone', get_object_vars($data)) && null !== ($data->defaultTimeZone ?? null)) {
-            $dataArray['default_time_zone'] = $data->defaultTimeZone ?? null;
+            $dataArray['default_time_zone'] = $data->defaultTimeZone;
         }
         if (array_key_exists('groupConcatMaxLen', get_object_vars($data)) && null !== ($data->groupConcatMaxLen ?? null)) {
-            $dataArray['group_concat_max_len'] = $data->groupConcatMaxLen ?? null;
+            $dataArray['group_concat_max_len'] = $data->groupConcatMaxLen;
         }
         if (array_key_exists('informationSchemaStatsExpiry', get_object_vars($data)) && null !== ($data->informationSchemaStatsExpiry ?? null)) {
-            $dataArray['information_schema_stats_expiry'] = $data->informationSchemaStatsExpiry ?? null;
+            $dataArray['information_schema_stats_expiry'] = $data->informationSchemaStatsExpiry;
         }
         if (array_key_exists('innodbFtMinTokenSize', get_object_vars($data)) && null !== ($data->innodbFtMinTokenSize ?? null)) {
-            $dataArray['innodb_ft_min_token_size'] = $data->innodbFtMinTokenSize ?? null;
+            $dataArray['innodb_ft_min_token_size'] = $data->innodbFtMinTokenSize;
         }
         if (array_key_exists('innodbFtServerStopwordTable', get_object_vars($data)) && null !== ($data->innodbFtServerStopwordTable ?? null)) {
-            $dataArray['innodb_ft_server_stopword_table'] = $data->innodbFtServerStopwordTable ?? null;
+            $dataArray['innodb_ft_server_stopword_table'] = $data->innodbFtServerStopwordTable;
         }
         if (array_key_exists('innodbLockWaitTimeout', get_object_vars($data)) && null !== ($data->innodbLockWaitTimeout ?? null)) {
-            $dataArray['innodb_lock_wait_timeout'] = $data->innodbLockWaitTimeout ?? null;
+            $dataArray['innodb_lock_wait_timeout'] = $data->innodbLockWaitTimeout;
         }
         if (array_key_exists('innodbLogBufferSize', get_object_vars($data)) && null !== ($data->innodbLogBufferSize ?? null)) {
-            $dataArray['innodb_log_buffer_size'] = $data->innodbLogBufferSize ?? null;
+            $dataArray['innodb_log_buffer_size'] = $data->innodbLogBufferSize;
         }
         if (array_key_exists('innodbOnlineAlterLogMaxSize', get_object_vars($data)) && null !== ($data->innodbOnlineAlterLogMaxSize ?? null)) {
-            $dataArray['innodb_online_alter_log_max_size'] = $data->innodbOnlineAlterLogMaxSize ?? null;
+            $dataArray['innodb_online_alter_log_max_size'] = $data->innodbOnlineAlterLogMaxSize;
         }
         if (array_key_exists('innodbPrintAllDeadlocks', get_object_vars($data)) && null !== ($data->innodbPrintAllDeadlocks ?? null)) {
-            $dataArray['innodb_print_all_deadlocks'] = $data->innodbPrintAllDeadlocks ?? null;
+            $dataArray['innodb_print_all_deadlocks'] = $data->innodbPrintAllDeadlocks;
         }
         if (array_key_exists('innodbRollbackOnTimeout', get_object_vars($data)) && null !== ($data->innodbRollbackOnTimeout ?? null)) {
-            $dataArray['innodb_rollback_on_timeout'] = $data->innodbRollbackOnTimeout ?? null;
+            $dataArray['innodb_rollback_on_timeout'] = $data->innodbRollbackOnTimeout;
         }
         if (array_key_exists('interactiveTimeout', get_object_vars($data)) && null !== ($data->interactiveTimeout ?? null)) {
-            $dataArray['interactive_timeout'] = $data->interactiveTimeout ?? null;
+            $dataArray['interactive_timeout'] = $data->interactiveTimeout;
         }
         if (array_key_exists('internalTmpMemStorageEngine', get_object_vars($data)) && null !== ($data->internalTmpMemStorageEngine ?? null)) {
-            $dataArray['internal_tmp_mem_storage_engine'] = $data->internalTmpMemStorageEngine ?? null;
+            $dataArray['internal_tmp_mem_storage_engine'] = $data->internalTmpMemStorageEngine;
         }
         if (array_key_exists('netReadTimeout', get_object_vars($data)) && null !== ($data->netReadTimeout ?? null)) {
-            $dataArray['net_read_timeout'] = $data->netReadTimeout ?? null;
+            $dataArray['net_read_timeout'] = $data->netReadTimeout;
         }
         if (array_key_exists('netWriteTimeout', get_object_vars($data)) && null !== ($data->netWriteTimeout ?? null)) {
-            $dataArray['net_write_timeout'] = $data->netWriteTimeout ?? null;
+            $dataArray['net_write_timeout'] = $data->netWriteTimeout;
         }
         if (array_key_exists('sqlRequirePrimaryKey', get_object_vars($data)) && null !== ($data->sqlRequirePrimaryKey ?? null)) {
-            $dataArray['sql_require_primary_key'] = $data->sqlRequirePrimaryKey ?? null;
+            $dataArray['sql_require_primary_key'] = $data->sqlRequirePrimaryKey;
         }
         if (array_key_exists('waitTimeout', get_object_vars($data)) && null !== ($data->waitTimeout ?? null)) {
-            $dataArray['wait_timeout'] = $data->waitTimeout ?? null;
+            $dataArray['wait_timeout'] = $data->waitTimeout;
         }
         if (array_key_exists('maxAllowedPacket', get_object_vars($data)) && null !== ($data->maxAllowedPacket ?? null)) {
-            $dataArray['max_allowed_packet'] = $data->maxAllowedPacket ?? null;
+            $dataArray['max_allowed_packet'] = $data->maxAllowedPacket;
         }
         if (array_key_exists('maxHeapTableSize', get_object_vars($data)) && null !== ($data->maxHeapTableSize ?? null)) {
-            $dataArray['max_heap_table_size'] = $data->maxHeapTableSize ?? null;
+            $dataArray['max_heap_table_size'] = $data->maxHeapTableSize;
         }
         if (array_key_exists('sortBufferSize', get_object_vars($data)) && null !== ($data->sortBufferSize ?? null)) {
-            $dataArray['sort_buffer_size'] = $data->sortBufferSize ?? null;
+            $dataArray['sort_buffer_size'] = $data->sortBufferSize;
         }
         if (array_key_exists('tmpTableSize', get_object_vars($data)) && null !== ($data->tmpTableSize ?? null)) {
-            $dataArray['tmp_table_size'] = $data->tmpTableSize ?? null;
+            $dataArray['tmp_table_size'] = $data->tmpTableSize;
         }
         if (array_key_exists('slowQueryLog', get_object_vars($data)) && null !== ($data->slowQueryLog ?? null)) {
-            $dataArray['slow_query_log'] = $data->slowQueryLog ?? null;
+            $dataArray['slow_query_log'] = $data->slowQueryLog;
         }
         if (array_key_exists('longQueryTime', get_object_vars($data)) && null !== ($data->longQueryTime ?? null)) {
-            $dataArray['long_query_time'] = $data->longQueryTime ?? null;
+            $dataArray['long_query_time'] = $data->longQueryTime;
         }
         if (array_key_exists('binlogRetentionPeriod', get_object_vars($data)) && null !== ($data->binlogRetentionPeriod ?? null)) {
-            $dataArray['binlog_retention_period'] = $data->binlogRetentionPeriod ?? null;
+            $dataArray['binlog_retention_period'] = $data->binlogRetentionPeriod;
         }
         if (array_key_exists('innodbChangeBufferMaxSize', get_object_vars($data)) && null !== ($data->innodbChangeBufferMaxSize ?? null)) {
-            $dataArray['innodb_change_buffer_max_size'] = $data->innodbChangeBufferMaxSize ?? null;
+            $dataArray['innodb_change_buffer_max_size'] = $data->innodbChangeBufferMaxSize;
         }
         if (array_key_exists('innodbFlushNeighbors', get_object_vars($data)) && null !== ($data->innodbFlushNeighbors ?? null)) {
-            $dataArray['innodb_flush_neighbors'] = $data->innodbFlushNeighbors ?? null;
+            $dataArray['innodb_flush_neighbors'] = $data->innodbFlushNeighbors;
         }
         if (array_key_exists('innodbReadIoThreads', get_object_vars($data)) && null !== ($data->innodbReadIoThreads ?? null)) {
-            $dataArray['innodb_read_io_threads'] = $data->innodbReadIoThreads ?? null;
+            $dataArray['innodb_read_io_threads'] = $data->innodbReadIoThreads;
         }
         if (array_key_exists('innodbWriteIoThreads', get_object_vars($data)) && null !== ($data->innodbWriteIoThreads ?? null)) {
-            $dataArray['innodb_write_io_threads'] = $data->innodbWriteIoThreads ?? null;
+            $dataArray['innodb_write_io_threads'] = $data->innodbWriteIoThreads;
         }
         if (array_key_exists('innodbThreadConcurrency', get_object_vars($data)) && null !== ($data->innodbThreadConcurrency ?? null)) {
-            $dataArray['innodb_thread_concurrency'] = $data->innodbThreadConcurrency ?? null;
+            $dataArray['innodb_thread_concurrency'] = $data->innodbThreadConcurrency;
         }
         if (array_key_exists('netBufferLength', get_object_vars($data)) && null !== ($data->netBufferLength ?? null)) {
-            $dataArray['net_buffer_length'] = $data->netBufferLength ?? null;
+            $dataArray['net_buffer_length'] = $data->netBufferLength;
         }
         if (array_key_exists('logOutput', get_object_vars($data)) && null !== ($data->logOutput ?? null)) {
-            $dataArray['log_output'] = $data->logOutput ?? null;
+            $dataArray['log_output'] = $data->logOutput;
         }
         if (array_key_exists('mysqlIncrementalBackup', get_object_vars($data)) && null !== ($data->mysqlIncrementalBackup ?? null)) {
-            $dataArray['mysql_incremental_backup'] = ($data->mysqlIncrementalBackup ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlIncrementalBackup ?? null, 'json', $context));
+            $dataArray['mysql_incremental_backup'] = $data->mysqlIncrementalBackup === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlIncrementalBackup, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

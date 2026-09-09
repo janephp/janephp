@@ -83,13 +83,13 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['history_event_id'] = $data->historyEventId ?? null;
-        $dataArray['current_instance_count'] = $data->currentInstanceCount ?? null;
-        $dataArray['desired_instance_count'] = $data->desiredInstanceCount ?? null;
-        $dataArray['reason'] = $data->reason ?? null;
-        $dataArray['status'] = $data->status ?? null;
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['history_event_id'] = $data->historyEventId;
+        $dataArray['current_instance_count'] = $data->currentInstanceCount;
+        $dataArray['desired_instance_count'] = $data->desiredInstanceCount;
+        $dataArray['reason'] = $data->reason;
+        $dataArray['status'] = $data->status;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

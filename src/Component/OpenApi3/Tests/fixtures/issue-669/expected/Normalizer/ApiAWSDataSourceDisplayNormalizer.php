@@ -60,13 +60,13 @@ class ApiAWSDataSourceDisplayNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
-            $dataArray['bucket_name'] = $data->bucketName ?? null;
+            $dataArray['bucket_name'] = $data->bucketName;
         }
         if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
-            $dataArray['item_path'] = $data->itemPath ?? null;
+            $dataArray['item_path'] = $data->itemPath;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

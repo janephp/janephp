@@ -64,22 +64,22 @@ class AdministrationModifyScheduleBackupNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('enableScheduleBackup', get_object_vars($data)) && null !== ($data->enableScheduleBackup ?? null)) {
-            $dataArray['enableScheduleBackup'] = $data->enableScheduleBackup ?? null;
+            $dataArray['enableScheduleBackup'] = $data->enableScheduleBackup;
         }
         if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
-            $dataArray['interval'] = $data->interval ?? null;
+            $dataArray['interval'] = $data->interval;
         }
         if (array_key_exists('dayOfWeek', get_object_vars($data)) && null !== ($data->dayOfWeek ?? null)) {
-            $dataArray['dayOfWeek'] = $data->dayOfWeek ?? null;
+            $dataArray['dayOfWeek'] = $data->dayOfWeek;
         }
         if (array_key_exists('dateOfMonth', get_object_vars($data)) && null !== ($data->dateOfMonth ?? null)) {
-            $dataArray['dateOfMonth'] = $data->dateOfMonth ?? null;
+            $dataArray['dateOfMonth'] = $data->dateOfMonth;
         }
         if (array_key_exists('hour', get_object_vars($data)) && null !== ($data->hour ?? null)) {
-            $dataArray['hour'] = $data->hour ?? null;
+            $dataArray['hour'] = $data->hour;
         }
         if (array_key_exists('minute', get_object_vars($data)) && null !== ($data->minute ?? null)) {
-            $dataArray['minute'] = $data->minute ?? null;
+            $dataArray['minute'] = $data->minute;
         }
         return $dataArray;
     }

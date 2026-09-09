@@ -55,10 +55,10 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentId'] = $data->contentId ?? null;
+        $dataArray['contentId'] = $data->contentId;
         if (array_key_exists('outputFormatIds', get_object_vars($data)) && null !== ($data->outputFormatIds ?? null)) {
             $values = [];
-            foreach ($data->outputFormatIds ?? null as $value) {
+            foreach ($data->outputFormatIds as $value) {
                 $values[] = $value;
             }
             $dataArray['outputFormatIds'] = $values;

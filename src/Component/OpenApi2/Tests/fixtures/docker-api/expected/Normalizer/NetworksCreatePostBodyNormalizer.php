@@ -98,38 +98,38 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Name'] = $data->name;
         if (array_key_exists('checkDuplicate', get_object_vars($data)) && null !== ($data->checkDuplicate ?? null)) {
-            $dataArray['CheckDuplicate'] = $data->checkDuplicate ?? null;
+            $dataArray['CheckDuplicate'] = $data->checkDuplicate;
         }
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver ?? null;
+            $dataArray['Driver'] = $data->driver;
         }
         if (array_key_exists('internal', get_object_vars($data)) && null !== ($data->internal ?? null)) {
-            $dataArray['Internal'] = $data->internal ?? null;
+            $dataArray['Internal'] = $data->internal;
         }
         if (array_key_exists('attachable', get_object_vars($data)) && null !== ($data->attachable ?? null)) {
-            $dataArray['Attachable'] = $data->attachable ?? null;
+            $dataArray['Attachable'] = $data->attachable;
         }
         if (array_key_exists('ingress', get_object_vars($data)) && null !== ($data->ingress ?? null)) {
-            $dataArray['Ingress'] = $data->ingress ?? null;
+            $dataArray['Ingress'] = $data->ingress;
         }
         if (array_key_exists('iPAM', get_object_vars($data)) && null !== ($data->iPAM ?? null)) {
-            $dataArray['IPAM'] = ($data->iPAM ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM ?? null, 'json', $context));
+            $dataArray['IPAM'] = $data->iPAM === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM, 'json', $context));
         }
         if (array_key_exists('enableIPv6', get_object_vars($data)) && null !== ($data->enableIPv6 ?? null)) {
-            $dataArray['EnableIPv6'] = $data->enableIPv6 ?? null;
+            $dataArray['EnableIPv6'] = $data->enableIPv6;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->options ?? null as $key => $value) {
+            foreach ($data->options as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Options'] = $values;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key_1 => $value_1) {
+            foreach ($data->labels as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['Labels'] = $values_1;

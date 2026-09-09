@@ -71,17 +71,17 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->projects ?? null as $value) {
+        foreach ($data->projects as $value) {
             $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['projects'] = $values;
-        $dataArray['per_page'] = $data->perPage ?? null;
-        $dataArray['total_pages'] = $data->totalPages ?? null;
-        $dataArray['total_entries'] = $data->totalEntries ?? null;
-        $dataArray['next_page'] = $data->nextPage ?? null;
-        $dataArray['previous_page'] = $data->previousPage ?? null;
-        $dataArray['page'] = $data->page ?? null;
-        $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+        $dataArray['per_page'] = $data->perPage;
+        $dataArray['total_pages'] = $data->totalPages;
+        $dataArray['total_entries'] = $data->totalEntries;
+        $dataArray['next_page'] = $data->nextPage;
+        $dataArray['previous_page'] = $data->previousPage;
+        $dataArray['page'] = $data->page;
+        $dataArray['links'] = $data->links === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

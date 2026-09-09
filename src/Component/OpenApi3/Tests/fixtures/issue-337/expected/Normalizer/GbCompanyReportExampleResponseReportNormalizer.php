@@ -124,64 +124,64 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('companyId', get_object_vars($data)) && null !== ($data->companyId ?? null)) {
-            $dataArray['companyId'] = $data->companyId ?? null;
+            $dataArray['companyId'] = $data->companyId;
         }
         if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
-            $dataArray['language'] = $data->language ?? null;
+            $dataArray['language'] = $data->language;
         }
         if (array_key_exists('companySummary', get_object_vars($data)) && null !== ($data->companySummary ?? null)) {
-            $dataArray['companySummary'] = ($data->companySummary ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companySummary ?? null, 'json', $context));
+            $dataArray['companySummary'] = $data->companySummary === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companySummary, 'json', $context));
         }
         if (array_key_exists('companyIdentification', get_object_vars($data)) && null !== ($data->companyIdentification ?? null)) {
-            $dataArray['companyIdentification'] = ($data->companyIdentification ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyIdentification ?? null, 'json', $context));
+            $dataArray['companyIdentification'] = $data->companyIdentification === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyIdentification, 'json', $context));
         }
         if (array_key_exists('creditScore', get_object_vars($data)) && null !== ($data->creditScore ?? null)) {
-            $dataArray['creditScore'] = ($data->creditScore ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditScore ?? null, 'json', $context));
+            $dataArray['creditScore'] = $data->creditScore === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditScore, 'json', $context));
         }
         if (array_key_exists('contactInformation', get_object_vars($data)) && null !== ($data->contactInformation ?? null)) {
-            $dataArray['contactInformation'] = ($data->contactInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactInformation ?? null, 'json', $context));
+            $dataArray['contactInformation'] = $data->contactInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactInformation, 'json', $context));
         }
         if (array_key_exists('shareCapitalStructure', get_object_vars($data)) && null !== ($data->shareCapitalStructure ?? null)) {
-            $dataArray['shareCapitalStructure'] = ($data->shareCapitalStructure ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->shareCapitalStructure ?? null, 'json', $context));
+            $dataArray['shareCapitalStructure'] = $data->shareCapitalStructure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->shareCapitalStructure, 'json', $context));
         }
         if (array_key_exists('directors', get_object_vars($data)) && null !== ($data->directors ?? null)) {
-            $dataArray['directors'] = ($data->directors ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directors ?? null, 'json', $context));
+            $dataArray['directors'] = $data->directors === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directors, 'json', $context));
         }
         if (array_key_exists('otherInformation', get_object_vars($data)) && null !== ($data->otherInformation ?? null)) {
-            $dataArray['otherInformation'] = ($data->otherInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherInformation ?? null, 'json', $context));
+            $dataArray['otherInformation'] = $data->otherInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherInformation, 'json', $context));
         }
         if (array_key_exists('groupStructure', get_object_vars($data)) && null !== ($data->groupStructure ?? null)) {
-            $dataArray['groupStructure'] = ($data->groupStructure ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->groupStructure ?? null, 'json', $context));
+            $dataArray['groupStructure'] = $data->groupStructure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->groupStructure, 'json', $context));
         }
         if (array_key_exists('extendedGroupStructure', get_object_vars($data)) && null !== ($data->extendedGroupStructure ?? null)) {
             $values = [];
-            foreach ($data->extendedGroupStructure ?? null as $value) {
+            foreach ($data->extendedGroupStructure as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['extendedGroupStructure'] = $values;
         }
         if (array_key_exists('financialStatements', get_object_vars($data)) && null !== ($data->financialStatements ?? null)) {
             $values_1 = [];
-            foreach ($data->financialStatements ?? null as $value_1) {
+            foreach ($data->financialStatements as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['financialStatements'] = $values_1;
         }
         if (array_key_exists('localFinancialStatements', get_object_vars($data)) && null !== ($data->localFinancialStatements ?? null)) {
             $values_2 = [];
-            foreach ($data->localFinancialStatements ?? null as $value_2) {
+            foreach ($data->localFinancialStatements as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['localFinancialStatements'] = $values_2;
         }
         if (array_key_exists('paymentData', get_object_vars($data)) && null !== ($data->paymentData ?? null)) {
-            $dataArray['paymentData'] = ($data->paymentData ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paymentData ?? null, 'json', $context));
+            $dataArray['paymentData'] = $data->paymentData === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paymentData, 'json', $context));
         }
         if (array_key_exists('negativeInformation', get_object_vars($data)) && null !== ($data->negativeInformation ?? null)) {
-            $dataArray['negativeInformation'] = ($data->negativeInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->negativeInformation ?? null, 'json', $context));
+            $dataArray['negativeInformation'] = $data->negativeInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->negativeInformation, 'json', $context));
         }
         if (array_key_exists('additionalInformation', get_object_vars($data)) && null !== ($data->additionalInformation ?? null)) {
-            $dataArray['additionalInformation'] = ($data->additionalInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalInformation ?? null, 'json', $context));
+            $dataArray['additionalInformation'] = $data->additionalInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalInformation, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

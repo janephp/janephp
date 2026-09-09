@@ -70,20 +70,20 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateFilterRequest' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateFilterRequest' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateRequest' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateRequest' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         $values = [];
-        foreach ($data->changeCommands ?? null as $value) {
+        foreach ($data->changeCommands as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

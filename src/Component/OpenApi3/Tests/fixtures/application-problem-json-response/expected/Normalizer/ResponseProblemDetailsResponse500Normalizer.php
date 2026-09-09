@@ -63,10 +63,10 @@ class ResponseProblemDetailsResponse500Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['status'] = $data->status ?? null;
-        $dataArray['title'] = $data->title ?? null;
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['detail'] = $data->detail ?? null;
+        $dataArray['status'] = $data->status;
+        $dataArray['title'] = $data->title;
+        $dataArray['type'] = $data->type;
+        $dataArray['detail'] = $data->detail;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

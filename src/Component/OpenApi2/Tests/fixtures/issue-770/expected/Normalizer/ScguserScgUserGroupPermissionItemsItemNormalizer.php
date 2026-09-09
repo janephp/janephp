@@ -52,13 +52,13 @@ class ScguserScgUserGroupPermissionItemsItemNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
-            $dataArray['resource'] = $data->resource ?? null;
+            $dataArray['resource'] = $data->resource;
         }
         if (array_key_exists('access', get_object_vars($data)) && null !== ($data->access ?? null)) {
-            $dataArray['access'] = $data->access ?? null;
+            $dataArray['access'] = $data->access;
         }
         if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
-            $dataArray['display'] = $data->display ?? null;
+            $dataArray['display'] = $data->display;
         }
         return $dataArray;
     }

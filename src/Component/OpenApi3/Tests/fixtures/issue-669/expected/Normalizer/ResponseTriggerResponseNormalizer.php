@@ -52,7 +52,7 @@ class ResponseTriggerResponseNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('trigger', get_object_vars($data)) && null !== ($data->trigger ?? null)) {
-            $dataArray['trigger'] = ($data->trigger ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->trigger ?? null, 'json', $context));
+            $dataArray['trigger'] = $data->trigger === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->trigger, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

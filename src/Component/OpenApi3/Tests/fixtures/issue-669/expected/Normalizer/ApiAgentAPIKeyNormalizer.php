@@ -52,7 +52,7 @@ class ApiAgentAPIKeyNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('apiKey', get_object_vars($data)) && null !== ($data->apiKey ?? null)) {
-            $dataArray['api_key'] = $data->apiKey ?? null;
+            $dataArray['api_key'] = $data->apiKey;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

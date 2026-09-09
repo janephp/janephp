@@ -63,11 +63,11 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['field'] = $data->field ?? null;
-        $value = $data->range ?? null;
-        if (is_object($data->range ?? null)) {
-            $value = ($data->range ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['field'] = $data->field;
+        $value = $data->range;
+        if (is_object($data->range)) {
+            $value = $data->range === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range, 'json', $context));
         }
         $dataArray['range'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

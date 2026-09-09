@@ -74,18 +74,18 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Description'] = $data->description ?? null;
+        $dataArray['Name'] = $data->name;
+        $dataArray['Description'] = $data->description;
         $values = [];
-        foreach ($data->settable ?? null as $value) {
+        foreach ($data->settable as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
-        $dataArray['Source'] = $data->source ?? null;
-        $dataArray['Destination'] = $data->destination ?? null;
-        $dataArray['Type'] = $data->type ?? null;
+        $dataArray['Source'] = $data->source;
+        $dataArray['Destination'] = $data->destination;
+        $dataArray['Type'] = $data->type;
         $values_1 = [];
-        foreach ($data->options ?? null as $value_1) {
+        foreach ($data->options as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['Options'] = $values_1;

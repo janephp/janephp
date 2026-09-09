@@ -55,13 +55,13 @@ class ServiceServiceStatusNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('runningTasks', get_object_vars($data)) && null !== ($data->runningTasks ?? null)) {
-            $dataArray['RunningTasks'] = $data->runningTasks ?? null;
+            $dataArray['RunningTasks'] = $data->runningTasks;
         }
         if (array_key_exists('desiredTasks', get_object_vars($data)) && null !== ($data->desiredTasks ?? null)) {
-            $dataArray['DesiredTasks'] = $data->desiredTasks ?? null;
+            $dataArray['DesiredTasks'] = $data->desiredTasks;
         }
         if (array_key_exists('completedTasks', get_object_vars($data)) && null !== ($data->completedTasks ?? null)) {
-            $dataArray['CompletedTasks'] = $data->completedTasks ?? null;
+            $dataArray['CompletedTasks'] = $data->completedTasks;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceServiceStatusConstraint());

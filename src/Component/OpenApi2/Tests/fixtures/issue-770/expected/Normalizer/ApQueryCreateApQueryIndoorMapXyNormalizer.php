@@ -55,10 +55,10 @@ class ApQueryCreateApQueryIndoorMapXyNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('x', get_object_vars($data)) && null !== ($data->x ?? null)) {
-            $dataArray['x'] = $data->x ?? null;
+            $dataArray['x'] = $data->x;
         }
         if (array_key_exists('y', get_object_vars($data)) && null !== ($data->y ?? null)) {
-            $dataArray['y'] = $data->y ?? null;
+            $dataArray['y'] = $data->y;
         }
         return $dataArray;
     }

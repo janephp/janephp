@@ -99,33 +99,33 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if (array_key_exists('string', get_object_vars($data)) && null !== ($data->string ?? null)) {
-            $dataArray['string'] = $data->string ?? null;
+            $dataArray['string'] = $data->string;
         }
         if (array_key_exists('bool', get_object_vars($data)) && null !== ($data->bool ?? null)) {
-            $dataArray['bool'] = $data->bool ?? null;
+            $dataArray['bool'] = $data->bool;
         }
         if (array_key_exists('integer', get_object_vars($data)) && null !== ($data->integer ?? null)) {
-            $dataArray['integer'] = $data->integer ?? null;
+            $dataArray['integer'] = $data->integer;
         }
         if (array_key_exists('float', get_object_vars($data)) && null !== ($data->float ?? null)) {
-            $dataArray['float'] = $data->float ?? null;
+            $dataArray['float'] = $data->float;
         }
         if (array_key_exists('array', get_object_vars($data)) && null !== ($data->array ?? null)) {
             $values = [];
-            foreach ($data->array ?? null as $value) {
+            foreach ($data->array as $value) {
                 $values[] = $value;
             }
             $dataArray['array'] = $values;
         }
         if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
             $values_1 = [];
-            foreach ($data->object ?? null as $value_1) {
+            foreach ($data->object as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['object'] = $values_1;
         }
         if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
-            $dataArray['subObject'] = ($data->subObject ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($this->normalizer->normalize($data->subObject ?? null, 'json', $context));
+            $dataArray['subObject'] = $data->subObject === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
         }
         return $dataArray;
     }

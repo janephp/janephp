@@ -92,37 +92,37 @@ class ApiKBDataSourceNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('awsDataSource', get_object_vars($data)) && null !== ($data->awsDataSource ?? null)) {
-            $dataArray['aws_data_source'] = ($data->awsDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->awsDataSource ?? null, 'json', $context));
+            $dataArray['aws_data_source'] = $data->awsDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->awsDataSource, 'json', $context));
         }
         if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
-            $dataArray['bucket_name'] = $data->bucketName ?? null;
+            $dataArray['bucket_name'] = $data->bucketName;
         }
         if (array_key_exists('bucketRegion', get_object_vars($data)) && null !== ($data->bucketRegion ?? null)) {
-            $dataArray['bucket_region'] = $data->bucketRegion ?? null;
+            $dataArray['bucket_region'] = $data->bucketRegion;
         }
         if (array_key_exists('chunkingAlgorithm', get_object_vars($data)) && null !== ($data->chunkingAlgorithm ?? null)) {
-            $dataArray['chunking_algorithm'] = $data->chunkingAlgorithm ?? null;
+            $dataArray['chunking_algorithm'] = $data->chunkingAlgorithm;
         }
         if (array_key_exists('chunkingOptions', get_object_vars($data)) && null !== ($data->chunkingOptions ?? null)) {
-            $dataArray['chunking_options'] = ($data->chunkingOptions ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chunkingOptions ?? null, 'json', $context));
+            $dataArray['chunking_options'] = $data->chunkingOptions === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chunkingOptions, 'json', $context));
         }
         if (array_key_exists('dropboxDataSource', get_object_vars($data)) && null !== ($data->dropboxDataSource ?? null)) {
-            $dataArray['dropbox_data_source'] = ($data->dropboxDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropboxDataSource ?? null, 'json', $context));
+            $dataArray['dropbox_data_source'] = $data->dropboxDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropboxDataSource, 'json', $context));
         }
         if (array_key_exists('fileUploadDataSource', get_object_vars($data)) && null !== ($data->fileUploadDataSource ?? null)) {
-            $dataArray['file_upload_data_source'] = ($data->fileUploadDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataSource ?? null, 'json', $context));
+            $dataArray['file_upload_data_source'] = $data->fileUploadDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataSource, 'json', $context));
         }
         if (array_key_exists('googleDriveDataSource', get_object_vars($data)) && null !== ($data->googleDriveDataSource ?? null)) {
-            $dataArray['google_drive_data_source'] = ($data->googleDriveDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->googleDriveDataSource ?? null, 'json', $context));
+            $dataArray['google_drive_data_source'] = $data->googleDriveDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->googleDriveDataSource, 'json', $context));
         }
         if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
-            $dataArray['item_path'] = $data->itemPath ?? null;
+            $dataArray['item_path'] = $data->itemPath;
         }
         if (array_key_exists('spacesDataSource', get_object_vars($data)) && null !== ($data->spacesDataSource ?? null)) {
-            $dataArray['spaces_data_source'] = ($data->spacesDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spacesDataSource ?? null, 'json', $context));
+            $dataArray['spaces_data_source'] = $data->spacesDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spacesDataSource, 'json', $context));
         }
         if (array_key_exists('webCrawlerDataSource', get_object_vars($data)) && null !== ($data->webCrawlerDataSource ?? null)) {
-            $dataArray['web_crawler_data_source'] = ($data->webCrawlerDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->webCrawlerDataSource ?? null, 'json', $context));
+            $dataArray['web_crawler_data_source'] = $data->webCrawlerDataSource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->webCrawlerDataSource, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

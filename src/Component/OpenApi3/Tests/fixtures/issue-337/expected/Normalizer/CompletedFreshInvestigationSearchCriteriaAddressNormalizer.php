@@ -60,13 +60,13 @@ class CompletedFreshInvestigationSearchCriteriaAddressNormalizer implements Deno
     {
         $dataArray = [];
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('postcode', get_object_vars($data)) && null !== ($data->postcode ?? null)) {
-            $dataArray['postcode'] = $data->postcode ?? null;
+            $dataArray['postcode'] = $data->postcode;
         }
         if (array_key_exists('simple', get_object_vars($data)) && null !== ($data->simple ?? null)) {
-            $dataArray['simple'] = $data->simple ?? null;
+            $dataArray['simple'] = $data->simple;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -76,30 +76,30 @@ class L2AccessControlModifyL2AccessControlNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['restriction'] = $data->restriction ?? null;
+        $dataArray['restriction'] = $data->restriction;
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->rules ?? null as $value) {
+            foreach ($data->rules as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
-        $dataArray['etherTypeRestriction'] = $data->etherTypeRestriction ?? null;
+        $dataArray['etherTypeRestriction'] = $data->etherTypeRestriction;
         if (array_key_exists('etherTypes', get_object_vars($data)) && null !== ($data->etherTypes ?? null)) {
             $values_1 = [];
-            foreach ($data->etherTypes ?? null as $value_1) {
+            foreach ($data->etherTypes as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['etherTypes'] = $values_1;
         }
         if (array_key_exists('userDefinedEtherTypes', get_object_vars($data)) && null !== ($data->userDefinedEtherTypes ?? null)) {
             $values_2 = [];
-            foreach ($data->userDefinedEtherTypes ?? null as $value_2) {
+            foreach ($data->userDefinedEtherTypes as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['userDefinedEtherTypes'] = $values_2;

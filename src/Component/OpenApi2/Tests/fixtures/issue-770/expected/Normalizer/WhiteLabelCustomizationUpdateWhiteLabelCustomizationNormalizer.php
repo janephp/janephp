@@ -51,12 +51,12 @@ class WhiteLabelCustomizationUpdateWhiteLabelCustomizationNormalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['companyName'] = $data->companyName ?? null;
+        $dataArray['companyName'] = $data->companyName;
         if (array_key_exists('favIconImage', get_object_vars($data)) && null !== ($data->favIconImage ?? null)) {
-            $dataArray['favIconImage'] = $data->favIconImage ?? null;
+            $dataArray['favIconImage'] = $data->favIconImage;
         }
         if (array_key_exists('homeLogoImage', get_object_vars($data)) && null !== ($data->homeLogoImage ?? null)) {
-            $dataArray['homeLogoImage'] = $data->homeLogoImage ?? null;
+            $dataArray['homeLogoImage'] = $data->homeLogoImage;
         }
         return $dataArray;
     }

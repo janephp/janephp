@@ -49,7 +49,7 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = $data->foo ?? null;
+            $dataArray['foo'] = $data->foo;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\Validator\FooFooFooConstraint());

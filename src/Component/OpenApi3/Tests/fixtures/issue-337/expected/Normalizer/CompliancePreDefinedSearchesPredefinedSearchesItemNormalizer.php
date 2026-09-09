@@ -68,19 +68,19 @@ class CompliancePreDefinedSearchesPredefinedSearchesItemNormalizer implements De
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('categoryName', get_object_vars($data)) && null !== ($data->categoryName ?? null)) {
-            $dataArray['categoryName'] = $data->categoryName ?? null;
+            $dataArray['categoryName'] = $data->categoryName;
         }
         if (array_key_exists('productName', get_object_vars($data)) && null !== ($data->productName ?? null)) {
-            $dataArray['productName'] = $data->productName ?? null;
+            $dataArray['productName'] = $data->productName;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('confidence', get_object_vars($data)) && null !== ($data->confidence ?? null)) {
-            $dataArray['confidence'] = $data->confidence ?? null;
+            $dataArray['confidence'] = $data->confidence;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

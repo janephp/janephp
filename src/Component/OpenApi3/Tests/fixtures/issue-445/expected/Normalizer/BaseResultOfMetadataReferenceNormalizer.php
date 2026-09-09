@@ -61,15 +61,15 @@ class BaseResultOfMetadataReferenceNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['totalResults'] = $data->totalResults ?? null;
+        $dataArray['totalResults'] = $data->totalResults;
         $values = [];
-        foreach ($data->results ?? null as $value) {
+        foreach ($data->results as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['results'] = $values;
-        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds ?? null;
+        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         return $dataArray;
     }

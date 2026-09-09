@@ -68,19 +68,19 @@ class GbPeopleReportReponseReportDirectorDetailsAddressNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('street', get_object_vars($data)) && null !== ($data->street ?? null)) {
-            $dataArray['street'] = $data->street ?? null;
+            $dataArray['street'] = $data->street;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postalCode'] = $data->postalCode ?? null;
+            $dataArray['postalCode'] = $data->postalCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

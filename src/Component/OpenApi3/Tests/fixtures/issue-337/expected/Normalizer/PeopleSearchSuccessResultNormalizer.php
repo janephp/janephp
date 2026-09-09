@@ -60,11 +60,11 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
-            $dataArray['totalSize'] = $data->totalSize ?? null;
+            $dataArray['totalSize'] = $data->totalSize;
         }
         if (array_key_exists('directors', get_object_vars($data)) && null !== ($data->directors ?? null)) {
             $values = [];
-            foreach ($data->directors ?? null as $value) {
+            foreach ($data->directors as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['directors'] = $values;

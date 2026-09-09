@@ -69,13 +69,13 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('planet', get_object_vars($data)) && null !== ($data->planet ?? null)) {
-            $dataArray['planet'] = ($data->planet ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->planet ?? null, 'json', $context));
+            $dataArray['planet'] = $data->planet === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->planet, 'json', $context));
         }
         if (array_key_exists('orbitalPeriod', get_object_vars($data)) && null !== ($data->orbitalPeriod ?? null)) {
-            $dataArray['orbitalPeriod'] = $data->orbitalPeriod ?? null;
+            $dataArray['orbitalPeriod'] = $data->orbitalPeriod;
         }
         if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
-            $dataArray['distance'] = $data->distance ?? null;
+            $dataArray['distance'] = $data->distance;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

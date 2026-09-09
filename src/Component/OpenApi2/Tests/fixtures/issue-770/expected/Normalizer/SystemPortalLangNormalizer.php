@@ -49,10 +49,10 @@ class SystemPortalLangNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
-            $dataArray['display'] = $data->display ?? null;
+            $dataArray['display'] = $data->display;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         return $dataArray;
     }

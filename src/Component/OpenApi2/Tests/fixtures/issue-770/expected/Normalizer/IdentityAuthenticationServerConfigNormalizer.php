@@ -67,25 +67,25 @@ class IdentityAuthenticationServerConfigNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('local', get_object_vars($data)) && null !== ($data->local ?? null)) {
-            $dataArray['local'] = $data->local ?? null;
+            $dataArray['local'] = $data->local;
         }
         if (array_key_exists('aUTHENTICATIONSERVERTYPE', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERTYPE ?? null)) {
-            $dataArray['AUTHENTICATION_SERVER_TYPE'] = $data->aUTHENTICATIONSERVERTYPE ?? null;
+            $dataArray['AUTHENTICATION_SERVER_TYPE'] = $data->aUTHENTICATIONSERVERTYPE;
         }
         if (array_key_exists('aUTHENTICATIONSERVERNAME', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERNAME ?? null)) {
-            $dataArray['AUTHENTICATION_SERVER_NAME'] = $data->aUTHENTICATIONSERVERNAME ?? null;
+            $dataArray['AUTHENTICATION_SERVER_NAME'] = $data->aUTHENTICATIONSERVERNAME;
         }
         if (array_key_exists('aUTHENTICATIONSERVERID', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERID ?? null)) {
-            $dataArray['AUTHENTICATION_SERVER_ID'] = $data->aUTHENTICATIONSERVERID ?? null;
+            $dataArray['AUTHENTICATION_SERVER_ID'] = $data->aUTHENTICATIONSERVERID;
         }
         return $dataArray;
     }

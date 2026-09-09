@@ -49,9 +49,9 @@ class CommonWebAuthenticationPortalCustomizationNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
-        $dataArray['logo'] = $data->logo ?? null;
+        $dataArray['logo'] = $data->logo;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

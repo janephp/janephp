@@ -52,7 +52,7 @@ class ApiLinksNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
-            $dataArray['pages'] = ($data->pages ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pages ?? null, 'json', $context));
+            $dataArray['pages'] = $data->pages === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pages, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

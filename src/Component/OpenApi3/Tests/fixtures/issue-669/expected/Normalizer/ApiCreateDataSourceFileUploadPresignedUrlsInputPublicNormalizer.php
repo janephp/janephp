@@ -57,7 +57,7 @@ class ApiCreateDataSourceFileUploadPresignedUrlsInputPublicNormalizer implements
         $dataArray = [];
         if (array_key_exists('files', get_object_vars($data)) && null !== ($data->files ?? null)) {
             $values = [];
-            foreach ($data->files ?? null as $value) {
+            foreach ($data->files as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['files'] = $values;

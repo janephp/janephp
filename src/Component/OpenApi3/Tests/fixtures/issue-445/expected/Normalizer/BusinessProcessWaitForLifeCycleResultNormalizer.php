@@ -60,15 +60,15 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('lifeCycleHit', get_object_vars($data)) && null !== ($data->lifeCycleHit ?? null)) {
-            $value = $data->lifeCycleHit ?? null;
-            if (is_string($data->lifeCycleHit ?? null)) {
-                $value = $data->lifeCycleHit ?? null;
+            $value = $data->lifeCycleHit;
+            if (is_string($data->lifeCycleHit)) {
+                $value = $data->lifeCycleHit;
             }
             $dataArray['lifeCycleHit'] = $value;
         }
-        $value_1 = $data->businessProcess ?? null;
-        if (is_object($data->businessProcess ?? null)) {
-            $value_1 = ($data->businessProcess ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess ?? null, 'json', $context));
+        $value_1 = $data->businessProcess;
+        if (is_object($data->businessProcess)) {
+            $value_1 = $data->businessProcess === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess, 'json', $context));
         }
         $dataArray['businessProcess'] = $value_1;
         return $dataArray;

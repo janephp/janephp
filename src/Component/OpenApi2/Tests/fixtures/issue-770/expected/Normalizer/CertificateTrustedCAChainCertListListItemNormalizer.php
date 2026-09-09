@@ -71,32 +71,32 @@ class CertificateTrustedCAChainCertListListItemNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('information', get_object_vars($data)) && null !== ($data->information ?? null)) {
-            $dataArray['information'] = $data->information ?? null;
+            $dataArray['information'] = $data->information;
         }
         if (array_key_exists('interCertData', get_object_vars($data)) && null !== ($data->interCertData ?? null)) {
             $values = [];
-            foreach ($data->interCertData ?? null as $value) {
+            foreach ($data->interCertData as $value) {
                 $values[] = $value;
             }
             $dataArray['interCertData'] = $values;
         }
         if (array_key_exists('rootCertData', get_object_vars($data)) && null !== ($data->rootCertData ?? null)) {
-            $dataArray['rootCertData'] = $data->rootCertData ?? null;
+            $dataArray['rootCertData'] = $data->rootCertData;
         }
         return $dataArray;
     }

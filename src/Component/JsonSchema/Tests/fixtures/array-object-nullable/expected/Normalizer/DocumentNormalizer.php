@@ -59,15 +59,15 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
-            $value = $data->attributes ?? null;
-            if (is_array($data->attributes ?? null)) {
+            $value = $data->attributes;
+            if (is_array($data->attributes)) {
                 $values = [];
-                foreach ($data->attributes ?? null as $value_1) {
+                foreach ($data->attributes as $value_1) {
                     $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $value = $values;
-            } elseif (is_null($data->attributes ?? null)) {
-                $value = $data->attributes ?? null;
+            } elseif (is_null($data->attributes)) {
+                $value = $data->attributes;
             }
             $dataArray['attributes'] = $value;
         }

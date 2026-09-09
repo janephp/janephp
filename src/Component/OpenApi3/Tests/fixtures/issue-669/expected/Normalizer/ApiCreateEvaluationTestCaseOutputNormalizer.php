@@ -52,7 +52,7 @@ class ApiCreateEvaluationTestCaseOutputNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
-            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
+            $dataArray['test_case_uuid'] = $data->testCaseUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

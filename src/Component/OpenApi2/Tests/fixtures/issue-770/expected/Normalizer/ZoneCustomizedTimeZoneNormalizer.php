@@ -57,14 +57,14 @@ class ZoneCustomizedTimeZoneNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['abbreviation'] = $data->abbreviation ?? null;
-        $dataArray['gmtOffset'] = $data->gmtOffset ?? null;
-        $dataArray['gmtOffsetMinute'] = $data->gmtOffsetMinute ?? null;
+        $dataArray['abbreviation'] = $data->abbreviation;
+        $dataArray['gmtOffset'] = $data->gmtOffset;
+        $dataArray['gmtOffsetMinute'] = $data->gmtOffsetMinute;
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['start'] = ($data->start ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->start ?? null, 'json', $context));
+            $dataArray['start'] = $data->start === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->start, 'json', $context));
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['end'] = ($data->end ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->end ?? null, 'json', $context));
+            $dataArray['end'] = $data->end === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->end, 'json', $context));
         }
         return $dataArray;
     }

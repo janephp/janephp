@@ -63,10 +63,10 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->schemaId ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['schemaId'] = $data->schemaId;
+        $dataArray['kind'] = $data->kind;
         $values = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->value ?? null as $key => $value) {
+        foreach ($data->value as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['value'] = $values;

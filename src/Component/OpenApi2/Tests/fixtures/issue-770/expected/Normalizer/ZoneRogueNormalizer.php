@@ -59,17 +59,17 @@ class ZoneRogueNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('reportType', get_object_vars($data)) && null !== ($data->reportType ?? null)) {
-            $dataArray['reportType'] = $data->reportType ?? null;
+            $dataArray['reportType'] = $data->reportType;
         }
         if (array_key_exists('maliciousTypes', get_object_vars($data)) && null !== ($data->maliciousTypes ?? null)) {
             $values = [];
-            foreach ($data->maliciousTypes ?? null as $value) {
+            foreach ($data->maliciousTypes as $value) {
                 $values[] = $value;
             }
             $dataArray['maliciousTypes'] = $values;
         }
         if (array_key_exists('protectionEnabled', get_object_vars($data)) && null !== ($data->protectionEnabled ?? null)) {
-            $dataArray['protectionEnabled'] = $data->protectionEnabled ?? null;
+            $dataArray['protectionEnabled'] = $data->protectionEnabled;
         }
         return $dataArray;
     }

@@ -40,7 +40,7 @@ class BazBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
-            $dataArray['baz'] = $data->baz ?? null;
+            $dataArray['baz'] = $data->baz;
         }
         return $dataArray;
     }

@@ -70,16 +70,16 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
-        $dataArray['isDeleted'] = $data->isDeleted ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
+        $dataArray['isDeleted'] = $data->isDeleted;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

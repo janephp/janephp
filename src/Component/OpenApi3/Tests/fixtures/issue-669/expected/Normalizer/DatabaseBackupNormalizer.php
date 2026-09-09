@@ -59,9 +59,9 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['database_name'] = $data->databaseName ?? null;
+        $dataArray['database_name'] = $data->databaseName;
         if (array_key_exists('backupCreatedAt', get_object_vars($data)) && null !== ($data->backupCreatedAt ?? null)) {
-            $dataArray['backup_created_at'] = ($data->backupCreatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['backup_created_at'] = $data->backupCreatedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

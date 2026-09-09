@@ -83,36 +83,36 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('stringProperty', get_object_vars($data)) && null !== ($data->stringProperty ?? null)) {
-            $dataArray['stringProperty'] = $data->stringProperty ?? null;
+            $dataArray['stringProperty'] = $data->stringProperty;
         }
         if (array_key_exists('dateProperty', get_object_vars($data)) && null !== ($data->dateProperty ?? null)) {
-            $dataArray['dateProperty'] = ($data->dateProperty ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['dateProperty'] = $data->dateProperty->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('integerProperty', get_object_vars($data)) && null !== ($data->integerProperty ?? null)) {
-            $dataArray['integerProperty'] = $data->integerProperty ?? null;
+            $dataArray['integerProperty'] = $data->integerProperty;
         }
         if (array_key_exists('floatProperty', get_object_vars($data)) && null !== ($data->floatProperty ?? null)) {
-            $dataArray['floatProperty'] = $data->floatProperty ?? null;
+            $dataArray['floatProperty'] = $data->floatProperty;
         }
         if (array_key_exists('arrayProperty', get_object_vars($data)) && null !== ($data->arrayProperty ?? null)) {
             $values = [];
-            foreach ($data->arrayProperty ?? null as $value) {
+            foreach ($data->arrayProperty as $value) {
                 $values[] = $value;
             }
             $dataArray['arrayProperty'] = $values;
         }
         if (array_key_exists('mapProperty', get_object_vars($data)) && null !== ($data->mapProperty ?? null)) {
             $values_1 = new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject();
-            foreach ($data->mapProperty ?? null as $key => $value_1) {
+            foreach ($data->mapProperty as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
         if (array_key_exists('objectProperty', get_object_vars($data)) && null !== ($data->objectProperty ?? null)) {
-            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
+            $dataArray['objectProperty'] = $data->objectProperty === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty, 'json', $context));
         }
         if (array_key_exists('objectRefProperty', get_object_vars($data)) && null !== ($data->objectRefProperty ?? null)) {
-            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
+            $dataArray['objectRefProperty'] = $data->objectRefProperty === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty, 'json', $context));
         }
         return $dataArray;
     }

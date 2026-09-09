@@ -51,7 +51,7 @@ class ProfileDpGroupListNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->list ?? null as $value) {
+            foreach ($data->list as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;

@@ -57,7 +57,7 @@ class NfsSnapshotListResponseNormalizer implements DenormalizerInterface, Normal
         $dataArray = [];
         if (array_key_exists('snapshots', get_object_vars($data)) && null !== ($data->snapshots ?? null)) {
             $values = [];
-            foreach ($data->snapshots ?? null as $value) {
+            foreach ($data->snapshots as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snapshots'] = $values;

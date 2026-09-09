@@ -52,10 +52,10 @@ class TestComplexListGetResponsedefaultNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = $data->error ?? null;
+            $dataArray['error'] = $data->error;
         }
         if (array_key_exists('ok', get_object_vars($data)) && null !== ($data->ok ?? null)) {
-            $dataArray['ok'] = $data->ok ?? null;
+            $dataArray['ok'] = $data->ok;
         }
         return $dataArray;
     }

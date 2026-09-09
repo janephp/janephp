@@ -115,38 +115,38 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('days', get_object_vars($data)) && null !== ($data->days ?? null)) {
             $values = [];
-            foreach ($data->days ?? null as $value) {
+            foreach ($data->days as $value) {
                 $values[] = $value;
             }
             $dataArray['days'] = $values;
         }
         if (array_key_exists('deletedAt', get_object_vars($data)) && null !== ($data->deletedAt ?? null)) {
-            $dataArray['deleted_at'] = ($data->deletedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['deleted_at'] = $data->deletedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
-            $dataArray['is_active'] = $data->isActive ?? null;
+            $dataArray['is_active'] = $data->isActive;
         }
         if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
-            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid;
         }
         if (array_key_exists('lastRanAt', get_object_vars($data)) && null !== ($data->lastRanAt ?? null)) {
-            $dataArray['last_ran_at'] = ($data->lastRanAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['last_ran_at'] = $data->lastRanAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('nextRunAt', get_object_vars($data)) && null !== ($data->nextRunAt ?? null)) {
-            $dataArray['next_run_at'] = ($data->nextRunAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['next_run_at'] = $data->nextRunAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
-            $dataArray['time'] = $data->time ?? null;
+            $dataArray['time'] = $data->time;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

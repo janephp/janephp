@@ -60,7 +60,7 @@ class DatabaseLayoutOptionNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('numNodes', get_object_vars($data)) && null !== ($data->numNodes ?? null)) {
-            $dataArray['num_nodes'] = $data->numNodes ?? null;
+            $dataArray['num_nodes'] = $data->numNodes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

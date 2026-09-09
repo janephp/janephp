@@ -69,10 +69,10 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes;
         if (array_key_exists('incremental', get_object_vars($data)) && null !== ($data->incremental ?? null)) {
-            $dataArray['incremental'] = $data->incremental ?? null;
+            $dataArray['incremental'] = $data->incremental;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

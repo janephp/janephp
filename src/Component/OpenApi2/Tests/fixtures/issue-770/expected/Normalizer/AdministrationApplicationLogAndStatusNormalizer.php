@@ -62,20 +62,20 @@ class AdministrationApplicationLogAndStatusNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
-            $dataArray['applicationName'] = $data->applicationName ?? null;
+            $dataArray['applicationName'] = $data->applicationName;
         }
         if (array_key_exists('healthStatus', get_object_vars($data)) && null !== ($data->healthStatus ?? null)) {
-            $dataArray['healthStatus'] = $data->healthStatus ?? null;
+            $dataArray['healthStatus'] = $data->healthStatus;
         }
         if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
-            $dataArray['logLevel'] = $data->logLevel ?? null;
+            $dataArray['logLevel'] = $data->logLevel;
         }
         if (array_key_exists('numOfLogs', get_object_vars($data)) && null !== ($data->numOfLogs ?? null)) {
-            $dataArray['numOfLogs'] = $data->numOfLogs ?? null;
+            $dataArray['numOfLogs'] = $data->numOfLogs;
         }
         if (array_key_exists('logFileNames', get_object_vars($data)) && null !== ($data->logFileNames ?? null)) {
             $values = [];
-            foreach ($data->logFileNames ?? null as $value) {
+            foreach ($data->logFileNames as $value) {
                 $values[] = $value;
             }
             $dataArray['logFileNames'] = $values;

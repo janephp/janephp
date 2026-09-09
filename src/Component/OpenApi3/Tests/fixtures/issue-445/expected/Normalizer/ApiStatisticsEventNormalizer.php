@@ -71,11 +71,11 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('requestsPerClient', get_object_vars($data)) && null !== ($data->requestsPerClient ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->requestsPerClient ?? null as $key => $value) {
+            foreach ($data->requestsPerClient as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['requestsPerClient'] = $values;

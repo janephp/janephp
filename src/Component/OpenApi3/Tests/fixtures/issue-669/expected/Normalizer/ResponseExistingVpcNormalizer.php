@@ -57,7 +57,7 @@ class ResponseExistingVpcNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         if (array_key_exists('vpc', get_object_vars($data)) && null !== ($data->vpc ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->vpc ?? null as $key => $value) {
+            foreach ($data->vpc as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['vpc'] = $values;

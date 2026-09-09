@@ -81,28 +81,28 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ClarifaiTaggingOptions' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ClarifaiTaggingOptions' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'SimulatedTaggingOptions' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'SimulatedTaggingOptions' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('tagOutputFormatId', get_object_vars($data)) && null !== ($data->tagOutputFormatId ?? null)) {
-            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId ?? null;
+            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId;
         }
         if (array_key_exists('keywordLookupCacheName', get_object_vars($data)) && null !== ($data->keywordLookupCacheName ?? null)) {
-            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName ?? null;
+            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName;
         }
         if (array_key_exists('taggingLayerId', get_object_vars($data)) && null !== ($data->taggingLayerId ?? null)) {
-            $dataArray['taggingLayerId'] = $data->taggingLayerId ?? null;
+            $dataArray['taggingLayerId'] = $data->taggingLayerId;
         }
         if (array_key_exists('foundTagsFieldId', get_object_vars($data)) && null !== ($data->foundTagsFieldId ?? null)) {
-            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId ?? null;
+            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId;
         }
         if (array_key_exists('missingKeywordsFieldId', get_object_vars($data)) && null !== ($data->missingKeywordsFieldId ?? null)) {
-            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId ?? null;
+            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

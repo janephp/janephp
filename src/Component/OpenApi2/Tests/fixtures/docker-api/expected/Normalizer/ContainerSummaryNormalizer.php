@@ -107,62 +107,62 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['Id'] = $data->id ?? null;
+            $dataArray['Id'] = $data->id;
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $values = [];
-            foreach ($data->names ?? null as $value) {
+            foreach ($data->names as $value) {
                 $values[] = $value;
             }
             $dataArray['Names'] = $values;
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['Image'] = $data->image ?? null;
+            $dataArray['Image'] = $data->image;
         }
         if (array_key_exists('imageID', get_object_vars($data)) && null !== ($data->imageID ?? null)) {
-            $dataArray['ImageID'] = $data->imageID ?? null;
+            $dataArray['ImageID'] = $data->imageID;
         }
         if (array_key_exists('command', get_object_vars($data)) && null !== ($data->command ?? null)) {
-            $dataArray['Command'] = $data->command ?? null;
+            $dataArray['Command'] = $data->command;
         }
         if (array_key_exists('created', get_object_vars($data)) && null !== ($data->created ?? null)) {
-            $dataArray['Created'] = $data->created ?? null;
+            $dataArray['Created'] = $data->created;
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values_1 = [];
-            foreach ($data->ports ?? null as $value_1) {
+            foreach ($data->ports as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Ports'] = $values_1;
         }
         if (array_key_exists('sizeRw', get_object_vars($data)) && null !== ($data->sizeRw ?? null)) {
-            $dataArray['SizeRw'] = $data->sizeRw ?? null;
+            $dataArray['SizeRw'] = $data->sizeRw;
         }
         if (array_key_exists('sizeRootFs', get_object_vars($data)) && null !== ($data->sizeRootFs ?? null)) {
-            $dataArray['SizeRootFs'] = $data->sizeRootFs ?? null;
+            $dataArray['SizeRootFs'] = $data->sizeRootFs;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_2 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value_2) {
+            foreach ($data->labels as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
             $dataArray['Labels'] = $values_2;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = $data->state ?? null;
+            $dataArray['State'] = $data->state;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['Status'] = $data->status ?? null;
+            $dataArray['Status'] = $data->status;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = ($data->hostConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig ?? null, 'json', $context));
+            $dataArray['HostConfig'] = $data->hostConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
         }
         if (array_key_exists('networkSettings', get_object_vars($data)) && null !== ($data->networkSettings ?? null)) {
-            $dataArray['NetworkSettings'] = ($data->networkSettings ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings ?? null, 'json', $context));
+            $dataArray['NetworkSettings'] = $data->networkSettings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_3 = [];
-            foreach ($data->mounts ?? null as $value_3) {
+            foreach ($data->mounts as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['Mounts'] = $values_3;

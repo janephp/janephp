@@ -68,26 +68,26 @@ class ProfileModifyRestrictedApAccessProfileNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('blockedPortList', get_object_vars($data)) && null !== ($data->blockedPortList ?? null)) {
             $values = [];
-            foreach ($data->blockedPortList ?? null as $value) {
+            foreach ($data->blockedPortList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['blockedPortList'] = $values;
         }
         if (array_key_exists('ipAddressWhitelist', get_object_vars($data)) && null !== ($data->ipAddressWhitelist ?? null)) {
             $values_1 = [];
-            foreach ($data->ipAddressWhitelist ?? null as $value_1) {
+            foreach ($data->ipAddressWhitelist as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['ipAddressWhitelist'] = $values_1;
         }
         if (array_key_exists('blockWellKnownPort', get_object_vars($data)) && null !== ($data->blockWellKnownPort ?? null)) {
-            $dataArray['blockWellKnownPort'] = $data->blockWellKnownPort ?? null;
+            $dataArray['blockWellKnownPort'] = $data->blockWellKnownPort;
         }
         return $dataArray;
     }

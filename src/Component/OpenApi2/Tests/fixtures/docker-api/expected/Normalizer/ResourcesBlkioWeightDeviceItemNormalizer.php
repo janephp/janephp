@@ -52,10 +52,10 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['Path'] = $data->path ?? null;
+            $dataArray['Path'] = $data->path;
         }
         if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
-            $dataArray['Weight'] = $data->weight ?? null;
+            $dataArray['Weight'] = $data->weight;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemConstraint());

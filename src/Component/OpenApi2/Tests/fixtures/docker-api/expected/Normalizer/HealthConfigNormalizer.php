@@ -66,22 +66,22 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         if (array_key_exists('test', get_object_vars($data)) && null !== ($data->test ?? null)) {
             $values = [];
-            foreach ($data->test ?? null as $value) {
+            foreach ($data->test as $value) {
                 $values[] = $value;
             }
             $dataArray['Test'] = $values;
         }
         if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
-            $dataArray['Interval'] = $data->interval ?? null;
+            $dataArray['Interval'] = $data->interval;
         }
         if (array_key_exists('timeout', get_object_vars($data)) && null !== ($data->timeout ?? null)) {
-            $dataArray['Timeout'] = $data->timeout ?? null;
+            $dataArray['Timeout'] = $data->timeout;
         }
         if (array_key_exists('retries', get_object_vars($data)) && null !== ($data->retries ?? null)) {
-            $dataArray['Retries'] = $data->retries ?? null;
+            $dataArray['Retries'] = $data->retries;
         }
         if (array_key_exists('startPeriod', get_object_vars($data)) && null !== ($data->startPeriod ?? null)) {
-            $dataArray['StartPeriod'] = $data->startPeriod ?? null;
+            $dataArray['StartPeriod'] = $data->startPeriod;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\HealthConfigConstraint());

@@ -107,30 +107,30 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
-            $dataArray['data'] = $data->data ?? null;
+            $dataArray['data'] = $data->data;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
-            $dataArray['ttl'] = $data->ttl ?? null;
+            $dataArray['ttl'] = $data->ttl;
         }
         if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
-            $dataArray['weight'] = $data->weight ?? null;
+            $dataArray['weight'] = $data->weight;
         }
         if (array_key_exists('flags', get_object_vars($data)) && null !== ($data->flags ?? null)) {
-            $dataArray['flags'] = $data->flags ?? null;
+            $dataArray['flags'] = $data->flags;
         }
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = $data->tag ?? null;
+            $dataArray['tag'] = $data->tag;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

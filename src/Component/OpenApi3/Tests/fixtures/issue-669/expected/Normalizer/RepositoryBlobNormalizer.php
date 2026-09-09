@@ -56,10 +56,10 @@ class RepositoryBlobNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
-            $dataArray['digest'] = $data->digest ?? null;
+            $dataArray['digest'] = $data->digest;
         }
         if (array_key_exists('compressedSizeBytes', get_object_vars($data)) && null !== ($data->compressedSizeBytes ?? null)) {
-            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes ?? null;
+            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

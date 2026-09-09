@@ -59,11 +59,11 @@ class UserRoleRightsOfMetadataRightNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('rights', get_object_vars($data)) && null !== ($data->rights ?? null)) {
             $values = [];
-            foreach ($data->rights ?? null as $value) {
+            foreach ($data->rights as $value) {
                 $values[] = $value;
             }
             $dataArray['rights'] = $values;

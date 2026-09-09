@@ -52,10 +52,10 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('networkID', get_object_vars($data)) && null !== ($data->networkID ?? null)) {
-            $dataArray['NetworkID'] = $data->networkID ?? null;
+            $dataArray['NetworkID'] = $data->networkID;
         }
         if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
-            $dataArray['Addr'] = $data->addr ?? null;
+            $dataArray['Addr'] = $data->addr;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceEndpointVirtualIPsItemConstraint());

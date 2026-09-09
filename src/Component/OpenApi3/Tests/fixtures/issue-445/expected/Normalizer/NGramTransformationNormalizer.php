@@ -76,17 +76,17 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('minWordLength', get_object_vars($data)) && null !== ($data->minWordLength ?? null)) {
-            $dataArray['minWordLength'] = $data->minWordLength ?? null;
+            $dataArray['minWordLength'] = $data->minWordLength;
         }
         if (array_key_exists('maxWordLength', get_object_vars($data)) && null !== ($data->maxWordLength ?? null)) {
-            $dataArray['maxWordLength'] = $data->maxWordLength ?? null;
+            $dataArray['maxWordLength'] = $data->maxWordLength;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

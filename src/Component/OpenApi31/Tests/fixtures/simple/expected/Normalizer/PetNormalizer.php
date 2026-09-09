@@ -69,14 +69,14 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $value = $data->tag ?? null;
-            if (is_string($data->tag ?? null)) {
-                $value = $data->tag ?? null;
-            } elseif (is_null($data->tag ?? null)) {
-                $value = $data->tag ?? null;
+            $value = $data->tag;
+            if (is_string($data->tag)) {
+                $value = $data->tag;
+            } elseif (is_null($data->tag)) {
+                $value = $data->tag;
             }
             $dataArray['tag'] = $value;
         }

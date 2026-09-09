@@ -75,18 +75,18 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('schemaImportResult', get_object_vars($data)) && null !== ($data->schemaImportResult ?? null)) {
-            $value = $data->schemaImportResult ?? null;
-            if (is_object($data->schemaImportResult ?? null)) {
-                $value = ($data->schemaImportResult ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaImportResult ?? null, 'json', $context));
+            $value = $data->schemaImportResult;
+            if (is_object($data->schemaImportResult)) {
+                $value = $data->schemaImportResult === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaImportResult, 'json', $context));
             }
             $dataArray['schemaImportResult'] = $value;
         }
         if (array_key_exists('listItemImportResult', get_object_vars($data)) && null !== ($data->listItemImportResult ?? null)) {
-            $value_1 = $data->listItemImportResult ?? null;
-            if (is_object($data->listItemImportResult ?? null)) {
-                $value_1 = ($data->listItemImportResult ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->listItemImportResult ?? null, 'json', $context));
+            $value_1 = $data->listItemImportResult;
+            if (is_object($data->listItemImportResult)) {
+                $value_1 = $data->listItemImportResult === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->listItemImportResult, 'json', $context));
             }
             $dataArray['listItemImportResult'] = $value_1;
         }

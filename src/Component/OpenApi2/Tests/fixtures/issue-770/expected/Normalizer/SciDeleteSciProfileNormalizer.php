@@ -45,7 +45,7 @@ class SciDeleteSciProfileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

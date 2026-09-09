@@ -85,43 +85,43 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('appLogFacility', get_object_vars($data)) && null !== ($data->appLogFacility ?? null)) {
-            $dataArray['appLogFacility'] = $data->appLogFacility ?? null;
+            $dataArray['appLogFacility'] = $data->appLogFacility;
         }
         if (array_key_exists('auditLogFacility', get_object_vars($data)) && null !== ($data->auditLogFacility ?? null)) {
-            $dataArray['auditLogFacility'] = $data->auditLogFacility ?? null;
+            $dataArray['auditLogFacility'] = $data->auditLogFacility;
         }
         if (array_key_exists('eventLogFacility', get_object_vars($data)) && null !== ($data->eventLogFacility ?? null)) {
-            $dataArray['eventLogFacility'] = $data->eventLogFacility ?? null;
+            $dataArray['eventLogFacility'] = $data->eventLogFacility;
         }
         if (array_key_exists('appLogSeverity', get_object_vars($data)) && null !== ($data->appLogSeverity ?? null)) {
-            $dataArray['appLogSeverity'] = $data->appLogSeverity ?? null;
+            $dataArray['appLogSeverity'] = $data->appLogSeverity;
         }
         if (array_key_exists('auditLogSeverity', get_object_vars($data)) && null !== ($data->auditLogSeverity ?? null)) {
-            $dataArray['auditLogSeverity'] = $data->auditLogSeverity ?? null;
+            $dataArray['auditLogSeverity'] = $data->auditLogSeverity;
         }
         if (array_key_exists('otherLogSeverity', get_object_vars($data)) && null !== ($data->otherLogSeverity ?? null)) {
-            $dataArray['otherLogSeverity'] = $data->otherLogSeverity ?? null;
+            $dataArray['otherLogSeverity'] = $data->otherLogSeverity;
         }
         if (array_key_exists('forwardUEEventsMsgFormatType', get_object_vars($data)) && null !== ($data->forwardUEEventsMsgFormatType ?? null)) {
-            $dataArray['forwardUEEventsMsgFormatType'] = $data->forwardUEEventsMsgFormatType ?? null;
+            $dataArray['forwardUEEventsMsgFormatType'] = $data->forwardUEEventsMsgFormatType;
         }
         if (array_key_exists('primaryServer', get_object_vars($data)) && null !== ($data->primaryServer ?? null)) {
-            $dataArray['primaryServer'] = ($data->primaryServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer ?? null, 'json', $context));
+            $dataArray['primaryServer'] = $data->primaryServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer, 'json', $context));
         }
         if (array_key_exists('secondaryServer', get_object_vars($data)) && null !== ($data->secondaryServer ?? null)) {
-            $dataArray['secondaryServer'] = ($data->secondaryServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer ?? null, 'json', $context));
+            $dataArray['secondaryServer'] = $data->secondaryServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer, 'json', $context));
         }
         if (array_key_exists('eventFilter', get_object_vars($data)) && null !== ($data->eventFilter ?? null)) {
-            $dataArray['eventFilter'] = $data->eventFilter ?? null;
+            $dataArray['eventFilter'] = $data->eventFilter;
         }
         if (array_key_exists('eventFilterSeverity', get_object_vars($data)) && null !== ($data->eventFilterSeverity ?? null)) {
-            $dataArray['eventFilterSeverity'] = $data->eventFilterSeverity ?? null;
+            $dataArray['eventFilterSeverity'] = $data->eventFilterSeverity;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = ($data->priority ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->priority ?? null, 'json', $context));
+            $dataArray['priority'] = $data->priority === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->priority, 'json', $context));
         }
         return $dataArray;
     }

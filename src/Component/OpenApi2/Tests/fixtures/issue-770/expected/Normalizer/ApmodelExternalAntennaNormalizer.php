@@ -54,12 +54,12 @@ class ApmodelExternalAntennaNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['enabled'] = $data->enabled;
         if (array_key_exists('dbi', get_object_vars($data)) && null !== ($data->dbi ?? null)) {
-            $dataArray['dbi'] = $data->dbi ?? null;
+            $dataArray['dbi'] = $data->dbi;
         }
         if (array_key_exists('chainMask', get_object_vars($data)) && null !== ($data->chainMask ?? null)) {
-            $dataArray['chainMask'] = $data->chainMask ?? null;
+            $dataArray['chainMask'] = $data->chainMask;
         }
         return $dataArray;
     }

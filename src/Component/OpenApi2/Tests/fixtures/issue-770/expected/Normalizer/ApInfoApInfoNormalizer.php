@@ -67,25 +67,25 @@ class ApInfoApInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
-            $dataArray['apName'] = $data->apName ?? null;
+            $dataArray['apName'] = $data->apName;
         }
         if (array_key_exists('rssi', get_object_vars($data)) && null !== ($data->rssi ?? null)) {
-            $dataArray['rssi'] = $data->rssi ?? null;
+            $dataArray['rssi'] = $data->rssi;
         }
         if (array_key_exists('lastDetected', get_object_vars($data)) && null !== ($data->lastDetected ?? null)) {
-            $dataArray['lastDetected'] = $data->lastDetected ?? null;
+            $dataArray['lastDetected'] = $data->lastDetected;
         }
         if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
-            $dataArray['zoneName'] = $data->zoneName ?? null;
+            $dataArray['zoneName'] = $data->zoneName;
         }
         if (array_key_exists('rogueType', get_object_vars($data)) && null !== ($data->rogueType ?? null)) {
-            $dataArray['rogueType'] = $data->rogueType ?? null;
+            $dataArray['rogueType'] = $data->rogueType;
         }
         if (array_key_exists('mainDetector', get_object_vars($data)) && null !== ($data->mainDetector ?? null)) {
-            $dataArray['mainDetector'] = $data->mainDetector ?? null;
+            $dataArray['mainDetector'] = $data->mainDetector;
         }
         return $dataArray;
     }

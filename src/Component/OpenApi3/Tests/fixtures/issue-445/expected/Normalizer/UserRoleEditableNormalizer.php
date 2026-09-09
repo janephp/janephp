@@ -60,17 +60,17 @@ class UserRoleEditableNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->names ?? null;
-        if (is_object($data->names ?? null)) {
+        $value = $data->names;
+        if (is_object($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->names ?? null as $key => $value_1) {
+            foreach ($data->names as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
         }
         $dataArray['names'] = $value;
         $values_1 = [];
-        foreach ($data->userRights ?? null as $value_2) {
+        foreach ($data->userRights as $value_2) {
             $values_1[] = $value_2;
         }
         $dataArray['userRights'] = $values_1;

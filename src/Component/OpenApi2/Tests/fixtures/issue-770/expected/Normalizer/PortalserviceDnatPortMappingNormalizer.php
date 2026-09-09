@@ -49,10 +49,10 @@ class PortalserviceDnatPortMappingNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('sourcePort', get_object_vars($data)) && null !== ($data->sourcePort ?? null)) {
-            $dataArray['sourcePort'] = $data->sourcePort ?? null;
+            $dataArray['sourcePort'] = $data->sourcePort;
         }
         if (array_key_exists('destPort', get_object_vars($data)) && null !== ($data->destPort ?? null)) {
-            $dataArray['destPort'] = $data->destPort ?? null;
+            $dataArray['destPort'] = $data->destPort;
         }
         return $dataArray;
     }

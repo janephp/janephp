@@ -54,7 +54,7 @@ class XmpMappingEntryDeleteManyRequestNormalizer implements DenormalizerInterfac
         $dataArray = [];
         if (array_key_exists('ids', get_object_vars($data)) && null !== ($data->ids ?? null)) {
             $values = [];
-            foreach ($data->ids ?? null as $value) {
+            foreach ($data->ids as $value) {
                 $values[] = $value;
             }
             $dataArray['ids'] = $values;

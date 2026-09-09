@@ -56,10 +56,10 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddressNo
     {
         $dataArray = [];
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postalCode'] = $data->postalCode ?? null;
+            $dataArray['postalCode'] = $data->postalCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

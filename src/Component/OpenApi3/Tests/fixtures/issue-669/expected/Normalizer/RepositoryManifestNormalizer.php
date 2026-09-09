@@ -92,33 +92,33 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
-            $dataArray['registry_name'] = $data->registryName ?? null;
+            $dataArray['registry_name'] = $data->registryName;
         }
         if (array_key_exists('repository', get_object_vars($data)) && null !== ($data->repository ?? null)) {
-            $dataArray['repository'] = $data->repository ?? null;
+            $dataArray['repository'] = $data->repository;
         }
         if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
-            $dataArray['digest'] = $data->digest ?? null;
+            $dataArray['digest'] = $data->digest;
         }
         if (array_key_exists('compressedSizeBytes', get_object_vars($data)) && null !== ($data->compressedSizeBytes ?? null)) {
-            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes ?? null;
+            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes;
         }
         if (array_key_exists('sizeBytes', get_object_vars($data)) && null !== ($data->sizeBytes ?? null)) {
-            $dataArray['size_bytes'] = $data->sizeBytes ?? null;
+            $dataArray['size_bytes'] = $data->sizeBytes;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('blobs', get_object_vars($data)) && null !== ($data->blobs ?? null)) {
             $values_1 = [];
-            foreach ($data->blobs ?? null as $value_1) {
+            foreach ($data->blobs as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['blobs'] = $values_1;

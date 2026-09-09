@@ -68,16 +68,16 @@ class DestroyedAssociatedResourceNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('destroyedAt', get_object_vars($data)) && null !== ($data->destroyedAt ?? null)) {
-            $dataArray['destroyed_at'] = ($data->destroyedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['destroyed_at'] = $data->destroyedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
-            $dataArray['error_message'] = $data->errorMessage ?? null;
+            $dataArray['error_message'] = $data->errorMessage;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

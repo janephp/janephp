@@ -57,11 +57,11 @@ class VendorSpecificAttributeProfileVendorSpecificAttributeNormalizer implements
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vendorId'] = $data->vendorId ?? null;
-        $dataArray['keyId'] = $data->keyId ?? null;
-        $dataArray['value'] = $data->value ?? null;
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['supportedRadiusProtocol'] = $data->supportedRadiusProtocol ?? null;
+        $dataArray['vendorId'] = $data->vendorId;
+        $dataArray['keyId'] = $data->keyId;
+        $dataArray['value'] = $data->value;
+        $dataArray['type'] = $data->type;
+        $dataArray['supportedRadiusProtocol'] = $data->supportedRadiusProtocol;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

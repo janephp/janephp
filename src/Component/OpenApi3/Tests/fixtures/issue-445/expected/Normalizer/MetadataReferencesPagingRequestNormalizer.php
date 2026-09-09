@@ -66,12 +66,12 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['limit'] = $data->limit ?? null;
+        $dataArray['limit'] = $data->limit;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         if (array_key_exists('fetchReferencedByRestrictedItem', get_object_vars($data)) && null !== ($data->fetchReferencedByRestrictedItem ?? null)) {
-            $dataArray['fetchReferencedByRestrictedItem'] = $data->fetchReferencedByRestrictedItem ?? null;
+            $dataArray['fetchReferencedByRestrictedItem'] = $data->fetchReferencedByRestrictedItem;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

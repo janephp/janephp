@@ -64,16 +64,16 @@ class ApiLinkAgentInputPublicNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
-            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid;
         }
         if (array_key_exists('ifCase', get_object_vars($data)) && null !== ($data->ifCase ?? null)) {
-            $dataArray['if_case'] = $data->ifCase ?? null;
+            $dataArray['if_case'] = $data->ifCase;
         }
         if (array_key_exists('parentAgentUuid', get_object_vars($data)) && null !== ($data->parentAgentUuid ?? null)) {
-            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid ?? null;
+            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid;
         }
         if (array_key_exists('routeName', get_object_vars($data)) && null !== ($data->routeName ?? null)) {
-            $dataArray['route_name'] = $data->routeName ?? null;
+            $dataArray['route_name'] = $data->routeName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

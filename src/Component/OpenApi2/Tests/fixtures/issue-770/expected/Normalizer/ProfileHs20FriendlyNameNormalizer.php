@@ -48,8 +48,8 @@ class ProfileHs20FriendlyNameNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->language ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['language'] = $data->language;
+        $dataArray['name'] = $data->name;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -49,10 +49,10 @@ class AprulesIpAddressRangeNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('fromIp', get_object_vars($data)) && null !== ($data->fromIp ?? null)) {
-            $dataArray['fromIp'] = $data->fromIp ?? null;
+            $dataArray['fromIp'] = $data->fromIp;
         }
         if (array_key_exists('toIp', get_object_vars($data)) && null !== ($data->toIp ?? null)) {
-            $dataArray['toIp'] = $data->toIp ?? null;
+            $dataArray['toIp'] = $data->toIp;
         }
         return $dataArray;
     }

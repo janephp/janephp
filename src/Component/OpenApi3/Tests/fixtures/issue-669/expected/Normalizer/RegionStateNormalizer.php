@@ -63,13 +63,13 @@ class RegionStateNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('statusChangedAt', get_object_vars($data)) && null !== ($data->statusChangedAt ?? null)) {
-            $dataArray['status_changed_at'] = $data->statusChangedAt ?? null;
+            $dataArray['status_changed_at'] = $data->statusChangedAt;
         }
         if (array_key_exists('thirtyDayUptimePercentage', get_object_vars($data)) && null !== ($data->thirtyDayUptimePercentage ?? null)) {
-            $dataArray['thirty_day_uptime_percentage'] = $data->thirtyDayUptimePercentage ?? null;
+            $dataArray['thirty_day_uptime_percentage'] = $data->thirtyDayUptimePercentage;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

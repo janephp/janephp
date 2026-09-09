@@ -52,7 +52,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
-            $dataArray['label'] = $data->label ?? null;
+            $dataArray['label'] = $data->label;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

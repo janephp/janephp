@@ -76,28 +76,28 @@ class WlanWlanAccountingNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('throughController', get_object_vars($data)) && null !== ($data->throughController ?? null)) {
-            $dataArray['throughController'] = $data->throughController ?? null;
+            $dataArray['throughController'] = $data->throughController;
         }
         if (array_key_exists('realmBasedAcct', get_object_vars($data)) && null !== ($data->realmBasedAcct ?? null)) {
-            $dataArray['realmBasedAcct'] = $data->realmBasedAcct ?? null;
+            $dataArray['realmBasedAcct'] = $data->realmBasedAcct;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('interimUpdateMin', get_object_vars($data)) && null !== ($data->interimUpdateMin ?? null)) {
-            $dataArray['interimUpdateMin'] = $data->interimUpdateMin ?? null;
+            $dataArray['interimUpdateMin'] = $data->interimUpdateMin;
         }
         if (array_key_exists('accountingDelayEnabled', get_object_vars($data)) && null !== ($data->accountingDelayEnabled ?? null)) {
-            $dataArray['accountingDelayEnabled'] = $data->accountingDelayEnabled ?? null;
+            $dataArray['accountingDelayEnabled'] = $data->accountingDelayEnabled;
         }
         if (array_key_exists('backupAccountingId', get_object_vars($data)) && null !== ($data->backupAccountingId ?? null)) {
-            $dataArray['backupAccountingId'] = $data->backupAccountingId ?? null;
+            $dataArray['backupAccountingId'] = $data->backupAccountingId;
         }
         if (array_key_exists('backupAccountingName', get_object_vars($data)) && null !== ($data->backupAccountingName ?? null)) {
-            $dataArray['backupAccountingName'] = $data->backupAccountingName ?? null;
+            $dataArray['backupAccountingName'] = $data->backupAccountingName;
         }
         return $dataArray;
     }

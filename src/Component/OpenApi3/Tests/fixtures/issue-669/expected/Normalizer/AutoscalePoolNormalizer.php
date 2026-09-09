@@ -95,21 +95,21 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->config ?? null as $key => $value) {
+        foreach ($data->config as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = ($data->dropletTemplate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate ?? null, 'json', $context));
+        $dataArray['droplet_template'] = $data->dropletTemplate === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate, 'json', $context));
         if (array_key_exists('currentUtilization', get_object_vars($data)) && null !== ($data->currentUtilization ?? null)) {
-            $dataArray['current_utilization'] = ($data->currentUtilization ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->currentUtilization ?? null, 'json', $context));
+            $dataArray['current_utilization'] = $data->currentUtilization === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->currentUtilization, 'json', $context));
         }
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['status'] = $data->status ?? null;
-        $dataArray['active_resources_count'] = $data->activeResourcesCount ?? null;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
+        $dataArray['status'] = $data->status;
+        $dataArray['active_resources_count'] = $data->activeResourcesCount;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

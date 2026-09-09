@@ -71,19 +71,19 @@ class ApiAgentFunctionVersionNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('faasName', get_object_vars($data)) && null !== ($data->faasName ?? null)) {
-            $dataArray['faas_name'] = $data->faasName ?? null;
+            $dataArray['faas_name'] = $data->faasName;
         }
         if (array_key_exists('faasNamespace', get_object_vars($data)) && null !== ($data->faasNamespace ?? null)) {
-            $dataArray['faas_namespace'] = $data->faasNamespace ?? null;
+            $dataArray['faas_namespace'] = $data->faasNamespace;
         }
         if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
-            $dataArray['is_deleted'] = $data->isDeleted ?? null;
+            $dataArray['is_deleted'] = $data->isDeleted;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

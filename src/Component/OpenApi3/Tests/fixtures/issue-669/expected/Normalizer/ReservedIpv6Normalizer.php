@@ -78,24 +78,24 @@ class ReservedIpv6Normalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('reservedAt', get_object_vars($data)) && null !== ($data->reservedAt ?? null)) {
-            $dataArray['reserved_at'] = ($data->reservedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['reserved_at'] = $data->reservedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
-            $dataArray['region_slug'] = $data->regionSlug ?? null;
+            $dataArray['region_slug'] = $data->regionSlug;
         }
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
-            $value = $data->droplet ?? null;
-            if (is_object($data->droplet ?? null)) {
+            $value = $data->droplet;
+            if (is_object($data->droplet)) {
                 $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($data->droplet ?? null as $key => $value_1) {
+                foreach ($data->droplet as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
-            } elseif (is_object($data->droplet ?? null)) {
-                $value = ($data->droplet ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet ?? null, 'json', $context));
+            } elseif (is_object($data->droplet)) {
+                $value = $data->droplet === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
             }
             $dataArray['droplet'] = $value;
         }

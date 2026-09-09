@@ -56,10 +56,10 @@ class ApiPresignedUrlFileNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['file_name'] = $data->fileName ?? null;
+            $dataArray['file_name'] = $data->fileName;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['file_size'] = $data->fileSize ?? null;
+            $dataArray['file_size'] = $data->fileSize;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

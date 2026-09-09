@@ -74,24 +74,24 @@ class LogsinkSchemaNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('sinkId', get_object_vars($data)) && null !== ($data->sinkId ?? null)) {
-            $dataArray['sink_id'] = $data->sinkId ?? null;
+            $dataArray['sink_id'] = $data->sinkId;
         }
         if (array_key_exists('sinkName', get_object_vars($data)) && null !== ($data->sinkName ?? null)) {
-            $dataArray['sink_name'] = $data->sinkName ?? null;
+            $dataArray['sink_name'] = $data->sinkName;
         }
         if (array_key_exists('sinkType', get_object_vars($data)) && null !== ($data->sinkType ?? null)) {
-            $dataArray['sink_type'] = $data->sinkType ?? null;
+            $dataArray['sink_type'] = $data->sinkType;
         }
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $value = $data->config ?? null;
-            if (is_object($data->config ?? null)) {
-                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
-            } elseif (is_object($data->config ?? null)) {
-                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
-            } elseif (is_object($data->config ?? null)) {
-                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
-            } elseif (is_object($data->config ?? null)) {
-                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            $value = $data->config;
+            if (is_object($data->config)) {
+                $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            } elseif (is_object($data->config)) {
+                $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            } elseif (is_object($data->config)) {
+                $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            } elseif (is_object($data->config)) {
+                $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
             }
             $dataArray['config'] = $value;
         }

@@ -62,10 +62,10 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('compound', get_object_vars($data)) && null !== ($data->compound ?? null)) {
-            $dataArray['compound'] = $data->compound ?? null;
+            $dataArray['compound'] = $data->compound;
         }
         if (array_key_exists('percentage', get_object_vars($data)) && null !== ($data->percentage ?? null)) {
-            $dataArray['percentage'] = $data->percentage ?? null;
+            $dataArray['percentage'] = $data->percentage;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

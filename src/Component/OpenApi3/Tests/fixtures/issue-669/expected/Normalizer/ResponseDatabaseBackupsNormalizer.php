@@ -64,15 +64,15 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->backups ?? null as $value) {
+        foreach ($data->backups as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['backups'] = $values;
         if (array_key_exists('scheduledBackupTime', get_object_vars($data)) && null !== ($data->scheduledBackupTime ?? null)) {
-            $dataArray['scheduled_backup_time'] = ($data->scheduledBackupTime ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledBackupTime ?? null, 'json', $context));
+            $dataArray['scheduled_backup_time'] = $data->scheduledBackupTime === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledBackupTime, 'json', $context));
         }
         if (array_key_exists('backupProgress', get_object_vars($data)) && null !== ($data->backupProgress ?? null)) {
-            $dataArray['backup_progress'] = $data->backupProgress ?? null;
+            $dataArray['backup_progress'] = $data->backupProgress;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

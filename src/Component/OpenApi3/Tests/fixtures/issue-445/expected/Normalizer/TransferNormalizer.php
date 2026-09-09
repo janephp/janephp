@@ -77,24 +77,24 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $value = $data->state ?? null;
-        if (is_string($data->state ?? null)) {
-            $value = $data->state ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $value = $data->state;
+        if (is_string($data->state)) {
+            $value = $data->state;
         }
         $dataArray['state'] = $value;
-        $value_1 = $data->transferType ?? null;
-        if (is_string($data->transferType ?? null)) {
-            $value_1 = $data->transferType ?? null;
+        $value_1 = $data->transferType;
+        if (is_string($data->transferType)) {
+            $value_1 = $data->transferType;
         }
         $dataArray['transferType'] = $value_1;
         if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
-            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
+            $dataArray['businessProcessId'] = $data->businessProcessId;
         }
-        $dataArray['fileTransferCount'] = $data->fileTransferCount ?? null;
+        $dataArray['fileTransferCount'] = $data->fileTransferCount;
         if (array_key_exists('collectionId', get_object_vars($data)) && null !== ($data->collectionId ?? null)) {
-            $dataArray['collectionId'] = $data->collectionId ?? null;
+            $dataArray['collectionId'] = $data->collectionId;
         }
         return $dataArray;
     }

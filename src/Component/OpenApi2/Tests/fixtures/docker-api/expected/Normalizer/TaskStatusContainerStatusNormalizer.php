@@ -55,13 +55,13 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('containerID', get_object_vars($data)) && null !== ($data->containerID ?? null)) {
-            $dataArray['ContainerID'] = $data->containerID ?? null;
+            $dataArray['ContainerID'] = $data->containerID;
         }
         if (array_key_exists('pID', get_object_vars($data)) && null !== ($data->pID ?? null)) {
-            $dataArray['PID'] = $data->pID ?? null;
+            $dataArray['PID'] = $data->pID;
         }
         if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
-            $dataArray['ExitCode'] = $data->exitCode ?? null;
+            $dataArray['ExitCode'] = $data->exitCode;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskStatusContainerStatusConstraint());

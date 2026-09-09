@@ -46,7 +46,7 @@ class VendorSpecificAttributeProfileCreateResultNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         return $dataArray;
     }

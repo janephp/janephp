@@ -54,14 +54,14 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->petType ?? null) and 'Cat' === ($data->petType ?? null)) {
+        if (null !== ($data->petType ?? null) and 'Cat' === $data->petType) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->petType ?? null) and 'Dog' === ($data->petType ?? null)) {
+        if (null !== ($data->petType ?? null) and 'Dog' === $data->petType) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['petType'] = $data->petType ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['petType'] = $data->petType;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

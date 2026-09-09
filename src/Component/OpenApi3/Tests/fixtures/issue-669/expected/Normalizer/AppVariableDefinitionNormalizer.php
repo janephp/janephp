@@ -63,15 +63,15 @@ class AppVariableDefinitionNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['key'] = $data->key ?? null;
+        $dataArray['key'] = $data->key;
         if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {
-            $dataArray['scope'] = $data->scope ?? null;
+            $dataArray['scope'] = $data->scope;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

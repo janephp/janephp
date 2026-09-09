@@ -49,10 +49,10 @@ class MeshNodeInfoHelperZoneInfoNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('helperAPZoneId', get_object_vars($data)) && null !== ($data->helperAPZoneId ?? null)) {
-            $dataArray['helperAPZoneId'] = $data->helperAPZoneId ?? null;
+            $dataArray['helperAPZoneId'] = $data->helperAPZoneId;
         }
         if (array_key_exists('helperAPZoneName', get_object_vars($data)) && null !== ($data->helperAPZoneName ?? null)) {
-            $dataArray['helperAPZoneName'] = $data->helperAPZoneName ?? null;
+            $dataArray['helperAPZoneName'] = $data->helperAPZoneName;
         }
         return $dataArray;
     }

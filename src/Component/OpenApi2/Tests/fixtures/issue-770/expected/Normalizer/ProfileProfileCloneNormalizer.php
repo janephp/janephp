@@ -55,16 +55,16 @@ class ProfileProfileCloneNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('oldName', get_object_vars($data)) && null !== ($data->oldName ?? null)) {
-            $dataArray['oldName'] = $data->oldName ?? null;
+            $dataArray['oldName'] = $data->oldName;
         }
         if (array_key_exists('oldId', get_object_vars($data)) && null !== ($data->oldId ?? null)) {
-            $dataArray['oldId'] = $data->oldId ?? null;
+            $dataArray['oldId'] = $data->oldId;
         }
         if (array_key_exists('newName', get_object_vars($data)) && null !== ($data->newName ?? null)) {
-            $dataArray['newName'] = $data->newName ?? null;
+            $dataArray['newName'] = $data->newName;
         }
         if (array_key_exists('newId', get_object_vars($data)) && null !== ($data->newId ?? null)) {
-            $dataArray['newId'] = $data->newId ?? null;
+            $dataArray['newId'] = $data->newId;
         }
         return $dataArray;
     }

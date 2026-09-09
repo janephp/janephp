@@ -72,22 +72,22 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     {
         $dataArray = [];
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postalCode'] = $data->postalCode ?? null;
+            $dataArray['postalCode'] = $data->postalCode;
         }
         if (array_key_exists('street1', get_object_vars($data)) && null !== ($data->street1 ?? null)) {
-            $dataArray['street1'] = $data->street1 ?? null;
+            $dataArray['street1'] = $data->street1;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

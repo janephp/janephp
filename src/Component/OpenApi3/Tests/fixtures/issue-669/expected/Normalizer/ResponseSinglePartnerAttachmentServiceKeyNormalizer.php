@@ -57,7 +57,7 @@ class ResponseSinglePartnerAttachmentServiceKeyNormalizer implements Denormalize
         $dataArray = [];
         if (array_key_exists('serviceKey', get_object_vars($data)) && null !== ($data->serviceKey ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->serviceKey ?? null as $key => $value) {
+            foreach ($data->serviceKey as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['service_key'] = $values;

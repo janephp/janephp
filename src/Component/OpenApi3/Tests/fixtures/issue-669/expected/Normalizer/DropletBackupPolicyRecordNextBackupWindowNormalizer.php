@@ -64,10 +64,10 @@ class DropletBackupPolicyRecordNextBackupWindowNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['start'] = ($data->start ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['start'] = $data->start->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['end'] = ($data->end ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['end'] = $data->end->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

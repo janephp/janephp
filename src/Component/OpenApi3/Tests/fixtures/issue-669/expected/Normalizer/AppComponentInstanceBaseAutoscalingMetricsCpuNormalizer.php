@@ -52,7 +52,7 @@ class AppComponentInstanceBaseAutoscalingMetricsCpuNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('percent', get_object_vars($data)) && null !== ($data->percent ?? null)) {
-            $dataArray['percent'] = $data->percent ?? null;
+            $dataArray['percent'] = $data->percent;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

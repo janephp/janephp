@@ -64,25 +64,25 @@ class SystemReservedPortNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('trafficDirection', get_object_vars($data)) && null !== ($data->trafficDirection ?? null)) {
-            $dataArray['trafficDirection'] = $data->trafficDirection ?? null;
+            $dataArray['trafficDirection'] = $data->trafficDirection;
         }
         if (array_key_exists('portRange', get_object_vars($data)) && null !== ($data->portRange ?? null)) {
-            $dataArray['portRange'] = $data->portRange ?? null;
+            $dataArray['portRange'] = $data->portRange;
         }
         if (array_key_exists('bindingInterface', get_object_vars($data)) && null !== ($data->bindingInterface ?? null)) {
-            $dataArray['bindingInterface'] = $data->bindingInterface ?? null;
+            $dataArray['bindingInterface'] = $data->bindingInterface;
         }
         if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
-            $dataArray['destination'] = $data->destination ?? null;
+            $dataArray['destination'] = $data->destination;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
-            $dataArray['from'] = $data->from ?? null;
+            $dataArray['from'] = $data->from;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

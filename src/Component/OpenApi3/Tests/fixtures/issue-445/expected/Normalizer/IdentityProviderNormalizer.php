@@ -113,32 +113,32 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         if (array_key_exists('claimMapping', get_object_vars($data)) && null !== ($data->claimMapping ?? null)) {
             $values = [];
-            foreach ($data->claimMapping ?? null as $value) {
+            foreach ($data->claimMapping as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['claimMapping'] = $values;
         }
         if (array_key_exists('groupClaimType', get_object_vars($data)) && null !== ($data->groupClaimType ?? null)) {
-            $dataArray['groupClaimType'] = $data->groupClaimType ?? null;
+            $dataArray['groupClaimType'] = $data->groupClaimType;
         }
         if (array_key_exists('groupMapping', get_object_vars($data)) && null !== ($data->groupMapping ?? null)) {
             $values_1 = [];
-            foreach ($data->groupMapping ?? null as $value_1) {
+            foreach ($data->groupMapping as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['groupMapping'] = $values_1;
         }
         if (array_key_exists('fallbackUserRoleId', get_object_vars($data)) && null !== ($data->fallbackUserRoleId ?? null)) {
-            $dataArray['fallbackUserRoleId'] = $data->fallbackUserRoleId ?? null;
+            $dataArray['fallbackUserRoleId'] = $data->fallbackUserRoleId;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
-            $dataArray['displayName'] = $data->displayName ?? null;
+            $dataArray['displayName'] = $data->displayName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

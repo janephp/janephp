@@ -62,12 +62,12 @@ class ContentDeleteManyRequestNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->contentIds ?? null as $value) {
+        foreach ($data->contentIds as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -60,13 +60,13 @@ class AppsDeploymentFunctionsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('sourceCommitHash', get_object_vars($data)) && null !== ($data->sourceCommitHash ?? null)) {
-            $dataArray['source_commit_hash'] = $data->sourceCommitHash ?? null;
+            $dataArray['source_commit_hash'] = $data->sourceCommitHash;
         }
         if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
-            $dataArray['namespace'] = $data->namespace ?? null;
+            $dataArray['namespace'] = $data->namespace;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

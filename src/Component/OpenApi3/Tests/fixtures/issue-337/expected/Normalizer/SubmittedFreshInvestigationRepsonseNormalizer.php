@@ -64,16 +64,16 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
-            $dataArray['correlationId'] = $data->correlationId ?? null;
+            $dataArray['correlationId'] = $data->correlationId;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('orderID', get_object_vars($data)) && null !== ($data->orderID ?? null)) {
-            $dataArray['orderID'] = $data->orderID ?? null;
+            $dataArray['orderID'] = $data->orderID;
         }
         if (array_key_exists('transactionID', get_object_vars($data)) && null !== ($data->transactionID ?? null)) {
-            $dataArray['transactionID'] = $data->transactionID ?? null;
+            $dataArray['transactionID'] = $data->transactionID;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

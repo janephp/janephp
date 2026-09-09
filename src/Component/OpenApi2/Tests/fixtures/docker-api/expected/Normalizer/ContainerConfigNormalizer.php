@@ -177,108 +177,108 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('hostname', get_object_vars($data)) && null !== ($data->hostname ?? null)) {
-            $dataArray['Hostname'] = $data->hostname ?? null;
+            $dataArray['Hostname'] = $data->hostname;
         }
         if (array_key_exists('domainname', get_object_vars($data)) && null !== ($data->domainname ?? null)) {
-            $dataArray['Domainname'] = $data->domainname ?? null;
+            $dataArray['Domainname'] = $data->domainname;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = $data->user ?? null;
+            $dataArray['User'] = $data->user;
         }
         if (array_key_exists('attachStdin', get_object_vars($data)) && null !== ($data->attachStdin ?? null)) {
-            $dataArray['AttachStdin'] = $data->attachStdin ?? null;
+            $dataArray['AttachStdin'] = $data->attachStdin;
         }
         if (array_key_exists('attachStdout', get_object_vars($data)) && null !== ($data->attachStdout ?? null)) {
-            $dataArray['AttachStdout'] = $data->attachStdout ?? null;
+            $dataArray['AttachStdout'] = $data->attachStdout;
         }
         if (array_key_exists('attachStderr', get_object_vars($data)) && null !== ($data->attachStderr ?? null)) {
-            $dataArray['AttachStderr'] = $data->attachStderr ?? null;
+            $dataArray['AttachStderr'] = $data->attachStderr;
         }
         if (array_key_exists('exposedPorts', get_object_vars($data)) && null !== ($data->exposedPorts ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->exposedPorts ?? null as $key => $value) {
+            foreach ($data->exposedPorts as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['ExposedPorts'] = $values;
         }
         if (array_key_exists('tty', get_object_vars($data)) && null !== ($data->tty ?? null)) {
-            $dataArray['Tty'] = $data->tty ?? null;
+            $dataArray['Tty'] = $data->tty;
         }
         if (array_key_exists('openStdin', get_object_vars($data)) && null !== ($data->openStdin ?? null)) {
-            $dataArray['OpenStdin'] = $data->openStdin ?? null;
+            $dataArray['OpenStdin'] = $data->openStdin;
         }
         if (array_key_exists('stdinOnce', get_object_vars($data)) && null !== ($data->stdinOnce ?? null)) {
-            $dataArray['StdinOnce'] = $data->stdinOnce ?? null;
+            $dataArray['StdinOnce'] = $data->stdinOnce;
         }
         if (array_key_exists('env', get_object_vars($data)) && null !== ($data->env ?? null)) {
             $values_1 = [];
-            foreach ($data->env ?? null as $value_1) {
+            foreach ($data->env as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Env'] = $values_1;
         }
         if (array_key_exists('cmd', get_object_vars($data)) && null !== ($data->cmd ?? null)) {
             $values_2 = [];
-            foreach ($data->cmd ?? null as $value_2) {
+            foreach ($data->cmd as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Cmd'] = $values_2;
         }
         if (array_key_exists('healthcheck', get_object_vars($data)) && null !== ($data->healthcheck ?? null)) {
-            $dataArray['Healthcheck'] = ($data->healthcheck ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthcheck ?? null, 'json', $context));
+            $dataArray['Healthcheck'] = $data->healthcheck === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthcheck, 'json', $context));
         }
         if (array_key_exists('argsEscaped', get_object_vars($data)) && null !== ($data->argsEscaped ?? null)) {
-            $dataArray['ArgsEscaped'] = $data->argsEscaped ?? null;
+            $dataArray['ArgsEscaped'] = $data->argsEscaped;
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['Image'] = $data->image ?? null;
+            $dataArray['Image'] = $data->image;
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->volumes ?? null as $key_1 => $value_3) {
+            foreach ($data->volumes as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
             $dataArray['Volumes'] = $values_3;
         }
         if (array_key_exists('workingDir', get_object_vars($data)) && null !== ($data->workingDir ?? null)) {
-            $dataArray['WorkingDir'] = $data->workingDir ?? null;
+            $dataArray['WorkingDir'] = $data->workingDir;
         }
         if (array_key_exists('entrypoint', get_object_vars($data)) && null !== ($data->entrypoint ?? null)) {
             $values_4 = [];
-            foreach ($data->entrypoint ?? null as $value_4) {
+            foreach ($data->entrypoint as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['Entrypoint'] = $values_4;
         }
         if (array_key_exists('networkDisabled', get_object_vars($data)) && null !== ($data->networkDisabled ?? null)) {
-            $dataArray['NetworkDisabled'] = $data->networkDisabled ?? null;
+            $dataArray['NetworkDisabled'] = $data->networkDisabled;
         }
         if (array_key_exists('macAddress', get_object_vars($data)) && null !== ($data->macAddress ?? null)) {
-            $dataArray['MacAddress'] = $data->macAddress ?? null;
+            $dataArray['MacAddress'] = $data->macAddress;
         }
         if (array_key_exists('onBuild', get_object_vars($data)) && null !== ($data->onBuild ?? null)) {
             $values_5 = [];
-            foreach ($data->onBuild ?? null as $value_5) {
+            foreach ($data->onBuild as $value_5) {
                 $values_5[] = $value_5;
             }
             $dataArray['OnBuild'] = $values_5;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_6 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key_2 => $value_6) {
+            foreach ($data->labels as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
             $dataArray['Labels'] = $values_6;
         }
         if (array_key_exists('stopSignal', get_object_vars($data)) && null !== ($data->stopSignal ?? null)) {
-            $dataArray['StopSignal'] = $data->stopSignal ?? null;
+            $dataArray['StopSignal'] = $data->stopSignal;
         }
         if (array_key_exists('stopTimeout', get_object_vars($data)) && null !== ($data->stopTimeout ?? null)) {
-            $dataArray['StopTimeout'] = $data->stopTimeout ?? null;
+            $dataArray['StopTimeout'] = $data->stopTimeout;
         }
         if (array_key_exists('shell', get_object_vars($data)) && null !== ($data->shell ?? null)) {
             $values_7 = [];
-            foreach ($data->shell ?? null as $value_7) {
+            foreach ($data->shell as $value_7) {
                 $values_7[] = $value_7;
             }
             $dataArray['Shell'] = $values_7;

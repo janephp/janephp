@@ -60,13 +60,13 @@ class AppJobInvocationTriggerManualUserNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
-            $dataArray['email'] = $data->email ?? null;
+            $dataArray['email'] = $data->email;
         }
         if (array_key_exists('fullName', get_object_vars($data)) && null !== ($data->fullName ?? null)) {
-            $dataArray['full_name'] = $data->fullName ?? null;
+            $dataArray['full_name'] = $data->fullName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

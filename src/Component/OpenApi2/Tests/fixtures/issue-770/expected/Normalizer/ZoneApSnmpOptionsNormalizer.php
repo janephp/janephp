@@ -69,24 +69,24 @@ class ZoneApSnmpOptionsNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('apSnmpEnabled', get_object_vars($data)) && null !== ($data->apSnmpEnabled ?? null)) {
-            $dataArray['apSnmpEnabled'] = $data->apSnmpEnabled ?? null;
+            $dataArray['apSnmpEnabled'] = $data->apSnmpEnabled;
         }
         if (array_key_exists('snmpConfigType', get_object_vars($data)) && null !== ($data->snmpConfigType ?? null)) {
-            $dataArray['snmpConfigType'] = $data->snmpConfigType ?? null;
+            $dataArray['snmpConfigType'] = $data->snmpConfigType;
         }
         if (array_key_exists('apSnmpAgentProfileId', get_object_vars($data)) && null !== ($data->apSnmpAgentProfileId ?? null)) {
-            $dataArray['apSnmpAgentProfileId'] = $data->apSnmpAgentProfileId ?? null;
+            $dataArray['apSnmpAgentProfileId'] = $data->apSnmpAgentProfileId;
         }
         if (array_key_exists('snmpV2Agent', get_object_vars($data)) && null !== ($data->snmpV2Agent ?? null)) {
             $values = [];
-            foreach ($data->snmpV2Agent ?? null as $value) {
+            foreach ($data->snmpV2Agent as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snmpV2Agent'] = $values;
         }
         if (array_key_exists('snmpV3Agent', get_object_vars($data)) && null !== ($data->snmpV3Agent ?? null)) {
             $values_1 = [];
-            foreach ($data->snmpV3Agent ?? null as $value_1) {
+            foreach ($data->snmpV3Agent as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['snmpV3Agent'] = $values_1;

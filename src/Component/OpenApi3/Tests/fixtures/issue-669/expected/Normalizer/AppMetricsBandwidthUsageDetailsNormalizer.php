@@ -56,10 +56,10 @@ class AppMetricsBandwidthUsageDetailsNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
-            $dataArray['app_id'] = $data->appId ?? null;
+            $dataArray['app_id'] = $data->appId;
         }
         if (array_key_exists('bandwidthBytes', get_object_vars($data)) && null !== ($data->bandwidthBytes ?? null)) {
-            $dataArray['bandwidth_bytes'] = $data->bandwidthBytes ?? null;
+            $dataArray['bandwidth_bytes'] = $data->bandwidthBytes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

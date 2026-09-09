@@ -76,25 +76,25 @@ class AppServiceSpecHealthCheckNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('failureThreshold', get_object_vars($data)) && null !== ($data->failureThreshold ?? null)) {
-            $dataArray['failure_threshold'] = $data->failureThreshold ?? null;
+            $dataArray['failure_threshold'] = $data->failureThreshold;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('httpPath', get_object_vars($data)) && null !== ($data->httpPath ?? null)) {
-            $dataArray['http_path'] = $data->httpPath ?? null;
+            $dataArray['http_path'] = $data->httpPath;
         }
         if (array_key_exists('initialDelaySeconds', get_object_vars($data)) && null !== ($data->initialDelaySeconds ?? null)) {
-            $dataArray['initial_delay_seconds'] = $data->initialDelaySeconds ?? null;
+            $dataArray['initial_delay_seconds'] = $data->initialDelaySeconds;
         }
         if (array_key_exists('periodSeconds', get_object_vars($data)) && null !== ($data->periodSeconds ?? null)) {
-            $dataArray['period_seconds'] = $data->periodSeconds ?? null;
+            $dataArray['period_seconds'] = $data->periodSeconds;
         }
         if (array_key_exists('successThreshold', get_object_vars($data)) && null !== ($data->successThreshold ?? null)) {
-            $dataArray['success_threshold'] = $data->successThreshold ?? null;
+            $dataArray['success_threshold'] = $data->successThreshold;
         }
         if (array_key_exists('timeoutSeconds', get_object_vars($data)) && null !== ($data->timeoutSeconds ?? null)) {
-            $dataArray['timeout_seconds'] = $data->timeoutSeconds ?? null;
+            $dataArray['timeout_seconds'] = $data->timeoutSeconds;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

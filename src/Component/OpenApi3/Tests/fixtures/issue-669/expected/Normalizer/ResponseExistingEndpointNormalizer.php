@@ -52,7 +52,7 @@ class ResponseExistingEndpointNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
-            $dataArray['endpoint'] = ($data->endpoint ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->endpoint ?? null, 'json', $context));
+            $dataArray['endpoint'] = $data->endpoint === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->endpoint, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

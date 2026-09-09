@@ -91,29 +91,29 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         if (array_key_exists('profile', get_object_vars($data)) && null !== ($data->profile ?? null)) {
-            $value = $data->profile ?? null;
-            if (is_string($data->profile ?? null)) {
-                $value = $data->profile ?? null;
+            $value = $data->profile;
+            if (is_string($data->profile)) {
+                $value = $data->profile;
             }
             $dataArray['profile'] = $value;
         }
         if (array_key_exists('coder', get_object_vars($data)) && null !== ($data->coder ?? null)) {
-            $value_1 = $data->coder ?? null;
-            if (is_string($data->coder ?? null)) {
-                $value_1 = $data->coder ?? null;
+            $value_1 = $data->coder;
+            if (is_string($data->coder)) {
+                $value_1 = $data->coder;
             }
             $dataArray['coder'] = $value_1;
         }
         if (array_key_exists('bitrate', get_object_vars($data)) && null !== ($data->bitrate ?? null)) {
-            $dataArray['bitrate'] = $data->bitrate ?? null;
+            $dataArray['bitrate'] = $data->bitrate;
         }
         if (array_key_exists('variableBitRate', get_object_vars($data)) && null !== ($data->variableBitRate ?? null)) {
-            $dataArray['variableBitRate'] = $data->variableBitRate ?? null;
+            $dataArray['variableBitRate'] = $data->variableBitRate;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

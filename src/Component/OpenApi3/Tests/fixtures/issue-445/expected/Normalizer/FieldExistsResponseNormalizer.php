@@ -60,10 +60,10 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['exists'] = $data->exists ?? null;
-        $dataArray['previouslyUsed'] = $data->previouslyUsed ?? null;
+        $dataArray['exists'] = $data->exists;
+        $dataArray['previouslyUsed'] = $data->previouslyUsed;
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schemaId'] = $data->schemaId ?? null;
+            $dataArray['schemaId'] = $data->schemaId;
         }
         return $dataArray;
     }

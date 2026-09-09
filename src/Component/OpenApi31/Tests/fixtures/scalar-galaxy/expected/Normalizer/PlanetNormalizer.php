@@ -131,66 +131,66 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $value = $data->description ?? null;
-            if (is_string($data->description ?? null)) {
-                $value = $data->description ?? null;
-            } elseif (is_null($data->description ?? null)) {
-                $value = $data->description ?? null;
+            $value = $data->description;
+            if (is_string($data->description)) {
+                $value = $data->description;
+            } elseif (is_null($data->description)) {
+                $value = $data->description;
             }
             $dataArray['description'] = $value;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('habitabilityIndex', get_object_vars($data)) && null !== ($data->habitabilityIndex ?? null)) {
-            $dataArray['habitabilityIndex'] = $data->habitabilityIndex ?? null;
+            $dataArray['habitabilityIndex'] = $data->habitabilityIndex;
         }
         if (array_key_exists('physicalProperties', get_object_vars($data)) && null !== ($data->physicalProperties ?? null)) {
-            $dataArray['physicalProperties'] = ($data->physicalProperties ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties ?? null, 'json', $context));
+            $dataArray['physicalProperties'] = $data->physicalProperties === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties, 'json', $context));
         }
         if (array_key_exists('atmosphere', get_object_vars($data)) && null !== ($data->atmosphere ?? null)) {
             $values = [];
-            foreach ($data->atmosphere ?? null as $value_1) {
+            foreach ($data->atmosphere as $value_1) {
                 $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['atmosphere'] = $values;
         }
         if (array_key_exists('discoveredAt', get_object_vars($data)) && null !== ($data->discoveredAt ?? null)) {
-            $dataArray['discoveredAt'] = ($data->discoveredAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['discoveredAt'] = $data->discoveredAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $value_2 = $data->image ?? null;
-            if (is_string($data->image ?? null)) {
-                $value_2 = $data->image ?? null;
-            } elseif (is_null($data->image ?? null)) {
-                $value_2 = $data->image ?? null;
+            $value_2 = $data->image;
+            if (is_string($data->image)) {
+                $value_2 = $data->image;
+            } elseif (is_null($data->image)) {
+                $value_2 = $data->image;
             }
             $dataArray['image'] = $value_2;
         }
         if (array_key_exists('satellites', get_object_vars($data)) && null !== ($data->satellites ?? null)) {
             $values_1 = [];
-            foreach ($data->satellites ?? null as $value_3) {
+            foreach ($data->satellites as $value_3) {
                 $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['satellites'] = $values_1;
         }
         if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
-            $dataArray['creator'] = ($data->creator ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator ?? null, 'json', $context));
+            $dataArray['creator'] = $data->creator === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];
-            foreach ($data->tags ?? null as $value_4) {
+            foreach ($data->tags as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['tags'] = $values_2;
         }
         if (array_key_exists('successCallbackUrl', get_object_vars($data)) && null !== ($data->successCallbackUrl ?? null)) {
-            $dataArray['successCallbackUrl'] = $data->successCallbackUrl ?? null;
+            $dataArray['successCallbackUrl'] = $data->successCallbackUrl;
         }
         if (array_key_exists('failureCallbackUrl', get_object_vars($data)) && null !== ($data->failureCallbackUrl ?? null)) {
-            $dataArray['failureCallbackUrl'] = $data->failureCallbackUrl ?? null;
+            $dataArray['failureCallbackUrl'] = $data->failureCallbackUrl;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetConstraint());

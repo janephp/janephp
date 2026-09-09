@@ -49,10 +49,10 @@ class AprulesSubnetNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('networkAddress', get_object_vars($data)) && null !== ($data->networkAddress ?? null)) {
-            $dataArray['networkAddress'] = $data->networkAddress ?? null;
+            $dataArray['networkAddress'] = $data->networkAddress;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         return $dataArray;
     }

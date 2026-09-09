@@ -59,10 +59,10 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
     {
         $dataArray = [];
         if (array_key_exists('year', get_object_vars($data)) && null !== ($data->year ?? null)) {
-            $dataArray['year'] = $data->year ?? null;
+            $dataArray['year'] = $data->year;
         }
         if (array_key_exists('numberOfEmployees', get_object_vars($data)) && null !== ($data->numberOfEmployees ?? null)) {
-            $dataArray['numberOfEmployees'] = $data->numberOfEmployees ?? null;
+            $dataArray['numberOfEmployees'] = $data->numberOfEmployees;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

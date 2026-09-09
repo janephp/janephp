@@ -58,16 +58,16 @@ class ZoneMeshConfigurationNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
-            $dataArray['ssid'] = $data->ssid ?? null;
+            $dataArray['ssid'] = $data->ssid;
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
-            $dataArray['passphrase'] = $data->passphrase ?? null;
+            $dataArray['passphrase'] = $data->passphrase;
         }
         if (array_key_exists('meshRadioIdx', get_object_vars($data)) && null !== ($data->meshRadioIdx ?? null)) {
-            $dataArray['meshRadioIdx'] = $data->meshRadioIdx ?? null;
+            $dataArray['meshRadioIdx'] = $data->meshRadioIdx;
         }
         if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
-            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus;
         }
         return $dataArray;
     }

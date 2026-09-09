@@ -71,20 +71,20 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('privileged', get_object_vars($data)) && null !== ($data->privileged ?? null)) {
-            $dataArray['privileged'] = $data->privileged ?? null;
+            $dataArray['privileged'] = $data->privileged;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         if (array_key_exists('tty', get_object_vars($data)) && null !== ($data->tty ?? null)) {
-            $dataArray['tty'] = $data->tty ?? null;
+            $dataArray['tty'] = $data->tty;
         }
         if (array_key_exists('entrypoint', get_object_vars($data)) && null !== ($data->entrypoint ?? null)) {
-            $dataArray['entrypoint'] = $data->entrypoint ?? null;
+            $dataArray['entrypoint'] = $data->entrypoint;
         }
         if (array_key_exists('arguments', get_object_vars($data)) && null !== ($data->arguments ?? null)) {
             $values = [];
-            foreach ($data->arguments ?? null as $value) {
+            foreach ($data->arguments as $value) {
                 $values[] = $value;
             }
             $dataArray['arguments'] = $values;

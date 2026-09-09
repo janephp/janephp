@@ -65,14 +65,14 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         $dataArray = [];
         if (array_key_exists('exact', get_object_vars($data)) && null !== ($data->exact ?? null)) {
             $values = [];
-            foreach ($data->exact ?? null as $value) {
+            foreach ($data->exact as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['exact'] = $values;
         }
         if (array_key_exists('possible', get_object_vars($data)) && null !== ($data->possible ?? null)) {
             $values_1 = [];
-            foreach ($data->possible ?? null as $value_1) {
+            foreach ($data->possible as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['possible'] = $values_1;

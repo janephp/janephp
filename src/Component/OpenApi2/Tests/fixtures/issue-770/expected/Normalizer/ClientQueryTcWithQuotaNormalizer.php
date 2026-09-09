@@ -52,13 +52,13 @@ class ClientQueryTcWithQuotaNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('tcName', get_object_vars($data)) && null !== ($data->tcName ?? null)) {
-            $dataArray['tcName'] = $data->tcName ?? null;
+            $dataArray['tcName'] = $data->tcName;
         }
         if (array_key_exists('tcMaxQuota', get_object_vars($data)) && null !== ($data->tcMaxQuota ?? null)) {
-            $dataArray['tcMaxQuota'] = $data->tcMaxQuota ?? null;
+            $dataArray['tcMaxQuota'] = $data->tcMaxQuota;
         }
         if (array_key_exists('tcRemainingQuota', get_object_vars($data)) && null !== ($data->tcRemainingQuota ?? null)) {
-            $dataArray['tcRemainingQuota'] = $data->tcRemainingQuota ?? null;
+            $dataArray['tcRemainingQuota'] = $data->tcRemainingQuota;
         }
         return $dataArray;
     }

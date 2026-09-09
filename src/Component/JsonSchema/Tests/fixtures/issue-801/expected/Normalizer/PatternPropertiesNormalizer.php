@@ -62,11 +62,11 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $value = $data->bar ?? null;
-            if (is_int($data->bar ?? null)) {
-                $value = $data->bar ?? null;
-            } elseif (is_null($data->bar ?? null)) {
-                $value = $data->bar ?? null;
+            $value = $data->bar;
+            if (is_int($data->bar)) {
+                $value = $data->bar;
+            } elseif (is_null($data->bar)) {
+                $value = $data->bar;
             }
             $dataArray['bar'] = $value;
         }

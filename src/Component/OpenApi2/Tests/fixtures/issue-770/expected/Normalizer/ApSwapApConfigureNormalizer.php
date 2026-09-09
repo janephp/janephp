@@ -48,8 +48,8 @@ class ApSwapApConfigureNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['swapInMac'] = $data->swapInMac ?? null;
-        $dataArray['swapOutMac'] = $data->swapOutMac ?? null;
+        $dataArray['swapInMac'] = $data->swapInMac;
+        $dataArray['swapOutMac'] = $data->swapOutMac;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

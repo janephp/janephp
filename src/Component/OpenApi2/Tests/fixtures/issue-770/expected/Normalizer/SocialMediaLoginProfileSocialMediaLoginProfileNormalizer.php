@@ -103,48 +103,48 @@ class SocialMediaLoginProfileSocialMediaLoginProfileNormalizer implements Denorm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('linkedinEnabled', get_object_vars($data)) && null !== ($data->linkedinEnabled ?? null)) {
-            $dataArray['linkedinEnabled'] = $data->linkedinEnabled ?? null;
+            $dataArray['linkedinEnabled'] = $data->linkedinEnabled;
         }
         if (array_key_exists('linkedinClientId', get_object_vars($data)) && null !== ($data->linkedinClientId ?? null)) {
-            $dataArray['linkedinClientId'] = $data->linkedinClientId ?? null;
+            $dataArray['linkedinClientId'] = $data->linkedinClientId;
         }
         if (array_key_exists('linkedinSecret', get_object_vars($data)) && null !== ($data->linkedinSecret ?? null)) {
-            $dataArray['linkedinSecret'] = $data->linkedinSecret ?? null;
+            $dataArray['linkedinSecret'] = $data->linkedinSecret;
         }
         if (array_key_exists('googleEnabled', get_object_vars($data)) && null !== ($data->googleEnabled ?? null)) {
-            $dataArray['googleEnabled'] = $data->googleEnabled ?? null;
+            $dataArray['googleEnabled'] = $data->googleEnabled;
         }
         if (array_key_exists('googleClientId', get_object_vars($data)) && null !== ($data->googleClientId ?? null)) {
-            $dataArray['googleClientId'] = $data->googleClientId ?? null;
+            $dataArray['googleClientId'] = $data->googleClientId;
         }
         if (array_key_exists('googleSecret', get_object_vars($data)) && null !== ($data->googleSecret ?? null)) {
-            $dataArray['googleSecret'] = $data->googleSecret ?? null;
+            $dataArray['googleSecret'] = $data->googleSecret;
         }
         if (array_key_exists('microsoftEnabled', get_object_vars($data)) && null !== ($data->microsoftEnabled ?? null)) {
-            $dataArray['microsoftEnabled'] = $data->microsoftEnabled ?? null;
+            $dataArray['microsoftEnabled'] = $data->microsoftEnabled;
         }
         if (array_key_exists('microsoftClientId', get_object_vars($data)) && null !== ($data->microsoftClientId ?? null)) {
-            $dataArray['microsoftClientId'] = $data->microsoftClientId ?? null;
+            $dataArray['microsoftClientId'] = $data->microsoftClientId;
         }
         if (array_key_exists('microsoftSecret', get_object_vars($data)) && null !== ($data->microsoftSecret ?? null)) {
-            $dataArray['microsoftSecret'] = $data->microsoftSecret ?? null;
+            $dataArray['microsoftSecret'] = $data->microsoftSecret;
         }
         if (array_key_exists('facebookEnabled', get_object_vars($data)) && null !== ($data->facebookEnabled ?? null)) {
-            $dataArray['facebookEnabled'] = $data->facebookEnabled ?? null;
+            $dataArray['facebookEnabled'] = $data->facebookEnabled;
         }
         if (array_key_exists('facebookClientId', get_object_vars($data)) && null !== ($data->facebookClientId ?? null)) {
-            $dataArray['facebookClientId'] = $data->facebookClientId ?? null;
+            $dataArray['facebookClientId'] = $data->facebookClientId;
         }
         if (array_key_exists('facebookSecret', get_object_vars($data)) && null !== ($data->facebookSecret ?? null)) {
-            $dataArray['facebookSecret'] = $data->facebookSecret ?? null;
+            $dataArray['facebookSecret'] = $data->facebookSecret;
         }
         $values = [];
-        foreach ($data->whitelistedDomains ?? null as $value) {
+        foreach ($data->whitelistedDomains as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['whitelistedDomains'] = $values;

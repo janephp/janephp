@@ -84,33 +84,33 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('errorSteps', get_object_vars($data)) && null !== ($data->errorSteps ?? null)) {
-            $dataArray['error_steps'] = $data->errorSteps ?? null;
+            $dataArray['error_steps'] = $data->errorSteps;
         }
         if (array_key_exists('pendingSteps', get_object_vars($data)) && null !== ($data->pendingSteps ?? null)) {
-            $dataArray['pending_steps'] = $data->pendingSteps ?? null;
+            $dataArray['pending_steps'] = $data->pendingSteps;
         }
         if (array_key_exists('runningSteps', get_object_vars($data)) && null !== ($data->runningSteps ?? null)) {
-            $dataArray['running_steps'] = $data->runningSteps ?? null;
+            $dataArray['running_steps'] = $data->runningSteps;
         }
         if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
-            foreach ($data->steps ?? null as $value) {
+            foreach ($data->steps as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['steps'] = $values;
         }
         if (array_key_exists('successSteps', get_object_vars($data)) && null !== ($data->successSteps ?? null)) {
-            $dataArray['success_steps'] = $data->successSteps ?? null;
+            $dataArray['success_steps'] = $data->successSteps;
         }
         if (array_key_exists('summarySteps', get_object_vars($data)) && null !== ($data->summarySteps ?? null)) {
             $values_1 = [];
-            foreach ($data->summarySteps ?? null as $value_1) {
+            foreach ($data->summarySteps as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['summary_steps'] = $values_1;
         }
         if (array_key_exists('totalSteps', get_object_vars($data)) && null !== ($data->totalSteps ?? null)) {
-            $dataArray['total_steps'] = $data->totalSteps ?? null;
+            $dataArray['total_steps'] = $data->totalSteps;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

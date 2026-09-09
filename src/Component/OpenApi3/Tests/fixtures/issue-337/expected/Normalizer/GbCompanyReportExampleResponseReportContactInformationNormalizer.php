@@ -68,18 +68,18 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
     {
         $dataArray = [];
         if (array_key_exists('mainAddress', get_object_vars($data)) && null !== ($data->mainAddress ?? null)) {
-            $dataArray['mainAddress'] = ($data->mainAddress ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainAddress ?? null, 'json', $context));
+            $dataArray['mainAddress'] = $data->mainAddress === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainAddress, 'json', $context));
         }
         if (array_key_exists('otherAddresses', get_object_vars($data)) && null !== ($data->otherAddresses ?? null)) {
             $values = [];
-            foreach ($data->otherAddresses ?? null as $value) {
+            foreach ($data->otherAddresses as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['otherAddresses'] = $values;
         }
         if (array_key_exists('websites', get_object_vars($data)) && null !== ($data->websites ?? null)) {
             $values_1 = [];
-            foreach ($data->websites ?? null as $value_1) {
+            foreach ($data->websites as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['websites'] = $values_1;

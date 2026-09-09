@@ -52,10 +52,10 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('namedResourceSpec', get_object_vars($data)) && null !== ($data->namedResourceSpec ?? null)) {
-            $dataArray['NamedResourceSpec'] = ($data->namedResourceSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->namedResourceSpec ?? null, 'json', $context));
+            $dataArray['NamedResourceSpec'] = $data->namedResourceSpec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->namedResourceSpec, 'json', $context));
         }
         if (array_key_exists('discreteResourceSpec', get_object_vars($data)) && null !== ($data->discreteResourceSpec ?? null)) {
-            $dataArray['DiscreteResourceSpec'] = ($data->discreteResourceSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->discreteResourceSpec ?? null, 'json', $context));
+            $dataArray['DiscreteResourceSpec'] = $data->discreteResourceSpec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->discreteResourceSpec, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\GenericResourcesItemConstraint());

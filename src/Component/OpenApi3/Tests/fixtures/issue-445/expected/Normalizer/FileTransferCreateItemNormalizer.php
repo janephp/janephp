@@ -75,24 +75,24 @@ class FileTransferCreateItemNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileId'] = $data->fileId ?? null;
+        $dataArray['fileId'] = $data->fileId;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->layerSchemaIds ?? null as $value) {
+            foreach ($data->layerSchemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->metadata ?? null as $key => $value_1) {
+            foreach ($data->metadata as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['metadata'] = $values_1;
         }
         if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values_2 = [];
-            foreach ($data->contentPermissionSetIds ?? null as $value_2) {
+            foreach ($data->contentPermissionSetIds as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['contentPermissionSetIds'] = $values_2;

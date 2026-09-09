@@ -60,11 +60,11 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
-            $dataArray['totalCount'] = $data->totalCount ?? null;
+            $dataArray['totalCount'] = $data->totalCount;
         }
         if (array_key_exists('orders', get_object_vars($data)) && null !== ($data->orders ?? null)) {
             $values = [];
-            foreach ($data->orders ?? null as $value) {
+            foreach ($data->orders as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['orders'] = $values;

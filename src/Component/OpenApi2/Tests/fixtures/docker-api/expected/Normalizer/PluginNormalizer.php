@@ -67,15 +67,15 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['Id'] = $data->id ?? null;
+            $dataArray['Id'] = $data->id;
         }
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Enabled'] = $data->enabled ?? null;
-        $dataArray['Settings'] = ($data->settings ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->settings ?? null, 'json', $context));
+        $dataArray['Name'] = $data->name;
+        $dataArray['Enabled'] = $data->enabled;
+        $dataArray['Settings'] = $data->settings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
         if (array_key_exists('pluginReference', get_object_vars($data)) && null !== ($data->pluginReference ?? null)) {
-            $dataArray['PluginReference'] = $data->pluginReference ?? null;
+            $dataArray['PluginReference'] = $data->pluginReference;
         }
-        $dataArray['Config'] = ($data->config ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+        $dataArray['Config'] = $data->config === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConstraint());
         }

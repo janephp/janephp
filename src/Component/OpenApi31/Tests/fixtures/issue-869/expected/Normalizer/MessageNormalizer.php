@@ -69,14 +69,14 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('subject', get_object_vars($data)) && null !== ($data->subject ?? null)) {
-            $dataArray['subject'] = $data->subject ?? null;
+            $dataArray['subject'] = $data->subject;
         }
         if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
-            $value = $data->body ?? null;
-            if (is_string($data->body ?? null)) {
-                $value = $data->body ?? null;
-            } elseif (is_null($data->body ?? null)) {
-                $value = $data->body ?? null;
+            $value = $data->body;
+            if (is_string($data->body)) {
+                $value = $data->body;
+            } elseif (is_null($data->body)) {
+                $value = $data->body;
             }
             $dataArray['body'] = $value;
         }

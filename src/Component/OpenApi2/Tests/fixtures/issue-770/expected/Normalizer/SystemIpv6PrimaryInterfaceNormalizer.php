@@ -57,18 +57,18 @@ class SystemIpv6PrimaryInterfaceNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipMode'] = $data->ipMode ?? null;
+        $dataArray['ipMode'] = $data->ipMode;
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('primaryDNSServer', get_object_vars($data)) && null !== ($data->primaryDNSServer ?? null)) {
-            $dataArray['primaryDNSServer'] = $data->primaryDNSServer ?? null;
+            $dataArray['primaryDNSServer'] = $data->primaryDNSServer;
         }
         if (array_key_exists('secondaryDNSServer', get_object_vars($data)) && null !== ($data->secondaryDNSServer ?? null)) {
-            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer ?? null;
+            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer;
         }
         return $dataArray;
     }

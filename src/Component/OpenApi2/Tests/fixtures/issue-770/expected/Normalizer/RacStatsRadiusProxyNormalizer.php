@@ -184,145 +184,145 @@ class RacStatsRadiusProxyNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('aaASerIp', get_object_vars($data)) && null !== ($data->aaASerIp ?? null)) {
-            $dataArray['aaASerIp'] = $data->aaASerIp ?? null;
+            $dataArray['aaASerIp'] = $data->aaASerIp;
         }
         if (array_key_exists('nasType', get_object_vars($data)) && null !== ($data->nasType ?? null)) {
-            $dataArray['nasType'] = $data->nasType ?? null;
+            $dataArray['nasType'] = $data->nasType;
         }
         if (array_key_exists('numSuccAuth', get_object_vars($data)) && null !== ($data->numSuccAuth ?? null)) {
-            $dataArray['numSuccAuth'] = $data->numSuccAuth ?? null;
+            $dataArray['numSuccAuth'] = $data->numSuccAuth;
         }
         if (array_key_exists('numFailAuth', get_object_vars($data)) && null !== ($data->numFailAuth ?? null)) {
-            $dataArray['numFailAuth'] = $data->numFailAuth ?? null;
+            $dataArray['numFailAuth'] = $data->numFailAuth;
         }
         if (array_key_exists('numInCompAuth', get_object_vars($data)) && null !== ($data->numInCompAuth ?? null)) {
-            $dataArray['numInCompAuth'] = $data->numInCompAuth ?? null;
+            $dataArray['numInCompAuth'] = $data->numInCompAuth;
         }
         if (array_key_exists('numSuccAcct', get_object_vars($data)) && null !== ($data->numSuccAcct ?? null)) {
-            $dataArray['numSuccAcct'] = $data->numSuccAcct ?? null;
+            $dataArray['numSuccAcct'] = $data->numSuccAcct;
         }
         if (array_key_exists('numFailAcct', get_object_vars($data)) && null !== ($data->numFailAcct ?? null)) {
-            $dataArray['numFailAcct'] = $data->numFailAcct ?? null;
+            $dataArray['numFailAcct'] = $data->numFailAcct;
         }
         if (array_key_exists('numOfAccReqAaa', get_object_vars($data)) && null !== ($data->numOfAccReqAaa ?? null)) {
-            $dataArray['numOfAccReqAaa'] = $data->numOfAccReqAaa ?? null;
+            $dataArray['numOfAccReqAaa'] = $data->numOfAccReqAaa;
         }
         if (array_key_exists('numOfAccAcceptAaa', get_object_vars($data)) && null !== ($data->numOfAccAcceptAaa ?? null)) {
-            $dataArray['numOfAccAcceptAaa'] = $data->numOfAccAcceptAaa ?? null;
+            $dataArray['numOfAccAcceptAaa'] = $data->numOfAccAcceptAaa;
         }
         if (array_key_exists('numOfAccRejAaa', get_object_vars($data)) && null !== ($data->numOfAccRejAaa ?? null)) {
-            $dataArray['numOfAccRejAaa'] = $data->numOfAccRejAaa ?? null;
+            $dataArray['numOfAccRejAaa'] = $data->numOfAccRejAaa;
         }
         if (array_key_exists('numOfAccChallAaa', get_object_vars($data)) && null !== ($data->numOfAccChallAaa ?? null)) {
-            $dataArray['numOfAccChallAaa'] = $data->numOfAccChallAaa ?? null;
+            $dataArray['numOfAccChallAaa'] = $data->numOfAccChallAaa;
         }
         if (array_key_exists('numOfAcctReqAaa', get_object_vars($data)) && null !== ($data->numOfAcctReqAaa ?? null)) {
-            $dataArray['numOfAcctReqAaa'] = $data->numOfAcctReqAaa ?? null;
+            $dataArray['numOfAcctReqAaa'] = $data->numOfAcctReqAaa;
         }
         if (array_key_exists('numOfAcctRspAaa', get_object_vars($data)) && null !== ($data->numOfAcctRspAaa ?? null)) {
-            $dataArray['numOfAcctRspAaa'] = $data->numOfAcctRspAaa ?? null;
+            $dataArray['numOfAcctRspAaa'] = $data->numOfAcctRspAaa;
         }
         if (array_key_exists('numOfCoAReqAaa', get_object_vars($data)) && null !== ($data->numOfCoAReqAaa ?? null)) {
-            $dataArray['numOfCoAReqAaa'] = $data->numOfCoAReqAaa ?? null;
+            $dataArray['numOfCoAReqAaa'] = $data->numOfCoAReqAaa;
         }
         if (array_key_exists('numOfCoAResAaa', get_object_vars($data)) && null !== ($data->numOfCoAResAaa ?? null)) {
-            $dataArray['numOfCoAResAaa'] = $data->numOfCoAResAaa ?? null;
+            $dataArray['numOfCoAResAaa'] = $data->numOfCoAResAaa;
         }
         if (array_key_exists('numOfCoAFailAaa', get_object_vars($data)) && null !== ($data->numOfCoAFailAaa ?? null)) {
-            $dataArray['numOfCoAFailAaa'] = $data->numOfCoAFailAaa ?? null;
+            $dataArray['numOfCoAFailAaa'] = $data->numOfCoAFailAaa;
         }
         if (array_key_exists('numAcsRqRcvdNas', get_object_vars($data)) && null !== ($data->numAcsRqRcvdNas ?? null)) {
-            $dataArray['numAcsRqRcvdNas'] = $data->numAcsRqRcvdNas ?? null;
+            $dataArray['numAcsRqRcvdNas'] = $data->numAcsRqRcvdNas;
         }
         if (array_key_exists('numAcsChSntNas', get_object_vars($data)) && null !== ($data->numAcsChSntNas ?? null)) {
-            $dataArray['numAcsChSntNas'] = $data->numAcsChSntNas ?? null;
+            $dataArray['numAcsChSntNas'] = $data->numAcsChSntNas;
         }
         if (array_key_exists('numAcsAcpSntNas', get_object_vars($data)) && null !== ($data->numAcsAcpSntNas ?? null)) {
-            $dataArray['numAcsAcpSntNas'] = $data->numAcsAcpSntNas ?? null;
+            $dataArray['numAcsAcpSntNas'] = $data->numAcsAcpSntNas;
         }
         if (array_key_exists('numAcsRejSntNas', get_object_vars($data)) && null !== ($data->numAcsRejSntNas ?? null)) {
-            $dataArray['numAcsRejSntNas'] = $data->numAcsRejSntNas ?? null;
+            $dataArray['numAcsRejSntNas'] = $data->numAcsRejSntNas;
         }
         if (array_key_exists('numAccRqRcvdNas', get_object_vars($data)) && null !== ($data->numAccRqRcvdNas ?? null)) {
-            $dataArray['numAccRqRcvdNas'] = $data->numAccRqRcvdNas ?? null;
+            $dataArray['numAccRqRcvdNas'] = $data->numAccRqRcvdNas;
         }
         if (array_key_exists('numAccRspSntNas', get_object_vars($data)) && null !== ($data->numAccRspSntNas ?? null)) {
-            $dataArray['numAccRspSntNas'] = $data->numAccRspSntNas ?? null;
+            $dataArray['numAccRspSntNas'] = $data->numAccRspSntNas;
         }
         if (array_key_exists('numCoaSntNas', get_object_vars($data)) && null !== ($data->numCoaSntNas ?? null)) {
-            $dataArray['numCoaSntNas'] = $data->numCoaSntNas ?? null;
+            $dataArray['numCoaSntNas'] = $data->numCoaSntNas;
         }
         if (array_key_exists('numCoaSucRcdNas', get_object_vars($data)) && null !== ($data->numCoaSucRcdNas ?? null)) {
-            $dataArray['numCoaSucRcdNas'] = $data->numCoaSucRcdNas ?? null;
+            $dataArray['numCoaSucRcdNas'] = $data->numCoaSucRcdNas;
         }
         if (array_key_exists('numCoaFailRcdNas', get_object_vars($data)) && null !== ($data->numCoaFailRcdNas ?? null)) {
-            $dataArray['numCoaFailRcdNas'] = $data->numCoaFailRcdNas ?? null;
+            $dataArray['numCoaFailRcdNas'] = $data->numCoaFailRcdNas;
         }
         if (array_key_exists('numDmSntNas', get_object_vars($data)) && null !== ($data->numDmSntNas ?? null)) {
-            $dataArray['numDmSntNas'] = $data->numDmSntNas ?? null;
+            $dataArray['numDmSntNas'] = $data->numDmSntNas;
         }
         if (array_key_exists('numDmSucRcdNas', get_object_vars($data)) && null !== ($data->numDmSucRcdNas ?? null)) {
-            $dataArray['numDmSucRcdNas'] = $data->numDmSucRcdNas ?? null;
+            $dataArray['numDmSucRcdNas'] = $data->numDmSucRcdNas;
         }
         if (array_key_exists('numDmFailRcdNas', get_object_vars($data)) && null !== ($data->numDmFailRcdNas ?? null)) {
-            $dataArray['numDmFailRcdNas'] = $data->numDmFailRcdNas ?? null;
+            $dataArray['numDmFailRcdNas'] = $data->numDmFailRcdNas;
         }
         if (array_key_exists('numAuthOnlyAAA', get_object_vars($data)) && null !== ($data->numAuthOnlyAAA ?? null)) {
-            $dataArray['numAuthOnlyAAA'] = $data->numAuthOnlyAAA ?? null;
+            $dataArray['numAuthOnlyAAA'] = $data->numAuthOnlyAAA;
         }
         if (array_key_exists('numAuthOnlySuccAAA', get_object_vars($data)) && null !== ($data->numAuthOnlySuccAAA ?? null)) {
-            $dataArray['numAuthOnlySuccAAA'] = $data->numAuthOnlySuccAAA ?? null;
+            $dataArray['numAuthOnlySuccAAA'] = $data->numAuthOnlySuccAAA;
         }
         if (array_key_exists('numAuthOnlyFailedAAA', get_object_vars($data)) && null !== ($data->numAuthOnlyFailedAAA ?? null)) {
-            $dataArray['numAuthOnlyFailedAAA'] = $data->numAuthOnlyFailedAAA ?? null;
+            $dataArray['numAuthOnlyFailedAAA'] = $data->numAuthOnlyFailedAAA;
         }
         if (array_key_exists('recCreateTime', get_object_vars($data)) && null !== ($data->recCreateTime ?? null)) {
-            $dataArray['recCreateTime'] = $data->recCreateTime ?? null;
+            $dataArray['recCreateTime'] = $data->recCreateTime;
         }
         if (array_key_exists('recUpdateTime', get_object_vars($data)) && null !== ($data->recUpdateTime ?? null)) {
-            $dataArray['recUpdateTime'] = $data->recUpdateTime ?? null;
+            $dataArray['recUpdateTime'] = $data->recUpdateTime;
         }
         if (array_key_exists('cbladeId', get_object_vars($data)) && null !== ($data->cbladeId ?? null)) {
-            $dataArray['cbladeId'] = $data->cbladeId ?? null;
+            $dataArray['cbladeId'] = $data->cbladeId;
         }
         if (array_key_exists('aaaServiceName', get_object_vars($data)) && null !== ($data->aaaServiceName ?? null)) {
-            $dataArray['aaaServiceName'] = $data->aaaServiceName ?? null;
+            $dataArray['aaaServiceName'] = $data->aaaServiceName;
         }
         if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
-            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+            $dataArray['mvnoId'] = $data->mvnoId;
         }
         if (array_key_exists('numOfDmReqAaa', get_object_vars($data)) && null !== ($data->numOfDmReqAaa ?? null)) {
-            $dataArray['numOfDmReqAaa'] = $data->numOfDmReqAaa ?? null;
+            $dataArray['numOfDmReqAaa'] = $data->numOfDmReqAaa;
         }
         if (array_key_exists('numOfDmResAaa', get_object_vars($data)) && null !== ($data->numOfDmResAaa ?? null)) {
-            $dataArray['numOfDmResAaa'] = $data->numOfDmResAaa ?? null;
+            $dataArray['numOfDmResAaa'] = $data->numOfDmResAaa;
         }
         if (array_key_exists('numOfDmFailAaa', get_object_vars($data)) && null !== ($data->numOfDmFailAaa ?? null)) {
-            $dataArray['numOfDmFailAaa'] = $data->numOfDmFailAaa ?? null;
+            $dataArray['numOfDmFailAaa'] = $data->numOfDmFailAaa;
         }
         if (array_key_exists('numRadSuccAPAcc', get_object_vars($data)) && null !== ($data->numRadSuccAPAcc ?? null)) {
-            $dataArray['numRadSuccAPAcc'] = $data->numRadSuccAPAcc ?? null;
+            $dataArray['numRadSuccAPAcc'] = $data->numRadSuccAPAcc;
         }
         if (array_key_exists('numRadFailAPAcc', get_object_vars($data)) && null !== ($data->numRadFailAPAcc ?? null)) {
-            $dataArray['numRadFailAPAcc'] = $data->numRadFailAPAcc ?? null;
+            $dataArray['numRadFailAPAcc'] = $data->numRadFailAPAcc;
         }
         if (array_key_exists('numAPAcctReq', get_object_vars($data)) && null !== ($data->numAPAcctReq ?? null)) {
-            $dataArray['numAPAcctReq'] = $data->numAPAcctReq ?? null;
+            $dataArray['numAPAcctReq'] = $data->numAPAcctReq;
         }
         if (array_key_exists('numAPAcctRsp', get_object_vars($data)) && null !== ($data->numAPAcctRsp ?? null)) {
-            $dataArray['numAPAcctRsp'] = $data->numAPAcctRsp ?? null;
+            $dataArray['numAPAcctRsp'] = $data->numAPAcctRsp;
         }
         if (array_key_exists('numDroppedRateLimitAuth', get_object_vars($data)) && null !== ($data->numDroppedRateLimitAuth ?? null)) {
-            $dataArray['numDroppedRateLimitAuth'] = $data->numDroppedRateLimitAuth ?? null;
+            $dataArray['numDroppedRateLimitAuth'] = $data->numDroppedRateLimitAuth;
         }
         if (array_key_exists('numDroppedRateLimitAcct', get_object_vars($data)) && null !== ($data->numDroppedRateLimitAcct ?? null)) {
-            $dataArray['numDroppedRateLimitAcct'] = $data->numDroppedRateLimitAcct ?? null;
+            $dataArray['numDroppedRateLimitAcct'] = $data->numDroppedRateLimitAcct;
         }
         if (array_key_exists('cbladeName', get_object_vars($data)) && null !== ($data->cbladeName ?? null)) {
-            $dataArray['cbladeName'] = $data->cbladeName ?? null;
+            $dataArray['cbladeName'] = $data->cbladeName;
         }
         if (array_key_exists('mvnoName', get_object_vars($data)) && null !== ($data->mvnoName ?? null)) {
-            $dataArray['mvnoName'] = $data->mvnoName ?? null;
+            $dataArray['mvnoName'] = $data->mvnoName;
         }
         return $dataArray;
     }

@@ -48,8 +48,8 @@ class SplitTunnelSplitTunnelIpMaskRuleNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['destinationIp'] = $data->destinationIp ?? null;
-        $dataArray['destinationIpMask'] = $data->destinationIpMask ?? null;
+        $dataArray['destinationIp'] = $data->destinationIp;
+        $dataArray['destinationIpMask'] = $data->destinationIpMask;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

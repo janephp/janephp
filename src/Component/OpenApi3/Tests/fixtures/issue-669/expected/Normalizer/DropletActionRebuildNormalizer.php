@@ -61,13 +61,13 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $value = $data->image ?? null;
-            if (is_string($data->image ?? null)) {
-                $value = $data->image ?? null;
-            } elseif (is_int($data->image ?? null)) {
-                $value = $data->image ?? null;
+            $value = $data->image;
+            if (is_string($data->image)) {
+                $value = $data->image;
+            } elseif (is_int($data->image)) {
+                $value = $data->image;
             }
             $dataArray['image'] = $value;
         }

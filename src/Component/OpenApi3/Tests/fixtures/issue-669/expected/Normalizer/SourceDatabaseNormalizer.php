@@ -66,13 +66,13 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['source'] = ($data->source ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->source ?? null, 'json', $context));
+        $dataArray['source'] = $data->source === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->source, 'json', $context));
         if (array_key_exists('disableSsl', get_object_vars($data)) && null !== ($data->disableSsl ?? null)) {
-            $dataArray['disable_ssl'] = $data->disableSsl ?? null;
+            $dataArray['disable_ssl'] = $data->disableSsl;
         }
         if (array_key_exists('ignoreDbs', get_object_vars($data)) && null !== ($data->ignoreDbs ?? null)) {
             $values = [];
-            foreach ($data->ignoreDbs ?? null as $value) {
+            foreach ($data->ignoreDbs as $value) {
                 $values[] = $value;
             }
             $dataArray['ignore_dbs'] = $values;

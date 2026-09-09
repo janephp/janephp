@@ -48,8 +48,8 @@ class BlacklistItemNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['match'] = $data->match ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['match'] = $data->match;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

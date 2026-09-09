@@ -56,11 +56,11 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['Type'] = $data->type ?? null;
+            $dataArray['Type'] = $data->type;
         }
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->config ?? null as $key => $value) {
+            foreach ($data->config as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Config'] = $values;

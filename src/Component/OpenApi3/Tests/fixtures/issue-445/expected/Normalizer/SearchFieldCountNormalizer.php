@@ -51,9 +51,9 @@ class SearchFieldCountNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['indexedField'] = $data->indexedField ?? null;
-        $dataArray['simpleSearchField'] = $data->simpleSearchField ?? null;
-        $dataArray['sortableField'] = $data->sortableField ?? null;
+        $dataArray['indexedField'] = $data->indexedField;
+        $dataArray['simpleSearchField'] = $data->simpleSearchField;
+        $dataArray['sortableField'] = $data->sortableField;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

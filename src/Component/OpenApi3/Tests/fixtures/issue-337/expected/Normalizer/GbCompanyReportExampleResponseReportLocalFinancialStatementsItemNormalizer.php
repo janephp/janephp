@@ -98,37 +98,37 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('yearEndDate', get_object_vars($data)) && null !== ($data->yearEndDate ?? null)) {
-            $dataArray['yearEndDate'] = $data->yearEndDate ?? null;
+            $dataArray['yearEndDate'] = $data->yearEndDate;
         }
         if (array_key_exists('numberOfWeeks', get_object_vars($data)) && null !== ($data->numberOfWeeks ?? null)) {
-            $dataArray['numberOfWeeks'] = $data->numberOfWeeks ?? null;
+            $dataArray['numberOfWeeks'] = $data->numberOfWeeks;
         }
         if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
-            $dataArray['currency'] = $data->currency ?? null;
+            $dataArray['currency'] = $data->currency;
         }
         if (array_key_exists('consolidatedAccounts', get_object_vars($data)) && null !== ($data->consolidatedAccounts ?? null)) {
-            $dataArray['consolidatedAccounts'] = $data->consolidatedAccounts ?? null;
+            $dataArray['consolidatedAccounts'] = $data->consolidatedAccounts;
         }
         if (array_key_exists('auditQualification', get_object_vars($data)) && null !== ($data->auditQualification ?? null)) {
-            $dataArray['auditQualification'] = $data->auditQualification ?? null;
+            $dataArray['auditQualification'] = $data->auditQualification;
         }
         if (array_key_exists('profitAndLoss', get_object_vars($data)) && null !== ($data->profitAndLoss ?? null)) {
-            $dataArray['profitAndLoss'] = ($data->profitAndLoss ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->profitAndLoss ?? null, 'json', $context));
+            $dataArray['profitAndLoss'] = $data->profitAndLoss === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->profitAndLoss, 'json', $context));
         }
         if (array_key_exists('balanceSheet', get_object_vars($data)) && null !== ($data->balanceSheet ?? null)) {
-            $dataArray['balanceSheet'] = ($data->balanceSheet ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->balanceSheet ?? null, 'json', $context));
+            $dataArray['balanceSheet'] = $data->balanceSheet === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->balanceSheet, 'json', $context));
         }
         if (array_key_exists('cashFlow', get_object_vars($data)) && null !== ($data->cashFlow ?? null)) {
-            $dataArray['cashFlow'] = ($data->cashFlow ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->cashFlow ?? null, 'json', $context));
+            $dataArray['cashFlow'] = $data->cashFlow === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->cashFlow, 'json', $context));
         }
         if (array_key_exists('otherFinancials', get_object_vars($data)) && null !== ($data->otherFinancials ?? null)) {
-            $dataArray['otherFinancials'] = ($data->otherFinancials ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherFinancials ?? null, 'json', $context));
+            $dataArray['otherFinancials'] = $data->otherFinancials === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherFinancials, 'json', $context));
         }
         if (array_key_exists('ratios', get_object_vars($data)) && null !== ($data->ratios ?? null)) {
-            $dataArray['ratios'] = ($data->ratios ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ratios ?? null, 'json', $context));
+            $dataArray['ratios'] = $data->ratios === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ratios, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

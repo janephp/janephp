@@ -56,10 +56,10 @@ class VpcCreateNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('ipRange', get_object_vars($data)) && null !== ($data->ipRange ?? null)) {
-            $dataArray['ip_range'] = $data->ipRange ?? null;
+            $dataArray['ip_range'] = $data->ipRange;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -48,8 +48,8 @@ class ServiceTicketLoginRequestNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['username'] = $data->username ?? null;
-        $dataArray['password'] = $data->password ?? null;
+        $dataArray['username'] = $data->username;
+        $dataArray['password'] = $data->password;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

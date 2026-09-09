@@ -56,10 +56,10 @@ class ApiUsageMeasurementNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('tokens', get_object_vars($data)) && null !== ($data->tokens ?? null)) {
-            $dataArray['tokens'] = $data->tokens ?? null;
+            $dataArray['tokens'] = $data->tokens;
         }
         if (array_key_exists('usageType', get_object_vars($data)) && null !== ($data->usageType ?? null)) {
-            $dataArray['usage_type'] = $data->usageType ?? null;
+            $dataArray['usage_type'] = $data->usageType;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

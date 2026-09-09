@@ -59,17 +59,17 @@ class ZoneApFirmwareNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
-            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
+            $dataArray['firmwareVersion'] = $data->firmwareVersion;
         }
         if (array_key_exists('unsupportedApModelSummary', get_object_vars($data)) && null !== ($data->unsupportedApModelSummary ?? null)) {
             $values = [];
-            foreach ($data->unsupportedApModelSummary ?? null as $value) {
+            foreach ($data->unsupportedApModelSummary as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['unsupportedApModelSummary'] = $values;
         }
         if (array_key_exists('supported', get_object_vars($data)) && null !== ($data->supported ?? null)) {
-            $dataArray['supported'] = $data->supported ?? null;
+            $dataArray['supported'] = $data->supported;
         }
         return $dataArray;
     }

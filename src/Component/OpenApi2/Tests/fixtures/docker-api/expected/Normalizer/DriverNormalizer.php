@@ -55,10 +55,10 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Name'] = $data->name;
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->options ?? null as $key => $value) {
+            foreach ($data->options as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Options'] = $values;

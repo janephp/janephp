@@ -60,13 +60,13 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = $data->foo ?? null;
+            $dataArray['foo'] = $data->foo;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['Bar'] = ($data->bar ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->bar ?? null, 'json', $context));
+            $dataArray['Bar'] = $data->bar === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->bar, 'json', $context));
         }
         if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
-            $dataArray['Baz'] = ($data->baz ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->baz ?? null, 'json', $context));
+            $dataArray['Baz'] = $data->baz === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->baz, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

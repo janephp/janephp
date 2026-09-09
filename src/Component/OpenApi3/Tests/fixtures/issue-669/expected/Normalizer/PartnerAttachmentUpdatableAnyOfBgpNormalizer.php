@@ -63,10 +63,10 @@ class PartnerAttachmentUpdatableAnyOfBgpNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['local_router_ip'] = $data->localRouterIp ?? null;
-        $dataArray['peer_router_ip'] = $data->peerRouterIp ?? null;
-        $dataArray['peer_router_asn'] = $data->peerRouterAsn ?? null;
-        $dataArray['auth_key'] = $data->authKey ?? null;
+        $dataArray['local_router_ip'] = $data->localRouterIp;
+        $dataArray['peer_router_ip'] = $data->peerRouterIp;
+        $dataArray['peer_router_asn'] = $data->peerRouterAsn;
+        $dataArray['auth_key'] = $data->authKey;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

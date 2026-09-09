@@ -75,12 +75,12 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['caseSensitive'] = $data->caseSensitive;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schemaId'] = $data->schemaId ?? null;
+            $dataArray['schemaId'] = $data->schemaId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

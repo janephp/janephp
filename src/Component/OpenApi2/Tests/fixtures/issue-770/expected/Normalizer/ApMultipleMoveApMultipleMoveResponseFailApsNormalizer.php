@@ -53,11 +53,11 @@ class ApMultipleMoveApMultipleMoveResponseFailApsNormalizer implements Denormali
     {
         $dataArray = [];
         if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
-            $dataArray['count'] = $data->count ?? null;
+            $dataArray['count'] = $data->count;
         }
         if (array_key_exists('aps', get_object_vars($data)) && null !== ($data->aps ?? null)) {
             $values = [];
-            foreach ($data->aps ?? null as $value) {
+            foreach ($data->aps as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aps'] = $values;

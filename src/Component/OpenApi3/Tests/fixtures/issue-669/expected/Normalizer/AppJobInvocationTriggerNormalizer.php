@@ -60,13 +60,13 @@ class AppJobInvocationTriggerNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('scheduled', get_object_vars($data)) && null !== ($data->scheduled ?? null)) {
-            $dataArray['scheduled'] = ($data->scheduled ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduled ?? null, 'json', $context));
+            $dataArray['scheduled'] = $data->scheduled === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduled, 'json', $context));
         }
         if (array_key_exists('manual', get_object_vars($data)) && null !== ($data->manual ?? null)) {
-            $dataArray['manual'] = ($data->manual ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->manual ?? null, 'json', $context));
+            $dataArray['manual'] = $data->manual === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->manual, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

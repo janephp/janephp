@@ -55,7 +55,7 @@ class PlanetsPlanetIdImagePostBodyNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = $data->image ?? null;
+            $dataArray['image'] = $data->image;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

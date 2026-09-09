@@ -63,18 +63,18 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('target', get_object_vars($data)) && null !== ($data->target ?? null)) {
-            $dataArray['Target'] = $data->target ?? null;
+            $dataArray['Target'] = $data->target;
         }
         if (array_key_exists('aliases', get_object_vars($data)) && null !== ($data->aliases ?? null)) {
             $values = [];
-            foreach ($data->aliases ?? null as $value) {
+            foreach ($data->aliases as $value) {
                 $values[] = $value;
             }
             $dataArray['Aliases'] = $values;
         }
         if (array_key_exists('driverOpts', get_object_vars($data)) && null !== ($data->driverOpts ?? null)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->driverOpts ?? null as $key => $value_1) {
+            foreach ($data->driverOpts as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['DriverOpts'] = $values_1;

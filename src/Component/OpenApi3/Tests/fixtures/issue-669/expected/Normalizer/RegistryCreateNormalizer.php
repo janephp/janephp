@@ -59,10 +59,10 @@ class RegistryCreateNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['subscription_tier_slug'] = $data->subscriptionTierSlug ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['subscription_tier_slug'] = $data->subscriptionTierSlug;
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

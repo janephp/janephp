@@ -59,9 +59,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['personalReference'] = $data->personalReference ?? null;
-        $dataArray['freeText'] = $data->freeText ?? null;
-        $dataArray['personalLimit'] = $data->personalLimit ?? null;
+        $dataArray['personalReference'] = $data->personalReference;
+        $dataArray['freeText'] = $data->freeText;
+        $dataArray['personalLimit'] = $data->personalLimit;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -52,7 +52,7 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItemNormalizer
     {
         $dataArray = [];
         if (array_key_exists('auditorName', get_object_vars($data)) && null !== ($data->auditorName ?? null)) {
-            $dataArray['auditorName'] = $data->auditorName ?? null;
+            $dataArray['auditorName'] = $data->auditorName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

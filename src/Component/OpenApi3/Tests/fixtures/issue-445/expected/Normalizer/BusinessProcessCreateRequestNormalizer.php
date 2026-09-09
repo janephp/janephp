@@ -61,15 +61,15 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['supportsCancellation'] = $data->supportsCancellation ?? null;
+        $dataArray['supportsCancellation'] = $data->supportsCancellation;
         if (array_key_exists('notification', get_object_vars($data)) && null !== ($data->notification ?? null)) {
-            $value = $data->notification ?? null;
-            if (is_object($data->notification ?? null)) {
-                $value = ($data->notification ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->notification ?? null, 'json', $context));
+            $value = $data->notification;
+            if (is_object($data->notification)) {
+                $value = $data->notification === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->notification, 'json', $context));
             }
             $dataArray['notification'] = $value;
         }
-        $dataArray['initialState'] = $data->initialState ?? null;
+        $dataArray['initialState'] = $data->initialState;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

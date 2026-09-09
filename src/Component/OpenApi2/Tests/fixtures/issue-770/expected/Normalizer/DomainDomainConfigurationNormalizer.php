@@ -82,40 +82,40 @@ class DomainDomainConfigurationNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('domainType', get_object_vars($data)) && null !== ($data->domainType ?? null)) {
-            $dataArray['domainType'] = $data->domainType ?? null;
+            $dataArray['domainType'] = $data->domainType;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
-            $dataArray['createdBy'] = $data->createdBy ?? null;
+            $dataArray['createdBy'] = $data->createdBy;
         }
         if (array_key_exists('createDatetime', get_object_vars($data)) && null !== ($data->createDatetime ?? null)) {
-            $dataArray['createDatetime'] = $data->createDatetime ?? null;
+            $dataArray['createDatetime'] = $data->createDatetime;
         }
         if (array_key_exists('zoneCount', get_object_vars($data)) && null !== ($data->zoneCount ?? null)) {
-            $dataArray['zoneCount'] = $data->zoneCount ?? null;
+            $dataArray['zoneCount'] = $data->zoneCount;
         }
         if (array_key_exists('subDomainCount', get_object_vars($data)) && null !== ($data->subDomainCount ?? null)) {
-            $dataArray['subDomainCount'] = $data->subDomainCount ?? null;
+            $dataArray['subDomainCount'] = $data->subDomainCount;
         }
         if (array_key_exists('administratorCount', get_object_vars($data)) && null !== ($data->administratorCount ?? null)) {
-            $dataArray['administratorCount'] = $data->administratorCount ?? null;
+            $dataArray['administratorCount'] = $data->administratorCount;
         }
         if (array_key_exists('apCount', get_object_vars($data)) && null !== ($data->apCount ?? null)) {
-            $dataArray['apCount'] = $data->apCount ?? null;
+            $dataArray['apCount'] = $data->apCount;
         }
         if (array_key_exists('parentDomainId', get_object_vars($data)) && null !== ($data->parentDomainId ?? null)) {
-            $dataArray['parentDomainId'] = $data->parentDomainId ?? null;
+            $dataArray['parentDomainId'] = $data->parentDomainId;
         }
         if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
-            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus;
         }
         return $dataArray;
     }

@@ -52,13 +52,13 @@ class ApCloudOnBoardingSyncResultFailApsApsItemNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
-            $dataArray['serial'] = $data->serial ?? null;
+            $dataArray['serial'] = $data->serial;
         }
         if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
-            $dataArray['errorMessage'] = $data->errorMessage ?? null;
+            $dataArray['errorMessage'] = $data->errorMessage;
         }
         return $dataArray;
     }

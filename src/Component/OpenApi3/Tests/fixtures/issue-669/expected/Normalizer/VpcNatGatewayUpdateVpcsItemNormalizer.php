@@ -59,10 +59,10 @@ class VpcNatGatewayUpdateVpcsItemNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('defaultGateway', get_object_vars($data)) && null !== ($data->defaultGateway ?? null)) {
-            $dataArray['default_gateway'] = $data->defaultGateway ?? null;
+            $dataArray['default_gateway'] = $data->defaultGateway;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

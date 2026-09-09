@@ -59,14 +59,14 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('iPv4Address', get_object_vars($data)) && null !== ($data->iPv4Address ?? null)) {
-            $dataArray['IPv4Address'] = $data->iPv4Address ?? null;
+            $dataArray['IPv4Address'] = $data->iPv4Address;
         }
         if (array_key_exists('iPv6Address', get_object_vars($data)) && null !== ($data->iPv6Address ?? null)) {
-            $dataArray['IPv6Address'] = $data->iPv6Address ?? null;
+            $dataArray['IPv6Address'] = $data->iPv6Address;
         }
         if (array_key_exists('linkLocalIPs', get_object_vars($data)) && null !== ($data->linkLocalIPs ?? null)) {
             $values = [];
-            foreach ($data->linkLocalIPs ?? null as $value) {
+            foreach ($data->linkLocalIPs as $value) {
                 $values[] = $value;
             }
             $dataArray['LinkLocalIPs'] = $values;

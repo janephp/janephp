@@ -141,67 +141,67 @@ class KafkaTopicConfigNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('cleanupPolicy', get_object_vars($data)) && null !== ($data->cleanupPolicy ?? null)) {
-            $dataArray['cleanup_policy'] = $data->cleanupPolicy ?? null;
+            $dataArray['cleanup_policy'] = $data->cleanupPolicy;
         }
         if (array_key_exists('compressionType', get_object_vars($data)) && null !== ($data->compressionType ?? null)) {
-            $dataArray['compression_type'] = $data->compressionType ?? null;
+            $dataArray['compression_type'] = $data->compressionType;
         }
         if (array_key_exists('deleteRetentionMs', get_object_vars($data)) && null !== ($data->deleteRetentionMs ?? null)) {
-            $dataArray['delete_retention_ms'] = $data->deleteRetentionMs ?? null;
+            $dataArray['delete_retention_ms'] = $data->deleteRetentionMs;
         }
         if (array_key_exists('fileDeleteDelayMs', get_object_vars($data)) && null !== ($data->fileDeleteDelayMs ?? null)) {
-            $dataArray['file_delete_delay_ms'] = $data->fileDeleteDelayMs ?? null;
+            $dataArray['file_delete_delay_ms'] = $data->fileDeleteDelayMs;
         }
         if (array_key_exists('flushMessages', get_object_vars($data)) && null !== ($data->flushMessages ?? null)) {
-            $dataArray['flush_messages'] = $data->flushMessages ?? null;
+            $dataArray['flush_messages'] = $data->flushMessages;
         }
         if (array_key_exists('flushMs', get_object_vars($data)) && null !== ($data->flushMs ?? null)) {
-            $dataArray['flush_ms'] = $data->flushMs ?? null;
+            $dataArray['flush_ms'] = $data->flushMs;
         }
         if (array_key_exists('indexIntervalBytes', get_object_vars($data)) && null !== ($data->indexIntervalBytes ?? null)) {
-            $dataArray['index_interval_bytes'] = $data->indexIntervalBytes ?? null;
+            $dataArray['index_interval_bytes'] = $data->indexIntervalBytes;
         }
         if (array_key_exists('maxCompactionLagMs', get_object_vars($data)) && null !== ($data->maxCompactionLagMs ?? null)) {
-            $dataArray['max_compaction_lag_ms'] = $data->maxCompactionLagMs ?? null;
+            $dataArray['max_compaction_lag_ms'] = $data->maxCompactionLagMs;
         }
         if (array_key_exists('maxMessageBytes', get_object_vars($data)) && null !== ($data->maxMessageBytes ?? null)) {
-            $dataArray['max_message_bytes'] = $data->maxMessageBytes ?? null;
+            $dataArray['max_message_bytes'] = $data->maxMessageBytes;
         }
         if (array_key_exists('messageDownConversionEnable', get_object_vars($data)) && null !== ($data->messageDownConversionEnable ?? null)) {
-            $dataArray['message_down_conversion_enable'] = $data->messageDownConversionEnable ?? null;
+            $dataArray['message_down_conversion_enable'] = $data->messageDownConversionEnable;
         }
         if (array_key_exists('messageFormatVersion', get_object_vars($data)) && null !== ($data->messageFormatVersion ?? null)) {
-            $dataArray['message_format_version'] = $data->messageFormatVersion ?? null;
+            $dataArray['message_format_version'] = $data->messageFormatVersion;
         }
         if (array_key_exists('messageTimestampType', get_object_vars($data)) && null !== ($data->messageTimestampType ?? null)) {
-            $dataArray['message_timestamp_type'] = $data->messageTimestampType ?? null;
+            $dataArray['message_timestamp_type'] = $data->messageTimestampType;
         }
         if (array_key_exists('minCleanableDirtyRatio', get_object_vars($data)) && null !== ($data->minCleanableDirtyRatio ?? null)) {
-            $dataArray['min_cleanable_dirty_ratio'] = $data->minCleanableDirtyRatio ?? null;
+            $dataArray['min_cleanable_dirty_ratio'] = $data->minCleanableDirtyRatio;
         }
         if (array_key_exists('minCompactionLagMs', get_object_vars($data)) && null !== ($data->minCompactionLagMs ?? null)) {
-            $dataArray['min_compaction_lag_ms'] = $data->minCompactionLagMs ?? null;
+            $dataArray['min_compaction_lag_ms'] = $data->minCompactionLagMs;
         }
         if (array_key_exists('minInsyncReplicas', get_object_vars($data)) && null !== ($data->minInsyncReplicas ?? null)) {
-            $dataArray['min_insync_replicas'] = $data->minInsyncReplicas ?? null;
+            $dataArray['min_insync_replicas'] = $data->minInsyncReplicas;
         }
         if (array_key_exists('preallocate', get_object_vars($data)) && null !== ($data->preallocate ?? null)) {
-            $dataArray['preallocate'] = $data->preallocate ?? null;
+            $dataArray['preallocate'] = $data->preallocate;
         }
         if (array_key_exists('retentionBytes', get_object_vars($data)) && null !== ($data->retentionBytes ?? null)) {
-            $dataArray['retention_bytes'] = $data->retentionBytes ?? null;
+            $dataArray['retention_bytes'] = $data->retentionBytes;
         }
         if (array_key_exists('retentionMs', get_object_vars($data)) && null !== ($data->retentionMs ?? null)) {
-            $dataArray['retention_ms'] = $data->retentionMs ?? null;
+            $dataArray['retention_ms'] = $data->retentionMs;
         }
         if (array_key_exists('segmentBytes', get_object_vars($data)) && null !== ($data->segmentBytes ?? null)) {
-            $dataArray['segment_bytes'] = $data->segmentBytes ?? null;
+            $dataArray['segment_bytes'] = $data->segmentBytes;
         }
         if (array_key_exists('segmentJitterMs', get_object_vars($data)) && null !== ($data->segmentJitterMs ?? null)) {
-            $dataArray['segment_jitter_ms'] = $data->segmentJitterMs ?? null;
+            $dataArray['segment_jitter_ms'] = $data->segmentJitterMs;
         }
         if (array_key_exists('segmentMs', get_object_vars($data)) && null !== ($data->segmentMs ?? null)) {
-            $dataArray['segment_ms'] = $data->segmentMs ?? null;
+            $dataArray['segment_ms'] = $data->segmentMs;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

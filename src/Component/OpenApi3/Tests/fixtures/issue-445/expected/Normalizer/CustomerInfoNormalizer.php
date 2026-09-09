@@ -114,42 +114,42 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['customerId'] = $data->customerId ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['customerAlias'] = $data->customerAlias ?? null;
-        $dataArray['identityServerUrl'] = $data->identityServerUrl ?? null;
-        $dataArray['apiUrl'] = $data->apiUrl ?? null;
-        $dataArray['enableQueryDetails'] = $data->enableQueryDetails ?? null;
-        $value = $data->languageConfiguration ?? null;
-        if (is_object($data->languageConfiguration ?? null)) {
-            $value = ($data->languageConfiguration ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->languageConfiguration ?? null, 'json', $context));
+        $dataArray['customerId'] = $data->customerId;
+        $dataArray['name'] = $data->name;
+        $dataArray['customerAlias'] = $data->customerAlias;
+        $dataArray['identityServerUrl'] = $data->identityServerUrl;
+        $dataArray['apiUrl'] = $data->apiUrl;
+        $dataArray['enableQueryDetails'] = $data->enableQueryDetails;
+        $value = $data->languageConfiguration;
+        if (is_object($data->languageConfiguration)) {
+            $value = $data->languageConfiguration === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->languageConfiguration, 'json', $context));
         }
         $dataArray['languageConfiguration'] = $value;
         $values = [];
-        foreach ($data->languages ?? null as $value_1) {
+        foreach ($data->languages as $value_1) {
             $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['languages'] = $values;
         $values_1 = [];
-        foreach ($data->outputFormats ?? null as $value_2) {
+        foreach ($data->outputFormats as $value_2) {
             $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['outputFormats'] = $values_1;
         $values_2 = [];
-        foreach ($data->boostValues ?? null as $value_3) {
+        foreach ($data->boostValues as $value_3) {
             $values_2[] = $value_3;
         }
         $dataArray['boostValues'] = $values_2;
         if (array_key_exists('apps', get_object_vars($data)) && null !== ($data->apps ?? null)) {
             $values_3 = [];
-            foreach ($data->apps ?? null as $value_4) {
+            foreach ($data->apps as $value_4) {
                 $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['apps'] = $values_3;
         }
-        $dataArray['modificationDate'] = ($data->modificationDate ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['baseUrl'] = $data->baseUrl ?? null;
-        $dataArray['logosUrl'] = $data->logosUrl ?? null;
+        $dataArray['modificationDate'] = $data->modificationDate->format('Y-m-d\TH:i:sP');
+        $dataArray['baseUrl'] = $data->baseUrl;
+        $dataArray['logosUrl'] = $data->logosUrl;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

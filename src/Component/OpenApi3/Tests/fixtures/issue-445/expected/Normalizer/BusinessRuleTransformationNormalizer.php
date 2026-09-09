@@ -72,31 +72,31 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'TakeDictionaryValueTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TakeDictionaryValueTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'TakeArrayValueTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TakeArrayValueTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'JoinByTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'JoinByTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LookupCacheTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LookupCacheTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'NGramTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'NGramTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ProjectionTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ProjectionTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'SplitTransformation' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'SplitTransformation' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -58,13 +58,13 @@ class ApmodelLacpSettingNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('keepApSetting', get_object_vars($data)) && null !== ($data->keepApSetting ?? null)) {
-            $dataArray['keepApSetting'] = $data->keepApSetting ?? null;
+            $dataArray['keepApSetting'] = $data->keepApSetting;
         }
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('bondPortProfileId', get_object_vars($data)) && null !== ($data->bondPortProfileId ?? null)) {
-            $dataArray['bondPortProfileId'] = $data->bondPortProfileId ?? null;
+            $dataArray['bondPortProfileId'] = $data->bondPortProfileId;
         }
         return $dataArray;
     }

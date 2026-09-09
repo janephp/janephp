@@ -55,13 +55,13 @@ class ClusterbladePreviousOperationRecordNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
-            $dataArray['operation'] = $data->operation ?? null;
+            $dataArray['operation'] = $data->operation;
         }
         if (array_key_exists('success', get_object_vars($data)) && null !== ($data->success ?? null)) {
-            $dataArray['success'] = $data->success ?? null;
+            $dataArray['success'] = $data->success;
         }
         if (array_key_exists('errorMsg', get_object_vars($data)) && null !== ($data->errorMsg ?? null)) {
-            $dataArray['errorMsg'] = $data->errorMsg ?? null;
+            $dataArray['errorMsg'] = $data->errorMsg;
         }
         return $dataArray;
     }

@@ -56,11 +56,11 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['path'] = $data->path ?? null;
-        $value = $data->names ?? null;
-        if (is_object($data->names ?? null)) {
+        $dataArray['path'] = $data->path;
+        $value = $data->names;
+        if (is_object($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->names ?? null as $key => $value_1) {
+            foreach ($data->names as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;

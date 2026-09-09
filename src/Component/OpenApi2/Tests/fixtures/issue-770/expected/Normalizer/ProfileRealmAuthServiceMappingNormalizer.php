@@ -66,20 +66,20 @@ class ProfileRealmAuthServiceMappingNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->realm ?? null;
-        $dataArray['serviceType'] = $data->serviceType ?? null;
+        $dataArray['realm'] = $data->realm;
+        $dataArray['serviceType'] = $data->serviceType;
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['authorizationMethod'] = $data->authorizationMethod ?? null;
+        $dataArray['authorizationMethod'] = $data->authorizationMethod;
         if (array_key_exists('dynamicVlanId', get_object_vars($data)) && null !== ($data->dynamicVlanId ?? null)) {
-            $dataArray['dynamicVlanId'] = $data->dynamicVlanId ?? null;
+            $dataArray['dynamicVlanId'] = $data->dynamicVlanId;
         }
         if (array_key_exists('hostedAaaEnabled', get_object_vars($data)) && null !== ($data->hostedAaaEnabled ?? null)) {
-            $dataArray['hostedAaaEnabled'] = $data->hostedAaaEnabled ?? null;
+            $dataArray['hostedAaaEnabled'] = $data->hostedAaaEnabled;
         }
         return $dataArray;
     }

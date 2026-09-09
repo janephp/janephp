@@ -52,10 +52,10 @@ class ZoneUplinkDiffServNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('uplinkEnable', get_object_vars($data)) && null !== ($data->uplinkEnable ?? null)) {
-            $dataArray['uplinkEnable'] = $data->uplinkEnable ?? null;
+            $dataArray['uplinkEnable'] = $data->uplinkEnable;
         }
         if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
-            $dataArray['uplink'] = $data->uplink ?? null;
+            $dataArray['uplink'] = $data->uplink;
         }
         return $dataArray;
     }

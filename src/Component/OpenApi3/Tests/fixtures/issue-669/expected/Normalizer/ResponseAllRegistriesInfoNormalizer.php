@@ -65,7 +65,7 @@ class ResponseAllRegistriesInfoNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         if (array_key_exists('registries', get_object_vars($data)) && null !== ($data->registries ?? null)) {
             $values = [];
-            foreach ($data->registries ?? null as $value) {
+            foreach ($data->registries as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();

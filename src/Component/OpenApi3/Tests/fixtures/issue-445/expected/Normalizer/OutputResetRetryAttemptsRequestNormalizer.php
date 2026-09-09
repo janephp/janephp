@@ -90,33 +90,33 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
         $dataArray = [];
         if (array_key_exists('outputIds', get_object_vars($data)) && null !== ($data->outputIds ?? null)) {
             $values = [];
-            foreach ($data->outputIds ?? null as $value) {
+            foreach ($data->outputIds as $value) {
                 $values[] = $value;
             }
             $dataArray['outputIds'] = $values;
         }
         if (array_key_exists('contentIds', get_object_vars($data)) && null !== ($data->contentIds ?? null)) {
             $values_1 = [];
-            foreach ($data->contentIds ?? null as $value_1) {
+            foreach ($data->contentIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['contentIds'] = $values_1;
         }
         if (array_key_exists('fileExtensions', get_object_vars($data)) && null !== ($data->fileExtensions ?? null)) {
             $values_2 = [];
-            foreach ($data->fileExtensions ?? null as $value_2) {
+            foreach ($data->fileExtensions as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['fileExtensions'] = $values_2;
         }
         if (array_key_exists('outputFormatIds', get_object_vars($data)) && null !== ($data->outputFormatIds ?? null)) {
             $values_3 = [];
-            foreach ($data->outputFormatIds ?? null as $value_3) {
+            foreach ($data->outputFormatIds as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['outputFormatIds'] = $values_3;
         }
-        $dataArray['includeCompleted'] = $data->includeCompleted ?? null;
+        $dataArray['includeCompleted'] = $data->includeCompleted;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

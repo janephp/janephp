@@ -84,25 +84,25 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
-            $dataArray['registry_name'] = $data->registryName ?? null;
+            $dataArray['registry_name'] = $data->registryName;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('blobsDeleted', get_object_vars($data)) && null !== ($data->blobsDeleted ?? null)) {
-            $dataArray['blobs_deleted'] = $data->blobsDeleted ?? null;
+            $dataArray['blobs_deleted'] = $data->blobsDeleted;
         }
         if (array_key_exists('freedBytes', get_object_vars($data)) && null !== ($data->freedBytes ?? null)) {
-            $dataArray['freed_bytes'] = $data->freedBytes ?? null;
+            $dataArray['freed_bytes'] = $data->freedBytes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -79,25 +79,25 @@ class MemberDetailsNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('firstname', get_object_vars($data)) && null !== ($data->firstname ?? null)) {
-            $dataArray['firstname'] = $data->firstname ?? null;
+            $dataArray['firstname'] = $data->firstname;
         }
         if (array_key_exists('lastname', get_object_vars($data)) && null !== ($data->lastname ?? null)) {
-            $dataArray['lastname'] = $data->lastname ?? null;
+            $dataArray['lastname'] = $data->lastname;
         }
         if (array_key_exists('surname', get_object_vars($data)) && null !== ($data->surname ?? null)) {
-            $dataArray['surname'] = $data->surname ?? null;
+            $dataArray['surname'] = $data->surname;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
-            $dataArray['email'] = $data->email ?? null;
+            $dataArray['email'] = $data->email;
         }
         if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
-            $dataArray['role'] = $data->role ?? null;
+            $dataArray['role'] = $data->role;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

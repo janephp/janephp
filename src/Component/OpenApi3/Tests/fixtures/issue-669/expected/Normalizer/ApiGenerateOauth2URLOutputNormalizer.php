@@ -52,7 +52,7 @@ class ApiGenerateOauth2URLOutputNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

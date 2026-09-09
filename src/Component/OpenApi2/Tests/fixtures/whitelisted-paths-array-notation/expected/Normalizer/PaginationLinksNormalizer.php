@@ -54,13 +54,13 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['first'] = $data->first ?? null;
-        $dataArray['last'] = $data->last ?? null;
+        $dataArray['first'] = $data->first;
+        $dataArray['last'] = $data->last;
         if (array_key_exists('previous', get_object_vars($data)) && null !== ($data->previous ?? null)) {
-            $dataArray['previous'] = $data->previous ?? null;
+            $dataArray['previous'] = $data->previous;
         }
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $dataArray['next'] = $data->next ?? null;
+            $dataArray['next'] = $data->next;
         }
         return $dataArray;
     }

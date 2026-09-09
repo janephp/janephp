@@ -57,7 +57,7 @@ class ResponseNeighborDropletsNormalizer implements DenormalizerInterface, Norma
         $dataArray = [];
         if (array_key_exists('droplets', get_object_vars($data)) && null !== ($data->droplets ?? null)) {
             $values = [];
-            foreach ($data->droplets ?? null as $value) {
+            foreach ($data->droplets as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['droplets'] = $values;

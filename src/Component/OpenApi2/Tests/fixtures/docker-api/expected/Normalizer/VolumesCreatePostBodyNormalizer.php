@@ -66,21 +66,21 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver ?? null;
+            $dataArray['Driver'] = $data->driver;
         }
         if (array_key_exists('driverOpts', get_object_vars($data)) && null !== ($data->driverOpts ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->driverOpts ?? null as $key => $value) {
+            foreach ($data->driverOpts as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['DriverOpts'] = $values;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key_1 => $value_1) {
+            foreach ($data->labels as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['Labels'] = $values_1;

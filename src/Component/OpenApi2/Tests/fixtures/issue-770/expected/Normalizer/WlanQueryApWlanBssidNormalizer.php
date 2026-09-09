@@ -56,14 +56,14 @@ class WlanQueryApWlanBssidNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('deviceName', get_object_vars($data)) && null !== ($data->deviceName ?? null)) {
-            $dataArray['deviceName'] = $data->deviceName ?? null;
+            $dataArray['deviceName'] = $data->deviceName;
         }
         if (array_key_exists('wlanBssids', get_object_vars($data)) && null !== ($data->wlanBssids ?? null)) {
             $values = [];
-            foreach ($data->wlanBssids ?? null as $value) {
+            foreach ($data->wlanBssids as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['wlanBssids'] = $values;

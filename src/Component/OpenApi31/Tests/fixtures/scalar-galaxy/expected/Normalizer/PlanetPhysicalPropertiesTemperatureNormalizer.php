@@ -72,13 +72,13 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('min', get_object_vars($data)) && null !== ($data->min ?? null)) {
-            $dataArray['min'] = $data->min ?? null;
+            $dataArray['min'] = $data->min;
         }
         if (array_key_exists('max', get_object_vars($data)) && null !== ($data->max ?? null)) {
-            $dataArray['max'] = $data->max ?? null;
+            $dataArray['max'] = $data->max;
         }
         if (array_key_exists('average', get_object_vars($data)) && null !== ($data->average ?? null)) {
-            $dataArray['average'] = $data->average ?? null;
+            $dataArray['average'] = $data->average;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

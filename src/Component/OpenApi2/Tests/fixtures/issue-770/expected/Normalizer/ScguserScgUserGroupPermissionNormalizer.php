@@ -73,31 +73,31 @@ class ScguserScgUserGroupPermissionNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
-            $dataArray['resource'] = $data->resource ?? null;
+            $dataArray['resource'] = $data->resource;
         }
         if (array_key_exists('access', get_object_vars($data)) && null !== ($data->access ?? null)) {
-            $dataArray['access'] = $data->access ?? null;
+            $dataArray['access'] = $data->access;
         }
         if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
-            $dataArray['display'] = $data->display ?? null;
+            $dataArray['display'] = $data->display;
         }
         if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->items ?? null as $value) {
+            foreach ($data->items as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;
         }
         if (array_key_exists('itemsDescription', get_object_vars($data)) && null !== ($data->itemsDescription ?? null)) {
             $values_1 = [];
-            foreach ($data->itemsDescription ?? null as $value_1) {
+            foreach ($data->itemsDescription as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['itemsDescription'] = $values_1;
         }
         if (array_key_exists('ids', get_object_vars($data)) && null !== ($data->ids ?? null)) {
             $values_2 = [];
-            foreach ($data->ids ?? null as $value_2) {
+            foreach ($data->ids as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['ids'] = $values_2;

@@ -264,10 +264,10 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -275,10 +275,10 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['names'] = $value;
         }
         if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
-            $value_2 = $data->descriptions ?? null;
-            if (is_object($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions;
+            if (is_object($data->descriptions)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
+                foreach ($data->descriptions as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
@@ -286,89 +286,89 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['descriptions'] = $value_2;
         }
         if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
-            $dataArray['fileExtension'] = $data->fileExtension ?? null;
+            $dataArray['fileExtension'] = $data->fileExtension;
         }
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
-            $dataArray['filePath'] = $data->filePath ?? null;
+            $dataArray['filePath'] = $data->filePath;
         }
         if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
-            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes;
         }
         if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
-            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
+            $dataArray['sha1Hash'] = $data->sha1Hash;
         }
         if (array_key_exists('xmpMetadata', get_object_vars($data)) && null !== ($data->xmpMetadata ?? null)) {
-            $dataArray['xmpMetadata'] = $data->xmpMetadata ?? null;
+            $dataArray['xmpMetadata'] = $data->xmpMetadata;
         }
         if (array_key_exists('exifMetadata', get_object_vars($data)) && null !== ($data->exifMetadata ?? null)) {
-            $dataArray['exifMetadata'] = $data->exifMetadata ?? null;
+            $dataArray['exifMetadata'] = $data->exifMetadata;
         }
         if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
-            $dataArray['language'] = $data->language ?? null;
+            $dataArray['language'] = $data->language;
         }
         if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
-            $dataArray['applicationName'] = $data->applicationName ?? null;
+            $dataArray['applicationName'] = $data->applicationName;
         }
         if (array_key_exists('applicationVersion', get_object_vars($data)) && null !== ($data->applicationVersion ?? null)) {
-            $dataArray['applicationVersion'] = $data->applicationVersion ?? null;
+            $dataArray['applicationVersion'] = $data->applicationVersion;
         }
         if (array_key_exists('author', get_object_vars($data)) && null !== ($data->author ?? null)) {
-            $dataArray['author'] = $data->author ?? null;
+            $dataArray['author'] = $data->author;
         }
         if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
-            $dataArray['creator'] = $data->creator ?? null;
+            $dataArray['creator'] = $data->creator;
         }
         if (array_key_exists('publisher', get_object_vars($data)) && null !== ($data->publisher ?? null)) {
-            $dataArray['publisher'] = $data->publisher ?? null;
+            $dataArray['publisher'] = $data->publisher;
         }
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = $data->company ?? null;
+            $dataArray['company'] = $data->company;
         }
         if (array_key_exists('documentTitle', get_object_vars($data)) && null !== ($data->documentTitle ?? null)) {
-            $dataArray['documentTitle'] = $data->documentTitle ?? null;
+            $dataArray['documentTitle'] = $data->documentTitle;
         }
         if (array_key_exists('characterCount', get_object_vars($data)) && null !== ($data->characterCount ?? null)) {
-            $dataArray['characterCount'] = $data->characterCount ?? null;
+            $dataArray['characterCount'] = $data->characterCount;
         }
         if (array_key_exists('characterCountWithSpaces', get_object_vars($data)) && null !== ($data->characterCountWithSpaces ?? null)) {
-            $dataArray['characterCountWithSpaces'] = $data->characterCountWithSpaces ?? null;
+            $dataArray['characterCountWithSpaces'] = $data->characterCountWithSpaces;
         }
         if (array_key_exists('lineCount', get_object_vars($data)) && null !== ($data->lineCount ?? null)) {
-            $dataArray['lineCount'] = $data->lineCount ?? null;
+            $dataArray['lineCount'] = $data->lineCount;
         }
         if (array_key_exists('pageCount', get_object_vars($data)) && null !== ($data->pageCount ?? null)) {
-            $dataArray['pageCount'] = $data->pageCount ?? null;
+            $dataArray['pageCount'] = $data->pageCount;
         }
         if (array_key_exists('slideCount', get_object_vars($data)) && null !== ($data->slideCount ?? null)) {
-            $dataArray['slideCount'] = $data->slideCount ?? null;
+            $dataArray['slideCount'] = $data->slideCount;
         }
         if (array_key_exists('paragraphCount', get_object_vars($data)) && null !== ($data->paragraphCount ?? null)) {
-            $dataArray['paragraphCount'] = $data->paragraphCount ?? null;
+            $dataArray['paragraphCount'] = $data->paragraphCount;
         }
         if (array_key_exists('revisionNumber', get_object_vars($data)) && null !== ($data->revisionNumber ?? null)) {
-            $dataArray['revisionNumber'] = $data->revisionNumber ?? null;
+            $dataArray['revisionNumber'] = $data->revisionNumber;
         }
         if (array_key_exists('titles', get_object_vars($data)) && null !== ($data->titles ?? null)) {
             $values_2 = [];
-            foreach ($data->titles ?? null as $value_4) {
+            foreach ($data->titles as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['titles'] = $values_2;
         }
         if (array_key_exists('imageTitles', get_object_vars($data)) && null !== ($data->imageTitles ?? null)) {
             $values_3 = [];
-            foreach ($data->imageTitles ?? null as $value_5) {
+            foreach ($data->imageTitles as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['imageTitles'] = $values_3;
         }
         if (array_key_exists('epsInfo', get_object_vars($data)) && null !== ($data->epsInfo ?? null)) {
-            $value_6 = $data->epsInfo ?? null;
-            if (is_object($data->epsInfo ?? null)) {
-                $value_6 = ($data->epsInfo ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo ?? null, 'json', $context));
+            $value_6 = $data->epsInfo;
+            if (is_object($data->epsInfo)) {
+                $value_6 = $data->epsInfo === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo, 'json', $context));
             }
             $dataArray['epsInfo'] = $value_6;
         }

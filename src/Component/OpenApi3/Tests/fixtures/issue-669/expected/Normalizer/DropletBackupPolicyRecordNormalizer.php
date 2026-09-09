@@ -67,16 +67,16 @@ class DropletBackupPolicyRecordNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('dropletId', get_object_vars($data)) && null !== ($data->dropletId ?? null)) {
-            $dataArray['droplet_id'] = $data->dropletId ?? null;
+            $dataArray['droplet_id'] = $data->dropletId;
         }
         if (array_key_exists('backupEnabled', get_object_vars($data)) && null !== ($data->backupEnabled ?? null)) {
-            $dataArray['backup_enabled'] = $data->backupEnabled ?? null;
+            $dataArray['backup_enabled'] = $data->backupEnabled;
         }
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = ($data->backupPolicy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy ?? null, 'json', $context));
+            $dataArray['backup_policy'] = $data->backupPolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
         }
         if (array_key_exists('nextBackupWindow', get_object_vars($data)) && null !== ($data->nextBackupWindow ?? null)) {
-            $dataArray['next_backup_window'] = ($data->nextBackupWindow ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow ?? null, 'json', $context));
+            $dataArray['next_backup_window'] = $data->nextBackupWindow === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -65,26 +65,26 @@ class ZoneScheduleUpgradeHistoryNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('taskName', get_object_vars($data)) && null !== ($data->taskName ?? null)) {
-            $dataArray['taskName'] = $data->taskName ?? null;
+            $dataArray['taskName'] = $data->taskName;
         }
         if (array_key_exists('scheduleTime', get_object_vars($data)) && null !== ($data->scheduleTime ?? null)) {
-            $dataArray['scheduleTime'] = $data->scheduleTime ?? null;
+            $dataArray['scheduleTime'] = $data->scheduleTime;
         }
         if (array_key_exists('targetVersion', get_object_vars($data)) && null !== ($data->targetVersion ?? null)) {
-            $dataArray['targetVersion'] = $data->targetVersion ?? null;
+            $dataArray['targetVersion'] = $data->targetVersion;
         }
         if (array_key_exists('zoneList', get_object_vars($data)) && null !== ($data->zoneList ?? null)) {
             $values = [];
-            foreach ($data->zoneList ?? null as $value) {
+            foreach ($data->zoneList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['zoneList'] = $values;
         }
         if (array_key_exists('errorLog', get_object_vars($data)) && null !== ($data->errorLog ?? null)) {
-            $dataArray['errorLog'] = $data->errorLog ?? null;
+            $dataArray['errorLog'] = $data->errorLog;
         }
         return $dataArray;
     }

@@ -49,9 +49,9 @@ class AdministrationDefaultRoleMappingNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('defaultAdmin', get_object_vars($data)) && null !== ($data->defaultAdmin ?? null)) {
-            $dataArray['defaultAdmin'] = $data->defaultAdmin ?? null;
+            $dataArray['defaultAdmin'] = $data->defaultAdmin;
         }
-        $dataArray['defaultUserGroup'] = $data->defaultUserGroup ?? null;
+        $dataArray['defaultUserGroup'] = $data->defaultUserGroup;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

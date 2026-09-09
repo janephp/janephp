@@ -56,10 +56,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
     {
         $dataArray = [];
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = $data->date ?? null;
+            $dataArray['date'] = $data->date;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

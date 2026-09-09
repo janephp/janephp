@@ -106,37 +106,37 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['region'] = $data->region ?? null;
-        $dataArray['size'] = $data->size ?? null;
-        $dataArray['image'] = $data->image ?? null;
+        $dataArray['region'] = $data->region;
+        $dataArray['size'] = $data->size;
+        $dataArray['image'] = $data->image;
         $values = [];
-        foreach ($data->sshKeys ?? null as $value) {
+        foreach ($data->sshKeys as $value) {
             $values[] = $value;
         }
         $dataArray['ssh_keys'] = $values;
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_1) {
+            foreach ($data->tags as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('withDropletAgent', get_object_vars($data)) && null !== ($data->withDropletAgent ?? null)) {
-            $dataArray['with_droplet_agent'] = $data->withDropletAgent ?? null;
+            $dataArray['with_droplet_agent'] = $data->withDropletAgent;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
-            $dataArray['ipv6'] = $data->ipv6 ?? null;
+            $dataArray['ipv6'] = $data->ipv6;
         }
         if (array_key_exists('userData', get_object_vars($data)) && null !== ($data->userData ?? null)) {
-            $dataArray['user_data'] = $data->userData ?? null;
+            $dataArray['user_data'] = $data->userData;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -67,16 +67,16 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('alphaHandling', get_object_vars($data)) && null !== ($data->alphaHandling ?? null)) {
-            $value = $data->alphaHandling ?? null;
-            if (is_string($data->alphaHandling ?? null)) {
-                $value = $data->alphaHandling ?? null;
+            $value = $data->alphaHandling;
+            if (is_string($data->alphaHandling)) {
+                $value = $data->alphaHandling;
             }
             $dataArray['alphaHandling'] = $value;
         }
         if (array_key_exists('replacementRgbColorHexCode', get_object_vars($data)) && null !== ($data->replacementRgbColorHexCode ?? null)) {
-            $dataArray['replacementRgbColorHexCode'] = $data->replacementRgbColorHexCode ?? null;
+            $dataArray['replacementRgbColorHexCode'] = $data->replacementRgbColorHexCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

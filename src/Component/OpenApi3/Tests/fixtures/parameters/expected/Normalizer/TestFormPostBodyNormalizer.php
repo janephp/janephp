@@ -79,24 +79,24 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('testString', get_object_vars($data)) && null !== ($data->testString ?? null)) {
-            $dataArray['testString'] = $data->testString ?? null;
+            $dataArray['testString'] = $data->testString;
         }
         if (array_key_exists('testInteger', get_object_vars($data)) && null !== ($data->testInteger ?? null)) {
-            $dataArray['testInteger'] = $data->testInteger ?? null;
+            $dataArray['testInteger'] = $data->testInteger;
         }
         if (array_key_exists('testFloat', get_object_vars($data)) && null !== ($data->testFloat ?? null)) {
-            $dataArray['testFloat'] = $data->testFloat ?? null;
+            $dataArray['testFloat'] = $data->testFloat;
         }
         if (array_key_exists('testArray', get_object_vars($data)) && null !== ($data->testArray ?? null)) {
             $values = [];
-            foreach ($data->testArray ?? null as $value) {
+            foreach ($data->testArray as $value) {
                 $values[] = $value;
             }
             $dataArray['testArray'] = $values;
         }
-        $dataArray['testRequired'] = $data->testRequired ?? null;
+        $dataArray['testRequired'] = $data->testRequired;
         if (array_key_exists('testDefault', get_object_vars($data)) && null !== ($data->testDefault ?? null)) {
-            $dataArray['testDefault'] = $data->testDefault ?? null;
+            $dataArray['testDefault'] = $data->testDefault;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -49,10 +49,10 @@ class ProfileTtgCommonSettingNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('mobileCountryCode', get_object_vars($data)) && null !== ($data->mobileCountryCode ?? null)) {
-            $dataArray['mobileCountryCode'] = $data->mobileCountryCode ?? null;
+            $dataArray['mobileCountryCode'] = $data->mobileCountryCode;
         }
         if (array_key_exists('mobileNetworkCode', get_object_vars($data)) && null !== ($data->mobileNetworkCode ?? null)) {
-            $dataArray['mobileNetworkCode'] = $data->mobileNetworkCode ?? null;
+            $dataArray['mobileNetworkCode'] = $data->mobileNetworkCode;
         }
         return $dataArray;
     }

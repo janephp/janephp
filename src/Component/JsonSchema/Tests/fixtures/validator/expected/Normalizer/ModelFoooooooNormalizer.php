@@ -176,112 +176,112 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('enumString', get_object_vars($data)) && null !== ($data->enumString ?? null)) {
-            $dataArray['enumString'] = $data->enumString ?? null;
+            $dataArray['enumString'] = $data->enumString;
         }
         if (array_key_exists('enumArrayString', get_object_vars($data)) && null !== ($data->enumArrayString ?? null)) {
-            $value = $data->enumArrayString ?? null;
-            if (is_string($data->enumArrayString ?? null)) {
-                $value = $data->enumArrayString ?? null;
+            $value = $data->enumArrayString;
+            if (is_string($data->enumArrayString)) {
+                $value = $data->enumArrayString;
             }
             $dataArray['enumArrayString'] = $value;
         }
         if (array_key_exists('enumNoType', get_object_vars($data)) && null !== ($data->enumNoType ?? null)) {
-            $dataArray['enumNoType'] = $data->enumNoType ?? null;
+            $dataArray['enumNoType'] = $data->enumNoType;
         }
-        $dataArray['constString'] = $data->constString ?? null;
+        $dataArray['constString'] = $data->constString;
         if (array_key_exists('minLengthString', get_object_vars($data)) && null !== ($data->minLengthString ?? null)) {
-            $dataArray['minLengthString'] = $data->minLengthString ?? null;
+            $dataArray['minLengthString'] = $data->minLengthString;
         }
         if (array_key_exists('maxLengthString', get_object_vars($data)) && null !== ($data->maxLengthString ?? null)) {
-            $dataArray['maxLengthString'] = $data->maxLengthString ?? null;
+            $dataArray['maxLengthString'] = $data->maxLengthString;
         }
         if (array_key_exists('minMaxLengthString', get_object_vars($data)) && null !== ($data->minMaxLengthString ?? null)) {
-            $dataArray['minMaxLengthString'] = $data->minMaxLengthString ?? null;
+            $dataArray['minMaxLengthString'] = $data->minMaxLengthString;
         }
-        $dataArray['patternString'] = $data->patternString ?? null;
+        $dataArray['patternString'] = $data->patternString;
         if (array_key_exists('arrayMinItems', get_object_vars($data)) && null !== ($data->arrayMinItems ?? null)) {
             $values = [];
-            foreach ($data->arrayMinItems ?? null as $value_1) {
+            foreach ($data->arrayMinItems as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['arrayMinItems'] = $values;
         }
         if (array_key_exists('arrayMaxItems', get_object_vars($data)) && null !== ($data->arrayMaxItems ?? null)) {
             $values_1 = [];
-            foreach ($data->arrayMaxItems ?? null as $value_2) {
+            foreach ($data->arrayMaxItems as $value_2) {
                 $values_1[] = $value_2;
             }
             $dataArray['arrayMaxItems'] = $values_1;
         }
         if (array_key_exists('arrayMinMaxItems', get_object_vars($data)) && null !== ($data->arrayMinMaxItems ?? null)) {
             $values_2 = [];
-            foreach ($data->arrayMinMaxItems ?? null as $value_3) {
+            foreach ($data->arrayMinMaxItems as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['arrayMinMaxItems'] = $values_2;
         }
         if (array_key_exists('arrayUnique', get_object_vars($data)) && null !== ($data->arrayUnique ?? null)) {
             $values_3 = [];
-            foreach ($data->arrayUnique ?? null as $value_4) {
+            foreach ($data->arrayUnique as $value_4) {
                 $values_3[] = $value_4;
             }
             $dataArray['arrayUnique'] = $values_3;
         }
         if (array_key_exists('numericMultipleOf', get_object_vars($data)) && null !== ($data->numericMultipleOf ?? null)) {
-            $dataArray['numericMultipleOf'] = $data->numericMultipleOf ?? null;
+            $dataArray['numericMultipleOf'] = $data->numericMultipleOf;
         }
         if (array_key_exists('numericMaximum', get_object_vars($data)) && null !== ($data->numericMaximum ?? null)) {
-            $dataArray['numericMaximum'] = $data->numericMaximum ?? null;
+            $dataArray['numericMaximum'] = $data->numericMaximum;
         }
         if (array_key_exists('numericExclusiveMaximum', get_object_vars($data)) && null !== ($data->numericExclusiveMaximum ?? null)) {
-            $dataArray['numericExclusiveMaximum'] = $data->numericExclusiveMaximum ?? null;
+            $dataArray['numericExclusiveMaximum'] = $data->numericExclusiveMaximum;
         }
         if (array_key_exists('numericMinimum', get_object_vars($data)) && null !== ($data->numericMinimum ?? null)) {
-            $dataArray['numericMinimum'] = $data->numericMinimum ?? null;
+            $dataArray['numericMinimum'] = $data->numericMinimum;
         }
         if (array_key_exists('numericExclusiveMinimum', get_object_vars($data)) && null !== ($data->numericExclusiveMinimum ?? null)) {
-            $dataArray['numericExclusiveMinimum'] = $data->numericExclusiveMinimum ?? null;
+            $dataArray['numericExclusiveMinimum'] = $data->numericExclusiveMinimum;
         }
         if (array_key_exists('emailFormat', get_object_vars($data)) && null !== ($data->emailFormat ?? null)) {
-            $dataArray['emailFormat'] = $data->emailFormat ?? null;
+            $dataArray['emailFormat'] = $data->emailFormat;
         }
         if (array_key_exists('ipv4Format', get_object_vars($data)) && null !== ($data->ipv4Format ?? null)) {
-            $dataArray['ipv4Format'] = $data->ipv4Format ?? null;
+            $dataArray['ipv4Format'] = $data->ipv4Format;
         }
         if (array_key_exists('ipv6Format', get_object_vars($data)) && null !== ($data->ipv6Format ?? null)) {
-            $dataArray['ipv6Format'] = $data->ipv6Format ?? null;
+            $dataArray['ipv6Format'] = $data->ipv6Format;
         }
         if (array_key_exists('uriFormat', get_object_vars($data)) && null !== ($data->uriFormat ?? null)) {
-            $dataArray['uriFormat'] = $data->uriFormat ?? null;
+            $dataArray['uriFormat'] = $data->uriFormat;
         }
         if (array_key_exists('iriFormat', get_object_vars($data)) && null !== ($data->iriFormat ?? null)) {
-            $dataArray['iriFormat'] = $data->iriFormat ?? null;
+            $dataArray['iriFormat'] = $data->iriFormat;
         }
         if (array_key_exists('uuidFormat', get_object_vars($data)) && null !== ($data->uuidFormat ?? null)) {
-            $dataArray['uuidFormat'] = $data->uuidFormat ?? null;
+            $dataArray['uuidFormat'] = $data->uuidFormat;
         }
         if (array_key_exists('dateFormat', get_object_vars($data)) && null !== ($data->dateFormat ?? null)) {
-            $dataArray['dateFormat'] = ($data->dateFormat ?? null)->format('Y-m-d');
+            $dataArray['dateFormat'] = $data->dateFormat->format('Y-m-d');
         }
         if (array_key_exists('dateNullableFormat', get_object_vars($data)) && null !== ($data->dateNullableFormat ?? null)) {
-            $dataArray['dateNullableFormat'] = ($data->dateNullableFormat ?? null)?->format('Y-m-d');
+            $dataArray['dateNullableFormat'] = $data->dateNullableFormat?->format('Y-m-d');
         }
         if (array_key_exists('dateTimeFormat', get_object_vars($data)) && null !== ($data->dateTimeFormat ?? null)) {
-            $dataArray['dateTimeFormat'] = ($data->dateTimeFormat ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['dateTimeFormat'] = $data->dateTimeFormat->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = ($data->foo ?? null) === null ? null : new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->foo ?? null, 'json', $context));
+            $dataArray['foo'] = $data->foo === null ? null : new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->foo, 'json', $context));
         }
         if (array_key_exists('arrayEmptyItems', get_object_vars($data)) && null !== ($data->arrayEmptyItems ?? null)) {
             $values_4 = [];
-            foreach ($data->arrayEmptyItems ?? null as $value_5) {
+            foreach ($data->arrayEmptyItems as $value_5) {
                 $values_4[] = $value_5;
             }
             $dataArray['arrayEmptyItems'] = $values_4;
         }
         if (array_key_exists('arrayBoolItems', get_object_vars($data)) && null !== ($data->arrayBoolItems ?? null)) {
             $values_5 = [];
-            foreach ($data->arrayBoolItems ?? null as $value_6) {
+            foreach ($data->arrayBoolItems as $value_6) {
                 $values_5[] = $value_6;
             }
             $dataArray['arrayBoolItems'] = $values_5;

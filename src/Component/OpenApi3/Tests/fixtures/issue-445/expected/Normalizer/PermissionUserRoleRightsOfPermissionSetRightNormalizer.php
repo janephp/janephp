@@ -73,13 +73,13 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
     {
         $dataArray = [];
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -88,7 +88,7 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
         }
         if (array_key_exists('rights', get_object_vars($data)) && null !== ($data->rights ?? null)) {
             $values_1 = [];
-            foreach ($data->rights ?? null as $value_2) {
+            foreach ($data->rights as $value_2) {
                 $values_1[] = $value_2;
             }
             $dataArray['rights'] = $values_1;

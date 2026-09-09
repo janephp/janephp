@@ -59,10 +59,10 @@ class DatabaseClusterResizeNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['size'] = $data->size ?? null;
-        $dataArray['num_nodes'] = $data->numNodes ?? null;
+        $dataArray['size'] = $data->size;
+        $dataArray['num_nodes'] = $data->numNodes;
         if (array_key_exists('storageSizeMib', get_object_vars($data)) && null !== ($data->storageSizeMib ?? null)) {
-            $dataArray['storage_size_mib'] = $data->storageSizeMib ?? null;
+            $dataArray['storage_size_mib'] = $data->storageSizeMib;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

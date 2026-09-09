@@ -48,8 +48,8 @@ class ApSnmpAgentProfileTargetConfigNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['address'] = $data->address ?? null;
-        $dataArray['port'] = $data->port ?? null;
+        $dataArray['address'] = $data->address;
+        $dataArray['port'] = $data->port;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

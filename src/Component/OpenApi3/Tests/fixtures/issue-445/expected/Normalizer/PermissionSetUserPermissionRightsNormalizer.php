@@ -59,11 +59,11 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('permissionSetId', get_object_vars($data)) && null !== ($data->permissionSetId ?? null)) {
-            $dataArray['permissionSetId'] = $data->permissionSetId ?? null;
+            $dataArray['permissionSetId'] = $data->permissionSetId;
         }
         if (array_key_exists('permissionSetRights', get_object_vars($data)) && null !== ($data->permissionSetRights ?? null)) {
             $values = [];
-            foreach ($data->permissionSetRights ?? null as $value) {
+            foreach ($data->permissionSetRights as $value) {
                 $values[] = $value;
             }
             $dataArray['permissionSetRights'] = $values;

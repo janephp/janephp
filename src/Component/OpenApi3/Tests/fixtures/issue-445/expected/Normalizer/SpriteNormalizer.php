@@ -60,12 +60,12 @@ class SpriteNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['width'] = $data->width ?? null;
-        $dataArray['height'] = $data->height ?? null;
-        $dataArray['y'] = $data->y ?? null;
-        $dataArray['x'] = $data->x ?? null;
-        $dataArray['start'] = $data->start ?? null;
-        $dataArray['end'] = $data->end ?? null;
+        $dataArray['width'] = $data->width;
+        $dataArray['height'] = $data->height;
+        $dataArray['y'] = $data->y;
+        $dataArray['x'] = $data->x;
+        $dataArray['start'] = $data->start;
+        $dataArray['end'] = $data->end;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

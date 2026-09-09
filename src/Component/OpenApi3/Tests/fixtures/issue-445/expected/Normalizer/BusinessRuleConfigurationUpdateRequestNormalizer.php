@@ -68,17 +68,17 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['disableRuleEngine'] = $data->disableRuleEngine ?? null;
+        $dataArray['disableRuleEngine'] = $data->disableRuleEngine;
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->rules ?? null as $value) {
+            foreach ($data->rules as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
         if (array_key_exists('caches', get_object_vars($data)) && null !== ($data->caches ?? null)) {
             $values_1 = [];
-            foreach ($data->caches ?? null as $value_1) {
+            foreach ($data->caches as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['caches'] = $values_1;

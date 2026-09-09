@@ -131,38 +131,38 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
-        $dataArray['isDeleted'] = $data->isDeleted ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
+        $dataArray['isDeleted'] = $data->isDeleted;
         if (array_key_exists('userRoles', get_object_vars($data)) && null !== ($data->userRoles ?? null)) {
             $values = [];
-            foreach ($data->userRoles ?? null as $value) {
+            foreach ($data->userRoles as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['userRoles'] = $values;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $value_1 = $data->address ?? null;
-            if (is_object($data->address ?? null)) {
-                $value_1 = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $value_1 = $data->address;
+            if (is_object($data->address)) {
+                $value_1 = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value_1;
         }
         if (array_key_exists('identityProviderId', get_object_vars($data)) && null !== ($data->identityProviderId ?? null)) {
-            $dataArray['identityProviderId'] = $data->identityProviderId ?? null;
+            $dataArray['identityProviderId'] = $data->identityProviderId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

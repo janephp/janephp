@@ -77,32 +77,32 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('layersSize', get_object_vars($data)) && null !== ($data->layersSize ?? null)) {
-            $dataArray['LayersSize'] = $data->layersSize ?? null;
+            $dataArray['LayersSize'] = $data->layersSize;
         }
         if (array_key_exists('images', get_object_vars($data)) && null !== ($data->images ?? null)) {
             $values = [];
-            foreach ($data->images ?? null as $value) {
+            foreach ($data->images as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Images'] = $values;
         }
         if (array_key_exists('containers', get_object_vars($data)) && null !== ($data->containers ?? null)) {
             $values_1 = [];
-            foreach ($data->containers ?? null as $value_1) {
+            foreach ($data->containers as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Containers'] = $values_1;
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_2 = [];
-            foreach ($data->volumes ?? null as $value_2) {
+            foreach ($data->volumes as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['Volumes'] = $values_2;
         }
         if (array_key_exists('buildCache', get_object_vars($data)) && null !== ($data->buildCache ?? null)) {
             $values_3 = [];
-            foreach ($data->buildCache ?? null as $value_3) {
+            foreach ($data->buildCache as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['BuildCache'] = $values_3;

@@ -76,34 +76,34 @@ class AdministrationBackupFileNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
-            $dataArray['createdOn'] = $data->createdOn ?? null;
+            $dataArray['createdOn'] = $data->createdOn;
         }
         if (array_key_exists('scgVersion', get_object_vars($data)) && null !== ($data->scgVersion ?? null)) {
-            $dataArray['scgVersion'] = $data->scgVersion ?? null;
+            $dataArray['scgVersion'] = $data->scgVersion;
         }
         if (array_key_exists('controlPlaneSoftwareVersion', get_object_vars($data)) && null !== ($data->controlPlaneSoftwareVersion ?? null)) {
-            $dataArray['controlPlaneSoftwareVersion'] = $data->controlPlaneSoftwareVersion ?? null;
+            $dataArray['controlPlaneSoftwareVersion'] = $data->controlPlaneSoftwareVersion;
         }
         if (array_key_exists('dataPlaneSoftwareVersion', get_object_vars($data)) && null !== ($data->dataPlaneSoftwareVersion ?? null)) {
-            $dataArray['dataPlaneSoftwareVersion'] = $data->dataPlaneSoftwareVersion ?? null;
+            $dataArray['dataPlaneSoftwareVersion'] = $data->dataPlaneSoftwareVersion;
         }
         if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
-            $dataArray['createdBy'] = $data->createdBy ?? null;
+            $dataArray['createdBy'] = $data->createdBy;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('backupElapsed', get_object_vars($data)) && null !== ($data->backupElapsed ?? null)) {
-            $dataArray['backupElapsed'] = $data->backupElapsed ?? null;
+            $dataArray['backupElapsed'] = $data->backupElapsed;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['fileSize'] = $data->fileSize ?? null;
+            $dataArray['fileSize'] = $data->fileSize;
         }
         if (array_key_exists('md5', get_object_vars($data)) && null !== ($data->md5 ?? null)) {
-            $dataArray['md5'] = $data->md5 ?? null;
+            $dataArray['md5'] = $data->md5;
         }
         return $dataArray;
     }

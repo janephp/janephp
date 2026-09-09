@@ -63,11 +63,11 @@ class ConnectionPoolUpdateNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mode'] = $data->mode ?? null;
-        $dataArray['size'] = $data->size ?? null;
-        $dataArray['db'] = $data->db ?? null;
+        $dataArray['mode'] = $data->mode;
+        $dataArray['size'] = $data->size;
+        $dataArray['db'] = $data->db;
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

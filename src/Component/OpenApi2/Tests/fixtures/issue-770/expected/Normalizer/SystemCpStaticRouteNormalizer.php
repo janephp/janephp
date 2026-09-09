@@ -58,19 +58,19 @@ class SystemCpStaticRouteNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('networkAddress', get_object_vars($data)) && null !== ($data->networkAddress ?? null)) {
-            $dataArray['networkAddress'] = $data->networkAddress ?? null;
+            $dataArray['networkAddress'] = $data->networkAddress;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('interfaceMode', get_object_vars($data)) && null !== ($data->interfaceMode ?? null)) {
-            $dataArray['interfaceMode'] = $data->interfaceMode ?? null;
+            $dataArray['interfaceMode'] = $data->interfaceMode;
         }
         if (array_key_exists('metric', get_object_vars($data)) && null !== ($data->metric ?? null)) {
-            $dataArray['metric'] = $data->metric ?? null;
+            $dataArray['metric'] = $data->metric;
         }
         return $dataArray;
     }

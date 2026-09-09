@@ -59,7 +59,7 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
-            $dataArray['period'] = ($data->period ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\JsonObject($this->normalizer->normalize($data->period ?? null, 'json', $context));
+            $dataArray['period'] = $data->period === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\JsonObject($this->normalizer->normalize($data->period, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

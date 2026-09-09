@@ -49,10 +49,10 @@ class CommonQinqNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('cvlan', get_object_vars($data)) && null !== ($data->cvlan ?? null)) {
-            $dataArray['cvlan'] = $data->cvlan ?? null;
+            $dataArray['cvlan'] = $data->cvlan;
         }
         if (array_key_exists('svlan', get_object_vars($data)) && null !== ($data->svlan ?? null)) {
-            $dataArray['svlan'] = $data->svlan ?? null;
+            $dataArray['svlan'] = $data->svlan;
         }
         return $dataArray;
     }

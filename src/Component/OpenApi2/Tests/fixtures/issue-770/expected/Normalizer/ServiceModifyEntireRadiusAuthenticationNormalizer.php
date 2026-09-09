@@ -128,69 +128,69 @@ class ServiceModifyEntireRadiusAuthenticationNormalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('friendlyName', get_object_vars($data)) && null !== ($data->friendlyName ?? null)) {
-            $dataArray['friendlyName'] = $data->friendlyName ?? null;
+            $dataArray['friendlyName'] = $data->friendlyName;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('locationDeliveryEnabled', get_object_vars($data)) && null !== ($data->locationDeliveryEnabled ?? null)) {
-            $dataArray['locationDeliveryEnabled'] = $data->locationDeliveryEnabled ?? null;
+            $dataArray['locationDeliveryEnabled'] = $data->locationDeliveryEnabled;
         }
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['primary'] = ($data->primary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primary ?? null, 'json', $context));
+        $dataArray['type'] = $data->type;
+        $dataArray['primary'] = $data->primary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primary, 'json', $context));
         if (array_key_exists('secondary', get_object_vars($data)) && null !== ($data->secondary ?? null)) {
-            $dataArray['secondary'] = ($data->secondary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondary ?? null, 'json', $context));
+            $dataArray['secondary'] = $data->secondary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondary, 'json', $context));
         }
         if (array_key_exists('healthCheckPolicy', get_object_vars($data)) && null !== ($data->healthCheckPolicy ?? null)) {
-            $dataArray['healthCheckPolicy'] = ($data->healthCheckPolicy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->healthCheckPolicy ?? null, 'json', $context));
+            $dataArray['healthCheckPolicy'] = $data->healthCheckPolicy === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->healthCheckPolicy, 'json', $context));
         }
-        $dataArray['rateLimiting'] = ($data->rateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->rateLimiting ?? null, 'json', $context));
+        $dataArray['rateLimiting'] = $data->rateLimiting === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->rateLimiting, 'json', $context));
         if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->mappings ?? null as $value) {
+            foreach ($data->mappings as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
         if (array_key_exists('standbyPrimary', get_object_vars($data)) && null !== ($data->standbyPrimary ?? null)) {
-            $dataArray['standbyPrimary'] = ($data->standbyPrimary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary ?? null, 'json', $context));
+            $dataArray['standbyPrimary'] = $data->standbyPrimary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary, 'json', $context));
         }
         if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
-            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled ?? null;
+            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled;
         }
         if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
-            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
+            $dataArray['tlsEnabled'] = $data->tlsEnabled;
         }
         if (array_key_exists('ocspUrl', get_object_vars($data)) && null !== ($data->ocspUrl ?? null)) {
-            $dataArray['ocspUrl'] = $data->ocspUrl ?? null;
+            $dataArray['ocspUrl'] = $data->ocspUrl;
         }
         if (array_key_exists('cnSanIdentity', get_object_vars($data)) && null !== ($data->cnSanIdentity ?? null)) {
-            $dataArray['cnSanIdentity'] = $data->cnSanIdentity ?? null;
+            $dataArray['cnSanIdentity'] = $data->cnSanIdentity;
         }
         if (array_key_exists('clientCertId', get_object_vars($data)) && null !== ($data->clientCertId ?? null)) {
-            $dataArray['clientCertId'] = $data->clientCertId ?? null;
+            $dataArray['clientCertId'] = $data->clientCertId;
         }
         if (array_key_exists('serverCertId', get_object_vars($data)) && null !== ($data->serverCertId ?? null)) {
-            $dataArray['serverCertId'] = $data->serverCertId ?? null;
+            $dataArray['serverCertId'] = $data->serverCertId;
         }
         if (array_key_exists('standbyTlsEnabled', get_object_vars($data)) && null !== ($data->standbyTlsEnabled ?? null)) {
-            $dataArray['standbyTlsEnabled'] = $data->standbyTlsEnabled ?? null;
+            $dataArray['standbyTlsEnabled'] = $data->standbyTlsEnabled;
         }
         if (array_key_exists('standbyOcspUrl', get_object_vars($data)) && null !== ($data->standbyOcspUrl ?? null)) {
-            $dataArray['standbyOcspUrl'] = $data->standbyOcspUrl ?? null;
+            $dataArray['standbyOcspUrl'] = $data->standbyOcspUrl;
         }
         if (array_key_exists('standbyCnSanIdentity', get_object_vars($data)) && null !== ($data->standbyCnSanIdentity ?? null)) {
-            $dataArray['standbyCnSanIdentity'] = $data->standbyCnSanIdentity ?? null;
+            $dataArray['standbyCnSanIdentity'] = $data->standbyCnSanIdentity;
         }
         if (array_key_exists('standbyClientCertId', get_object_vars($data)) && null !== ($data->standbyClientCertId ?? null)) {
-            $dataArray['standbyClientCertId'] = $data->standbyClientCertId ?? null;
+            $dataArray['standbyClientCertId'] = $data->standbyClientCertId;
         }
         if (array_key_exists('standbyServerCertId', get_object_vars($data)) && null !== ($data->standbyServerCertId ?? null)) {
-            $dataArray['standbyServerCertId'] = $data->standbyServerCertId ?? null;
+            $dataArray['standbyServerCertId'] = $data->standbyServerCertId;
         }
         return $dataArray;
     }

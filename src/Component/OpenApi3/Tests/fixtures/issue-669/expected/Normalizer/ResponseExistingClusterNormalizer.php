@@ -52,7 +52,7 @@ class ResponseExistingClusterNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('kubernetesCluster', get_object_vars($data)) && null !== ($data->kubernetesCluster ?? null)) {
-            $dataArray['kubernetes_cluster'] = ($data->kubernetesCluster ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kubernetesCluster ?? null, 'json', $context));
+            $dataArray['kubernetes_cluster'] = $data->kubernetesCluster === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kubernetesCluster, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -108,30 +108,30 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('sizeGigabytes', get_object_vars($data)) && null !== ($data->sizeGigabytes ?? null)) {
-            $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+            $dataArray['size_gigabytes'] = $data->sizeGigabytes;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('snapshotId', get_object_vars($data)) && null !== ($data->snapshotId ?? null)) {
-            $dataArray['snapshot_id'] = $data->snapshotId ?? null;
+            $dataArray['snapshot_id'] = $data->snapshotId;
         }
         if (array_key_exists('filesystemType', get_object_vars($data)) && null !== ($data->filesystemType ?? null)) {
-            $dataArray['filesystem_type'] = $data->filesystemType ?? null;
+            $dataArray['filesystem_type'] = $data->filesystemType;
         }
-        $dataArray['region'] = $data->region ?? null;
+        $dataArray['region'] = $data->region;
         if (array_key_exists('filesystemLabel', get_object_vars($data)) && null !== ($data->filesystemLabel ?? null)) {
-            $dataArray['filesystem_label'] = $data->filesystemLabel ?? null;
+            $dataArray['filesystem_label'] = $data->filesystemLabel;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -52,7 +52,7 @@ class LinkToPrevPageNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
-            $dataArray['prev'] = $data->prev ?? null;
+            $dataArray['prev'] = $data->prev;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

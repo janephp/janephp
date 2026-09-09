@@ -108,34 +108,34 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('origin', get_object_vars($data)) && null !== ($data->origin ?? null)) {
-            $dataArray['origin'] = $data->origin ?? null;
+            $dataArray['origin'] = $data->origin;
         }
         if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
-            $dataArray['destination'] = $data->destination ?? null;
+            $dataArray['destination'] = $data->destination;
         }
         if (array_key_exists('departureTime', get_object_vars($data)) && null !== ($data->departureTime ?? null)) {
-            $dataArray['departure_time'] = ($data->departureTime ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['departure_time'] = $data->departureTime->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('arrivalTime', get_object_vars($data)) && null !== ($data->arrivalTime ?? null)) {
-            $dataArray['arrival_time'] = ($data->arrivalTime ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['arrival_time'] = $data->arrivalTime->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = $data->operator ?? null;
+            $dataArray['operator'] = $data->operator;
         }
         if (array_key_exists('price', get_object_vars($data)) && null !== ($data->price ?? null)) {
-            $dataArray['price'] = $data->price ?? null;
+            $dataArray['price'] = $data->price;
         }
         if (array_key_exists('bicyclesAllowed', get_object_vars($data)) && null !== ($data->bicyclesAllowed ?? null)) {
-            $dataArray['bicycles_allowed'] = $data->bicyclesAllowed ?? null;
+            $dataArray['bicycles_allowed'] = $data->bicyclesAllowed;
         }
         if (array_key_exists('dogsAllowed', get_object_vars($data)) && null !== ($data->dogsAllowed ?? null)) {
-            $dataArray['dogs_allowed'] = $data->dogsAllowed ?? null;
+            $dataArray['dogs_allowed'] = $data->dogsAllowed;
         }
         if (array_key_exists('self', get_object_vars($data)) && null !== ($data->self ?? null)) {
-            $dataArray['self'] = $data->self ?? null;
+            $dataArray['self'] = $data->self;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

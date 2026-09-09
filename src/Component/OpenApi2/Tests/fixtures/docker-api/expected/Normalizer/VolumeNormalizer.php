@@ -87,32 +87,32 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Driver'] = $data->driver ?? null;
-        $dataArray['Mountpoint'] = $data->mountpoint ?? null;
+        $dataArray['Name'] = $data->name;
+        $dataArray['Driver'] = $data->driver;
+        $dataArray['Mountpoint'] = $data->mountpoint;
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['CreatedAt'] = $data->createdAt ?? null;
+            $dataArray['CreatedAt'] = $data->createdAt;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->status ?? null as $key => $value) {
+            foreach ($data->status as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Status'] = $values;
         }
         $values_1 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->labels ?? null as $key_1 => $value_1) {
+        foreach ($data->labels as $key_1 => $value_1) {
             $values_1[$key_1] = $value_1;
         }
         $dataArray['Labels'] = $values_1;
-        $dataArray['Scope'] = $data->scope ?? null;
+        $dataArray['Scope'] = $data->scope;
         $values_2 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->options ?? null as $key_2 => $value_2) {
+        foreach ($data->options as $key_2 => $value_2) {
             $values_2[$key_2] = $value_2;
         }
         $dataArray['Options'] = $values_2;
         if (array_key_exists('usageData', get_object_vars($data)) && null !== ($data->usageData ?? null)) {
-            $dataArray['UsageData'] = ($data->usageData ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->usageData ?? null, 'json', $context));
+            $dataArray['UsageData'] = $data->usageData === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->usageData, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumeConstraint());

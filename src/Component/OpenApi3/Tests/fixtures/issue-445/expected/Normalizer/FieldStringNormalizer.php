@@ -220,18 +220,18 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('indexId', get_object_vars($data)) && null !== ($data->indexId ?? null)) {
-            $dataArray['indexId'] = $data->indexId ?? null;
+            $dataArray['indexId'] = $data->indexId;
         }
         if (array_key_exists('fieldNamespace', get_object_vars($data)) && null !== ($data->fieldNamespace ?? null)) {
-            $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
+            $dataArray['fieldNamespace'] = $data->fieldNamespace;
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -239,60 +239,60 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['names'] = $value;
         }
         if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
-            $value_2 = $data->descriptions ?? null;
-            if (is_object($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions;
+            if (is_object($data->descriptions)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
+                foreach ($data->descriptions as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        $dataArray['required'] = $data->required ?? null;
-        $dataArray['fixed'] = $data->fixed ?? null;
-        $dataArray['index'] = $data->index ?? null;
-        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
-        $dataArray['sortable'] = $data->sortable ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['required'] = $data->required;
+        $dataArray['fixed'] = $data->fixed;
+        $dataArray['index'] = $data->index;
+        $dataArray['simpleSearch'] = $data->simpleSearch;
+        $dataArray['sortable'] = $data->sortable;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('template', get_object_vars($data)) && null !== ($data->template ?? null)) {
-            $dataArray['template'] = $data->template ?? null;
+            $dataArray['template'] = $data->template;
         }
         if (array_key_exists('pattern', get_object_vars($data)) && null !== ($data->pattern ?? null)) {
-            $dataArray['pattern'] = $data->pattern ?? null;
+            $dataArray['pattern'] = $data->pattern;
         }
         if (array_key_exists('minimumLength', get_object_vars($data)) && null !== ($data->minimumLength ?? null)) {
-            $dataArray['minimumLength'] = $data->minimumLength ?? null;
+            $dataArray['minimumLength'] = $data->minimumLength;
         }
         if (array_key_exists('maximumLength', get_object_vars($data)) && null !== ($data->maximumLength ?? null)) {
-            $dataArray['maximumLength'] = $data->maximumLength ?? null;
+            $dataArray['maximumLength'] = $data->maximumLength;
         }
         if (array_key_exists('indexAnalyzers', get_object_vars($data)) && null !== ($data->indexAnalyzers ?? null)) {
             $values_2 = [];
-            foreach ($data->indexAnalyzers ?? null as $value_4) {
+            foreach ($data->indexAnalyzers as $value_4) {
                 $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['indexAnalyzers'] = $values_2;
         }
         if (array_key_exists('simpleSearchAnalyzers', get_object_vars($data)) && null !== ($data->simpleSearchAnalyzers ?? null)) {
             $values_3 = [];
-            foreach ($data->simpleSearchAnalyzers ?? null as $value_5) {
+            foreach ($data->simpleSearchAnalyzers as $value_5) {
                 $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['simpleSearchAnalyzers'] = $values_3;
         }
         if (array_key_exists('multiLine', get_object_vars($data)) && null !== ($data->multiLine ?? null)) {
-            $dataArray['multiLine'] = $data->multiLine ?? null;
+            $dataArray['multiLine'] = $data->multiLine;
         }
         if (array_key_exists('grantedValues', get_object_vars($data)) && null !== ($data->grantedValues ?? null)) {
             $values_4 = [];
-            foreach ($data->grantedValues ?? null as $value_6) {
+            foreach ($data->grantedValues as $value_6) {
                 $values_4[] = $value_6;
             }
             $dataArray['grantedValues'] = $values_4;
         }
         if (array_key_exists('boost', get_object_vars($data)) && null !== ($data->boost ?? null)) {
-            $dataArray['boost'] = $data->boost ?? null;
+            $dataArray['boost'] = $data->boost;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_7) {
             if (preg_match('/.*/', (string) $key_2)) {

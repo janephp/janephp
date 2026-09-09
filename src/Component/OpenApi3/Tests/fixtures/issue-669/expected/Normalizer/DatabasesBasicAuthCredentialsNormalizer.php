@@ -56,10 +56,10 @@ class DatabasesBasicAuthCredentialsNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('basicAuthUsername', get_object_vars($data)) && null !== ($data->basicAuthUsername ?? null)) {
-            $dataArray['basic_auth_username'] = $data->basicAuthUsername ?? null;
+            $dataArray['basic_auth_username'] = $data->basicAuthUsername;
         }
         if (array_key_exists('basicAuthPassword', get_object_vars($data)) && null !== ($data->basicAuthPassword ?? null)) {
-            $dataArray['basic_auth_password'] = $data->basicAuthPassword ?? null;
+            $dataArray['basic_auth_password'] = $data->basicAuthPassword;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

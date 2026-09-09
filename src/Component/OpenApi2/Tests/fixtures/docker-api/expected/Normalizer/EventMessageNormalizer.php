@@ -64,22 +64,22 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['Type'] = $data->type ?? null;
+            $dataArray['Type'] = $data->type;
         }
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['Action'] = $data->action ?? null;
+            $dataArray['Action'] = $data->action;
         }
         if (array_key_exists('actor', get_object_vars($data)) && null !== ($data->actor ?? null)) {
-            $dataArray['Actor'] = ($data->actor ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->actor ?? null, 'json', $context));
+            $dataArray['Actor'] = $data->actor === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->actor, 'json', $context));
         }
         if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {
-            $dataArray['scope'] = $data->scope ?? null;
+            $dataArray['scope'] = $data->scope;
         }
         if (array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
-            $dataArray['time'] = $data->time ?? null;
+            $dataArray['time'] = $data->time;
         }
         if (array_key_exists('timeNano', get_object_vars($data)) && null !== ($data->timeNano ?? null)) {
-            $dataArray['timeNano'] = $data->timeNano ?? null;
+            $dataArray['timeNano'] = $data->timeNano;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\EventMessageConstraint());

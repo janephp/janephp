@@ -61,11 +61,11 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer i
     {
         $dataArray = [];
         if (array_key_exists('totalResults', get_object_vars($data)) && null !== ($data->totalResults ?? null)) {
-            $dataArray['totalResults'] = $data->totalResults ?? null;
+            $dataArray['totalResults'] = $data->totalResults;
         }
         if (array_key_exists('campaigns', get_object_vars($data)) && null !== ($data->campaigns ?? null)) {
             $values = [];
-            foreach ($data->campaigns ?? null as $value) {
+            foreach ($data->campaigns as $value) {
                 $values[] = $value;
             }
             $dataArray['campaigns'] = $values;

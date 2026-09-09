@@ -60,13 +60,13 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('currentAppointments', get_object_vars($data)) && null !== ($data->currentAppointments ?? null)) {
-            $dataArray['currentAppointments'] = $data->currentAppointments ?? null;
+            $dataArray['currentAppointments'] = $data->currentAppointments;
         }
         if (array_key_exists('inactiveAppointments', get_object_vars($data)) && null !== ($data->inactiveAppointments ?? null)) {
-            $dataArray['inactiveAppointments'] = $data->inactiveAppointments ?? null;
+            $dataArray['inactiveAppointments'] = $data->inactiveAppointments;
         }
         if (array_key_exists('previousAppointments', get_object_vars($data)) && null !== ($data->previousAppointments ?? null)) {
-            $dataArray['previousAppointments'] = $data->previousAppointments ?? null;
+            $dataArray['previousAppointments'] = $data->previousAppointments;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

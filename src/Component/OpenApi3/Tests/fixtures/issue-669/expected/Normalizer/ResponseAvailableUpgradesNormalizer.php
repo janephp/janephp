@@ -61,7 +61,7 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         if (array_key_exists('availableUpgradeVersions', get_object_vars($data)) && null !== ($data->availableUpgradeVersions ?? null)) {
             $values = [];
-            foreach ($data->availableUpgradeVersions ?? null as $value) {
+            foreach ($data->availableUpgradeVersions as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['available_upgrade_versions'] = $values;

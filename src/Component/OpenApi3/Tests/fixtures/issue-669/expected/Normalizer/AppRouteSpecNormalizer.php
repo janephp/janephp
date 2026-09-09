@@ -59,10 +59,10 @@ class AppRouteSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = $data->path ?? null;
+            $dataArray['path'] = $data->path;
         }
         if (array_key_exists('preservePathPrefix', get_object_vars($data)) && null !== ($data->preservePathPrefix ?? null)) {
-            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix ?? null;
+            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

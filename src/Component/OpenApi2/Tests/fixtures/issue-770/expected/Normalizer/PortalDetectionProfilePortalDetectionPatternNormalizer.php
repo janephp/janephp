@@ -57,14 +57,14 @@ class PortalDetectionProfilePortalDetectionPatternNormalizer implements Denormal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('patternType', get_object_vars($data)) && null !== ($data->patternType ?? null)) {
-            $dataArray['patternType'] = $data->patternType ?? null;
+            $dataArray['patternType'] = $data->patternType;
         }
-        $dataArray['userAgentPattern'] = $data->userAgentPattern ?? null;
-        $dataArray['httpCode'] = $data->httpCode ?? null;
+        $dataArray['userAgentPattern'] = $data->userAgentPattern;
+        $dataArray['httpCode'] = $data->httpCode;
         if (array_key_exists('httpResponseBody', get_object_vars($data)) && null !== ($data->httpResponseBody ?? null)) {
-            $dataArray['httpResponseBody'] = $data->httpResponseBody ?? null;
+            $dataArray['httpResponseBody'] = $data->httpResponseBody;
         }
         return $dataArray;
     }

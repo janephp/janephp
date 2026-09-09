@@ -82,43 +82,43 @@ class SystemDataPlaneListListItemNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
-            $dataArray['ipv6'] = $data->ipv6 ?? null;
+            $dataArray['ipv6'] = $data->ipv6;
         }
         if (array_key_exists('managedBy', get_object_vars($data)) && null !== ($data->managedBy ?? null)) {
-            $dataArray['managedBy'] = $data->managedBy ?? null;
+            $dataArray['managedBy'] = $data->managedBy;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
-            $dataArray['serialNumber'] = $data->serialNumber ?? null;
+            $dataArray['serialNumber'] = $data->serialNumber;
         }
         if (array_key_exists('greTunnels', get_object_vars($data)) && null !== ($data->greTunnels ?? null)) {
-            $dataArray['greTunnels'] = $data->greTunnels ?? null;
+            $dataArray['greTunnels'] = $data->greTunnels;
         }
         if (array_key_exists('fwVersion', get_object_vars($data)) && null !== ($data->fwVersion ?? null)) {
-            $dataArray['fwVersion'] = $data->fwVersion ?? null;
+            $dataArray['fwVersion'] = $data->fwVersion;
         }
         if (array_key_exists('lastSeen', get_object_vars($data)) && null !== ($data->lastSeen ?? null)) {
-            $dataArray['lastSeen'] = $data->lastSeen ?? null;
+            $dataArray['lastSeen'] = $data->lastSeen;
         }
         if (array_key_exists('dpStatus', get_object_vars($data)) && null !== ($data->dpStatus ?? null)) {
-            $dataArray['dpStatus'] = $data->dpStatus ?? null;
+            $dataArray['dpStatus'] = $data->dpStatus;
         }
         if (array_key_exists('uptime', get_object_vars($data)) && null !== ($data->uptime ?? null)) {
-            $dataArray['uptime'] = $data->uptime ?? null;
+            $dataArray['uptime'] = $data->uptime;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         return $dataArray;
     }

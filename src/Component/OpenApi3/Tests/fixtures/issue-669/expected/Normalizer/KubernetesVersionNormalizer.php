@@ -64,14 +64,14 @@ class KubernetesVersionNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
-            $dataArray['slug'] = $data->slug ?? null;
+            $dataArray['slug'] = $data->slug;
         }
         if (array_key_exists('kubernetesVersion', get_object_vars($data)) && null !== ($data->kubernetesVersion ?? null)) {
-            $dataArray['kubernetes_version'] = $data->kubernetesVersion ?? null;
+            $dataArray['kubernetes_version'] = $data->kubernetesVersion;
         }
         if (array_key_exists('supportedFeatures', get_object_vars($data)) && null !== ($data->supportedFeatures ?? null)) {
             $values = [];
-            foreach ($data->supportedFeatures ?? null as $value) {
+            foreach ($data->supportedFeatures as $value) {
                 $values[] = $value;
             }
             $dataArray['supported_features'] = $values;

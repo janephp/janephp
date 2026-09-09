@@ -51,7 +51,7 @@ class ServiceDeleteBulkAuthenticationServiceNormalizer implements DenormalizerIn
         $dataArray = [];
         if (array_key_exists('idList', get_object_vars($data)) && null !== ($data->idList ?? null)) {
             $values = [];
-            foreach ($data->idList ?? null as $value) {
+            foreach ($data->idList as $value) {
                 $values[] = $value;
             }
             $dataArray['idList'] = $values;

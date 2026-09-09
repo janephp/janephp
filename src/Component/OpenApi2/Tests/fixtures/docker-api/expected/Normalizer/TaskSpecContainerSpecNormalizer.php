@@ -194,134 +194,134 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['Image'] = $data->image ?? null;
+            $dataArray['Image'] = $data->image;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value) {
+            foreach ($data->labels as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('command', get_object_vars($data)) && null !== ($data->command ?? null)) {
             $values_1 = [];
-            foreach ($data->command ?? null as $value_1) {
+            foreach ($data->command as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Command'] = $values_1;
         }
         if (array_key_exists('args', get_object_vars($data)) && null !== ($data->args ?? null)) {
             $values_2 = [];
-            foreach ($data->args ?? null as $value_2) {
+            foreach ($data->args as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Args'] = $values_2;
         }
         if (array_key_exists('hostname', get_object_vars($data)) && null !== ($data->hostname ?? null)) {
-            $dataArray['Hostname'] = $data->hostname ?? null;
+            $dataArray['Hostname'] = $data->hostname;
         }
         if (array_key_exists('env', get_object_vars($data)) && null !== ($data->env ?? null)) {
             $values_3 = [];
-            foreach ($data->env ?? null as $value_3) {
+            foreach ($data->env as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['Env'] = $values_3;
         }
         if (array_key_exists('dir', get_object_vars($data)) && null !== ($data->dir ?? null)) {
-            $dataArray['Dir'] = $data->dir ?? null;
+            $dataArray['Dir'] = $data->dir;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = $data->user ?? null;
+            $dataArray['User'] = $data->user;
         }
         if (array_key_exists('groups', get_object_vars($data)) && null !== ($data->groups ?? null)) {
             $values_4 = [];
-            foreach ($data->groups ?? null as $value_4) {
+            foreach ($data->groups as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['Groups'] = $values_4;
         }
         if (array_key_exists('privileges', get_object_vars($data)) && null !== ($data->privileges ?? null)) {
-            $dataArray['Privileges'] = ($data->privileges ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->privileges ?? null, 'json', $context));
+            $dataArray['Privileges'] = $data->privileges === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->privileges, 'json', $context));
         }
         if (array_key_exists('tTY', get_object_vars($data)) && null !== ($data->tTY ?? null)) {
-            $dataArray['TTY'] = $data->tTY ?? null;
+            $dataArray['TTY'] = $data->tTY;
         }
         if (array_key_exists('openStdin', get_object_vars($data)) && null !== ($data->openStdin ?? null)) {
-            $dataArray['OpenStdin'] = $data->openStdin ?? null;
+            $dataArray['OpenStdin'] = $data->openStdin;
         }
         if (array_key_exists('readOnly', get_object_vars($data)) && null !== ($data->readOnly ?? null)) {
-            $dataArray['ReadOnly'] = $data->readOnly ?? null;
+            $dataArray['ReadOnly'] = $data->readOnly;
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_5 = [];
-            foreach ($data->mounts ?? null as $value_5) {
+            foreach ($data->mounts as $value_5) {
                 $values_5[] = $value_5 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['Mounts'] = $values_5;
         }
         if (array_key_exists('stopSignal', get_object_vars($data)) && null !== ($data->stopSignal ?? null)) {
-            $dataArray['StopSignal'] = $data->stopSignal ?? null;
+            $dataArray['StopSignal'] = $data->stopSignal;
         }
         if (array_key_exists('stopGracePeriod', get_object_vars($data)) && null !== ($data->stopGracePeriod ?? null)) {
-            $dataArray['StopGracePeriod'] = $data->stopGracePeriod ?? null;
+            $dataArray['StopGracePeriod'] = $data->stopGracePeriod;
         }
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
-            $dataArray['HealthCheck'] = ($data->healthCheck ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck ?? null, 'json', $context));
+            $dataArray['HealthCheck'] = $data->healthCheck === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
         }
         if (array_key_exists('hosts', get_object_vars($data)) && null !== ($data->hosts ?? null)) {
             $values_6 = [];
-            foreach ($data->hosts ?? null as $value_6) {
+            foreach ($data->hosts as $value_6) {
                 $values_6[] = $value_6;
             }
             $dataArray['Hosts'] = $values_6;
         }
         if (array_key_exists('dNSConfig', get_object_vars($data)) && null !== ($data->dNSConfig ?? null)) {
-            $dataArray['DNSConfig'] = ($data->dNSConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dNSConfig ?? null, 'json', $context));
+            $dataArray['DNSConfig'] = $data->dNSConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dNSConfig, 'json', $context));
         }
         if (array_key_exists('secrets', get_object_vars($data)) && null !== ($data->secrets ?? null)) {
             $values_7 = [];
-            foreach ($data->secrets ?? null as $value_7) {
+            foreach ($data->secrets as $value_7) {
                 $values_7[] = $value_7 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['Secrets'] = $values_7;
         }
         if (array_key_exists('configs', get_object_vars($data)) && null !== ($data->configs ?? null)) {
             $values_8 = [];
-            foreach ($data->configs ?? null as $value_8) {
+            foreach ($data->configs as $value_8) {
                 $values_8[] = $value_8 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['Configs'] = $values_8;
         }
         if (array_key_exists('isolation', get_object_vars($data)) && null !== ($data->isolation ?? null)) {
-            $dataArray['Isolation'] = $data->isolation ?? null;
+            $dataArray['Isolation'] = $data->isolation;
         }
         if (array_key_exists('init', get_object_vars($data)) && null !== ($data->init ?? null)) {
-            $dataArray['Init'] = $data->init ?? null;
+            $dataArray['Init'] = $data->init;
         }
         if (array_key_exists('sysctls', get_object_vars($data)) && null !== ($data->sysctls ?? null)) {
             $values_9 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->sysctls ?? null as $key_1 => $value_9) {
+            foreach ($data->sysctls as $key_1 => $value_9) {
                 $values_9[$key_1] = $value_9;
             }
             $dataArray['Sysctls'] = $values_9;
         }
         if (array_key_exists('capabilityAdd', get_object_vars($data)) && null !== ($data->capabilityAdd ?? null)) {
             $values_10 = [];
-            foreach ($data->capabilityAdd ?? null as $value_10) {
+            foreach ($data->capabilityAdd as $value_10) {
                 $values_10[] = $value_10;
             }
             $dataArray['CapabilityAdd'] = $values_10;
         }
         if (array_key_exists('capabilityDrop', get_object_vars($data)) && null !== ($data->capabilityDrop ?? null)) {
             $values_11 = [];
-            foreach ($data->capabilityDrop ?? null as $value_11) {
+            foreach ($data->capabilityDrop as $value_11) {
                 $values_11[] = $value_11;
             }
             $dataArray['CapabilityDrop'] = $values_11;
         }
         if (array_key_exists('ulimits', get_object_vars($data)) && null !== ($data->ulimits ?? null)) {
             $values_12 = [];
-            foreach ($data->ulimits ?? null as $value_12) {
+            foreach ($data->ulimits as $value_12) {
                 $values_12[] = $value_12 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_12, 'json', $context));
             }
             $dataArray['Ulimits'] = $values_12;

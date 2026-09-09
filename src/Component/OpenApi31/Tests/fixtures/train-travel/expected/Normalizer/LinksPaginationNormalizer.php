@@ -59,10 +59,10 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $dataArray['next'] = $data->next ?? null;
+            $dataArray['next'] = $data->next;
         }
         if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
-            $dataArray['prev'] = $data->prev ?? null;
+            $dataArray['prev'] = $data->prev;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

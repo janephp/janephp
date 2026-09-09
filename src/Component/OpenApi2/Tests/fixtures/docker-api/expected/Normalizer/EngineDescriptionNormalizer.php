@@ -63,18 +63,18 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('engineVersion', get_object_vars($data)) && null !== ($data->engineVersion ?? null)) {
-            $dataArray['EngineVersion'] = $data->engineVersion ?? null;
+            $dataArray['EngineVersion'] = $data->engineVersion;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value) {
+            foreach ($data->labels as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('plugins', get_object_vars($data)) && null !== ($data->plugins ?? null)) {
             $values_1 = [];
-            foreach ($data->plugins ?? null as $value_1) {
+            foreach ($data->plugins as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Plugins'] = $values_1;

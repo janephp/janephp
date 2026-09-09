@@ -53,11 +53,11 @@ class ProfileEspSecurityAssociationContentNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('espProposalType', get_object_vars($data)) && null !== ($data->espProposalType ?? null)) {
-            $dataArray['espProposalType'] = $data->espProposalType ?? null;
+            $dataArray['espProposalType'] = $data->espProposalType;
         }
         if (array_key_exists('espProposals', get_object_vars($data)) && null !== ($data->espProposals ?? null)) {
             $values = [];
-            foreach ($data->espProposals ?? null as $value) {
+            foreach ($data->espProposals as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['espProposals'] = $values;

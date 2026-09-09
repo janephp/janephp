@@ -52,7 +52,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     {
         $dataArray = [];
         if (array_key_exists('full', get_object_vars($data)) && null !== ($data->full ?? null)) {
-            $dataArray['full'] = $data->full ?? null;
+            $dataArray['full'] = $data->full;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

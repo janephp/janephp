@@ -70,16 +70,16 @@ class ElasticsearchLogsinkNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->url ?? null;
-        $dataArray['index_prefix'] = $data->indexPrefix ?? null;
+        $dataArray['url'] = $data->url;
+        $dataArray['index_prefix'] = $data->indexPrefix;
         if (array_key_exists('indexDaysMax', get_object_vars($data)) && null !== ($data->indexDaysMax ?? null)) {
-            $dataArray['index_days_max'] = $data->indexDaysMax ?? null;
+            $dataArray['index_days_max'] = $data->indexDaysMax;
         }
         if (array_key_exists('timeout', get_object_vars($data)) && null !== ($data->timeout ?? null)) {
-            $dataArray['timeout'] = $data->timeout ?? null;
+            $dataArray['timeout'] = $data->timeout;
         }
         if (array_key_exists('ca', get_object_vars($data)) && null !== ($data->ca ?? null)) {
-            $dataArray['ca'] = $data->ca ?? null;
+            $dataArray['ca'] = $data->ca;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

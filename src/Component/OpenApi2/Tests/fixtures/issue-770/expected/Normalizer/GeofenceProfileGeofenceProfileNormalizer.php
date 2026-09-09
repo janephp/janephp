@@ -58,13 +58,13 @@ class GeofenceProfileGeofenceProfileNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['radiusMeter'] = $data->radiusMeter ?? null;
+        $dataArray['radiusMeter'] = $data->radiusMeter;
         $values = [];
-        foreach ($data->locationList ?? null as $value) {
+        foreach ($data->locationList as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['locationList'] = $values;

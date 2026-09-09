@@ -96,32 +96,32 @@ class ApiModelProviderKeyInfoNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('apiKeyUuid', get_object_vars($data)) && null !== ($data->apiKeyUuid ?? null)) {
-            $dataArray['api_key_uuid'] = $data->apiKeyUuid ?? null;
+            $dataArray['api_key_uuid'] = $data->apiKeyUuid;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
-            $dataArray['created_by'] = $data->createdBy ?? null;
+            $dataArray['created_by'] = $data->createdBy;
         }
         if (array_key_exists('deletedAt', get_object_vars($data)) && null !== ($data->deletedAt ?? null)) {
-            $dataArray['deleted_at'] = ($data->deletedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['deleted_at'] = $data->deletedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('models', get_object_vars($data)) && null !== ($data->models ?? null)) {
             $values = [];
-            foreach ($data->models ?? null as $value) {
+            foreach ($data->models as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['models'] = $values;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('provider', get_object_vars($data)) && null !== ($data->provider ?? null)) {
-            $dataArray['provider'] = $data->provider ?? null;
+            $dataArray['provider'] = $data->provider;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

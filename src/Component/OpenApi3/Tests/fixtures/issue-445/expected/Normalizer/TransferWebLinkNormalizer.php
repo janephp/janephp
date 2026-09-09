@@ -76,14 +76,14 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
-            $dataArray['identifier'] = $data->identifier ?? null;
+            $dataArray['identifier'] = $data->identifier;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
-        $dataArray['url'] = $data->url ?? null;
+        $dataArray['url'] = $data->url;
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -67,16 +67,16 @@ class QueryDebugInformationNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('general', get_object_vars($data)) && null !== ($data->general ?? null)) {
-            $dataArray['general'] = $data->general ?? null;
+            $dataArray['general'] = $data->general;
         }
         if (array_key_exists('auditTrail', get_object_vars($data)) && null !== ($data->auditTrail ?? null)) {
-            $dataArray['auditTrail'] = $data->auditTrail ?? null;
+            $dataArray['auditTrail'] = $data->auditTrail;
         }
         if (array_key_exists('request', get_object_vars($data)) && null !== ($data->request ?? null)) {
-            $dataArray['request'] = $data->request ?? null;
+            $dataArray['request'] = $data->request;
         }
         if (array_key_exists('response', get_object_vars($data)) && null !== ($data->response ?? null)) {
-            $dataArray['response'] = $data->response ?? null;
+            $dataArray['response'] = $data->response;
         }
         return $dataArray;
     }

@@ -52,10 +52,10 @@ class ProfileDownlinkRateLimitingNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('downlinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->downlinkRateLimitingEnabled ?? null)) {
-            $dataArray['downlinkRateLimitingEnabled'] = $data->downlinkRateLimitingEnabled ?? null;
+            $dataArray['downlinkRateLimitingEnabled'] = $data->downlinkRateLimitingEnabled;
         }
         if (array_key_exists('downlinkRateLimitingBps', get_object_vars($data)) && null !== ($data->downlinkRateLimitingBps ?? null)) {
-            $dataArray['downlinkRateLimitingBps'] = $data->downlinkRateLimitingBps ?? null;
+            $dataArray['downlinkRateLimitingBps'] = $data->downlinkRateLimitingBps;
         }
         return $dataArray;
     }

@@ -79,38 +79,38 @@ class ProfileCreateUserTrafficProfileNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['defaultAction'] = $data->defaultAction ?? null;
+        $dataArray['defaultAction'] = $data->defaultAction;
         if (array_key_exists('uplinkRateLimiting', get_object_vars($data)) && null !== ($data->uplinkRateLimiting ?? null)) {
-            $dataArray['uplinkRateLimiting'] = ($data->uplinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting ?? null, 'json', $context));
+            $dataArray['uplinkRateLimiting'] = $data->uplinkRateLimiting === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting, 'json', $context));
         }
         if (array_key_exists('downlinkRateLimiting', get_object_vars($data)) && null !== ($data->downlinkRateLimiting ?? null)) {
-            $dataArray['downlinkRateLimiting'] = ($data->downlinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting ?? null, 'json', $context));
+            $dataArray['downlinkRateLimiting'] = $data->downlinkRateLimiting === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting, 'json', $context));
         }
         if (array_key_exists('ipAclRules', get_object_vars($data)) && null !== ($data->ipAclRules ?? null)) {
             $values = [];
-            foreach ($data->ipAclRules ?? null as $value) {
+            foreach ($data->ipAclRules as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ipAclRules'] = $values;
         }
         if (array_key_exists('appPolicyId', get_object_vars($data)) && null !== ($data->appPolicyId ?? null)) {
-            $dataArray['appPolicyId'] = $data->appPolicyId ?? null;
+            $dataArray['appPolicyId'] = $data->appPolicyId;
         }
         if (array_key_exists('qmAppPolicyId', get_object_vars($data)) && null !== ($data->qmAppPolicyId ?? null)) {
-            $dataArray['qmAppPolicyId'] = $data->qmAppPolicyId ?? null;
+            $dataArray['qmAppPolicyId'] = $data->qmAppPolicyId;
         }
         if (array_key_exists('urlFilteringPolicyId', get_object_vars($data)) && null !== ($data->urlFilteringPolicyId ?? null)) {
-            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId ?? null;
+            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId;
         }
         if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
-            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+            $dataArray['mvnoId'] = $data->mvnoId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

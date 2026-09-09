@@ -65,14 +65,14 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
         $dataArray = [];
         if (array_key_exists('titles', get_object_vars($data)) && null !== ($data->titles ?? null)) {
             $values = [];
-            foreach ($data->titles ?? null as $value) {
+            foreach ($data->titles as $value) {
                 $values[] = $value;
             }
             $dataArray['Titles'] = $values;
         }
         if (array_key_exists('processes', get_object_vars($data)) && null !== ($data->processes ?? null)) {
             $values_1 = [];
-            foreach ($data->processes ?? null as $value_1) {
+            foreach ($data->processes as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
                     $values_2[] = $value_2;

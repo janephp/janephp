@@ -57,7 +57,7 @@ class ResponseDropletActionsResponseNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
-            foreach ($data->actions ?? null as $value) {
+            foreach ($data->actions as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['actions'] = $values;

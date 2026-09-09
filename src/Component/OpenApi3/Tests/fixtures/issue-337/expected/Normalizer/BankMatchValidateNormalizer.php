@@ -100,43 +100,43 @@ class BankMatchValidateNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('accountNumber', get_object_vars($data)) && null !== ($data->accountNumber ?? null)) {
-            $dataArray['accountNumber'] = $data->accountNumber ?? null;
+            $dataArray['accountNumber'] = $data->accountNumber;
         }
         if (array_key_exists('iban', get_object_vars($data)) && null !== ($data->iban ?? null)) {
-            $dataArray['iban'] = $data->iban ?? null;
+            $dataArray['iban'] = $data->iban;
         }
         if (array_key_exists('ibanResult', get_object_vars($data)) && null !== ($data->ibanResult ?? null)) {
-            $dataArray['ibanResult'] = $data->ibanResult ?? null;
+            $dataArray['ibanResult'] = $data->ibanResult;
         }
         if (array_key_exists('ibanText', get_object_vars($data)) && null !== ($data->ibanText ?? null)) {
-            $dataArray['ibanText'] = $data->ibanText ?? null;
+            $dataArray['ibanText'] = $data->ibanText;
         }
         if (array_key_exists('logDate', get_object_vars($data)) && null !== ($data->logDate ?? null)) {
-            $dataArray['logDate'] = $data->logDate ?? null;
+            $dataArray['logDate'] = $data->logDate;
         }
         if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
-            $dataArray['safeNumber'] = $data->safeNumber ?? null;
+            $dataArray['safeNumber'] = $data->safeNumber;
         }
         if (array_key_exists('scanResult', get_object_vars($data)) && null !== ($data->scanResult ?? null)) {
-            $dataArray['scanResult'] = $data->scanResult ?? null;
+            $dataArray['scanResult'] = $data->scanResult;
         }
         if (array_key_exists('scanText', get_object_vars($data)) && null !== ($data->scanText ?? null)) {
-            $dataArray['scanText'] = $data->scanText ?? null;
+            $dataArray['scanText'] = $data->scanText;
         }
         if (array_key_exists('sortCode', get_object_vars($data)) && null !== ($data->sortCode ?? null)) {
-            $dataArray['sortCode'] = $data->sortCode ?? null;
+            $dataArray['sortCode'] = $data->sortCode;
         }
         if (array_key_exists('statusResult', get_object_vars($data)) && null !== ($data->statusResult ?? null)) {
-            $dataArray['statusResult'] = $data->statusResult ?? null;
+            $dataArray['statusResult'] = $data->statusResult;
         }
         if (array_key_exists('statusText', get_object_vars($data)) && null !== ($data->statusText ?? null)) {
-            $dataArray['statusText'] = $data->statusText ?? null;
+            $dataArray['statusText'] = $data->statusText;
         }
         if (array_key_exists('vatResult', get_object_vars($data)) && null !== ($data->vatResult ?? null)) {
-            $dataArray['vatResult'] = $data->vatResult ?? null;
+            $dataArray['vatResult'] = $data->vatResult;
         }
         if (array_key_exists('vatText', get_object_vars($data)) && null !== ($data->vatText ?? null)) {
-            $dataArray['vatText'] = $data->vatText ?? null;
+            $dataArray['vatText'] = $data->vatText;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -76,34 +76,34 @@ class WlanWlanRadiusNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('nasIdType', get_object_vars($data)) && null !== ($data->nasIdType ?? null)) {
-            $dataArray['nasIdType'] = $data->nasIdType ?? null;
+            $dataArray['nasIdType'] = $data->nasIdType;
         }
         if (array_key_exists('customizedNasId', get_object_vars($data)) && null !== ($data->customizedNasId ?? null)) {
-            $dataArray['customizedNasId'] = $data->customizedNasId ?? null;
+            $dataArray['customizedNasId'] = $data->customizedNasId;
         }
         if (array_key_exists('nasRequestTimeoutSec', get_object_vars($data)) && null !== ($data->nasRequestTimeoutSec ?? null)) {
-            $dataArray['nasRequestTimeoutSec'] = $data->nasRequestTimeoutSec ?? null;
+            $dataArray['nasRequestTimeoutSec'] = $data->nasRequestTimeoutSec;
         }
         if (array_key_exists('nasMaxRetry', get_object_vars($data)) && null !== ($data->nasMaxRetry ?? null)) {
-            $dataArray['nasMaxRetry'] = $data->nasMaxRetry ?? null;
+            $dataArray['nasMaxRetry'] = $data->nasMaxRetry;
         }
         if (array_key_exists('nasReconnectPrimaryMin', get_object_vars($data)) && null !== ($data->nasReconnectPrimaryMin ?? null)) {
-            $dataArray['nasReconnectPrimaryMin'] = $data->nasReconnectPrimaryMin ?? null;
+            $dataArray['nasReconnectPrimaryMin'] = $data->nasReconnectPrimaryMin;
         }
         if (array_key_exists('calledStaIdType', get_object_vars($data)) && null !== ($data->calledStaIdType ?? null)) {
-            $dataArray['calledStaIdType'] = $data->calledStaIdType ?? null;
+            $dataArray['calledStaIdType'] = $data->calledStaIdType;
         }
         if (array_key_exists('nasIpType', get_object_vars($data)) && null !== ($data->nasIpType ?? null)) {
-            $dataArray['nasIpType'] = $data->nasIpType ?? null;
+            $dataArray['nasIpType'] = $data->nasIpType;
         }
         if (array_key_exists('nasIpUserDefined', get_object_vars($data)) && null !== ($data->nasIpUserDefined ?? null)) {
-            $dataArray['nasIpUserDefined'] = $data->nasIpUserDefined ?? null;
+            $dataArray['nasIpUserDefined'] = $data->nasIpUserDefined;
         }
         if (array_key_exists('singleSessionIdAcctEnabled', get_object_vars($data)) && null !== ($data->singleSessionIdAcctEnabled ?? null)) {
-            $dataArray['singleSessionIdAcctEnabled'] = $data->singleSessionIdAcctEnabled ?? null;
+            $dataArray['singleSessionIdAcctEnabled'] = $data->singleSessionIdAcctEnabled;
         }
         if (array_key_exists('vendorSpecificAttributeProfileId', get_object_vars($data)) && null !== ($data->vendorSpecificAttributeProfileId ?? null)) {
-            $dataArray['vendorSpecificAttributeProfileId'] = $data->vendorSpecificAttributeProfileId ?? null;
+            $dataArray['vendorSpecificAttributeProfileId'] = $data->vendorSpecificAttributeProfileId;
         }
         return $dataArray;
     }

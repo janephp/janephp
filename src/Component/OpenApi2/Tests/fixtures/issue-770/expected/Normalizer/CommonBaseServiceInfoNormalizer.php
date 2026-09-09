@@ -55,16 +55,16 @@ class CommonBaseServiceInfoNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('serviceId', get_object_vars($data)) && null !== ($data->serviceId ?? null)) {
-            $dataArray['serviceId'] = $data->serviceId ?? null;
+            $dataArray['serviceId'] = $data->serviceId;
         }
         if (array_key_exists('serviceName', get_object_vars($data)) && null !== ($data->serviceName ?? null)) {
-            $dataArray['serviceName'] = $data->serviceName ?? null;
+            $dataArray['serviceName'] = $data->serviceName;
         }
         if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
-            $dataArray['serviceType'] = $data->serviceType ?? null;
+            $dataArray['serviceType'] = $data->serviceType;
         }
         return $dataArray;
     }

@@ -62,10 +62,10 @@ class FileDepositPostBodyNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('fichier', get_object_vars($data)) && null !== ($data->fichier ?? null)) {
-            $dataArray['fichier'] = $data->fichier ?? null;
+            $dataArray['fichier'] = $data->fichier;
         }
         if (array_key_exists('valid', get_object_vars($data)) && null !== ($data->valid ?? null)) {
-            $dataArray['valid'] = $data->valid ?? null;
+            $dataArray['valid'] = $data->valid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

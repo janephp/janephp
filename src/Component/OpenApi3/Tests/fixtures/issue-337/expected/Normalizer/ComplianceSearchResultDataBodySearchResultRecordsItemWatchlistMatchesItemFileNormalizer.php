@@ -75,22 +75,22 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
     {
         $dataArray = [];
         if (array_key_exists('build', get_object_vars($data)) && null !== ($data->build ?? null)) {
-            $dataArray['build'] = $data->build ?? null;
+            $dataArray['build'] = $data->build;
         }
         if (array_key_exists('custom', get_object_vars($data)) && null !== ($data->custom ?? null)) {
-            $dataArray['custom'] = $data->custom ?? null;
+            $dataArray['custom'] = $data->custom;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('published', get_object_vars($data)) && null !== ($data->published ?? null)) {
-            $dataArray['published'] = $data->published ?? null;
+            $dataArray['published'] = $data->published;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

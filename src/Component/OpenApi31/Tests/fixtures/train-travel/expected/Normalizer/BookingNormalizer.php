@@ -77,16 +77,16 @@ class BookingNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('tripId', get_object_vars($data)) && null !== ($data->tripId ?? null)) {
-            $dataArray['trip_id'] = $data->tripId ?? null;
+            $dataArray['trip_id'] = $data->tripId;
         }
         if (array_key_exists('passengerName', get_object_vars($data)) && null !== ($data->passengerName ?? null)) {
-            $dataArray['passenger_name'] = $data->passengerName ?? null;
+            $dataArray['passenger_name'] = $data->passengerName;
         }
         if (array_key_exists('hasBicycle', get_object_vars($data)) && null !== ($data->hasBicycle ?? null)) {
-            $dataArray['has_bicycle'] = $data->hasBicycle ?? null;
+            $dataArray['has_bicycle'] = $data->hasBicycle;
         }
         if (array_key_exists('hasDog', get_object_vars($data)) && null !== ($data->hasDog ?? null)) {
-            $dataArray['has_dog'] = $data->hasDog ?? null;
+            $dataArray['has_dog'] = $data->hasDog;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

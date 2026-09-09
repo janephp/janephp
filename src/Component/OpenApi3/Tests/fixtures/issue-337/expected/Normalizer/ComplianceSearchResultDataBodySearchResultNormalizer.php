@@ -61,13 +61,13 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
         $dataArray = [];
         if (array_key_exists('records', get_object_vars($data)) && null !== ($data->records ?? null)) {
             $values = [];
-            foreach ($data->records ?? null as $value) {
+            foreach ($data->records as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['records'] = $values;
         }
         if (array_key_exists('searchEngineVersion', get_object_vars($data)) && null !== ($data->searchEngineVersion ?? null)) {
-            $dataArray['searchEngineVersion'] = $data->searchEngineVersion ?? null;
+            $dataArray['searchEngineVersion'] = $data->searchEngineVersion;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

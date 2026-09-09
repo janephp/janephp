@@ -49,10 +49,10 @@ class DpProfileDpNatProfilePublicSubnetIdBONormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('prefixLength', get_object_vars($data)) && null !== ($data->prefixLength ?? null)) {
-            $dataArray['prefixLength'] = $data->prefixLength ?? null;
+            $dataArray['prefixLength'] = $data->prefixLength;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         return $dataArray;
     }

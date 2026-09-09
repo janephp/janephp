@@ -57,7 +57,7 @@ class ApiEvaluationTestCaseMetricListNormalizer implements DenormalizerInterface
         $dataArray = [];
         if (array_key_exists('metricUuids', get_object_vars($data)) && null !== ($data->metricUuids ?? null)) {
             $values = [];
-            foreach ($data->metricUuids ?? null as $value) {
+            foreach ($data->metricUuids as $value) {
                 $values[] = $value;
             }
             $dataArray['metric_uuids'] = $values;

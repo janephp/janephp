@@ -51,7 +51,7 @@ class NfsActionAttachParamsNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vpc_id'] = $data->vpcId ?? null;
+        $dataArray['vpc_id'] = $data->vpcId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

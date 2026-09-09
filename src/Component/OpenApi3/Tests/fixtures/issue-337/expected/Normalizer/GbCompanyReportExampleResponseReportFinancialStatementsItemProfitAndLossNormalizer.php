@@ -153,49 +153,49 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
     {
         $dataArray = [];
         if (array_key_exists('revenue', get_object_vars($data)) && null !== ($data->revenue ?? null)) {
-            $dataArray['revenue'] = $data->revenue ?? null;
+            $dataArray['revenue'] = $data->revenue;
         }
         if (array_key_exists('operatingCosts', get_object_vars($data)) && null !== ($data->operatingCosts ?? null)) {
-            $dataArray['operatingCosts'] = $data->operatingCosts ?? null;
+            $dataArray['operatingCosts'] = $data->operatingCosts;
         }
         if (array_key_exists('operatingProfit', get_object_vars($data)) && null !== ($data->operatingProfit ?? null)) {
-            $dataArray['operatingProfit'] = $data->operatingProfit ?? null;
+            $dataArray['operatingProfit'] = $data->operatingProfit;
         }
         if (array_key_exists('wagesAndSalaries', get_object_vars($data)) && null !== ($data->wagesAndSalaries ?? null)) {
-            $dataArray['wagesAndSalaries'] = $data->wagesAndSalaries ?? null;
+            $dataArray['wagesAndSalaries'] = $data->wagesAndSalaries;
         }
         if (array_key_exists('pensionCosts', get_object_vars($data)) && null !== ($data->pensionCosts ?? null)) {
-            $dataArray['pensionCosts'] = $data->pensionCosts ?? null;
+            $dataArray['pensionCosts'] = $data->pensionCosts;
         }
         if (array_key_exists('depreciation', get_object_vars($data)) && null !== ($data->depreciation ?? null)) {
-            $dataArray['depreciation'] = $data->depreciation ?? null;
+            $dataArray['depreciation'] = $data->depreciation;
         }
         if (array_key_exists('amortisation', get_object_vars($data)) && null !== ($data->amortisation ?? null)) {
-            $dataArray['amortisation'] = $data->amortisation ?? null;
+            $dataArray['amortisation'] = $data->amortisation;
         }
         if (array_key_exists('financialExpenses', get_object_vars($data)) && null !== ($data->financialExpenses ?? null)) {
-            $dataArray['financialExpenses'] = $data->financialExpenses ?? null;
+            $dataArray['financialExpenses'] = $data->financialExpenses;
         }
         if (array_key_exists('profitBeforeTax', get_object_vars($data)) && null !== ($data->profitBeforeTax ?? null)) {
-            $dataArray['profitBeforeTax'] = $data->profitBeforeTax ?? null;
+            $dataArray['profitBeforeTax'] = $data->profitBeforeTax;
         }
         if (array_key_exists('tax', get_object_vars($data)) && null !== ($data->tax ?? null)) {
-            $dataArray['tax'] = $data->tax ?? null;
+            $dataArray['tax'] = $data->tax;
         }
         if (array_key_exists('profitAfterTax', get_object_vars($data)) && null !== ($data->profitAfterTax ?? null)) {
-            $dataArray['profitAfterTax'] = $data->profitAfterTax ?? null;
+            $dataArray['profitAfterTax'] = $data->profitAfterTax;
         }
         if (array_key_exists('dividends', get_object_vars($data)) && null !== ($data->dividends ?? null)) {
-            $dataArray['dividends'] = $data->dividends ?? null;
+            $dataArray['dividends'] = $data->dividends;
         }
         if (array_key_exists('minorityInterests', get_object_vars($data)) && null !== ($data->minorityInterests ?? null)) {
-            $dataArray['minorityInterests'] = $data->minorityInterests ?? null;
+            $dataArray['minorityInterests'] = $data->minorityInterests;
         }
         if (array_key_exists('otherAppropriations', get_object_vars($data)) && null !== ($data->otherAppropriations ?? null)) {
-            $dataArray['otherAppropriations'] = $data->otherAppropriations ?? null;
+            $dataArray['otherAppropriations'] = $data->otherAppropriations;
         }
         if (array_key_exists('retainedProfit', get_object_vars($data)) && null !== ($data->retainedProfit ?? null)) {
-            $dataArray['retainedProfit'] = $data->retainedProfit ?? null;
+            $dataArray['retainedProfit'] = $data->retainedProfit;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

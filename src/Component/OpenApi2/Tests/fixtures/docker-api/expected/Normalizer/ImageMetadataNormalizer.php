@@ -49,7 +49,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('lastTagTime', get_object_vars($data)) && null !== ($data->lastTagTime ?? null)) {
-            $dataArray['LastTagTime'] = $data->lastTagTime ?? null;
+            $dataArray['LastTagTime'] = $data->lastTagTime;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageMetadataConstraint());

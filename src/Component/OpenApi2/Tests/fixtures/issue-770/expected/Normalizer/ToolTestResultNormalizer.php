@@ -64,25 +64,25 @@ class ToolTestResultNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('wcid', get_object_vars($data)) && null !== ($data->wcid ?? null)) {
-            $dataArray['wcid'] = $data->wcid ?? null;
+            $dataArray['wcid'] = $data->wcid;
         }
         if (array_key_exists('resultId', get_object_vars($data)) && null !== ($data->resultId ?? null)) {
-            $dataArray['resultId'] = $data->resultId ?? null;
+            $dataArray['resultId'] = $data->resultId;
         }
         if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
-            $dataArray['uplink'] = $data->uplink ?? null;
+            $dataArray['uplink'] = $data->uplink;
         }
         if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
-            $dataArray['downlink'] = $data->downlink ?? null;
+            $dataArray['downlink'] = $data->downlink;
         }
         if (array_key_exists('latency', get_object_vars($data)) && null !== ($data->latency ?? null)) {
-            $dataArray['latency'] = $data->latency ?? null;
+            $dataArray['latency'] = $data->latency;
         }
         if (array_key_exists('packetLoss', get_object_vars($data)) && null !== ($data->packetLoss ?? null)) {
-            $dataArray['packetLoss'] = $data->packetLoss ?? null;
+            $dataArray['packetLoss'] = $data->packetLoss;
         }
         if (array_key_exists('etf', get_object_vars($data)) && null !== ($data->etf ?? null)) {
-            $dataArray['etf'] = $data->etf ?? null;
+            $dataArray['etf'] = $data->etf;
         }
         return $dataArray;
     }

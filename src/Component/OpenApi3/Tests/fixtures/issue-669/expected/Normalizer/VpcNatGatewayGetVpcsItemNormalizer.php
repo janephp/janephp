@@ -56,10 +56,10 @@ class VpcNatGatewayGetVpcsItemNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('gatewayIp', get_object_vars($data)) && null !== ($data->gatewayIp ?? null)) {
-            $dataArray['gateway_ip'] = $data->gatewayIp ?? null;
+            $dataArray['gateway_ip'] = $data->gatewayIp;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

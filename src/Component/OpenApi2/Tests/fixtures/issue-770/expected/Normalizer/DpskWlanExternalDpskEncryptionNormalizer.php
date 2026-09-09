@@ -55,16 +55,16 @@ class DpskWlanExternalDpskEncryptionNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('method', get_object_vars($data)) && null !== ($data->method ?? null)) {
-            $dataArray['method'] = $data->method ?? null;
+            $dataArray['method'] = $data->method;
         }
         if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
-            $dataArray['algorithm'] = $data->algorithm ?? null;
+            $dataArray['algorithm'] = $data->algorithm;
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
-            $dataArray['passphrase'] = $data->passphrase ?? null;
+            $dataArray['passphrase'] = $data->passphrase;
         }
         if (array_key_exists('mfp', get_object_vars($data)) && null !== ($data->mfp ?? null)) {
-            $dataArray['mfp'] = $data->mfp ?? null;
+            $dataArray['mfp'] = $data->mfp;
         }
         return $dataArray;
     }

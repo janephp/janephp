@@ -108,50 +108,50 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('idType', get_object_vars($data)) && null !== ($data->idType ?? null)) {
-            $dataArray['idType'] = $data->idType ?? null;
+            $dataArray['idType'] = $data->idType;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('middleName', get_object_vars($data)) && null !== ($data->middleName ?? null)) {
-            $dataArray['middleName'] = $data->middleName ?? null;
+            $dataArray['middleName'] = $data->middleName;
         }
         if (array_key_exists('surname', get_object_vars($data)) && null !== ($data->surname ?? null)) {
-            $dataArray['surname'] = $data->surname ?? null;
+            $dataArray['surname'] = $data->surname;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $dataArray['address'] = $data->address === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
         }
         if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
-            $dataArray['gender'] = $data->gender ?? null;
+            $dataArray['gender'] = $data->gender;
         }
         if (array_key_exists('dateOfBirth', get_object_vars($data)) && null !== ($data->dateOfBirth ?? null)) {
-            $dataArray['dateOfBirth'] = $data->dateOfBirth ?? null;
+            $dataArray['dateOfBirth'] = $data->dateOfBirth;
         }
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         if (array_key_exists('directorType', get_object_vars($data)) && null !== ($data->directorType ?? null)) {
-            $dataArray['directorType'] = $data->directorType ?? null;
+            $dataArray['directorType'] = $data->directorType;
         }
         if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
-            foreach ($data->positions ?? null as $value) {
+            foreach ($data->positions as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['positions'] = $values;
         }
         if (array_key_exists('additionalData', get_object_vars($data)) && null !== ($data->additionalData ?? null)) {
-            $dataArray['additionalData'] = ($data->additionalData ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData ?? null, 'json', $context));
+            $dataArray['additionalData'] = $data->additionalData === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

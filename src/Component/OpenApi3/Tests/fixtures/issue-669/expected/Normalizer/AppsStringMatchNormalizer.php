@@ -60,13 +60,13 @@ class AppsStringMatchNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('exact', get_object_vars($data)) && null !== ($data->exact ?? null)) {
-            $dataArray['exact'] = $data->exact ?? null;
+            $dataArray['exact'] = $data->exact;
         }
         if (array_key_exists('prefix', get_object_vars($data)) && null !== ($data->prefix ?? null)) {
-            $dataArray['prefix'] = $data->prefix ?? null;
+            $dataArray['prefix'] = $data->prefix;
         }
         if (array_key_exists('regex', get_object_vars($data)) && null !== ($data->regex ?? null)) {
-            $dataArray['regex'] = $data->regex ?? null;
+            $dataArray['regex'] = $data->regex;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

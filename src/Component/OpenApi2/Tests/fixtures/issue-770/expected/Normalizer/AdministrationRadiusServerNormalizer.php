@@ -78,32 +78,32 @@ class AdministrationRadiusServerNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->realm ?? null;
+        $dataArray['realm'] = $data->realm;
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
-        $dataArray['port'] = $data->port ?? null;
+        $dataArray['port'] = $data->port;
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('sharedSecret', get_object_vars($data)) && null !== ($data->sharedSecret ?? null)) {
-            $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+            $dataArray['sharedSecret'] = $data->sharedSecret;
         }
-        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
+        $dataArray['ipFqdn'] = $data->ipFqdn;
         if (array_key_exists('secondaryRadiusServer', get_object_vars($data)) && null !== ($data->secondaryRadiusServer ?? null)) {
-            $dataArray['secondaryRadiusServer'] = ($data->secondaryRadiusServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryRadiusServer ?? null, 'json', $context));
+            $dataArray['secondaryRadiusServer'] = $data->secondaryRadiusServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryRadiusServer, 'json', $context));
         }
         if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
-            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
+            $dataArray['tlsEnabled'] = $data->tlsEnabled;
         }
         if (array_key_exists('clientCertId', get_object_vars($data)) && null !== ($data->clientCertId ?? null)) {
-            $dataArray['clientCertId'] = $data->clientCertId ?? null;
+            $dataArray['clientCertId'] = $data->clientCertId;
         }
         if (array_key_exists('cnSanIdentity', get_object_vars($data)) && null !== ($data->cnSanIdentity ?? null)) {
-            $dataArray['cnSanIdentity'] = $data->cnSanIdentity ?? null;
+            $dataArray['cnSanIdentity'] = $data->cnSanIdentity;
         }
         if (array_key_exists('ocspUrl', get_object_vars($data)) && null !== ($data->ocspUrl ?? null)) {
-            $dataArray['ocspUrl'] = $data->ocspUrl ?? null;
+            $dataArray['ocspUrl'] = $data->ocspUrl;
         }
         return $dataArray;
     }

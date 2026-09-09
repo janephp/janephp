@@ -49,10 +49,10 @@ class AdministrationZdAPNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('connected', get_object_vars($data)) && null !== ($data->connected ?? null)) {
-            $dataArray['connected'] = $data->connected ?? null;
+            $dataArray['connected'] = $data->connected;
         }
         return $dataArray;
     }

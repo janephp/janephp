@@ -84,30 +84,30 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $value = $data->transferType ?? null;
-        if (is_string($data->transferType ?? null)) {
-            $value = $data->transferType ?? null;
+        $dataArray['name'] = $data->name;
+        $value = $data->transferType;
+        if (is_string($data->transferType)) {
+            $value = $data->transferType;
         }
         $dataArray['transferType'] = $value;
         if (array_key_exists('files', get_object_vars($data)) && null !== ($data->files ?? null)) {
             $values = [];
-            foreach ($data->files ?? null as $value_1) {
+            foreach ($data->files as $value_1) {
                 $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['files'] = $values;
         }
         if (array_key_exists('webLinks', get_object_vars($data)) && null !== ($data->webLinks ?? null)) {
             $values_1 = [];
-            foreach ($data->webLinks ?? null as $value_2) {
+            foreach ($data->webLinks as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['webLinks'] = $values_1;
         }
         if (array_key_exists('collectionName', get_object_vars($data)) && null !== ($data->collectionName ?? null)) {
-            $dataArray['collectionName'] = $data->collectionName ?? null;
+            $dataArray['collectionName'] = $data->collectionName;
         }
-        $dataArray['createCollection'] = $data->createCollection ?? null;
+        $dataArray['createCollection'] = $data->createCollection;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

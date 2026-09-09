@@ -52,10 +52,10 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('untagged', get_object_vars($data)) && null !== ($data->untagged ?? null)) {
-            $dataArray['Untagged'] = $data->untagged ?? null;
+            $dataArray['Untagged'] = $data->untagged;
         }
         if (array_key_exists('deleted', get_object_vars($data)) && null !== ($data->deleted ?? null)) {
-            $dataArray['Deleted'] = $data->deleted ?? null;
+            $dataArray['Deleted'] = $data->deleted;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageDeleteResponseItemConstraint());

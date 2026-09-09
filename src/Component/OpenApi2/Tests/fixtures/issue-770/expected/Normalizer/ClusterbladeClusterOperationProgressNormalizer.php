@@ -52,13 +52,13 @@ class ClusterbladeClusterOperationProgressNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
-            $dataArray['operation'] = $data->operation ?? null;
+            $dataArray['operation'] = $data->operation;
         }
         if (array_key_exists('overallProgress', get_object_vars($data)) && null !== ($data->overallProgress ?? null)) {
-            $dataArray['overallProgress'] = $data->overallProgress ?? null;
+            $dataArray['overallProgress'] = $data->overallProgress;
         }
         if (array_key_exists('previousOperationRecord', get_object_vars($data)) && null !== ($data->previousOperationRecord ?? null)) {
-            $dataArray['previousOperationRecord'] = ($data->previousOperationRecord ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord ?? null, 'json', $context));
+            $dataArray['previousOperationRecord'] = $data->previousOperationRecord === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord, 'json', $context));
         }
         return $dataArray;
     }

@@ -91,37 +91,37 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        $dataArray['contentSchemaId'] = $data->contentSchemaId;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->layerSchemaIds ?? null as $value) {
+            foreach ($data->layerSchemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->content ?? null as $key => $value_1) {
+            foreach ($data->content as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['content'] = $values_1;
         }
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->metadata ?? null as $key_1 => $value_2) {
+            foreach ($data->metadata as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $dataArray['metadata'] = $values_2;
         }
         if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values_3 = [];
-            foreach ($data->contentPermissionSetIds ?? null as $value_3) {
+            foreach ($data->contentPermissionSetIds as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['contentPermissionSetIds'] = $values_3;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
         return $dataArray;
     }

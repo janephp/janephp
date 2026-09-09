@@ -58,8 +58,8 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['email'] = $data->email ?? null;
-        $dataArray['password'] = $data->password ?? null;
+        $dataArray['email'] = $data->email;
+        $dataArray['password'] = $data->password;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

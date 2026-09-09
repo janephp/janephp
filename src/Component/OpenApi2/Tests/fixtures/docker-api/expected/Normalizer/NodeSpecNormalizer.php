@@ -62,20 +62,20 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value) {
+            foreach ($data->labels as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
-            $dataArray['Role'] = $data->role ?? null;
+            $dataArray['Role'] = $data->role;
         }
         if (array_key_exists('availability', get_object_vars($data)) && null !== ($data->availability ?? null)) {
-            $dataArray['Availability'] = $data->availability ?? null;
+            $dataArray['Availability'] = $data->availability;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeSpecConstraint());

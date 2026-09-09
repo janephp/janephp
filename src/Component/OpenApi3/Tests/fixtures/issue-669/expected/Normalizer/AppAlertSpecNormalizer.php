@@ -74,19 +74,19 @@ class AppAlertSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('rule', get_object_vars($data)) && null !== ($data->rule ?? null)) {
-            $dataArray['rule'] = $data->rule ?? null;
+            $dataArray['rule'] = $data->rule;
         }
         if (array_key_exists('disabled', get_object_vars($data)) && null !== ($data->disabled ?? null)) {
-            $dataArray['disabled'] = $data->disabled ?? null;
+            $dataArray['disabled'] = $data->disabled;
         }
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = $data->operator ?? null;
+            $dataArray['operator'] = $data->operator;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         if (array_key_exists('window', get_object_vars($data)) && null !== ($data->window ?? null)) {
-            $dataArray['window'] = $data->window ?? null;
+            $dataArray['window'] = $data->window;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

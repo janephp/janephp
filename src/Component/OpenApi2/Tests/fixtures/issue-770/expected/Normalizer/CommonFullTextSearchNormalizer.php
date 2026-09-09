@@ -56,14 +56,14 @@ class CommonFullTextSearchNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
             $values = [];
-            foreach ($data->fields ?? null as $value) {
+            foreach ($data->fields as $value) {
                 $values[] = $value;
             }
             $dataArray['fields'] = $values;

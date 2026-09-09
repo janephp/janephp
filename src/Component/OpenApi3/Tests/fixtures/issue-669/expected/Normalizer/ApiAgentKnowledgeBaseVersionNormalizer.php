@@ -63,13 +63,13 @@ class ApiAgentKnowledgeBaseVersionNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
-            $dataArray['is_deleted'] = $data->isDeleted ?? null;
+            $dataArray['is_deleted'] = $data->isDeleted;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

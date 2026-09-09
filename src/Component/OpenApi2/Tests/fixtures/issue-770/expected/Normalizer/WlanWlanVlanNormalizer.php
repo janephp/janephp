@@ -64,19 +64,19 @@ class WlanWlanVlanNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('accessVlan', get_object_vars($data)) && null !== ($data->accessVlan ?? null)) {
-            $dataArray['accessVlan'] = $data->accessVlan ?? null;
+            $dataArray['accessVlan'] = $data->accessVlan;
         }
         if (array_key_exists('aaaVlanOverride', get_object_vars($data)) && null !== ($data->aaaVlanOverride ?? null)) {
-            $dataArray['aaaVlanOverride'] = $data->aaaVlanOverride ?? null;
+            $dataArray['aaaVlanOverride'] = $data->aaaVlanOverride;
         }
         if (array_key_exists('coreQinQEnabled', get_object_vars($data)) && null !== ($data->coreQinQEnabled ?? null)) {
-            $dataArray['coreQinQEnabled'] = $data->coreQinQEnabled ?? null;
+            $dataArray['coreQinQEnabled'] = $data->coreQinQEnabled;
         }
         if (array_key_exists('coreSVlan', get_object_vars($data)) && null !== ($data->coreSVlan ?? null)) {
-            $dataArray['coreSVlan'] = $data->coreSVlan ?? null;
+            $dataArray['coreSVlan'] = $data->coreSVlan;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = ($data->vlanPooling ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling ?? null, 'json', $context));
+            $dataArray['vlanPooling'] = $data->vlanPooling === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
         }
         return $dataArray;
     }

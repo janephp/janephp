@@ -166,36 +166,36 @@ class OutputFormatDetailNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
-            $value = $data->sourceOutputFormats ?? null;
-            if (is_object($data->sourceOutputFormats ?? null)) {
-                $value = ($data->sourceOutputFormats ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats ?? null, 'json', $context));
+            $value = $data->sourceOutputFormats;
+            if (is_object($data->sourceOutputFormats)) {
+                $value = $data->sourceOutputFormats === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats, 'json', $context));
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
         if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
-            $value_1 = $data->format ?? null;
-            if (is_object($data->format ?? null)) {
-                $value_1 = ($data->format ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format ?? null, 'json', $context));
+            $value_1 = $data->format;
+            if (is_object($data->format)) {
+                $value_1 = $data->format === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format, 'json', $context));
             }
             $dataArray['format'] = $value_1;
         }
-        $value_2 = $data->names ?? null;
-        if (is_object($data->names ?? null)) {
+        $value_2 = $data->names;
+        if (is_object($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->names ?? null as $key => $value_3) {
+            foreach ($data->names as $key => $value_3) {
                 $values[$key] = $value_3;
             }
             $value_2 = $values;
         }
         $dataArray['names'] = $value_2;
         if (array_key_exists('retentionTime', get_object_vars($data)) && null !== ($data->retentionTime ?? null)) {
-            $dataArray['retentionTime'] = $data->retentionTime ?? null;
+            $dataArray['retentionTime'] = $data->retentionTime;
         }
         if (array_key_exists('downloadFileNamePatterns', get_object_vars($data)) && null !== ($data->downloadFileNamePatterns ?? null)) {
-            $value_4 = $data->downloadFileNamePatterns ?? null;
-            if (is_object($data->downloadFileNamePatterns ?? null)) {
+            $value_4 = $data->downloadFileNamePatterns;
+            if (is_object($data->downloadFileNamePatterns)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->downloadFileNamePatterns ?? null as $key_1 => $value_5) {
+                foreach ($data->downloadFileNamePatterns as $key_1 => $value_5) {
                     $values_1[$key_1] = $value_5;
                 }
                 $value_4 = $values_1;
@@ -203,30 +203,30 @@ class OutputFormatDetailNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['downloadFileNamePatterns'] = $value_4;
         }
         if (array_key_exists('viewForAll', get_object_vars($data)) && null !== ($data->viewForAll ?? null)) {
-            $dataArray['viewForAll'] = $data->viewForAll ?? null;
+            $dataArray['viewForAll'] = $data->viewForAll;
         }
         if (array_key_exists('enableXmpWriteback', get_object_vars($data)) && null !== ($data->enableXmpWriteback ?? null)) {
-            $dataArray['enableXmpWriteback'] = $data->enableXmpWriteback ?? null;
+            $dataArray['enableXmpWriteback'] = $data->enableXmpWriteback;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('system', get_object_vars($data)) && null !== ($data->system ?? null)) {
-            $dataArray['system'] = $data->system ?? null;
+            $dataArray['system'] = $data->system;
         }
         if (array_key_exists('dynamic', get_object_vars($data)) && null !== ($data->dynamic ?? null)) {
-            $dataArray['dynamic'] = $data->dynamic ?? null;
+            $dataArray['dynamic'] = $data->dynamic;
         }
         if (array_key_exists('dataExtraction', get_object_vars($data)) && null !== ($data->dataExtraction ?? null)) {
-            $dataArray['dataExtraction'] = $data->dataExtraction ?? null;
+            $dataArray['dataExtraction'] = $data->dataExtraction;
         }
         if (array_key_exists('temporary', get_object_vars($data)) && null !== ($data->temporary ?? null)) {
-            $dataArray['temporary'] = $data->temporary ?? null;
+            $dataArray['temporary'] = $data->temporary;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value_6 = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value_6 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value_6 = $data->audit;
+            if (is_object($data->audit)) {
+                $value_6 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_6;
         }

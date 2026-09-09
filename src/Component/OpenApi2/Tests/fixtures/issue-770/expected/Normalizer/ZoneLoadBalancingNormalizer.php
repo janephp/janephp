@@ -52,13 +52,13 @@ class ZoneLoadBalancingNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('loadBalancingMethod', get_object_vars($data)) && null !== ($data->loadBalancingMethod ?? null)) {
-            $dataArray['loadBalancingMethod'] = $data->loadBalancingMethod ?? null;
+            $dataArray['loadBalancingMethod'] = $data->loadBalancingMethod;
         }
         if (array_key_exists('bandBalancing', get_object_vars($data)) && null !== ($data->bandBalancing ?? null)) {
-            $dataArray['bandBalancing'] = ($data->bandBalancing ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->bandBalancing ?? null, 'json', $context));
+            $dataArray['bandBalancing'] = $data->bandBalancing === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->bandBalancing, 'json', $context));
         }
         if (array_key_exists('steeringMode', get_object_vars($data)) && null !== ($data->steeringMode ?? null)) {
-            $dataArray['steeringMode'] = $data->steeringMode ?? null;
+            $dataArray['steeringMode'] = $data->steeringMode;
         }
         return $dataArray;
     }

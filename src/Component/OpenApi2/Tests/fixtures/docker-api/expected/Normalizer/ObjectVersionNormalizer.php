@@ -49,7 +49,7 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
-            $dataArray['Index'] = $data->index ?? null;
+            $dataArray['Index'] = $data->index;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ObjectVersionConstraint());

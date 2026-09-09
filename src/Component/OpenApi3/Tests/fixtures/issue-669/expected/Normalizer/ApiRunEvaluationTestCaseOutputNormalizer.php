@@ -57,7 +57,7 @@ class ApiRunEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('evaluationRunUuids', get_object_vars($data)) && null !== ($data->evaluationRunUuids ?? null)) {
             $values = [];
-            foreach ($data->evaluationRunUuids ?? null as $value) {
+            foreach ($data->evaluationRunUuids as $value) {
                 $values[] = $value;
             }
             $dataArray['evaluation_run_uuids'] = $values;

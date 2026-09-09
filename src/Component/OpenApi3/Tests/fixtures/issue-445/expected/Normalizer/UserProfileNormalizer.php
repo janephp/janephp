@@ -144,57 +144,57 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $value = $data->address ?? null;
-            if (is_object($data->address ?? null)) {
-                $value = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $value = $data->address;
+            if (is_object($data->address)) {
+                $value = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value;
         }
-        $value_1 = $data->authorizationState ?? null;
-        if (is_string($data->authorizationState ?? null)) {
-            $value_1 = $data->authorizationState ?? null;
+        $value_1 = $data->authorizationState;
+        if (is_string($data->authorizationState)) {
+            $value_1 = $data->authorizationState;
         }
         $dataArray['authorizationState'] = $value_1;
-        $dataArray['isLocked'] = $data->isLocked ?? null;
+        $dataArray['isLocked'] = $data->isLocked;
         if (array_key_exists('userRights', get_object_vars($data)) && null !== ($data->userRights ?? null)) {
             $values = [];
-            foreach ($data->userRights ?? null as $value_2) {
+            foreach ($data->userRights as $value_2) {
                 $values[] = $value_2;
             }
             $dataArray['userRights'] = $values;
         }
         if (array_key_exists('userRoleIds', get_object_vars($data)) && null !== ($data->userRoleIds ?? null)) {
             $values_1 = [];
-            foreach ($data->userRoleIds ?? null as $value_3) {
+            foreach ($data->userRoleIds as $value_3) {
                 $values_1[] = $value_3;
             }
             $dataArray['userRoleIds'] = $values_1;
         }
-        $dataArray['termsConsentExpired'] = $data->termsConsentExpired ?? null;
+        $dataArray['termsConsentExpired'] = $data->termsConsentExpired;
         if (array_key_exists('systemUserRoles', get_object_vars($data)) && null !== ($data->systemUserRoles ?? null)) {
             $values_2 = [];
-            foreach ($data->systemUserRoles ?? null as $value_4) {
+            foreach ($data->systemUserRoles as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['systemUserRoles'] = $values_2;
         }
-        $dataArray['isDeveloper'] = $data->isDeveloper ?? null;
-        $dataArray['isFederated'] = $data->isFederated ?? null;
+        $dataArray['isDeveloper'] = $data->isDeveloper;
+        $dataArray['isFederated'] = $data->isFederated;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

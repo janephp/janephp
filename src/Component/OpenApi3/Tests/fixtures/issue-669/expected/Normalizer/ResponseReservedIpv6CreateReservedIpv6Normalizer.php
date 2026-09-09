@@ -64,13 +64,13 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
-            $dataArray['region_slug'] = $data->regionSlug ?? null;
+            $dataArray['region_slug'] = $data->regionSlug;
         }
         if (array_key_exists('reservedAt', get_object_vars($data)) && null !== ($data->reservedAt ?? null)) {
-            $dataArray['reserved_at'] = ($data->reservedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['reserved_at'] = $data->reservedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

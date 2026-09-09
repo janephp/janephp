@@ -50,7 +50,7 @@ class FailureNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->errors ?? null as $value) {
+        foreach ($data->errors as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['errors'] = $values;

@@ -55,10 +55,10 @@ class GeoLocationNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('lat', get_object_vars($data)) && null !== ($data->lat ?? null)) {
-            $dataArray['lat'] = $data->lat ?? null;
+            $dataArray['lat'] = $data->lat;
         }
         if (array_key_exists('lon', get_object_vars($data)) && null !== ($data->lon ?? null)) {
-            $dataArray['lon'] = $data->lon ?? null;
+            $dataArray['lon'] = $data->lon;
         }
         return $dataArray;
     }

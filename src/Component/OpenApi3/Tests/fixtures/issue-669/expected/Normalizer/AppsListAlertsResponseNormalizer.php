@@ -57,7 +57,7 @@ class AppsListAlertsResponseNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
             $values = [];
-            foreach ($data->alerts ?? null as $value) {
+            foreach ($data->alerts as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['alerts'] = $values;

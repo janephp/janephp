@@ -60,15 +60,15 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByTag' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByTag' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByUri' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByUri' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['success'] = $data->success ?? null;
-        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['success'] = $data->success;
+        $dataArray['retriesLeft'] = $data->retriesLeft;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

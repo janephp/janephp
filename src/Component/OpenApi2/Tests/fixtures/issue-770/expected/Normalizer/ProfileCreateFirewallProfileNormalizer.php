@@ -78,33 +78,33 @@ class ProfileCreateFirewallProfileNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('uplinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->uplinkRateLimitingMbps ?? null)) {
-            $dataArray['uplinkRateLimitingMbps'] = $data->uplinkRateLimitingMbps ?? null;
+            $dataArray['uplinkRateLimitingMbps'] = $data->uplinkRateLimitingMbps;
         }
         if (array_key_exists('downlinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->downlinkRateLimitingMbps ?? null)) {
-            $dataArray['downlinkRateLimitingMbps'] = $data->downlinkRateLimitingMbps ?? null;
+            $dataArray['downlinkRateLimitingMbps'] = $data->downlinkRateLimitingMbps;
         }
         if (array_key_exists('l3AccessControlPolicyId', get_object_vars($data)) && null !== ($data->l3AccessControlPolicyId ?? null)) {
-            $dataArray['l3AccessControlPolicyId'] = $data->l3AccessControlPolicyId ?? null;
+            $dataArray['l3AccessControlPolicyId'] = $data->l3AccessControlPolicyId;
         }
         if (array_key_exists('l2AccessControlPolicyId', get_object_vars($data)) && null !== ($data->l2AccessControlPolicyId ?? null)) {
-            $dataArray['l2AccessControlPolicyId'] = $data->l2AccessControlPolicyId ?? null;
+            $dataArray['l2AccessControlPolicyId'] = $data->l2AccessControlPolicyId;
         }
         if (array_key_exists('appPolicyId', get_object_vars($data)) && null !== ($data->appPolicyId ?? null)) {
-            $dataArray['appPolicyId'] = $data->appPolicyId ?? null;
+            $dataArray['appPolicyId'] = $data->appPolicyId;
         }
         if (array_key_exists('urlFilteringPolicyId', get_object_vars($data)) && null !== ($data->urlFilteringPolicyId ?? null)) {
-            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId ?? null;
+            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId;
         }
         if (array_key_exists('devicePolicyId', get_object_vars($data)) && null !== ($data->devicePolicyId ?? null)) {
-            $dataArray['devicePolicyId'] = $data->devicePolicyId ?? null;
+            $dataArray['devicePolicyId'] = $data->devicePolicyId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

@@ -60,11 +60,11 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('child', get_object_vars($data)) && null !== ($data->child ?? null)) {
             $values = [];
-            foreach ($data->child ?? null as $value) {
+            foreach ($data->child as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['child'] = $values;

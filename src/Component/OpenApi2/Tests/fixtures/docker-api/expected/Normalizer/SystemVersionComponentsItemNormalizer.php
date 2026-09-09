@@ -57,10 +57,10 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Version'] = $data->version ?? null;
+        $dataArray['Name'] = $data->name;
+        $dataArray['Version'] = $data->version;
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
-            $dataArray['Details'] = $data->details ?? null;
+            $dataArray['Details'] = $data->details;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());

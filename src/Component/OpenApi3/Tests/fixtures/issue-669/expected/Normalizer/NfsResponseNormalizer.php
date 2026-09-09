@@ -91,21 +91,21 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['size_gib'] = $data->sizeGib ?? null;
-        $dataArray['region'] = $data->region ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['size_gib'] = $data->sizeGib;
+        $dataArray['region'] = $data->region;
         if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->vpcIds ?? null as $value) {
+            foreach ($data->vpcIds as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;
         }
         if (array_key_exists('mountPath', get_object_vars($data)) && null !== ($data->mountPath ?? null)) {
-            $dataArray['mount_path'] = $data->mountPath ?? null;
+            $dataArray['mount_path'] = $data->mountPath;
         }
         if (array_key_exists('host', get_object_vars($data)) && null !== ($data->host ?? null)) {
-            $dataArray['host'] = $data->host ?? null;
+            $dataArray['host'] = $data->host;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

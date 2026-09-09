@@ -62,20 +62,20 @@ class ProfileBonjourFencingStatisticNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('forwardedPackets', get_object_vars($data)) && null !== ($data->forwardedPackets ?? null)) {
-            $dataArray['forwardedPackets'] = $data->forwardedPackets ?? null;
+            $dataArray['forwardedPackets'] = $data->forwardedPackets;
         }
         if (array_key_exists('droppedPacketsDueToServiceType', get_object_vars($data)) && null !== ($data->droppedPacketsDueToServiceType ?? null)) {
-            $dataArray['droppedPacketsDueToServiceType'] = $data->droppedPacketsDueToServiceType ?? null;
+            $dataArray['droppedPacketsDueToServiceType'] = $data->droppedPacketsDueToServiceType;
         }
         if (array_key_exists('droppedPacketsDueToNeighbor', get_object_vars($data)) && null !== ($data->droppedPacketsDueToNeighbor ?? null)) {
-            $dataArray['droppedPacketsDueToNeighbor'] = $data->droppedPacketsDueToNeighbor ?? null;
+            $dataArray['droppedPacketsDueToNeighbor'] = $data->droppedPacketsDueToNeighbor;
         }
         if (array_key_exists('serviceList', get_object_vars($data)) && null !== ($data->serviceList ?? null)) {
             $values = [];
-            foreach ($data->serviceList ?? null as $value) {
+            foreach ($data->serviceList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['serviceList'] = $values;

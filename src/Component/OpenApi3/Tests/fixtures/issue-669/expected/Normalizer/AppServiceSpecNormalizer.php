@@ -166,98 +166,98 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('git', get_object_vars($data)) && null !== ($data->git ?? null)) {
-            $dataArray['git'] = ($data->git ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git ?? null, 'json', $context));
+            $dataArray['git'] = $data->git === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git, 'json', $context));
         }
         if (array_key_exists('github', get_object_vars($data)) && null !== ($data->github ?? null)) {
-            $dataArray['github'] = ($data->github ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github ?? null, 'json', $context));
+            $dataArray['github'] = $data->github === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github, 'json', $context));
         }
         if (array_key_exists('gitlab', get_object_vars($data)) && null !== ($data->gitlab ?? null)) {
-            $dataArray['gitlab'] = ($data->gitlab ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab ?? null, 'json', $context));
+            $dataArray['gitlab'] = $data->gitlab === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab, 'json', $context));
         }
         if (array_key_exists('bitbucket', get_object_vars($data)) && null !== ($data->bitbucket ?? null)) {
-            $dataArray['bitbucket'] = ($data->bitbucket ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket ?? null, 'json', $context));
+            $dataArray['bitbucket'] = $data->bitbucket === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket, 'json', $context));
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = ($data->image ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image ?? null, 'json', $context));
+            $dataArray['image'] = $data->image === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
         }
         if (array_key_exists('dockerfilePath', get_object_vars($data)) && null !== ($data->dockerfilePath ?? null)) {
-            $dataArray['dockerfile_path'] = $data->dockerfilePath ?? null;
+            $dataArray['dockerfile_path'] = $data->dockerfilePath;
         }
         if (array_key_exists('buildCommand', get_object_vars($data)) && null !== ($data->buildCommand ?? null)) {
-            $dataArray['build_command'] = $data->buildCommand ?? null;
+            $dataArray['build_command'] = $data->buildCommand;
         }
         if (array_key_exists('runCommand', get_object_vars($data)) && null !== ($data->runCommand ?? null)) {
-            $dataArray['run_command'] = $data->runCommand ?? null;
+            $dataArray['run_command'] = $data->runCommand;
         }
         if (array_key_exists('sourceDir', get_object_vars($data)) && null !== ($data->sourceDir ?? null)) {
-            $dataArray['source_dir'] = $data->sourceDir ?? null;
+            $dataArray['source_dir'] = $data->sourceDir;
         }
         if (array_key_exists('envs', get_object_vars($data)) && null !== ($data->envs ?? null)) {
             $values = [];
-            foreach ($data->envs ?? null as $value) {
+            foreach ($data->envs as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['envs'] = $values;
         }
         if (array_key_exists('environmentSlug', get_object_vars($data)) && null !== ($data->environmentSlug ?? null)) {
-            $dataArray['environment_slug'] = $data->environmentSlug ?? null;
+            $dataArray['environment_slug'] = $data->environmentSlug;
         }
         if (array_key_exists('logDestinations', get_object_vars($data)) && null !== ($data->logDestinations ?? null)) {
             $values_1 = [];
-            foreach ($data->logDestinations ?? null as $value_1) {
+            foreach ($data->logDestinations as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['log_destinations'] = $values_1;
         }
         if (array_key_exists('instanceCount', get_object_vars($data)) && null !== ($data->instanceCount ?? null)) {
-            $dataArray['instance_count'] = $data->instanceCount ?? null;
+            $dataArray['instance_count'] = $data->instanceCount;
         }
         if (array_key_exists('instanceSizeSlug', get_object_vars($data)) && null !== ($data->instanceSizeSlug ?? null)) {
-            $value_2 = $data->instanceSizeSlug ?? null;
-            if (is_string($data->instanceSizeSlug ?? null)) {
-                $value_2 = $data->instanceSizeSlug ?? null;
-            } elseif (is_string($data->instanceSizeSlug ?? null)) {
-                $value_2 = $data->instanceSizeSlug ?? null;
+            $value_2 = $data->instanceSizeSlug;
+            if (is_string($data->instanceSizeSlug)) {
+                $value_2 = $data->instanceSizeSlug;
+            } elseif (is_string($data->instanceSizeSlug)) {
+                $value_2 = $data->instanceSizeSlug;
             }
             $dataArray['instance_size_slug'] = $value_2;
         }
         if (array_key_exists('autoscaling', get_object_vars($data)) && null !== ($data->autoscaling ?? null)) {
-            $dataArray['autoscaling'] = ($data->autoscaling ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling ?? null, 'json', $context));
+            $dataArray['autoscaling'] = $data->autoscaling === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling, 'json', $context));
         }
         if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
-            $dataArray['cors'] = ($data->cors ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors ?? null, 'json', $context));
+            $dataArray['cors'] = $data->cors === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors, 'json', $context));
         }
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
-            $dataArray['health_check'] = ($data->healthCheck ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck ?? null, 'json', $context));
+            $dataArray['health_check'] = $data->healthCheck === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
         }
         if (array_key_exists('livenessHealthCheck', get_object_vars($data)) && null !== ($data->livenessHealthCheck ?? null)) {
-            $dataArray['liveness_health_check'] = ($data->livenessHealthCheck ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->livenessHealthCheck ?? null, 'json', $context));
+            $dataArray['liveness_health_check'] = $data->livenessHealthCheck === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->livenessHealthCheck, 'json', $context));
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('httpPort', get_object_vars($data)) && null !== ($data->httpPort ?? null)) {
-            $dataArray['http_port'] = $data->httpPort ?? null;
+            $dataArray['http_port'] = $data->httpPort;
         }
         if (array_key_exists('internalPorts', get_object_vars($data)) && null !== ($data->internalPorts ?? null)) {
             $values_2 = [];
-            foreach ($data->internalPorts ?? null as $value_3) {
+            foreach ($data->internalPorts as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['internal_ports'] = $values_2;
         }
         if (array_key_exists('routes', get_object_vars($data)) && null !== ($data->routes ?? null)) {
             $values_3 = [];
-            foreach ($data->routes ?? null as $value_4) {
+            foreach ($data->routes as $value_4) {
                 $values_3[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['routes'] = $values_3;
         }
         if (array_key_exists('termination', get_object_vars($data)) && null !== ($data->termination ?? null)) {
-            $dataArray['termination'] = ($data->termination ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->termination ?? null, 'json', $context));
+            $dataArray['termination'] = $data->termination === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->termination, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

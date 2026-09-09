@@ -58,16 +58,16 @@ class SplitTunnelCreateSplitTunnelProfileNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         $values = [];
-        foreach ($data->rules ?? null as $value) {
+        foreach ($data->rules as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['rules'] = $values;
-        $dataArray['defaultAction'] = $data->defaultAction ?? null;
+        $dataArray['defaultAction'] = $data->defaultAction;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

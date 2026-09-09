@@ -76,16 +76,16 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('mass', get_object_vars($data)) && null !== ($data->mass ?? null)) {
-            $dataArray['mass'] = $data->mass ?? null;
+            $dataArray['mass'] = $data->mass;
         }
         if (array_key_exists('radius', get_object_vars($data)) && null !== ($data->radius ?? null)) {
-            $dataArray['radius'] = $data->radius ?? null;
+            $dataArray['radius'] = $data->radius;
         }
         if (array_key_exists('gravity', get_object_vars($data)) && null !== ($data->gravity ?? null)) {
-            $dataArray['gravity'] = $data->gravity ?? null;
+            $dataArray['gravity'] = $data->gravity;
         }
         if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
-            $dataArray['temperature'] = ($data->temperature ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->temperature ?? null, 'json', $context));
+            $dataArray['temperature'] = $data->temperature === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->temperature, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

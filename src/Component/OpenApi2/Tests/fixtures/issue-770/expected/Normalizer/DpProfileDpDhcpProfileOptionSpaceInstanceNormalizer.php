@@ -59,20 +59,20 @@ class DpProfileDpDhcpProfileOptionSpaceInstanceNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('spaceId', get_object_vars($data)) && null !== ($data->spaceId ?? null)) {
-            $dataArray['spaceId'] = $data->spaceId ?? null;
+            $dataArray['spaceId'] = $data->spaceId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = [];
-            foreach ($data->options ?? null as $value) {
+            foreach ($data->options as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['options'] = $values;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

@@ -55,7 +55,7 @@ class RequestErrorNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
-            $dataArray['reason'] = $data->reason ?? null;
+            $dataArray['reason'] = $data->reason;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

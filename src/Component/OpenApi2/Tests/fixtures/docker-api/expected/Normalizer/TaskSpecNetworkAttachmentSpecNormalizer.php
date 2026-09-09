@@ -49,7 +49,7 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('containerID', get_object_vars($data)) && null !== ($data->containerID ?? null)) {
-            $dataArray['ContainerID'] = $data->containerID ?? null;
+            $dataArray['ContainerID'] = $data->containerID;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecNetworkAttachmentSpecConstraint());

@@ -55,16 +55,16 @@ class CommonTimeRangeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['start'] = $data->start ?? null;
+            $dataArray['start'] = $data->start;
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['end'] = $data->end ?? null;
+            $dataArray['end'] = $data->end;
         }
         if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
-            $dataArray['interval'] = $data->interval ?? null;
+            $dataArray['interval'] = $data->interval;
         }
         if (array_key_exists('field', get_object_vars($data)) && null !== ($data->field ?? null)) {
-            $dataArray['field'] = $data->field ?? null;
+            $dataArray['field'] = $data->field;
         }
         return $dataArray;
     }

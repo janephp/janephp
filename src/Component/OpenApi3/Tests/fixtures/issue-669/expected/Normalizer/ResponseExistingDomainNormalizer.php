@@ -52,7 +52,7 @@ class ResponseExistingDomainNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('domain', get_object_vars($data)) && null !== ($data->domain ?? null)) {
-            $dataArray['domain'] = ($data->domain ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->domain ?? null, 'json', $context));
+            $dataArray['domain'] = $data->domain === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->domain, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

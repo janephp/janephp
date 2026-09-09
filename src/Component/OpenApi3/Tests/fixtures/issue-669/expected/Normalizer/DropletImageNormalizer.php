@@ -138,51 +138,51 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('distribution', get_object_vars($data)) && null !== ($data->distribution ?? null)) {
-            $dataArray['distribution'] = $data->distribution ?? null;
+            $dataArray['distribution'] = $data->distribution;
         }
         if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
-            $dataArray['slug'] = $data->slug ?? null;
+            $dataArray['slug'] = $data->slug;
         }
         if (array_key_exists('public', get_object_vars($data)) && null !== ($data->public ?? null)) {
-            $dataArray['public'] = $data->public ?? null;
+            $dataArray['public'] = $data->public;
         }
         if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->regions ?? null as $value) {
+            foreach ($data->regions as $value) {
                 $values[] = $value;
             }
             $dataArray['regions'] = $values;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('minDiskSize', get_object_vars($data)) && null !== ($data->minDiskSize ?? null)) {
-            $dataArray['min_disk_size'] = $data->minDiskSize ?? null;
+            $dataArray['min_disk_size'] = $data->minDiskSize;
         }
         if (array_key_exists('sizeGigabytes', get_object_vars($data)) && null !== ($data->sizeGigabytes ?? null)) {
-            $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+            $dataArray['size_gigabytes'] = $data->sizeGigabytes;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_1) {
+            foreach ($data->tags as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
-            $dataArray['error_message'] = $data->errorMessage ?? null;
+            $dataArray['error_message'] = $data->errorMessage;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

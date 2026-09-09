@@ -96,40 +96,40 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('invoiceUuid', get_object_vars($data)) && null !== ($data->invoiceUuid ?? null)) {
-            $dataArray['invoice_uuid'] = $data->invoiceUuid ?? null;
+            $dataArray['invoice_uuid'] = $data->invoiceUuid;
         }
         if (array_key_exists('invoiceId', get_object_vars($data)) && null !== ($data->invoiceId ?? null)) {
-            $dataArray['invoice_id'] = $data->invoiceId ?? null;
+            $dataArray['invoice_id'] = $data->invoiceId;
         }
         if (array_key_exists('billingPeriod', get_object_vars($data)) && null !== ($data->billingPeriod ?? null)) {
-            $dataArray['billing_period'] = $data->billingPeriod ?? null;
+            $dataArray['billing_period'] = $data->billingPeriod;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['user_name'] = $data->userName ?? null;
+            $dataArray['user_name'] = $data->userName;
         }
         if (array_key_exists('userBillingAddress', get_object_vars($data)) && null !== ($data->userBillingAddress ?? null)) {
-            $dataArray['user_billing_address'] = ($data->userBillingAddress ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->userBillingAddress ?? null, 'json', $context));
+            $dataArray['user_billing_address'] = $data->userBillingAddress === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->userBillingAddress, 'json', $context));
         }
         if (array_key_exists('userCompany', get_object_vars($data)) && null !== ($data->userCompany ?? null)) {
-            $dataArray['user_company'] = $data->userCompany ?? null;
+            $dataArray['user_company'] = $data->userCompany;
         }
         if (array_key_exists('userEmail', get_object_vars($data)) && null !== ($data->userEmail ?? null)) {
-            $dataArray['user_email'] = $data->userEmail ?? null;
+            $dataArray['user_email'] = $data->userEmail;
         }
         if (array_key_exists('productCharges', get_object_vars($data)) && null !== ($data->productCharges ?? null)) {
-            $dataArray['product_charges'] = ($data->productCharges ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->productCharges ?? null, 'json', $context));
+            $dataArray['product_charges'] = $data->productCharges === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->productCharges, 'json', $context));
         }
         if (array_key_exists('overages', get_object_vars($data)) && null !== ($data->overages ?? null)) {
-            $dataArray['overages'] = ($data->overages ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->overages ?? null, 'json', $context));
+            $dataArray['overages'] = $data->overages === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->overages, 'json', $context));
         }
         if (array_key_exists('taxes', get_object_vars($data)) && null !== ($data->taxes ?? null)) {
-            $dataArray['taxes'] = ($data->taxes ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->taxes ?? null, 'json', $context));
+            $dataArray['taxes'] = $data->taxes === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->taxes, 'json', $context));
         }
         if (array_key_exists('creditsAndAdjustments', get_object_vars($data)) && null !== ($data->creditsAndAdjustments ?? null)) {
-            $dataArray['credits_and_adjustments'] = ($data->creditsAndAdjustments ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->creditsAndAdjustments ?? null, 'json', $context));
+            $dataArray['credits_and_adjustments'] = $data->creditsAndAdjustments === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->creditsAndAdjustments, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

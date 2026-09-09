@@ -64,16 +64,16 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItemNo
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postalCode'] = $data->postalCode ?? null;
+            $dataArray['postalCode'] = $data->postalCode;
         }
         if (array_key_exists('telephone', get_object_vars($data)) && null !== ($data->telephone ?? null)) {
-            $dataArray['telephone'] = $data->telephone ?? null;
+            $dataArray['telephone'] = $data->telephone;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

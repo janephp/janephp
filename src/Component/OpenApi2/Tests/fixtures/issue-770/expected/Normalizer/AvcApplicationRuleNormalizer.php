@@ -79,40 +79,40 @@ class AvcApplicationRuleNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('ruleType', get_object_vars($data)) && null !== ($data->ruleType ?? null)) {
-            $dataArray['ruleType'] = $data->ruleType ?? null;
+            $dataArray['ruleType'] = $data->ruleType;
         }
         if (array_key_exists('applicationType', get_object_vars($data)) && null !== ($data->applicationType ?? null)) {
-            $dataArray['applicationType'] = $data->applicationType ?? null;
+            $dataArray['applicationType'] = $data->applicationType;
         }
         if (array_key_exists('catId', get_object_vars($data)) && null !== ($data->catId ?? null)) {
-            $dataArray['catId'] = $data->catId ?? null;
+            $dataArray['catId'] = $data->catId;
         }
         if (array_key_exists('catName', get_object_vars($data)) && null !== ($data->catName ?? null)) {
-            $dataArray['catName'] = $data->catName ?? null;
+            $dataArray['catName'] = $data->catName;
         }
         if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
-            $dataArray['appId'] = $data->appId ?? null;
+            $dataArray['appId'] = $data->appId;
         }
         if (array_key_exists('appName', get_object_vars($data)) && null !== ($data->appName ?? null)) {
-            $dataArray['appName'] = $data->appName ?? null;
+            $dataArray['appName'] = $data->appName;
         }
         if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
-            $dataArray['uplink'] = $data->uplink ?? null;
+            $dataArray['uplink'] = $data->uplink;
         }
         if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
-            $dataArray['downlink'] = $data->downlink ?? null;
+            $dataArray['downlink'] = $data->downlink;
         }
         if (array_key_exists('markingPriority', get_object_vars($data)) && null !== ($data->markingPriority ?? null)) {
-            $dataArray['markingPriority'] = $data->markingPriority ?? null;
+            $dataArray['markingPriority'] = $data->markingPriority;
         }
         if (array_key_exists('markingType', get_object_vars($data)) && null !== ($data->markingType ?? null)) {
-            $dataArray['markingType'] = $data->markingType ?? null;
+            $dataArray['markingType'] = $data->markingType;
         }
         if (array_key_exists('classificationType', get_object_vars($data)) && null !== ($data->classificationType ?? null)) {
-            $dataArray['classificationType'] = $data->classificationType ?? null;
+            $dataArray['classificationType'] = $data->classificationType;
         }
         return $dataArray;
     }

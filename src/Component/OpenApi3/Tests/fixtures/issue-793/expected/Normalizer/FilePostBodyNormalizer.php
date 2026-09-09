@@ -67,13 +67,13 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['file'] = $data->file ?? null;
+            $dataArray['file'] = $data->file;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('fileNullable', get_object_vars($data)) && null !== ($data->fileNullable ?? null)) {
-            $dataArray['fileNullable'] = $data->fileNullable ?? null;
+            $dataArray['fileNullable'] = $data->fileNullable;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

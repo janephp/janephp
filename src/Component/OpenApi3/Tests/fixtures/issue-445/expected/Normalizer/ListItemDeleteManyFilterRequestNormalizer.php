@@ -61,13 +61,13 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->filterRequest ?? null;
-        if (is_object($data->filterRequest ?? null)) {
-            $value = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
+        $value = $data->filterRequest;
+        if (is_object($data->filterRequest)) {
+            $value = $data->filterRequest === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
         }
         $dataArray['filterRequest'] = $value;
-        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

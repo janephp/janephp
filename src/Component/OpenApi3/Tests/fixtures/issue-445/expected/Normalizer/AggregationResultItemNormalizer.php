@@ -74,19 +74,19 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['count'] = $data->count ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['count'] = $data->count;
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        $dataArray['active'] = $data->active ?? null;
+        $dataArray['active'] = $data->active;
         if (array_key_exists('aggregationResults', get_object_vars($data)) && null !== ($data->aggregationResults ?? null)) {
             $values = [];
-            foreach ($data->aggregationResults ?? null as $value_1) {
+            foreach ($data->aggregationResults as $value_1) {
                 $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['aggregationResults'] = $values;

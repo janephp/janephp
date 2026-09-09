@@ -46,7 +46,7 @@ class DpskDeleteExpiredDpskConfigNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('deleteExpiredDpsk', get_object_vars($data)) && null !== ($data->deleteExpiredDpsk ?? null)) {
-            $dataArray['deleteExpiredDpsk'] = $data->deleteExpiredDpsk ?? null;
+            $dataArray['deleteExpiredDpsk'] = $data->deleteExpiredDpsk;
         }
         return $dataArray;
     }

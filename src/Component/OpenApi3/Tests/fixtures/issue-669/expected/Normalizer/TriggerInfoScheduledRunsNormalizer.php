@@ -64,10 +64,10 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('lastRunAt', get_object_vars($data)) && null !== ($data->lastRunAt ?? null)) {
-            $dataArray['last_run_at'] = $data->lastRunAt ?? null;
+            $dataArray['last_run_at'] = $data->lastRunAt;
         }
         if (array_key_exists('nextRunAt', get_object_vars($data)) && null !== ($data->nextRunAt ?? null)) {
-            $dataArray['next_run_at'] = $data->nextRunAt ?? null;
+            $dataArray['next_run_at'] = $data->nextRunAt;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

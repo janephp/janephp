@@ -57,7 +57,7 @@ class AppsRestartRequestNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->components ?? null as $value) {
+            foreach ($data->components as $value) {
                 $values[] = $value;
             }
             $dataArray['components'] = $values;

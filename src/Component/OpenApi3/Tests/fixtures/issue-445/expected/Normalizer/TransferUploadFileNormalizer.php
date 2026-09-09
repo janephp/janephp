@@ -68,12 +68,12 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
-            $dataArray['identifier'] = $data->identifier ?? null;
+            $dataArray['identifier'] = $data->identifier;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
-        $dataArray['fileName'] = $data->fileName ?? null;
+        $dataArray['fileName'] = $data->fileName;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

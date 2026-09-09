@@ -66,10 +66,10 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['success'] = $data->success ?? null;
-        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['tag'] = $data->tag ?? null;
+        $dataArray['success'] = $data->success;
+        $dataArray['retriesLeft'] = $data->retriesLeft;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['tag'] = $data->tag;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
