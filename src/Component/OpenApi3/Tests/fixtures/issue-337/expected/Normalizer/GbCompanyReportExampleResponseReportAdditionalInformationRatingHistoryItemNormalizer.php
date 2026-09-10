@@ -63,13 +63,13 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
     {
         $dataArray = [];
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = $data->date ?? null;
+            $dataArray['date'] = $data->date;
         }
         if (array_key_exists('companyValue', get_object_vars($data)) && null !== ($data->companyValue ?? null)) {
-            $dataArray['companyValue'] = $data->companyValue ?? null;
+            $dataArray['companyValue'] = $data->companyValue;
         }
         if (array_key_exists('ratingDescription', get_object_vars($data)) && null !== ($data->ratingDescription ?? null)) {
-            $dataArray['ratingDescription'] = $data->ratingDescription ?? null;
+            $dataArray['ratingDescription'] = $data->ratingDescription;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

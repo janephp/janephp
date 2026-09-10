@@ -64,16 +64,16 @@ class AppLogDestinationOpenSearchSpecNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
-            $dataArray['endpoint'] = $data->endpoint ?? null;
+            $dataArray['endpoint'] = $data->endpoint;
         }
         if (array_key_exists('basicAuth', get_object_vars($data)) && null !== ($data->basicAuth ?? null)) {
-            $dataArray['basic_auth'] = ($data->basicAuth ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->basicAuth ?? null, 'json', $context));
+            $dataArray['basic_auth'] = $data->basicAuth === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->basicAuth, 'json', $context));
         }
         if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
-            $dataArray['index_name'] = $data->indexName ?? null;
+            $dataArray['index_name'] = $data->indexName;
         }
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['cluster_name'] = $data->clusterName ?? null;
+            $dataArray['cluster_name'] = $data->clusterName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

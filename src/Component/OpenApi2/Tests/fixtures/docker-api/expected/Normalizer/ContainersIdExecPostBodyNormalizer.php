@@ -99,42 +99,42 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('attachStdin', get_object_vars($data)) && null !== ($data->attachStdin ?? null)) {
-            $dataArray['AttachStdin'] = $data->attachStdin ?? null;
+            $dataArray['AttachStdin'] = $data->attachStdin;
         }
         if (array_key_exists('attachStdout', get_object_vars($data)) && null !== ($data->attachStdout ?? null)) {
-            $dataArray['AttachStdout'] = $data->attachStdout ?? null;
+            $dataArray['AttachStdout'] = $data->attachStdout;
         }
         if (array_key_exists('attachStderr', get_object_vars($data)) && null !== ($data->attachStderr ?? null)) {
-            $dataArray['AttachStderr'] = $data->attachStderr ?? null;
+            $dataArray['AttachStderr'] = $data->attachStderr;
         }
         if (array_key_exists('detachKeys', get_object_vars($data)) && null !== ($data->detachKeys ?? null)) {
-            $dataArray['DetachKeys'] = $data->detachKeys ?? null;
+            $dataArray['DetachKeys'] = $data->detachKeys;
         }
         if (array_key_exists('tty', get_object_vars($data)) && null !== ($data->tty ?? null)) {
-            $dataArray['Tty'] = $data->tty ?? null;
+            $dataArray['Tty'] = $data->tty;
         }
         if (array_key_exists('env', get_object_vars($data)) && null !== ($data->env ?? null)) {
             $values = [];
-            foreach ($data->env ?? null as $value) {
+            foreach ($data->env as $value) {
                 $values[] = $value;
             }
             $dataArray['Env'] = $values;
         }
         if (array_key_exists('cmd', get_object_vars($data)) && null !== ($data->cmd ?? null)) {
             $values_1 = [];
-            foreach ($data->cmd ?? null as $value_1) {
+            foreach ($data->cmd as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Cmd'] = $values_1;
         }
         if (array_key_exists('privileged', get_object_vars($data)) && null !== ($data->privileged ?? null)) {
-            $dataArray['Privileged'] = $data->privileged ?? null;
+            $dataArray['Privileged'] = $data->privileged;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = $data->user ?? null;
+            $dataArray['User'] = $data->user;
         }
         if (array_key_exists('workingDir', get_object_vars($data)) && null !== ($data->workingDir ?? null)) {
-            $dataArray['WorkingDir'] = $data->workingDir ?? null;
+            $dataArray['WorkingDir'] = $data->workingDir;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdExecPostBodyConstraint());

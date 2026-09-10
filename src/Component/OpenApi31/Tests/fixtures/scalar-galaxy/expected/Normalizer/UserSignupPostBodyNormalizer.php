@@ -67,10 +67,10 @@ class UserSignupPostBodyNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['email'] = $data->email ?? null;
-        $dataArray['password'] = $data->password ?? null;
+        $dataArray['email'] = $data->email;
+        $dataArray['password'] = $data->password;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

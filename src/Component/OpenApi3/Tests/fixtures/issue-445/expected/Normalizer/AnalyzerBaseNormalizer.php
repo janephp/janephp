@@ -60,22 +60,22 @@ class AnalyzerBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'EdgeNGramAnalyzer' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'EdgeNGramAnalyzer' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LanguageAnalyzer' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LanguageAnalyzer' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'NGramAnalyzer' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'NGramAnalyzer' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'PathHierarchyAnalyzer' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'PathHierarchyAnalyzer' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'SimpleAnalyzer' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'SimpleAnalyzer' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

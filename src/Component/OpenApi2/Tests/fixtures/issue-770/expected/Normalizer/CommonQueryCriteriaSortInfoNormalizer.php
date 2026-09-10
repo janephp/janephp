@@ -49,10 +49,10 @@ class CommonQueryCriteriaSortInfoNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('sortColumn', get_object_vars($data)) && null !== ($data->sortColumn ?? null)) {
-            $dataArray['sortColumn'] = $data->sortColumn ?? null;
+            $dataArray['sortColumn'] = $data->sortColumn;
         }
         if (array_key_exists('dir', get_object_vars($data)) && null !== ($data->dir ?? null)) {
-            $dataArray['dir'] = $data->dir ?? null;
+            $dataArray['dir'] = $data->dir;
         }
         return $dataArray;
     }

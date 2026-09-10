@@ -64,17 +64,17 @@ class WlanWlanDSCPSettingNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enable'] = $data->enable ?? null;
-        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['enable'] = $data->enable;
+        $dataArray['priority'] = $data->priority;
         if (array_key_exists('low', get_object_vars($data)) && null !== ($data->low ?? null)) {
-            $dataArray['low'] = $data->low ?? null;
+            $dataArray['low'] = $data->low;
         }
         if (array_key_exists('high', get_object_vars($data)) && null !== ($data->high ?? null)) {
-            $dataArray['high'] = $data->high ?? null;
+            $dataArray['high'] = $data->high;
         }
         if (array_key_exists('excepts', get_object_vars($data)) && null !== ($data->excepts ?? null)) {
             $values = [];
-            foreach ($data->excepts ?? null as $value) {
+            foreach ($data->excepts as $value) {
                 $values[] = $value;
             }
             $dataArray['excepts'] = $values;

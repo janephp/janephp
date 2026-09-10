@@ -63,22 +63,22 @@ class ProfileCreateDnsServerProfileNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['primaryIp'] = $data->primaryIp ?? null;
+        $dataArray['primaryIp'] = $data->primaryIp;
         if (array_key_exists('secondaryIp', get_object_vars($data)) && null !== ($data->secondaryIp ?? null)) {
-            $dataArray['secondaryIp'] = $data->secondaryIp ?? null;
+            $dataArray['secondaryIp'] = $data->secondaryIp;
         }
         if (array_key_exists('tertiaryIp', get_object_vars($data)) && null !== ($data->tertiaryIp ?? null)) {
-            $dataArray['tertiaryIp'] = $data->tertiaryIp ?? null;
+            $dataArray['tertiaryIp'] = $data->tertiaryIp;
         }
         if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
-            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+            $dataArray['mvnoId'] = $data->mvnoId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

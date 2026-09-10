@@ -63,13 +63,13 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->config ?? null as $key => $value) {
+        foreach ($data->config as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = ($data->dropletTemplate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate ?? null, 'json', $context));
+        $dataArray['droplet_template'] = $data->dropletTemplate === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

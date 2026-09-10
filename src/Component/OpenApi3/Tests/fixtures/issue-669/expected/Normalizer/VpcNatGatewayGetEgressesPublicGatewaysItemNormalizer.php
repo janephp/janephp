@@ -52,7 +52,7 @@ class VpcNatGatewayGetEgressesPublicGatewaysItemNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('ipv4', get_object_vars($data)) && null !== ($data->ipv4 ?? null)) {
-            $dataArray['ipv4'] = $data->ipv4 ?? null;
+            $dataArray['ipv4'] = $data->ipv4;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

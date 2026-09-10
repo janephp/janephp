@@ -49,10 +49,10 @@ class IdentityCountrySummaryNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('countryShortName', get_object_vars($data)) && null !== ($data->countryShortName ?? null)) {
-            $dataArray['countryShortName'] = $data->countryShortName ?? null;
+            $dataArray['countryShortName'] = $data->countryShortName;
         }
         if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
-            $dataArray['countryName'] = $data->countryName ?? null;
+            $dataArray['countryName'] = $data->countryName;
         }
         return $dataArray;
     }

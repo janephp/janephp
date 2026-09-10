@@ -58,16 +58,16 @@ class ApPacketCaptureApPacketCaptureReqNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['captureInterface'] = $data->captureInterface ?? null;
+        $dataArray['captureInterface'] = $data->captureInterface;
         if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
-            $dataArray['hostIp'] = $data->hostIp ?? null;
+            $dataArray['hostIp'] = $data->hostIp;
         }
         if (array_key_exists('includedMac', get_object_vars($data)) && null !== ($data->includedMac ?? null)) {
-            $dataArray['includedMac'] = $data->includedMac ?? null;
+            $dataArray['includedMac'] = $data->includedMac;
         }
         if (array_key_exists('includedFrameTypes', get_object_vars($data)) && null !== ($data->includedFrameTypes ?? null)) {
             $values = [];
-            foreach ($data->includedFrameTypes ?? null as $value) {
+            foreach ($data->includedFrameTypes as $value) {
                 $values[] = $value;
             }
             $dataArray['includedFrameTypes'] = $values;

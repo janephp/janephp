@@ -61,19 +61,19 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('endpointID', get_object_vars($data)) && null !== ($data->endpointID ?? null)) {
-            $dataArray['EndpointID'] = $data->endpointID ?? null;
+            $dataArray['EndpointID'] = $data->endpointID;
         }
         if (array_key_exists('macAddress', get_object_vars($data)) && null !== ($data->macAddress ?? null)) {
-            $dataArray['MacAddress'] = $data->macAddress ?? null;
+            $dataArray['MacAddress'] = $data->macAddress;
         }
         if (array_key_exists('iPv4Address', get_object_vars($data)) && null !== ($data->iPv4Address ?? null)) {
-            $dataArray['IPv4Address'] = $data->iPv4Address ?? null;
+            $dataArray['IPv4Address'] = $data->iPv4Address;
         }
         if (array_key_exists('iPv6Address', get_object_vars($data)) && null !== ($data->iPv6Address ?? null)) {
-            $dataArray['IPv6Address'] = $data->iPv6Address ?? null;
+            $dataArray['IPv6Address'] = $data->iPv6Address;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworkContainerConstraint());

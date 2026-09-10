@@ -51,9 +51,9 @@ class ApmodelAuthenticatorAAAServerNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enableUseSCGasProxy'] = $data->enableUseSCGasProxy ?? null;
+        $dataArray['enableUseSCGasProxy'] = $data->enableUseSCGasProxy;
         if (array_key_exists('server', get_object_vars($data)) && null !== ($data->server ?? null)) {
-            $dataArray['server'] = ($data->server ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->server ?? null, 'json', $context));
+            $dataArray['server'] = $data->server === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->server, 'json', $context));
         }
         return $dataArray;
     }

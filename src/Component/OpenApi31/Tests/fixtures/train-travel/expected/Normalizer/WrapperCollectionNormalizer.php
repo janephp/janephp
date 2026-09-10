@@ -64,7 +64,7 @@ class WrapperCollectionNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->data ?? null as $value) {
+            foreach ($data->data as $value) {
                 $values[] = $value;
             }
             $dataArray['data'] = $values;

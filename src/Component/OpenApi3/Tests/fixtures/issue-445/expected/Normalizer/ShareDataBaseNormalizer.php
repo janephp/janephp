@@ -54,14 +54,14 @@ class ShareDataBaseNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ShareDataEmbed' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareDataEmbed' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ShareDataBasic' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareDataBasic' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['url'] = $data->url ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['url'] = $data->url;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

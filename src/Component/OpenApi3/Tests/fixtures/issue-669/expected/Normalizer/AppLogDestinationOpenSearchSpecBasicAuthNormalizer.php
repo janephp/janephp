@@ -56,10 +56,10 @@ class AppLogDestinationOpenSearchSpecBasicAuthNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

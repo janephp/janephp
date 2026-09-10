@@ -59,14 +59,14 @@ class PluginPrivilegeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['Description'] = $data->description ?? null;
+            $dataArray['Description'] = $data->description;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
             $values = [];
-            foreach ($data->value ?? null as $value) {
+            foreach ($data->value as $value) {
                 $values[] = $value;
             }
             $dataArray['Value'] = $values;

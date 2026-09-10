@@ -60,13 +60,13 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProvide
     {
         $dataArray = [];
         if (array_key_exists('maxValue', get_object_vars($data)) && null !== ($data->maxValue ?? null)) {
-            $dataArray['maxValue'] = $data->maxValue ?? null;
+            $dataArray['maxValue'] = $data->maxValue;
         }
         if (array_key_exists('minValue', get_object_vars($data)) && null !== ($data->minValue ?? null)) {
-            $dataArray['minValue'] = $data->minValue ?? null;
+            $dataArray['minValue'] = $data->minValue;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

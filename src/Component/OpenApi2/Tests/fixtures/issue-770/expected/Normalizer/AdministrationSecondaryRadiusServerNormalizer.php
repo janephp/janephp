@@ -67,17 +67,17 @@ class AdministrationSecondaryRadiusServerNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
-        $dataArray['port'] = $data->port ?? null;
+        $dataArray['port'] = $data->port;
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
-        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
-        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
-        $dataArray['requestTimeOut'] = $data->requestTimeOut ?? null;
-        $dataArray['maxRetries'] = $data->maxRetries ?? null;
-        $dataArray['retryPriInvl'] = $data->retryPriInvl ?? null;
+        $dataArray['sharedSecret'] = $data->sharedSecret;
+        $dataArray['ipFqdn'] = $data->ipFqdn;
+        $dataArray['requestTimeOut'] = $data->requestTimeOut;
+        $dataArray['maxRetries'] = $data->maxRetries;
+        $dataArray['retryPriInvl'] = $data->retryPriInvl;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

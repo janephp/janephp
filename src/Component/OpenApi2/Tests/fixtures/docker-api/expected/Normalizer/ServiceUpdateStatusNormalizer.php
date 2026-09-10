@@ -58,16 +58,16 @@ class ServiceUpdateStatusNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = $data->state ?? null;
+            $dataArray['State'] = $data->state;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['StartedAt'] = $data->startedAt ?? null;
+            $dataArray['StartedAt'] = $data->startedAt;
         }
         if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
-            $dataArray['CompletedAt'] = $data->completedAt ?? null;
+            $dataArray['CompletedAt'] = $data->completedAt;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['Message'] = $data->message ?? null;
+            $dataArray['Message'] = $data->message;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceUpdateStatusConstraint());

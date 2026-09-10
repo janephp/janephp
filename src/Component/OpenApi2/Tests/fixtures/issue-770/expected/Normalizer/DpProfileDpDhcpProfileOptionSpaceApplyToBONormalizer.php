@@ -66,27 +66,27 @@ class DpProfileDpDhcpProfileOptionSpaceApplyToBONormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('spaceId', get_object_vars($data)) && null !== ($data->spaceId ?? null)) {
-            $dataArray['spaceId'] = $data->spaceId ?? null;
+            $dataArray['spaceId'] = $data->spaceId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('appliedPoolNames', get_object_vars($data)) && null !== ($data->appliedPoolNames ?? null)) {
             $values = [];
-            foreach ($data->appliedPoolNames ?? null as $value) {
+            foreach ($data->appliedPoolNames as $value) {
                 $values[] = $value;
             }
             $dataArray['appliedPoolNames'] = $values;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values_1 = [];
-            foreach ($data->options ?? null as $value_1) {
+            foreach ($data->options as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['options'] = $values_1;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

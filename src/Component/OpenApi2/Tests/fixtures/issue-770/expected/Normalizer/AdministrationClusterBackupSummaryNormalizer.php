@@ -58,16 +58,16 @@ class AdministrationClusterBackupSummaryNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('filesize', get_object_vars($data)) && null !== ($data->filesize ?? null)) {
-            $dataArray['filesize'] = $data->filesize ?? null;
+            $dataArray['filesize'] = $data->filesize;
         }
         if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
-            $dataArray['createdOn'] = $data->createdOn ?? null;
+            $dataArray['createdOn'] = $data->createdOn;
         }
         return $dataArray;
     }

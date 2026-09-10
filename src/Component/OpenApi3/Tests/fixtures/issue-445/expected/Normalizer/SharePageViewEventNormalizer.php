@@ -67,10 +67,10 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('shareToken', get_object_vars($data)) && null !== ($data->shareToken ?? null)) {
-            $dataArray['shareToken'] = $data->shareToken ?? null;
+            $dataArray['shareToken'] = $data->shareToken;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

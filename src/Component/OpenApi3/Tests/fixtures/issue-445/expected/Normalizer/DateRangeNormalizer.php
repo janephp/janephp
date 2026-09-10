@@ -69,10 +69,10 @@ class DateRangeNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -80,10 +80,10 @@ class DateRangeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['names'] = $value;
         }
         if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
-            $dataArray['from'] = $data->from ?? null;
+            $dataArray['from'] = $data->from;
         }
         if (array_key_exists('to', get_object_vars($data)) && null !== ($data->to ?? null)) {
-            $dataArray['to'] = $data->to ?? null;
+            $dataArray['to'] = $data->to;
         }
         return $dataArray;
     }

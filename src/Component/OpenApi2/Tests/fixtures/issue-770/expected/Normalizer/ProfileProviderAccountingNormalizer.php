@@ -55,13 +55,13 @@ class ProfileProviderAccountingNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['realm'] = $data->realm ?? null;
-        $dataArray['serviceType'] = $data->serviceType ?? null;
+        $dataArray['realm'] = $data->realm;
+        $dataArray['serviceType'] = $data->serviceType;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

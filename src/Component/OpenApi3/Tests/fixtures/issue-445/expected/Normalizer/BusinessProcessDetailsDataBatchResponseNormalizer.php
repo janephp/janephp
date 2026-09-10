@@ -63,11 +63,11 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['docType'] = $data->docType ?? null;
-        $value = $data->response ?? null;
-        if (is_object($data->response ?? null)) {
-            $value = ($data->response ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->response ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['docType'] = $data->docType;
+        $value = $data->response;
+        if (is_object($data->response)) {
+            $value = $data->response === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->response, 'json', $context));
         }
         $dataArray['response'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

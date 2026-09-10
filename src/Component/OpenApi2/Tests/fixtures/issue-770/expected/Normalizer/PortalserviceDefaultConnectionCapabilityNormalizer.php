@@ -60,10 +60,10 @@ class PortalserviceDefaultConnectionCapabilityNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['protocolName'] = $data->protocolName ?? null;
-        $dataArray['protocolNumber'] = $data->protocolNumber ?? null;
-        $dataArray['portNumber'] = $data->portNumber ?? null;
-        $dataArray['status'] = $data->status ?? null;
+        $dataArray['protocolName'] = $data->protocolName;
+        $dataArray['protocolNumber'] = $data->protocolNumber;
+        $dataArray['portNumber'] = $data->portNumber;
+        $dataArray['status'] = $data->status;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

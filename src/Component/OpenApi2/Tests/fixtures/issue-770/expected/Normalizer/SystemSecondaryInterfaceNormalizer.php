@@ -51,10 +51,10 @@ class SystemSecondaryInterfaceNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipAddress'] = $data->ipAddress ?? null;
-        $dataArray['subnetMask'] = $data->subnetMask ?? null;
+        $dataArray['ipAddress'] = $data->ipAddress;
+        $dataArray['subnetMask'] = $data->subnetMask;
         if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
-            $dataArray['vlan'] = $data->vlan ?? null;
+            $dataArray['vlan'] = $data->vlan;
         }
         return $dataArray;
     }

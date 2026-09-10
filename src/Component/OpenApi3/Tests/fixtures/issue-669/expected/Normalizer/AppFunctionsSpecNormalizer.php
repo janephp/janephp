@@ -108,48 +108,48 @@ class AppFunctionsSpecNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
-            $dataArray['cors'] = ($data->cors ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors ?? null, 'json', $context));
+            $dataArray['cors'] = $data->cors === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors, 'json', $context));
         }
         if (array_key_exists('routes', get_object_vars($data)) && null !== ($data->routes ?? null)) {
             $values = [];
-            foreach ($data->routes ?? null as $value) {
+            foreach ($data->routes as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['routes'] = $values;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('sourceDir', get_object_vars($data)) && null !== ($data->sourceDir ?? null)) {
-            $dataArray['source_dir'] = $data->sourceDir ?? null;
+            $dataArray['source_dir'] = $data->sourceDir;
         }
         if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
             $values_1 = [];
-            foreach ($data->alerts ?? null as $value_1) {
+            foreach ($data->alerts as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['alerts'] = $values_1;
         }
         if (array_key_exists('envs', get_object_vars($data)) && null !== ($data->envs ?? null)) {
             $values_2 = [];
-            foreach ($data->envs ?? null as $value_2) {
+            foreach ($data->envs as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['envs'] = $values_2;
         }
         if (array_key_exists('git', get_object_vars($data)) && null !== ($data->git ?? null)) {
-            $dataArray['git'] = ($data->git ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git ?? null, 'json', $context));
+            $dataArray['git'] = $data->git === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git, 'json', $context));
         }
         if (array_key_exists('github', get_object_vars($data)) && null !== ($data->github ?? null)) {
-            $dataArray['github'] = ($data->github ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github ?? null, 'json', $context));
+            $dataArray['github'] = $data->github === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github, 'json', $context));
         }
         if (array_key_exists('gitlab', get_object_vars($data)) && null !== ($data->gitlab ?? null)) {
-            $dataArray['gitlab'] = ($data->gitlab ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab ?? null, 'json', $context));
+            $dataArray['gitlab'] = $data->gitlab === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab, 'json', $context));
         }
         if (array_key_exists('bitbucket', get_object_vars($data)) && null !== ($data->bitbucket ?? null)) {
-            $dataArray['bitbucket'] = ($data->bitbucket ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket ?? null, 'json', $context));
+            $dataArray['bitbucket'] = $data->bitbucket === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket, 'json', $context));
         }
         if (array_key_exists('logDestinations', get_object_vars($data)) && null !== ($data->logDestinations ?? null)) {
             $values_3 = [];
-            foreach ($data->logDestinations ?? null as $value_3) {
+            foreach ($data->logDestinations as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['log_destinations'] = $values_3;

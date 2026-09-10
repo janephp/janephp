@@ -67,16 +67,16 @@ class LiveStreamTraceJobNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('apiClientId', get_object_vars($data)) && null !== ($data->apiClientId ?? null)) {
-            $dataArray['apiClientId'] = $data->apiClientId ?? null;
+            $dataArray['apiClientId'] = $data->apiClientId;
         }
         return $dataArray;
     }

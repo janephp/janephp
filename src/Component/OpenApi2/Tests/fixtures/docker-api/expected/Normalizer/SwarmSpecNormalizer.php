@@ -83,32 +83,32 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value) {
+            foreach ($data->labels as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('orchestration', get_object_vars($data)) && null !== ($data->orchestration ?? null)) {
-            $dataArray['Orchestration'] = ($data->orchestration ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->orchestration ?? null, 'json', $context));
+            $dataArray['Orchestration'] = $data->orchestration === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->orchestration, 'json', $context));
         }
         if (array_key_exists('raft', get_object_vars($data)) && null !== ($data->raft ?? null)) {
-            $dataArray['Raft'] = ($data->raft ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->raft ?? null, 'json', $context));
+            $dataArray['Raft'] = $data->raft === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->raft, 'json', $context));
         }
         if (array_key_exists('dispatcher', get_object_vars($data)) && null !== ($data->dispatcher ?? null)) {
-            $dataArray['Dispatcher'] = ($data->dispatcher ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dispatcher ?? null, 'json', $context));
+            $dataArray['Dispatcher'] = $data->dispatcher === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dispatcher, 'json', $context));
         }
         if (array_key_exists('cAConfig', get_object_vars($data)) && null !== ($data->cAConfig ?? null)) {
-            $dataArray['CAConfig'] = ($data->cAConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cAConfig ?? null, 'json', $context));
+            $dataArray['CAConfig'] = $data->cAConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cAConfig, 'json', $context));
         }
         if (array_key_exists('encryptionConfig', get_object_vars($data)) && null !== ($data->encryptionConfig ?? null)) {
-            $dataArray['EncryptionConfig'] = ($data->encryptionConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->encryptionConfig ?? null, 'json', $context));
+            $dataArray['EncryptionConfig'] = $data->encryptionConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->encryptionConfig, 'json', $context));
         }
         if (array_key_exists('taskDefaults', get_object_vars($data)) && null !== ($data->taskDefaults ?? null)) {
-            $dataArray['TaskDefaults'] = ($data->taskDefaults ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskDefaults ?? null, 'json', $context));
+            $dataArray['TaskDefaults'] = $data->taskDefaults === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskDefaults, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecConstraint());

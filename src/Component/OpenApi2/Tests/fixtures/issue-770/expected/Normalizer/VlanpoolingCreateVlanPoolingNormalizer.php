@@ -57,15 +57,15 @@ class VlanpoolingCreateVlanPoolingNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['pool'] = $data->pool ?? null;
-        $dataArray['algo'] = $data->algo ?? null;
+        $dataArray['pool'] = $data->pool;
+        $dataArray['algo'] = $data->algo;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

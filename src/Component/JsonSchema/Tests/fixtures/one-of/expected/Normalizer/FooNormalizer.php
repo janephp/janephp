@@ -65,12 +65,12 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $value = $data->foo ?? null;
-            if (is_string($data->foo ?? null)) {
-                $value = $data->foo ?? null;
-            } elseif (!is_null($data->foo ?? null)) {
+            $value = $data->foo;
+            if (is_string($data->foo)) {
+                $value = $data->foo;
+            } elseif (!is_null($data->foo)) {
                 $values = new \Jane\Component\JsonSchema\Tests\Expected\OneOf\Runtime\JsonObject();
-                foreach ($data->foo ?? null as $key => $value_1) {
+                foreach ($data->foo as $key => $value_1) {
                     if (preg_match('/^[a-zA-Z0-9._-]+$/', (string) $key) && !is_null($value_1)) {
                         $value_2 = $value_1;
                         if (is_object($value_1)) {

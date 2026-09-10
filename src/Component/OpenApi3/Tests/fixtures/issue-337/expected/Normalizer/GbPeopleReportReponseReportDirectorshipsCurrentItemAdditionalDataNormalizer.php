@@ -63,13 +63,13 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalDataNormalize
     {
         $dataArray = [];
         if (array_key_exists('occupation', get_object_vars($data)) && null !== ($data->occupation ?? null)) {
-            $dataArray['occupation'] = $data->occupation ?? null;
+            $dataArray['occupation'] = $data->occupation;
         }
         if (array_key_exists('statusDescription', get_object_vars($data)) && null !== ($data->statusDescription ?? null)) {
-            $dataArray['statusDescription'] = $data->statusDescription ?? null;
+            $dataArray['statusDescription'] = $data->statusDescription;
         }
         if (array_key_exists('gearing', get_object_vars($data)) && null !== ($data->gearing ?? null)) {
-            $dataArray['gearing'] = $data->gearing ?? null;
+            $dataArray['gearing'] = $data->gearing;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

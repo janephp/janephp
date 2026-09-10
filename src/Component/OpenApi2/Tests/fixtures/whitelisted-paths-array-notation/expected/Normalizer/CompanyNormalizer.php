@@ -112,55 +112,55 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('baseUri', get_object_vars($data)) && null !== ($data->baseUri ?? null)) {
-            $dataArray['base_uri'] = $data->baseUri ?? null;
+            $dataArray['base_uri'] = $data->baseUri;
         }
         if (array_key_exists('fullDomain', get_object_vars($data)) && null !== ($data->fullDomain ?? null)) {
-            $dataArray['full_domain'] = $data->fullDomain ?? null;
+            $dataArray['full_domain'] = $data->fullDomain;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
-            $dataArray['is_active'] = $data->isActive ?? null;
+            $dataArray['is_active'] = $data->isActive;
         }
         if (array_key_exists('weekStartDay', get_object_vars($data)) && null !== ($data->weekStartDay ?? null)) {
-            $dataArray['week_start_day'] = $data->weekStartDay ?? null;
+            $dataArray['week_start_day'] = $data->weekStartDay;
         }
         if (array_key_exists('wantsTimestampTimers', get_object_vars($data)) && null !== ($data->wantsTimestampTimers ?? null)) {
-            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers ?? null;
+            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers;
         }
         if (array_key_exists('timeFormat', get_object_vars($data)) && null !== ($data->timeFormat ?? null)) {
-            $dataArray['time_format'] = $data->timeFormat ?? null;
+            $dataArray['time_format'] = $data->timeFormat;
         }
         if (array_key_exists('planType', get_object_vars($data)) && null !== ($data->planType ?? null)) {
-            $dataArray['plan_type'] = $data->planType ?? null;
+            $dataArray['plan_type'] = $data->planType;
         }
         if (array_key_exists('clock', get_object_vars($data)) && null !== ($data->clock ?? null)) {
-            $dataArray['clock'] = $data->clock ?? null;
+            $dataArray['clock'] = $data->clock;
         }
         if (array_key_exists('decimalSymbol', get_object_vars($data)) && null !== ($data->decimalSymbol ?? null)) {
-            $dataArray['decimal_symbol'] = $data->decimalSymbol ?? null;
+            $dataArray['decimal_symbol'] = $data->decimalSymbol;
         }
         if (array_key_exists('thousandsSeparator', get_object_vars($data)) && null !== ($data->thousandsSeparator ?? null)) {
-            $dataArray['thousands_separator'] = $data->thousandsSeparator ?? null;
+            $dataArray['thousands_separator'] = $data->thousandsSeparator;
         }
         if (array_key_exists('colorScheme', get_object_vars($data)) && null !== ($data->colorScheme ?? null)) {
-            $dataArray['color_scheme'] = $data->colorScheme ?? null;
+            $dataArray['color_scheme'] = $data->colorScheme;
         }
         if (array_key_exists('weeklyCapacity', get_object_vars($data)) && null !== ($data->weeklyCapacity ?? null)) {
-            $dataArray['weekly_capacity'] = $data->weeklyCapacity ?? null;
+            $dataArray['weekly_capacity'] = $data->weeklyCapacity;
         }
         if (array_key_exists('expenseFeature', get_object_vars($data)) && null !== ($data->expenseFeature ?? null)) {
-            $dataArray['expense_feature'] = $data->expenseFeature ?? null;
+            $dataArray['expense_feature'] = $data->expenseFeature;
         }
         if (array_key_exists('invoiceFeature', get_object_vars($data)) && null !== ($data->invoiceFeature ?? null)) {
-            $dataArray['invoice_feature'] = $data->invoiceFeature ?? null;
+            $dataArray['invoice_feature'] = $data->invoiceFeature;
         }
         if (array_key_exists('estimateFeature', get_object_vars($data)) && null !== ($data->estimateFeature ?? null)) {
-            $dataArray['estimate_feature'] = $data->estimateFeature ?? null;
+            $dataArray['estimate_feature'] = $data->estimateFeature;
         }
         if (array_key_exists('approvalFeature', get_object_vars($data)) && null !== ($data->approvalFeature ?? null)) {
-            $dataArray['approval_feature'] = $data->approvalFeature ?? null;
+            $dataArray['approval_feature'] = $data->approvalFeature;
         }
         return $dataArray;
     }

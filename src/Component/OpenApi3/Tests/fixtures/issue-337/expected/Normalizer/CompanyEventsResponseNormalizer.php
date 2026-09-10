@@ -67,17 +67,17 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
-            $dataArray['totalCount'] = $data->totalCount ?? null;
+            $dataArray['totalCount'] = $data->totalCount;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->data ?? null as $value) {
+            foreach ($data->data as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
-            $dataArray['paging'] = ($data->paging ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging ?? null, 'json', $context));
+            $dataArray['paging'] = $data->paging === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

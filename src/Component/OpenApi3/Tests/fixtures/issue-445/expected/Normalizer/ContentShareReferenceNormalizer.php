@@ -78,25 +78,25 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value = $data->audit;
+            if (is_object($data->audit)) {
+                $value = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }
-        $value_1 = $data->shareType ?? null;
-        if (is_string($data->shareType ?? null)) {
-            $value_1 = $data->shareType ?? null;
+        $value_1 = $data->shareType;
+        if (is_string($data->shareType)) {
+            $value_1 = $data->shareType;
         }
         $dataArray['shareType'] = $value_1;
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         return $dataArray;
     }

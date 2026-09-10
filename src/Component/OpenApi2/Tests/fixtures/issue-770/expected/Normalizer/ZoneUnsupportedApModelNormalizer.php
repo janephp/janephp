@@ -49,10 +49,10 @@ class ZoneUnsupportedApModelNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         return $dataArray;
     }

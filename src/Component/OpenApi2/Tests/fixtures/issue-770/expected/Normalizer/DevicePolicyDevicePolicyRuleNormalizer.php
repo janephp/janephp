@@ -67,22 +67,22 @@ class DevicePolicyDevicePolicyRuleNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('deviceType', get_object_vars($data)) && null !== ($data->deviceType ?? null)) {
-            $dataArray['deviceType'] = $data->deviceType ?? null;
+            $dataArray['deviceType'] = $data->deviceType;
         }
         if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
-            $dataArray['uplink'] = $data->uplink ?? null;
+            $dataArray['uplink'] = $data->uplink;
         }
         if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
-            $dataArray['downlink'] = $data->downlink ?? null;
+            $dataArray['downlink'] = $data->downlink;
         }
         if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
-            $dataArray['vlan'] = $data->vlan ?? null;
+            $dataArray['vlan'] = $data->vlan;
         }
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['action'] = $data->action ?? null;
+            $dataArray['action'] = $data->action;
         }
         return $dataArray;
     }

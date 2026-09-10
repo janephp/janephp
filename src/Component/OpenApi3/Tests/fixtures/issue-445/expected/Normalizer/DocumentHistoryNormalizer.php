@@ -97,26 +97,26 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
-            $dataArray['documentId'] = $data->documentId ?? null;
+            $dataArray['documentId'] = $data->documentId;
         }
-        $dataArray['documentVersion'] = $data->documentVersion ?? null;
+        $dataArray['documentVersion'] = $data->documentVersion;
         if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
-            $dataArray['documentType'] = $data->documentType ?? null;
+            $dataArray['documentType'] = $data->documentType;
         }
-        $dataArray['documentDate'] = ($data->documentDate ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['documentDate'] = $data->documentDate->format('Y-m-d\TH:i:sP');
         if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
-            $dataArray['document'] = $data->document ?? null;
+            $dataArray['document'] = $data->document;
         }
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value = $data->audit;
+            if (is_object($data->audit)) {
+                $value = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }
-        $dataArray['deleted'] = $data->deleted ?? null;
-        $dataArray['action'] = $data->action ?? null;
+        $dataArray['deleted'] = $data->deleted;
+        $dataArray['action'] = $data->action;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

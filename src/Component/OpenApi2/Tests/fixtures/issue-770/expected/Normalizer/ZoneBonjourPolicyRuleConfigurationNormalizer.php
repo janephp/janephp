@@ -61,22 +61,22 @@ class ZoneBonjourPolicyRuleConfigurationNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('bridgeService', get_object_vars($data)) && null !== ($data->bridgeService ?? null)) {
-            $dataArray['bridgeService'] = $data->bridgeService ?? null;
+            $dataArray['bridgeService'] = $data->bridgeService;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('fromVlan', get_object_vars($data)) && null !== ($data->fromVlan ?? null)) {
-            $dataArray['fromVlan'] = $data->fromVlan ?? null;
+            $dataArray['fromVlan'] = $data->fromVlan;
         }
         if (array_key_exists('toVlan', get_object_vars($data)) && null !== ($data->toVlan ?? null)) {
-            $dataArray['toVlan'] = $data->toVlan ?? null;
+            $dataArray['toVlan'] = $data->toVlan;
         }
         if (array_key_exists('notes', get_object_vars($data)) && null !== ($data->notes ?? null)) {
-            $dataArray['notes'] = $data->notes ?? null;
+            $dataArray['notes'] = $data->notes;
         }
         return $dataArray;
     }

@@ -46,7 +46,7 @@ class TestComplexListGetResponse200Item0Normalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         return $dataArray;
     }

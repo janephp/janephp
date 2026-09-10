@@ -73,19 +73,19 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['succeeded'] = $data->succeeded ?? null;
-        $dataArray['status'] = $data->status ?? null;
-        $dataArray['version'] = $data->version ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['succeeded'] = $data->succeeded;
+        $dataArray['status'] = $data->status;
+        $dataArray['version'] = $data->version;
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $value = $data->error ?? null;
-            if (is_object($data->error ?? null)) {
-                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
+            $value = $data->error;
+            if (is_object($data->error)) {
+                $value = $data->error === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
             }
             $dataArray['error'] = $value;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
         return $dataArray;
     }

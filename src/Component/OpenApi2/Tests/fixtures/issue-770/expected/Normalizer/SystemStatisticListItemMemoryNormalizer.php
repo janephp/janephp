@@ -61,13 +61,13 @@ class SystemStatisticListItemMemoryNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('percent', get_object_vars($data)) && null !== ($data->percent ?? null)) {
-            $dataArray['percent'] = $data->percent ?? null;
+            $dataArray['percent'] = $data->percent;
         }
         if (array_key_exists('maxPercent', get_object_vars($data)) && null !== ($data->maxPercent ?? null)) {
-            $dataArray['maxPercent'] = $data->maxPercent ?? null;
+            $dataArray['maxPercent'] = $data->maxPercent;
         }
         if (array_key_exists('minPercent', get_object_vars($data)) && null !== ($data->minPercent ?? null)) {
-            $dataArray['minPercent'] = $data->minPercent ?? null;
+            $dataArray['minPercent'] = $data->minPercent;
         }
         return $dataArray;
     }

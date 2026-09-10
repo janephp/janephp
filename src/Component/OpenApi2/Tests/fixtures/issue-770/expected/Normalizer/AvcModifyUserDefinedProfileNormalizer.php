@@ -61,22 +61,22 @@ class AvcModifyUserDefinedProfileNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('destIp', get_object_vars($data)) && null !== ($data->destIp ?? null)) {
-            $dataArray['destIp'] = $data->destIp ?? null;
+            $dataArray['destIp'] = $data->destIp;
         }
         if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
-            $dataArray['netmask'] = $data->netmask ?? null;
+            $dataArray['netmask'] = $data->netmask;
         }
         if (array_key_exists('destPort', get_object_vars($data)) && null !== ($data->destPort ?? null)) {
-            $dataArray['destPort'] = $data->destPort ?? null;
+            $dataArray['destPort'] = $data->destPort;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         return $dataArray;
     }

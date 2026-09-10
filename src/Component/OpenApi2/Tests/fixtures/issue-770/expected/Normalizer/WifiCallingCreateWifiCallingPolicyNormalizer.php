@@ -62,15 +62,15 @@ class WifiCallingCreateWifiCallingPolicyNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['priority'] = $data->priority;
         $values = [];
-        foreach ($data->epdgs ?? null as $value) {
+        foreach ($data->epdgs as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['epdgs'] = $values;

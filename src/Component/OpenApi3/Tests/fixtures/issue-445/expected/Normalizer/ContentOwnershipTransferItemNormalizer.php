@@ -55,8 +55,8 @@ class ContentOwnershipTransferItemNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->transferUserId ?? null;
-        $dataArray['contentId'] = $data->contentId ?? null;
+        $dataArray['transferUserId'] = $data->transferUserId;
+        $dataArray['contentId'] = $data->contentId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

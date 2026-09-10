@@ -54,7 +54,7 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
         $dataArray = [];
         if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->networks ?? null as $key => $value) {
+            foreach ($data->networks as $key => $value) {
                 $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Networks'] = $values;

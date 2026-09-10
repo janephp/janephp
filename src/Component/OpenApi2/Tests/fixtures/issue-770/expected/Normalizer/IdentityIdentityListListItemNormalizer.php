@@ -94,55 +94,55 @@ class IdentityIdentityListListItemNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('userTrafficProfile', get_object_vars($data)) && null !== ($data->userTrafficProfile ?? null)) {
-            $dataArray['userTrafficProfile'] = ($data->userTrafficProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile ?? null, 'json', $context));
+            $dataArray['userTrafficProfile'] = $data->userTrafficProfile === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile, 'json', $context));
         }
         if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
-            $dataArray['firewallProfileId'] = $data->firewallProfileId ?? null;
+            $dataArray['firewallProfileId'] = $data->firewallProfileId;
         }
         if (array_key_exists('maxDevices', get_object_vars($data)) && null !== ($data->maxDevices ?? null)) {
-            $dataArray['maxDevices'] = ($data->maxDevices ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->maxDevices ?? null, 'json', $context));
+            $dataArray['maxDevices'] = $data->maxDevices === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->maxDevices, 'json', $context));
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = ($data->vlanPooling ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling ?? null, 'json', $context));
+            $dataArray['vlanPooling'] = $data->vlanPooling === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
         }
         if (array_key_exists('timeSchedulePolicy', get_object_vars($data)) && null !== ($data->timeSchedulePolicy ?? null)) {
-            $dataArray['timeSchedulePolicy'] = $data->timeSchedulePolicy ?? null;
+            $dataArray['timeSchedulePolicy'] = $data->timeSchedulePolicy;
         }
         if (array_key_exists('timeScheduleList', get_object_vars($data)) && null !== ($data->timeScheduleList ?? null)) {
-            $dataArray['timeScheduleList'] = ($data->timeScheduleList ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->timeScheduleList ?? null, 'json', $context));
+            $dataArray['timeScheduleList'] = $data->timeScheduleList === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->timeScheduleList, 'json', $context));
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         return $dataArray;
     }

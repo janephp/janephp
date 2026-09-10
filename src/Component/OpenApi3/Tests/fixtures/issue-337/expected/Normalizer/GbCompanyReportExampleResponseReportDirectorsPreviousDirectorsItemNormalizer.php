@@ -72,20 +72,20 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
-            $dataArray['gender'] = $data->gender ?? null;
+            $dataArray['gender'] = $data->gender;
         }
         if (array_key_exists('directorType', get_object_vars($data)) && null !== ($data->directorType ?? null)) {
-            $dataArray['directorType'] = $data->directorType ?? null;
+            $dataArray['directorType'] = $data->directorType;
         }
         if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
-            foreach ($data->positions ?? null as $value) {
+            foreach ($data->positions as $value) {
                 $values[] = $value;
             }
             $dataArray['positions'] = $values;

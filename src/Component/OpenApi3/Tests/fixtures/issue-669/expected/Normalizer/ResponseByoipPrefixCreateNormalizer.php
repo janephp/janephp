@@ -60,13 +60,13 @@ class ResponseByoipPrefixCreateNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

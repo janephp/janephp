@@ -65,20 +65,20 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainId'] = $data->domainId ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['domainId'] = $data->domainId;
+        $dataArray['name'] = $data->name;
         $values = [];
-        foreach ($data->dpInfoList ?? null as $value) {
+        foreach ($data->dpInfoList as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['dpInfoList'] = $values;
         $values_1 = [];
-        foreach ($data->apGroupInfoList ?? null as $value_1) {
+        foreach ($data->apGroupInfoList as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['apGroupInfoList'] = $values_1;
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = ($data->networkSegmentationSwitchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo ?? null, 'json', $context));
+            $dataArray['networkSegmentationSwitchInfo'] = $data->networkSegmentationSwitchInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
         }
         return $dataArray;
     }

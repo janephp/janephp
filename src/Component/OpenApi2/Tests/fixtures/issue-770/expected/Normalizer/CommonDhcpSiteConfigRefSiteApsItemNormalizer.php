@@ -73,28 +73,28 @@ class CommonDhcpSiteConfigRefSiteApsItemNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
-            $dataArray['apName'] = $data->apName ?? null;
+            $dataArray['apName'] = $data->apName;
         }
         if (array_key_exists('apStatus', get_object_vars($data)) && null !== ($data->apStatus ?? null)) {
-            $dataArray['apStatus'] = $data->apStatus ?? null;
+            $dataArray['apStatus'] = $data->apStatus;
         }
         if (array_key_exists('apServerEnabled', get_object_vars($data)) && null !== ($data->apServerEnabled ?? null)) {
-            $dataArray['apServerEnabled'] = $data->apServerEnabled ?? null;
+            $dataArray['apServerEnabled'] = $data->apServerEnabled;
         }
         if (array_key_exists('apServerPrimary', get_object_vars($data)) && null !== ($data->apServerPrimary ?? null)) {
-            $dataArray['apServerPrimary'] = $data->apServerPrimary ?? null;
+            $dataArray['apServerPrimary'] = $data->apServerPrimary;
         }
         if (array_key_exists('apServerIp', get_object_vars($data)) && null !== ($data->apServerIp ?? null)) {
-            $dataArray['apServerIp'] = $data->apServerIp ?? null;
+            $dataArray['apServerIp'] = $data->apServerIp;
         }
         if (array_key_exists('apGatewayIp', get_object_vars($data)) && null !== ($data->apGatewayIp ?? null)) {
-            $dataArray['apGatewayIp'] = $data->apGatewayIp ?? null;
+            $dataArray['apGatewayIp'] = $data->apGatewayIp;
         }
         if (array_key_exists('apServerType', get_object_vars($data)) && null !== ($data->apServerType ?? null)) {
-            $dataArray['apServerType'] = $data->apServerType ?? null;
+            $dataArray['apServerType'] = $data->apServerType;
         }
         return $dataArray;
     }

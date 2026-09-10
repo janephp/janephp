@@ -61,12 +61,12 @@ class DocumentHistoryDifferenceNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
-            $dataArray['documentId'] = $data->documentId ?? null;
+            $dataArray['documentId'] = $data->documentId;
         }
-        $dataArray['oldDocumentVersion'] = $data->oldDocumentVersion ?? null;
-        $dataArray['newDocumentVersion'] = $data->newDocumentVersion ?? null;
+        $dataArray['oldDocumentVersion'] = $data->oldDocumentVersion;
+        $dataArray['newDocumentVersion'] = $data->newDocumentVersion;
         if (array_key_exists('patch', get_object_vars($data)) && null !== ($data->patch ?? null)) {
-            $dataArray['patch'] = $data->patch ?? null;
+            $dataArray['patch'] = $data->patch;
         }
         return $dataArray;
     }

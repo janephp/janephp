@@ -56,10 +56,10 @@ class ApiRollbackToAgentVersionInputPublicNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
-            $dataArray['version_hash'] = $data->versionHash ?? null;
+            $dataArray['version_hash'] = $data->versionHash;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

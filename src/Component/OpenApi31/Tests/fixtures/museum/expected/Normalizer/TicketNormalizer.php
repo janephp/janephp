@@ -71,12 +71,12 @@ class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('ticketId', get_object_vars($data)) && null !== ($data->ticketId ?? null)) {
-            $dataArray['ticketId'] = $data->ticketId ?? null;
+            $dataArray['ticketId'] = $data->ticketId;
         }
-        $dataArray['ticketDate'] = ($data->ticketDate ?? null)->format('Y-m-d');
-        $dataArray['ticketType'] = $data->ticketType ?? null;
+        $dataArray['ticketDate'] = $data->ticketDate->format('Y-m-d');
+        $dataArray['ticketType'] = $data->ticketType;
         if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
-            $dataArray['eventId'] = $data->eventId ?? null;
+            $dataArray['eventId'] = $data->eventId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

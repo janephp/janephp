@@ -64,14 +64,14 @@ class SciModifySciProfileNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['sciProfile'] = $data->sciProfile ?? null;
-        $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
-        $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
-        $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
-        $dataArray['sciUser'] = $data->sciUser ?? null;
-        $dataArray['sciPassword'] = $data->sciPassword ?? null;
+        $dataArray['sciProfile'] = $data->sciProfile;
+        $dataArray['sciSystemId'] = $data->sciSystemId;
+        $dataArray['sciServerHost'] = $data->sciServerHost;
+        $dataArray['sciServerPort'] = $data->sciServerPort;
+        $dataArray['sciUser'] = $data->sciUser;
+        $dataArray['sciPassword'] = $data->sciPassword;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

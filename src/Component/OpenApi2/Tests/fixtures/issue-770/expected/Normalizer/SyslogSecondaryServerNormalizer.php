@@ -55,16 +55,16 @@ class SyslogSecondaryServerNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('host', get_object_vars($data)) && null !== ($data->host ?? null)) {
-            $dataArray['host'] = $data->host ?? null;
+            $dataArray['host'] = $data->host;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('redundancyMode', get_object_vars($data)) && null !== ($data->redundancyMode ?? null)) {
-            $dataArray['redundancyMode'] = $data->redundancyMode ?? null;
+            $dataArray['redundancyMode'] = $data->redundancyMode;
         }
         return $dataArray;
     }

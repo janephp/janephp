@@ -52,7 +52,7 @@ class VolumeSnapshotIdNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('snapshotId', get_object_vars($data)) && null !== ($data->snapshotId ?? null)) {
-            $dataArray['snapshot_id'] = $data->snapshotId ?? null;
+            $dataArray['snapshot_id'] = $data->snapshotId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

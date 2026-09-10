@@ -54,15 +54,15 @@ class ProfileProviderEAPAuthSettingNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['info'] = $data->info ?? null;
+        $dataArray['info'] = $data->info;
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('vendorId', get_object_vars($data)) && null !== ($data->vendorId ?? null)) {
-            $dataArray['vendorId'] = $data->vendorId ?? null;
+            $dataArray['vendorId'] = $data->vendorId;
         }
         if (array_key_exists('vendorType', get_object_vars($data)) && null !== ($data->vendorType ?? null)) {
-            $dataArray['vendorType'] = $data->vendorType ?? null;
+            $dataArray['vendorType'] = $data->vendorType;
         }
         return $dataArray;
     }

@@ -63,15 +63,15 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('personalReference', get_object_vars($data)) && null !== ($data->personalReference ?? null)) {
-            $dataArray['personalReference'] = $data->personalReference ?? null;
+            $dataArray['personalReference'] = $data->personalReference;
         }
         if (array_key_exists('freeText', get_object_vars($data)) && null !== ($data->freeText ?? null)) {
-            $dataArray['freeText'] = $data->freeText ?? null;
+            $dataArray['freeText'] = $data->freeText;
         }
         if (array_key_exists('personalLimit', get_object_vars($data)) && null !== ($data->personalLimit ?? null)) {
-            $dataArray['personalLimit'] = $data->personalLimit ?? null;
+            $dataArray['personalLimit'] = $data->personalLimit;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

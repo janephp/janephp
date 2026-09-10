@@ -60,13 +60,13 @@ class UpdateEndpointNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
-            $dataArray['ttl'] = $data->ttl ?? null;
+            $dataArray['ttl'] = $data->ttl;
         }
         if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
-            $dataArray['certificate_id'] = $data->certificateId ?? null;
+            $dataArray['certificate_id'] = $data->certificateId;
         }
         if (array_key_exists('customDomain', get_object_vars($data)) && null !== ($data->customDomain ?? null)) {
-            $dataArray['custom_domain'] = $data->customDomain ?? null;
+            $dataArray['custom_domain'] = $data->customDomain;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

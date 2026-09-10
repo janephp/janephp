@@ -65,14 +65,14 @@ class ClusterRegistriesNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('clusterUuids', get_object_vars($data)) && null !== ($data->clusterUuids ?? null)) {
             $values = [];
-            foreach ($data->clusterUuids ?? null as $value) {
+            foreach ($data->clusterUuids as $value) {
                 $values[] = $value;
             }
             $dataArray['cluster_uuids'] = $values;
         }
         if (array_key_exists('registries', get_object_vars($data)) && null !== ($data->registries ?? null)) {
             $values_1 = [];
-            foreach ($data->registries ?? null as $value_1) {
+            foreach ($data->registries as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['registries'] = $values_1;

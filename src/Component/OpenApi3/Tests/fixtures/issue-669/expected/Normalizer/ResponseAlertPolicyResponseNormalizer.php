@@ -52,7 +52,7 @@ class ResponseAlertPolicyResponseNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('policy', get_object_vars($data)) && null !== ($data->policy ?? null)) {
-            $dataArray['policy'] = ($data->policy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->policy ?? null, 'json', $context));
+            $dataArray['policy'] = $data->policy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->policy, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

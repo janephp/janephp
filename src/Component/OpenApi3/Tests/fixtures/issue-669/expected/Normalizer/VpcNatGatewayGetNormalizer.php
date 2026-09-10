@@ -112,47 +112,47 @@ class VpcNatGatewayGetNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('vpcs', get_object_vars($data)) && null !== ($data->vpcs ?? null)) {
             $values = [];
-            foreach ($data->vpcs ?? null as $value) {
+            foreach ($data->vpcs as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vpcs'] = $values;
         }
         if (array_key_exists('egresses', get_object_vars($data)) && null !== ($data->egresses ?? null)) {
-            $dataArray['egresses'] = ($data->egresses ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egresses ?? null, 'json', $context));
+            $dataArray['egresses'] = $data->egresses === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egresses, 'json', $context));
         }
         if (array_key_exists('udpTimeoutSeconds', get_object_vars($data)) && null !== ($data->udpTimeoutSeconds ?? null)) {
-            $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds ?? null;
+            $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds;
         }
         if (array_key_exists('icmpTimeoutSeconds', get_object_vars($data)) && null !== ($data->icmpTimeoutSeconds ?? null)) {
-            $dataArray['icmp_timeout_seconds'] = $data->icmpTimeoutSeconds ?? null;
+            $dataArray['icmp_timeout_seconds'] = $data->icmpTimeoutSeconds;
         }
         if (array_key_exists('tcpTimeoutSeconds', get_object_vars($data)) && null !== ($data->tcpTimeoutSeconds ?? null)) {
-            $dataArray['tcp_timeout_seconds'] = $data->tcpTimeoutSeconds ?? null;
+            $dataArray['tcp_timeout_seconds'] = $data->tcpTimeoutSeconds;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

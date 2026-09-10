@@ -58,16 +58,16 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['File'] = ($data->file ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file ?? null, 'json', $context));
+            $dataArray['File'] = $data->file === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file, 'json', $context));
         }
         if (array_key_exists('runtime', get_object_vars($data)) && null !== ($data->runtime ?? null)) {
-            $dataArray['Runtime'] = $data->runtime ?? null;
+            $dataArray['Runtime'] = $data->runtime;
         }
         if (array_key_exists('configID', get_object_vars($data)) && null !== ($data->configID ?? null)) {
-            $dataArray['ConfigID'] = $data->configID ?? null;
+            $dataArray['ConfigID'] = $data->configID;
         }
         if (array_key_exists('configName', get_object_vars($data)) && null !== ($data->configName ?? null)) {
-            $dataArray['ConfigName'] = $data->configName ?? null;
+            $dataArray['ConfigName'] = $data->configName;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemConstraint());

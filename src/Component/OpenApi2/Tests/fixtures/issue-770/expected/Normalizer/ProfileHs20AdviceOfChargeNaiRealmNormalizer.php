@@ -54,12 +54,12 @@ class ProfileHs20AdviceOfChargeNaiRealmNormalizer implements DenormalizerInterfa
         $dataArray = [];
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $values = [];
-            foreach ($data->names ?? null as $value) {
+            foreach ($data->names as $value) {
                 $values[] = $value;
             }
             $dataArray['names'] = $values;
         }
-        $dataArray['encoding'] = $data->encoding ?? null;
+        $dataArray['encoding'] = $data->encoding;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

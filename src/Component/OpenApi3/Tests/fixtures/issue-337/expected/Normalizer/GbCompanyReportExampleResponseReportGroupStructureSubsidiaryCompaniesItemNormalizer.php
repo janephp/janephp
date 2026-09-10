@@ -76,25 +76,25 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
     {
         $dataArray = [];
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
-            $dataArray['safeNumber'] = $data->safeNumber ?? null;
+            $dataArray['safeNumber'] = $data->safeNumber;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('registrationNumber', get_object_vars($data)) && null !== ($data->registrationNumber ?? null)) {
-            $dataArray['registrationNumber'] = $data->registrationNumber ?? null;
+            $dataArray['registrationNumber'] = $data->registrationNumber;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

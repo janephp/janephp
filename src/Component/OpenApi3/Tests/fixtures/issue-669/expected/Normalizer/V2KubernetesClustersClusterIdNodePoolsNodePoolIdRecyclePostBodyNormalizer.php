@@ -57,7 +57,7 @@ class V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBodyNormalizer 
         $dataArray = [];
         if (array_key_exists('nodes', get_object_vars($data)) && null !== ($data->nodes ?? null)) {
             $values = [];
-            foreach ($data->nodes ?? null as $value) {
+            foreach ($data->nodes as $value) {
                 $values[] = $value;
             }
             $dataArray['nodes'] = $values;

@@ -49,10 +49,10 @@ class CommonSmartMonitorNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('intervalInSec', get_object_vars($data)) && null !== ($data->intervalInSec ?? null)) {
-            $dataArray['intervalInSec'] = $data->intervalInSec ?? null;
+            $dataArray['intervalInSec'] = $data->intervalInSec;
         }
         if (array_key_exists('retryThreshold', get_object_vars($data)) && null !== ($data->retryThreshold ?? null)) {
-            $dataArray['retryThreshold'] = $data->retryThreshold ?? null;
+            $dataArray['retryThreshold'] = $data->retryThreshold;
         }
         return $dataArray;
     }

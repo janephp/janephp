@@ -65,23 +65,23 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('listenAddr', get_object_vars($data)) && null !== ($data->listenAddr ?? null)) {
-            $dataArray['ListenAddr'] = $data->listenAddr ?? null;
+            $dataArray['ListenAddr'] = $data->listenAddr;
         }
         if (array_key_exists('advertiseAddr', get_object_vars($data)) && null !== ($data->advertiseAddr ?? null)) {
-            $dataArray['AdvertiseAddr'] = $data->advertiseAddr ?? null;
+            $dataArray['AdvertiseAddr'] = $data->advertiseAddr;
         }
         if (array_key_exists('dataPathAddr', get_object_vars($data)) && null !== ($data->dataPathAddr ?? null)) {
-            $dataArray['DataPathAddr'] = $data->dataPathAddr ?? null;
+            $dataArray['DataPathAddr'] = $data->dataPathAddr;
         }
         if (array_key_exists('remoteAddrs', get_object_vars($data)) && null !== ($data->remoteAddrs ?? null)) {
             $values = [];
-            foreach ($data->remoteAddrs ?? null as $value) {
+            foreach ($data->remoteAddrs as $value) {
                 $values[] = $value;
             }
             $dataArray['RemoteAddrs'] = $values;
         }
         if (array_key_exists('joinToken', get_object_vars($data)) && null !== ($data->joinToken ?? null)) {
-            $dataArray['JoinToken'] = $data->joinToken ?? null;
+            $dataArray['JoinToken'] = $data->joinToken;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmJoinPostBodyConstraint());

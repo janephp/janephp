@@ -49,10 +49,10 @@ class ZoneTimezoneSettingNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('systemTimezone', get_object_vars($data)) && null !== ($data->systemTimezone ?? null)) {
-            $dataArray['systemTimezone'] = $data->systemTimezone ?? null;
+            $dataArray['systemTimezone'] = $data->systemTimezone;
         }
         if (array_key_exists('customizedTimezone', get_object_vars($data)) && null !== ($data->customizedTimezone ?? null)) {
-            $dataArray['customizedTimezone'] = ($data->customizedTimezone ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->customizedTimezone ?? null, 'json', $context));
+            $dataArray['customizedTimezone'] = $data->customizedTimezone === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->customizedTimezone, 'json', $context));
         }
         return $dataArray;
     }

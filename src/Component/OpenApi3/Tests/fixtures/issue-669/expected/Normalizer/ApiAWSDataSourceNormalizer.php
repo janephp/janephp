@@ -68,19 +68,19 @@ class ApiAWSDataSourceNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
-            $dataArray['bucket_name'] = $data->bucketName ?? null;
+            $dataArray['bucket_name'] = $data->bucketName;
         }
         if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
-            $dataArray['item_path'] = $data->itemPath ?? null;
+            $dataArray['item_path'] = $data->itemPath;
         }
         if (array_key_exists('keyId', get_object_vars($data)) && null !== ($data->keyId ?? null)) {
-            $dataArray['key_id'] = $data->keyId ?? null;
+            $dataArray['key_id'] = $data->keyId;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('secretKey', get_object_vars($data)) && null !== ($data->secretKey ?? null)) {
-            $dataArray['secret_key'] = $data->secretKey ?? null;
+            $dataArray['secret_key'] = $data->secretKey;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

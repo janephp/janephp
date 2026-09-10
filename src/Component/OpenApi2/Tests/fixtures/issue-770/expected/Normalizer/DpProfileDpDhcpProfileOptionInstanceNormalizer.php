@@ -49,10 +49,10 @@ class DpProfileDpDhcpProfileOptionInstanceNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('functionName', get_object_vars($data)) && null !== ($data->functionName ?? null)) {
-            $dataArray['functionName'] = $data->functionName ?? null;
+            $dataArray['functionName'] = $data->functionName;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         return $dataArray;
     }

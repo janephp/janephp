@@ -128,36 +128,36 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingExceptionNor
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
-            $dataArray['customerId'] = $data->customerId ?? null;
+            $dataArray['customerId'] = $data->customerId;
         }
         if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
-            $dataArray['customerAlias'] = $data->customerAlias ?? null;
+            $dataArray['customerAlias'] = $data->customerAlias;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('identityProviderIds', get_object_vars($data)) && null !== ($data->identityProviderIds ?? null)) {
             $values = [];
-            foreach ($data->identityProviderIds ?? null as $value) {
+            foreach ($data->identityProviderIds as $value) {
                 $values[] = $value;
             }
             $dataArray['identityProviderIds'] = $values;

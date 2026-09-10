@@ -80,28 +80,28 @@ class NamespaceInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('apiHost', get_object_vars($data)) && null !== ($data->apiHost ?? null)) {
-            $dataArray['api_host'] = $data->apiHost ?? null;
+            $dataArray['api_host'] = $data->apiHost;
         }
         if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
-            $dataArray['namespace'] = $data->namespace ?? null;
+            $dataArray['namespace'] = $data->namespace;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = $data->createdAt ?? null;
+            $dataArray['created_at'] = $data->createdAt;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = $data->updatedAt ?? null;
+            $dataArray['updated_at'] = $data->updatedAt;
         }
         if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
-            $dataArray['label'] = $data->label ?? null;
+            $dataArray['label'] = $data->label;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

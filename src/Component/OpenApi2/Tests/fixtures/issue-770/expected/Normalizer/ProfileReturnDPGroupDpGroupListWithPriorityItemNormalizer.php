@@ -52,10 +52,10 @@ class ProfileReturnDPGroupDpGroupListWithPriorityItemNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('dpId', get_object_vars($data)) && null !== ($data->dpId ?? null)) {
-            $dataArray['dpId'] = $data->dpId ?? null;
+            $dataArray['dpId'] = $data->dpId;
         }
         return $dataArray;
     }

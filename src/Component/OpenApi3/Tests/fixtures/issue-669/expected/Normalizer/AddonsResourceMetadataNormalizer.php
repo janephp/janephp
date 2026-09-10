@@ -61,12 +61,12 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $value = $data->value ?? null;
-        if (is_string($data->value ?? null)) {
-            $value = $data->value ?? null;
-        } elseif (is_bool($data->value ?? null)) {
-            $value = $data->value ?? null;
+        $dataArray['name'] = $data->name;
+        $value = $data->value;
+        if (is_string($data->value)) {
+            $value = $data->value;
+        } elseif (is_bool($data->value)) {
+            $value = $data->value;
         }
         $dataArray['value'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

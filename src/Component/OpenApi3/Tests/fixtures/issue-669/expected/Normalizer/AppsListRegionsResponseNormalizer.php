@@ -57,7 +57,7 @@ class AppsListRegionsResponseNormalizer implements DenormalizerInterface, Normal
         $dataArray = [];
         if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->regions ?? null as $value) {
+            foreach ($data->regions as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['regions'] = $values;

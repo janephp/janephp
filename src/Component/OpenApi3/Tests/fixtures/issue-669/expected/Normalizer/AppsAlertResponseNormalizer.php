@@ -52,7 +52,7 @@ class AppsAlertResponseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('alert', get_object_vars($data)) && null !== ($data->alert ?? null)) {
-            $dataArray['alert'] = ($data->alert ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alert ?? null, 'json', $context));
+            $dataArray['alert'] = $data->alert === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alert, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -60,11 +60,11 @@ class ApiCreateDataSourceFileUploadPresignedUrlsOutputNormalizer implements Deno
     {
         $dataArray = [];
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['request_id'] = $data->requestId ?? null;
+            $dataArray['request_id'] = $data->requestId;
         }
         if (array_key_exists('uploads', get_object_vars($data)) && null !== ($data->uploads ?? null)) {
             $values = [];
-            foreach ($data->uploads ?? null as $value) {
+            foreach ($data->uploads as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['uploads'] = $values;

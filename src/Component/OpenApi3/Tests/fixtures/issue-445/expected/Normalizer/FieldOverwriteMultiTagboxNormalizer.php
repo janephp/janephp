@@ -138,38 +138,38 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['required'] = $data->required ?? null;
-        $dataArray['overwriteRequired'] = $data->overwriteRequired ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['required'] = $data->required;
+        $dataArray['overwriteRequired'] = $data->overwriteRequired;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
         if (array_key_exists('overwriteFilter', get_object_vars($data)) && null !== ($data->overwriteFilter ?? null)) {
-            $dataArray['overwriteFilter'] = $data->overwriteFilter ?? null;
+            $dataArray['overwriteFilter'] = $data->overwriteFilter;
         }
         if (array_key_exists('listItemCreateTemplate', get_object_vars($data)) && null !== ($data->listItemCreateTemplate ?? null)) {
-            $dataArray['listItemCreateTemplate'] = $data->listItemCreateTemplate ?? null;
+            $dataArray['listItemCreateTemplate'] = $data->listItemCreateTemplate;
         }
         if (array_key_exists('overwriteListItemCreateTemplate', get_object_vars($data)) && null !== ($data->overwriteListItemCreateTemplate ?? null)) {
-            $dataArray['overwriteListItemCreateTemplate'] = $data->overwriteListItemCreateTemplate ?? null;
+            $dataArray['overwriteListItemCreateTemplate'] = $data->overwriteListItemCreateTemplate;
         }
         if (array_key_exists('maximumItems', get_object_vars($data)) && null !== ($data->maximumItems ?? null)) {
-            $dataArray['maximumItems'] = $data->maximumItems ?? null;
+            $dataArray['maximumItems'] = $data->maximumItems;
         }
         if (array_key_exists('overwriteMaximumItems', get_object_vars($data)) && null !== ($data->overwriteMaximumItems ?? null)) {
-            $dataArray['overwriteMaximumItems'] = $data->overwriteMaximumItems ?? null;
+            $dataArray['overwriteMaximumItems'] = $data->overwriteMaximumItems;
         }
         if (array_key_exists('minimumItems', get_object_vars($data)) && null !== ($data->minimumItems ?? null)) {
-            $dataArray['minimumItems'] = $data->minimumItems ?? null;
+            $dataArray['minimumItems'] = $data->minimumItems;
         }
         if (array_key_exists('overwriteMinimumItems', get_object_vars($data)) && null !== ($data->overwriteMinimumItems ?? null)) {
-            $dataArray['overwriteMinimumItems'] = $data->overwriteMinimumItems ?? null;
+            $dataArray['overwriteMinimumItems'] = $data->overwriteMinimumItems;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

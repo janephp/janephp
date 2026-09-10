@@ -52,7 +52,7 @@ class ResponseNewCertificateNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
-            $dataArray['certificate'] = ($data->certificate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->certificate ?? null, 'json', $context));
+            $dataArray['certificate'] = $data->certificate === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

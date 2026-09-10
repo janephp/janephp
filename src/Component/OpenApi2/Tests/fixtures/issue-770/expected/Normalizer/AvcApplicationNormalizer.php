@@ -52,13 +52,13 @@ class AvcApplicationNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('catId', get_object_vars($data)) && null !== ($data->catId ?? null)) {
-            $dataArray['catId'] = $data->catId ?? null;
+            $dataArray['catId'] = $data->catId;
         }
         if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
-            $dataArray['appId'] = $data->appId ?? null;
+            $dataArray['appId'] = $data->appId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         return $dataArray;
     }

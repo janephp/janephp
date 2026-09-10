@@ -62,12 +62,12 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['state'] = $data->state ?? null;
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['state'] = $data->state;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $value = $data->error ?? null;
-            if (is_object($data->error ?? null)) {
-                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
+            $value = $data->error;
+            if (is_object($data->error)) {
+                $value = $data->error === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

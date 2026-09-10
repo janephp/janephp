@@ -97,48 +97,48 @@ class ScguserCreateScgUserNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['newPassphrase'] = $data->newPassphrase ?? null;
-        $dataArray['userName'] = $data->userName ?? null;
+        $dataArray['newPassphrase'] = $data->newPassphrase;
+        $dataArray['userName'] = $data->userName;
         if (array_key_exists('realName', get_object_vars($data)) && null !== ($data->realName ?? null)) {
-            $dataArray['realName'] = $data->realName ?? null;
+            $dataArray['realName'] = $data->realName;
         }
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
         if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
-            $dataArray['phone'] = $data->phone ?? null;
+            $dataArray['phone'] = $data->phone;
         }
         if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
-            $dataArray['email'] = $data->email ?? null;
+            $dataArray['email'] = $data->email;
         }
         if (array_key_exists('accountLockout', get_object_vars($data)) && null !== ($data->accountLockout ?? null)) {
-            $dataArray['accountLockout'] = $data->accountLockout ?? null;
+            $dataArray['accountLockout'] = $data->accountLockout;
         }
         if (array_key_exists('lockoutDuration', get_object_vars($data)) && null !== ($data->lockoutDuration ?? null)) {
-            $dataArray['lockoutDuration'] = $data->lockoutDuration ?? null;
+            $dataArray['lockoutDuration'] = $data->lockoutDuration;
         }
         if (array_key_exists('passwordExpiration', get_object_vars($data)) && null !== ($data->passwordExpiration ?? null)) {
-            $dataArray['passwordExpiration'] = $data->passwordExpiration ?? null;
+            $dataArray['passwordExpiration'] = $data->passwordExpiration;
         }
         if (array_key_exists('passwordReuse', get_object_vars($data)) && null !== ($data->passwordReuse ?? null)) {
-            $dataArray['passwordReuse'] = $data->passwordReuse ?? null;
+            $dataArray['passwordReuse'] = $data->passwordReuse;
         }
         if (array_key_exists('sessionIdle', get_object_vars($data)) && null !== ($data->sessionIdle ?? null)) {
-            $dataArray['sessionIdle'] = $data->sessionIdle ?? null;
+            $dataArray['sessionIdle'] = $data->sessionIdle;
         }
         if (array_key_exists('minimumPasswordLength', get_object_vars($data)) && null !== ($data->minimumPasswordLength ?? null)) {
-            $dataArray['minimumPasswordLength'] = $data->minimumPasswordLength ?? null;
+            $dataArray['minimumPasswordLength'] = $data->minimumPasswordLength;
         }
         if (array_key_exists('passwordComplexityEnabled', get_object_vars($data)) && null !== ($data->passwordComplexityEnabled ?? null)) {
-            $dataArray['passwordComplexityEnabled'] = $data->passwordComplexityEnabled ?? null;
+            $dataArray['passwordComplexityEnabled'] = $data->passwordComplexityEnabled;
         }
         if (array_key_exists('minimumPasswordLifetimeEnabled', get_object_vars($data)) && null !== ($data->minimumPasswordLifetimeEnabled ?? null)) {
-            $dataArray['minimumPasswordLifetimeEnabled'] = $data->minimumPasswordLifetimeEnabled ?? null;
+            $dataArray['minimumPasswordLifetimeEnabled'] = $data->minimumPasswordLifetimeEnabled;
         }
         return $dataArray;
     }

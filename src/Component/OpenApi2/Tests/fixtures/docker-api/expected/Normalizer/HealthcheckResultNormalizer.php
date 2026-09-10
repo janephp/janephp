@@ -62,16 +62,16 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['Start'] = ($data->start ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['Start'] = $data->start->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['End'] = $data->end ?? null;
+            $dataArray['End'] = $data->end;
         }
         if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
-            $dataArray['ExitCode'] = $data->exitCode ?? null;
+            $dataArray['ExitCode'] = $data->exitCode;
         }
         if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
-            $dataArray['Output'] = $data->output ?? null;
+            $dataArray['Output'] = $data->output;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\HealthcheckResultConstraint());

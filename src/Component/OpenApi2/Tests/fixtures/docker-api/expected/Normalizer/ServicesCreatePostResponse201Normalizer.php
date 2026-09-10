@@ -52,10 +52,10 @@ class ServicesCreatePostResponse201Normalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
-            $dataArray['ID'] = $data->iD ?? null;
+            $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('warning', get_object_vars($data)) && null !== ($data->warning ?? null)) {
-            $dataArray['Warning'] = $data->warning ?? null;
+            $dataArray['Warning'] = $data->warning;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServicesCreatePostResponse201Constraint());

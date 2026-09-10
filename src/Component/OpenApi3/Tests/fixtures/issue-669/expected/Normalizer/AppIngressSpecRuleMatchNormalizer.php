@@ -56,10 +56,10 @@ class AppIngressSpecRuleMatchNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = ($data->path ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->path ?? null, 'json', $context));
+            $dataArray['path'] = $data->path === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->path, 'json', $context));
         }
         if (array_key_exists('authority', get_object_vars($data)) && null !== ($data->authority ?? null)) {
-            $dataArray['authority'] = ($data->authority ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->authority ?? null, 'json', $context));
+            $dataArray['authority'] = $data->authority === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->authority, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

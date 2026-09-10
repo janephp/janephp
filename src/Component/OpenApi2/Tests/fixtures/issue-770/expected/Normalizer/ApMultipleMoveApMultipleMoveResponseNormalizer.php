@@ -49,10 +49,10 @@ class ApMultipleMoveApMultipleMoveResponseNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('successApCount', get_object_vars($data)) && null !== ($data->successApCount ?? null)) {
-            $dataArray['successApCount'] = $data->successApCount ?? null;
+            $dataArray['successApCount'] = $data->successApCount;
         }
         if (array_key_exists('failAps', get_object_vars($data)) && null !== ($data->failAps ?? null)) {
-            $dataArray['failAps'] = ($data->failAps ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->failAps ?? null, 'json', $context));
+            $dataArray['failAps'] = $data->failAps === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->failAps, 'json', $context));
         }
         return $dataArray;
     }

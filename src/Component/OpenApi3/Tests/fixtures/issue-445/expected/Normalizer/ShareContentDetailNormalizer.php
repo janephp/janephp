@@ -106,48 +106,48 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        $dataArray['contentSchemaId'] = $data->contentSchemaId;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->layerSchemaIds ?? null as $value) {
+            foreach ($data->layerSchemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
         $values_1 = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->content ?? null as $key => $value_1) {
+        foreach ($data->content as $key => $value_1) {
             $values_1[$key] = $value_1;
         }
         $dataArray['content'] = $values_1;
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->metadata ?? null as $key_1 => $value_2) {
+            foreach ($data->metadata as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $dataArray['metadata'] = $values_2;
         }
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         $values_3 = [];
-        foreach ($data->outputs ?? null as $value_3) {
+        foreach ($data->outputs as $value_3) {
             $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['outputs'] = $values_3;
-        $value_4 = $data->contentType ?? null;
-        if (is_string($data->contentType ?? null)) {
-            $value_4 = $data->contentType ?? null;
+        $value_4 = $data->contentType;
+        if (is_string($data->contentType)) {
+            $value_4 = $data->contentType;
         }
         $dataArray['contentType'] = $value_4;
-        $value_5 = $data->displayValues ?? null;
-        if (is_object($data->displayValues ?? null)) {
+        $value_5 = $data->displayValues;
+        if (is_object($data->displayValues)) {
             $values_4 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->displayValues ?? null as $key_2 => $value_6) {
+            foreach ($data->displayValues as $key_2 => $value_6) {
                 $values_4[$key_2] = $value_6;
             }
             $value_5 = $values_4;
         }
         $dataArray['displayValues'] = $value_5;
         if (array_key_exists('iconUrl', get_object_vars($data)) && null !== ($data->iconUrl ?? null)) {
-            $dataArray['iconUrl'] = $data->iconUrl ?? null;
+            $dataArray['iconUrl'] = $data->iconUrl;
         }
         return $dataArray;
     }

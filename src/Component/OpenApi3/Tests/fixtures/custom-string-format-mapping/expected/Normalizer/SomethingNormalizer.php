@@ -55,8 +55,8 @@ class SomethingNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['uuid'] = $this->normalizer->normalize($data->uuid ?? null, 'json', $context);
+        $dataArray['id'] = $data->id;
+        $dataArray['uuid'] = $this->normalizer->normalize($data->uuid, 'json', $context);
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

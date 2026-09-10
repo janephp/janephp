@@ -82,30 +82,30 @@ class ProfileCreateSoftGREProfileNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
-            $dataArray['ipMode'] = $data->ipMode ?? null;
+            $dataArray['ipMode'] = $data->ipMode;
         }
-        $dataArray['primaryGateway'] = $data->primaryGateway ?? null;
+        $dataArray['primaryGateway'] = $data->primaryGateway;
         if (array_key_exists('secondaryGateway', get_object_vars($data)) && null !== ($data->secondaryGateway ?? null)) {
-            $dataArray['secondaryGateway'] = $data->secondaryGateway ?? null;
+            $dataArray['secondaryGateway'] = $data->secondaryGateway;
         }
-        $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled ?? null;
+        $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled;
         if (array_key_exists('tunnelMtuSize', get_object_vars($data)) && null !== ($data->tunnelMtuSize ?? null)) {
-            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize ?? null;
+            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize;
         }
-        $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
-        $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
+        $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod;
+        $dataArray['keepAliveRetry'] = $data->keepAliveRetry;
         if (array_key_exists('forceDisassociateClient', get_object_vars($data)) && null !== ($data->forceDisassociateClient ?? null)) {
-            $dataArray['forceDisassociateClient'] = $data->forceDisassociateClient ?? null;
+            $dataArray['forceDisassociateClient'] = $data->forceDisassociateClient;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

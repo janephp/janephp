@@ -75,16 +75,16 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         $values = [];
-        foreach ($data->options ?? null as $value) {
+        foreach ($data->options as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['options'] = $values;
-        $dataArray['voting_status'] = $data->votingStatus ?? null;
-        $dataArray['end_datetime'] = ($data->endDatetime ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['voting_status'] = $data->votingStatus;
+        $dataArray['end_datetime'] = $data->endDatetime->format('Y-m-d\TH:i:sP');
         if (array_key_exists('durationMinutes', get_object_vars($data)) && null !== ($data->durationMinutes ?? null)) {
-            $dataArray['duration_minutes'] = $data->durationMinutes ?? null;
+            $dataArray['duration_minutes'] = $data->durationMinutes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -69,19 +69,19 @@ class CertificateCreateCSRNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['commonName'] = $data->commonName ?? null;
-        $dataArray['email'] = $data->email ?? null;
-        $dataArray['organization'] = $data->organization ?? null;
+        $dataArray['commonName'] = $data->commonName;
+        $dataArray['email'] = $data->email;
+        $dataArray['organization'] = $data->organization;
         if (array_key_exists('organizationUnit', get_object_vars($data)) && null !== ($data->organizationUnit ?? null)) {
-            $dataArray['organizationUnit'] = $data->organizationUnit ?? null;
+            $dataArray['organizationUnit'] = $data->organizationUnit;
         }
-        $dataArray['city'] = $data->city ?? null;
-        $dataArray['state'] = $data->state ?? null;
-        $dataArray['countryCode'] = $data->countryCode ?? null;
+        $dataArray['city'] = $data->city;
+        $dataArray['state'] = $data->state;
+        $dataArray['countryCode'] = $data->countryCode;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

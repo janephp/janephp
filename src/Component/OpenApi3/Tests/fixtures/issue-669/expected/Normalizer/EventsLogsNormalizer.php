@@ -64,16 +64,16 @@ class EventsLogsNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['cluster_name'] = $data->clusterName ?? null;
+            $dataArray['cluster_name'] = $data->clusterName;
         }
         if (array_key_exists('eventType', get_object_vars($data)) && null !== ($data->eventType ?? null)) {
-            $dataArray['event_type'] = $data->eventType ?? null;
+            $dataArray['event_type'] = $data->eventType;
         }
         if (array_key_exists('createTime', get_object_vars($data)) && null !== ($data->createTime ?? null)) {
-            $dataArray['create_time'] = $data->createTime ?? null;
+            $dataArray['create_time'] = $data->createTime;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

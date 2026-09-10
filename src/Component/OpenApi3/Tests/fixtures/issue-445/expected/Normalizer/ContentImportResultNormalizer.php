@@ -73,18 +73,18 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
+        $dataArray['fileTransferId'] = $data->fileTransferId;
         if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
-            $dataArray['contentId'] = $data->contentId ?? null;
+            $dataArray['contentId'] = $data->contentId;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
-        $dataArray['succeeded'] = $data->succeeded ?? null;
+        $dataArray['succeeded'] = $data->succeeded;
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $value = $data->error ?? null;
-            if (is_object($data->error ?? null)) {
-                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
+            $value = $data->error;
+            if (is_object($data->error)) {
+                $value = $data->error === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

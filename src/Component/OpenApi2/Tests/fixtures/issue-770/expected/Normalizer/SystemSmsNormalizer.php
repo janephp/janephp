@@ -67,28 +67,28 @@ class SystemSmsNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('serverType', get_object_vars($data)) && null !== ($data->serverType ?? null)) {
-            $dataArray['serverType'] = $data->serverType ?? null;
+            $dataArray['serverType'] = $data->serverType;
         }
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('serverName', get_object_vars($data)) && null !== ($data->serverName ?? null)) {
-            $dataArray['serverName'] = $data->serverName ?? null;
+            $dataArray['serverName'] = $data->serverName;
         }
         if (array_key_exists('accountSid', get_object_vars($data)) && null !== ($data->accountSid ?? null)) {
-            $dataArray['accountSid'] = $data->accountSid ?? null;
+            $dataArray['accountSid'] = $data->accountSid;
         }
         if (array_key_exists('authToken', get_object_vars($data)) && null !== ($data->authToken ?? null)) {
-            $dataArray['authToken'] = $data->authToken ?? null;
+            $dataArray['authToken'] = $data->authToken;
         }
         if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
-            $dataArray['from'] = $data->from ?? null;
+            $dataArray['from'] = $data->from;
         }
         return $dataArray;
     }

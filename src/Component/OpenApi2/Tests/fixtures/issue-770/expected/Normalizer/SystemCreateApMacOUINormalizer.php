@@ -48,9 +48,9 @@ class SystemCreateApMacOUINormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['oui'] = $data->oui ?? null;
+        $dataArray['oui'] = $data->oui;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

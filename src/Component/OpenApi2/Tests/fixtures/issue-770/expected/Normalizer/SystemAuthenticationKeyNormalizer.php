@@ -52,13 +52,13 @@ class SystemAuthenticationKeyNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('keyId', get_object_vars($data)) && null !== ($data->keyId ?? null)) {
-            $dataArray['keyId'] = $data->keyId ?? null;
+            $dataArray['keyId'] = $data->keyId;
         }
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('keyType', get_object_vars($data)) && null !== ($data->keyType ?? null)) {
-            $dataArray['keyType'] = $data->keyType ?? null;
+            $dataArray['keyType'] = $data->keyType;
         }
         return $dataArray;
     }

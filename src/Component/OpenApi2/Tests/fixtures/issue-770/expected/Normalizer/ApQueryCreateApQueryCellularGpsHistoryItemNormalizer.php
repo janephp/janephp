@@ -52,13 +52,13 @@ class ApQueryCreateApQueryCellularGpsHistoryItemNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
-            $dataArray['timestamp'] = $data->timestamp ?? null;
+            $dataArray['timestamp'] = $data->timestamp;
         }
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
-            $dataArray['latitude'] = $data->latitude ?? null;
+            $dataArray['latitude'] = $data->latitude;
         }
         if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
-            $dataArray['longitude'] = $data->longitude ?? null;
+            $dataArray['longitude'] = $data->longitude;
         }
         return $dataArray;
     }

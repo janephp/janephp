@@ -59,17 +59,17 @@ class RadioAutoChannelSelectionNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('channelSelectMode', get_object_vars($data)) && null !== ($data->channelSelectMode ?? null)) {
-            $dataArray['channelSelectMode'] = $data->channelSelectMode ?? null;
+            $dataArray['channelSelectMode'] = $data->channelSelectMode;
         }
         if (array_key_exists('channelFlyMtbc', get_object_vars($data)) && null !== ($data->channelFlyMtbc ?? null)) {
-            $dataArray['channelFlyMtbc'] = $data->channelFlyMtbc ?? null;
+            $dataArray['channelFlyMtbc'] = $data->channelFlyMtbc;
         }
         if (array_key_exists('channelFlyChangeFrequency', get_object_vars($data)) && null !== ($data->channelFlyChangeFrequency ?? null)) {
-            $dataArray['channelFlyChangeFrequency'] = $data->channelFlyChangeFrequency ?? null;
+            $dataArray['channelFlyChangeFrequency'] = $data->channelFlyChangeFrequency;
         }
         if (array_key_exists('channelFlyOptimizationTimePeriod', get_object_vars($data)) && null !== ($data->channelFlyOptimizationTimePeriod ?? null)) {
             $values = [];
-            foreach ($data->channelFlyOptimizationTimePeriod ?? null as $value) {
+            foreach ($data->channelFlyOptimizationTimePeriod as $value) {
                 $values[] = $value;
             }
             $dataArray['channelFlyOptimizationTimePeriod'] = $values;

@@ -91,20 +91,20 @@ class AssignValueActionNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = $data->path ?? null;
+            $dataArray['path'] = $data->path;
         }
         if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
-            $dataArray['fieldId'] = $data->fieldId ?? null;
+            $dataArray['fieldId'] = $data->fieldId;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         if (array_key_exists('replace', get_object_vars($data)) && null !== ($data->replace ?? null)) {
-            $dataArray['replace'] = $data->replace ?? null;
+            $dataArray['replace'] = $data->replace;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

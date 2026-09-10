@@ -64,25 +64,25 @@ class MduSegmentationProfileMduSegmentationProfileSummaryReviewDataNormalizer im
     {
         $dataArray = [];
         if (array_key_exists('apGroupNameList', get_object_vars($data)) && null !== ($data->apGroupNameList ?? null)) {
-            $dataArray['apGroupNameList'] = $data->apGroupNameList ?? null;
+            $dataArray['apGroupNameList'] = $data->apGroupNameList;
         }
         if (array_key_exists('ethernetProfileName', get_object_vars($data)) && null !== ($data->ethernetProfileName ?? null)) {
-            $dataArray['ethernetProfileName'] = $data->ethernetProfileName ?? null;
+            $dataArray['ethernetProfileName'] = $data->ethernetProfileName;
         }
         if (array_key_exists('apModelList', get_object_vars($data)) && null !== ($data->apModelList ?? null)) {
-            $dataArray['apModelList'] = $data->apModelList ?? null;
+            $dataArray['apModelList'] = $data->apModelList;
         }
         if (array_key_exists('wlanNameList', get_object_vars($data)) && null !== ($data->wlanNameList ?? null)) {
-            $dataArray['wlanNameList'] = $data->wlanNameList ?? null;
+            $dataArray['wlanNameList'] = $data->wlanNameList;
         }
         if (array_key_exists('wlanSsid', get_object_vars($data)) && null !== ($data->wlanSsid ?? null)) {
-            $dataArray['wlanSsid'] = $data->wlanSsid ?? null;
+            $dataArray['wlanSsid'] = $data->wlanSsid;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('result', get_object_vars($data)) && null !== ($data->result ?? null)) {
-            $dataArray['result'] = $data->result ?? null;
+            $dataArray['result'] = $data->result;
         }
         return $dataArray;
     }

@@ -91,30 +91,30 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
-            $value = $data->resizeAction ?? null;
-            if (is_object($data->resizeAction ?? null)) {
-                $value = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
+            $value = $data->resizeAction;
+            if (is_object($data->resizeAction)) {
+                $value = $data->resizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
             }
             $dataArray['resizeAction'] = $value;
         }
         if (array_key_exists('audioCodec', get_object_vars($data)) && null !== ($data->audioCodec ?? null)) {
-            $value_1 = $data->audioCodec ?? null;
-            if (is_object($data->audioCodec ?? null)) {
-                $value_1 = ($data->audioCodec ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec ?? null, 'json', $context));
+            $value_1 = $data->audioCodec;
+            if (is_object($data->audioCodec)) {
+                $value_1 = $data->audioCodec === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec, 'json', $context));
             }
             $dataArray['audioCodec'] = $value_1;
         }
         if (array_key_exists('preset', get_object_vars($data)) && null !== ($data->preset ?? null)) {
-            $value_2 = $data->preset ?? null;
-            if (is_string($data->preset ?? null)) {
-                $value_2 = $data->preset ?? null;
+            $value_2 = $data->preset;
+            if (is_string($data->preset)) {
+                $value_2 = $data->preset;
             }
             $dataArray['preset'] = $value_2;
         }
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

@@ -88,29 +88,29 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         $values = [];
-        foreach ($data->contentIds ?? null as $value) {
+        foreach ($data->contentIds as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $value_1 = $data->audit ?? null;
-        if (is_object($data->audit ?? null)) {
-            $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+        $value_1 = $data->audit;
+        if (is_object($data->audit)) {
+            $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
-            $dataArray['expirationDate'] = ($data->expirationDate ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['expirationDate'] = $data->expirationDate?->format('Y-m-d\TH:i:sP');
         }
-        $value_2 = $data->shareType ?? null;
-        if (is_string($data->shareType ?? null)) {
-            $value_2 = $data->shareType ?? null;
+        $value_2 = $data->shareType;
+        if (is_string($data->shareType)) {
+            $value_2 = $data->shareType;
         }
         $dataArray['shareType'] = $value_2;
-        $dataArray['isReadOnly'] = $data->isReadOnly ?? null;
+        $dataArray['isReadOnly'] = $data->isReadOnly;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

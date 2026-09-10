@@ -73,34 +73,34 @@ class MeshNeighborInfoMeshNeighborInfoNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
-            $dataArray['apName'] = $data->apName ?? null;
+            $dataArray['apName'] = $data->apName;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('externalIPAddress', get_object_vars($data)) && null !== ($data->externalIPAddress ?? null)) {
-            $dataArray['externalIPAddress'] = $data->externalIPAddress ?? null;
+            $dataArray['externalIPAddress'] = $data->externalIPAddress;
         }
         if (array_key_exists('apModel', get_object_vars($data)) && null !== ($data->apModel ?? null)) {
-            $dataArray['apModel'] = $data->apModel ?? null;
+            $dataArray['apModel'] = $data->apModel;
         }
         if (array_key_exists('apFirmware', get_object_vars($data)) && null !== ($data->apFirmware ?? null)) {
-            $dataArray['apFirmware'] = $data->apFirmware ?? null;
+            $dataArray['apFirmware'] = $data->apFirmware;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('connectionStatus', get_object_vars($data)) && null !== ($data->connectionStatus ?? null)) {
-            $dataArray['connectionStatus'] = $data->connectionStatus ?? null;
+            $dataArray['connectionStatus'] = $data->connectionStatus;
         }
         if (array_key_exists('snr', get_object_vars($data)) && null !== ($data->snr ?? null)) {
-            $dataArray['snr'] = $data->snr ?? null;
+            $dataArray['snr'] = $data->snr;
         }
         if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
-            $dataArray['zoneName'] = $data->zoneName ?? null;
+            $dataArray['zoneName'] = $data->zoneName;
         }
         return $dataArray;
     }

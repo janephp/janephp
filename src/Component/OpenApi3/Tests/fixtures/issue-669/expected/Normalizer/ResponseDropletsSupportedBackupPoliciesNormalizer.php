@@ -57,7 +57,7 @@ class ResponseDropletsSupportedBackupPoliciesNormalizer implements DenormalizerI
         $dataArray = [];
         if (array_key_exists('supportedPolicies', get_object_vars($data)) && null !== ($data->supportedPolicies ?? null)) {
             $values = [];
-            foreach ($data->supportedPolicies ?? null as $value) {
+            foreach ($data->supportedPolicies as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['supported_policies'] = $values;

@@ -69,18 +69,18 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'FieldOverwriteSingleTagbox' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'FieldOverwriteSingleTagbox' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'FieldOverwriteMultiTagbox' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'FieldOverwriteMultiTagbox' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['required'] = $data->required ?? null;
-        $dataArray['overwriteRequired'] = $data->overwriteRequired ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['required'] = $data->required;
+        $dataArray['overwriteRequired'] = $data->overwriteRequired;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

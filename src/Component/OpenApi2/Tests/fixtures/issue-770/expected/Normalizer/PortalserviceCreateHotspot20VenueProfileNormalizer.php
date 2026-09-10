@@ -73,24 +73,24 @@ class PortalserviceCreateHotspot20VenueProfileNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
-            $dataArray['group'] = $data->group ?? null;
+            $dataArray['group'] = $data->group;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('downlinkSpeedInKbps', get_object_vars($data)) && null !== ($data->downlinkSpeedInKbps ?? null)) {
-            $dataArray['downlinkSpeedInKbps'] = $data->downlinkSpeedInKbps ?? null;
+            $dataArray['downlinkSpeedInKbps'] = $data->downlinkSpeedInKbps;
         }
         if (array_key_exists('uplinkSpeedInKbps', get_object_vars($data)) && null !== ($data->uplinkSpeedInKbps ?? null)) {
-            $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps ?? null;
+            $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps;
         }
         $values = [];
-        foreach ($data->venueNames ?? null as $value) {
+        foreach ($data->venueNames as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['venueNames'] = $values;

@@ -68,16 +68,16 @@ class ResourceNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('urn', get_object_vars($data)) && null !== ($data->urn ?? null)) {
-            $dataArray['urn'] = $data->urn ?? null;
+            $dataArray['urn'] = $data->urn;
         }
         if (array_key_exists('assignedAt', get_object_vars($data)) && null !== ($data->assignedAt ?? null)) {
-            $dataArray['assigned_at'] = ($data->assignedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['assigned_at'] = $data->assignedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

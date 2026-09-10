@@ -75,22 +75,22 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     {
         $dataArray = [];
         if (array_key_exists('ccjDate', get_object_vars($data)) && null !== ($data->ccjDate ?? null)) {
-            $dataArray['ccjDate'] = $data->ccjDate ?? null;
+            $dataArray['ccjDate'] = $data->ccjDate;
         }
         if (array_key_exists('court', get_object_vars($data)) && null !== ($data->court ?? null)) {
-            $dataArray['court'] = $data->court ?? null;
+            $dataArray['court'] = $data->court;
         }
         if (array_key_exists('ccjAmount', get_object_vars($data)) && null !== ($data->ccjAmount ?? null)) {
-            $dataArray['ccjAmount'] = $data->ccjAmount ?? null;
+            $dataArray['ccjAmount'] = $data->ccjAmount;
         }
         if (array_key_exists('caseNumber', get_object_vars($data)) && null !== ($data->caseNumber ?? null)) {
-            $dataArray['caseNumber'] = $data->caseNumber ?? null;
+            $dataArray['caseNumber'] = $data->caseNumber;
         }
         if (array_key_exists('ccjStatus', get_object_vars($data)) && null !== ($data->ccjStatus ?? null)) {
-            $dataArray['ccjStatus'] = $data->ccjStatus ?? null;
+            $dataArray['ccjStatus'] = $data->ccjStatus;
         }
         if (array_key_exists('incomingRecordDetails', get_object_vars($data)) && null !== ($data->incomingRecordDetails ?? null)) {
-            $dataArray['incomingRecordDetails'] = $data->incomingRecordDetails ?? null;
+            $dataArray['incomingRecordDetails'] = $data->incomingRecordDetails;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

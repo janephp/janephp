@@ -57,7 +57,7 @@ class ResponseListNamespacesNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         if (array_key_exists('namespaces', get_object_vars($data)) && null !== ($data->namespaces ?? null)) {
             $values = [];
-            foreach ($data->namespaces ?? null as $value) {
+            foreach ($data->namespaces as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['namespaces'] = $values;

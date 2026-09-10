@@ -115,29 +115,29 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['slug'] = $data->slug ?? null;
-        $dataArray['memory'] = $data->memory ?? null;
-        $dataArray['vcpus'] = $data->vcpus ?? null;
-        $dataArray['disk'] = $data->disk ?? null;
-        $dataArray['transfer'] = $data->transfer ?? null;
-        $dataArray['price_monthly'] = $data->priceMonthly ?? null;
-        $dataArray['price_hourly'] = $data->priceHourly ?? null;
+        $dataArray['slug'] = $data->slug;
+        $dataArray['memory'] = $data->memory;
+        $dataArray['vcpus'] = $data->vcpus;
+        $dataArray['disk'] = $data->disk;
+        $dataArray['transfer'] = $data->transfer;
+        $dataArray['price_monthly'] = $data->priceMonthly;
+        $dataArray['price_hourly'] = $data->priceHourly;
         $values = [];
-        foreach ($data->regions ?? null as $value) {
+        foreach ($data->regions as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['available'] = $data->available ?? null;
-        $dataArray['description'] = $data->description ?? null;
+        $dataArray['available'] = $data->available;
+        $dataArray['description'] = $data->description;
         if (array_key_exists('diskInfo', get_object_vars($data)) && null !== ($data->diskInfo ?? null)) {
             $values_1 = [];
-            foreach ($data->diskInfo ?? null as $value_1) {
+            foreach ($data->diskInfo as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['disk_info'] = $values_1;
         }
         if (array_key_exists('gpuInfo', get_object_vars($data)) && null !== ($data->gpuInfo ?? null)) {
-            $dataArray['gpu_info'] = ($data->gpuInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo ?? null, 'json', $context));
+            $dataArray['gpu_info'] = $data->gpuInfo === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

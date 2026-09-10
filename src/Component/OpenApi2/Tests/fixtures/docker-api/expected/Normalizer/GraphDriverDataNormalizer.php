@@ -55,9 +55,9 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Name'] = $data->name;
         $values = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->data ?? null as $key => $value) {
+        foreach ($data->data as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['Data'] = $values;

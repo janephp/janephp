@@ -52,13 +52,13 @@ class SystemIpv4AccessAndCoreSeparationNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('defaultGateway', get_object_vars($data)) && null !== ($data->defaultGateway ?? null)) {
-            $dataArray['defaultGateway'] = $data->defaultGateway ?? null;
+            $dataArray['defaultGateway'] = $data->defaultGateway;
         }
         if (array_key_exists('primaryDNSServer', get_object_vars($data)) && null !== ($data->primaryDNSServer ?? null)) {
-            $dataArray['primaryDNSServer'] = $data->primaryDNSServer ?? null;
+            $dataArray['primaryDNSServer'] = $data->primaryDNSServer;
         }
         if (array_key_exists('secondaryDNSServer', get_object_vars($data)) && null !== ($data->secondaryDNSServer ?? null)) {
-            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer ?? null;
+            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer;
         }
         return $dataArray;
     }

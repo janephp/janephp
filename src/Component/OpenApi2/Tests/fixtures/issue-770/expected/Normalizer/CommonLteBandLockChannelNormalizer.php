@@ -55,16 +55,16 @@ class CommonLteBandLockChannelNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('simCardId', get_object_vars($data)) && null !== ($data->simCardId ?? null)) {
-            $dataArray['simCardId'] = $data->simCardId ?? null;
+            $dataArray['simCardId'] = $data->simCardId;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('channel4g', get_object_vars($data)) && null !== ($data->channel4g ?? null)) {
-            $dataArray['channel4g'] = $data->channel4g ?? null;
+            $dataArray['channel4g'] = $data->channel4g;
         }
         if (array_key_exists('channel3g', get_object_vars($data)) && null !== ($data->channel3g ?? null)) {
-            $dataArray['channel3g'] = $data->channel3g ?? null;
+            $dataArray['channel3g'] = $data->channel3g;
         }
         return $dataArray;
     }

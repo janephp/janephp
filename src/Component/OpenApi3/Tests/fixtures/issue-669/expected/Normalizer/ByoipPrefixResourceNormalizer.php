@@ -72,19 +72,19 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('byoip', get_object_vars($data)) && null !== ($data->byoip ?? null)) {
-            $dataArray['byoip'] = $data->byoip ?? null;
+            $dataArray['byoip'] = $data->byoip;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
-            $dataArray['resource'] = $data->resource ?? null;
+            $dataArray['resource'] = $data->resource;
         }
         if (array_key_exists('assignedAt', get_object_vars($data)) && null !== ($data->assignedAt ?? null)) {
-            $dataArray['assigned_at'] = ($data->assignedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['assigned_at'] = $data->assignedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

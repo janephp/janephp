@@ -73,16 +73,16 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['min_instances'] = $data->minInstances ?? null;
-        $dataArray['max_instances'] = $data->maxInstances ?? null;
+        $dataArray['min_instances'] = $data->minInstances;
+        $dataArray['max_instances'] = $data->maxInstances;
         if (array_key_exists('targetCpuUtilization', get_object_vars($data)) && null !== ($data->targetCpuUtilization ?? null)) {
-            $dataArray['target_cpu_utilization'] = $data->targetCpuUtilization ?? null;
+            $dataArray['target_cpu_utilization'] = $data->targetCpuUtilization;
         }
         if (array_key_exists('targetMemoryUtilization', get_object_vars($data)) && null !== ($data->targetMemoryUtilization ?? null)) {
-            $dataArray['target_memory_utilization'] = $data->targetMemoryUtilization ?? null;
+            $dataArray['target_memory_utilization'] = $data->targetMemoryUtilization;
         }
         if (array_key_exists('cooldownMinutes', get_object_vars($data)) && null !== ($data->cooldownMinutes ?? null)) {
-            $dataArray['cooldown_minutes'] = $data->cooldownMinutes ?? null;
+            $dataArray['cooldown_minutes'] = $data->cooldownMinutes;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

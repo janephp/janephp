@@ -52,13 +52,13 @@ class ClusterbladeClusterStateManagementServiceStateListItemNormalizer implement
     {
         $dataArray = [];
         if (array_key_exists('nodeId', get_object_vars($data)) && null !== ($data->nodeId ?? null)) {
-            $dataArray['nodeId'] = $data->nodeId ?? null;
+            $dataArray['nodeId'] = $data->nodeId;
         }
         if (array_key_exists('nodeName', get_object_vars($data)) && null !== ($data->nodeName ?? null)) {
-            $dataArray['nodeName'] = $data->nodeName ?? null;
+            $dataArray['nodeName'] = $data->nodeName;
         }
         if (array_key_exists('managementServiceState', get_object_vars($data)) && null !== ($data->managementServiceState ?? null)) {
-            $dataArray['managementServiceState'] = $data->managementServiceState ?? null;
+            $dataArray['managementServiceState'] = $data->managementServiceState;
         }
         return $dataArray;
     }

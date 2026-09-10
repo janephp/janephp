@@ -53,11 +53,11 @@ class WlanWlanAdvancedUserRoleAccessNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('allowedRoleOption', get_object_vars($data)) && null !== ($data->allowedRoleOption ?? null)) {
-            $dataArray['allowedRoleOption'] = $data->allowedRoleOption ?? null;
+            $dataArray['allowedRoleOption'] = $data->allowedRoleOption;
         }
         if (array_key_exists('allowedSpecificRoles', get_object_vars($data)) && null !== ($data->allowedSpecificRoles ?? null)) {
             $values = [];
-            foreach ($data->allowedSpecificRoles ?? null as $value) {
+            foreach ($data->allowedSpecificRoles as $value) {
                 $values[] = $value;
             }
             $dataArray['allowedSpecificRoles'] = $values;

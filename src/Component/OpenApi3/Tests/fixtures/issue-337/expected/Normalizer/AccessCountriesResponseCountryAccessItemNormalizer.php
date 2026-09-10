@@ -105,49 +105,49 @@ class AccessCountriesResponseCountryAccessItemNormalizer implements Denormalizer
         $dataArray = [];
         if (array_key_exists('creditsafeConnectOnlineReports', get_object_vars($data)) && null !== ($data->creditsafeConnectOnlineReports ?? null)) {
             $values = [];
-            foreach ($data->creditsafeConnectOnlineReports ?? null as $value) {
+            foreach ($data->creditsafeConnectOnlineReports as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['creditsafeConnectOnlineReports'] = $values;
         }
         if (array_key_exists('creditsafeConnectOfflineReports', get_object_vars($data)) && null !== ($data->creditsafeConnectOfflineReports ?? null)) {
             $values_1 = [];
-            foreach ($data->creditsafeConnectOfflineReports ?? null as $value_1) {
+            foreach ($data->creditsafeConnectOfflineReports as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['creditsafeConnectOfflineReports'] = $values_1;
         }
         if (array_key_exists('creditsafeConnectMonitoring', get_object_vars($data)) && null !== ($data->creditsafeConnectMonitoring ?? null)) {
             $values_2 = [];
-            foreach ($data->creditsafeConnectMonitoring ?? null as $value_2) {
+            foreach ($data->creditsafeConnectMonitoring as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['creditsafeConnectMonitoring'] = $values_2;
         }
         if (array_key_exists('creditsafeConnectDirectorReports', get_object_vars($data)) && null !== ($data->creditsafeConnectDirectorReports ?? null)) {
             $values_3 = [];
-            foreach ($data->creditsafeConnectDirectorReports ?? null as $value_3) {
+            foreach ($data->creditsafeConnectDirectorReports as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['creditsafeConnectDirectorReports'] = $values_3;
         }
         if (array_key_exists('creditsafeConnectImageDocuments', get_object_vars($data)) && null !== ($data->creditsafeConnectImageDocuments ?? null)) {
             $values_4 = [];
-            foreach ($data->creditsafeConnectImageDocuments ?? null as $value_4) {
+            foreach ($data->creditsafeConnectImageDocuments as $value_4) {
                 $values_4[] = $value_4 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['creditsafeConnectImageDocuments'] = $values_4;
         }
         if (array_key_exists('creditsafeConnectBankValidation', get_object_vars($data)) && null !== ($data->creditsafeConnectBankValidation ?? null)) {
             $values_5 = [];
-            foreach ($data->creditsafeConnectBankValidation ?? null as $value_5) {
+            foreach ($data->creditsafeConnectBankValidation as $value_5) {
                 $values_5[] = $value_5 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['creditsafeConnectBankValidation'] = $values_5;
         }
         if (array_key_exists('creditsafeConnectBankVerification', get_object_vars($data)) && null !== ($data->creditsafeConnectBankVerification ?? null)) {
             $values_6 = [];
-            foreach ($data->creditsafeConnectBankVerification ?? null as $value_6) {
+            foreach ($data->creditsafeConnectBankVerification as $value_6) {
                 $values_6[] = $value_6 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['creditsafeConnectBankVerification'] = $values_6;

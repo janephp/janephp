@@ -75,19 +75,19 @@ class AddonsResourceNewNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_slug'] = $data->appSlug ?? null;
-        $dataArray['plan_slug'] = $data->planSlug ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['app_slug'] = $data->appSlug;
+        $dataArray['plan_slug'] = $data->planSlug;
+        $dataArray['name'] = $data->name;
         $values = [];
-        foreach ($data->metadata ?? null as $value) {
+        foreach ($data->metadata as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['metadata'] = $values;
         if (array_key_exists('linkedDropletId', get_object_vars($data)) && null !== ($data->linkedDropletId ?? null)) {
-            $dataArray['linked_droplet_id'] = $data->linkedDropletId ?? null;
+            $dataArray['linked_droplet_id'] = $data->linkedDropletId;
         }
         if (array_key_exists('fleetUuid', get_object_vars($data)) && null !== ($data->fleetUuid ?? null)) {
-            $dataArray['fleet_uuid'] = $data->fleetUuid ?? null;
+            $dataArray['fleet_uuid'] = $data->fleetUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

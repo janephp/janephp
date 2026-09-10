@@ -58,12 +58,12 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

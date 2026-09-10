@@ -93,28 +93,28 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
+            $dataArray['company'] = $data->company === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
         }
         if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
-            $dataArray['eventId'] = $data->eventId ?? null;
+            $dataArray['eventId'] = $data->eventId;
         }
         if (array_key_exists('eventDate', get_object_vars($data)) && null !== ($data->eventDate ?? null)) {
-            $dataArray['eventDate'] = ($data->eventDate ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['eventDate'] = $data->eventDate->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('newValue', get_object_vars($data)) && null !== ($data->newValue ?? null)) {
-            $dataArray['newValue'] = $data->newValue ?? null;
+            $dataArray['newValue'] = $data->newValue;
         }
         if (array_key_exists('oldValue', get_object_vars($data)) && null !== ($data->oldValue ?? null)) {
-            $dataArray['oldValue'] = $data->oldValue ?? null;
+            $dataArray['oldValue'] = $data->oldValue;
         }
         if (array_key_exists('notificationEventId', get_object_vars($data)) && null !== ($data->notificationEventId ?? null)) {
-            $dataArray['notificationEventId'] = $data->notificationEventId ?? null;
+            $dataArray['notificationEventId'] = $data->notificationEventId;
         }
         if (array_key_exists('ruleCode', get_object_vars($data)) && null !== ($data->ruleCode ?? null)) {
-            $dataArray['ruleCode'] = $data->ruleCode ?? null;
+            $dataArray['ruleCode'] = $data->ruleCode;
         }
         if (array_key_exists('ruleName', get_object_vars($data)) && null !== ($data->ruleName ?? null)) {
-            $dataArray['ruleName'] = $data->ruleName ?? null;
+            $dataArray['ruleName'] = $data->ruleName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

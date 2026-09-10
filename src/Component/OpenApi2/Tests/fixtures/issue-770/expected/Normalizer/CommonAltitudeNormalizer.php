@@ -49,10 +49,10 @@ class CommonAltitudeNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('altitudeUnit', get_object_vars($data)) && null !== ($data->altitudeUnit ?? null)) {
-            $dataArray['altitudeUnit'] = $data->altitudeUnit ?? null;
+            $dataArray['altitudeUnit'] = $data->altitudeUnit;
         }
         if (array_key_exists('altitudeValue', get_object_vars($data)) && null !== ($data->altitudeValue ?? null)) {
-            $dataArray['altitudeValue'] = $data->altitudeValue ?? null;
+            $dataArray['altitudeValue'] = $data->altitudeValue;
         }
         return $dataArray;
     }

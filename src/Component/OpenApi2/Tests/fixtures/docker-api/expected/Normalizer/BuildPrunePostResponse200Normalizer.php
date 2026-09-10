@@ -57,13 +57,13 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         if (array_key_exists('cachesDeleted', get_object_vars($data)) && null !== ($data->cachesDeleted ?? null)) {
             $values = [];
-            foreach ($data->cachesDeleted ?? null as $value) {
+            foreach ($data->cachesDeleted as $value) {
                 $values[] = $value;
             }
             $dataArray['CachesDeleted'] = $values;
         }
         if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
-            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildPrunePostResponse200Constraint());

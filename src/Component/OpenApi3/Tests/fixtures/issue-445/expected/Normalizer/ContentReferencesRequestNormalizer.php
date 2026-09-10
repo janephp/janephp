@@ -63,16 +63,16 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
-            $value = $data->references ?? null;
-            if (is_object($data->references ?? null)) {
-                $value = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
+            $value = $data->references;
+            if (is_object($data->references)) {
+                $value = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value;
         }
         if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
-            $value_1 = $data->shares ?? null;
-            if (is_object($data->shares ?? null)) {
-                $value_1 = ($data->shares ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares ?? null, 'json', $context));
+            $value_1 = $data->shares;
+            if (is_object($data->shares)) {
+                $value_1 = $data->shares === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
             }
             $dataArray['shares'] = $value_1;
         }

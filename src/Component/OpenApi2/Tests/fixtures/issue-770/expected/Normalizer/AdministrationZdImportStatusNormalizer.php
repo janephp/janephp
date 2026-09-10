@@ -55,16 +55,16 @@ class AdministrationZdImportStatusNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
-            $dataArray['details'] = $data->details ?? null;
+            $dataArray['details'] = $data->details;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = $data->progress ?? null;
+            $dataArray['progress'] = $data->progress;
         }
         return $dataArray;
     }

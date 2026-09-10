@@ -85,29 +85,29 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ShareOutputBasic' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareOutputBasic' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ShareOutputEmbed' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareOutputEmbed' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['contentId'] = $data->contentId ?? null;
-        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+        $dataArray['contentId'] = $data->contentId;
+        $dataArray['outputFormatId'] = $data->outputFormatId;
         if (array_key_exists('viewUrl', get_object_vars($data)) && null !== ($data->viewUrl ?? null)) {
-            $dataArray['viewUrl'] = $data->viewUrl ?? null;
+            $dataArray['viewUrl'] = $data->viewUrl;
         }
         if (array_key_exists('downloadUrl', get_object_vars($data)) && null !== ($data->downloadUrl ?? null)) {
-            $dataArray['downloadUrl'] = $data->downloadUrl ?? null;
+            $dataArray['downloadUrl'] = $data->downloadUrl;
         }
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
-            $value = $data->detail ?? null;
-            if (is_object($data->detail ?? null)) {
-                $value = ($data->detail ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail ?? null, 'json', $context));
+            $value = $data->detail;
+            if (is_object($data->detail)) {
+                $value = $data->detail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
             }
             $dataArray['detail'] = $value;
         }
-        $dataArray['dynamicRendering'] = $data->dynamicRendering ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['dynamicRendering'] = $data->dynamicRendering;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

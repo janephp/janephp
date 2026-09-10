@@ -49,7 +49,7 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('networkMode', get_object_vars($data)) && null !== ($data->networkMode ?? null)) {
-            $dataArray['NetworkMode'] = $data->networkMode ?? null;
+            $dataArray['NetworkMode'] = $data->networkMode;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainerSummaryHostConfigConstraint());

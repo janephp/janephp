@@ -100,55 +100,55 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = ($data->operator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->operator ?? null, 'json', $context));
+            $dataArray['operator'] = $data->operator === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->operator, 'json', $context));
         }
         if (array_key_exists('identityProviders', get_object_vars($data)) && null !== ($data->identityProviders ?? null)) {
             $values = [];
-            foreach ($data->identityProviders ?? null as $value) {
+            foreach ($data->identityProviders as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['identityProviders'] = $values;
         }
         if (array_key_exists('defaultIdentityProvider', get_object_vars($data)) && null !== ($data->defaultIdentityProvider ?? null)) {
-            $dataArray['defaultIdentityProvider'] = ($data->defaultIdentityProvider ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider ?? null, 'json', $context));
+            $dataArray['defaultIdentityProvider'] = $data->defaultIdentityProvider === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context));
         }
         if (array_key_exists('signupSsid', get_object_vars($data)) && null !== ($data->signupSsid ?? null)) {
-            $dataArray['signupSsid'] = ($data->signupSsid ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid ?? null, 'json', $context));
+            $dataArray['signupSsid'] = $data->signupSsid === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
         }
         if (array_key_exists('internetOption', get_object_vars($data)) && null !== ($data->internetOption ?? null)) {
-            $dataArray['internetOption'] = $data->internetOption ?? null;
+            $dataArray['internetOption'] = $data->internetOption;
         }
         if (array_key_exists('accessNetworkType', get_object_vars($data)) && null !== ($data->accessNetworkType ?? null)) {
-            $dataArray['accessNetworkType'] = $data->accessNetworkType ?? null;
+            $dataArray['accessNetworkType'] = $data->accessNetworkType;
         }
         if (array_key_exists('ipv4AddressType', get_object_vars($data)) && null !== ($data->ipv4AddressType ?? null)) {
-            $dataArray['ipv4AddressType'] = $data->ipv4AddressType ?? null;
+            $dataArray['ipv4AddressType'] = $data->ipv4AddressType;
         }
         if (array_key_exists('ipv6AddressType', get_object_vars($data)) && null !== ($data->ipv6AddressType ?? null)) {
-            $dataArray['ipv6AddressType'] = $data->ipv6AddressType ?? null;
+            $dataArray['ipv6AddressType'] = $data->ipv6AddressType;
         }
         if (array_key_exists('connectionCapabilities', get_object_vars($data)) && null !== ($data->connectionCapabilities ?? null)) {
             $values_1 = [];
-            foreach ($data->connectionCapabilities ?? null as $value_1) {
+            foreach ($data->connectionCapabilities as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['connectionCapabilities'] = $values_1;
         }
         if (array_key_exists('customConnectionCapabilities', get_object_vars($data)) && null !== ($data->customConnectionCapabilities ?? null)) {
             $values_2 = [];
-            foreach ($data->customConnectionCapabilities ?? null as $value_2) {
+            foreach ($data->customConnectionCapabilities as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['customConnectionCapabilities'] = $values_2;
         }
         if (array_key_exists('singleSsidEnabled', get_object_vars($data)) && null !== ($data->singleSsidEnabled ?? null)) {
-            $dataArray['singleSsidEnabled'] = $data->singleSsidEnabled ?? null;
+            $dataArray['singleSsidEnabled'] = $data->singleSsidEnabled;
         }
         return $dataArray;
     }

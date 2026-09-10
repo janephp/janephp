@@ -71,16 +71,16 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['field'] = $data->field ?? null;
-        $value = $data->topLeft ?? null;
-        if (is_object($data->topLeft ?? null)) {
-            $value = ($data->topLeft ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->topLeft ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['field'] = $data->field;
+        $value = $data->topLeft;
+        if (is_object($data->topLeft)) {
+            $value = $data->topLeft === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->topLeft, 'json', $context));
         }
         $dataArray['topLeft'] = $value;
-        $value_1 = $data->bottomRight ?? null;
-        if (is_object($data->bottomRight ?? null)) {
-            $value_1 = ($data->bottomRight ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->bottomRight ?? null, 'json', $context));
+        $value_1 = $data->bottomRight;
+        if (is_object($data->bottomRight)) {
+            $value_1 = $data->bottomRight === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->bottomRight, 'json', $context));
         }
         $dataArray['bottomRight'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

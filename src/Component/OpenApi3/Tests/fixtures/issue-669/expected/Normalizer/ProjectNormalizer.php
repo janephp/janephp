@@ -99,19 +99,19 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('purpose', get_object_vars($data)) && null !== ($data->purpose ?? null)) {
-            $dataArray['purpose'] = $data->purpose ?? null;
+            $dataArray['purpose'] = $data->purpose;
         }
         if (array_key_exists('environment', get_object_vars($data)) && null !== ($data->environment ?? null)) {
-            $dataArray['environment'] = $data->environment ?? null;
+            $dataArray['environment'] = $data->environment;
         }
         if (array_key_exists('isDefault', get_object_vars($data)) && null !== ($data->isDefault ?? null)) {
-            $dataArray['is_default'] = $data->isDefault ?? null;
+            $dataArray['is_default'] = $data->isDefault;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

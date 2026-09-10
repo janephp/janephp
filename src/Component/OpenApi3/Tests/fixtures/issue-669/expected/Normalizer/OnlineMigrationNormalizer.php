@@ -60,13 +60,13 @@ class OnlineMigrationNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = $data->createdAt ?? null;
+            $dataArray['created_at'] = $data->createdAt;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -52,10 +52,10 @@ class EventManagementEventEmailSettingNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('emailEnabled', get_object_vars($data)) && null !== ($data->emailEnabled ?? null)) {
-            $dataArray['emailEnabled'] = $data->emailEnabled ?? null;
+            $dataArray['emailEnabled'] = $data->emailEnabled;
         }
         if (array_key_exists('mailTo', get_object_vars($data)) && null !== ($data->mailTo ?? null)) {
-            $dataArray['mailTo'] = $data->mailTo ?? null;
+            $dataArray['mailTo'] = $data->mailTo;
         }
         return $dataArray;
     }

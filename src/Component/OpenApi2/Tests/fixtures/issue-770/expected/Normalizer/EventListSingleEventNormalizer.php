@@ -64,25 +64,25 @@ class EventListSingleEventNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
-            $dataArray['activity'] = $data->activity ?? null;
+            $dataArray['activity'] = $data->activity;
         }
         if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
-            $dataArray['category'] = $data->category ?? null;
+            $dataArray['category'] = $data->category;
         }
         if (array_key_exists('eventCode', get_object_vars($data)) && null !== ($data->eventCode ?? null)) {
-            $dataArray['eventCode'] = $data->eventCode ?? null;
+            $dataArray['eventCode'] = $data->eventCode;
         }
         if (array_key_exists('eventType', get_object_vars($data)) && null !== ($data->eventType ?? null)) {
-            $dataArray['eventType'] = $data->eventType ?? null;
+            $dataArray['eventType'] = $data->eventType;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('insertionTime', get_object_vars($data)) && null !== ($data->insertionTime ?? null)) {
-            $dataArray['insertionTime'] = $data->insertionTime ?? null;
+            $dataArray['insertionTime'] = $data->insertionTime;
         }
         if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
-            $dataArray['severity'] = $data->severity ?? null;
+            $dataArray['severity'] = $data->severity;
         }
         return $dataArray;
     }

@@ -76,17 +76,17 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('runId', get_object_vars($data)) && null !== ($data->runId ?? null)) {
-            $dataArray['run_id'] = $data->runId ?? null;
+            $dataArray['run_id'] = $data->runId;
         }
         if (array_key_exists('requestedAt', get_object_vars($data)) && null !== ($data->requestedAt ?? null)) {
-            $dataArray['requested_at'] = ($data->requestedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['requested_at'] = $data->requestedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
-            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['completed_at'] = $data->completedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('diagnostics', get_object_vars($data)) && null !== ($data->diagnostics ?? null)) {
             $values = [];
-            foreach ($data->diagnostics ?? null as $value) {
+            foreach ($data->diagnostics as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['diagnostics'] = $values;

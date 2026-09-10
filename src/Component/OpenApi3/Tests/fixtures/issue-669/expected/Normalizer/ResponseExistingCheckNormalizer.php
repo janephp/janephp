@@ -57,7 +57,7 @@ class ResponseExistingCheckNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         if (array_key_exists('check', get_object_vars($data)) && null !== ($data->check ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->check ?? null as $key => $value) {
+            foreach ($data->check as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['check'] = $values;

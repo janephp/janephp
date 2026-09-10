@@ -60,13 +60,13 @@ class ActionLinkNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('rel', get_object_vars($data)) && null !== ($data->rel ?? null)) {
-            $dataArray['rel'] = $data->rel ?? null;
+            $dataArray['rel'] = $data->rel;
         }
         if (array_key_exists('href', get_object_vars($data)) && null !== ($data->href ?? null)) {
-            $dataArray['href'] = $data->href ?? null;
+            $dataArray['href'] = $data->href;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

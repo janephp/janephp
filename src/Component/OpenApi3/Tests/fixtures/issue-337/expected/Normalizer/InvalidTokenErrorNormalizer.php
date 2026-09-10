@@ -52,7 +52,7 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = $data->error ?? null;
+            $dataArray['error'] = $data->error;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

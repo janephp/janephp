@@ -55,9 +55,9 @@ class ContentMetadataUpdateManyRequestNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
         $values = [];
-        foreach ($data->items ?? null as $value) {
+        foreach ($data->items as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['items'] = $values;

@@ -55,13 +55,13 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('pathOnHost', get_object_vars($data)) && null !== ($data->pathOnHost ?? null)) {
-            $dataArray['PathOnHost'] = $data->pathOnHost ?? null;
+            $dataArray['PathOnHost'] = $data->pathOnHost;
         }
         if (array_key_exists('pathInContainer', get_object_vars($data)) && null !== ($data->pathInContainer ?? null)) {
-            $dataArray['PathInContainer'] = $data->pathInContainer ?? null;
+            $dataArray['PathInContainer'] = $data->pathInContainer;
         }
         if (array_key_exists('cgroupPermissions', get_object_vars($data)) && null !== ($data->cgroupPermissions ?? null)) {
-            $dataArray['CgroupPermissions'] = $data->cgroupPermissions ?? null;
+            $dataArray['CgroupPermissions'] = $data->cgroupPermissions;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\DeviceMappingConstraint());

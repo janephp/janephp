@@ -56,10 +56,10 @@ class BackwardLinksNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
-            $dataArray['first'] = $data->first ?? null;
+            $dataArray['first'] = $data->first;
         }
         if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
-            $dataArray['prev'] = $data->prev ?? null;
+            $dataArray['prev'] = $data->prev;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

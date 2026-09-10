@@ -146,70 +146,70 @@ class ApiAgentTemplateNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('guardrails', get_object_vars($data)) && null !== ($data->guardrails ?? null)) {
             $values = [];
-            foreach ($data->guardrails ?? null as $value) {
+            foreach ($data->guardrails as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['guardrails'] = $values;
         }
         if (array_key_exists('instruction', get_object_vars($data)) && null !== ($data->instruction ?? null)) {
-            $dataArray['instruction'] = $data->instruction ?? null;
+            $dataArray['instruction'] = $data->instruction;
         }
         if (array_key_exists('k', get_object_vars($data)) && null !== ($data->k ?? null)) {
-            $dataArray['k'] = $data->k ?? null;
+            $dataArray['k'] = $data->k;
         }
         if (array_key_exists('knowledgeBases', get_object_vars($data)) && null !== ($data->knowledgeBases ?? null)) {
             $values_1 = [];
-            foreach ($data->knowledgeBases ?? null as $value_1) {
+            foreach ($data->knowledgeBases as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['knowledge_bases'] = $values_1;
         }
         if (array_key_exists('longDescription', get_object_vars($data)) && null !== ($data->longDescription ?? null)) {
-            $dataArray['long_description'] = $data->longDescription ?? null;
+            $dataArray['long_description'] = $data->longDescription;
         }
         if (array_key_exists('maxTokens', get_object_vars($data)) && null !== ($data->maxTokens ?? null)) {
-            $dataArray['max_tokens'] = $data->maxTokens ?? null;
+            $dataArray['max_tokens'] = $data->maxTokens;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = ($data->model ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->model ?? null, 'json', $context));
+            $dataArray['model'] = $data->model === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->model, 'json', $context));
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('shortDescription', get_object_vars($data)) && null !== ($data->shortDescription ?? null)) {
-            $dataArray['short_description'] = $data->shortDescription ?? null;
+            $dataArray['short_description'] = $data->shortDescription;
         }
         if (array_key_exists('summary', get_object_vars($data)) && null !== ($data->summary ?? null)) {
-            $dataArray['summary'] = $data->summary ?? null;
+            $dataArray['summary'] = $data->summary;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];
-            foreach ($data->tags ?? null as $value_2) {
+            foreach ($data->tags as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['tags'] = $values_2;
         }
         if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
-            $dataArray['temperature'] = $data->temperature ?? null;
+            $dataArray['temperature'] = $data->temperature;
         }
         if (array_key_exists('templateType', get_object_vars($data)) && null !== ($data->templateType ?? null)) {
-            $dataArray['template_type'] = $data->templateType ?? null;
+            $dataArray['template_type'] = $data->templateType;
         }
         if (array_key_exists('topP', get_object_vars($data)) && null !== ($data->topP ?? null)) {
-            $dataArray['top_p'] = $data->topP ?? null;
+            $dataArray['top_p'] = $data->topP;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

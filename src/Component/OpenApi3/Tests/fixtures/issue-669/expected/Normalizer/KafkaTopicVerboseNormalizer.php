@@ -72,23 +72,23 @@ class KafkaTopicVerboseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('replicationFactor', get_object_vars($data)) && null !== ($data->replicationFactor ?? null)) {
-            $dataArray['replication_factor'] = $data->replicationFactor ?? null;
+            $dataArray['replication_factor'] = $data->replicationFactor;
         }
         if (array_key_exists('partitions', get_object_vars($data)) && null !== ($data->partitions ?? null)) {
             $values = [];
-            foreach ($data->partitions ?? null as $value) {
+            foreach ($data->partitions as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['partitions'] = $values;
         }
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['config'] = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            $dataArray['config'] = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

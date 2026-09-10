@@ -60,13 +60,13 @@ class VpcMemberNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('urn', get_object_vars($data)) && null !== ($data->urn ?? null)) {
-            $dataArray['urn'] = $data->urn ?? null;
+            $dataArray['urn'] = $data->urn;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = $data->createdAt ?? null;
+            $dataArray['created_at'] = $data->createdAt;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

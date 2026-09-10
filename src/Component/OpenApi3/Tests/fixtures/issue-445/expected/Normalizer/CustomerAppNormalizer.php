@@ -83,13 +83,13 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
-            $dataArray['appId'] = $data->appId ?? null;
+            $dataArray['appId'] = $data->appId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $value = $data->name ?? null;
-            if (is_object($data->name ?? null)) {
+            $value = $data->name;
+            if (is_object($data->name)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->name ?? null as $key => $value_1) {
+                foreach ($data->name as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -97,10 +97,10 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['name'] = $value;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $value_2 = $data->description ?? null;
-            if (is_object($data->description ?? null)) {
+            $value_2 = $data->description;
+            if (is_object($data->description)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->description ?? null as $key_1 => $value_3) {
+                foreach ($data->description as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
@@ -108,7 +108,7 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['description'] = $value_2;
         }
         if (array_key_exists('icon', get_object_vars($data)) && null !== ($data->icon ?? null)) {
-            $dataArray['icon'] = $data->icon ?? null;
+            $dataArray['icon'] = $data->icon;
         }
         return $dataArray;
     }

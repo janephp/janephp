@@ -52,7 +52,7 @@ class KubernetesNodePoolSizeNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -67,11 +67,11 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['size_gib'] = $data->sizeGib ?? null;
-        $dataArray['region'] = $data->region ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['size_gib'] = $data->sizeGib;
+        $dataArray['region'] = $data->region;
         $values = [];
-        foreach ($data->vpcIds ?? null as $value) {
+        foreach ($data->vpcIds as $value) {
             $values[] = $value;
         }
         $dataArray['vpc_ids'] = $values;

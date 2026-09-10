@@ -57,7 +57,7 @@ class ApiListEvaluationTestCasesByWorkspaceOutputNormalizer implements Denormali
         $dataArray = [];
         if (array_key_exists('evaluationTestCases', get_object_vars($data)) && null !== ($data->evaluationTestCases ?? null)) {
             $values = [];
-            foreach ($data->evaluationTestCases ?? null as $value) {
+            foreach ($data->evaluationTestCases as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['evaluation_test_cases'] = $values;

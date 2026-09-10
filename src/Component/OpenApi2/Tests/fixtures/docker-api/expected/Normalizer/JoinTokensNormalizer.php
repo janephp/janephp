@@ -52,10 +52,10 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('worker', get_object_vars($data)) && null !== ($data->worker ?? null)) {
-            $dataArray['Worker'] = $data->worker ?? null;
+            $dataArray['Worker'] = $data->worker;
         }
         if (array_key_exists('manager', get_object_vars($data)) && null !== ($data->manager ?? null)) {
-            $dataArray['Manager'] = $data->manager ?? null;
+            $dataArray['Manager'] = $data->manager;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\JoinTokensConstraint());

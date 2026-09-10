@@ -74,19 +74,19 @@ class ApiPromptChunkNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('chunkUsagePct', get_object_vars($data)) && null !== ($data->chunkUsagePct ?? null)) {
-            $dataArray['chunk_usage_pct'] = $data->chunkUsagePct ?? null;
+            $dataArray['chunk_usage_pct'] = $data->chunkUsagePct;
         }
         if (array_key_exists('chunkUsed', get_object_vars($data)) && null !== ($data->chunkUsed ?? null)) {
-            $dataArray['chunk_used'] = $data->chunkUsed ?? null;
+            $dataArray['chunk_used'] = $data->chunkUsed;
         }
         if (array_key_exists('indexUuid', get_object_vars($data)) && null !== ($data->indexUuid ?? null)) {
-            $dataArray['index_uuid'] = $data->indexUuid ?? null;
+            $dataArray['index_uuid'] = $data->indexUuid;
         }
         if (array_key_exists('sourceName', get_object_vars($data)) && null !== ($data->sourceName ?? null)) {
-            $dataArray['source_name'] = $data->sourceName ?? null;
+            $dataArray['source_name'] = $data->sourceName;
         }
         if (array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
-            $dataArray['text'] = $data->text ?? null;
+            $dataArray['text'] = $data->text;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

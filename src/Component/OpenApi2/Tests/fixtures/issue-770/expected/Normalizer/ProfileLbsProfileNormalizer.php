@@ -88,49 +88,49 @@ class ProfileLbsProfileNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('venue', get_object_vars($data)) && null !== ($data->venue ?? null)) {
-            $dataArray['venue'] = $data->venue ?? null;
+            $dataArray['venue'] = $data->venue;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('tlsVersion', get_object_vars($data)) && null !== ($data->tlsVersion ?? null)) {
-            $dataArray['tlsVersion'] = $data->tlsVersion ?? null;
+            $dataArray['tlsVersion'] = $data->tlsVersion;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         return $dataArray;
     }

@@ -100,26 +100,26 @@ class OutputDataImageNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
-            $dataArray['fileExtension'] = $data->fileExtension ?? null;
+            $dataArray['fileExtension'] = $data->fileExtension;
         }
         if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
-            $dataArray['filePath'] = $data->filePath ?? null;
+            $dataArray['filePath'] = $data->filePath;
         }
         if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
-            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes;
         }
         if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
-            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
+            $dataArray['sha1Hash'] = $data->sha1Hash;
         }
         if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
-            $dataArray['originalFileName'] = $data->originalFileName ?? null;
+            $dataArray['originalFileName'] = $data->originalFileName;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
-            $dataArray['width'] = $data->width ?? null;
+            $dataArray['width'] = $data->width;
         }
         if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
-            $dataArray['height'] = $data->height ?? null;
+            $dataArray['height'] = $data->height;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

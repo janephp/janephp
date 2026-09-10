@@ -84,25 +84,25 @@ class ApiDeploymentNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('visibility', get_object_vars($data)) && null !== ($data->visibility ?? null)) {
-            $dataArray['visibility'] = $data->visibility ?? null;
+            $dataArray['visibility'] = $data->visibility;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

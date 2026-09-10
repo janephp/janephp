@@ -56,11 +56,11 @@ class ContentRestoreManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->contentIds ?? null as $value) {
+        foreach ($data->contentIds as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

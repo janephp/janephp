@@ -80,41 +80,41 @@ class MduSegmentationProfileDistributionSwitchObjNormalizer implements Denormali
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('siteName', get_object_vars($data)) && null !== ($data->siteName ?? null)) {
-            $dataArray['siteName'] = $data->siteName ?? null;
+            $dataArray['siteName'] = $data->siteName;
         }
         if (array_key_exists('vlanList', get_object_vars($data)) && null !== ($data->vlanList ?? null)) {
-            $dataArray['vlanList'] = $data->vlanList ?? null;
+            $dataArray['vlanList'] = $data->vlanList;
         }
         if (array_key_exists('loopbackInterfaceId', get_object_vars($data)) && null !== ($data->loopbackInterfaceId ?? null)) {
-            $dataArray['loopbackInterfaceId'] = $data->loopbackInterfaceId ?? null;
+            $dataArray['loopbackInterfaceId'] = $data->loopbackInterfaceId;
         }
         if (array_key_exists('loopbackInterfaceIpAddress', get_object_vars($data)) && null !== ($data->loopbackInterfaceIpAddress ?? null)) {
-            $dataArray['loopbackInterfaceIpAddress'] = $data->loopbackInterfaceIpAddress ?? null;
+            $dataArray['loopbackInterfaceIpAddress'] = $data->loopbackInterfaceIpAddress;
         }
         if (array_key_exists('loopbackInterfaceSubnetMask', get_object_vars($data)) && null !== ($data->loopbackInterfaceSubnetMask ?? null)) {
-            $dataArray['loopbackInterfaceSubnetMask'] = $data->loopbackInterfaceSubnetMask ?? null;
+            $dataArray['loopbackInterfaceSubnetMask'] = $data->loopbackInterfaceSubnetMask;
         }
         if (array_key_exists('siteSecondaryList', get_object_vars($data)) && null !== ($data->siteSecondaryList ?? null)) {
             $values = [];
-            foreach ($data->siteSecondaryList ?? null as $value) {
+            foreach ($data->siteSecondaryList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteSecondaryList'] = $values;
         }
         if (array_key_exists('siteKeepAlive', get_object_vars($data)) && null !== ($data->siteKeepAlive ?? null)) {
-            $dataArray['siteKeepAlive'] = $data->siteKeepAlive ?? null;
+            $dataArray['siteKeepAlive'] = $data->siteKeepAlive;
         }
         if (array_key_exists('siteRetry', get_object_vars($data)) && null !== ($data->siteRetry ?? null)) {
-            $dataArray['siteRetry'] = $data->siteRetry ?? null;
+            $dataArray['siteRetry'] = $data->siteRetry;
         }
         if (array_key_exists('dispatchMessage', get_object_vars($data)) && null !== ($data->dispatchMessage ?? null)) {
-            $dataArray['dispatchMessage'] = $data->dispatchMessage ?? null;
+            $dataArray['dispatchMessage'] = $data->dispatchMessage;
         }
         return $dataArray;
     }

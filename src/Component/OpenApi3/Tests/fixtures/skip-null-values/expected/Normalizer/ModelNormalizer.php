@@ -72,16 +72,16 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = $data->foo ?? null;
+            $dataArray['foo'] = $data->foo;
         }
         else {
             $dataArray['foo'] = null;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['bar'] = $data->bar ?? null;
+            $dataArray['bar'] = $data->bar;
         }
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = ($data->date ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->date?->format('Y-m-d\TH:i:sP');
         }
         else {
             $dataArray['date'] = null;

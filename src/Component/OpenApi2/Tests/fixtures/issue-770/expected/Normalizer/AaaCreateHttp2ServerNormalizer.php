@@ -76,32 +76,32 @@ class AaaCreateHttp2ServerNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('partnerName', get_object_vars($data)) && null !== ($data->partnerName ?? null)) {
-            $dataArray['partnerName'] = $data->partnerName ?? null;
+            $dataArray['partnerName'] = $data->partnerName;
         }
-        $dataArray['token'] = $data->token ?? null;
+        $dataArray['token'] = $data->token;
         if (array_key_exists('authenticationApi', get_object_vars($data)) && null !== ($data->authenticationApi ?? null)) {
-            $dataArray['authenticationApi'] = $data->authenticationApi ?? null;
+            $dataArray['authenticationApi'] = $data->authenticationApi;
         }
         if (array_key_exists('accountingApi', get_object_vars($data)) && null !== ($data->accountingApi ?? null)) {
-            $dataArray['accountingApi'] = $data->accountingApi ?? null;
+            $dataArray['accountingApi'] = $data->accountingApi;
         }
         if (array_key_exists('coaResponseApi', get_object_vars($data)) && null !== ($data->coaResponseApi ?? null)) {
-            $dataArray['coaResponseApi'] = $data->coaResponseApi ?? null;
+            $dataArray['coaResponseApi'] = $data->coaResponseApi;
         }
         if (array_key_exists('coaApi', get_object_vars($data)) && null !== ($data->coaApi ?? null)) {
-            $dataArray['coaApi'] = $data->coaApi ?? null;
+            $dataArray['coaApi'] = $data->coaApi;
         }
         if (array_key_exists('sseTimeout', get_object_vars($data)) && null !== ($data->sseTimeout ?? null)) {
-            $dataArray['sseTimeout'] = $data->sseTimeout ?? null;
+            $dataArray['sseTimeout'] = $data->sseTimeout;
         }
         if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->mappings ?? null as $value) {
+            foreach ($data->mappings as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;

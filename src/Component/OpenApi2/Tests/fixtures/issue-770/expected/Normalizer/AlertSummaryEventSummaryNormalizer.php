@@ -61,22 +61,22 @@ class AlertSummaryEventSummaryNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('criticalCount', get_object_vars($data)) && null !== ($data->criticalCount ?? null)) {
-            $dataArray['criticalCount'] = $data->criticalCount ?? null;
+            $dataArray['criticalCount'] = $data->criticalCount;
         }
         if (array_key_exists('majorCount', get_object_vars($data)) && null !== ($data->majorCount ?? null)) {
-            $dataArray['majorCount'] = $data->majorCount ?? null;
+            $dataArray['majorCount'] = $data->majorCount;
         }
         if (array_key_exists('minorCount', get_object_vars($data)) && null !== ($data->minorCount ?? null)) {
-            $dataArray['minorCount'] = $data->minorCount ?? null;
+            $dataArray['minorCount'] = $data->minorCount;
         }
         if (array_key_exists('warningCount', get_object_vars($data)) && null !== ($data->warningCount ?? null)) {
-            $dataArray['warningCount'] = $data->warningCount ?? null;
+            $dataArray['warningCount'] = $data->warningCount;
         }
         if (array_key_exists('informationalCount', get_object_vars($data)) && null !== ($data->informationalCount ?? null)) {
-            $dataArray['informationalCount'] = $data->informationalCount ?? null;
+            $dataArray['informationalCount'] = $data->informationalCount;
         }
         if (array_key_exists('debugCount', get_object_vars($data)) && null !== ($data->debugCount ?? null)) {
-            $dataArray['debugCount'] = $data->debugCount ?? null;
+            $dataArray['debugCount'] = $data->debugCount;
         }
         return $dataArray;
     }

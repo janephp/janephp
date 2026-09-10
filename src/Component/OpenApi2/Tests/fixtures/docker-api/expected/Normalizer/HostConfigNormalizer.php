@@ -396,156 +396,156 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('cpuShares', get_object_vars($data)) && null !== ($data->cpuShares ?? null)) {
-            $dataArray['CpuShares'] = $data->cpuShares ?? null;
+            $dataArray['CpuShares'] = $data->cpuShares;
         }
         if (array_key_exists('memory', get_object_vars($data)) && null !== ($data->memory ?? null)) {
-            $dataArray['Memory'] = $data->memory ?? null;
+            $dataArray['Memory'] = $data->memory;
         }
         if (array_key_exists('cgroupParent', get_object_vars($data)) && null !== ($data->cgroupParent ?? null)) {
-            $dataArray['CgroupParent'] = $data->cgroupParent ?? null;
+            $dataArray['CgroupParent'] = $data->cgroupParent;
         }
         if (array_key_exists('blkioWeight', get_object_vars($data)) && null !== ($data->blkioWeight ?? null)) {
-            $dataArray['BlkioWeight'] = $data->blkioWeight ?? null;
+            $dataArray['BlkioWeight'] = $data->blkioWeight;
         }
         if (array_key_exists('blkioWeightDevice', get_object_vars($data)) && null !== ($data->blkioWeightDevice ?? null)) {
             $values = [];
-            foreach ($data->blkioWeightDevice ?? null as $value) {
+            foreach ($data->blkioWeightDevice as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['BlkioWeightDevice'] = $values;
         }
         if (array_key_exists('blkioDeviceReadBps', get_object_vars($data)) && null !== ($data->blkioDeviceReadBps ?? null)) {
             $values_1 = [];
-            foreach ($data->blkioDeviceReadBps ?? null as $value_1) {
+            foreach ($data->blkioDeviceReadBps as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['BlkioDeviceReadBps'] = $values_1;
         }
         if (array_key_exists('blkioDeviceWriteBps', get_object_vars($data)) && null !== ($data->blkioDeviceWriteBps ?? null)) {
             $values_2 = [];
-            foreach ($data->blkioDeviceWriteBps ?? null as $value_2) {
+            foreach ($data->blkioDeviceWriteBps as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['BlkioDeviceWriteBps'] = $values_2;
         }
         if (array_key_exists('blkioDeviceReadIOps', get_object_vars($data)) && null !== ($data->blkioDeviceReadIOps ?? null)) {
             $values_3 = [];
-            foreach ($data->blkioDeviceReadIOps ?? null as $value_3) {
+            foreach ($data->blkioDeviceReadIOps as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['BlkioDeviceReadIOps'] = $values_3;
         }
         if (array_key_exists('blkioDeviceWriteIOps', get_object_vars($data)) && null !== ($data->blkioDeviceWriteIOps ?? null)) {
             $values_4 = [];
-            foreach ($data->blkioDeviceWriteIOps ?? null as $value_4) {
+            foreach ($data->blkioDeviceWriteIOps as $value_4) {
                 $values_4[] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['BlkioDeviceWriteIOps'] = $values_4;
         }
         if (array_key_exists('cpuPeriod', get_object_vars($data)) && null !== ($data->cpuPeriod ?? null)) {
-            $dataArray['CpuPeriod'] = $data->cpuPeriod ?? null;
+            $dataArray['CpuPeriod'] = $data->cpuPeriod;
         }
         if (array_key_exists('cpuQuota', get_object_vars($data)) && null !== ($data->cpuQuota ?? null)) {
-            $dataArray['CpuQuota'] = $data->cpuQuota ?? null;
+            $dataArray['CpuQuota'] = $data->cpuQuota;
         }
         if (array_key_exists('cpuRealtimePeriod', get_object_vars($data)) && null !== ($data->cpuRealtimePeriod ?? null)) {
-            $dataArray['CpuRealtimePeriod'] = $data->cpuRealtimePeriod ?? null;
+            $dataArray['CpuRealtimePeriod'] = $data->cpuRealtimePeriod;
         }
         if (array_key_exists('cpuRealtimeRuntime', get_object_vars($data)) && null !== ($data->cpuRealtimeRuntime ?? null)) {
-            $dataArray['CpuRealtimeRuntime'] = $data->cpuRealtimeRuntime ?? null;
+            $dataArray['CpuRealtimeRuntime'] = $data->cpuRealtimeRuntime;
         }
         if (array_key_exists('cpusetCpus', get_object_vars($data)) && null !== ($data->cpusetCpus ?? null)) {
-            $dataArray['CpusetCpus'] = $data->cpusetCpus ?? null;
+            $dataArray['CpusetCpus'] = $data->cpusetCpus;
         }
         if (array_key_exists('cpusetMems', get_object_vars($data)) && null !== ($data->cpusetMems ?? null)) {
-            $dataArray['CpusetMems'] = $data->cpusetMems ?? null;
+            $dataArray['CpusetMems'] = $data->cpusetMems;
         }
         if (array_key_exists('devices', get_object_vars($data)) && null !== ($data->devices ?? null)) {
             $values_5 = [];
-            foreach ($data->devices ?? null as $value_5) {
+            foreach ($data->devices as $value_5) {
                 $values_5[] = $value_5 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['Devices'] = $values_5;
         }
         if (array_key_exists('deviceCgroupRules', get_object_vars($data)) && null !== ($data->deviceCgroupRules ?? null)) {
             $values_6 = [];
-            foreach ($data->deviceCgroupRules ?? null as $value_6) {
+            foreach ($data->deviceCgroupRules as $value_6) {
                 $values_6[] = $value_6;
             }
             $dataArray['DeviceCgroupRules'] = $values_6;
         }
         if (array_key_exists('deviceRequests', get_object_vars($data)) && null !== ($data->deviceRequests ?? null)) {
             $values_7 = [];
-            foreach ($data->deviceRequests ?? null as $value_7) {
+            foreach ($data->deviceRequests as $value_7) {
                 $values_7[] = $value_7 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['DeviceRequests'] = $values_7;
         }
         if (array_key_exists('kernelMemory', get_object_vars($data)) && null !== ($data->kernelMemory ?? null)) {
-            $dataArray['KernelMemory'] = $data->kernelMemory ?? null;
+            $dataArray['KernelMemory'] = $data->kernelMemory;
         }
         if (array_key_exists('kernelMemoryTCP', get_object_vars($data)) && null !== ($data->kernelMemoryTCP ?? null)) {
-            $dataArray['KernelMemoryTCP'] = $data->kernelMemoryTCP ?? null;
+            $dataArray['KernelMemoryTCP'] = $data->kernelMemoryTCP;
         }
         if (array_key_exists('memoryReservation', get_object_vars($data)) && null !== ($data->memoryReservation ?? null)) {
-            $dataArray['MemoryReservation'] = $data->memoryReservation ?? null;
+            $dataArray['MemoryReservation'] = $data->memoryReservation;
         }
         if (array_key_exists('memorySwap', get_object_vars($data)) && null !== ($data->memorySwap ?? null)) {
-            $dataArray['MemorySwap'] = $data->memorySwap ?? null;
+            $dataArray['MemorySwap'] = $data->memorySwap;
         }
         if (array_key_exists('memorySwappiness', get_object_vars($data)) && null !== ($data->memorySwappiness ?? null)) {
-            $dataArray['MemorySwappiness'] = $data->memorySwappiness ?? null;
+            $dataArray['MemorySwappiness'] = $data->memorySwappiness;
         }
         if (array_key_exists('nanoCpus', get_object_vars($data)) && null !== ($data->nanoCpus ?? null)) {
-            $dataArray['NanoCpus'] = $data->nanoCpus ?? null;
+            $dataArray['NanoCpus'] = $data->nanoCpus;
         }
         if (array_key_exists('oomKillDisable', get_object_vars($data)) && null !== ($data->oomKillDisable ?? null)) {
-            $dataArray['OomKillDisable'] = $data->oomKillDisable ?? null;
+            $dataArray['OomKillDisable'] = $data->oomKillDisable;
         }
         if (array_key_exists('init', get_object_vars($data)) && null !== ($data->init ?? null)) {
-            $dataArray['Init'] = $data->init ?? null;
+            $dataArray['Init'] = $data->init;
         }
         if (array_key_exists('pidsLimit', get_object_vars($data)) && null !== ($data->pidsLimit ?? null)) {
-            $dataArray['PidsLimit'] = $data->pidsLimit ?? null;
+            $dataArray['PidsLimit'] = $data->pidsLimit;
         }
         if (array_key_exists('ulimits', get_object_vars($data)) && null !== ($data->ulimits ?? null)) {
             $values_8 = [];
-            foreach ($data->ulimits ?? null as $value_8) {
+            foreach ($data->ulimits as $value_8) {
                 $values_8[] = $value_8 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['Ulimits'] = $values_8;
         }
         if (array_key_exists('cpuCount', get_object_vars($data)) && null !== ($data->cpuCount ?? null)) {
-            $dataArray['CpuCount'] = $data->cpuCount ?? null;
+            $dataArray['CpuCount'] = $data->cpuCount;
         }
         if (array_key_exists('cpuPercent', get_object_vars($data)) && null !== ($data->cpuPercent ?? null)) {
-            $dataArray['CpuPercent'] = $data->cpuPercent ?? null;
+            $dataArray['CpuPercent'] = $data->cpuPercent;
         }
         if (array_key_exists('iOMaximumIOps', get_object_vars($data)) && null !== ($data->iOMaximumIOps ?? null)) {
-            $dataArray['IOMaximumIOps'] = $data->iOMaximumIOps ?? null;
+            $dataArray['IOMaximumIOps'] = $data->iOMaximumIOps;
         }
         if (array_key_exists('iOMaximumBandwidth', get_object_vars($data)) && null !== ($data->iOMaximumBandwidth ?? null)) {
-            $dataArray['IOMaximumBandwidth'] = $data->iOMaximumBandwidth ?? null;
+            $dataArray['IOMaximumBandwidth'] = $data->iOMaximumBandwidth;
         }
         if (array_key_exists('binds', get_object_vars($data)) && null !== ($data->binds ?? null)) {
             $values_9 = [];
-            foreach ($data->binds ?? null as $value_9) {
+            foreach ($data->binds as $value_9) {
                 $values_9[] = $value_9;
             }
             $dataArray['Binds'] = $values_9;
         }
         if (array_key_exists('containerIDFile', get_object_vars($data)) && null !== ($data->containerIDFile ?? null)) {
-            $dataArray['ContainerIDFile'] = $data->containerIDFile ?? null;
+            $dataArray['ContainerIDFile'] = $data->containerIDFile;
         }
         if (array_key_exists('logConfig', get_object_vars($data)) && null !== ($data->logConfig ?? null)) {
-            $dataArray['LogConfig'] = ($data->logConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logConfig ?? null, 'json', $context));
+            $dataArray['LogConfig'] = $data->logConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logConfig, 'json', $context));
         }
         if (array_key_exists('networkMode', get_object_vars($data)) && null !== ($data->networkMode ?? null)) {
-            $dataArray['NetworkMode'] = $data->networkMode ?? null;
+            $dataArray['NetworkMode'] = $data->networkMode;
         }
         if (array_key_exists('portBindings', get_object_vars($data)) && null !== ($data->portBindings ?? null)) {
             $values_10 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->portBindings ?? null as $key => $value_10) {
+            foreach ($data->portBindings as $key => $value_10) {
                 $values_11 = [];
                 foreach ($value_10 as $value_11) {
                     $values_11[] = $value_11 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_11, 'json', $context));
@@ -555,168 +555,168 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['PortBindings'] = $values_10;
         }
         if (array_key_exists('restartPolicy', get_object_vars($data)) && null !== ($data->restartPolicy ?? null)) {
-            $dataArray['RestartPolicy'] = ($data->restartPolicy ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy ?? null, 'json', $context));
+            $dataArray['RestartPolicy'] = $data->restartPolicy === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
         }
         if (array_key_exists('autoRemove', get_object_vars($data)) && null !== ($data->autoRemove ?? null)) {
-            $dataArray['AutoRemove'] = $data->autoRemove ?? null;
+            $dataArray['AutoRemove'] = $data->autoRemove;
         }
         if (array_key_exists('volumeDriver', get_object_vars($data)) && null !== ($data->volumeDriver ?? null)) {
-            $dataArray['VolumeDriver'] = $data->volumeDriver ?? null;
+            $dataArray['VolumeDriver'] = $data->volumeDriver;
         }
         if (array_key_exists('volumesFrom', get_object_vars($data)) && null !== ($data->volumesFrom ?? null)) {
             $values_12 = [];
-            foreach ($data->volumesFrom ?? null as $value_12) {
+            foreach ($data->volumesFrom as $value_12) {
                 $values_12[] = $value_12;
             }
             $dataArray['VolumesFrom'] = $values_12;
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_13 = [];
-            foreach ($data->mounts ?? null as $value_13) {
+            foreach ($data->mounts as $value_13) {
                 $values_13[] = $value_13 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_13, 'json', $context));
             }
             $dataArray['Mounts'] = $values_13;
         }
         if (array_key_exists('capAdd', get_object_vars($data)) && null !== ($data->capAdd ?? null)) {
             $values_14 = [];
-            foreach ($data->capAdd ?? null as $value_14) {
+            foreach ($data->capAdd as $value_14) {
                 $values_14[] = $value_14;
             }
             $dataArray['CapAdd'] = $values_14;
         }
         if (array_key_exists('capDrop', get_object_vars($data)) && null !== ($data->capDrop ?? null)) {
             $values_15 = [];
-            foreach ($data->capDrop ?? null as $value_15) {
+            foreach ($data->capDrop as $value_15) {
                 $values_15[] = $value_15;
             }
             $dataArray['CapDrop'] = $values_15;
         }
         if (array_key_exists('cgroupnsMode', get_object_vars($data)) && null !== ($data->cgroupnsMode ?? null)) {
-            $dataArray['CgroupnsMode'] = $data->cgroupnsMode ?? null;
+            $dataArray['CgroupnsMode'] = $data->cgroupnsMode;
         }
         if (array_key_exists('dns', get_object_vars($data)) && null !== ($data->dns ?? null)) {
             $values_16 = [];
-            foreach ($data->dns ?? null as $value_16) {
+            foreach ($data->dns as $value_16) {
                 $values_16[] = $value_16;
             }
             $dataArray['Dns'] = $values_16;
         }
         if (array_key_exists('dnsOptions', get_object_vars($data)) && null !== ($data->dnsOptions ?? null)) {
             $values_17 = [];
-            foreach ($data->dnsOptions ?? null as $value_17) {
+            foreach ($data->dnsOptions as $value_17) {
                 $values_17[] = $value_17;
             }
             $dataArray['DnsOptions'] = $values_17;
         }
         if (array_key_exists('dnsSearch', get_object_vars($data)) && null !== ($data->dnsSearch ?? null)) {
             $values_18 = [];
-            foreach ($data->dnsSearch ?? null as $value_18) {
+            foreach ($data->dnsSearch as $value_18) {
                 $values_18[] = $value_18;
             }
             $dataArray['DnsSearch'] = $values_18;
         }
         if (array_key_exists('extraHosts', get_object_vars($data)) && null !== ($data->extraHosts ?? null)) {
             $values_19 = [];
-            foreach ($data->extraHosts ?? null as $value_19) {
+            foreach ($data->extraHosts as $value_19) {
                 $values_19[] = $value_19;
             }
             $dataArray['ExtraHosts'] = $values_19;
         }
         if (array_key_exists('groupAdd', get_object_vars($data)) && null !== ($data->groupAdd ?? null)) {
             $values_20 = [];
-            foreach ($data->groupAdd ?? null as $value_20) {
+            foreach ($data->groupAdd as $value_20) {
                 $values_20[] = $value_20;
             }
             $dataArray['GroupAdd'] = $values_20;
         }
         if (array_key_exists('ipcMode', get_object_vars($data)) && null !== ($data->ipcMode ?? null)) {
-            $dataArray['IpcMode'] = $data->ipcMode ?? null;
+            $dataArray['IpcMode'] = $data->ipcMode;
         }
         if (array_key_exists('cgroup', get_object_vars($data)) && null !== ($data->cgroup ?? null)) {
-            $dataArray['Cgroup'] = $data->cgroup ?? null;
+            $dataArray['Cgroup'] = $data->cgroup;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
             $values_21 = [];
-            foreach ($data->links ?? null as $value_21) {
+            foreach ($data->links as $value_21) {
                 $values_21[] = $value_21;
             }
             $dataArray['Links'] = $values_21;
         }
         if (array_key_exists('oomScoreAdj', get_object_vars($data)) && null !== ($data->oomScoreAdj ?? null)) {
-            $dataArray['OomScoreAdj'] = $data->oomScoreAdj ?? null;
+            $dataArray['OomScoreAdj'] = $data->oomScoreAdj;
         }
         if (array_key_exists('pidMode', get_object_vars($data)) && null !== ($data->pidMode ?? null)) {
-            $dataArray['PidMode'] = $data->pidMode ?? null;
+            $dataArray['PidMode'] = $data->pidMode;
         }
         if (array_key_exists('privileged', get_object_vars($data)) && null !== ($data->privileged ?? null)) {
-            $dataArray['Privileged'] = $data->privileged ?? null;
+            $dataArray['Privileged'] = $data->privileged;
         }
         if (array_key_exists('publishAllPorts', get_object_vars($data)) && null !== ($data->publishAllPorts ?? null)) {
-            $dataArray['PublishAllPorts'] = $data->publishAllPorts ?? null;
+            $dataArray['PublishAllPorts'] = $data->publishAllPorts;
         }
         if (array_key_exists('readonlyRootfs', get_object_vars($data)) && null !== ($data->readonlyRootfs ?? null)) {
-            $dataArray['ReadonlyRootfs'] = $data->readonlyRootfs ?? null;
+            $dataArray['ReadonlyRootfs'] = $data->readonlyRootfs;
         }
         if (array_key_exists('securityOpt', get_object_vars($data)) && null !== ($data->securityOpt ?? null)) {
             $values_22 = [];
-            foreach ($data->securityOpt ?? null as $value_22) {
+            foreach ($data->securityOpt as $value_22) {
                 $values_22[] = $value_22;
             }
             $dataArray['SecurityOpt'] = $values_22;
         }
         if (array_key_exists('storageOpt', get_object_vars($data)) && null !== ($data->storageOpt ?? null)) {
             $values_23 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->storageOpt ?? null as $key_1 => $value_23) {
+            foreach ($data->storageOpt as $key_1 => $value_23) {
                 $values_23[$key_1] = $value_23;
             }
             $dataArray['StorageOpt'] = $values_23;
         }
         if (array_key_exists('tmpfs', get_object_vars($data)) && null !== ($data->tmpfs ?? null)) {
             $values_24 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->tmpfs ?? null as $key_2 => $value_24) {
+            foreach ($data->tmpfs as $key_2 => $value_24) {
                 $values_24[$key_2] = $value_24;
             }
             $dataArray['Tmpfs'] = $values_24;
         }
         if (array_key_exists('uTSMode', get_object_vars($data)) && null !== ($data->uTSMode ?? null)) {
-            $dataArray['UTSMode'] = $data->uTSMode ?? null;
+            $dataArray['UTSMode'] = $data->uTSMode;
         }
         if (array_key_exists('usernsMode', get_object_vars($data)) && null !== ($data->usernsMode ?? null)) {
-            $dataArray['UsernsMode'] = $data->usernsMode ?? null;
+            $dataArray['UsernsMode'] = $data->usernsMode;
         }
         if (array_key_exists('shmSize', get_object_vars($data)) && null !== ($data->shmSize ?? null)) {
-            $dataArray['ShmSize'] = $data->shmSize ?? null;
+            $dataArray['ShmSize'] = $data->shmSize;
         }
         if (array_key_exists('sysctls', get_object_vars($data)) && null !== ($data->sysctls ?? null)) {
             $values_25 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->sysctls ?? null as $key_3 => $value_25) {
+            foreach ($data->sysctls as $key_3 => $value_25) {
                 $values_25[$key_3] = $value_25;
             }
             $dataArray['Sysctls'] = $values_25;
         }
         if (array_key_exists('runtime', get_object_vars($data)) && null !== ($data->runtime ?? null)) {
-            $dataArray['Runtime'] = $data->runtime ?? null;
+            $dataArray['Runtime'] = $data->runtime;
         }
         if (array_key_exists('consoleSize', get_object_vars($data)) && null !== ($data->consoleSize ?? null)) {
             $values_26 = [];
-            foreach ($data->consoleSize ?? null as $value_26) {
+            foreach ($data->consoleSize as $value_26) {
                 $values_26[] = $value_26;
             }
             $dataArray['ConsoleSize'] = $values_26;
         }
         if (array_key_exists('isolation', get_object_vars($data)) && null !== ($data->isolation ?? null)) {
-            $dataArray['Isolation'] = $data->isolation ?? null;
+            $dataArray['Isolation'] = $data->isolation;
         }
         if (array_key_exists('maskedPaths', get_object_vars($data)) && null !== ($data->maskedPaths ?? null)) {
             $values_27 = [];
-            foreach ($data->maskedPaths ?? null as $value_27) {
+            foreach ($data->maskedPaths as $value_27) {
                 $values_27[] = $value_27;
             }
             $dataArray['MaskedPaths'] = $values_27;
         }
         if (array_key_exists('readonlyPaths', get_object_vars($data)) && null !== ($data->readonlyPaths ?? null)) {
             $values_28 = [];
-            foreach ($data->readonlyPaths ?? null as $value_28) {
+            foreach ($data->readonlyPaths as $value_28) {
                 $values_28[] = $value_28;
             }
             $dataArray['ReadonlyPaths'] = $values_28;

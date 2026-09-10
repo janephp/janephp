@@ -55,10 +55,10 @@ class OwnerTokenNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         return $dataArray;
     }

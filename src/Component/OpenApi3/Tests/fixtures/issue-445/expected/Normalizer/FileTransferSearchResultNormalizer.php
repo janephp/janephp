@@ -98,25 +98,25 @@ class FileTransferSearchResultNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['totalResults'] = $data->totalResults ?? null;
+        $dataArray['totalResults'] = $data->totalResults;
         $values = [];
-        foreach ($data->results ?? null as $value) {
+        foreach ($data->results as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['results'] = $values;
-        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds ?? null;
+        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
-            $dataArray['searchString'] = $data->searchString ?? null;
+            $dataArray['searchString'] = $data->searchString;
         }
         if (array_key_exists('isSearchStringRewritten', get_object_vars($data)) && null !== ($data->isSearchStringRewritten ?? null)) {
-            $dataArray['isSearchStringRewritten'] = $data->isSearchStringRewritten ?? null;
+            $dataArray['isSearchStringRewritten'] = $data->isSearchStringRewritten;
         }
         if (array_key_exists('queryDebugInformation', get_object_vars($data)) && null !== ($data->queryDebugInformation ?? null)) {
             $values_1 = [];
-            foreach ($data->queryDebugInformation ?? null as $value_1) {
+            foreach ($data->queryDebugInformation as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['queryDebugInformation'] = $values_1;

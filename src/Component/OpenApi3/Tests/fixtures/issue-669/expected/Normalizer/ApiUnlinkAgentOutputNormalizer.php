@@ -56,10 +56,10 @@ class ApiUnlinkAgentOutputNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
-            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid;
         }
         if (array_key_exists('parentAgentUuid', get_object_vars($data)) && null !== ($data->parentAgentUuid ?? null)) {
-            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid ?? null;
+            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

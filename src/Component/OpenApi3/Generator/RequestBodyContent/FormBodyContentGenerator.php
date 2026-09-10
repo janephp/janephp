@@ -189,7 +189,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
      *     if (isset($resourceOptions['filename'])) {
      *         $uri = null;
      *         if (is_resource($value)) {
-     *             $uri = stream_get_meta_data($value)['uri'] ?? null;
+     *             $uri = stream_get_meta_data($value)['uri'];
      *         }
      *         if (is_string($uri) && is_file($uri)) {
      *             unset($resourceOptions['filename']);
@@ -214,12 +214,9 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                             new Expr\FuncCall(new Name('is_resource'), [new Arg(new Expr\Variable('value'))]),
                             [
                                 'stmts' => [
-                                    new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\BinaryOp\Coalesce(
-                                        new Expr\ArrayDimFetch(
-                                            new Expr\FuncCall(new Name('stream_get_meta_data'), [new Arg(new Expr\Variable('value'))]),
-                                            new Scalar\String_('uri')
-                                        ),
-                                        new Expr\ConstFetch(new Name('null'))
+                                    new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\ArrayDimFetch(
+                                        new Expr\FuncCall(new Name('stream_get_meta_data'), [new Arg(new Expr\Variable('value'))]),
+                                        new Scalar\String_('uri')
                                     ))),
                                 ],
                             ]

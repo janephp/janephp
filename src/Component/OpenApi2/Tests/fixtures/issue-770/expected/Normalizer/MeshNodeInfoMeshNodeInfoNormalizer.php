@@ -101,59 +101,59 @@ class MeshNodeInfoMeshNodeInfoNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('meshRole', get_object_vars($data)) && null !== ($data->meshRole ?? null)) {
-            $dataArray['meshRole'] = $data->meshRole ?? null;
+            $dataArray['meshRole'] = $data->meshRole;
         }
         if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
-            $dataArray['apName'] = $data->apName ?? null;
+            $dataArray['apName'] = $data->apName;
         }
         if (array_key_exists('apModel', get_object_vars($data)) && null !== ($data->apModel ?? null)) {
-            $dataArray['apModel'] = $data->apModel ?? null;
+            $dataArray['apModel'] = $data->apModel;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('externalIPAddress', get_object_vars($data)) && null !== ($data->externalIPAddress ?? null)) {
-            $dataArray['externalIPAddress'] = $data->externalIPAddress ?? null;
+            $dataArray['externalIPAddress'] = $data->externalIPAddress;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('uplinkChannel', get_object_vars($data)) && null !== ($data->uplinkChannel ?? null)) {
-            $dataArray['uplinkChannel'] = $data->uplinkChannel ?? null;
+            $dataArray['uplinkChannel'] = $data->uplinkChannel;
         }
         if (array_key_exists('downlinkChannel', get_object_vars($data)) && null !== ($data->downlinkChannel ?? null)) {
-            $dataArray['downlinkChannel'] = $data->downlinkChannel ?? null;
+            $dataArray['downlinkChannel'] = $data->downlinkChannel;
         }
         if (array_key_exists('uplinkSnr', get_object_vars($data)) && null !== ($data->uplinkSnr ?? null)) {
-            $dataArray['uplinkSnr'] = $data->uplinkSnr ?? null;
+            $dataArray['uplinkSnr'] = $data->uplinkSnr;
         }
         if (array_key_exists('downlinkSnr', get_object_vars($data)) && null !== ($data->downlinkSnr ?? null)) {
-            $dataArray['downlinkSnr'] = $data->downlinkSnr ?? null;
+            $dataArray['downlinkSnr'] = $data->downlinkSnr;
         }
         if (array_key_exists('hasDownLink', get_object_vars($data)) && null !== ($data->hasDownLink ?? null)) {
-            $dataArray['hasDownLink'] = $data->hasDownLink ?? null;
+            $dataArray['hasDownLink'] = $data->hasDownLink;
         }
         if (array_key_exists('clientCount', get_object_vars($data)) && null !== ($data->clientCount ?? null)) {
-            $dataArray['clientCount'] = $data->clientCount ?? null;
+            $dataArray['clientCount'] = $data->clientCount;
         }
         if (array_key_exists('hops', get_object_vars($data)) && null !== ($data->hops ?? null)) {
-            $dataArray['hops'] = $data->hops ?? null;
+            $dataArray['hops'] = $data->hops;
         }
         if (array_key_exists('helperZoneInfo', get_object_vars($data)) && null !== ($data->helperZoneInfo ?? null)) {
             $values = [];
-            foreach ($data->helperZoneInfo ?? null as $value) {
+            foreach ($data->helperZoneInfo as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['helperZoneInfo'] = $values;
         }
         if (array_key_exists('uplinkMCSRate', get_object_vars($data)) && null !== ($data->uplinkMCSRate ?? null)) {
-            $dataArray['uplinkMCSRate'] = $data->uplinkMCSRate ?? null;
+            $dataArray['uplinkMCSRate'] = $data->uplinkMCSRate;
         }
         if (array_key_exists('downlinkMCSRate', get_object_vars($data)) && null !== ($data->downlinkMCSRate ?? null)) {
-            $dataArray['downlinkMCSRate'] = $data->downlinkMCSRate ?? null;
+            $dataArray['downlinkMCSRate'] = $data->downlinkMCSRate;
         }
         return $dataArray;
     }

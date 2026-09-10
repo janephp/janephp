@@ -64,14 +64,14 @@ class InvoiceSummaryProductChargesNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->items ?? null as $value) {
+            foreach ($data->items as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;

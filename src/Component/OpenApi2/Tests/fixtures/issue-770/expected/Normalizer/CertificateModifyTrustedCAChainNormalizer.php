@@ -62,23 +62,23 @@ class CertificateModifyTrustedCAChainNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('information', get_object_vars($data)) && null !== ($data->information ?? null)) {
-            $dataArray['information'] = $data->information ?? null;
+            $dataArray['information'] = $data->information;
         }
         if (array_key_exists('interCertData', get_object_vars($data)) && null !== ($data->interCertData ?? null)) {
             $values = [];
-            foreach ($data->interCertData ?? null as $value) {
+            foreach ($data->interCertData as $value) {
                 $values[] = $value;
             }
             $dataArray['interCertData'] = $values;
         }
         if (array_key_exists('rootCertData', get_object_vars($data)) && null !== ($data->rootCertData ?? null)) {
-            $dataArray['rootCertData'] = $data->rootCertData ?? null;
+            $dataArray['rootCertData'] = $data->rootCertData;
         }
         return $dataArray;
     }

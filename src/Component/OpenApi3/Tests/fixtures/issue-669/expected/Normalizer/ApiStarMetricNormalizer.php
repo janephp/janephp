@@ -67,16 +67,16 @@ class ApiStarMetricNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('metricUuid', get_object_vars($data)) && null !== ($data->metricUuid ?? null)) {
-            $dataArray['metric_uuid'] = $data->metricUuid ?? null;
+            $dataArray['metric_uuid'] = $data->metricUuid;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('successThreshold', get_object_vars($data)) && null !== ($data->successThreshold ?? null)) {
-            $dataArray['success_threshold'] = $data->successThreshold ?? null;
+            $dataArray['success_threshold'] = $data->successThreshold;
         }
         if (array_key_exists('successThresholdPct', get_object_vars($data)) && null !== ($data->successThresholdPct ?? null)) {
-            $dataArray['success_threshold_pct'] = $data->successThresholdPct ?? null;
+            $dataArray['success_threshold_pct'] = $data->successThresholdPct;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

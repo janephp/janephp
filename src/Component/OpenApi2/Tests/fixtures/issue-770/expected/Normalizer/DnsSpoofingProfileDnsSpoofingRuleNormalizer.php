@@ -52,9 +52,9 @@ class DnsSpoofingProfileDnsSpoofingRuleNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainName'] = $data->domainName ?? null;
+        $dataArray['domainName'] = $data->domainName;
         $values = [];
-        foreach ($data->ipList ?? null as $value) {
+        foreach ($data->ipList as $value) {
             $values[] = $value;
         }
         $dataArray['ipList'] = $values;

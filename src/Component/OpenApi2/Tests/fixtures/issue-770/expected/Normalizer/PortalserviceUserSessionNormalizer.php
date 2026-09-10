@@ -49,10 +49,10 @@ class PortalserviceUserSessionNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('timeoutInMin', get_object_vars($data)) && null !== ($data->timeoutInMin ?? null)) {
-            $dataArray['timeoutInMin'] = $data->timeoutInMin ?? null;
+            $dataArray['timeoutInMin'] = $data->timeoutInMin;
         }
         if (array_key_exists('gracePeriodInMin', get_object_vars($data)) && null !== ($data->gracePeriodInMin ?? null)) {
-            $dataArray['gracePeriodInMin'] = $data->gracePeriodInMin ?? null;
+            $dataArray['gracePeriodInMin'] = $data->gracePeriodInMin;
         }
         return $dataArray;
     }

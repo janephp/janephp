@@ -52,7 +52,7 @@ class ResponseKafkaTopicNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('topic', get_object_vars($data)) && null !== ($data->topic ?? null)) {
-            $dataArray['topic'] = ($data->topic ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->topic ?? null, 'json', $context));
+            $dataArray['topic'] = $data->topic === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->topic, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

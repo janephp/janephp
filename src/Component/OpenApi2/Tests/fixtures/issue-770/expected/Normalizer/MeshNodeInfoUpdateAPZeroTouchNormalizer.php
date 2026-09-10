@@ -55,16 +55,16 @@ class MeshNodeInfoUpdateAPZeroTouchNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('helperZoneId', get_object_vars($data)) && null !== ($data->helperZoneId ?? null)) {
-            $dataArray['helperZoneId'] = $data->helperZoneId ?? null;
+            $dataArray['helperZoneId'] = $data->helperZoneId;
         }
         if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
-            $dataArray['serialNumber'] = $data->serialNumber ?? null;
+            $dataArray['serialNumber'] = $data->serialNumber;
         }
         return $dataArray;
     }

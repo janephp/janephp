@@ -64,22 +64,22 @@ class CertificateCreateClientCertNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['data'] = $data->data ?? null;
+        $dataArray['data'] = $data->data;
         if (array_key_exists('intermediateData', get_object_vars($data)) && null !== ($data->intermediateData ?? null)) {
             $values = [];
-            foreach ($data->intermediateData ?? null as $value) {
+            foreach ($data->intermediateData as $value) {
                 $values[] = $value;
             }
             $dataArray['intermediateData'] = $values;
         }
         if (array_key_exists('rootData', get_object_vars($data)) && null !== ($data->rootData ?? null)) {
-            $dataArray['rootData'] = $data->rootData ?? null;
+            $dataArray['rootData'] = $data->rootData;
         }
-        $dataArray['privateKeyData'] = $data->privateKeyData ?? null;
+        $dataArray['privateKeyData'] = $data->privateKeyData;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

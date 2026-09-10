@@ -55,9 +55,9 @@ class DropletActionEnableBackupsNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = ($data->backupPolicy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy ?? null, 'json', $context));
+            $dataArray['backup_policy'] = $data->backupPolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

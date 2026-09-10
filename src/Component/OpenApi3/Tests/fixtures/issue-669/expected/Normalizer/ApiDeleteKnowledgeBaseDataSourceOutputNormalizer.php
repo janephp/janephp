@@ -56,10 +56,10 @@ class ApiDeleteKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('dataSourceUuid', get_object_vars($data)) && null !== ($data->dataSourceUuid ?? null)) {
-            $dataArray['data_source_uuid'] = $data->dataSourceUuid ?? null;
+            $dataArray['data_source_uuid'] = $data->dataSourceUuid;
         }
         if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
-            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

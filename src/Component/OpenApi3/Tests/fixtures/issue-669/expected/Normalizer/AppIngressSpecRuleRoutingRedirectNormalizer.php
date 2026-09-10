@@ -68,19 +68,19 @@ class AppIngressSpecRuleRoutingRedirectNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('uri', get_object_vars($data)) && null !== ($data->uri ?? null)) {
-            $dataArray['uri'] = $data->uri ?? null;
+            $dataArray['uri'] = $data->uri;
         }
         if (array_key_exists('authority', get_object_vars($data)) && null !== ($data->authority ?? null)) {
-            $dataArray['authority'] = $data->authority ?? null;
+            $dataArray['authority'] = $data->authority;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('scheme', get_object_vars($data)) && null !== ($data->scheme ?? null)) {
-            $dataArray['scheme'] = $data->scheme ?? null;
+            $dataArray['scheme'] = $data->scheme;
         }
         if (array_key_exists('redirectCode', get_object_vars($data)) && null !== ($data->redirectCode ?? null)) {
-            $dataArray['redirect_code'] = $data->redirectCode ?? null;
+            $dataArray['redirect_code'] = $data->redirectCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

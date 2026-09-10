@@ -55,10 +55,10 @@ class ProfileProviderRealmNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['encoding'] = $data->encoding ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['encoding'] = $data->encoding;
         $values = [];
-        foreach ($data->eapMethods ?? null as $value) {
+        foreach ($data->eapMethods as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['eapMethods'] = $values;

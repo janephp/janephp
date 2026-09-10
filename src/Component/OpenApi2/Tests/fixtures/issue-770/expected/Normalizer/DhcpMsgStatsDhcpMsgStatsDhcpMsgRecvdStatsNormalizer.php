@@ -58,19 +58,19 @@ class DhcpMsgStatsDhcpMsgStatsDhcpMsgRecvdStatsNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('dhcpDiscover', get_object_vars($data)) && null !== ($data->dhcpDiscover ?? null)) {
-            $dataArray['dhcpDiscover'] = $data->dhcpDiscover ?? null;
+            $dataArray['dhcpDiscover'] = $data->dhcpDiscover;
         }
         if (array_key_exists('dhcpRequest', get_object_vars($data)) && null !== ($data->dhcpRequest ?? null)) {
-            $dataArray['dhcpRequest'] = $data->dhcpRequest ?? null;
+            $dataArray['dhcpRequest'] = $data->dhcpRequest;
         }
         if (array_key_exists('dhcpDecline', get_object_vars($data)) && null !== ($data->dhcpDecline ?? null)) {
-            $dataArray['dhcpDecline'] = $data->dhcpDecline ?? null;
+            $dataArray['dhcpDecline'] = $data->dhcpDecline;
         }
         if (array_key_exists('dhcpRelease', get_object_vars($data)) && null !== ($data->dhcpRelease ?? null)) {
-            $dataArray['dhcpRelease'] = $data->dhcpRelease ?? null;
+            $dataArray['dhcpRelease'] = $data->dhcpRelease;
         }
         if (array_key_exists('dhcpInform', get_object_vars($data)) && null !== ($data->dhcpInform ?? null)) {
-            $dataArray['dhcpInform'] = $data->dhcpInform ?? null;
+            $dataArray['dhcpInform'] = $data->dhcpInform;
         }
         return $dataArray;
     }

@@ -59,14 +59,14 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['Status'] = $data->status ?? null;
+            $dataArray['Status'] = $data->status;
         }
         if (array_key_exists('failingStreak', get_object_vars($data)) && null !== ($data->failingStreak ?? null)) {
-            $dataArray['FailingStreak'] = $data->failingStreak ?? null;
+            $dataArray['FailingStreak'] = $data->failingStreak;
         }
         if (array_key_exists('log', get_object_vars($data)) && null !== ($data->log ?? null)) {
             $values = [];
-            foreach ($data->log ?? null as $value) {
+            foreach ($data->log as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Log'] = $values;

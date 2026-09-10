@@ -52,10 +52,10 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('kind', get_object_vars($data)) && null !== ($data->kind ?? null)) {
-            $dataArray['Kind'] = $data->kind ?? null;
+            $dataArray['Kind'] = $data->kind;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['Value'] = $data->value ?? null;
+            $dataArray['Value'] = $data->value;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\GenericResourcesItemDiscreteResourceSpecConstraint());

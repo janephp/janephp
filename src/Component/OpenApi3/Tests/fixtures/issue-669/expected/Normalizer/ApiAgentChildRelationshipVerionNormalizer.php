@@ -71,19 +71,19 @@ class ApiAgentChildRelationshipVerionNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('agentName', get_object_vars($data)) && null !== ($data->agentName ?? null)) {
-            $dataArray['agent_name'] = $data->agentName ?? null;
+            $dataArray['agent_name'] = $data->agentName;
         }
         if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
-            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid;
         }
         if (array_key_exists('ifCase', get_object_vars($data)) && null !== ($data->ifCase ?? null)) {
-            $dataArray['if_case'] = $data->ifCase ?? null;
+            $dataArray['if_case'] = $data->ifCase;
         }
         if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
-            $dataArray['is_deleted'] = $data->isDeleted ?? null;
+            $dataArray['is_deleted'] = $data->isDeleted;
         }
         if (array_key_exists('routeName', get_object_vars($data)) && null !== ($data->routeName ?? null)) {
-            $dataArray['route_name'] = $data->routeName ?? null;
+            $dataArray['route_name'] = $data->routeName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

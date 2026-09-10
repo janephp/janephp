@@ -85,26 +85,26 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         if (array_key_exists('contentOrLayerSchemaIds', get_object_vars($data)) && null !== ($data->contentOrLayerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->contentOrLayerSchemaIds ?? null as $value) {
+            foreach ($data->contentOrLayerSchemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['contentOrLayerSchemaIds'] = $values;
         }
         if (array_key_exists('listSchemaIds', get_object_vars($data)) && null !== ($data->listSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->listSchemaIds ?? null as $value_1) {
+            foreach ($data->listSchemaIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['listSchemaIds'] = $values_1;
         }
-        $value_2 = $data->state ?? null;
-        if (is_string($data->state ?? null)) {
-            $value_2 = $data->state ?? null;
+        $value_2 = $data->state;
+        if (is_string($data->state)) {
+            $value_2 = $data->state;
         }
         $dataArray['state'] = $value_2;
         if (array_key_exists('fieldIdsToCleanup', get_object_vars($data)) && null !== ($data->fieldIdsToCleanup ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->fieldIdsToCleanup ?? null as $key => $value_3) {
+            foreach ($data->fieldIdsToCleanup as $key => $value_3) {
                 $values_3 = [];
                 foreach ($value_3 as $value_4) {
                     $values_3[] = $value_4;

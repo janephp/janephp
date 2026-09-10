@@ -60,18 +60,18 @@ class CommonPortalCustomizationNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->language ?? null;
+        $dataArray['language'] = $data->language;
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
         if (array_key_exists('logo', get_object_vars($data)) && null !== ($data->logo ?? null)) {
-            $dataArray['logo'] = $data->logo ?? null;
+            $dataArray['logo'] = $data->logo;
         }
         if (array_key_exists('termsAndConditionsRequired', get_object_vars($data)) && null !== ($data->termsAndConditionsRequired ?? null)) {
-            $dataArray['termsAndConditionsRequired'] = $data->termsAndConditionsRequired ?? null;
+            $dataArray['termsAndConditionsRequired'] = $data->termsAndConditionsRequired;
         }
         if (array_key_exists('termsAndConditionsText', get_object_vars($data)) && null !== ($data->termsAndConditionsText ?? null)) {
-            $dataArray['termsAndConditionsText'] = $data->termsAndConditionsText ?? null;
+            $dataArray['termsAndConditionsText'] = $data->termsAndConditionsText;
         }
         return $dataArray;
     }

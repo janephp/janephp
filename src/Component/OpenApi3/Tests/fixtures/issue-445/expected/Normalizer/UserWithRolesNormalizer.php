@@ -110,33 +110,33 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         if (array_key_exists('userRoleIds', get_object_vars($data)) && null !== ($data->userRoleIds ?? null)) {
             $values = [];
-            foreach ($data->userRoleIds ?? null as $value) {
+            foreach ($data->userRoleIds as $value) {
                 $values[] = $value;
             }
             $dataArray['userRoleIds'] = $values;
         }
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
-        $value_1 = $data->authorizationState ?? null;
-        if (is_string($data->authorizationState ?? null)) {
-            $value_1 = $data->authorizationState ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
+        $value_1 = $data->authorizationState;
+        if (is_string($data->authorizationState)) {
+            $value_1 = $data->authorizationState;
         }
         $dataArray['authorizationState'] = $value_1;
-        $value_2 = $data->lifeCycle ?? null;
-        if (is_string($data->lifeCycle ?? null)) {
-            $value_2 = $data->lifeCycle ?? null;
+        $value_2 = $data->lifeCycle;
+        if (is_string($data->lifeCycle)) {
+            $value_2 = $data->lifeCycle;
         }
         $dataArray['lifeCycle'] = $value_2;
-        $dataArray['isLocked'] = $data->isLocked ?? null;
-        $dataArray['isSupportUser'] = $data->isSupportUser ?? null;
-        $dataArray['isReadOnly'] = $data->isReadOnly ?? null;
-        $dataArray['isFederated'] = $data->isFederated ?? null;
+        $dataArray['isLocked'] = $data->isLocked;
+        $dataArray['isSupportUser'] = $data->isSupportUser;
+        $dataArray['isReadOnly'] = $data->isReadOnly;
+        $dataArray['isFederated'] = $data->isFederated;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

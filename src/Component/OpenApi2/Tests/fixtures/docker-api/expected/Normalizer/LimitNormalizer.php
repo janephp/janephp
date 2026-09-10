@@ -55,13 +55,13 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('nanoCPUs', get_object_vars($data)) && null !== ($data->nanoCPUs ?? null)) {
-            $dataArray['NanoCPUs'] = $data->nanoCPUs ?? null;
+            $dataArray['NanoCPUs'] = $data->nanoCPUs;
         }
         if (array_key_exists('memoryBytes', get_object_vars($data)) && null !== ($data->memoryBytes ?? null)) {
-            $dataArray['MemoryBytes'] = $data->memoryBytes ?? null;
+            $dataArray['MemoryBytes'] = $data->memoryBytes;
         }
         if (array_key_exists('pids', get_object_vars($data)) && null !== ($data->pids ?? null)) {
-            $dataArray['Pids'] = $data->pids ?? null;
+            $dataArray['Pids'] = $data->pids;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\LimitConstraint());

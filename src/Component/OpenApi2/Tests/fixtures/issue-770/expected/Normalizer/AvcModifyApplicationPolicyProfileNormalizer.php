@@ -68,23 +68,23 @@ class AvcModifyApplicationPolicyProfileNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('applicationRules', get_object_vars($data)) && null !== ($data->applicationRules ?? null)) {
             $values = [];
-            foreach ($data->applicationRules ?? null as $value) {
+            foreach ($data->applicationRules as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['applicationRules'] = $values;
         }
         if (array_key_exists('avcLogEnable', get_object_vars($data)) && null !== ($data->avcLogEnable ?? null)) {
-            $dataArray['avcLogEnable'] = $data->avcLogEnable ?? null;
+            $dataArray['avcLogEnable'] = $data->avcLogEnable;
         }
         if (array_key_exists('avcEventEnable', get_object_vars($data)) && null !== ($data->avcEventEnable ?? null)) {
-            $dataArray['avcEventEnable'] = $data->avcEventEnable ?? null;
+            $dataArray['avcEventEnable'] = $data->avcEventEnable;
         }
         return $dataArray;
     }

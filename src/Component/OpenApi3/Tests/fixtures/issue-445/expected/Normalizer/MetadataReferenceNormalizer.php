@@ -63,13 +63,13 @@ class MetadataReferenceNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['targetMetadataItemId'] = $data->targetMetadataItemId ?? null;
-        $dataArray['isRestricted'] = $data->isRestricted ?? null;
+        $dataArray['targetMetadataItemId'] = $data->targetMetadataItemId;
+        $dataArray['isRestricted'] = $data->isRestricted;
         if (array_key_exists('sourceMetadataItemId', get_object_vars($data)) && null !== ($data->sourceMetadataItemId ?? null)) {
-            $dataArray['sourceMetadataItemId'] = $data->sourceMetadataItemId ?? null;
+            $dataArray['sourceMetadataItemId'] = $data->sourceMetadataItemId;
         }
         if (array_key_exists('sourceDocType', get_object_vars($data)) && null !== ($data->sourceDocType ?? null)) {
-            $dataArray['sourceDocType'] = $data->sourceDocType ?? null;
+            $dataArray['sourceDocType'] = $data->sourceDocType;
         }
         return $dataArray;
     }

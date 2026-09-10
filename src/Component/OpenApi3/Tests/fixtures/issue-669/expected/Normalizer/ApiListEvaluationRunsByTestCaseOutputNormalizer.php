@@ -57,7 +57,7 @@ class ApiListEvaluationRunsByTestCaseOutputNormalizer implements DenormalizerInt
         $dataArray = [];
         if (array_key_exists('evaluationRuns', get_object_vars($data)) && null !== ($data->evaluationRuns ?? null)) {
             $values = [];
-            foreach ($data->evaluationRuns ?? null as $value) {
+            foreach ($data->evaluationRuns as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['evaluation_runs'] = $values;

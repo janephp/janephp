@@ -70,18 +70,18 @@ class AppDomainSpecNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domain'] = $data->domain ?? null;
+        $dataArray['domain'] = $data->domain;
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('wildcard', get_object_vars($data)) && null !== ($data->wildcard ?? null)) {
-            $dataArray['wildcard'] = $data->wildcard ?? null;
+            $dataArray['wildcard'] = $data->wildcard;
         }
         if (array_key_exists('zone', get_object_vars($data)) && null !== ($data->zone ?? null)) {
-            $dataArray['zone'] = $data->zone ?? null;
+            $dataArray['zone'] = $data->zone;
         }
         if (array_key_exists('minimumTlsVersion', get_object_vars($data)) && null !== ($data->minimumTlsVersion ?? null)) {
-            $dataArray['minimum_tls_version'] = $data->minimumTlsVersion ?? null;
+            $dataArray['minimum_tls_version'] = $data->minimumTlsVersion;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

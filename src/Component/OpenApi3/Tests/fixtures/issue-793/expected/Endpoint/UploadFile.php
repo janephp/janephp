@@ -36,7 +36,7 @@ class UploadFile extends \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime
                 if (isset($resourceOptions['filename'])) {
                     $uri = null;
                     if (is_resource($value)) {
-                        $uri = stream_get_meta_data($value)['uri'] ?? null;
+                        $uri = stream_get_meta_data($value)['uri'];
                     }
                     if (is_string($uri) && is_file($uri)) {
                         unset($resourceOptions['filename']);

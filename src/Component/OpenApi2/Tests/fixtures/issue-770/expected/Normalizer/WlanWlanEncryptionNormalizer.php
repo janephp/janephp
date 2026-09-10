@@ -84,36 +84,36 @@ class WlanWlanEncryptionNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['method'] = $data->method ?? null;
+        $dataArray['method'] = $data->method;
         if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
-            $dataArray['algorithm'] = $data->algorithm ?? null;
+            $dataArray['algorithm'] = $data->algorithm;
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
-            $dataArray['passphrase'] = $data->passphrase ?? null;
+            $dataArray['passphrase'] = $data->passphrase;
         }
         if (array_key_exists('saePassphrase', get_object_vars($data)) && null !== ($data->saePassphrase ?? null)) {
-            $dataArray['saePassphrase'] = $data->saePassphrase ?? null;
+            $dataArray['saePassphrase'] = $data->saePassphrase;
         }
         if (array_key_exists('mfp', get_object_vars($data)) && null !== ($data->mfp ?? null)) {
-            $dataArray['mfp'] = $data->mfp ?? null;
+            $dataArray['mfp'] = $data->mfp;
         }
         if (array_key_exists('transitionDisable', get_object_vars($data)) && null !== ($data->transitionDisable ?? null)) {
-            $dataArray['transitionDisable'] = $data->transitionDisable ?? null;
+            $dataArray['transitionDisable'] = $data->transitionDisable;
         }
         if (array_key_exists('keyIndex', get_object_vars($data)) && null !== ($data->keyIndex ?? null)) {
-            $dataArray['keyIndex'] = $data->keyIndex ?? null;
+            $dataArray['keyIndex'] = $data->keyIndex;
         }
         if (array_key_exists('keyInHex', get_object_vars($data)) && null !== ($data->keyInHex ?? null)) {
-            $dataArray['keyInHex'] = $data->keyInHex ?? null;
+            $dataArray['keyInHex'] = $data->keyInHex;
         }
         if (array_key_exists('support80211rEnabled', get_object_vars($data)) && null !== ($data->support80211rEnabled ?? null)) {
-            $dataArray['support80211rEnabled'] = $data->support80211rEnabled ?? null;
+            $dataArray['support80211rEnabled'] = $data->support80211rEnabled;
         }
         if (array_key_exists('reserveSsidEnabled', get_object_vars($data)) && null !== ($data->reserveSsidEnabled ?? null)) {
-            $dataArray['reserveSsidEnabled'] = $data->reserveSsidEnabled ?? null;
+            $dataArray['reserveSsidEnabled'] = $data->reserveSsidEnabled;
         }
         if (array_key_exists('mobilityDomainId', get_object_vars($data)) && null !== ($data->mobilityDomainId ?? null)) {
-            $dataArray['mobilityDomainId'] = $data->mobilityDomainId ?? null;
+            $dataArray['mobilityDomainId'] = $data->mobilityDomainId;
         }
         return $dataArray;
     }

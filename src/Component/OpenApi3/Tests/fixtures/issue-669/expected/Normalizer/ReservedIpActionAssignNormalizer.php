@@ -55,8 +55,8 @@ class ReservedIpActionAssignNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['droplet_id'] = $data->dropletId ?? null;
+        $dataArray['type'] = $data->type;
+        $dataArray['droplet_id'] = $data->dropletId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

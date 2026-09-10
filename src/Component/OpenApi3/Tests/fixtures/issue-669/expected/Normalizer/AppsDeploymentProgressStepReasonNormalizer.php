@@ -56,10 +56,10 @@ class AppsDeploymentProgressStepReasonNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

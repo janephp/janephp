@@ -58,18 +58,18 @@ class CertificateCreateTrustedCAChainNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('interCertData', get_object_vars($data)) && null !== ($data->interCertData ?? null)) {
             $values = [];
-            foreach ($data->interCertData ?? null as $value) {
+            foreach ($data->interCertData as $value) {
                 $values[] = $value;
             }
             $dataArray['interCertData'] = $values;
         }
-        $dataArray['rootCertData'] = $data->rootCertData ?? null;
+        $dataArray['rootCertData'] = $data->rootCertData;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

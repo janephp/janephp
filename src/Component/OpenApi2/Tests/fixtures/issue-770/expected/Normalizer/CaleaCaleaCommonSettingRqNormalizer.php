@@ -49,10 +49,10 @@ class CaleaCaleaCommonSettingRqNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('caleaServerIp', get_object_vars($data)) && null !== ($data->caleaServerIp ?? null)) {
-            $dataArray['caleaServerIp'] = $data->caleaServerIp ?? null;
+            $dataArray['caleaServerIp'] = $data->caleaServerIp;
         }
         if (array_key_exists('dcIp', get_object_vars($data)) && null !== ($data->dcIp ?? null)) {
-            $dataArray['dc_ip'] = $data->dcIp ?? null;
+            $dataArray['dc_ip'] = $data->dcIp;
         }
         return $dataArray;
     }

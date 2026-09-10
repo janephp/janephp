@@ -97,18 +97,18 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('eventDate', get_object_vars($data)) && null !== ($data->eventDate ?? null)) {
-            $dataArray['eventDate'] = ($data->eventDate ?? null)?->format('Y-m-d');
+            $dataArray['eventDate'] = $data->eventDate?->format('Y-m-d');
         }
-        $dataArray['createdAt'] = ($data->createdAt ?? null)?->format('Y-m-d\TH:i:sP');
+        $dataArray['createdAt'] = $data->createdAt?->format('Y-m-d\TH:i:sP');
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updatedAt'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updatedAt'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('plainDate', get_object_vars($data)) && null !== ($data->plainDate ?? null)) {
-            $value = $data->plainDate ?? null;
-            if (is_string($data->plainDate ?? null)) {
-                $value = $data->plainDate ?? null;
-            } elseif (is_null($data->plainDate ?? null)) {
-                $value = $data->plainDate ?? null;
+            $value = $data->plainDate;
+            if (is_string($data->plainDate)) {
+                $value = $data->plainDate;
+            } elseif (is_null($data->plainDate)) {
+                $value = $data->plainDate;
             }
             $dataArray['plainDate'] = $value;
         }

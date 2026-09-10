@@ -63,11 +63,11 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
-            $dataArray['totalSize'] = $data->totalSize ?? null;
+            $dataArray['totalSize'] = $data->totalSize;
         }
         if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = [];
-            foreach ($data->companies ?? null as $value) {
+            foreach ($data->companies as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companies'] = $values;

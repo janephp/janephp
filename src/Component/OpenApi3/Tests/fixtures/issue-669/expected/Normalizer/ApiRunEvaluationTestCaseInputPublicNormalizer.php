@@ -73,23 +73,23 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
         $dataArray = [];
         if (array_key_exists('agentDeploymentNames', get_object_vars($data)) && null !== ($data->agentDeploymentNames ?? null)) {
             $values = [];
-            foreach ($data->agentDeploymentNames ?? null as $value) {
+            foreach ($data->agentDeploymentNames as $value) {
                 $values[] = $value;
             }
             $dataArray['agent_deployment_names'] = $values;
         }
         if (array_key_exists('agentUuids', get_object_vars($data)) && null !== ($data->agentUuids ?? null)) {
             $values_1 = [];
-            foreach ($data->agentUuids ?? null as $value_1) {
+            foreach ($data->agentUuids as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['agent_uuids'] = $values_1;
         }
         if (array_key_exists('runName', get_object_vars($data)) && null !== ($data->runName ?? null)) {
-            $dataArray['run_name'] = $data->runName ?? null;
+            $dataArray['run_name'] = $data->runName;
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
-            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
+            $dataArray['test_case_uuid'] = $data->testCaseUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

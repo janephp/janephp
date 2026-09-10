@@ -67,14 +67,14 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
-        $dataArray['private_key'] = $data->privateKey ?? null;
-        $dataArray['leaf_certificate'] = $data->leafCertificate ?? null;
+        $dataArray['private_key'] = $data->privateKey;
+        $dataArray['leaf_certificate'] = $data->leafCertificate;
         if (array_key_exists('certificateChain', get_object_vars($data)) && null !== ($data->certificateChain ?? null)) {
-            $dataArray['certificate_chain'] = $data->certificateChain ?? null;
+            $dataArray['certificate_chain'] = $data->certificateChain;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

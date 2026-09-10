@@ -69,7 +69,7 @@ class ResponseAllAlertsNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
             $values = [];
-            foreach ($data->alerts ?? null as $value) {
+            foreach ($data->alerts as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
@@ -79,9 +79,9 @@ class ResponseAllAlertsNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['alerts'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
-        $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
+        $dataArray['meta'] = $data->meta === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;

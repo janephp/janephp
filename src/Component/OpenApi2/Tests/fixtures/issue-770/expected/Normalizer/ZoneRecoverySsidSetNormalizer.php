@@ -52,10 +52,10 @@ class ZoneRecoverySsidSetNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('recoverySsidPskKey', get_object_vars($data)) && null !== ($data->recoverySsidPskKey ?? null)) {
-            $dataArray['recoverySsidPskKey'] = $data->recoverySsidPskKey ?? null;
+            $dataArray['recoverySsidPskKey'] = $data->recoverySsidPskKey;
         }
         if (array_key_exists('recoverySsidEnabled', get_object_vars($data)) && null !== ($data->recoverySsidEnabled ?? null)) {
-            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled ?? null;
+            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled;
         }
         return $dataArray;
     }

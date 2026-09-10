@@ -76,37 +76,37 @@ class AdministrationRetrieveAdminAAAServerNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('defaultRoleMapping', get_object_vars($data)) && null !== ($data->defaultRoleMapping ?? null)) {
-            $dataArray['defaultRoleMapping'] = ($data->defaultRoleMapping ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultRoleMapping ?? null, 'json', $context));
+            $dataArray['defaultRoleMapping'] = $data->defaultRoleMapping === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultRoleMapping, 'json', $context));
         }
         if (array_key_exists('radiusServer', get_object_vars($data)) && null !== ($data->radiusServer ?? null)) {
-            $dataArray['radiusServer'] = ($data->radiusServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->radiusServer ?? null, 'json', $context));
+            $dataArray['radiusServer'] = $data->radiusServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->radiusServer, 'json', $context));
         }
         if (array_key_exists('tacacsServer', get_object_vars($data)) && null !== ($data->tacacsServer ?? null)) {
-            $dataArray['tacacsServer'] = ($data->tacacsServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->tacacsServer ?? null, 'json', $context));
+            $dataArray['tacacsServer'] = $data->tacacsServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->tacacsServer, 'json', $context));
         }
         if (array_key_exists('activeDirectoryServer', get_object_vars($data)) && null !== ($data->activeDirectoryServer ?? null)) {
-            $dataArray['activeDirectoryServer'] = ($data->activeDirectoryServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->activeDirectoryServer ?? null, 'json', $context));
+            $dataArray['activeDirectoryServer'] = $data->activeDirectoryServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->activeDirectoryServer, 'json', $context));
         }
         if (array_key_exists('ldapServer', get_object_vars($data)) && null !== ($data->ldapServer ?? null)) {
-            $dataArray['ldapServer'] = ($data->ldapServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ldapServer ?? null, 'json', $context));
+            $dataArray['ldapServer'] = $data->ldapServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ldapServer, 'json', $context));
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         return $dataArray;
     }

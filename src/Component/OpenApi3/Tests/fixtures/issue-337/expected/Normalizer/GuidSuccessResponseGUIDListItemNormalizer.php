@@ -64,16 +64,16 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('friendlyName', get_object_vars($data)) && null !== ($data->friendlyName ?? null)) {
-            $dataArray['friendlyName'] = $data->friendlyName ?? null;
+            $dataArray['friendlyName'] = $data->friendlyName;
         }
         if (array_key_exists('gUID', get_object_vars($data)) && null !== ($data->gUID ?? null)) {
-            $dataArray['GUID'] = $data->gUID ?? null;
+            $dataArray['GUID'] = $data->gUID;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('serviceLine', get_object_vars($data)) && null !== ($data->serviceLine ?? null)) {
-            $dataArray['serviceLine'] = $data->serviceLine ?? null;
+            $dataArray['serviceLine'] = $data->serviceLine;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

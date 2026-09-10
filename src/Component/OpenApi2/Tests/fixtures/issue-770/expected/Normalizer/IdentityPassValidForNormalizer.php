@@ -49,10 +49,10 @@ class IdentityPassValidForNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
-            $dataArray['expirationValue'] = $data->expirationValue ?? null;
+            $dataArray['expirationValue'] = $data->expirationValue;
         }
         if (array_key_exists('expirationUnit', get_object_vars($data)) && null !== ($data->expirationUnit ?? null)) {
-            $dataArray['expirationUnit'] = $data->expirationUnit ?? null;
+            $dataArray['expirationUnit'] = $data->expirationUnit;
         }
         return $dataArray;
     }

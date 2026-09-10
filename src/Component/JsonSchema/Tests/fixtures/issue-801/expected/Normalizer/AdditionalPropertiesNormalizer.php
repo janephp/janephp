@@ -62,11 +62,11 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $value = $data->foo ?? null;
-            if (is_string($data->foo ?? null)) {
-                $value = $data->foo ?? null;
-            } elseif (is_null($data->foo ?? null)) {
-                $value = $data->foo ?? null;
+            $value = $data->foo;
+            if (is_string($data->foo)) {
+                $value = $data->foo;
+            } elseif (is_null($data->foo)) {
+                $value = $data->foo;
             }
             $dataArray['foo'] = $value;
         }

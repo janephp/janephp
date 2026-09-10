@@ -49,7 +49,7 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('taskHistoryRetentionLimit', get_object_vars($data)) && null !== ($data->taskHistoryRetentionLimit ?? null)) {
-            $dataArray['TaskHistoryRetentionLimit'] = $data->taskHistoryRetentionLimit ?? null;
+            $dataArray['TaskHistoryRetentionLimit'] = $data->taskHistoryRetentionLimit;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecOrchestrationConstraint());

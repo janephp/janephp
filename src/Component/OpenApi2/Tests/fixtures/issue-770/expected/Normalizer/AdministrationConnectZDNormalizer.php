@@ -52,13 +52,13 @@ class AdministrationConnectZDNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         return $dataArray;
     }

@@ -90,22 +90,22 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['from'] = ($data->from ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['to'] = ($data->to ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['limit'] = $data->limit ?? null;
+        $dataArray['from'] = $data->from->format('Y-m-d\TH:i:sP');
+        $dataArray['to'] = $data->to->format('Y-m-d\TH:i:sP');
+        $dataArray['limit'] = $data->limit;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
-            $dataArray['documentId'] = $data->documentId ?? null;
+            $dataArray['documentId'] = $data->documentId;
         }
-        $dataArray['documentVersion'] = $data->documentVersion ?? null;
+        $dataArray['documentVersion'] = $data->documentVersion;
         if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
-            $dataArray['documentType'] = $data->documentType ?? null;
+            $dataArray['documentType'] = $data->documentType;
         }
         if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values = [];
-            foreach ($data->sort ?? null as $value) {
+            foreach ($data->sort as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sort'] = $values;

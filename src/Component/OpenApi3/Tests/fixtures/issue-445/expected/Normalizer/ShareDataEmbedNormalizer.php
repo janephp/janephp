@@ -59,9 +59,9 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->url ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['token'] = $data->token ?? null;
+        $dataArray['url'] = $data->url;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['token'] = $data->token;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

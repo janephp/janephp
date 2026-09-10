@@ -60,13 +60,13 @@ class CompletedFreshInvestigationContactDetailsNormalizer implements Denormalize
     {
         $dataArray = [];
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('telephoneNumber', get_object_vars($data)) && null !== ($data->telephoneNumber ?? null)) {
-            $dataArray['telephoneNumber'] = $data->telephoneNumber ?? null;
+            $dataArray['telephoneNumber'] = $data->telephoneNumber;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

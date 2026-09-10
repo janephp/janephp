@@ -57,7 +57,7 @@ class ResponseExistingAlertNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         if (array_key_exists('alert', get_object_vars($data)) && null !== ($data->alert ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->alert ?? null as $key => $value) {
+            foreach ($data->alert as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['alert'] = $values;

@@ -73,18 +73,18 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('errorType', get_object_vars($data)) && null !== ($data->errorType ?? null)) {
-            $dataArray['errorType'] = $data->errorType ?? null;
+            $dataArray['errorType'] = $data->errorType;
         }
-        $dataArray['lineNumber'] = $data->lineNumber ?? null;
-        $dataArray['linePosition'] = $data->linePosition ?? null;
+        $dataArray['lineNumber'] = $data->lineNumber;
+        $dataArray['linePosition'] = $data->linePosition;
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = $data->path ?? null;
+            $dataArray['path'] = $data->path;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schemaId'] = $data->schemaId ?? null;
+            $dataArray['schemaId'] = $data->schemaId;
         }
         return $dataArray;
     }

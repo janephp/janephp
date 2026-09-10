@@ -56,10 +56,10 @@ class AppJobInvocationTriggerScheduledScheduleNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('cron', get_object_vars($data)) && null !== ($data->cron ?? null)) {
-            $dataArray['cron'] = $data->cron ?? null;
+            $dataArray['cron'] = $data->cron;
         }
         if (array_key_exists('timeZone', get_object_vars($data)) && null !== ($data->timeZone ?? null)) {
-            $dataArray['time_zone'] = $data->timeZone ?? null;
+            $dataArray['time_zone'] = $data->timeZone;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

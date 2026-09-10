@@ -83,24 +83,24 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $value = $data->address ?? null;
-            if (is_object($data->address ?? null)) {
-                $value = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $value = $data->address;
+            if (is_object($data->address)) {
+                $value = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value;
         }

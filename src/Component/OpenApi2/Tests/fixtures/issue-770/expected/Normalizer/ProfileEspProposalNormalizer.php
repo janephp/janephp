@@ -51,9 +51,9 @@ class ProfileEspProposalNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encAlg'] = $data->encAlg ?? null;
-        $dataArray['authAlg'] = $data->authAlg ?? null;
-        $dataArray['dhGroup'] = $data->dhGroup ?? null;
+        $dataArray['encAlg'] = $data->encAlg;
+        $dataArray['authAlg'] = $data->authAlg;
+        $dataArray['dhGroup'] = $data->dhGroup;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

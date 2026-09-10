@@ -58,16 +58,16 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = $data->error ?? null;
+            $dataArray['error'] = $data->error;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = $data->progress ?? null;
+            $dataArray['progress'] = $data->progress;
         }
         if (array_key_exists('progressDetail', get_object_vars($data)) && null !== ($data->progressDetail ?? null)) {
-            $dataArray['progressDetail'] = ($data->progressDetail ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail ?? null, 'json', $context));
+            $dataArray['progressDetail'] = $data->progressDetail === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PushImageInfoConstraint());

@@ -98,38 +98,38 @@ class ByoipPrefixNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('prefix', get_object_vars($data)) && null !== ($data->prefix ?? null)) {
-            $dataArray['prefix'] = $data->prefix ?? null;
+            $dataArray['prefix'] = $data->prefix;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('validations', get_object_vars($data)) && null !== ($data->validations ?? null)) {
             $values = [];
-            foreach ($data->validations ?? null as $value) {
+            foreach ($data->validations as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['validations'] = $values;
         }
         if (array_key_exists('failureReason', get_object_vars($data)) && null !== ($data->failureReason ?? null)) {
-            $dataArray['failure_reason'] = $data->failureReason ?? null;
+            $dataArray['failure_reason'] = $data->failureReason;
         }
         if (array_key_exists('locked', get_object_vars($data)) && null !== ($data->locked ?? null)) {
-            $dataArray['locked'] = $data->locked ?? null;
+            $dataArray['locked'] = $data->locked;
         }
         if (array_key_exists('advertised', get_object_vars($data)) && null !== ($data->advertised ?? null)) {
-            $dataArray['advertised'] = $data->advertised ?? null;
+            $dataArray['advertised'] = $data->advertised;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

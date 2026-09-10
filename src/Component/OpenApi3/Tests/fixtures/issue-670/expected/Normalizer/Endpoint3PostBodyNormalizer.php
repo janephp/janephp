@@ -52,7 +52,7 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('postField3', get_object_vars($data)) && null !== ($data->postField3 ?? null)) {
-            $dataArray['post-field-3'] = ($data->postField3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($this->normalizer->normalize($data->postField3 ?? null, 'json', $context));
+            $dataArray['post-field-3'] = $data->postField3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($this->normalizer->normalize($data->postField3, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

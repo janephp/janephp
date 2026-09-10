@@ -52,7 +52,7 @@ class Endpoint2PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('postField2', get_object_vars($data)) && null !== ($data->postField2 ?? null)) {
-            $dataArray['post-field-2'] = $data->postField2 ?? null;
+            $dataArray['post-field-2'] = $data->postField2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

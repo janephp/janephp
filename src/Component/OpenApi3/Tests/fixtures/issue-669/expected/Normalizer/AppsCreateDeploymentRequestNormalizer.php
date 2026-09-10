@@ -55,7 +55,7 @@ class AppsCreateDeploymentRequestNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('forceBuild', get_object_vars($data)) && null !== ($data->forceBuild ?? null)) {
-            $dataArray['force_build'] = $data->forceBuild ?? null;
+            $dataArray['force_build'] = $data->forceBuild;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

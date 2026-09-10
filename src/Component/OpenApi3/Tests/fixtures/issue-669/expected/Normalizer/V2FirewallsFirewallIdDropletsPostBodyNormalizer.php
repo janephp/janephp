@@ -56,7 +56,7 @@ class V2FirewallsFirewallIdDropletsPostBodyNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->dropletIds ?? null as $value) {
+        foreach ($data->dropletIds as $value) {
             $values[] = $value;
         }
         $dataArray['droplet_ids'] = $values;

@@ -60,12 +60,12 @@ class SciCreateSciProfileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['sciProfile'] = $data->sciProfile ?? null;
-        $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
-        $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
-        $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
-        $dataArray['sciUser'] = $data->sciUser ?? null;
-        $dataArray['sciPassword'] = $data->sciPassword ?? null;
+        $dataArray['sciProfile'] = $data->sciProfile;
+        $dataArray['sciSystemId'] = $data->sciSystemId;
+        $dataArray['sciServerHost'] = $data->sciServerHost;
+        $dataArray['sciServerPort'] = $data->sciServerPort;
+        $dataArray['sciUser'] = $data->sciUser;
+        $dataArray['sciPassword'] = $data->sciPassword;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

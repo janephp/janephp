@@ -130,73 +130,73 @@ class ProfileL3AclRuleListNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
-            $dataArray['ipType'] = $data->ipType ?? null;
+            $dataArray['ipType'] = $data->ipType;
         }
         if (array_key_exists('enableSourceIpSubnet', get_object_vars($data)) && null !== ($data->enableSourceIpSubnet ?? null)) {
-            $dataArray['enableSourceIpSubnet'] = $data->enableSourceIpSubnet ?? null;
+            $dataArray['enableSourceIpSubnet'] = $data->enableSourceIpSubnet;
         }
         if (array_key_exists('sourceIp', get_object_vars($data)) && null !== ($data->sourceIp ?? null)) {
-            $dataArray['sourceIp'] = $data->sourceIp ?? null;
+            $dataArray['sourceIp'] = $data->sourceIp;
         }
         if (array_key_exists('sourceIpMask', get_object_vars($data)) && null !== ($data->sourceIpMask ?? null)) {
-            $dataArray['sourceIpMask'] = $data->sourceIpMask ?? null;
+            $dataArray['sourceIpMask'] = $data->sourceIpMask;
         }
         if (array_key_exists('enableSourceV6Prefix', get_object_vars($data)) && null !== ($data->enableSourceV6Prefix ?? null)) {
-            $dataArray['enableSourceV6Prefix'] = $data->enableSourceV6Prefix ?? null;
+            $dataArray['enableSourceV6Prefix'] = $data->enableSourceV6Prefix;
         }
         if (array_key_exists('sourceIpV6', get_object_vars($data)) && null !== ($data->sourceIpV6 ?? null)) {
-            $dataArray['sourceIpV6'] = $data->sourceIpV6 ?? null;
+            $dataArray['sourceIpV6'] = $data->sourceIpV6;
         }
         if (array_key_exists('enableDestinationIpSubnet', get_object_vars($data)) && null !== ($data->enableDestinationIpSubnet ?? null)) {
-            $dataArray['enableDestinationIpSubnet'] = $data->enableDestinationIpSubnet ?? null;
+            $dataArray['enableDestinationIpSubnet'] = $data->enableDestinationIpSubnet;
         }
         if (array_key_exists('destinationIp', get_object_vars($data)) && null !== ($data->destinationIp ?? null)) {
-            $dataArray['destinationIp'] = $data->destinationIp ?? null;
+            $dataArray['destinationIp'] = $data->destinationIp;
         }
         if (array_key_exists('destinationIpMask', get_object_vars($data)) && null !== ($data->destinationIpMask ?? null)) {
-            $dataArray['destinationIpMask'] = $data->destinationIpMask ?? null;
+            $dataArray['destinationIpMask'] = $data->destinationIpMask;
         }
         if (array_key_exists('enableDestinationV6Prefix', get_object_vars($data)) && null !== ($data->enableDestinationV6Prefix ?? null)) {
-            $dataArray['enableDestinationV6Prefix'] = $data->enableDestinationV6Prefix ?? null;
+            $dataArray['enableDestinationV6Prefix'] = $data->enableDestinationV6Prefix;
         }
         if (array_key_exists('destinationIpV6', get_object_vars($data)) && null !== ($data->destinationIpV6 ?? null)) {
-            $dataArray['destinationIpV6'] = $data->destinationIpV6 ?? null;
+            $dataArray['destinationIpV6'] = $data->destinationIpV6;
         }
         if (array_key_exists('enableSourcePortRange', get_object_vars($data)) && null !== ($data->enableSourcePortRange ?? null)) {
-            $dataArray['enableSourcePortRange'] = $data->enableSourcePortRange ?? null;
+            $dataArray['enableSourcePortRange'] = $data->enableSourcePortRange;
         }
         if (array_key_exists('sourceMinPort', get_object_vars($data)) && null !== ($data->sourceMinPort ?? null)) {
-            $dataArray['sourceMinPort'] = $data->sourceMinPort ?? null;
+            $dataArray['sourceMinPort'] = $data->sourceMinPort;
         }
         if (array_key_exists('sourceMaxPort', get_object_vars($data)) && null !== ($data->sourceMaxPort ?? null)) {
-            $dataArray['sourceMaxPort'] = $data->sourceMaxPort ?? null;
+            $dataArray['sourceMaxPort'] = $data->sourceMaxPort;
         }
         if (array_key_exists('enableDestinationPortRange', get_object_vars($data)) && null !== ($data->enableDestinationPortRange ?? null)) {
-            $dataArray['enableDestinationPortRange'] = $data->enableDestinationPortRange ?? null;
+            $dataArray['enableDestinationPortRange'] = $data->enableDestinationPortRange;
         }
         if (array_key_exists('destinationMinPort', get_object_vars($data)) && null !== ($data->destinationMinPort ?? null)) {
-            $dataArray['destinationMinPort'] = $data->destinationMinPort ?? null;
+            $dataArray['destinationMinPort'] = $data->destinationMinPort;
         }
         if (array_key_exists('destinationMaxPort', get_object_vars($data)) && null !== ($data->destinationMaxPort ?? null)) {
-            $dataArray['destinationMaxPort'] = $data->destinationMaxPort ?? null;
+            $dataArray['destinationMaxPort'] = $data->destinationMaxPort;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('customProtocol', get_object_vars($data)) && null !== ($data->customProtocol ?? null)) {
-            $dataArray['customProtocol'] = $data->customProtocol ?? null;
+            $dataArray['customProtocol'] = $data->customProtocol;
         }
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['action'] = $data->action ?? null;
+            $dataArray['action'] = $data->action;
         }
         if (array_key_exists('direction', get_object_vars($data)) && null !== ($data->direction ?? null)) {
-            $dataArray['direction'] = $data->direction ?? null;
+            $dataArray['direction'] = $data->direction;
         }
         return $dataArray;
     }

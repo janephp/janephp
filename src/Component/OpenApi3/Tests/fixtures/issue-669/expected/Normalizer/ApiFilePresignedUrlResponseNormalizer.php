@@ -68,16 +68,16 @@ class ApiFilePresignedUrlResponseNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('expiresAt', get_object_vars($data)) && null !== ($data->expiresAt ?? null)) {
-            $dataArray['expires_at'] = ($data->expiresAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['expires_at'] = $data->expiresAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('objectKey', get_object_vars($data)) && null !== ($data->objectKey ?? null)) {
-            $dataArray['object_key'] = $data->objectKey ?? null;
+            $dataArray['object_key'] = $data->objectKey;
         }
         if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
-            $dataArray['original_file_name'] = $data->originalFileName ?? null;
+            $dataArray['original_file_name'] = $data->originalFileName;
         }
         if (array_key_exists('presignedUrl', get_object_vars($data)) && null !== ($data->presignedUrl ?? null)) {
-            $dataArray['presigned_url'] = $data->presignedUrl ?? null;
+            $dataArray['presigned_url'] = $data->presignedUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

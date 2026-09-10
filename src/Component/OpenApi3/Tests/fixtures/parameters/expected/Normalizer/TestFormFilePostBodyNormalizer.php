@@ -52,7 +52,7 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('testFile', get_object_vars($data)) && null !== ($data->testFile ?? null)) {
-            $dataArray['testFile'] = $data->testFile ?? null;
+            $dataArray['testFile'] = $data->testFile;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

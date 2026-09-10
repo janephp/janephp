@@ -57,7 +57,7 @@ class ResponseNodePoolUpdateNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         if (array_key_exists('nodePool', get_object_vars($data)) && null !== ($data->nodePool ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->nodePool ?? null as $key => $value) {
+            foreach ($data->nodePool as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['node_pool'] = $values;

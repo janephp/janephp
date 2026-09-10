@@ -63,11 +63,11 @@ class SubscriptionTierExtendedNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('eligible', get_object_vars($data)) && null !== ($data->eligible ?? null)) {
-            $dataArray['eligible'] = $data->eligible ?? null;
+            $dataArray['eligible'] = $data->eligible;
         }
         if (array_key_exists('eligibilityReasons', get_object_vars($data)) && null !== ($data->eligibilityReasons ?? null)) {
             $values = [];
-            foreach ($data->eligibilityReasons ?? null as $value) {
+            foreach ($data->eligibilityReasons as $value) {
                 $values[] = $value;
             }
             $dataArray['eligibility_reasons'] = $values;

@@ -52,7 +52,7 @@ class TestPostResponse201Normalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = $data->foo ?? null;
+            $dataArray['foo'] = $data->foo;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

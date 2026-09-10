@@ -104,28 +104,28 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
     {
         $dataArray = [];
         if (array_key_exists('addressConflict', get_object_vars($data)) && null !== ($data->addressConflict ?? null)) {
-            $dataArray['addressConflict'] = $data->addressConflict ?? null;
+            $dataArray['addressConflict'] = $data->addressConflict;
         }
         if (array_key_exists('citizenshipConflict', get_object_vars($data)) && null !== ($data->citizenshipConflict ?? null)) {
-            $dataArray['citizenshipConflict'] = $data->citizenshipConflict ?? null;
+            $dataArray['citizenshipConflict'] = $data->citizenshipConflict;
         }
         if (array_key_exists('countryConflict', get_object_vars($data)) && null !== ($data->countryConflict ?? null)) {
-            $dataArray['countryConflict'] = $data->countryConflict ?? null;
+            $dataArray['countryConflict'] = $data->countryConflict;
         }
         if (array_key_exists('dobConflict', get_object_vars($data)) && null !== ($data->dobConflict ?? null)) {
-            $dataArray['dobConflict'] = $data->dobConflict ?? null;
+            $dataArray['dobConflict'] = $data->dobConflict;
         }
         if (array_key_exists('entityTypeConflict', get_object_vars($data)) && null !== ($data->entityTypeConflict ?? null)) {
-            $dataArray['entityTypeConflict'] = $data->entityTypeConflict ?? null;
+            $dataArray['entityTypeConflict'] = $data->entityTypeConflict;
         }
         if (array_key_exists('genderConflict', get_object_vars($data)) && null !== ($data->genderConflict ?? null)) {
-            $dataArray['genderConflict'] = $data->genderConflict ?? null;
+            $dataArray['genderConflict'] = $data->genderConflict;
         }
         if (array_key_exists('idConflict', get_object_vars($data)) && null !== ($data->idConflict ?? null)) {
-            $dataArray['idConflict'] = $data->idConflict ?? null;
+            $dataArray['idConflict'] = $data->idConflict;
         }
         if (array_key_exists('phoneConflict', get_object_vars($data)) && null !== ($data->phoneConflict ?? null)) {
-            $dataArray['phoneConflict'] = $data->phoneConflict ?? null;
+            $dataArray['phoneConflict'] = $data->phoneConflict;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

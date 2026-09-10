@@ -65,14 +65,14 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
         $dataArray = [];
         if (array_key_exists('portfolios', get_object_vars($data)) && null !== ($data->portfolios ?? null)) {
             $values = [];
-            foreach ($data->portfolios ?? null as $value) {
+            foreach ($data->portfolios as $value) {
                 $values[] = $value;
             }
             $dataArray['portfolios'] = $values;
         }
         if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values_1 = [];
-            foreach ($data->companies ?? null as $value_1) {
+            foreach ($data->companies as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['companies'] = $values_1;

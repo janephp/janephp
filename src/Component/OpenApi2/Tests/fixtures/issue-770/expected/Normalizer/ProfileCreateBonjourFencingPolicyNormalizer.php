@@ -62,18 +62,18 @@ class ProfileCreateBonjourFencingPolicyNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         $values = [];
-        foreach ($data->bonjourFencingRuleList ?? null as $value) {
+        foreach ($data->bonjourFencingRuleList as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['bonjourFencingRuleList'] = $values;
         if (array_key_exists('bonjourFencingRuleMappingList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleMappingList ?? null)) {
             $values_1 = [];
-            foreach ($data->bonjourFencingRuleMappingList ?? null as $value_1) {
+            foreach ($data->bonjourFencingRuleMappingList as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['bonjourFencingRuleMappingList'] = $values_1;

@@ -71,16 +71,16 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('documentName', get_object_vars($data)) && null !== ($data->documentName ?? null)) {
-            $dataArray['documentName'] = $data->documentName ?? null;
+            $dataArray['documentName'] = $data->documentName;
         }
         if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
-            $dataArray['documentId'] = $data->documentId ?? null;
+            $dataArray['documentId'] = $data->documentId;
         }
-        $dataArray['version'] = $data->version ?? null;
+        $dataArray['version'] = $data->version;
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['action'] = $data->action ?? null;
+            $dataArray['action'] = $data->action;
         }
-        $dataArray['timeStamp'] = ($data->timeStamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['timeStamp'] = $data->timeStamp->format('Y-m-d\TH:i:sP');
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

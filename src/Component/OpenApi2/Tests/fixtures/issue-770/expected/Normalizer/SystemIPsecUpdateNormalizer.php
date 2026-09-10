@@ -122,71 +122,71 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipSecEnabled'] = $data->ipSecEnabled ?? null;
+        $dataArray['ipSecEnabled'] = $data->ipSecEnabled;
         if (array_key_exists('securityGateway', get_object_vars($data)) && null !== ($data->securityGateway ?? null)) {
-            $dataArray['securityGateway'] = $data->securityGateway ?? null;
+            $dataArray['securityGateway'] = $data->securityGateway;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
-            $dataArray['authType'] = $data->authType ?? null;
+            $dataArray['authType'] = $data->authType;
         }
         if (array_key_exists('preSharedKey', get_object_vars($data)) && null !== ($data->preSharedKey ?? null)) {
-            $dataArray['preSharedKey'] = $data->preSharedKey ?? null;
+            $dataArray['preSharedKey'] = $data->preSharedKey;
         }
         if (array_key_exists('remoteId', get_object_vars($data)) && null !== ($data->remoteId ?? null)) {
-            $dataArray['remoteId'] = $data->remoteId ?? null;
+            $dataArray['remoteId'] = $data->remoteId;
         }
         if (array_key_exists('scgCertId', get_object_vars($data)) && null !== ($data->scgCertId ?? null)) {
-            $dataArray['scgCertId'] = $data->scgCertId ?? null;
+            $dataArray['scgCertId'] = $data->scgCertId;
         }
         if (array_key_exists('ikeProposals', get_object_vars($data)) && null !== ($data->ikeProposals ?? null)) {
             $values = [];
-            foreach ($data->ikeProposals ?? null as $value) {
+            foreach ($data->ikeProposals as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ikeProposals'] = $values;
         }
         if (array_key_exists('ikeRekeyDisabled', get_object_vars($data)) && null !== ($data->ikeRekeyDisabled ?? null)) {
-            $dataArray['ikeRekeyDisabled'] = $data->ikeRekeyDisabled ?? null;
+            $dataArray['ikeRekeyDisabled'] = $data->ikeRekeyDisabled;
         }
         if (array_key_exists('ikeRekeyTime', get_object_vars($data)) && null !== ($data->ikeRekeyTime ?? null)) {
-            $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime ?? null;
+            $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime;
         }
         if (array_key_exists('ikeRekeyTimeUnit', get_object_vars($data)) && null !== ($data->ikeRekeyTimeUnit ?? null)) {
-            $dataArray['ikeRekeyTimeUnit'] = $data->ikeRekeyTimeUnit ?? null;
+            $dataArray['ikeRekeyTimeUnit'] = $data->ikeRekeyTimeUnit;
         }
         if (array_key_exists('espProposals', get_object_vars($data)) && null !== ($data->espProposals ?? null)) {
             $values_1 = [];
-            foreach ($data->espProposals ?? null as $value_1) {
+            foreach ($data->espProposals as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['espProposals'] = $values_1;
         }
         if (array_key_exists('espRekeyDisabled', get_object_vars($data)) && null !== ($data->espRekeyDisabled ?? null)) {
-            $dataArray['espRekeyDisabled'] = $data->espRekeyDisabled ?? null;
+            $dataArray['espRekeyDisabled'] = $data->espRekeyDisabled;
         }
         if (array_key_exists('espRekeyTime', get_object_vars($data)) && null !== ($data->espRekeyTime ?? null)) {
-            $dataArray['espRekeyTime'] = $data->espRekeyTime ?? null;
+            $dataArray['espRekeyTime'] = $data->espRekeyTime;
         }
         if (array_key_exists('espRekeyTimeUnit', get_object_vars($data)) && null !== ($data->espRekeyTimeUnit ?? null)) {
-            $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit ?? null;
+            $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit;
         }
         if (array_key_exists('ocspEnabled', get_object_vars($data)) && null !== ($data->ocspEnabled ?? null)) {
-            $dataArray['ocspEnabled'] = $data->ocspEnabled ?? null;
+            $dataArray['ocspEnabled'] = $data->ocspEnabled;
         }
         if (array_key_exists('ocspAction', get_object_vars($data)) && null !== ($data->ocspAction ?? null)) {
-            $dataArray['ocspAction'] = $data->ocspAction ?? null;
+            $dataArray['ocspAction'] = $data->ocspAction;
         }
         if (array_key_exists('trustChainProfileId', get_object_vars($data)) && null !== ($data->trustChainProfileId ?? null)) {
-            $dataArray['trustChainProfileId'] = $data->trustChainProfileId ?? null;
+            $dataArray['trustChainProfileId'] = $data->trustChainProfileId;
         }
         if (array_key_exists('certSubject', get_object_vars($data)) && null !== ($data->certSubject ?? null)) {
-            $dataArray['certSubject'] = $data->certSubject ?? null;
+            $dataArray['certSubject'] = $data->certSubject;
         }
         if (array_key_exists('ocspServerUri', get_object_vars($data)) && null !== ($data->ocspServerUri ?? null)) {
-            $dataArray['ocspServerUri'] = $data->ocspServerUri ?? null;
+            $dataArray['ocspServerUri'] = $data->ocspServerUri;
         }
         return $dataArray;
     }

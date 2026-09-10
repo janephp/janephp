@@ -52,7 +52,7 @@ class ApiGetIndexingJobDetailsSignedURLOutputNormalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('signedUrl', get_object_vars($data)) && null !== ($data->signedUrl ?? null)) {
-            $dataArray['signed_url'] = $data->signedUrl ?? null;
+            $dataArray['signed_url'] = $data->signedUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

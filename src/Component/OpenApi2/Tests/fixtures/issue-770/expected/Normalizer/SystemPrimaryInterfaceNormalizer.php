@@ -66,27 +66,27 @@ class SystemPrimaryInterfaceNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipMode'] = $data->ipMode ?? null;
+        $dataArray['ipMode'] = $data->ipMode;
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('primaryDNSServer', get_object_vars($data)) && null !== ($data->primaryDNSServer ?? null)) {
-            $dataArray['primaryDNSServer'] = $data->primaryDNSServer ?? null;
+            $dataArray['primaryDNSServer'] = $data->primaryDNSServer;
         }
         if (array_key_exists('secondaryDNSServer', get_object_vars($data)) && null !== ($data->secondaryDNSServer ?? null)) {
-            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer ?? null;
+            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer;
         }
         if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
-            $dataArray['vlan'] = $data->vlan ?? null;
+            $dataArray['vlan'] = $data->vlan;
         }
         if (array_key_exists('natIp', get_object_vars($data)) && null !== ($data->natIp ?? null)) {
-            $dataArray['natIp'] = $data->natIp ?? null;
+            $dataArray['natIp'] = $data->natIp;
         }
         return $dataArray;
     }

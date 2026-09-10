@@ -51,7 +51,7 @@ class ReservedIpv6CreateNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['region_slug'] = $data->regionSlug ?? null;
+        $dataArray['region_slug'] = $data->regionSlug;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

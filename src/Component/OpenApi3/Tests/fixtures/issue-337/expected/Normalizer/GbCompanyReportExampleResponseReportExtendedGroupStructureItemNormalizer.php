@@ -83,28 +83,28 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
-            $dataArray['safeNumber'] = $data->safeNumber ?? null;
+            $dataArray['safeNumber'] = $data->safeNumber;
         }
         if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
-            $dataArray['companyName'] = $data->companyName ?? null;
+            $dataArray['companyName'] = $data->companyName;
         }
         if (array_key_exists('registeredNumber', get_object_vars($data)) && null !== ($data->registeredNumber ?? null)) {
-            $dataArray['registeredNumber'] = $data->registeredNumber ?? null;
+            $dataArray['registeredNumber'] = $data->registeredNumber;
         }
         if (array_key_exists('latestAnnualAccounts', get_object_vars($data)) && null !== ($data->latestAnnualAccounts ?? null)) {
-            $dataArray['latestAnnualAccounts'] = $data->latestAnnualAccounts ?? null;
+            $dataArray['latestAnnualAccounts'] = $data->latestAnnualAccounts;
         }
         if (array_key_exists('level', get_object_vars($data)) && null !== ($data->level ?? null)) {
-            $dataArray['level'] = $data->level ?? null;
+            $dataArray['level'] = $data->level;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -89,35 +89,35 @@ class FirewallRulesInboundRulesItemSourcesNormalizer implements DenormalizerInte
         $dataArray = [];
         if (array_key_exists('addresses', get_object_vars($data)) && null !== ($data->addresses ?? null)) {
             $values = [];
-            foreach ($data->addresses ?? null as $value) {
+            foreach ($data->addresses as $value) {
                 $values[] = $value;
             }
             $dataArray['addresses'] = $values;
         }
         if (array_key_exists('dropletIds', get_object_vars($data)) && null !== ($data->dropletIds ?? null)) {
             $values_1 = [];
-            foreach ($data->dropletIds ?? null as $value_1) {
+            foreach ($data->dropletIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['droplet_ids'] = $values_1;
         }
         if (array_key_exists('loadBalancerUids', get_object_vars($data)) && null !== ($data->loadBalancerUids ?? null)) {
             $values_2 = [];
-            foreach ($data->loadBalancerUids ?? null as $value_2) {
+            foreach ($data->loadBalancerUids as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['load_balancer_uids'] = $values_2;
         }
         if (array_key_exists('kubernetesIds', get_object_vars($data)) && null !== ($data->kubernetesIds ?? null)) {
             $values_3 = [];
-            foreach ($data->kubernetesIds ?? null as $value_3) {
+            foreach ($data->kubernetesIds as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['kubernetes_ids'] = $values_3;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_4 = [];
-            foreach ($data->tags ?? null as $value_4) {
+            foreach ($data->tags as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['tags'] = $values_4;

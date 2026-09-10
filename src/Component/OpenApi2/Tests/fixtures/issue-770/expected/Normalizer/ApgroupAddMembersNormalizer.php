@@ -51,7 +51,7 @@ class ApgroupAddMembersNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('memberList', get_object_vars($data)) && null !== ($data->memberList ?? null)) {
             $values = [];
-            foreach ($data->memberList ?? null as $value) {
+            foreach ($data->memberList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['memberList'] = $values;

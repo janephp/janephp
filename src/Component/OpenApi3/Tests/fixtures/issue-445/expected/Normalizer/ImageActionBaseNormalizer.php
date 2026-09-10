@@ -57,19 +57,19 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'AlphaHandlingAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AlphaHandlingAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'CropAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'CropAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'UnsharpenMaskAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'UnsharpenMaskAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'WatermarkAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'WatermarkAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

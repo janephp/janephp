@@ -52,10 +52,10 @@ class ServiceSpecModeReplicatedJobNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('maxConcurrent', get_object_vars($data)) && null !== ($data->maxConcurrent ?? null)) {
-            $dataArray['MaxConcurrent'] = $data->maxConcurrent ?? null;
+            $dataArray['MaxConcurrent'] = $data->maxConcurrent;
         }
         if (array_key_exists('totalCompletions', get_object_vars($data)) && null !== ($data->totalCompletions ?? null)) {
-            $dataArray['TotalCompletions'] = $data->totalCompletions ?? null;
+            $dataArray['TotalCompletions'] = $data->totalCompletions;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecModeReplicatedJobConstraint());

@@ -88,33 +88,33 @@ class ApiUpdateAgentFunctionInputPublicNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
-            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
+            $dataArray['agent_uuid'] = $data->agentUuid;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('faasName', get_object_vars($data)) && null !== ($data->faasName ?? null)) {
-            $dataArray['faas_name'] = $data->faasName ?? null;
+            $dataArray['faas_name'] = $data->faasName;
         }
         if (array_key_exists('faasNamespace', get_object_vars($data)) && null !== ($data->faasNamespace ?? null)) {
-            $dataArray['faas_namespace'] = $data->faasNamespace ?? null;
+            $dataArray['faas_namespace'] = $data->faasNamespace;
         }
         if (array_key_exists('functionName', get_object_vars($data)) && null !== ($data->functionName ?? null)) {
-            $dataArray['function_name'] = $data->functionName ?? null;
+            $dataArray['function_name'] = $data->functionName;
         }
         if (array_key_exists('functionUuid', get_object_vars($data)) && null !== ($data->functionUuid ?? null)) {
-            $dataArray['function_uuid'] = $data->functionUuid ?? null;
+            $dataArray['function_uuid'] = $data->functionUuid;
         }
         if (array_key_exists('inputSchema', get_object_vars($data)) && null !== ($data->inputSchema ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->inputSchema ?? null as $key => $value) {
+            foreach ($data->inputSchema as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input_schema'] = $values;
         }
         if (array_key_exists('outputSchema', get_object_vars($data)) && null !== ($data->outputSchema ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->outputSchema ?? null as $key_1 => $value_1) {
+            foreach ($data->outputSchema as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['output_schema'] = $values_1;

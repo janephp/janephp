@@ -51,8 +51,8 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Path'] = $data->path ?? null;
-        $dataArray['Kind'] = $data->kind ?? null;
+        $dataArray['Path'] = $data->path;
+        $dataArray['Kind'] = $data->kind;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemConstraint());
         }

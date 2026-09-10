@@ -76,22 +76,22 @@ class BillingHistoryNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('invoiceId', get_object_vars($data)) && null !== ($data->invoiceId ?? null)) {
-            $dataArray['invoice_id'] = $data->invoiceId ?? null;
+            $dataArray['invoice_id'] = $data->invoiceId;
         }
         if (array_key_exists('invoiceUuid', get_object_vars($data)) && null !== ($data->invoiceUuid ?? null)) {
-            $dataArray['invoice_uuid'] = $data->invoiceUuid ?? null;
+            $dataArray['invoice_uuid'] = $data->invoiceUuid;
         }
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->date->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

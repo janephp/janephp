@@ -60,11 +60,11 @@ class AppFunctionsComponentHealthNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('functionsComponentHealthMetrics', get_object_vars($data)) && null !== ($data->functionsComponentHealthMetrics ?? null)) {
             $values = [];
-            foreach ($data->functionsComponentHealthMetrics ?? null as $value) {
+            foreach ($data->functionsComponentHealthMetrics as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['functions_component_health_metrics'] = $values;

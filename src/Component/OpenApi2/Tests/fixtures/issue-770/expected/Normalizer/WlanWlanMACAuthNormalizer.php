@@ -49,10 +49,10 @@ class WlanWlanMACAuthNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('macAuthMacFormat', get_object_vars($data)) && null !== ($data->macAuthMacFormat ?? null)) {
-            $dataArray['macAuthMacFormat'] = $data->macAuthMacFormat ?? null;
+            $dataArray['macAuthMacFormat'] = $data->macAuthMacFormat;
         }
         if (array_key_exists('customizedPassword', get_object_vars($data)) && null !== ($data->customizedPassword ?? null)) {
-            $dataArray['customizedPassword'] = $data->customizedPassword ?? null;
+            $dataArray['customizedPassword'] = $data->customizedPassword;
         }
         return $dataArray;
     }

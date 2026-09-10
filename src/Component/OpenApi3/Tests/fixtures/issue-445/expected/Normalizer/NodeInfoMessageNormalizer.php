@@ -139,35 +139,35 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['retries'] = $data->retries ?? null;
-        $dataArray['priority'] = $data->priority ?? null;
-        $dataArray['deduplicate'] = $data->deduplicate ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['retries'] = $data->retries;
+        $dataArray['priority'] = $data->priority;
+        $dataArray['deduplicate'] = $data->deduplicate;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('nodeId', get_object_vars($data)) && null !== ($data->nodeId ?? null)) {
-            $dataArray['nodeId'] = $data->nodeId ?? null;
+            $dataArray['nodeId'] = $data->nodeId;
         }
         if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
-            $dataArray['hostName'] = $data->hostName ?? null;
+            $dataArray['hostName'] = $data->hostName;
         }
         if (array_key_exists('lastResponseTime', get_object_vars($data)) && null !== ($data->lastResponseTime ?? null)) {
-            $dataArray['lastResponseTime'] = ($data->lastResponseTime ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['lastResponseTime'] = $data->lastResponseTime->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('serviceName', get_object_vars($data)) && null !== ($data->serviceName ?? null)) {
-            $dataArray['serviceName'] = $data->serviceName ?? null;
+            $dataArray['serviceName'] = $data->serviceName;
         }
         if (array_key_exists('fileVersion', get_object_vars($data)) && null !== ($data->fileVersion ?? null)) {
-            $dataArray['fileVersion'] = $data->fileVersion ?? null;
+            $dataArray['fileVersion'] = $data->fileVersion;
         }
         if (array_key_exists('productVersion', get_object_vars($data)) && null !== ($data->productVersion ?? null)) {
-            $dataArray['productVersion'] = $data->productVersion ?? null;
+            $dataArray['productVersion'] = $data->productVersion;
         }
         if (array_key_exists('release', get_object_vars($data)) && null !== ($data->release ?? null)) {
-            $dataArray['release'] = $data->release ?? null;
+            $dataArray['release'] = $data->release;
         }
         if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
-            $dataArray['logLevel'] = $data->logLevel ?? null;
+            $dataArray['logLevel'] = $data->logLevel;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

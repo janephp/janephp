@@ -52,13 +52,13 @@ class GeofenceProfileGeofenceProfileLocationDataNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = $data->location ?? null;
+            $dataArray['location'] = $data->location;
         }
         return $dataArray;
     }

@@ -60,11 +60,11 @@ class MetricsDataNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->result ?? null as $value) {
+        foreach ($data->result as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['result'] = $values;
-        $dataArray['resultType'] = $data->resultType ?? null;
+        $dataArray['resultType'] = $data->resultType;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

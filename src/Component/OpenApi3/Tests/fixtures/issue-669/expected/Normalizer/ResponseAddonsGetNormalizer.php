@@ -52,7 +52,7 @@ class ResponseAddonsGetNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
-            $dataArray['resource'] = ($data->resource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resource ?? null, 'json', $context));
+            $dataArray['resource'] = $data->resource === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resource, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

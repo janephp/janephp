@@ -67,18 +67,18 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('x', get_object_vars($data)) && null !== ($data->x ?? null)) {
-            $dataArray['x'] = $data->x ?? null;
+            $dataArray['x'] = $data->x;
         }
         if (array_key_exists('y', get_object_vars($data)) && null !== ($data->y ?? null)) {
-            $dataArray['y'] = $data->y ?? null;
+            $dataArray['y'] = $data->y;
         }
         if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
-            $dataArray['width'] = $data->width ?? null;
+            $dataArray['width'] = $data->width;
         }
         if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
-            $dataArray['height'] = $data->height ?? null;
+            $dataArray['height'] = $data->height;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

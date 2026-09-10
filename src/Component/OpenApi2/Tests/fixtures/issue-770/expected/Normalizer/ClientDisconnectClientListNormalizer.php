@@ -51,7 +51,7 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
         $dataArray = [];
         if (array_key_exists('clientList', get_object_vars($data)) && null !== ($data->clientList ?? null)) {
             $values = [];
-            foreach ($data->clientList ?? null as $value) {
+            foreach ($data->clientList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['clientList'] = $values;

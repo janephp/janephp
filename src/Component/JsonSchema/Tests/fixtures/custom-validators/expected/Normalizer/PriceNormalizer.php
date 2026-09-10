@@ -52,10 +52,10 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\CustomValidators\Validator\PriceConstraint());

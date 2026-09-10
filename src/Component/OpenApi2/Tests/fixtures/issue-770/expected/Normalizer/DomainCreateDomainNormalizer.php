@@ -60,18 +60,18 @@ class DomainCreateDomainNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('domainType', get_object_vars($data)) && null !== ($data->domainType ?? null)) {
-            $dataArray['domainType'] = $data->domainType ?? null;
+            $dataArray['domainType'] = $data->domainType;
         }
         if (array_key_exists('parentDomainId', get_object_vars($data)) && null !== ($data->parentDomainId ?? null)) {
-            $dataArray['parentDomainId'] = $data->parentDomainId ?? null;
+            $dataArray['parentDomainId'] = $data->parentDomainId;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
-            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus;
         }
         return $dataArray;
     }

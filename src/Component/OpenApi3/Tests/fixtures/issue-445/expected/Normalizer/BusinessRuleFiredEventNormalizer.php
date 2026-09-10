@@ -71,11 +71,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
             $values = [];
-            foreach ($data->details ?? null as $value) {
+            foreach ($data->details as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['details'] = $values;

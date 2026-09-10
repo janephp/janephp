@@ -56,10 +56,10 @@ class AppsDeploymentStaticSiteNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('sourceCommitHash', get_object_vars($data)) && null !== ($data->sourceCommitHash ?? null)) {
-            $dataArray['source_commit_hash'] = $data->sourceCommitHash ?? null;
+            $dataArray['source_commit_hash'] = $data->sourceCommitHash;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

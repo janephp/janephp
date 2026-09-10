@@ -63,13 +63,13 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItemNormalizer i
     {
         $dataArray = [];
         if (array_key_exists('metricLabel', get_object_vars($data)) && null !== ($data->metricLabel ?? null)) {
-            $dataArray['metric_label'] = $data->metricLabel ?? null;
+            $dataArray['metric_label'] = $data->metricLabel;
         }
         if (array_key_exists('metricValue', get_object_vars($data)) && null !== ($data->metricValue ?? null)) {
-            $dataArray['metric_value'] = $data->metricValue ?? null;
+            $dataArray['metric_value'] = $data->metricValue;
         }
         if (array_key_exists('timeWindow', get_object_vars($data)) && null !== ($data->timeWindow ?? null)) {
-            $dataArray['time_window'] = $data->timeWindow ?? null;
+            $dataArray['time_window'] = $data->timeWindow;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

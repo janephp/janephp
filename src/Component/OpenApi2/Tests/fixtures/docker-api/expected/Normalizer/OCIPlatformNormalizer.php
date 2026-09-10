@@ -65,23 +65,23 @@ class OCIPlatformNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('architecture', get_object_vars($data)) && null !== ($data->architecture ?? null)) {
-            $dataArray['architecture'] = $data->architecture ?? null;
+            $dataArray['architecture'] = $data->architecture;
         }
         if (array_key_exists('os', get_object_vars($data)) && null !== ($data->os ?? null)) {
-            $dataArray['os'] = $data->os ?? null;
+            $dataArray['os'] = $data->os;
         }
         if (array_key_exists('osVersion', get_object_vars($data)) && null !== ($data->osVersion ?? null)) {
-            $dataArray['os.version'] = $data->osVersion ?? null;
+            $dataArray['os.version'] = $data->osVersion;
         }
         if (array_key_exists('osFeatures', get_object_vars($data)) && null !== ($data->osFeatures ?? null)) {
             $values = [];
-            foreach ($data->osFeatures ?? null as $value) {
+            foreach ($data->osFeatures as $value) {
                 $values[] = $value;
             }
             $dataArray['os.features'] = $values;
         }
         if (array_key_exists('variant', get_object_vars($data)) && null !== ($data->variant ?? null)) {
-            $dataArray['variant'] = $data->variant ?? null;
+            $dataArray['variant'] = $data->variant;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\OCIPlatformConstraint());

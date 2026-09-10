@@ -110,42 +110,42 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
-            $dataArray['searchString'] = $data->searchString ?? null;
+            $dataArray['searchString'] = $data->searchString;
         }
         if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->searchBehaviors ?? null as $value) {
+            foreach ($data->searchBehaviors as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
         if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_1 = [];
-            foreach ($data->sort ?? null as $value_1) {
+            foreach ($data->sort as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['sort'] = $values_1;
         }
-        $dataArray['limit'] = $data->limit ?? null;
+        $dataArray['limit'] = $data->limit;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_2 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_2 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_2 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_2 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_2;
         }
-        $dataArray['debugMode'] = $data->debugMode ?? null;
+        $dataArray['debugMode'] = $data->debugMode;
         if (array_key_exists('searchLanguages', get_object_vars($data)) && null !== ($data->searchLanguages ?? null)) {
             $values_2 = [];
-            foreach ($data->searchLanguages ?? null as $value_3) {
+            foreach ($data->searchLanguages as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
-        $dataArray['includeAdministratorSystemUserRole'] = $data->includeAdministratorSystemUserRole ?? null;
+        $dataArray['includeAdministratorSystemUserRole'] = $data->includeAdministratorSystemUserRole;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

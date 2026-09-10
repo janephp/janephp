@@ -66,13 +66,13 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->capabilities ?? null as $value) {
+        foreach ($data->capabilities as $value) {
             $values[] = $value;
         }
         $dataArray['Capabilities'] = $values;
-        $dataArray['AllowAllDevices'] = $data->allowAllDevices ?? null;
+        $dataArray['AllowAllDevices'] = $data->allowAllDevices;
         $values_1 = [];
-        foreach ($data->devices ?? null as $value_1) {
+        foreach ($data->devices as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Devices'] = $values_1;

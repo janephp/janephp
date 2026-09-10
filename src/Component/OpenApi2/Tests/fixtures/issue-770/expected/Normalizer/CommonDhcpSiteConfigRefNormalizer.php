@@ -90,36 +90,36 @@ class CommonDhcpSiteConfigRefNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('siteEnabled', get_object_vars($data)) && null !== ($data->siteEnabled ?? null)) {
-            $dataArray['siteEnabled'] = $data->siteEnabled ?? null;
+            $dataArray['siteEnabled'] = $data->siteEnabled;
         }
         if (array_key_exists('portSelectionEnabled', get_object_vars($data)) && null !== ($data->portSelectionEnabled ?? null)) {
-            $dataArray['portSelectionEnabled'] = $data->portSelectionEnabled ?? null;
+            $dataArray['portSelectionEnabled'] = $data->portSelectionEnabled;
         }
         if (array_key_exists('dwpdEnabled', get_object_vars($data)) && null !== ($data->dwpdEnabled ?? null)) {
-            $dataArray['dwpdEnabled'] = $data->dwpdEnabled ?? null;
+            $dataArray['dwpdEnabled'] = $data->dwpdEnabled;
         }
         if (array_key_exists('manualSelect', get_object_vars($data)) && null !== ($data->manualSelect ?? null)) {
-            $dataArray['manualSelect'] = $data->manualSelect ?? null;
+            $dataArray['manualSelect'] = $data->manualSelect;
         }
         if (array_key_exists('siteMode', get_object_vars($data)) && null !== ($data->siteMode ?? null)) {
-            $dataArray['siteMode'] = $data->siteMode ?? null;
+            $dataArray['siteMode'] = $data->siteMode;
         }
         if (array_key_exists('eth0ProfileId', get_object_vars($data)) && null !== ($data->eth0ProfileId ?? null)) {
-            $dataArray['eth0ProfileId'] = $data->eth0ProfileId ?? null;
+            $dataArray['eth0ProfileId'] = $data->eth0ProfileId;
         }
         if (array_key_exists('eth1ProfileId', get_object_vars($data)) && null !== ($data->eth1ProfileId ?? null)) {
-            $dataArray['eth1ProfileId'] = $data->eth1ProfileId ?? null;
+            $dataArray['eth1ProfileId'] = $data->eth1ProfileId;
         }
         if (array_key_exists('siteAps', get_object_vars($data)) && null !== ($data->siteAps ?? null)) {
             $values = [];
-            foreach ($data->siteAps ?? null as $value) {
+            foreach ($data->siteAps as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteAps'] = $values;
         }
         if (array_key_exists('siteProfileIds', get_object_vars($data)) && null !== ($data->siteProfileIds ?? null)) {
             $values_1 = [];
-            foreach ($data->siteProfileIds ?? null as $value_1) {
+            foreach ($data->siteProfileIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['siteProfileIds'] = $values_1;

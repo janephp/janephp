@@ -68,19 +68,19 @@ class KafkaSchemaVersionVerboseNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schema_id'] = $data->schemaId ?? null;
+            $dataArray['schema_id'] = $data->schemaId;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('subjectName', get_object_vars($data)) && null !== ($data->subjectName ?? null)) {
-            $dataArray['subject_name'] = $data->subjectName ?? null;
+            $dataArray['subject_name'] = $data->subjectName;
         }
         if (array_key_exists('schemaType', get_object_vars($data)) && null !== ($data->schemaType ?? null)) {
-            $dataArray['schema_type'] = $data->schemaType ?? null;
+            $dataArray['schema_type'] = $data->schemaType;
         }
         if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
-            $dataArray['schema'] = $data->schema ?? null;
+            $dataArray['schema'] = $data->schema;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

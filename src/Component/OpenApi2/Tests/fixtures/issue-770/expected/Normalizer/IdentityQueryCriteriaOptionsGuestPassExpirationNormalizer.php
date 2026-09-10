@@ -61,13 +61,13 @@ class IdentityQueryCriteriaOptionsGuestPassExpirationNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['start'] = $data->start ?? null;
+            $dataArray['start'] = $data->start;
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['end'] = $data->end ?? null;
+            $dataArray['end'] = $data->end;
         }
         if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
-            $dataArray['interval'] = $data->interval ?? null;
+            $dataArray['interval'] = $data->interval;
         }
         return $dataArray;
     }

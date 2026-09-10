@@ -63,18 +63,18 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = ($data->spec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+            $dataArray['Spec'] = $data->spec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
-            foreach ($data->ports ?? null as $value) {
+            foreach ($data->ports as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Ports'] = $values;
         }
         if (array_key_exists('virtualIPs', get_object_vars($data)) && null !== ($data->virtualIPs ?? null)) {
             $values_1 = [];
-            foreach ($data->virtualIPs ?? null as $value_1) {
+            foreach ($data->virtualIPs as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['VirtualIPs'] = $values_1;

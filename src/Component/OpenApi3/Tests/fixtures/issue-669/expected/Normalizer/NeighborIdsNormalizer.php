@@ -61,7 +61,7 @@ class NeighborIdsNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         if (array_key_exists('neighborIds', get_object_vars($data)) && null !== ($data->neighborIds ?? null)) {
             $values = [];
-            foreach ($data->neighborIds ?? null as $value) {
+            foreach ($data->neighborIds as $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
                     $values_1[] = $value_1;

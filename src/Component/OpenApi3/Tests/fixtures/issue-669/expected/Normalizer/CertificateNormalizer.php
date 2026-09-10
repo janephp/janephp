@@ -92,17 +92,17 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('dnsNames', get_object_vars($data)) && null !== ($data->dnsNames ?? null)) {
             $values = [];
-            foreach ($data->dnsNames ?? null as $value) {
+            foreach ($data->dnsNames as $value) {
                 $values[] = $value;
             }
             $dataArray['dns_names'] = $values;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

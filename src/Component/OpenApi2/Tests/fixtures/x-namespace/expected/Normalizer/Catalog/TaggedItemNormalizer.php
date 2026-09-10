@@ -46,7 +46,7 @@ class TaggedItemNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
-            $dataArray['label'] = $data->label ?? null;
+            $dataArray['label'] = $data->label;
         }
         return $dataArray;
     }

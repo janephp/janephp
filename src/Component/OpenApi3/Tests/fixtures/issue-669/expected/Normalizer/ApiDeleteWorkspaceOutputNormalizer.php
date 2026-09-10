@@ -52,7 +52,7 @@ class ApiDeleteWorkspaceOutputNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
-            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
+            $dataArray['workspace_uuid'] = $data->workspaceUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

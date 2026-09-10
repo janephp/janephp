@@ -79,22 +79,22 @@ class ApiEvaluationDatasetNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('datasetName', get_object_vars($data)) && null !== ($data->datasetName ?? null)) {
-            $dataArray['dataset_name'] = $data->datasetName ?? null;
+            $dataArray['dataset_name'] = $data->datasetName;
         }
         if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
-            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
+            $dataArray['dataset_uuid'] = $data->datasetUuid;
         }
         if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
-            $dataArray['file_size'] = $data->fileSize ?? null;
+            $dataArray['file_size'] = $data->fileSize;
         }
         if (array_key_exists('hasGroundTruth', get_object_vars($data)) && null !== ($data->hasGroundTruth ?? null)) {
-            $dataArray['has_ground_truth'] = $data->hasGroundTruth ?? null;
+            $dataArray['has_ground_truth'] = $data->hasGroundTruth;
         }
         if (array_key_exists('rowCount', get_object_vars($data)) && null !== ($data->rowCount ?? null)) {
-            $dataArray['row_count'] = $data->rowCount ?? null;
+            $dataArray['row_count'] = $data->rowCount;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

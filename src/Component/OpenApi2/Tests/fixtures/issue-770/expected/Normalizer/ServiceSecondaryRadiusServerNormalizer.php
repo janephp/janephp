@@ -60,13 +60,13 @@ class ServiceSecondaryRadiusServerNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['autoFallbackDisable'] = $data->autoFallbackDisable ?? null;
+        $dataArray['autoFallbackDisable'] = $data->autoFallbackDisable;
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
-        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
+        $dataArray['port'] = $data->port;
+        $dataArray['sharedSecret'] = $data->sharedSecret;
+        $dataArray['ipFqdn'] = $data->ipFqdn;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

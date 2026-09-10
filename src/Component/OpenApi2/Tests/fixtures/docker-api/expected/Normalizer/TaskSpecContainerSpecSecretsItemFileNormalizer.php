@@ -58,16 +58,16 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('uID', get_object_vars($data)) && null !== ($data->uID ?? null)) {
-            $dataArray['UID'] = $data->uID ?? null;
+            $dataArray['UID'] = $data->uID;
         }
         if (array_key_exists('gID', get_object_vars($data)) && null !== ($data->gID ?? null)) {
-            $dataArray['GID'] = $data->gID ?? null;
+            $dataArray['GID'] = $data->gID;
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = $data->mode ?? null;
+            $dataArray['Mode'] = $data->mode;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemFileConstraint());

@@ -50,7 +50,7 @@ class SchemaUpdateManyRequestNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->schemas ?? null as $value) {
+        foreach ($data->schemas as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['schemas'] = $values;

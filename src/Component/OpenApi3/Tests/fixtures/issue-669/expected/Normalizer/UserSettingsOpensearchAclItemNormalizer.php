@@ -56,10 +56,10 @@ class UserSettingsOpensearchAclItemNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
-            $dataArray['index'] = $data->index ?? null;
+            $dataArray['index'] = $data->index;
         }
         if (array_key_exists('permission', get_object_vars($data)) && null !== ($data->permission ?? null)) {
-            $dataArray['permission'] = $data->permission ?? null;
+            $dataArray['permission'] = $data->permission;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

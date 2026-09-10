@@ -59,9 +59,9 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['petType'] = $data->petType ?? null;
-        $dataArray['huntingSkill'] = $data->huntingSkill ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['petType'] = $data->petType;
+        $dataArray['huntingSkill'] = $data->huntingSkill;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -77,13 +77,13 @@ class VpcPeeringNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->vpcIds ?? null as $value) {
+            foreach ($data->vpcIds as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

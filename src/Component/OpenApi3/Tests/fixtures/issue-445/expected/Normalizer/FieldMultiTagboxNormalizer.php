@@ -198,18 +198,18 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('indexId', get_object_vars($data)) && null !== ($data->indexId ?? null)) {
-            $dataArray['indexId'] = $data->indexId ?? null;
+            $dataArray['indexId'] = $data->indexId;
         }
         if (array_key_exists('fieldNamespace', get_object_vars($data)) && null !== ($data->fieldNamespace ?? null)) {
-            $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
+            $dataArray['fieldNamespace'] = $data->fieldNamespace;
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -217,50 +217,50 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['names'] = $value;
         }
         if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
-            $value_2 = $data->descriptions ?? null;
-            if (is_object($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions;
+            if (is_object($data->descriptions)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
+                foreach ($data->descriptions as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        $dataArray['required'] = $data->required ?? null;
-        $dataArray['fixed'] = $data->fixed ?? null;
-        $dataArray['index'] = $data->index ?? null;
-        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
-        $dataArray['sortable'] = $data->sortable ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['schemaId'] = $data->schemaId ?? null;
+        $dataArray['required'] = $data->required;
+        $dataArray['fixed'] = $data->fixed;
+        $dataArray['index'] = $data->index;
+        $dataArray['simpleSearch'] = $data->simpleSearch;
+        $dataArray['sortable'] = $data->sortable;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['schemaId'] = $data->schemaId;
         if (array_key_exists('schemaIndexingInfo', get_object_vars($data)) && null !== ($data->schemaIndexingInfo ?? null)) {
-            $value_4 = $data->schemaIndexingInfo ?? null;
-            if (is_object($data->schemaIndexingInfo ?? null)) {
-                $value_4 = ($data->schemaIndexingInfo ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo ?? null, 'json', $context));
+            $value_4 = $data->schemaIndexingInfo;
+            if (is_object($data->schemaIndexingInfo)) {
+                $value_4 = $data->schemaIndexingInfo === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }
         if (array_key_exists('maximumItems', get_object_vars($data)) && null !== ($data->maximumItems ?? null)) {
-            $dataArray['maximumItems'] = $data->maximumItems ?? null;
+            $dataArray['maximumItems'] = $data->maximumItems;
         }
         if (array_key_exists('minimumItems', get_object_vars($data)) && null !== ($data->minimumItems ?? null)) {
-            $dataArray['minimumItems'] = $data->minimumItems ?? null;
+            $dataArray['minimumItems'] = $data->minimumItems;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_5 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_5 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_5 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_5 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_5;
         }
         if (array_key_exists('listItemCreateTemplate', get_object_vars($data)) && null !== ($data->listItemCreateTemplate ?? null)) {
-            $dataArray['listItemCreateTemplate'] = $data->listItemCreateTemplate ?? null;
+            $dataArray['listItemCreateTemplate'] = $data->listItemCreateTemplate;
         }
         if (array_key_exists('viewModeDisplayPatternType', get_object_vars($data)) && null !== ($data->viewModeDisplayPatternType ?? null)) {
-            $value_6 = $data->viewModeDisplayPatternType ?? null;
-            if (is_string($data->viewModeDisplayPatternType ?? null)) {
-                $value_6 = $data->viewModeDisplayPatternType ?? null;
+            $value_6 = $data->viewModeDisplayPatternType;
+            if (is_string($data->viewModeDisplayPatternType)) {
+                $value_6 = $data->viewModeDisplayPatternType;
             }
             $dataArray['viewModeDisplayPatternType'] = $value_6;
         }

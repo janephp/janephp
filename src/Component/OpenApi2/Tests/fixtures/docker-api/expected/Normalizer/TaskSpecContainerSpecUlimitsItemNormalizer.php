@@ -55,13 +55,13 @@ class TaskSpecContainerSpecUlimitsItemNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('soft', get_object_vars($data)) && null !== ($data->soft ?? null)) {
-            $dataArray['Soft'] = $data->soft ?? null;
+            $dataArray['Soft'] = $data->soft;
         }
         if (array_key_exists('hard', get_object_vars($data)) && null !== ($data->hard ?? null)) {
-            $dataArray['Hard'] = $data->hard ?? null;
+            $dataArray['Hard'] = $data->hard;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecUlimitsItemConstraint());

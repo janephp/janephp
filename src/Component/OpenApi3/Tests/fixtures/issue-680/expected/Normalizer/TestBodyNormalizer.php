@@ -61,7 +61,7 @@ class TestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->items ?? null as $value) {
+            foreach ($data->items as $value) {
                 $values[] = $value;
             }
             $dataArray['items'] = $values;

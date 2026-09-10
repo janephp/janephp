@@ -80,25 +80,25 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('usageTeamUrn', get_object_vars($data)) && null !== ($data->usageTeamUrn ?? null)) {
-            $dataArray['usage_team_urn'] = $data->usageTeamUrn ?? null;
+            $dataArray['usage_team_urn'] = $data->usageTeamUrn;
         }
         if (array_key_exists('startDate', get_object_vars($data)) && null !== ($data->startDate ?? null)) {
-            $dataArray['start_date'] = ($data->startDate ?? null)->format('Y-m-d');
+            $dataArray['start_date'] = $data->startDate->format('Y-m-d');
         }
         if (array_key_exists('totalAmount', get_object_vars($data)) && null !== ($data->totalAmount ?? null)) {
-            $dataArray['total_amount'] = $data->totalAmount ?? null;
+            $dataArray['total_amount'] = $data->totalAmount;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('sku', get_object_vars($data)) && null !== ($data->sku ?? null)) {
-            $dataArray['sku'] = $data->sku ?? null;
+            $dataArray['sku'] = $data->sku;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('groupDescription', get_object_vars($data)) && null !== ($data->groupDescription ?? null)) {
-            $dataArray['group_description'] = $data->groupDescription ?? null;
+            $dataArray['group_description'] = $data->groupDescription;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

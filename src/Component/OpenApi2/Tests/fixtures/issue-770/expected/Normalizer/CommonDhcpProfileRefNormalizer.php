@@ -82,43 +82,43 @@ class CommonDhcpProfileRefNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('subnetNetworkIp', get_object_vars($data)) && null !== ($data->subnetNetworkIp ?? null)) {
-            $dataArray['subnetNetworkIp'] = $data->subnetNetworkIp ?? null;
+            $dataArray['subnetNetworkIp'] = $data->subnetNetworkIp;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('poolStartIp', get_object_vars($data)) && null !== ($data->poolStartIp ?? null)) {
-            $dataArray['poolStartIp'] = $data->poolStartIp ?? null;
+            $dataArray['poolStartIp'] = $data->poolStartIp;
         }
         if (array_key_exists('poolEndIp', get_object_vars($data)) && null !== ($data->poolEndIp ?? null)) {
-            $dataArray['poolEndIp'] = $data->poolEndIp ?? null;
+            $dataArray['poolEndIp'] = $data->poolEndIp;
         }
         if (array_key_exists('primaryDnsIp', get_object_vars($data)) && null !== ($data->primaryDnsIp ?? null)) {
-            $dataArray['primaryDnsIp'] = $data->primaryDnsIp ?? null;
+            $dataArray['primaryDnsIp'] = $data->primaryDnsIp;
         }
         if (array_key_exists('secondaryDnsIp', get_object_vars($data)) && null !== ($data->secondaryDnsIp ?? null)) {
-            $dataArray['secondaryDnsIp'] = $data->secondaryDnsIp ?? null;
+            $dataArray['secondaryDnsIp'] = $data->secondaryDnsIp;
         }
         if (array_key_exists('leaseTimeHours', get_object_vars($data)) && null !== ($data->leaseTimeHours ?? null)) {
-            $dataArray['leaseTimeHours'] = $data->leaseTimeHours ?? null;
+            $dataArray['leaseTimeHours'] = $data->leaseTimeHours;
         }
         if (array_key_exists('leaseTimeMinutes', get_object_vars($data)) && null !== ($data->leaseTimeMinutes ?? null)) {
-            $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes ?? null;
+            $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes;
         }
         return $dataArray;
     }

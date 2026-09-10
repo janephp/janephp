@@ -56,10 +56,10 @@ class ApiDropboxDataSourceNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('folder', get_object_vars($data)) && null !== ($data->folder ?? null)) {
-            $dataArray['folder'] = $data->folder ?? null;
+            $dataArray['folder'] = $data->folder;
         }
         if (array_key_exists('refreshToken', get_object_vars($data)) && null !== ($data->refreshToken ?? null)) {
-            $dataArray['refresh_token'] = $data->refreshToken ?? null;
+            $dataArray['refresh_token'] = $data->refreshToken;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

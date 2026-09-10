@@ -46,7 +46,7 @@ class ZoneModfiyApFirmwareNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
-            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
+            $dataArray['firmwareVersion'] = $data->firmwareVersion;
         }
         return $dataArray;
     }

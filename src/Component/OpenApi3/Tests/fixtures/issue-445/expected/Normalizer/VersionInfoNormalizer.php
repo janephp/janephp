@@ -67,16 +67,16 @@ class VersionInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('fileVersion', get_object_vars($data)) && null !== ($data->fileVersion ?? null)) {
-            $dataArray['fileVersion'] = $data->fileVersion ?? null;
+            $dataArray['fileVersion'] = $data->fileVersion;
         }
         if (array_key_exists('fileProductVersion', get_object_vars($data)) && null !== ($data->fileProductVersion ?? null)) {
-            $dataArray['fileProductVersion'] = $data->fileProductVersion ?? null;
+            $dataArray['fileProductVersion'] = $data->fileProductVersion;
         }
         if (array_key_exists('contractVersion', get_object_vars($data)) && null !== ($data->contractVersion ?? null)) {
-            $dataArray['contractVersion'] = $data->contractVersion ?? null;
+            $dataArray['contractVersion'] = $data->contractVersion;
         }
         if (array_key_exists('release', get_object_vars($data)) && null !== ($data->release ?? null)) {
-            $dataArray['release'] = $data->release ?? null;
+            $dataArray['release'] = $data->release;
         }
         return $dataArray;
     }

@@ -64,25 +64,25 @@ class SystemCpUserDefinedInterfaceNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('physicalInterface', get_object_vars($data)) && null !== ($data->physicalInterface ?? null)) {
-            $dataArray['physicalInterface'] = $data->physicalInterface ?? null;
+            $dataArray['physicalInterface'] = $data->physicalInterface;
         }
         if (array_key_exists('service', get_object_vars($data)) && null !== ($data->service ?? null)) {
-            $dataArray['service'] = $data->service ?? null;
+            $dataArray['service'] = $data->service;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
-            $dataArray['vlan'] = $data->vlan ?? null;
+            $dataArray['vlan'] = $data->vlan;
         }
         return $dataArray;
     }

@@ -49,10 +49,10 @@ class SystemApMacOUINormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('oui', get_object_vars($data)) && null !== ($data->oui ?? null)) {
-            $dataArray['oui'] = $data->oui ?? null;
+            $dataArray['oui'] = $data->oui;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

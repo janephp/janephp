@@ -52,10 +52,10 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['Type'] = $data->type ?? null;
+            $dataArray['Type'] = $data->type;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\EngineDescriptionPluginsItemConstraint());

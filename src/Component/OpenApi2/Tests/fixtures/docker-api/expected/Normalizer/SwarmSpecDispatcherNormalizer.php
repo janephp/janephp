@@ -49,7 +49,7 @@ class SwarmSpecDispatcherNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('heartbeatPeriod', get_object_vars($data)) && null !== ($data->heartbeatPeriod ?? null)) {
-            $dataArray['HeartbeatPeriod'] = $data->heartbeatPeriod ?? null;
+            $dataArray['HeartbeatPeriod'] = $data->heartbeatPeriod;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecDispatcherConstraint());

@@ -51,8 +51,8 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Size'] = $data->size ?? null;
-        $dataArray['RefCount'] = $data->refCount ?? null;
+        $dataArray['Size'] = $data->size;
+        $dataArray['RefCount'] = $data->refCount;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumeUsageDataConstraint());
         }

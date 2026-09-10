@@ -52,10 +52,10 @@ class AvcCheckLatestInstallableSignaturePackageSettingsNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('checkEnabled', get_object_vars($data)) && null !== ($data->checkEnabled ?? null)) {
-            $dataArray['checkEnabled'] = $data->checkEnabled ?? null;
+            $dataArray['checkEnabled'] = $data->checkEnabled;
         }
         if (array_key_exists('dateOfMonth', get_object_vars($data)) && null !== ($data->dateOfMonth ?? null)) {
-            $dataArray['dateOfMonth'] = $data->dateOfMonth ?? null;
+            $dataArray['dateOfMonth'] = $data->dateOfMonth;
         }
         return $dataArray;
     }

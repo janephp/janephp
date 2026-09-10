@@ -102,20 +102,20 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         $values = [];
-        foreach ($data->regions ?? null as $value) {
+        foreach ($data->regions as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['min_disk_size'] = $data->minDiskSize ?? null;
-        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
-        $dataArray['resource_id'] = $data->resourceId ?? null;
-        $dataArray['resource_type'] = $data->resourceType ?? null;
+        $dataArray['min_disk_size'] = $data->minDiskSize;
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes;
+        $dataArray['resource_id'] = $data->resourceId;
+        $dataArray['resource_type'] = $data->resourceType;
         $values_1 = [];
-        foreach ($data->tags ?? null as $value_1) {
+        foreach ($data->tags as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['tags'] = $values_1;

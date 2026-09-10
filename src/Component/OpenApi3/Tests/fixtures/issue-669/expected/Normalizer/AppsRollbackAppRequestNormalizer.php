@@ -59,10 +59,10 @@ class AppsRollbackAppRequestNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('deploymentId', get_object_vars($data)) && null !== ($data->deploymentId ?? null)) {
-            $dataArray['deployment_id'] = $data->deploymentId ?? null;
+            $dataArray['deployment_id'] = $data->deploymentId;
         }
         if (array_key_exists('skipPin', get_object_vars($data)) && null !== ($data->skipPin ?? null)) {
-            $dataArray['skip_pin'] = $data->skipPin ?? null;
+            $dataArray['skip_pin'] = $data->skipPin;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

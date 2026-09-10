@@ -58,19 +58,19 @@ class ClusterbladeBladeProgressNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('bladeUUID', get_object_vars($data)) && null !== ($data->bladeUUID ?? null)) {
-            $dataArray['bladeUUID'] = $data->bladeUUID ?? null;
+            $dataArray['bladeUUID'] = $data->bladeUUID;
         }
         if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
-            $dataArray['hostName'] = $data->hostName ?? null;
+            $dataArray['hostName'] = $data->hostName;
         }
         if (array_key_exists('iterationName', get_object_vars($data)) && null !== ($data->iterationName ?? null)) {
-            $dataArray['iterationName'] = $data->iterationName ?? null;
+            $dataArray['iterationName'] = $data->iterationName;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = $data->progress ?? null;
+            $dataArray['progress'] = $data->progress;
         }
         return $dataArray;
     }

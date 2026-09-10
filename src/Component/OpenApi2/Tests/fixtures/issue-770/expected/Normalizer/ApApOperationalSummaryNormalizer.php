@@ -169,121 +169,121 @@ class ApApOperationalSummaryNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
-            $dataArray['apGroupId'] = $data->apGroupId ?? null;
+            $dataArray['apGroupId'] = $data->apGroupId;
         }
         if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
-            $dataArray['serial'] = $data->serial ?? null;
+            $dataArray['serial'] = $data->serial;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
-            $dataArray['countryCode'] = $data->countryCode ?? null;
+            $dataArray['countryCode'] = $data->countryCode;
         }
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
-            $dataArray['latitude'] = $data->latitude ?? null;
+            $dataArray['latitude'] = $data->latitude;
         }
         if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
-            $dataArray['longitude'] = $data->longitude ?? null;
+            $dataArray['longitude'] = $data->longitude;
         }
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = $data->location ?? null;
+            $dataArray['location'] = $data->location;
         }
         if (array_key_exists('locationAdditionalInfo', get_object_vars($data)) && null !== ($data->locationAdditionalInfo ?? null)) {
-            $dataArray['locationAdditionalInfo'] = $data->locationAdditionalInfo ?? null;
+            $dataArray['locationAdditionalInfo'] = $data->locationAdditionalInfo;
         }
         if (array_key_exists('altitude', get_object_vars($data)) && null !== ($data->altitude ?? null)) {
-            $dataArray['altitude'] = ($data->altitude ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->altitude ?? null, 'json', $context));
+            $dataArray['altitude'] = $data->altitude === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->altitude, 'json', $context));
         }
         if (array_key_exists('cpId', get_object_vars($data)) && null !== ($data->cpId ?? null)) {
-            $dataArray['cpId'] = $data->cpId ?? null;
+            $dataArray['cpId'] = $data->cpId;
         }
         if (array_key_exists('dpId', get_object_vars($data)) && null !== ($data->dpId ?? null)) {
-            $dataArray['dpId'] = $data->dpId ?? null;
+            $dataArray['dpId'] = $data->dpId;
         }
         if (array_key_exists('wifi24Channel', get_object_vars($data)) && null !== ($data->wifi24Channel ?? null)) {
-            $dataArray['wifi24Channel'] = $data->wifi24Channel ?? null;
+            $dataArray['wifi24Channel'] = $data->wifi24Channel;
         }
         if (array_key_exists('wifi50Channel', get_object_vars($data)) && null !== ($data->wifi50Channel ?? null)) {
-            $dataArray['wifi50Channel'] = $data->wifi50Channel ?? null;
+            $dataArray['wifi50Channel'] = $data->wifi50Channel;
         }
         if (array_key_exists('wifi6gChannel', get_object_vars($data)) && null !== ($data->wifi6gChannel ?? null)) {
-            $dataArray['wifi6gChannel'] = $data->wifi6gChannel ?? null;
+            $dataArray['wifi6gChannel'] = $data->wifi6gChannel;
         }
         if (array_key_exists('meshRole', get_object_vars($data)) && null !== ($data->meshRole ?? null)) {
-            $dataArray['meshRole'] = $data->meshRole ?? null;
+            $dataArray['meshRole'] = $data->meshRole;
         }
         if (array_key_exists('meshHop', get_object_vars($data)) && null !== ($data->meshHop ?? null)) {
-            $dataArray['meshHop'] = $data->meshHop ?? null;
+            $dataArray['meshHop'] = $data->meshHop;
         }
         if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
-            $dataArray['ipType'] = $data->ipType ?? null;
+            $dataArray['ipType'] = $data->ipType;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('ipv6Type', get_object_vars($data)) && null !== ($data->ipv6Type ?? null)) {
-            $dataArray['ipv6Type'] = $data->ipv6Type ?? null;
+            $dataArray['ipv6Type'] = $data->ipv6Type;
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
-            $dataArray['ipv6'] = $data->ipv6 ?? null;
+            $dataArray['ipv6'] = $data->ipv6;
         }
         if (array_key_exists('externalIp', get_object_vars($data)) && null !== ($data->externalIp ?? null)) {
-            $dataArray['externalIp'] = $data->externalIp ?? null;
+            $dataArray['externalIp'] = $data->externalIp;
         }
         if (array_key_exists('externalPort', get_object_vars($data)) && null !== ($data->externalPort ?? null)) {
-            $dataArray['externalPort'] = $data->externalPort ?? null;
+            $dataArray['externalPort'] = $data->externalPort;
         }
         if (array_key_exists('configState', get_object_vars($data)) && null !== ($data->configState ?? null)) {
-            $dataArray['configState'] = $data->configState ?? null;
+            $dataArray['configState'] = $data->configState;
         }
         if (array_key_exists('connectionState', get_object_vars($data)) && null !== ($data->connectionState ?? null)) {
-            $dataArray['connectionState'] = $data->connectionState ?? null;
+            $dataArray['connectionState'] = $data->connectionState;
         }
         if (array_key_exists('registrationState', get_object_vars($data)) && null !== ($data->registrationState ?? null)) {
-            $dataArray['registrationState'] = $data->registrationState ?? null;
+            $dataArray['registrationState'] = $data->registrationState;
         }
         if (array_key_exists('administrativeState', get_object_vars($data)) && null !== ($data->administrativeState ?? null)) {
-            $dataArray['administrativeState'] = $data->administrativeState ?? null;
+            $dataArray['administrativeState'] = $data->administrativeState;
         }
         if (array_key_exists('provisionMethod', get_object_vars($data)) && null !== ($data->provisionMethod ?? null)) {
-            $dataArray['provisionMethod'] = $data->provisionMethod ?? null;
+            $dataArray['provisionMethod'] = $data->provisionMethod;
         }
         if (array_key_exists('provisionStage', get_object_vars($data)) && null !== ($data->provisionStage ?? null)) {
-            $dataArray['provisionStage'] = $data->provisionStage ?? null;
+            $dataArray['provisionStage'] = $data->provisionStage;
         }
         if (array_key_exists('isCriticalAP', get_object_vars($data)) && null !== ($data->isCriticalAP ?? null)) {
-            $dataArray['isCriticalAP'] = $data->isCriticalAP ?? null;
+            $dataArray['isCriticalAP'] = $data->isCriticalAP;
         }
         if (array_key_exists('approvedTime', get_object_vars($data)) && null !== ($data->approvedTime ?? null)) {
-            $dataArray['approvedTime'] = $data->approvedTime ?? null;
+            $dataArray['approvedTime'] = $data->approvedTime;
         }
         if (array_key_exists('lastSeenTime', get_object_vars($data)) && null !== ($data->lastSeenTime ?? null)) {
-            $dataArray['lastSeenTime'] = $data->lastSeenTime ?? null;
+            $dataArray['lastSeenTime'] = $data->lastSeenTime;
         }
         if (array_key_exists('uptime', get_object_vars($data)) && null !== ($data->uptime ?? null)) {
-            $dataArray['uptime'] = $data->uptime ?? null;
+            $dataArray['uptime'] = $data->uptime;
         }
         if (array_key_exists('clientCount', get_object_vars($data)) && null !== ($data->clientCount ?? null)) {
-            $dataArray['clientCount'] = $data->clientCount ?? null;
+            $dataArray['clientCount'] = $data->clientCount;
         }
         if (array_key_exists('managementVlan', get_object_vars($data)) && null !== ($data->managementVlan ?? null)) {
-            $dataArray['managementVlan'] = $data->managementVlan ?? null;
+            $dataArray['managementVlan'] = $data->managementVlan;
         }
         return $dataArray;
     }

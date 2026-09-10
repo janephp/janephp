@@ -67,19 +67,19 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('isOfficial', get_object_vars($data)) && null !== ($data->isOfficial ?? null)) {
-            $dataArray['is_official'] = $data->isOfficial ?? null;
+            $dataArray['is_official'] = $data->isOfficial;
         }
         if (array_key_exists('isAutomated', get_object_vars($data)) && null !== ($data->isAutomated ?? null)) {
-            $dataArray['is_automated'] = $data->isAutomated ?? null;
+            $dataArray['is_automated'] = $data->isAutomated;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starCount', get_object_vars($data)) && null !== ($data->starCount ?? null)) {
-            $dataArray['star_count'] = $data->starCount ?? null;
+            $dataArray['star_count'] = $data->starCount;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());

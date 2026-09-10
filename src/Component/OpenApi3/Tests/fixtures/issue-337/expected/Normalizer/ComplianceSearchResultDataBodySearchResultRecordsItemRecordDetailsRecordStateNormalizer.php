@@ -91,34 +91,34 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     {
         $dataArray = [];
         if (array_key_exists('addedToAcceptList', get_object_vars($data)) && null !== ($data->addedToAcceptList ?? null)) {
-            $dataArray['addedToAcceptList'] = $data->addedToAcceptList ?? null;
+            $dataArray['addedToAcceptList'] = $data->addedToAcceptList;
         }
         if (array_key_exists('alertState', get_object_vars($data)) && null !== ($data->alertState ?? null)) {
-            $dataArray['alertState'] = $data->alertState ?? null;
+            $dataArray['alertState'] = $data->alertState;
         }
         if (array_key_exists('assignedTo', get_object_vars($data)) && null !== ($data->assignedTo ?? null)) {
             $values = [];
-            foreach ($data->assignedTo ?? null as $value) {
+            foreach ($data->assignedTo as $value) {
                 $values[] = $value;
             }
             $dataArray['assignedTo'] = $values;
         }
         if (array_key_exists('assignmentType', get_object_vars($data)) && null !== ($data->assignmentType ?? null)) {
-            $dataArray['assignmentType'] = $data->assignmentType ?? null;
+            $dataArray['assignmentType'] = $data->assignmentType;
         }
         if (array_key_exists('division', get_object_vars($data)) && null !== ($data->division ?? null)) {
-            $dataArray['division'] = $data->division ?? null;
+            $dataArray['division'] = $data->division;
         }
         if (array_key_exists('history', get_object_vars($data)) && null !== ($data->history ?? null)) {
             $values_1 = [];
-            foreach ($data->history ?? null as $value_1) {
+            foreach ($data->history as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['history'] = $values_1;
         }
         if (array_key_exists('matchStates', get_object_vars($data)) && null !== ($data->matchStates ?? null)) {
             $values_2 = [];
-            foreach ($data->matchStates ?? null as $value_2) {
+            foreach ($data->matchStates as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['matchStates'] = $values_2;

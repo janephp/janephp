@@ -52,13 +52,13 @@ class ProfileHs20AdviceOfChargePlanInformationsItemNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
-            $dataArray['language'] = $data->language ?? null;
+            $dataArray['language'] = $data->language;
         }
         if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
-            $dataArray['currency'] = $data->currency ?? null;
+            $dataArray['currency'] = $data->currency;
         }
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
-            $dataArray['content'] = $data->content ?? null;
+            $dataArray['content'] = $data->content;
         }
         return $dataArray;
     }

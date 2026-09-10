@@ -60,17 +60,17 @@ class ProfileDataPlaneL3RoamingDataNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['key'] = $data->key ?? null;
-        $dataArray['activated'] = $data->activated ?? null;
-        $dataArray['value'] = $data->value ?? null;
+        $dataArray['key'] = $data->key;
+        $dataArray['activated'] = $data->activated;
+        $dataArray['value'] = $data->value;
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
-            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
+            $dataArray['firmwareVersion'] = $data->firmwareVersion;
         }
         if (array_key_exists('subCriteriaType', get_object_vars($data)) && null !== ($data->subCriteriaType ?? null)) {
-            $dataArray['subCriteriaType'] = $data->subCriteriaType ?? null;
+            $dataArray['subCriteriaType'] = $data->subCriteriaType;
         }
         return $dataArray;
     }

@@ -52,7 +52,7 @@ class ApiGetEvaluationRunPromptResultsOutputNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('prompt', get_object_vars($data)) && null !== ($data->prompt ?? null)) {
-            $dataArray['prompt'] = ($data->prompt ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->prompt ?? null, 'json', $context));
+            $dataArray['prompt'] = $data->prompt === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->prompt, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

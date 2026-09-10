@@ -50,7 +50,7 @@ class OutputResolveManyRequestNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->contentIds ?? null as $value) {
+        foreach ($data->contentIds as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;

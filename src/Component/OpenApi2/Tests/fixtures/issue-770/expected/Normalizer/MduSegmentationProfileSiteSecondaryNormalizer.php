@@ -49,10 +49,10 @@ class MduSegmentationProfileSiteSecondaryNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
-            $dataArray['index'] = $data->index ?? null;
+            $dataArray['index'] = $data->index;
         }
         if (array_key_exists('dpId', get_object_vars($data)) && null !== ($data->dpId ?? null)) {
-            $dataArray['dpId'] = $data->dpId ?? null;
+            $dataArray['dpId'] = $data->dpId;
         }
         return $dataArray;
     }

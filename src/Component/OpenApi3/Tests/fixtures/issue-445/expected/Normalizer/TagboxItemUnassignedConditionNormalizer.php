@@ -76,14 +76,14 @@ class TagboxItemUnassignedConditionNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
-            $dataArray['fieldPath'] = $data->fieldPath ?? null;
+            $dataArray['fieldPath'] = $data->fieldPath;
         }
         if (array_key_exists('refId', get_object_vars($data)) && null !== ($data->refId ?? null)) {
-            $dataArray['refId'] = $data->refId ?? null;
+            $dataArray['refId'] = $data->refId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

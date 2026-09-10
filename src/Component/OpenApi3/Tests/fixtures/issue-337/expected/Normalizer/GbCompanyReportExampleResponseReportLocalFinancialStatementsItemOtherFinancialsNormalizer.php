@@ -83,19 +83,19 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
     {
         $dataArray = [];
         if (array_key_exists('contingentLiabilities', get_object_vars($data)) && null !== ($data->contingentLiabilities ?? null)) {
-            $dataArray['contingentLiabilities'] = $data->contingentLiabilities ?? null;
+            $dataArray['contingentLiabilities'] = $data->contingentLiabilities;
         }
         if (array_key_exists('bankOverdraftAndLTL', get_object_vars($data)) && null !== ($data->bankOverdraftAndLTL ?? null)) {
-            $dataArray['bankOverdraftAndLTL'] = $data->bankOverdraftAndLTL ?? null;
+            $dataArray['bankOverdraftAndLTL'] = $data->bankOverdraftAndLTL;
         }
         if (array_key_exists('workingCapital', get_object_vars($data)) && null !== ($data->workingCapital ?? null)) {
-            $dataArray['workingCapital'] = $data->workingCapital ?? null;
+            $dataArray['workingCapital'] = $data->workingCapital;
         }
         if (array_key_exists('capitalEmployed', get_object_vars($data)) && null !== ($data->capitalEmployed ?? null)) {
-            $dataArray['capitalEmployed'] = $data->capitalEmployed ?? null;
+            $dataArray['capitalEmployed'] = $data->capitalEmployed;
         }
         if (array_key_exists('netWorth', get_object_vars($data)) && null !== ($data->netWorth ?? null)) {
-            $dataArray['netWorth'] = $data->netWorth ?? null;
+            $dataArray['netWorth'] = $data->netWorth;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

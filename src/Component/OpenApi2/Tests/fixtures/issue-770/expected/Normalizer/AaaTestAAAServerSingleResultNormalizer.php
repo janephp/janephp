@@ -46,7 +46,7 @@ class AaaTestAAAServerSingleResultNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('aaaTesting', get_object_vars($data)) && null !== ($data->aaaTesting ?? null)) {
-            $dataArray['aaaTesting'] = $data->aaaTesting ?? null;
+            $dataArray['aaaTesting'] = $data->aaaTesting;
         }
         return $dataArray;
     }

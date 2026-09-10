@@ -51,10 +51,10 @@ class IdentityQueryCriteriaFiltersItemNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['value'] = $data->value ?? null;
+        $dataArray['type'] = $data->type;
+        $dataArray['value'] = $data->value;
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = $data->operator ?? null;
+            $dataArray['operator'] = $data->operator;
         }
         return $dataArray;
     }

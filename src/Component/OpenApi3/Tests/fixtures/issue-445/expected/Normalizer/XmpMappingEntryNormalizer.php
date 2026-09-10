@@ -90,23 +90,23 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->direction ?? null;
-        if (is_string($data->direction ?? null)) {
-            $value = $data->direction ?? null;
+        $value = $data->direction;
+        if (is_string($data->direction)) {
+            $value = $data->direction;
         }
         $dataArray['direction'] = $value;
-        $dataArray['priority'] = $data->priority ?? null;
-        $dataArray['stopProcessing'] = $data->stopProcessing ?? null;
-        $dataArray['xmpPath'] = $data->xmpPath ?? null;
-        $dataArray['metadataPath'] = $data->metadataPath ?? null;
+        $dataArray['priority'] = $data->priority;
+        $dataArray['stopProcessing'] = $data->stopProcessing;
+        $dataArray['xmpPath'] = $data->xmpPath;
+        $dataArray['metadataPath'] = $data->metadataPath;
         if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
-            $value_1 = $data->configuration ?? null;
-            if (is_object($data->configuration ?? null)) {
-                $value_1 = ($data->configuration ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration ?? null, 'json', $context));
+            $value_1 = $data->configuration;
+            if (is_object($data->configuration)) {
+                $value_1 = $data->configuration === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
             }
             $dataArray['configuration'] = $value_1;
         }
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;

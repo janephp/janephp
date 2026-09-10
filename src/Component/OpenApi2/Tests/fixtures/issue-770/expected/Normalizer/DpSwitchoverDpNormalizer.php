@@ -62,20 +62,20 @@ class DpSwitchoverDpNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('ipOrFqdn', get_object_vars($data)) && null !== ($data->ipOrFqdn ?? null)) {
-            $dataArray['ipOrFqdn'] = $data->ipOrFqdn ?? null;
+            $dataArray['ipOrFqdn'] = $data->ipOrFqdn;
         }
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['clusterName'] = $data->clusterName ?? null;
+            $dataArray['clusterName'] = $data->clusterName;
         }
         if (array_key_exists('dpIdList', get_object_vars($data)) && null !== ($data->dpIdList ?? null)) {
             $values = [];
-            foreach ($data->dpIdList ?? null as $value) {
+            foreach ($data->dpIdList as $value) {
                 $values[] = $value;
             }
             $dataArray['dpIdList'] = $values;
         }
         if (array_key_exists('deleteRecord', get_object_vars($data)) && null !== ($data->deleteRecord ?? null)) {
-            $dataArray['deleteRecord'] = $data->deleteRecord ?? null;
+            $dataArray['deleteRecord'] = $data->deleteRecord;
         }
         return $dataArray;
     }

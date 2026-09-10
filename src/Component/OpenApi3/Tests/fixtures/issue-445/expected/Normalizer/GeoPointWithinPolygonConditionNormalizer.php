@@ -80,15 +80,15 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
-            $dataArray['fieldPath'] = $data->fieldPath ?? null;
+            $dataArray['fieldPath'] = $data->fieldPath;
         }
         if (array_key_exists('polygon', get_object_vars($data)) && null !== ($data->polygon ?? null)) {
             $values = [];
-            foreach ($data->polygon ?? null as $value) {
+            foreach ($data->polygon as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['polygon'] = $values;

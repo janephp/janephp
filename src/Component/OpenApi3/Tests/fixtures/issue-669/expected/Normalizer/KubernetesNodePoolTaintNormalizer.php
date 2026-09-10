@@ -60,13 +60,13 @@ class KubernetesNodePoolTaintNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         if (array_key_exists('effect', get_object_vars($data)) && null !== ($data->effect ?? null)) {
-            $dataArray['effect'] = $data->effect ?? null;
+            $dataArray['effect'] = $data->effect;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

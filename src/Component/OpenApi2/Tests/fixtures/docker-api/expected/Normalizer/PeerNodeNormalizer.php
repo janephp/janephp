@@ -52,10 +52,10 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('nodeID', get_object_vars($data)) && null !== ($data->nodeID ?? null)) {
-            $dataArray['NodeID'] = $data->nodeID ?? null;
+            $dataArray['NodeID'] = $data->nodeID;
         }
         if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
-            $dataArray['Addr'] = $data->addr ?? null;
+            $dataArray['Addr'] = $data->addr;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PeerNodeConstraint());

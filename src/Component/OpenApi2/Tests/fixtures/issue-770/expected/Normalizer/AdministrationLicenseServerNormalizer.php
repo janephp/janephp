@@ -55,13 +55,13 @@ class AdministrationLicenseServerNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('useCloud', get_object_vars($data)) && null !== ($data->useCloud ?? null)) {
-            $dataArray['useCloud'] = $data->useCloud ?? null;
+            $dataArray['useCloud'] = $data->useCloud;
         }
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ipAddress'] = $data->ipAddress ?? null;
+            $dataArray['ipAddress'] = $data->ipAddress;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         return $dataArray;
     }

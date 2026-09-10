@@ -79,23 +79,23 @@ class AppDatabaseSpecNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['cluster_name'] = $data->clusterName ?? null;
+            $dataArray['cluster_name'] = $data->clusterName;
         }
         if (array_key_exists('dbName', get_object_vars($data)) && null !== ($data->dbName ?? null)) {
-            $dataArray['db_name'] = $data->dbName ?? null;
+            $dataArray['db_name'] = $data->dbName;
         }
         if (array_key_exists('dbUser', get_object_vars($data)) && null !== ($data->dbUser ?? null)) {
-            $dataArray['db_user'] = $data->dbUser ?? null;
+            $dataArray['db_user'] = $data->dbUser;
         }
         if (array_key_exists('engine', get_object_vars($data)) && null !== ($data->engine ?? null)) {
-            $dataArray['engine'] = $data->engine ?? null;
+            $dataArray['engine'] = $data->engine;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('production', get_object_vars($data)) && null !== ($data->production ?? null)) {
-            $dataArray['production'] = $data->production ?? null;
+            $dataArray['production'] = $data->production;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -75,22 +75,22 @@ class ApiEvaluationMetricResultNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('errorDescription', get_object_vars($data)) && null !== ($data->errorDescription ?? null)) {
-            $dataArray['error_description'] = $data->errorDescription ?? null;
+            $dataArray['error_description'] = $data->errorDescription;
         }
         if (array_key_exists('metricName', get_object_vars($data)) && null !== ($data->metricName ?? null)) {
-            $dataArray['metric_name'] = $data->metricName ?? null;
+            $dataArray['metric_name'] = $data->metricName;
         }
         if (array_key_exists('metricValueType', get_object_vars($data)) && null !== ($data->metricValueType ?? null)) {
-            $dataArray['metric_value_type'] = $data->metricValueType ?? null;
+            $dataArray['metric_value_type'] = $data->metricValueType;
         }
         if (array_key_exists('numberValue', get_object_vars($data)) && null !== ($data->numberValue ?? null)) {
-            $dataArray['number_value'] = $data->numberValue ?? null;
+            $dataArray['number_value'] = $data->numberValue;
         }
         if (array_key_exists('reasoning', get_object_vars($data)) && null !== ($data->reasoning ?? null)) {
-            $dataArray['reasoning'] = $data->reasoning ?? null;
+            $dataArray['reasoning'] = $data->reasoning;
         }
         if (array_key_exists('stringValue', get_object_vars($data)) && null !== ($data->stringValue ?? null)) {
-            $dataArray['string_value'] = $data->stringValue ?? null;
+            $dataArray['string_value'] = $data->stringValue;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

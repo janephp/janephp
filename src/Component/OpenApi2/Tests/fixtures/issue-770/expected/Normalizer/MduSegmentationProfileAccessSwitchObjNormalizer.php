@@ -83,44 +83,44 @@ class MduSegmentationProfileAccessSwitchObjNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('webAuthPasswordLabel', get_object_vars($data)) && null !== ($data->webAuthPasswordLabel ?? null)) {
-            $dataArray['webAuthPasswordLabel'] = $data->webAuthPasswordLabel ?? null;
+            $dataArray['webAuthPasswordLabel'] = $data->webAuthPasswordLabel;
         }
         if (array_key_exists('upLink', get_object_vars($data)) && null !== ($data->upLink ?? null)) {
-            $dataArray['upLink'] = ($data->upLink ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->upLink ?? null, 'json', $context));
+            $dataArray['upLink'] = $data->upLink === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->upLink, 'json', $context));
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
-            foreach ($data->ports ?? null as $value) {
+            foreach ($data->ports as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ports'] = $values;
         }
         if (array_key_exists('networkSegmentationDistributionSwitchId', get_object_vars($data)) && null !== ($data->networkSegmentationDistributionSwitchId ?? null)) {
-            $dataArray['networkSegmentationDistributionSwitchId'] = $data->networkSegmentationDistributionSwitchId ?? null;
+            $dataArray['networkSegmentationDistributionSwitchId'] = $data->networkSegmentationDistributionSwitchId;
         }
         if (array_key_exists('dispatchMessage', get_object_vars($data)) && null !== ($data->dispatchMessage ?? null)) {
-            $dataArray['dispatchMessage'] = $data->dispatchMessage ?? null;
+            $dataArray['dispatchMessage'] = $data->dispatchMessage;
         }
         if (array_key_exists('webAuthCustomTitle', get_object_vars($data)) && null !== ($data->webAuthCustomTitle ?? null)) {
-            $dataArray['webAuthCustomTitle'] = $data->webAuthCustomTitle ?? null;
+            $dataArray['webAuthCustomTitle'] = $data->webAuthCustomTitle;
         }
         if (array_key_exists('webAuthCustomTop', get_object_vars($data)) && null !== ($data->webAuthCustomTop ?? null)) {
-            $dataArray['webAuthCustomTop'] = $data->webAuthCustomTop ?? null;
+            $dataArray['webAuthCustomTop'] = $data->webAuthCustomTop;
         }
         if (array_key_exists('webAuthCustomLoginButton', get_object_vars($data)) && null !== ($data->webAuthCustomLoginButton ?? null)) {
-            $dataArray['webAuthCustomLoginButton'] = $data->webAuthCustomLoginButton ?? null;
+            $dataArray['webAuthCustomLoginButton'] = $data->webAuthCustomLoginButton;
         }
         if (array_key_exists('webAuthCustomBottom', get_object_vars($data)) && null !== ($data->webAuthCustomBottom ?? null)) {
-            $dataArray['webAuthCustomBottom'] = $data->webAuthCustomBottom ?? null;
+            $dataArray['webAuthCustomBottom'] = $data->webAuthCustomBottom;
         }
         return $dataArray;
     }

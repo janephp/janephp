@@ -162,77 +162,77 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('agentDeleted', get_object_vars($data)) && null !== ($data->agentDeleted ?? null)) {
-            $dataArray['agent_deleted'] = $data->agentDeleted ?? null;
+            $dataArray['agent_deleted'] = $data->agentDeleted;
         }
         if (array_key_exists('agentDeploymentName', get_object_vars($data)) && null !== ($data->agentDeploymentName ?? null)) {
-            $dataArray['agent_deployment_name'] = $data->agentDeploymentName ?? null;
+            $dataArray['agent_deployment_name'] = $data->agentDeploymentName;
         }
         if (array_key_exists('agentName', get_object_vars($data)) && null !== ($data->agentName ?? null)) {
-            $dataArray['agent_name'] = $data->agentName ?? null;
+            $dataArray['agent_name'] = $data->agentName;
         }
         if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
-            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
+            $dataArray['agent_uuid'] = $data->agentUuid;
         }
         if (array_key_exists('agentVersionHash', get_object_vars($data)) && null !== ($data->agentVersionHash ?? null)) {
-            $dataArray['agent_version_hash'] = $data->agentVersionHash ?? null;
+            $dataArray['agent_version_hash'] = $data->agentVersionHash;
         }
         if (array_key_exists('agentWorkspaceUuid', get_object_vars($data)) && null !== ($data->agentWorkspaceUuid ?? null)) {
-            $dataArray['agent_workspace_uuid'] = $data->agentWorkspaceUuid ?? null;
+            $dataArray['agent_workspace_uuid'] = $data->agentWorkspaceUuid;
         }
         if (array_key_exists('createdByUserEmail', get_object_vars($data)) && null !== ($data->createdByUserEmail ?? null)) {
-            $dataArray['created_by_user_email'] = $data->createdByUserEmail ?? null;
+            $dataArray['created_by_user_email'] = $data->createdByUserEmail;
         }
         if (array_key_exists('createdByUserId', get_object_vars($data)) && null !== ($data->createdByUserId ?? null)) {
-            $dataArray['created_by_user_id'] = $data->createdByUserId ?? null;
+            $dataArray['created_by_user_id'] = $data->createdByUserId;
         }
         if (array_key_exists('errorDescription', get_object_vars($data)) && null !== ($data->errorDescription ?? null)) {
-            $dataArray['error_description'] = $data->errorDescription ?? null;
+            $dataArray['error_description'] = $data->errorDescription;
         }
         if (array_key_exists('evaluationRunUuid', get_object_vars($data)) && null !== ($data->evaluationRunUuid ?? null)) {
-            $dataArray['evaluation_run_uuid'] = $data->evaluationRunUuid ?? null;
+            $dataArray['evaluation_run_uuid'] = $data->evaluationRunUuid;
         }
         if (array_key_exists('evaluationTestCaseWorkspaceUuid', get_object_vars($data)) && null !== ($data->evaluationTestCaseWorkspaceUuid ?? null)) {
-            $dataArray['evaluation_test_case_workspace_uuid'] = $data->evaluationTestCaseWorkspaceUuid ?? null;
+            $dataArray['evaluation_test_case_workspace_uuid'] = $data->evaluationTestCaseWorkspaceUuid;
         }
         if (array_key_exists('finishedAt', get_object_vars($data)) && null !== ($data->finishedAt ?? null)) {
-            $dataArray['finished_at'] = ($data->finishedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['finished_at'] = $data->finishedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('passStatus', get_object_vars($data)) && null !== ($data->passStatus ?? null)) {
-            $dataArray['pass_status'] = $data->passStatus ?? null;
+            $dataArray['pass_status'] = $data->passStatus;
         }
         if (array_key_exists('queuedAt', get_object_vars($data)) && null !== ($data->queuedAt ?? null)) {
-            $dataArray['queued_at'] = ($data->queuedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['queued_at'] = $data->queuedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('runLevelMetricResults', get_object_vars($data)) && null !== ($data->runLevelMetricResults ?? null)) {
             $values = [];
-            foreach ($data->runLevelMetricResults ?? null as $value) {
+            foreach ($data->runLevelMetricResults as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['run_level_metric_results'] = $values;
         }
         if (array_key_exists('runName', get_object_vars($data)) && null !== ($data->runName ?? null)) {
-            $dataArray['run_name'] = $data->runName ?? null;
+            $dataArray['run_name'] = $data->runName;
         }
         if (array_key_exists('starMetricResult', get_object_vars($data)) && null !== ($data->starMetricResult ?? null)) {
-            $dataArray['star_metric_result'] = ($data->starMetricResult ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetricResult ?? null, 'json', $context));
+            $dataArray['star_metric_result'] = $data->starMetricResult === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetricResult, 'json', $context));
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('testCaseDescription', get_object_vars($data)) && null !== ($data->testCaseDescription ?? null)) {
-            $dataArray['test_case_description'] = $data->testCaseDescription ?? null;
+            $dataArray['test_case_description'] = $data->testCaseDescription;
         }
         if (array_key_exists('testCaseName', get_object_vars($data)) && null !== ($data->testCaseName ?? null)) {
-            $dataArray['test_case_name'] = $data->testCaseName ?? null;
+            $dataArray['test_case_name'] = $data->testCaseName;
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
-            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
+            $dataArray['test_case_uuid'] = $data->testCaseUuid;
         }
         if (array_key_exists('testCaseVersion', get_object_vars($data)) && null !== ($data->testCaseVersion ?? null)) {
-            $dataArray['test_case_version'] = $data->testCaseVersion ?? null;
+            $dataArray['test_case_version'] = $data->testCaseVersion;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

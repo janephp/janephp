@@ -115,12 +115,12 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
-            $value = $data->names ?? null;
-            if (is_object($data->names ?? null)) {
+            $value = $data->names;
+            if (is_object($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->names ?? null as $key => $value_1) {
+                foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
@@ -129,27 +129,27 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
         }
         if (array_key_exists('aggregators', get_object_vars($data)) && null !== ($data->aggregators ?? null)) {
             $values_1 = [];
-            foreach ($data->aggregators ?? null as $value_2) {
+            foreach ($data->aggregators as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregators'] = $values_1;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value_3 = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value_3 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value_3 = $data->filter;
+            if (is_object($data->filter)) {
+                $value_3 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_3;
         }
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['field'] = $data->field ?? null;
-        $value_4 = $data->location ?? null;
-        if (is_object($data->location ?? null)) {
-            $value_4 = ($data->location ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['field'] = $data->field;
+        $value_4 = $data->location;
+        if (is_object($data->location)) {
+            $value_4 = $data->location === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location, 'json', $context));
         }
         $dataArray['location'] = $value_4;
         $values_2 = [];
-        foreach ($data->ranges ?? null as $value_5) {
+        foreach ($data->ranges as $value_5) {
             $values_2[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
         }
         $dataArray['ranges'] = $values_2;

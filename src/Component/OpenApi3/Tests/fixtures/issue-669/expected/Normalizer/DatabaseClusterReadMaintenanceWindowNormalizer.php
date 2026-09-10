@@ -70,8 +70,8 @@ class DatabaseClusterReadMaintenanceWindowNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['day'] = $data->day ?? null;
-        $dataArray['hour'] = $data->hour ?? null;
+        $dataArray['day'] = $data->day;
+        $dataArray['hour'] = $data->hour;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

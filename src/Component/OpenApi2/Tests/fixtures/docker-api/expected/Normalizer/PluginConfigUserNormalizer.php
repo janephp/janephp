@@ -52,10 +52,10 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('uID', get_object_vars($data)) && null !== ($data->uID ?? null)) {
-            $dataArray['UID'] = $data->uID ?? null;
+            $dataArray['UID'] = $data->uID;
         }
         if (array_key_exists('gID', get_object_vars($data)) && null !== ($data->gID ?? null)) {
-            $dataArray['GID'] = $data->gID ?? null;
+            $dataArray['GID'] = $data->gID;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigUserConstraint());

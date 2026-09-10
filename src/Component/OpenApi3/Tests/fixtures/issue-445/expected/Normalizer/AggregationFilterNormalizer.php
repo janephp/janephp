@@ -79,19 +79,19 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('aggregationName', get_object_vars($data)) && null !== ($data->aggregationName ?? null)) {
-            $dataArray['aggregationName'] = $data->aggregationName ?? null;
+            $dataArray['aggregationName'] = $data->aggregationName;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
         if (array_key_exists('temporaryAggregatorRequestId', get_object_vars($data)) && null !== ($data->temporaryAggregatorRequestId ?? null)) {
-            $dataArray['temporaryAggregatorRequestId'] = $data->temporaryAggregatorRequestId ?? null;
+            $dataArray['temporaryAggregatorRequestId'] = $data->temporaryAggregatorRequestId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

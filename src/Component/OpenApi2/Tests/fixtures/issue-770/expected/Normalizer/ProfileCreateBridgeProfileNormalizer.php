@@ -58,17 +58,17 @@ class ProfileCreateBridgeProfileNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('dhcpRelay', get_object_vars($data)) && null !== ($data->dhcpRelay ?? null)) {
-            $dataArray['dhcpRelay'] = ($data->dhcpRelay ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay ?? null, 'json', $context));
+            $dataArray['dhcpRelay'] = $data->dhcpRelay === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay, 'json', $context));
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

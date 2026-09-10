@@ -70,24 +70,24 @@ class ApmodelCellularSettingsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('mobileAPName', get_object_vars($data)) && null !== ($data->mobileAPName ?? null)) {
-            $dataArray['mobileAPName'] = $data->mobileAPName ?? null;
+            $dataArray['mobileAPName'] = $data->mobileAPName;
         }
         if (array_key_exists('mobileAPName2', get_object_vars($data)) && null !== ($data->mobileAPName2 ?? null)) {
-            $dataArray['mobileAPName2'] = $data->mobileAPName2 ?? null;
+            $dataArray['mobileAPName2'] = $data->mobileAPName2;
         }
         if (array_key_exists('simCardUsage', get_object_vars($data)) && null !== ($data->simCardUsage ?? null)) {
-            $dataArray['simCardUsage'] = $data->simCardUsage ?? null;
+            $dataArray['simCardUsage'] = $data->simCardUsage;
         }
-        $dataArray['select3g4g'] = $data->select3g4g ?? null;
-        $dataArray['select3g4g2'] = $data->select3g4g2 ?? null;
+        $dataArray['select3g4g'] = $data->select3g4g;
+        $dataArray['select3g4g2'] = $data->select3g4g2;
         if (array_key_exists('dataRoaming', get_object_vars($data)) && null !== ($data->dataRoaming ?? null)) {
-            $dataArray['dataRoaming'] = $data->dataRoaming ?? null;
+            $dataArray['dataRoaming'] = $data->dataRoaming;
         }
         if (array_key_exists('dataRoaming2', get_object_vars($data)) && null !== ($data->dataRoaming2 ?? null)) {
-            $dataArray['dataRoaming2'] = $data->dataRoaming2 ?? null;
+            $dataArray['dataRoaming2'] = $data->dataRoaming2;
         }
-        $dataArray['wanConnection'] = $data->wanConnection ?? null;
-        $dataArray['wanRecoveryTimer'] = $data->wanRecoveryTimer ?? null;
+        $dataArray['wanConnection'] = $data->wanConnection;
+        $dataArray['wanRecoveryTimer'] = $data->wanRecoveryTimer;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

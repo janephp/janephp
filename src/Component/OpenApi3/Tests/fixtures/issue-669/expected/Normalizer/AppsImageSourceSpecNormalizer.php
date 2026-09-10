@@ -76,25 +76,25 @@ class AppsImageSourceSpecNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
-            $dataArray['registry'] = $data->registry ?? null;
+            $dataArray['registry'] = $data->registry;
         }
         if (array_key_exists('registryType', get_object_vars($data)) && null !== ($data->registryType ?? null)) {
-            $dataArray['registry_type'] = $data->registryType ?? null;
+            $dataArray['registry_type'] = $data->registryType;
         }
         if (array_key_exists('registryCredentials', get_object_vars($data)) && null !== ($data->registryCredentials ?? null)) {
-            $dataArray['registry_credentials'] = $data->registryCredentials ?? null;
+            $dataArray['registry_credentials'] = $data->registryCredentials;
         }
         if (array_key_exists('repository', get_object_vars($data)) && null !== ($data->repository ?? null)) {
-            $dataArray['repository'] = $data->repository ?? null;
+            $dataArray['repository'] = $data->repository;
         }
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = $data->tag ?? null;
+            $dataArray['tag'] = $data->tag;
         }
         if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
-            $dataArray['digest'] = $data->digest ?? null;
+            $dataArray['digest'] = $data->digest;
         }
         if (array_key_exists('deployOnPush', get_object_vars($data)) && null !== ($data->deployOnPush ?? null)) {
-            $dataArray['deploy_on_push'] = ($data->deployOnPush ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployOnPush ?? null, 'json', $context));
+            $dataArray['deploy_on_push'] = $data->deployOnPush === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployOnPush, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

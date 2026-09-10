@@ -56,10 +56,10 @@ class ApiGetKnowledgeBaseOutputNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('databaseStatus', get_object_vars($data)) && null !== ($data->databaseStatus ?? null)) {
-            $dataArray['database_status'] = $data->databaseStatus ?? null;
+            $dataArray['database_status'] = $data->databaseStatus;
         }
         if (array_key_exists('knowledgeBase', get_object_vars($data)) && null !== ($data->knowledgeBase ?? null)) {
-            $dataArray['knowledge_base'] = ($data->knowledgeBase ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->knowledgeBase ?? null, 'json', $context));
+            $dataArray['knowledge_base'] = $data->knowledgeBase === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->knowledgeBase, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

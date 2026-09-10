@@ -100,61 +100,61 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('restriction', get_object_vars($data)) && null !== ($data->restriction ?? null)) {
-            $dataArray['restriction'] = $data->restriction ?? null;
+            $dataArray['restriction'] = $data->restriction;
         }
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->rules ?? null as $value) {
+            foreach ($data->rules as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
         if (array_key_exists('etherTypeRestriction', get_object_vars($data)) && null !== ($data->etherTypeRestriction ?? null)) {
-            $dataArray['etherTypeRestriction'] = $data->etherTypeRestriction ?? null;
+            $dataArray['etherTypeRestriction'] = $data->etherTypeRestriction;
         }
         if (array_key_exists('etherTypes', get_object_vars($data)) && null !== ($data->etherTypes ?? null)) {
             $values_1 = [];
-            foreach ($data->etherTypes ?? null as $value_1) {
+            foreach ($data->etherTypes as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['etherTypes'] = $values_1;
         }
         if (array_key_exists('userDefinedEtherTypes', get_object_vars($data)) && null !== ($data->userDefinedEtherTypes ?? null)) {
             $values_2 = [];
-            foreach ($data->userDefinedEtherTypes ?? null as $value_2) {
+            foreach ($data->userDefinedEtherTypes as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['userDefinedEtherTypes'] = $values_2;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         return $dataArray;
     }

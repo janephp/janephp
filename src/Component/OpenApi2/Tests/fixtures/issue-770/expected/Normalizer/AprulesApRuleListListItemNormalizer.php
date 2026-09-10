@@ -52,13 +52,13 @@ class AprulesApRuleListListItemNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority ?? null;
+            $dataArray['priority'] = $data->priority;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         return $dataArray;
     }

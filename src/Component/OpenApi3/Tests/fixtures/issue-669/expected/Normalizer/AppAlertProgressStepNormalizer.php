@@ -76,19 +76,19 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('endedAt', get_object_vars($data)) && null !== ($data->endedAt ?? null)) {
-            $dataArray['ended_at'] = ($data->endedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['ended_at'] = $data->endedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
-            $dataArray['reason'] = ($data->reason ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason ?? null, 'json', $context));
+            $dataArray['reason'] = $data->reason === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

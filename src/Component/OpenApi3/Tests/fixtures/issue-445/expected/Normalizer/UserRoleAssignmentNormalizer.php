@@ -59,13 +59,13 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('userRole', get_object_vars($data)) && null !== ($data->userRole ?? null)) {
-            $value = $data->userRole ?? null;
-            if (is_object($data->userRole ?? null)) {
-                $value = ($data->userRole ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
+            $value = $data->userRole;
+            if (is_object($data->userRole)) {
+                $value = $data->userRole === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userRole, 'json', $context));
             }
             $dataArray['userRole'] = $value;
         }
-        $dataArray['isFederated'] = $data->isFederated ?? null;
+        $dataArray['isFederated'] = $data->isFederated;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

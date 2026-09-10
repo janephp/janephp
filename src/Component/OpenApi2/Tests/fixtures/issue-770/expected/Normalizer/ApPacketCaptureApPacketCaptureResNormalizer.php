@@ -68,29 +68,29 @@ class ApPacketCaptureApPacketCaptureResNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('captureInterface', get_object_vars($data)) && null !== ($data->captureInterface ?? null)) {
-            $dataArray['captureInterface'] = $data->captureInterface ?? null;
+            $dataArray['captureInterface'] = $data->captureInterface;
         }
         if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
-            $dataArray['hostIp'] = $data->hostIp ?? null;
+            $dataArray['hostIp'] = $data->hostIp;
         }
         if (array_key_exists('includedMac', get_object_vars($data)) && null !== ($data->includedMac ?? null)) {
-            $dataArray['includedMac'] = $data->includedMac ?? null;
+            $dataArray['includedMac'] = $data->includedMac;
         }
         if (array_key_exists('includedFrameTypes', get_object_vars($data)) && null !== ($data->includedFrameTypes ?? null)) {
             $values = [];
-            foreach ($data->includedFrameTypes ?? null as $value) {
+            foreach ($data->includedFrameTypes as $value) {
                 $values[] = $value;
             }
             $dataArray['includedFrameTypes'] = $values;
         }
         if (array_key_exists('captureMode', get_object_vars($data)) && null !== ($data->captureMode ?? null)) {
-            $dataArray['captureMode'] = $data->captureMode ?? null;
+            $dataArray['captureMode'] = $data->captureMode;
         }
         if (array_key_exists('captureState', get_object_vars($data)) && null !== ($data->captureState ?? null)) {
-            $dataArray['captureState'] = $data->captureState ?? null;
+            $dataArray['captureState'] = $data->captureState;
         }
         return $dataArray;
     }

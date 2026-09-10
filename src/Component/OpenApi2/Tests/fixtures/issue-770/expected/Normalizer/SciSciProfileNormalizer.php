@@ -67,28 +67,28 @@ class SciSciProfileNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('sciPriority', get_object_vars($data)) && null !== ($data->sciPriority ?? null)) {
-            $dataArray['sciPriority'] = $data->sciPriority ?? null;
+            $dataArray['sciPriority'] = $data->sciPriority;
         }
         if (array_key_exists('sciProfile', get_object_vars($data)) && null !== ($data->sciProfile ?? null)) {
-            $dataArray['sciProfile'] = $data->sciProfile ?? null;
+            $dataArray['sciProfile'] = $data->sciProfile;
         }
         if (array_key_exists('sciSystemId', get_object_vars($data)) && null !== ($data->sciSystemId ?? null)) {
-            $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
+            $dataArray['sciSystemId'] = $data->sciSystemId;
         }
         if (array_key_exists('sciServerHost', get_object_vars($data)) && null !== ($data->sciServerHost ?? null)) {
-            $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
+            $dataArray['sciServerHost'] = $data->sciServerHost;
         }
         if (array_key_exists('sciServerPort', get_object_vars($data)) && null !== ($data->sciServerPort ?? null)) {
-            $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
+            $dataArray['sciServerPort'] = $data->sciServerPort;
         }
         if (array_key_exists('sciUser', get_object_vars($data)) && null !== ($data->sciUser ?? null)) {
-            $dataArray['sciUser'] = $data->sciUser ?? null;
+            $dataArray['sciUser'] = $data->sciUser;
         }
         if (array_key_exists('sciPassword', get_object_vars($data)) && null !== ($data->sciPassword ?? null)) {
-            $dataArray['sciPassword'] = $data->sciPassword ?? null;
+            $dataArray['sciPassword'] = $data->sciPassword;
         }
         return $dataArray;
     }

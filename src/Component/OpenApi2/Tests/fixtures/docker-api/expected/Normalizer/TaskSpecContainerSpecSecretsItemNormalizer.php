@@ -55,13 +55,13 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['File'] = ($data->file ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file ?? null, 'json', $context));
+            $dataArray['File'] = $data->file === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file, 'json', $context));
         }
         if (array_key_exists('secretID', get_object_vars($data)) && null !== ($data->secretID ?? null)) {
-            $dataArray['SecretID'] = $data->secretID ?? null;
+            $dataArray['SecretID'] = $data->secretID;
         }
         if (array_key_exists('secretName', get_object_vars($data)) && null !== ($data->secretName ?? null)) {
-            $dataArray['SecretName'] = $data->secretName ?? null;
+            $dataArray['SecretName'] = $data->secretName;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemConstraint());

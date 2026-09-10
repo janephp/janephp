@@ -55,10 +55,10 @@ class SystemCloudOptionsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('apCloudOnboardingEnabled', get_object_vars($data)) && null !== ($data->apCloudOnboardingEnabled ?? null)) {
-            $dataArray['apCloudOnboardingEnabled'] = $data->apCloudOnboardingEnabled ?? null;
+            $dataArray['apCloudOnboardingEnabled'] = $data->apCloudOnboardingEnabled;
         }
         if (array_key_exists('isRuckusCloudOnboarded', get_object_vars($data)) && null !== ($data->isRuckusCloudOnboarded ?? null)) {
-            $dataArray['isRuckusCloudOnboarded'] = $data->isRuckusCloudOnboarded ?? null;
+            $dataArray['isRuckusCloudOnboarded'] = $data->isRuckusCloudOnboarded;
         }
         return $dataArray;
     }

@@ -48,10 +48,10 @@ class SalesRetrieveSettlementRequestBaseNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->discriminator ?? null) and 'Sales_RetrieveInvoicesRequest' === ($data->discriminator ?? null)) {
+        if (null !== ($data->discriminator ?? null) and 'Sales_RetrieveInvoicesRequest' === $data->discriminator) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['discriminator'] = $data->discriminator ?? null;
+        $dataArray['discriminator'] = $data->discriminator;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

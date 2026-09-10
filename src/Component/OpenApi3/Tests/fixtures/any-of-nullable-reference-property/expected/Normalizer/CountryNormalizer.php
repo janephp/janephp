@@ -56,10 +56,10 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('iso', get_object_vars($data)) && null !== ($data->iso ?? null)) {
-            $dataArray['iso'] = $data->iso ?? null;
+            $dataArray['iso'] = $data->iso;
         }
         if (array_key_exists('printableName', get_object_vars($data)) && null !== ($data->printableName ?? null)) {
-            $dataArray['printableName'] = $data->printableName ?? null;
+            $dataArray['printableName'] = $data->printableName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -83,23 +83,23 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps ?? null;
-        $dataArray['region'] = $data->region ?? null;
-        $dataArray['naas_provider'] = $data->naasProvider ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps;
+        $dataArray['region'] = $data->region;
+        $dataArray['naas_provider'] = $data->naasProvider;
         $values = [];
-        foreach ($data->vpcIds ?? null as $value) {
+        foreach ($data->vpcIds as $value) {
             $values[] = $value;
         }
         $dataArray['vpc_ids'] = $values;
         if (array_key_exists('parentUuid', get_object_vars($data)) && null !== ($data->parentUuid ?? null)) {
-            $dataArray['parent_uuid'] = $data->parentUuid ?? null;
+            $dataArray['parent_uuid'] = $data->parentUuid;
         }
         if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
-            $dataArray['bgp'] = ($data->bgp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp ?? null, 'json', $context));
+            $dataArray['bgp'] = $data->bgp === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp, 'json', $context));
         }
         if (array_key_exists('redundancyZone', get_object_vars($data)) && null !== ($data->redundancyZone ?? null)) {
-            $dataArray['redundancy_zone'] = $data->redundancyZone ?? null;
+            $dataArray['redundancy_zone'] = $data->redundancyZone;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

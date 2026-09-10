@@ -85,31 +85,31 @@ class ProfileDhcpOption82Normalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('dhcpOption82Enabled', get_object_vars($data)) && null !== ($data->dhcpOption82Enabled ?? null)) {
-            $dataArray['dhcpOption82Enabled'] = $data->dhcpOption82Enabled ?? null;
+            $dataArray['dhcpOption82Enabled'] = $data->dhcpOption82Enabled;
         }
         if (array_key_exists('subopt1Enabled', get_object_vars($data)) && null !== ($data->subopt1Enabled ?? null)) {
-            $dataArray['subopt1Enabled'] = $data->subopt1Enabled ?? null;
+            $dataArray['subopt1Enabled'] = $data->subopt1Enabled;
         }
         if (array_key_exists('subopt1Format', get_object_vars($data)) && null !== ($data->subopt1Format ?? null)) {
-            $dataArray['subopt1Format'] = $data->subopt1Format ?? null;
+            $dataArray['subopt1Format'] = $data->subopt1Format;
         }
         if (array_key_exists('subopt2Enabled', get_object_vars($data)) && null !== ($data->subopt2Enabled ?? null)) {
-            $dataArray['subopt2Enabled'] = $data->subopt2Enabled ?? null;
+            $dataArray['subopt2Enabled'] = $data->subopt2Enabled;
         }
         if (array_key_exists('subopt2Format', get_object_vars($data)) && null !== ($data->subopt2Format ?? null)) {
-            $dataArray['subopt2Format'] = $data->subopt2Format ?? null;
+            $dataArray['subopt2Format'] = $data->subopt2Format;
         }
         if (array_key_exists('subopt150Enabled', get_object_vars($data)) && null !== ($data->subopt150Enabled ?? null)) {
-            $dataArray['subopt150Enabled'] = $data->subopt150Enabled ?? null;
+            $dataArray['subopt150Enabled'] = $data->subopt150Enabled;
         }
         if (array_key_exists('subopt151Enabled', get_object_vars($data)) && null !== ($data->subopt151Enabled ?? null)) {
-            $dataArray['subopt151Enabled'] = $data->subopt151Enabled ?? null;
+            $dataArray['subopt151Enabled'] = $data->subopt151Enabled;
         }
         if (array_key_exists('subopt151Format', get_object_vars($data)) && null !== ($data->subopt151Format ?? null)) {
-            $dataArray['subopt151Format'] = $data->subopt151Format ?? null;
+            $dataArray['subopt151Format'] = $data->subopt151Format;
         }
         if (array_key_exists('subopt151AreaName', get_object_vars($data)) && null !== ($data->subopt151AreaName ?? null)) {
-            $dataArray['subopt151AreaName'] = $data->subopt151AreaName ?? null;
+            $dataArray['subopt151AreaName'] = $data->subopt151AreaName;
         }
         return $dataArray;
     }

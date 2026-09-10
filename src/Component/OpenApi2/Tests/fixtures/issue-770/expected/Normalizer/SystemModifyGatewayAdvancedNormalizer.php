@@ -85,28 +85,28 @@ class SystemModifyGatewayAdvancedNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('allowSessionOnAccountingFail', get_object_vars($data)) && null !== ($data->allowSessionOnAccountingFail ?? null)) {
-            $dataArray['allowSessionOnAccountingFail'] = $data->allowSessionOnAccountingFail ?? null;
+            $dataArray['allowSessionOnAccountingFail'] = $data->allowSessionOnAccountingFail;
         }
         if (array_key_exists('gtpNetworkServiceAcessPointIdentifier', get_object_vars($data)) && null !== ($data->gtpNetworkServiceAcessPointIdentifier ?? null)) {
-            $dataArray['gtpNetworkServiceAcessPointIdentifier'] = $data->gtpNetworkServiceAcessPointIdentifier ?? null;
+            $dataArray['gtpNetworkServiceAcessPointIdentifier'] = $data->gtpNetworkServiceAcessPointIdentifier;
         }
         if (array_key_exists('imeiInGtp', get_object_vars($data)) && null !== ($data->imeiInGtp ?? null)) {
-            $dataArray['imeiInGtp'] = $data->imeiInGtp ?? null;
+            $dataArray['imeiInGtp'] = $data->imeiInGtp;
         }
         if (array_key_exists('scgRaiInGtpV2', get_object_vars($data)) && null !== ($data->scgRaiInGtpV2 ?? null)) {
-            $dataArray['scgRaiInGtpV2'] = $data->scgRaiInGtpV2 ?? null;
+            $dataArray['scgRaiInGtpV2'] = $data->scgRaiInGtpV2;
         }
         if (array_key_exists('scgSaiInGtpV2', get_object_vars($data)) && null !== ($data->scgSaiInGtpV2 ?? null)) {
-            $dataArray['scgSaiInGtpV2'] = $data->scgSaiInGtpV2 ?? null;
+            $dataArray['scgSaiInGtpV2'] = $data->scgSaiInGtpV2;
         }
         if (array_key_exists('ecgiInGtpV2', get_object_vars($data)) && null !== ($data->ecgiInGtpV2 ?? null)) {
-            $dataArray['ecgiInGtpV2'] = $data->ecgiInGtpV2 ?? null;
+            $dataArray['ecgiInGtpV2'] = $data->ecgiInGtpV2;
         }
         if (array_key_exists('taiInGtpV2', get_object_vars($data)) && null !== ($data->taiInGtpV2 ?? null)) {
-            $dataArray['taiInGtpV2'] = $data->taiInGtpV2 ?? null;
+            $dataArray['taiInGtpV2'] = $data->taiInGtpV2;
         }
         if (array_key_exists('gtpInterfaceType', get_object_vars($data)) && null !== ($data->gtpInterfaceType ?? null)) {
-            $dataArray['gtpInterfaceType'] = $data->gtpInterfaceType ?? null;
+            $dataArray['gtpInterfaceType'] = $data->gtpInterfaceType;
         }
         return $dataArray;
     }

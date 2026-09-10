@@ -60,14 +60,14 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->listItemIds ?? null as $value) {
+        foreach ($data->listItemIds as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
-            $value_1 = $data->references ?? null;
-            if (is_object($data->references ?? null)) {
-                $value_1 = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
+            $value_1 = $data->references;
+            if (is_object($data->references)) {
+                $value_1 = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value_1;
         }

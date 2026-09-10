@@ -61,22 +61,22 @@ class DhcpMsgStatsDhcpMsgStatsNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
-            $dataArray['tenantId'] = $data->tenantId ?? null;
+            $dataArray['tenantId'] = $data->tenantId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('dhcpMsgRecvdStats', get_object_vars($data)) && null !== ($data->dhcpMsgRecvdStats ?? null)) {
-            $dataArray['dhcpMsgRecvdStats'] = ($data->dhcpMsgRecvdStats ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgRecvdStats ?? null, 'json', $context));
+            $dataArray['dhcpMsgRecvdStats'] = $data->dhcpMsgRecvdStats === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgRecvdStats, 'json', $context));
         }
         if (array_key_exists('dhcpMsgSentStats', get_object_vars($data)) && null !== ($data->dhcpMsgSentStats ?? null)) {
-            $dataArray['dhcpMsgSentStats'] = ($data->dhcpMsgSentStats ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgSentStats ?? null, 'json', $context));
+            $dataArray['dhcpMsgSentStats'] = $data->dhcpMsgSentStats === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgSentStats, 'json', $context));
         }
         return $dataArray;
     }

@@ -51,7 +51,7 @@ class CaleaCaleaMacListRqNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         if (array_key_exists('macList', get_object_vars($data)) && null !== ($data->macList ?? null)) {
             $values = [];
-            foreach ($data->macList ?? null as $value) {
+            foreach ($data->macList as $value) {
                 $values[] = $value;
             }
             $dataArray['macList'] = $values;

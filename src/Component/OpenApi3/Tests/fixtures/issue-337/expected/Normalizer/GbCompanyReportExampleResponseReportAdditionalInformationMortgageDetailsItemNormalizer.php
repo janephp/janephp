@@ -76,25 +76,25 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
     {
         $dataArray = [];
         if (array_key_exists('mortgageType', get_object_vars($data)) && null !== ($data->mortgageType ?? null)) {
-            $dataArray['mortgageType'] = $data->mortgageType ?? null;
+            $dataArray['mortgageType'] = $data->mortgageType;
         }
         if (array_key_exists('dateChargeCreated', get_object_vars($data)) && null !== ($data->dateChargeCreated ?? null)) {
-            $dataArray['dateChargeCreated'] = $data->dateChargeCreated ?? null;
+            $dataArray['dateChargeCreated'] = $data->dateChargeCreated;
         }
         if (array_key_exists('dateChargeRegistered', get_object_vars($data)) && null !== ($data->dateChargeRegistered ?? null)) {
-            $dataArray['dateChargeRegistered'] = $data->dateChargeRegistered ?? null;
+            $dataArray['dateChargeRegistered'] = $data->dateChargeRegistered;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('personsEntitled', get_object_vars($data)) && null !== ($data->personsEntitled ?? null)) {
-            $dataArray['personsEntitled'] = $data->personsEntitled ?? null;
+            $dataArray['personsEntitled'] = $data->personsEntitled;
         }
         if (array_key_exists('amountSecured', get_object_vars($data)) && null !== ($data->amountSecured ?? null)) {
-            $dataArray['amountSecured'] = $data->amountSecured ?? null;
+            $dataArray['amountSecured'] = $data->amountSecured;
         }
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
-            $dataArray['details'] = $data->details ?? null;
+            $dataArray['details'] = $data->details;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

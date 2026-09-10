@@ -64,25 +64,25 @@ class SessionManagementRuckusSessionNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('lastAccessTime', get_object_vars($data)) && null !== ($data->lastAccessTime ?? null)) {
-            $dataArray['lastAccessTime'] = $data->lastAccessTime ?? null;
+            $dataArray['lastAccessTime'] = $data->lastAccessTime;
         }
         if (array_key_exists('lastAccessURI', get_object_vars($data)) && null !== ($data->lastAccessURI ?? null)) {
-            $dataArray['lastAccessURI'] = $data->lastAccessURI ?? null;
+            $dataArray['lastAccessURI'] = $data->lastAccessURI;
         }
         if (array_key_exists('userUUID', get_object_vars($data)) && null !== ($data->userUUID ?? null)) {
-            $dataArray['userUUID'] = $data->userUUID ?? null;
+            $dataArray['userUUID'] = $data->userUUID;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('sessionId', get_object_vars($data)) && null !== ($data->sessionId ?? null)) {
-            $dataArray['sessionId'] = $data->sessionId ?? null;
+            $dataArray['sessionId'] = $data->sessionId;
         }
         if (array_key_exists('sourceIp', get_object_vars($data)) && null !== ($data->sourceIp ?? null)) {
-            $dataArray['sourceIp'] = $data->sourceIp ?? null;
+            $dataArray['sourceIp'] = $data->sourceIp;
         }
         if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
-            $dataArray['authType'] = $data->authType ?? null;
+            $dataArray['authType'] = $data->authType;
         }
         return $dataArray;
     }

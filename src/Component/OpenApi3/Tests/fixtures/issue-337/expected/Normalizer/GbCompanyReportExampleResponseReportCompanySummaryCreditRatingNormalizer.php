@@ -68,19 +68,19 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingNormalizer i
     {
         $dataArray = [];
         if (array_key_exists('commonValue', get_object_vars($data)) && null !== ($data->commonValue ?? null)) {
-            $dataArray['commonValue'] = $data->commonValue ?? null;
+            $dataArray['commonValue'] = $data->commonValue;
         }
         if (array_key_exists('commonDescription', get_object_vars($data)) && null !== ($data->commonDescription ?? null)) {
-            $dataArray['commonDescription'] = $data->commonDescription ?? null;
+            $dataArray['commonDescription'] = $data->commonDescription;
         }
         if (array_key_exists('creditLimit', get_object_vars($data)) && null !== ($data->creditLimit ?? null)) {
-            $dataArray['creditLimit'] = ($data->creditLimit ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit ?? null, 'json', $context));
+            $dataArray['creditLimit'] = $data->creditLimit === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit, 'json', $context));
         }
         if (array_key_exists('providerValue', get_object_vars($data)) && null !== ($data->providerValue ?? null)) {
-            $dataArray['providerValue'] = ($data->providerValue ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue ?? null, 'json', $context));
+            $dataArray['providerValue'] = $data->providerValue === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue, 'json', $context));
         }
         if (array_key_exists('providerDescription', get_object_vars($data)) && null !== ($data->providerDescription ?? null)) {
-            $dataArray['providerDescription'] = $data->providerDescription ?? null;
+            $dataArray['providerDescription'] = $data->providerDescription;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

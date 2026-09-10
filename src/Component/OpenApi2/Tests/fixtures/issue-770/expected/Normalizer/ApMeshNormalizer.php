@@ -59,20 +59,20 @@ class ApMeshNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('meshMode', get_object_vars($data)) && null !== ($data->meshMode ?? null)) {
-            $dataArray['meshMode'] = $data->meshMode ?? null;
+            $dataArray['meshMode'] = $data->meshMode;
         }
         if (array_key_exists('uplinkSelection', get_object_vars($data)) && null !== ($data->uplinkSelection ?? null)) {
-            $dataArray['uplinkSelection'] = $data->uplinkSelection ?? null;
+            $dataArray['uplinkSelection'] = $data->uplinkSelection;
         }
         if (array_key_exists('meshUplinkEntryList', get_object_vars($data)) && null !== ($data->meshUplinkEntryList ?? null)) {
             $values = [];
-            foreach ($data->meshUplinkEntryList ?? null as $value) {
+            foreach ($data->meshUplinkEntryList as $value) {
                 $values[] = $value;
             }
             $dataArray['meshUplinkEntryList'] = $values;
         }
         if (array_key_exists('uplinkRadio', get_object_vars($data)) && null !== ($data->uplinkRadio ?? null)) {
-            $dataArray['uplinkRadio'] = $data->uplinkRadio ?? null;
+            $dataArray['uplinkRadio'] = $data->uplinkRadio;
         }
         return $dataArray;
     }

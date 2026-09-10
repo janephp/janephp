@@ -65,15 +65,15 @@ class PluginConfigArgsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Description'] = $data->description ?? null;
+        $dataArray['Name'] = $data->name;
+        $dataArray['Description'] = $data->description;
         $values = [];
-        foreach ($data->settable ?? null as $value) {
+        foreach ($data->settable as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
         $values_1 = [];
-        foreach ($data->value ?? null as $value_1) {
+        foreach ($data->value as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['Value'] = $values_1;

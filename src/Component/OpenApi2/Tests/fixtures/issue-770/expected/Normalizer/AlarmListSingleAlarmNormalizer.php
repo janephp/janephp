@@ -85,46 +85,46 @@ class AlarmListSingleAlarmNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('ackTime', get_object_vars($data)) && null !== ($data->ackTime ?? null)) {
-            $dataArray['ackTime'] = $data->ackTime ?? null;
+            $dataArray['ackTime'] = $data->ackTime;
         }
         if (array_key_exists('ackUser', get_object_vars($data)) && null !== ($data->ackUser ?? null)) {
-            $dataArray['ackUser'] = $data->ackUser ?? null;
+            $dataArray['ackUser'] = $data->ackUser;
         }
         if (array_key_exists('acknowledged', get_object_vars($data)) && null !== ($data->acknowledged ?? null)) {
-            $dataArray['acknowledged'] = $data->acknowledged ?? null;
+            $dataArray['acknowledged'] = $data->acknowledged;
         }
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
-            $dataArray['activity'] = $data->activity ?? null;
+            $dataArray['activity'] = $data->activity;
         }
         if (array_key_exists('alarmCode', get_object_vars($data)) && null !== ($data->alarmCode ?? null)) {
-            $dataArray['alarmCode'] = $data->alarmCode ?? null;
+            $dataArray['alarmCode'] = $data->alarmCode;
         }
         if (array_key_exists('alarmState', get_object_vars($data)) && null !== ($data->alarmState ?? null)) {
-            $dataArray['alarmState'] = $data->alarmState ?? null;
+            $dataArray['alarmState'] = $data->alarmState;
         }
         if (array_key_exists('alarmType', get_object_vars($data)) && null !== ($data->alarmType ?? null)) {
-            $dataArray['alarmType'] = $data->alarmType ?? null;
+            $dataArray['alarmType'] = $data->alarmType;
         }
         if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
-            $dataArray['category'] = $data->category ?? null;
+            $dataArray['category'] = $data->category;
         }
         if (array_key_exists('clearComment', get_object_vars($data)) && null !== ($data->clearComment ?? null)) {
-            $dataArray['clearComment'] = $data->clearComment ?? null;
+            $dataArray['clearComment'] = $data->clearComment;
         }
         if (array_key_exists('clearTime', get_object_vars($data)) && null !== ($data->clearTime ?? null)) {
-            $dataArray['clearTime'] = $data->clearTime ?? null;
+            $dataArray['clearTime'] = $data->clearTime;
         }
         if (array_key_exists('clearUser', get_object_vars($data)) && null !== ($data->clearUser ?? null)) {
-            $dataArray['clearUser'] = $data->clearUser ?? null;
+            $dataArray['clearUser'] = $data->clearUser;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('insertionTime', get_object_vars($data)) && null !== ($data->insertionTime ?? null)) {
-            $dataArray['insertionTime'] = $data->insertionTime ?? null;
+            $dataArray['insertionTime'] = $data->insertionTime;
         }
         if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
-            $dataArray['severity'] = $data->severity ?? null;
+            $dataArray['severity'] = $data->severity;
         }
         return $dataArray;
     }

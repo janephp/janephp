@@ -68,18 +68,18 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->filterRequest ?? null;
-        if (is_object($data->filterRequest ?? null)) {
-            $value = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
+        $value = $data->filterRequest;
+        if (is_object($data->filterRequest)) {
+            $value = $data->filterRequest === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
         }
         $dataArray['filterRequest'] = $value;
         $values = [];
-        foreach ($data->changeCommands ?? null as $value_1) {
+        foreach ($data->changeCommands as $value_1) {
             $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -49,10 +49,10 @@ class AdministrationLicensesSyncLogsNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('syncResult', get_object_vars($data)) && null !== ($data->syncResult ?? null)) {
-            $dataArray['syncResult'] = $data->syncResult ?? null;
+            $dataArray['syncResult'] = $data->syncResult;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         return $dataArray;
     }

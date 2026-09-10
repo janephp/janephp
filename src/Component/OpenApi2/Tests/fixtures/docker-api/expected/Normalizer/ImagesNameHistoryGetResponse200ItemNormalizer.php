@@ -67,16 +67,16 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->id ?? null;
-        $dataArray['Created'] = $data->created ?? null;
-        $dataArray['CreatedBy'] = $data->createdBy ?? null;
+        $dataArray['Id'] = $data->id;
+        $dataArray['Created'] = $data->created;
+        $dataArray['CreatedBy'] = $data->createdBy;
         $values = [];
-        foreach ($data->tags ?? null as $value) {
+        foreach ($data->tags as $value) {
             $values[] = $value;
         }
         $dataArray['Tags'] = $values;
-        $dataArray['Size'] = $data->size ?? null;
-        $dataArray['Comment'] = $data->comment ?? null;
+        $dataArray['Size'] = $data->size;
+        $dataArray['Comment'] = $data->comment;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
         }

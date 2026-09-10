@@ -65,14 +65,14 @@ class BusinessRuleFiredEventDetailNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
-            $dataArray['documentId'] = $data->documentId ?? null;
+            $dataArray['documentId'] = $data->documentId;
         }
         if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
-            $dataArray['documentType'] = $data->documentType ?? null;
+            $dataArray['documentType'] = $data->documentType;
         }
         if (array_key_exists('ruleIds', get_object_vars($data)) && null !== ($data->ruleIds ?? null)) {
             $values = [];
-            foreach ($data->ruleIds ?? null as $value) {
+            foreach ($data->ruleIds as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleIds'] = $values;

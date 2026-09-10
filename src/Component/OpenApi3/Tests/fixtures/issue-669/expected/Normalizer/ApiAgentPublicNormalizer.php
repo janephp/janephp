@@ -189,96 +189,96 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('chatbot', get_object_vars($data)) && null !== ($data->chatbot ?? null)) {
-            $dataArray['chatbot'] = ($data->chatbot ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chatbot ?? null, 'json', $context));
+            $dataArray['chatbot'] = $data->chatbot === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chatbot, 'json', $context));
         }
         if (array_key_exists('chatbotIdentifiers', get_object_vars($data)) && null !== ($data->chatbotIdentifiers ?? null)) {
             $values = [];
-            foreach ($data->chatbotIdentifiers ?? null as $value) {
+            foreach ($data->chatbotIdentifiers as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['chatbot_identifiers'] = $values;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('deployment', get_object_vars($data)) && null !== ($data->deployment ?? null)) {
-            $dataArray['deployment'] = ($data->deployment ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment ?? null, 'json', $context));
+            $dataArray['deployment'] = $data->deployment === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment, 'json', $context));
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('ifCase', get_object_vars($data)) && null !== ($data->ifCase ?? null)) {
-            $dataArray['if_case'] = $data->ifCase ?? null;
+            $dataArray['if_case'] = $data->ifCase;
         }
         if (array_key_exists('instruction', get_object_vars($data)) && null !== ($data->instruction ?? null)) {
-            $dataArray['instruction'] = $data->instruction ?? null;
+            $dataArray['instruction'] = $data->instruction;
         }
         if (array_key_exists('k', get_object_vars($data)) && null !== ($data->k ?? null)) {
-            $dataArray['k'] = $data->k ?? null;
+            $dataArray['k'] = $data->k;
         }
         if (array_key_exists('maxTokens', get_object_vars($data)) && null !== ($data->maxTokens ?? null)) {
-            $dataArray['max_tokens'] = $data->maxTokens ?? null;
+            $dataArray['max_tokens'] = $data->maxTokens;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = ($data->model ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->model ?? null, 'json', $context));
+            $dataArray['model'] = $data->model === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->model, 'json', $context));
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         if (array_key_exists('provideCitations', get_object_vars($data)) && null !== ($data->provideCitations ?? null)) {
-            $dataArray['provide_citations'] = $data->provideCitations ?? null;
+            $dataArray['provide_citations'] = $data->provideCitations;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('retrievalMethod', get_object_vars($data)) && null !== ($data->retrievalMethod ?? null)) {
-            $dataArray['retrieval_method'] = $data->retrievalMethod ?? null;
+            $dataArray['retrieval_method'] = $data->retrievalMethod;
         }
         if (array_key_exists('routeCreatedAt', get_object_vars($data)) && null !== ($data->routeCreatedAt ?? null)) {
-            $dataArray['route_created_at'] = ($data->routeCreatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['route_created_at'] = $data->routeCreatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('routeCreatedBy', get_object_vars($data)) && null !== ($data->routeCreatedBy ?? null)) {
-            $dataArray['route_created_by'] = $data->routeCreatedBy ?? null;
+            $dataArray['route_created_by'] = $data->routeCreatedBy;
         }
         if (array_key_exists('routeName', get_object_vars($data)) && null !== ($data->routeName ?? null)) {
-            $dataArray['route_name'] = $data->routeName ?? null;
+            $dataArray['route_name'] = $data->routeName;
         }
         if (array_key_exists('routeUuid', get_object_vars($data)) && null !== ($data->routeUuid ?? null)) {
-            $dataArray['route_uuid'] = $data->routeUuid ?? null;
+            $dataArray['route_uuid'] = $data->routeUuid;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->tags ?? null as $value_1) {
+            foreach ($data->tags as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
         if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
-            $dataArray['temperature'] = $data->temperature ?? null;
+            $dataArray['temperature'] = $data->temperature;
         }
         if (array_key_exists('template', get_object_vars($data)) && null !== ($data->template ?? null)) {
-            $dataArray['template'] = ($data->template ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->template ?? null, 'json', $context));
+            $dataArray['template'] = $data->template === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->template, 'json', $context));
         }
         if (array_key_exists('topP', get_object_vars($data)) && null !== ($data->topP ?? null)) {
-            $dataArray['top_p'] = $data->topP ?? null;
+            $dataArray['top_p'] = $data->topP;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['user_id'] = $data->userId ?? null;
+            $dataArray['user_id'] = $data->userId;
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
-            $dataArray['version_hash'] = $data->versionHash ?? null;
+            $dataArray['version_hash'] = $data->versionHash;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

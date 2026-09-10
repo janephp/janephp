@@ -57,7 +57,7 @@ class ResponseDatabaseClustersNormalizer implements DenormalizerInterface, Norma
         $dataArray = [];
         if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
             $values = [];
-            foreach ($data->databases ?? null as $value) {
+            foreach ($data->databases as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['databases'] = $values;

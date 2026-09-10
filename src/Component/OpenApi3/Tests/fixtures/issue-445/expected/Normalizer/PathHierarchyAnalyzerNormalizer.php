@@ -67,16 +67,16 @@ class PathHierarchyAnalyzerNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $value = $data->type ?? null;
-            if (is_string($data->type ?? null)) {
-                $value = $data->type ?? null;
+            $value = $data->type;
+            if (is_string($data->type)) {
+                $value = $data->type;
             }
             $dataArray['type'] = $value;
         }
         if (array_key_exists('fieldSuffix', get_object_vars($data)) && null !== ($data->fieldSuffix ?? null)) {
-            $dataArray['fieldSuffix'] = $data->fieldSuffix ?? null;
+            $dataArray['fieldSuffix'] = $data->fieldSuffix;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

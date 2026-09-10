@@ -104,62 +104,62 @@ class SystemControllerListListItemNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
-            $dataArray['hostName'] = $data->hostName ?? null;
+            $dataArray['hostName'] = $data->hostName;
         }
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
-            $dataArray['serialNumber'] = $data->serialNumber ?? null;
+            $dataArray['serialNumber'] = $data->serialNumber;
         }
         if (array_key_exists('clusterRole', get_object_vars($data)) && null !== ($data->clusterRole ?? null)) {
-            $dataArray['clusterRole'] = $data->clusterRole ?? null;
+            $dataArray['clusterRole'] = $data->clusterRole;
         }
         if (array_key_exists('controlNatIp', get_object_vars($data)) && null !== ($data->controlNatIp ?? null)) {
-            $dataArray['controlNatIp'] = $data->controlNatIp ?? null;
+            $dataArray['controlNatIp'] = $data->controlNatIp;
         }
         if (array_key_exists('uptimeInSec', get_object_vars($data)) && null !== ($data->uptimeInSec ?? null)) {
-            $dataArray['uptimeInSec'] = $data->uptimeInSec ?? null;
+            $dataArray['uptimeInSec'] = $data->uptimeInSec;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('apVersion', get_object_vars($data)) && null !== ($data->apVersion ?? null)) {
-            $dataArray['apVersion'] = $data->apVersion ?? null;
+            $dataArray['apVersion'] = $data->apVersion;
         }
         if (array_key_exists('controlIp', get_object_vars($data)) && null !== ($data->controlIp ?? null)) {
-            $dataArray['controlIp'] = $data->controlIp ?? null;
+            $dataArray['controlIp'] = $data->controlIp;
         }
         if (array_key_exists('clusterIp', get_object_vars($data)) && null !== ($data->clusterIp ?? null)) {
-            $dataArray['clusterIp'] = $data->clusterIp ?? null;
+            $dataArray['clusterIp'] = $data->clusterIp;
         }
         if (array_key_exists('managementIp', get_object_vars($data)) && null !== ($data->managementIp ?? null)) {
-            $dataArray['managementIp'] = $data->managementIp ?? null;
+            $dataArray['managementIp'] = $data->managementIp;
         }
         if (array_key_exists('controlIpv6', get_object_vars($data)) && null !== ($data->controlIpv6 ?? null)) {
-            $dataArray['controlIpv6'] = $data->controlIpv6 ?? null;
+            $dataArray['controlIpv6'] = $data->controlIpv6;
         }
         if (array_key_exists('clusterIpv6', get_object_vars($data)) && null !== ($data->clusterIpv6 ?? null)) {
-            $dataArray['clusterIpv6'] = $data->clusterIpv6 ?? null;
+            $dataArray['clusterIpv6'] = $data->clusterIpv6;
         }
         if (array_key_exists('managementIpv6', get_object_vars($data)) && null !== ($data->managementIpv6 ?? null)) {
-            $dataArray['managementIpv6'] = $data->managementIpv6 ?? null;
+            $dataArray['managementIpv6'] = $data->managementIpv6;
         }
         if (array_key_exists('reservedPorts', get_object_vars($data)) && null !== ($data->reservedPorts ?? null)) {
             $values = [];
-            foreach ($data->reservedPorts ?? null as $value) {
+            foreach ($data->reservedPorts as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reservedPorts'] = $values;

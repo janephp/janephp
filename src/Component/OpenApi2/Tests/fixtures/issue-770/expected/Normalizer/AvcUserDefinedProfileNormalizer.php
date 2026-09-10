@@ -91,52 +91,52 @@ class AvcUserDefinedProfileNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
-            $dataArray['appId'] = $data->appId ?? null;
+            $dataArray['appId'] = $data->appId;
         }
         if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
-            $dataArray['tenantId'] = $data->tenantId ?? null;
+            $dataArray['tenantId'] = $data->tenantId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('destIp', get_object_vars($data)) && null !== ($data->destIp ?? null)) {
-            $dataArray['destIp'] = $data->destIp ?? null;
+            $dataArray['destIp'] = $data->destIp;
         }
         if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
-            $dataArray['netmask'] = $data->netmask ?? null;
+            $dataArray['netmask'] = $data->netmask;
         }
         if (array_key_exists('destPort', get_object_vars($data)) && null !== ($data->destPort ?? null)) {
-            $dataArray['destPort'] = $data->destPort ?? null;
+            $dataArray['destPort'] = $data->destPort;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         return $dataArray;
     }

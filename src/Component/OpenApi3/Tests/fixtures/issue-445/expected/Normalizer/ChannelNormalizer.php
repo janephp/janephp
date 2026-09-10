@@ -131,65 +131,65 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['sortOrder'] = $data->sortOrder ?? null;
-        $dataArray['searchIndexId'] = $data->searchIndexId ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['sortOrder'] = $data->sortOrder;
+        $dataArray['searchIndexId'] = $data->searchIndexId;
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        $value_1 = $data->names ?? null;
-        if (is_object($data->names ?? null)) {
+        $value_1 = $data->names;
+        if (is_object($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->names ?? null as $key => $value_2) {
+            foreach ($data->names as $key => $value_2) {
                 $values[$key] = $value_2;
             }
             $value_1 = $values;
         }
         $dataArray['names'] = $value_1;
         $values_1 = [];
-        foreach ($data->sort ?? null as $value_3) {
+        foreach ($data->sort as $value_3) {
             $values_1[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['sort'] = $values_1;
         $values_2 = [];
-        foreach ($data->sortFields ?? null as $value_4) {
+        foreach ($data->sortFields as $value_4) {
             $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
         }
         $dataArray['sortFields'] = $values_2;
         $values_3 = [];
-        foreach ($data->aggregations ?? null as $value_5) {
+        foreach ($data->aggregations as $value_5) {
             $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
         }
         $dataArray['aggregations'] = $values_3;
         $values_4 = [];
-        foreach ($data->extendedSimpleSearchFields ?? null as $value_6) {
+        foreach ($data->extendedSimpleSearchFields as $value_6) {
             $values_4[] = $value_6;
         }
         $dataArray['extendedSimpleSearchFields'] = $values_4;
         $values_5 = [];
-        foreach ($data->grantedUserRoleIds ?? null as $value_7) {
+        foreach ($data->grantedUserRoleIds as $value_7) {
             $values_5[] = $value_7;
         }
         $dataArray['grantedUserRoleIds'] = $values_5;
-        $value_8 = $data->missingResultsDisplayPatterns ?? null;
-        if (is_object($data->missingResultsDisplayPatterns ?? null)) {
+        $value_8 = $data->missingResultsDisplayPatterns;
+        if (is_object($data->missingResultsDisplayPatterns)) {
             $values_6 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->missingResultsDisplayPatterns ?? null as $key_1 => $value_9) {
+            foreach ($data->missingResultsDisplayPatterns as $key_1 => $value_9) {
                 $values_6[$key_1] = $value_9;
             }
             $value_8 = $values_6;
         }
         $dataArray['missingResultsDisplayPatterns'] = $value_8;
-        $value_10 = $data->audit ?? null;
-        if (is_object($data->audit ?? null)) {
-            $value_10 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+        $value_10 = $data->audit;
+        if (is_object($data->audit)) {
+            $value_10 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_10;
-        $dataArray['viewForAll'] = $data->viewForAll ?? null;
+        $dataArray['viewForAll'] = $data->viewForAll;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

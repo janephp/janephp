@@ -56,11 +56,11 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = $data->mode ?? null;
+            $dataArray['Mode'] = $data->mode;
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
-            foreach ($data->ports ?? null as $value) {
+            foreach ($data->ports as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Ports'] = $values;

@@ -77,32 +77,32 @@ class ClusterbladeClusterUpgradeProgressNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
-            $dataArray['operation'] = $data->operation ?? null;
+            $dataArray['operation'] = $data->operation;
         }
         if (array_key_exists('overallProgress', get_object_vars($data)) && null !== ($data->overallProgress ?? null)) {
-            $dataArray['overallProgress'] = $data->overallProgress ?? null;
+            $dataArray['overallProgress'] = $data->overallProgress;
         }
         if (array_key_exists('previousOperationRecord', get_object_vars($data)) && null !== ($data->previousOperationRecord ?? null)) {
-            $dataArray['previousOperationRecord'] = ($data->previousOperationRecord ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord ?? null, 'json', $context));
+            $dataArray['previousOperationRecord'] = $data->previousOperationRecord === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord, 'json', $context));
         }
         if (array_key_exists('isSelfBladeRebooting', get_object_vars($data)) && null !== ($data->isSelfBladeRebooting ?? null)) {
-            $dataArray['isSelfBladeRebooting'] = $data->isSelfBladeRebooting ?? null;
+            $dataArray['isSelfBladeRebooting'] = $data->isSelfBladeRebooting;
         }
         if (array_key_exists('bladeProgresss', get_object_vars($data)) && null !== ($data->bladeProgresss ?? null)) {
             $values = [];
-            foreach ($data->bladeProgresss ?? null as $value) {
+            foreach ($data->bladeProgresss as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bladeProgresss'] = $values;
         }
         if (array_key_exists('clusterSubTaskState', get_object_vars($data)) && null !== ($data->clusterSubTaskState ?? null)) {
-            $dataArray['clusterSubTaskState'] = $data->clusterSubTaskState ?? null;
+            $dataArray['clusterSubTaskState'] = $data->clusterSubTaskState;
         }
         if (array_key_exists('clusterOperationBlockUI', get_object_vars($data)) && null !== ($data->clusterOperationBlockUI ?? null)) {
-            $dataArray['clusterOperationBlockUI'] = $data->clusterOperationBlockUI ?? null;
+            $dataArray['clusterOperationBlockUI'] = $data->clusterOperationBlockUI;
         }
         if (array_key_exists('clusterOperationDisplayMsg', get_object_vars($data)) && null !== ($data->clusterOperationDisplayMsg ?? null)) {
-            $dataArray['clusterOperationDisplayMsg'] = $data->clusterOperationDisplayMsg ?? null;
+            $dataArray['clusterOperationDisplayMsg'] = $data->clusterOperationDisplayMsg;
         }
         return $dataArray;
     }

@@ -82,25 +82,25 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('appIsStatic', get_object_vars($data)) && null !== ($data->appIsStatic ?? null)) {
-            $dataArray['app_is_static'] = $data->appIsStatic ?? null;
+            $dataArray['app_is_static'] = $data->appIsStatic;
         }
         if (array_key_exists('appNameAvailable', get_object_vars($data)) && null !== ($data->appNameAvailable ?? null)) {
-            $dataArray['app_name_available'] = $data->appNameAvailable ?? null;
+            $dataArray['app_name_available'] = $data->appNameAvailable;
         }
         if (array_key_exists('appNameSuggestion', get_object_vars($data)) && null !== ($data->appNameSuggestion ?? null)) {
-            $dataArray['app_name_suggestion'] = $data->appNameSuggestion ?? null;
+            $dataArray['app_name_suggestion'] = $data->appNameSuggestion;
         }
         if (array_key_exists('existingStaticApps', get_object_vars($data)) && null !== ($data->existingStaticApps ?? null)) {
-            $dataArray['existing_static_apps'] = $data->existingStaticApps ?? null;
+            $dataArray['existing_static_apps'] = $data->existingStaticApps;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+            $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('appCost', get_object_vars($data)) && null !== ($data->appCost ?? null)) {
-            $dataArray['app_cost'] = $data->appCost ?? null;
+            $dataArray['app_cost'] = $data->appCost;
         }
         if (array_key_exists('appTierDowngradeCost', get_object_vars($data)) && null !== ($data->appTierDowngradeCost ?? null)) {
-            $dataArray['app_tier_downgrade_cost'] = $data->appTierDowngradeCost ?? null;
+            $dataArray['app_tier_downgrade_cost'] = $data->appTierDowngradeCost;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

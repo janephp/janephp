@@ -76,25 +76,25 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
     {
         $dataArray = [];
         if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
-            $dataArray['countryName'] = $data->countryName ?? null;
+            $dataArray['countryName'] = $data->countryName;
         }
         if (array_key_exists('templateName', get_object_vars($data)) && null !== ($data->templateName ?? null)) {
-            $dataArray['templateName'] = $data->templateName ?? null;
+            $dataArray['templateName'] = $data->templateName;
         }
         if (array_key_exists('countryIso2', get_object_vars($data)) && null !== ($data->countryIso2 ?? null)) {
-            $dataArray['countryIso2'] = $data->countryIso2 ?? null;
+            $dataArray['countryIso2'] = $data->countryIso2;
         }
         if (array_key_exists('startDate', get_object_vars($data)) && null !== ($data->startDate ?? null)) {
-            $dataArray['startDate'] = $data->startDate ?? null;
+            $dataArray['startDate'] = $data->startDate;
         }
         if (array_key_exists('expireDate', get_object_vars($data)) && null !== ($data->expireDate ?? null)) {
-            $dataArray['expireDate'] = $data->expireDate ?? null;
+            $dataArray['expireDate'] = $data->expireDate;
         }
         if (array_key_exists('paid', get_object_vars($data)) && null !== ($data->paid ?? null)) {
-            $dataArray['paid'] = $data->paid ?? null;
+            $dataArray['paid'] = $data->paid;
         }
         if (array_key_exists('used', get_object_vars($data)) && null !== ($data->used ?? null)) {
-            $dataArray['used'] = $data->used ?? null;
+            $dataArray['used'] = $data->used;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

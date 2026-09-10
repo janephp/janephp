@@ -102,25 +102,25 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['caseSensitive'] = $data->caseSensitive;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
-            $dataArray['schemaId'] = $data->schemaId ?? null;
+            $dataArray['schemaId'] = $data->schemaId;
         }
         if (array_key_exists('valueField', get_object_vars($data)) && null !== ($data->valueField ?? null)) {
-            $dataArray['valueField'] = $data->valueField ?? null;
+            $dataArray['valueField'] = $data->valueField;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $value = $data->filter ?? null;
-            if (is_object($data->filter ?? null)) {
-                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $value = $data->filter;
+            if (is_object($data->filter)) {
+                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
         if (array_key_exists('includeAllSchemaChildren', get_object_vars($data)) && null !== ($data->includeAllSchemaChildren ?? null)) {
-            $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
+            $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

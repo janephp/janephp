@@ -40,7 +40,7 @@ class BazInlinePropertyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('inline', get_object_vars($data)) && null !== ($data->inline ?? null)) {
-            $dataArray['inline'] = $data->inline ?? null;
+            $dataArray['inline'] = $data->inline;
         }
         return $dataArray;
     }

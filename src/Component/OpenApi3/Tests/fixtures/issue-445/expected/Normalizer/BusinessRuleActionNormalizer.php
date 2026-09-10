@@ -81,40 +81,40 @@ class BusinessRuleActionNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'AssignLayerAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AssignLayerAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'UnassignLayerAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'UnassignLayerAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AssignValueAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AssignValueAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'UnassignTagboxItemsAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'UnassignTagboxItemsAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AssignContentPermissionSetsAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AssignContentPermissionSetsAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'UnassignContentPermissionSetsAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'UnassignContentPermissionSetsAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ProduceMessageAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ProduceMessageAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsInLayerAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsInLayerAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'EnqueueTaggingAction' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'EnqueueTaggingAction' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

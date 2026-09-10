@@ -91,52 +91,52 @@ class IdentityModifyUserNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
         if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
-            $dataArray['email'] = $data->email ?? null;
+            $dataArray['email'] = $data->email;
         }
         if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
-            $dataArray['phone'] = $data->phone ?? null;
+            $dataArray['phone'] = $data->phone;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address ?? null;
+            $dataArray['address'] = $data->address;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         if (array_key_exists('zipCode', get_object_vars($data)) && null !== ($data->zipCode ?? null)) {
-            $dataArray['zipCode'] = $data->zipCode ?? null;
+            $dataArray['zipCode'] = $data->zipCode;
         }
         if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
-            $dataArray['countryName'] = $data->countryName ?? null;
+            $dataArray['countryName'] = $data->countryName;
         }
         if (array_key_exists('countryShortName', get_object_vars($data)) && null !== ($data->countryShortName ?? null)) {
-            $dataArray['countryShortName'] = $data->countryShortName ?? null;
+            $dataArray['countryShortName'] = $data->countryShortName;
         }
         if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
-            $dataArray['isDisabled'] = $data->isDisabled ?? null;
+            $dataArray['isDisabled'] = $data->isDisabled;
         }
         if (array_key_exists('remark', get_object_vars($data)) && null !== ($data->remark ?? null)) {
-            $dataArray['remark'] = $data->remark ?? null;
+            $dataArray['remark'] = $data->remark;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
-            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
+            $dataArray['subscriberPackage'] = $data->subscriberPackage === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage, 'json', $context));
         }
         return $dataArray;
     }

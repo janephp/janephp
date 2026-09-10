@@ -52,7 +52,7 @@ class ResponseSinksNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('sink', get_object_vars($data)) && null !== ($data->sink ?? null)) {
-            $dataArray['sink'] = ($data->sink ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sink ?? null, 'json', $context));
+            $dataArray['sink'] = $data->sink === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sink, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

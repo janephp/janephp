@@ -56,14 +56,14 @@ class ProfileBonjourFencingRuleMappingNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
-            $dataArray['serviceType'] = $data->serviceType ?? null;
+            $dataArray['serviceType'] = $data->serviceType;
         }
         if (array_key_exists('customServiceName', get_object_vars($data)) && null !== ($data->customServiceName ?? null)) {
-            $dataArray['customServiceName'] = $data->customServiceName ?? null;
+            $dataArray['customServiceName'] = $data->customServiceName;
         }
         if (array_key_exists('customStringList', get_object_vars($data)) && null !== ($data->customStringList ?? null)) {
             $values = [];
-            foreach ($data->customStringList ?? null as $value) {
+            foreach ($data->customStringList as $value) {
                 $values[] = $value;
             }
             $dataArray['customStringList'] = $values;

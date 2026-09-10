@@ -68,16 +68,16 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('monthToDateBalance', get_object_vars($data)) && null !== ($data->monthToDateBalance ?? null)) {
-            $dataArray['month_to_date_balance'] = $data->monthToDateBalance ?? null;
+            $dataArray['month_to_date_balance'] = $data->monthToDateBalance;
         }
         if (array_key_exists('accountBalance', get_object_vars($data)) && null !== ($data->accountBalance ?? null)) {
-            $dataArray['account_balance'] = $data->accountBalance ?? null;
+            $dataArray['account_balance'] = $data->accountBalance;
         }
         if (array_key_exists('monthToDateUsage', get_object_vars($data)) && null !== ($data->monthToDateUsage ?? null)) {
-            $dataArray['month_to_date_usage'] = $data->monthToDateUsage ?? null;
+            $dataArray['month_to_date_usage'] = $data->monthToDateUsage;
         }
         if (array_key_exists('generatedAt', get_object_vars($data)) && null !== ($data->generatedAt ?? null)) {
-            $dataArray['generated_at'] = ($data->generatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['generated_at'] = $data->generatedAt->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

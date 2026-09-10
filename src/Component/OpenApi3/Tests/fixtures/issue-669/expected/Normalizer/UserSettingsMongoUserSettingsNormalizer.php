@@ -61,13 +61,13 @@ class UserSettingsMongoUserSettingsNormalizer implements DenormalizerInterface, 
         $dataArray = [];
         if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
             $values = [];
-            foreach ($data->databases ?? null as $value) {
+            foreach ($data->databases as $value) {
                 $values[] = $value;
             }
             $dataArray['databases'] = $values;
         }
         if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
-            $dataArray['role'] = $data->role ?? null;
+            $dataArray['role'] = $data->role;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

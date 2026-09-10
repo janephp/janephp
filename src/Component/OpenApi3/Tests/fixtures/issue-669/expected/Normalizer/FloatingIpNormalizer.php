@@ -81,29 +81,29 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = ($data->region ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region ?? null, 'json', $context));
+            $dataArray['region'] = $data->region === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
         }
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
-            $value = $data->droplet ?? null;
-            if (is_object($data->droplet ?? null)) {
+            $value = $data->droplet;
+            if (is_object($data->droplet)) {
                 $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($data->droplet ?? null as $key => $value_1) {
+                foreach ($data->droplet as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
-            } elseif (is_object($data->droplet ?? null)) {
-                $value = ($data->droplet ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet ?? null, 'json', $context));
+            } elseif (is_object($data->droplet)) {
+                $value = $data->droplet === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
             }
             $dataArray['droplet'] = $value;
         }
         if (array_key_exists('locked', get_object_vars($data)) && null !== ($data->locked ?? null)) {
-            $dataArray['locked'] = $data->locked ?? null;
+            $dataArray['locked'] = $data->locked;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -76,37 +76,37 @@ class DhcppoolsDhcpPoolInfoNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('poolIndex', get_object_vars($data)) && null !== ($data->poolIndex ?? null)) {
-            $dataArray['poolIndex'] = $data->poolIndex ?? null;
+            $dataArray['poolIndex'] = $data->poolIndex;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('poolStartIp', get_object_vars($data)) && null !== ($data->poolStartIp ?? null)) {
-            $dataArray['poolStartIp'] = $data->poolStartIp ?? null;
+            $dataArray['poolStartIp'] = $data->poolStartIp;
         }
         if (array_key_exists('poolEndIp', get_object_vars($data)) && null !== ($data->poolEndIp ?? null)) {
-            $dataArray['poolEndIp'] = $data->poolEndIp ?? null;
+            $dataArray['poolEndIp'] = $data->poolEndIp;
         }
         if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
-            $dataArray['subnetMask'] = $data->subnetMask ?? null;
+            $dataArray['subnetMask'] = $data->subnetMask;
         }
         if (array_key_exists('apIp', get_object_vars($data)) && null !== ($data->apIp ?? null)) {
-            $dataArray['apIp'] = $data->apIp ?? null;
+            $dataArray['apIp'] = $data->apIp;
         }
         if (array_key_exists('totalIpCount', get_object_vars($data)) && null !== ($data->totalIpCount ?? null)) {
-            $dataArray['totalIpCount'] = $data->totalIpCount ?? null;
+            $dataArray['totalIpCount'] = $data->totalIpCount;
         }
         if (array_key_exists('usedIpCount', get_object_vars($data)) && null !== ($data->usedIpCount ?? null)) {
-            $dataArray['usedIpCount'] = $data->usedIpCount ?? null;
+            $dataArray['usedIpCount'] = $data->usedIpCount;
         }
         if (array_key_exists('availableIpCount', get_object_vars($data)) && null !== ($data->availableIpCount ?? null)) {
-            $dataArray['availableIpCount'] = $data->availableIpCount ?? null;
+            $dataArray['availableIpCount'] = $data->availableIpCount;
         }
         if (array_key_exists('clientInfoList', get_object_vars($data)) && null !== ($data->clientInfoList ?? null)) {
-            $dataArray['clientInfoList'] = ($data->clientInfoList ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientInfoList ?? null, 'json', $context));
+            $dataArray['clientInfoList'] = $data->clientInfoList === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientInfoList, 'json', $context));
         }
         return $dataArray;
     }

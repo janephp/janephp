@@ -68,21 +68,21 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
         $dataArray = [];
         if (array_key_exists('nameservers', get_object_vars($data)) && null !== ($data->nameservers ?? null)) {
             $values = [];
-            foreach ($data->nameservers ?? null as $value) {
+            foreach ($data->nameservers as $value) {
                 $values[] = $value;
             }
             $dataArray['Nameservers'] = $values;
         }
         if (array_key_exists('search', get_object_vars($data)) && null !== ($data->search ?? null)) {
             $values_1 = [];
-            foreach ($data->search ?? null as $value_1) {
+            foreach ($data->search as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Search'] = $values_1;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values_2 = [];
-            foreach ($data->options ?? null as $value_2) {
+            foreach ($data->options as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Options'] = $values_2;

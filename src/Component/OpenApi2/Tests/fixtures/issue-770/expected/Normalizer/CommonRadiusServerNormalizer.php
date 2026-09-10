@@ -51,9 +51,9 @@ class CommonRadiusServerNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ip'] = $data->ip ?? null;
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+        $dataArray['ip'] = $data->ip;
+        $dataArray['port'] = $data->port;
+        $dataArray['sharedSecret'] = $data->sharedSecret;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -63,11 +63,11 @@ class UserLockManyRequestNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->userIds ?? null as $value) {
+        foreach ($data->userIds as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;
-        $dataArray['lock'] = $data->lock ?? null;
+        $dataArray['lock'] = $data->lock;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

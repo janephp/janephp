@@ -64,16 +64,16 @@ class ProfileCreateRtlsProfileNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['ekahauEnabled'] = $data->ekahauEnabled ?? null;
+        $dataArray['ekahauEnabled'] = $data->ekahauEnabled;
         if (array_key_exists('ekahauIp', get_object_vars($data)) && null !== ($data->ekahauIp ?? null)) {
-            $dataArray['ekahauIp'] = $data->ekahauIp ?? null;
+            $dataArray['ekahauIp'] = $data->ekahauIp;
         }
         if (array_key_exists('ekahauPort', get_object_vars($data)) && null !== ($data->ekahauPort ?? null)) {
-            $dataArray['ekahauPort'] = $data->ekahauPort ?? null;
+            $dataArray['ekahauPort'] = $data->ekahauPort;
         }
-        $dataArray['stanleyEnabled'] = $data->stanleyEnabled ?? null;
+        $dataArray['stanleyEnabled'] = $data->stanleyEnabled;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

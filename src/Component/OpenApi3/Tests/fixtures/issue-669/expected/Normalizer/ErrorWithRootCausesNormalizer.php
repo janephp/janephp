@@ -71,16 +71,16 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['error'] = $data->error ?? null;
+        $dataArray['error'] = $data->error;
         if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
             $values = [];
-            foreach ($data->messages ?? null as $value) {
+            foreach ($data->messages as $value) {
                 $values[] = $value;
             }
             $dataArray['messages'] = $values;
         }
         $values_1 = [];
-        foreach ($data->rootCauses ?? null as $value_1) {
+        foreach ($data->rootCauses as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['root_causes'] = $values_1;

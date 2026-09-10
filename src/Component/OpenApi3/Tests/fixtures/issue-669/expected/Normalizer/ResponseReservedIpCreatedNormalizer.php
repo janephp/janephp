@@ -56,10 +56,10 @@ class ResponseReservedIpCreatedNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('reservedIp', get_object_vars($data)) && null !== ($data->reservedIp ?? null)) {
-            $dataArray['reserved_ip'] = ($data->reservedIp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIp ?? null, 'json', $context));
+            $dataArray['reserved_ip'] = $data->reservedIp === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIp, 'json', $context));
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

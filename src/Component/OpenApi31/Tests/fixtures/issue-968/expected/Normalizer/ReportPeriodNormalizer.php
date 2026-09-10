@@ -65,11 +65,11 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
-            $value = $data->from ?? null;
-            if (is_string($data->from ?? null)) {
-                $value = $data->from ?? null;
-            } elseif (is_null($data->from ?? null)) {
-                $value = $data->from ?? null;
+            $value = $data->from;
+            if (is_string($data->from)) {
+                $value = $data->from;
+            } elseif (is_null($data->from)) {
+                $value = $data->from;
             }
             $dataArray['from'] = $value;
         }

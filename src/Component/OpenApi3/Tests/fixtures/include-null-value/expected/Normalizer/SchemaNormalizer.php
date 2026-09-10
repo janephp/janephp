@@ -130,48 +130,48 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['attribute1'] = $data->attribute1 ?? null;
-        $dataArray['attribute2'] = $data->attribute2 ?? null;
+        $dataArray['attribute1'] = $data->attribute1;
+        $dataArray['attribute2'] = $data->attribute2;
         if (array_key_exists('attribute3', get_object_vars($data))) {
-            $dataArray['attribute3'] = $data->attribute3 ?? null;
+            $dataArray['attribute3'] = $data->attribute3;
         }
         if (array_key_exists('attribute4', get_object_vars($data))) {
-            $dataArray['attribute4'] = $data->attribute4 ?? null;
+            $dataArray['attribute4'] = $data->attribute4;
         }
         if (array_key_exists('stringProperty', get_object_vars($data))) {
-            $dataArray['stringProperty'] = $data->stringProperty ?? null;
+            $dataArray['stringProperty'] = $data->stringProperty;
         }
         if (array_key_exists('dateProperty', get_object_vars($data))) {
-            $dataArray['dateProperty'] = ($data->dateProperty ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['dateProperty'] = $data->dateProperty->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('dateNullableProperty', get_object_vars($data))) {
-            $dataArray['dateNullableProperty'] = ($data->dateNullableProperty ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['dateNullableProperty'] = $data->dateNullableProperty?->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('integerProperty', get_object_vars($data))) {
-            $dataArray['integerProperty'] = $data->integerProperty ?? null;
+            $dataArray['integerProperty'] = $data->integerProperty;
         }
         if (array_key_exists('floatProperty', get_object_vars($data))) {
-            $dataArray['floatProperty'] = $data->floatProperty ?? null;
+            $dataArray['floatProperty'] = $data->floatProperty;
         }
         if (array_key_exists('arrayProperty', get_object_vars($data))) {
             $values = [];
-            foreach ($data->arrayProperty ?? null as $value) {
+            foreach ($data->arrayProperty as $value) {
                 $values[] = $value;
             }
             $dataArray['arrayProperty'] = $values;
         }
         if (array_key_exists('mapProperty', get_object_vars($data))) {
             $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject();
-            foreach ($data->mapProperty ?? null as $key => $value_1) {
+            foreach ($data->mapProperty as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
         if (array_key_exists('objectProperty', get_object_vars($data))) {
-            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
+            $dataArray['objectProperty'] = $data->objectProperty === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty, 'json', $context));
         }
         if (array_key_exists('objectRefProperty', get_object_vars($data))) {
-            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
+            $dataArray['objectRefProperty'] = $data->objectRefProperty === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

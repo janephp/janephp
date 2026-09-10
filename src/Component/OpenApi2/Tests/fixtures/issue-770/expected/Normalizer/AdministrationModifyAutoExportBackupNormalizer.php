@@ -55,13 +55,13 @@ class AdministrationModifyAutoExportBackupNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('enableAutoExportBackup', get_object_vars($data)) && null !== ($data->enableAutoExportBackup ?? null)) {
-            $dataArray['enableAutoExportBackup'] = $data->enableAutoExportBackup ?? null;
+            $dataArray['enableAutoExportBackup'] = $data->enableAutoExportBackup;
         }
         if (array_key_exists('ftpNamePrefix', get_object_vars($data)) && null !== ($data->ftpNamePrefix ?? null)) {
-            $dataArray['ftpNamePrefix'] = $data->ftpNamePrefix ?? null;
+            $dataArray['ftpNamePrefix'] = $data->ftpNamePrefix;
         }
         if (array_key_exists('ftpServer', get_object_vars($data)) && null !== ($data->ftpServer ?? null)) {
-            $dataArray['ftpServer'] = $data->ftpServer ?? null;
+            $dataArray['ftpServer'] = $data->ftpServer;
         }
         return $dataArray;
     }

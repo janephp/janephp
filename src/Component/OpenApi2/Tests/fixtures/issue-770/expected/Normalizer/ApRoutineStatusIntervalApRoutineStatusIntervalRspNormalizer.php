@@ -46,7 +46,7 @@ class ApRoutineStatusIntervalApRoutineStatusIntervalRspNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('apRoutineStatusInterval', get_object_vars($data)) && null !== ($data->apRoutineStatusInterval ?? null)) {
-            $dataArray['apRoutineStatusInterval'] = $data->apRoutineStatusInterval ?? null;
+            $dataArray['apRoutineStatusInterval'] = $data->apRoutineStatusInterval;
         }
         return $dataArray;
     }

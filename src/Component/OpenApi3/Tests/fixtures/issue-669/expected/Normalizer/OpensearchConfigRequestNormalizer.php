@@ -72,20 +72,20 @@ class OpensearchConfigRequestNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('credentials', get_object_vars($data)) && null !== ($data->credentials ?? null)) {
-            $dataArray['credentials'] = ($data->credentials ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials ?? null, 'json', $context));
+            $dataArray['credentials'] = $data->credentials === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials, 'json', $context));
         }
-        $dataArray['endpoint'] = $data->endpoint ?? null;
+        $dataArray['endpoint'] = $data->endpoint;
         if (array_key_exists('clusterUuid', get_object_vars($data)) && null !== ($data->clusterUuid ?? null)) {
-            $dataArray['cluster_uuid'] = $data->clusterUuid ?? null;
+            $dataArray['cluster_uuid'] = $data->clusterUuid;
         }
         if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
-            $dataArray['cluster_name'] = $data->clusterName ?? null;
+            $dataArray['cluster_name'] = $data->clusterName;
         }
         if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
-            $dataArray['index_name'] = $data->indexName ?? null;
+            $dataArray['index_name'] = $data->indexName;
         }
         if (array_key_exists('retentionDays', get_object_vars($data)) && null !== ($data->retentionDays ?? null)) {
-            $dataArray['retention_days'] = $data->retentionDays ?? null;
+            $dataArray['retention_days'] = $data->retentionDays;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

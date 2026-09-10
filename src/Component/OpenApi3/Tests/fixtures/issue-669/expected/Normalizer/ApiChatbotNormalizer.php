@@ -81,28 +81,28 @@ class ApiChatbotNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         if (array_key_exists('allowedDomains', get_object_vars($data)) && null !== ($data->allowedDomains ?? null)) {
             $values = [];
-            foreach ($data->allowedDomains ?? null as $value) {
+            foreach ($data->allowedDomains as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed_domains'] = $values;
         }
         if (array_key_exists('buttonBackgroundColor', get_object_vars($data)) && null !== ($data->buttonBackgroundColor ?? null)) {
-            $dataArray['button_background_color'] = $data->buttonBackgroundColor ?? null;
+            $dataArray['button_background_color'] = $data->buttonBackgroundColor;
         }
         if (array_key_exists('logo', get_object_vars($data)) && null !== ($data->logo ?? null)) {
-            $dataArray['logo'] = $data->logo ?? null;
+            $dataArray['logo'] = $data->logo;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('primaryColor', get_object_vars($data)) && null !== ($data->primaryColor ?? null)) {
-            $dataArray['primary_color'] = $data->primaryColor ?? null;
+            $dataArray['primary_color'] = $data->primaryColor;
         }
         if (array_key_exists('secondaryColor', get_object_vars($data)) && null !== ($data->secondaryColor ?? null)) {
-            $dataArray['secondary_color'] = $data->secondaryColor ?? null;
+            $dataArray['secondary_color'] = $data->secondaryColor;
         }
         if (array_key_exists('startingMessage', get_object_vars($data)) && null !== ($data->startingMessage ?? null)) {
-            $dataArray['starting_message'] = $data->startingMessage ?? null;
+            $dataArray['starting_message'] = $data->startingMessage;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

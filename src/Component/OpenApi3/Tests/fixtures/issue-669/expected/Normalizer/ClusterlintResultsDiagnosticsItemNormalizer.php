@@ -64,16 +64,16 @@ class ClusterlintResultsDiagnosticsItemNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('checkName', get_object_vars($data)) && null !== ($data->checkName ?? null)) {
-            $dataArray['check_name'] = $data->checkName ?? null;
+            $dataArray['check_name'] = $data->checkName;
         }
         if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
-            $dataArray['severity'] = $data->severity ?? null;
+            $dataArray['severity'] = $data->severity;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
-            $dataArray['object'] = ($data->object ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->object ?? null, 'json', $context));
+            $dataArray['object'] = $data->object === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->object, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

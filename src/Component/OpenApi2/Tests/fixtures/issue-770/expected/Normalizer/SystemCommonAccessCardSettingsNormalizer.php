@@ -61,19 +61,19 @@ class SystemCommonAccessCardSettingsNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('cacAuthEnabled', get_object_vars($data)) && null !== ($data->cacAuthEnabled ?? null)) {
-            $dataArray['cacAuthEnabled'] = $data->cacAuthEnabled ?? null;
+            $dataArray['cacAuthEnabled'] = $data->cacAuthEnabled;
         }
         if (array_key_exists('cacAuthOcspServerUri', get_object_vars($data)) && null !== ($data->cacAuthOcspServerUri ?? null)) {
-            $dataArray['cacAuthOcspServerUri'] = $data->cacAuthOcspServerUri ?? null;
+            $dataArray['cacAuthOcspServerUri'] = $data->cacAuthOcspServerUri;
         }
         if (array_key_exists('cacAuthRootCACertificate', get_object_vars($data)) && null !== ($data->cacAuthRootCACertificate ?? null)) {
-            $dataArray['cacAuthRootCACertificate'] = $data->cacAuthRootCACertificate ?? null;
+            $dataArray['cacAuthRootCACertificate'] = $data->cacAuthRootCACertificate;
         }
         if (array_key_exists('cacAuthUserName', get_object_vars($data)) && null !== ($data->cacAuthUserName ?? null)) {
-            $dataArray['cacAuthUserName'] = $data->cacAuthUserName ?? null;
+            $dataArray['cacAuthUserName'] = $data->cacAuthUserName;
         }
         if (array_key_exists('cacAuthAaaServer', get_object_vars($data)) && null !== ($data->cacAuthAaaServer ?? null)) {
-            $dataArray['cacAuthAaaServer'] = $data->cacAuthAaaServer ?? null;
+            $dataArray['cacAuthAaaServer'] = $data->cacAuthAaaServer;
         }
         return $dataArray;
     }

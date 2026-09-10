@@ -103,52 +103,52 @@ class AccountSecurityProfileUpdateNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('accountLockout', get_object_vars($data)) && null !== ($data->accountLockout ?? null)) {
-            $dataArray['accountLockout'] = $data->accountLockout ?? null;
+            $dataArray['accountLockout'] = $data->accountLockout;
         }
         if (array_key_exists('lockoutDuration', get_object_vars($data)) && null !== ($data->lockoutDuration ?? null)) {
-            $dataArray['lockoutDuration'] = $data->lockoutDuration ?? null;
+            $dataArray['lockoutDuration'] = $data->lockoutDuration;
         }
         if (array_key_exists('attemptsLockEnabled', get_object_vars($data)) && null !== ($data->attemptsLockEnabled ?? null)) {
-            $dataArray['attemptsLockEnabled'] = $data->attemptsLockEnabled ?? null;
+            $dataArray['attemptsLockEnabled'] = $data->attemptsLockEnabled;
         }
         if (array_key_exists('attemptsLockoutTimes', get_object_vars($data)) && null !== ($data->attemptsLockoutTimes ?? null)) {
-            $dataArray['attemptsLockoutTimes'] = $data->attemptsLockoutTimes ?? null;
+            $dataArray['attemptsLockoutTimes'] = $data->attemptsLockoutTimes;
         }
         if (array_key_exists('attemptsLockoutPeriod', get_object_vars($data)) && null !== ($data->attemptsLockoutPeriod ?? null)) {
-            $dataArray['attemptsLockoutPeriod'] = $data->attemptsLockoutPeriod ?? null;
+            $dataArray['attemptsLockoutPeriod'] = $data->attemptsLockoutPeriod;
         }
         if (array_key_exists('passwordExpiration', get_object_vars($data)) && null !== ($data->passwordExpiration ?? null)) {
-            $dataArray['passwordExpiration'] = $data->passwordExpiration ?? null;
+            $dataArray['passwordExpiration'] = $data->passwordExpiration;
         }
         if (array_key_exists('passwordReuse', get_object_vars($data)) && null !== ($data->passwordReuse ?? null)) {
-            $dataArray['passwordReuse'] = $data->passwordReuse ?? null;
+            $dataArray['passwordReuse'] = $data->passwordReuse;
         }
         if (array_key_exists('sessionIdle', get_object_vars($data)) && null !== ($data->sessionIdle ?? null)) {
-            $dataArray['sessionIdle'] = $data->sessionIdle ?? null;
+            $dataArray['sessionIdle'] = $data->sessionIdle;
         }
         if (array_key_exists('twoFactorAuthEnabled', get_object_vars($data)) && null !== ($data->twoFactorAuthEnabled ?? null)) {
-            $dataArray['twoFactorAuthEnabled'] = $data->twoFactorAuthEnabled ?? null;
+            $dataArray['twoFactorAuthEnabled'] = $data->twoFactorAuthEnabled;
         }
         if (array_key_exists('disableInactiveAccounts', get_object_vars($data)) && null !== ($data->disableInactiveAccounts ?? null)) {
-            $dataArray['disableInactiveAccounts'] = $data->disableInactiveAccounts ?? null;
+            $dataArray['disableInactiveAccounts'] = $data->disableInactiveAccounts;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('minimumPasswordLength', get_object_vars($data)) && null !== ($data->minimumPasswordLength ?? null)) {
-            $dataArray['minimumPasswordLength'] = $data->minimumPasswordLength ?? null;
+            $dataArray['minimumPasswordLength'] = $data->minimumPasswordLength;
         }
         if (array_key_exists('passwordComplexityEnabled', get_object_vars($data)) && null !== ($data->passwordComplexityEnabled ?? null)) {
-            $dataArray['passwordComplexityEnabled'] = $data->passwordComplexityEnabled ?? null;
+            $dataArray['passwordComplexityEnabled'] = $data->passwordComplexityEnabled;
         }
         if (array_key_exists('minimumPasswordLifetimeEnabled', get_object_vars($data)) && null !== ($data->minimumPasswordLifetimeEnabled ?? null)) {
-            $dataArray['minimumPasswordLifetimeEnabled'] = $data->minimumPasswordLifetimeEnabled ?? null;
+            $dataArray['minimumPasswordLifetimeEnabled'] = $data->minimumPasswordLifetimeEnabled;
         }
         return $dataArray;
     }

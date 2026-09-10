@@ -49,10 +49,10 @@ class ApgroupApGroupMemberNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('apSerial', get_object_vars($data)) && null !== ($data->apSerial ?? null)) {
-            $dataArray['apSerial'] = $data->apSerial ?? null;
+            $dataArray['apSerial'] = $data->apSerial;
         }
         return $dataArray;
     }

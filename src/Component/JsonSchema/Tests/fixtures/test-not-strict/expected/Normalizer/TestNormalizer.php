@@ -81,27 +81,27 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if (array_key_exists('onlyNull', get_object_vars($data)) && null !== ($data->onlyNull ?? null)) {
-            $dataArray['onlyNull'] = $data->onlyNull ?? null;
+            $dataArray['onlyNull'] = $data->onlyNull;
         }
         if (array_key_exists('nullOrString', get_object_vars($data)) && null !== ($data->nullOrString ?? null)) {
-            $value = $data->nullOrString ?? null;
-            if (is_string($data->nullOrString ?? null)) {
-                $value = $data->nullOrString ?? null;
-            } elseif (is_null($data->nullOrString ?? null)) {
-                $value = $data->nullOrString ?? null;
+            $value = $data->nullOrString;
+            if (is_string($data->nullOrString)) {
+                $value = $data->nullOrString;
+            } elseif (is_null($data->nullOrString)) {
+                $value = $data->nullOrString;
             }
             $dataArray['nullOrString'] = $value;
         }
         if (array_key_exists('array', get_object_vars($data)) && null !== ($data->array ?? null)) {
             $values = [];
-            foreach ($data->array ?? null as $value_1) {
+            foreach ($data->array as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['array'] = $values;
         }
         if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
             $values_1 = new \Jane\Component\JsonSchema\Tests\Expected\TestNotStrict\Runtime\JsonObject();
-            foreach ($data->object ?? null as $key => $value_2) {
+            foreach ($data->object as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
             $dataArray['object'] = $values_1;

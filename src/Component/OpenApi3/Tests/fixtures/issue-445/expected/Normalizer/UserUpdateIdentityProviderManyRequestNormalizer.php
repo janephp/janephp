@@ -60,11 +60,11 @@ class UserUpdateIdentityProviderManyRequestNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->userIds ?? null as $value) {
+        foreach ($data->userIds as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;
-        $dataArray['identityProviderId'] = $data->identityProviderId ?? null;
+        $dataArray['identityProviderId'] = $data->identityProviderId;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

@@ -56,10 +56,10 @@ class GbPeopleReportReponseReportDirectorDetailsPositionsItemNormalizer implemen
     {
         $dataArray = [];
         if (array_key_exists('dateAppointed', get_object_vars($data)) && null !== ($data->dateAppointed ?? null)) {
-            $dataArray['dateAppointed'] = $data->dateAppointed ?? null;
+            $dataArray['dateAppointed'] = $data->dateAppointed;
         }
         if (array_key_exists('positionName', get_object_vars($data)) && null !== ($data->positionName ?? null)) {
-            $dataArray['positionName'] = $data->positionName ?? null;
+            $dataArray['positionName'] = $data->positionName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

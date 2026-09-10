@@ -52,13 +52,13 @@ class CommonSshPublicKeyRefNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('keyLabel', get_object_vars($data)) && null !== ($data->keyLabel ?? null)) {
-            $dataArray['keyLabel'] = $data->keyLabel ?? null;
+            $dataArray['keyLabel'] = $data->keyLabel;
         }
         if (array_key_exists('keyContent', get_object_vars($data)) && null !== ($data->keyContent ?? null)) {
-            $dataArray['keyContent'] = $data->keyContent ?? null;
+            $dataArray['keyContent'] = $data->keyContent;
         }
         if (array_key_exists('fingerprint', get_object_vars($data)) && null !== ($data->fingerprint ?? null)) {
-            $dataArray['fingerprint'] = $data->fingerprint ?? null;
+            $dataArray['fingerprint'] = $data->fingerprint;
         }
         return $dataArray;
     }

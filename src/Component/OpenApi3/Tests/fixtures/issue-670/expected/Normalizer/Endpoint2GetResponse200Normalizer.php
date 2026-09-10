@@ -52,7 +52,7 @@ class Endpoint2GetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('field2', get_object_vars($data)) && null !== ($data->field2 ?? null)) {
-            $dataArray['field-2'] = $data->field2 ?? null;
+            $dataArray['field-2'] = $data->field2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

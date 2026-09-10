@@ -58,19 +58,19 @@ class ApApListEntryListItemNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
-            $dataArray['apGroupId'] = $data->apGroupId ?? null;
+            $dataArray['apGroupId'] = $data->apGroupId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
-            $dataArray['serial'] = $data->serial ?? null;
+            $dataArray['serial'] = $data->serial;
         }
         return $dataArray;
     }

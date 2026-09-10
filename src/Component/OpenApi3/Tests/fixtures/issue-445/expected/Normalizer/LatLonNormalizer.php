@@ -54,8 +54,8 @@ class LatLonNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['lat'] = $data->lat ?? null;
-        $dataArray['lon'] = $data->lon ?? null;
+        $dataArray['lat'] = $data->lat;
+        $dataArray['lon'] = $data->lon;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

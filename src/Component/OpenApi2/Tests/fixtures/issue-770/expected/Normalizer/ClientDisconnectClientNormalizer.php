@@ -48,8 +48,8 @@ class ClientDisconnectClientNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->mac ?? null;
-        $dataArray['apMac'] = $data->apMac ?? null;
+        $dataArray['mac'] = $data->mac;
+        $dataArray['apMac'] = $data->apMac;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

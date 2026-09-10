@@ -79,33 +79,33 @@ class ProfileCreateRuckusGREProfileNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('tunnelMode', get_object_vars($data)) && null !== ($data->tunnelMode ?? null)) {
-            $dataArray['tunnelMode'] = $data->tunnelMode ?? null;
+            $dataArray['tunnelMode'] = $data->tunnelMode;
         }
         if (array_key_exists('tunnelEncryption', get_object_vars($data)) && null !== ($data->tunnelEncryption ?? null)) {
-            $dataArray['tunnelEncryption'] = $data->tunnelEncryption ?? null;
+            $dataArray['tunnelEncryption'] = $data->tunnelEncryption;
         }
-        $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled ?? null;
+        $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled;
         if (array_key_exists('tunnelMtuSize', get_object_vars($data)) && null !== ($data->tunnelMtuSize ?? null)) {
-            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize ?? null;
+            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize;
         }
         if (array_key_exists('keepAlivePeriod', get_object_vars($data)) && null !== ($data->keepAlivePeriod ?? null)) {
-            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
+            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod;
         }
         if (array_key_exists('keepAliveRetry', get_object_vars($data)) && null !== ($data->keepAliveRetry ?? null)) {
-            $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
+            $dataArray['keepAliveRetry'] = $data->keepAliveRetry;
         }
         if (array_key_exists('dualTunnel', get_object_vars($data)) && null !== ($data->dualTunnel ?? null)) {
-            $dataArray['dualTunnel'] = $data->dualTunnel ?? null;
+            $dataArray['dualTunnel'] = $data->dualTunnel;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

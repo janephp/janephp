@@ -94,37 +94,37 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ShareBasicCreateRequest' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareBasicCreateRequest' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ShareEmbedCreateRequest' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ShareEmbedCreateRequest' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
-            $dataArray['expirationDate'] = ($data->expirationDate ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['expirationDate'] = $data->expirationDate?->format('Y-m-d\TH:i:sP');
         }
         $values = [];
-        foreach ($data->contents ?? null as $value) {
+        foreach ($data->contents as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contents'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->layerSchemaIds ?? null as $value_1) {
+            foreach ($data->layerSchemaIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $value_2 = $data->outputAccess ?? null;
-        if (is_string($data->outputAccess ?? null)) {
-            $value_2 = $data->outputAccess ?? null;
+        $value_2 = $data->outputAccess;
+        if (is_string($data->outputAccess)) {
+            $value_2 = $data->outputAccess;
         }
         $dataArray['outputAccess'] = $value_2;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

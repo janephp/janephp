@@ -54,10 +54,10 @@ class ZoneDaylightSavingTimeNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['month'] = $data->month ?? null;
-        $dataArray['week'] = $data->week ?? null;
-        $dataArray['day'] = $data->day ?? null;
-        $dataArray['hour'] = $data->hour ?? null;
+        $dataArray['month'] = $data->month;
+        $dataArray['week'] = $data->week;
+        $dataArray['day'] = $data->day;
+        $dataArray['hour'] = $data->hour;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

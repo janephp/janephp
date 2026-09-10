@@ -59,9 +59,9 @@ class MetadataValuesFieldRemoveCommandNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->schemaId ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['fieldPath'] = $data->fieldPath ?? null;
+        $dataArray['schemaId'] = $data->schemaId;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['fieldPath'] = $data->fieldPath;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

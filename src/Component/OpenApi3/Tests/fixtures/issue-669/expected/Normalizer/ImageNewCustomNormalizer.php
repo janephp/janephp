@@ -80,23 +80,23 @@ class ImageNewCustomNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('distribution', get_object_vars($data)) && null !== ($data->distribution ?? null)) {
-            $dataArray['distribution'] = $data->distribution ?? null;
+            $dataArray['distribution'] = $data->distribution;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
-            $dataArray['url'] = $data->url ?? null;
+            $dataArray['url'] = $data->url;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;

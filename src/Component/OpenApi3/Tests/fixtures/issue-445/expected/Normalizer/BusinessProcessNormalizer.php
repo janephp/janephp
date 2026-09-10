@@ -138,48 +138,48 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'BusinessProcessDetails' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessDetails' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['processDefinitionId'] = $data->processDefinitionId ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['processDefinitionId'] = $data->processDefinitionId;
         if (array_key_exists('referenceId', get_object_vars($data)) && null !== ($data->referenceId ?? null)) {
-            $dataArray['referenceId'] = $data->referenceId ?? null;
+            $dataArray['referenceId'] = $data->referenceId;
         }
         if (array_key_exists('referenceDocType', get_object_vars($data)) && null !== ($data->referenceDocType ?? null)) {
-            $dataArray['referenceDocType'] = $data->referenceDocType ?? null;
+            $dataArray['referenceDocType'] = $data->referenceDocType;
         }
-        $dataArray['supportsCancellation'] = $data->supportsCancellation ?? null;
-        $value = $data->businessProcessScope ?? null;
-        if (is_string($data->businessProcessScope ?? null)) {
-            $value = $data->businessProcessScope ?? null;
+        $dataArray['supportsCancellation'] = $data->supportsCancellation;
+        $value = $data->businessProcessScope;
+        if (is_string($data->businessProcessScope)) {
+            $value = $data->businessProcessScope;
         }
         $dataArray['businessProcessScope'] = $value;
-        $value_1 = $data->lifeCycle ?? null;
-        if (is_string($data->lifeCycle ?? null)) {
-            $value_1 = $data->lifeCycle ?? null;
+        $value_1 = $data->lifeCycle;
+        if (is_string($data->lifeCycle)) {
+            $value_1 = $data->lifeCycle;
         }
         $dataArray['lifeCycle'] = $value_1;
-        $dataArray['startDate'] = ($data->startDate ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['endDate'] = ($data->endDate ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['finished'] = $data->finished ?? null;
+        $dataArray['startDate'] = $data->startDate->format('Y-m-d\TH:i:sP');
+        $dataArray['endDate'] = $data->endDate->format('Y-m-d\TH:i:sP');
+        $dataArray['finished'] = $data->finished;
         if (array_key_exists('stateHistory', get_object_vars($data)) && null !== ($data->stateHistory ?? null)) {
             $values = [];
-            foreach ($data->stateHistory ?? null as $value_2) {
+            foreach ($data->stateHistory as $value_2) {
                 $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['stateHistory'] = $values;
         }
         if (array_key_exists('currentState', get_object_vars($data)) && null !== ($data->currentState ?? null)) {
-            $dataArray['currentState'] = $data->currentState ?? null;
+            $dataArray['currentState'] = $data->currentState;
         }
         if (array_key_exists('lastReportedProgress', get_object_vars($data)) && null !== ($data->lastReportedProgress ?? null)) {
-            $dataArray['lastReportedProgress'] = ($data->lastReportedProgress ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['lastReportedProgress'] = $data->lastReportedProgress?->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('continuationBusinessProcessId', get_object_vars($data)) && null !== ($data->continuationBusinessProcessId ?? null)) {
-            $dataArray['continuationBusinessProcessId'] = $data->continuationBusinessProcessId ?? null;
+            $dataArray['continuationBusinessProcessId'] = $data->continuationBusinessProcessId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -57,7 +57,7 @@ class ResponseRegistryInfoNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->registry ?? null as $key => $value) {
+            foreach ($data->registry as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['registry'] = $values;

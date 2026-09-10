@@ -51,7 +51,7 @@ class ApModifyRogueTypeNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('rogueMacList', get_object_vars($data)) && null !== ($data->rogueMacList ?? null)) {
             $values = [];
-            foreach ($data->rogueMacList ?? null as $value) {
+            foreach ($data->rogueMacList as $value) {
                 $values[] = $value;
             }
             $dataArray['rogueMacList'] = $values;

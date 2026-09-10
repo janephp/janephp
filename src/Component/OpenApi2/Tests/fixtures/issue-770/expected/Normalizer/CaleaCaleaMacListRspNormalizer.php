@@ -62,17 +62,17 @@ class CaleaCaleaMacListRspNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
-            $dataArray['totalCount'] = $data->totalCount ?? null;
+            $dataArray['totalCount'] = $data->totalCount;
         }
         if (array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
-            $dataArray['hasMore'] = $data->hasMore ?? null;
+            $dataArray['hasMore'] = $data->hasMore;
         }
         if (array_key_exists('firstIndex', get_object_vars($data)) && null !== ($data->firstIndex ?? null)) {
-            $dataArray['firstIndex'] = $data->firstIndex ?? null;
+            $dataArray['firstIndex'] = $data->firstIndex;
         }
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->list ?? null as $value) {
+            foreach ($data->list as $value) {
                 $values[] = $value;
             }
             $dataArray['list'] = $values;

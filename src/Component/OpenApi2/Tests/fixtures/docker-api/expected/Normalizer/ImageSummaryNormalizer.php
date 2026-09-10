@@ -87,28 +87,28 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->id ?? null;
-        $dataArray['ParentId'] = $data->parentId ?? null;
+        $dataArray['Id'] = $data->id;
+        $dataArray['ParentId'] = $data->parentId;
         $values = [];
-        foreach ($data->repoTags ?? null as $value) {
+        foreach ($data->repoTags as $value) {
             $values[] = $value;
         }
         $dataArray['RepoTags'] = $values;
         $values_1 = [];
-        foreach ($data->repoDigests ?? null as $value_1) {
+        foreach ($data->repoDigests as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['RepoDigests'] = $values_1;
-        $dataArray['Created'] = $data->created ?? null;
-        $dataArray['Size'] = $data->size ?? null;
-        $dataArray['SharedSize'] = $data->sharedSize ?? null;
-        $dataArray['VirtualSize'] = $data->virtualSize ?? null;
+        $dataArray['Created'] = $data->created;
+        $dataArray['Size'] = $data->size;
+        $dataArray['SharedSize'] = $data->sharedSize;
+        $dataArray['VirtualSize'] = $data->virtualSize;
         $values_2 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->labels ?? null as $key => $value_2) {
+        foreach ($data->labels as $key => $value_2) {
             $values_2[$key] = $value_2;
         }
         $dataArray['Labels'] = $values_2;
-        $dataArray['Containers'] = $data->containers ?? null;
+        $dataArray['Containers'] = $data->containers;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageSummaryConstraint());
         }

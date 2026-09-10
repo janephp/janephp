@@ -84,21 +84,21 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('jpegQuality', get_object_vars($data)) && null !== ($data->jpegQuality ?? null)) {
-            $dataArray['jpegQuality'] = $data->jpegQuality ?? null;
+            $dataArray['jpegQuality'] = $data->jpegQuality;
         }
         if (array_key_exists('fastWebView', get_object_vars($data)) && null !== ($data->fastWebView ?? null)) {
-            $dataArray['fastWebView'] = $data->fastWebView ?? null;
+            $dataArray['fastWebView'] = $data->fastWebView;
         }
         if (array_key_exists('reduceFileSize', get_object_vars($data)) && null !== ($data->reduceFileSize ?? null)) {
-            $dataArray['reduceFileSize'] = $data->reduceFileSize ?? null;
+            $dataArray['reduceFileSize'] = $data->reduceFileSize;
         }
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         if (array_key_exists('extractFullText', get_object_vars($data)) && null !== ($data->extractFullText ?? null)) {
-            $dataArray['extractFullText'] = $data->extractFullText ?? null;
+            $dataArray['extractFullText'] = $data->extractFullText;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

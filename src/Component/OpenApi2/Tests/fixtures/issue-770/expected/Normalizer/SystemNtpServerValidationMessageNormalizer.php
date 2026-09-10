@@ -46,7 +46,7 @@ class SystemNtpServerValidationMessageNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         return $dataArray;
     }

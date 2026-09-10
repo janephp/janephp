@@ -49,10 +49,10 @@ class ProfileHs20TermsConditionsNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('filename', get_object_vars($data)) && null !== ($data->filename ?? null)) {
-            $dataArray['filename'] = $data->filename ?? null;
+            $dataArray['filename'] = $data->filename;
         }
         if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
-            $dataArray['timestamp'] = $data->timestamp ?? null;
+            $dataArray['timestamp'] = $data->timestamp;
         }
         return $dataArray;
     }

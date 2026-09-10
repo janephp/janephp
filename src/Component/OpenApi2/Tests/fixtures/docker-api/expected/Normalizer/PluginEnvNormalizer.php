@@ -61,14 +61,14 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->name ?? null;
-        $dataArray['Description'] = $data->description ?? null;
+        $dataArray['Name'] = $data->name;
+        $dataArray['Description'] = $data->description;
         $values = [];
-        foreach ($data->settable ?? null as $value) {
+        foreach ($data->settable as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
-        $dataArray['Value'] = $data->value ?? null;
+        $dataArray['Value'] = $data->value;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginEnvConstraint());
         }

@@ -60,11 +60,11 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
-            $dataArray['totalSize'] = $data->totalSize ?? null;
+            $dataArray['totalSize'] = $data->totalSize;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->data ?? null as $value) {
+            foreach ($data->data as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;

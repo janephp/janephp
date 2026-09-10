@@ -64,16 +64,16 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('houseNo', get_object_vars($data)) && null !== ($data->houseNo ?? null)) {
-            $dataArray['houseNo'] = $data->houseNo ?? null;
+            $dataArray['houseNo'] = $data->houseNo;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('postCode', get_object_vars($data)) && null !== ($data->postCode ?? null)) {
-            $dataArray['postCode'] = $data->postCode ?? null;
+            $dataArray['postCode'] = $data->postCode;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

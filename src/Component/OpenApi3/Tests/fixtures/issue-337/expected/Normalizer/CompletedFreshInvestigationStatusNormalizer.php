@@ -56,10 +56,10 @@ class CompletedFreshInvestigationStatusNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

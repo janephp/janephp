@@ -57,7 +57,7 @@ class ResponsePutFirewallResponseNormalizer implements DenormalizerInterface, No
         $dataArray = [];
         if (array_key_exists('firewall', get_object_vars($data)) && null !== ($data->firewall ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->firewall ?? null as $key => $value) {
+            foreach ($data->firewall as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['firewall'] = $values;

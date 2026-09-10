@@ -87,19 +87,19 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('outputId', get_object_vars($data)) && null !== ($data->outputId ?? null)) {
-            $dataArray['outputId'] = $data->outputId ?? null;
+            $dataArray['outputId'] = $data->outputId;
         }
         if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
-            $dataArray['contentId'] = $data->contentId ?? null;
+            $dataArray['contentId'] = $data->contentId;
         }
         if (array_key_exists('outputFormatId', get_object_vars($data)) && null !== ($data->outputFormatId ?? null)) {
-            $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+            $dataArray['outputFormatId'] = $data->outputFormatId;
         }
         if (array_key_exists('renderingState', get_object_vars($data)) && null !== ($data->renderingState ?? null)) {
-            $dataArray['renderingState'] = $data->renderingState ?? null;
+            $dataArray['renderingState'] = $data->renderingState;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

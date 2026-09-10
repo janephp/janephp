@@ -55,16 +55,16 @@ class AvcSignaturePackageBinaryNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
-            $dataArray['platform'] = $data->platform ?? null;
+            $dataArray['platform'] = $data->platform;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         return $dataArray;
     }

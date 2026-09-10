@@ -60,9 +60,9 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['isRasterized'] = $data->isRasterized ?? null;
-        $dataArray['widthInPoints'] = $data->widthInPoints ?? null;
-        $dataArray['heightInPoints'] = $data->heightInPoints ?? null;
+        $dataArray['isRasterized'] = $data->isRasterized;
+        $dataArray['widthInPoints'] = $data->widthInPoints;
+        $dataArray['heightInPoints'] = $data->heightInPoints;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

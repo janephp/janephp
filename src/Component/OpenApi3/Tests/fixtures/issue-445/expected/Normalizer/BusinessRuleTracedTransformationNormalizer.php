@@ -61,13 +61,13 @@ class BusinessRuleTracedTransformationNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
         if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
-            $dataArray['input'] = $data->input ?? null;
+            $dataArray['input'] = $data->input;
         }
         if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
-            $dataArray['output'] = $data->output ?? null;
+            $dataArray['output'] = $data->output;
         }
         return $dataArray;
     }

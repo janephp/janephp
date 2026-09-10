@@ -68,13 +68,13 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->dataPoints ?? null as $value) {
+        foreach ($data->dataPoints as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['data_points'] = $values;
-        $dataArray['total_items'] = $data->totalItems ?? null;
-        $dataArray['total_pages'] = $data->totalPages ?? null;
-        $dataArray['current_page'] = $data->currentPage ?? null;
+        $dataArray['total_items'] = $data->totalItems;
+        $dataArray['total_pages'] = $data->totalPages;
+        $dataArray['current_page'] = $data->currentPage;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

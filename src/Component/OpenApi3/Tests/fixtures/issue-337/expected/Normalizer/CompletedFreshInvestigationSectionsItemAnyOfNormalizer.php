@@ -64,16 +64,16 @@ class CompletedFreshInvestigationSectionsItemAnyOfNormalizer implements Denormal
     {
         $dataArray = [];
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
-            $dataArray['content'] = $data->content ?? null;
+            $dataArray['content'] = $data->content;
         }
         if (array_key_exists('contentType', get_object_vars($data)) && null !== ($data->contentType ?? null)) {
-            $dataArray['contentType'] = $data->contentType ?? null;
+            $dataArray['contentType'] = $data->contentType;
         }
         if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
-            $dataArray['creationDate'] = $data->creationDate ?? null;
+            $dataArray['creationDate'] = $data->creationDate;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

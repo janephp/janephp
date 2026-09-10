@@ -52,7 +52,7 @@ class NfsSnapshotGetResponseNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('snapshot', get_object_vars($data)) && null !== ($data->snapshot ?? null)) {
-            $dataArray['snapshot'] = ($data->snapshot ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->snapshot ?? null, 'json', $context));
+            $dataArray['snapshot'] = $data->snapshot === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->snapshot, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

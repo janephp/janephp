@@ -53,9 +53,9 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
-            $value = $data->references ?? null;
-            if (is_object($data->references ?? null)) {
-                $value = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
+            $value = $data->references;
+            if (is_object($data->references)) {
+                $value = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value;
         }

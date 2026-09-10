@@ -49,10 +49,10 @@ class MduSegmentationProfileUpLinkObjNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('upLinkType', get_object_vars($data)) && null !== ($data->upLinkType ?? null)) {
-            $dataArray['upLinkType'] = $data->upLinkType ?? null;
+            $dataArray['upLinkType'] = $data->upLinkType;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         return $dataArray;
     }

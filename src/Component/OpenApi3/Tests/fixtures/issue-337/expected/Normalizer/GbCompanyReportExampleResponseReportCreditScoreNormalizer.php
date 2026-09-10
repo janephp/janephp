@@ -64,16 +64,16 @@ class GbCompanyReportExampleResponseReportCreditScoreNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('currentCreditRating', get_object_vars($data)) && null !== ($data->currentCreditRating ?? null)) {
-            $dataArray['currentCreditRating'] = ($data->currentCreditRating ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentCreditRating ?? null, 'json', $context));
+            $dataArray['currentCreditRating'] = $data->currentCreditRating === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentCreditRating, 'json', $context));
         }
         if (array_key_exists('currentContractLimit', get_object_vars($data)) && null !== ($data->currentContractLimit ?? null)) {
-            $dataArray['currentContractLimit'] = ($data->currentContractLimit ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentContractLimit ?? null, 'json', $context));
+            $dataArray['currentContractLimit'] = $data->currentContractLimit === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentContractLimit, 'json', $context));
         }
         if (array_key_exists('previousCreditRating', get_object_vars($data)) && null !== ($data->previousCreditRating ?? null)) {
-            $dataArray['previousCreditRating'] = ($data->previousCreditRating ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->previousCreditRating ?? null, 'json', $context));
+            $dataArray['previousCreditRating'] = $data->previousCreditRating === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->previousCreditRating, 'json', $context));
         }
         if (array_key_exists('latestRatingChangeDate', get_object_vars($data)) && null !== ($data->latestRatingChangeDate ?? null)) {
-            $dataArray['latestRatingChangeDate'] = $data->latestRatingChangeDate ?? null;
+            $dataArray['latestRatingChangeDate'] = $data->latestRatingChangeDate;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

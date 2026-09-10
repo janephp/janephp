@@ -84,22 +84,22 @@ class ApiAnthropicAPIKeyInfoNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
-            $dataArray['created_by'] = $data->createdBy ?? null;
+            $dataArray['created_by'] = $data->createdBy;
         }
         if (array_key_exists('deletedAt', get_object_vars($data)) && null !== ($data->deletedAt ?? null)) {
-            $dataArray['deleted_at'] = ($data->deletedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['deleted_at'] = $data->deletedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

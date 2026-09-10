@@ -81,40 +81,40 @@ class RogueInfoRogueInfoNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('detectedByAP', get_object_vars($data)) && null !== ($data->detectedByAP ?? null)) {
             $values = [];
-            foreach ($data->detectedByAP ?? null as $value) {
+            foreach ($data->detectedByAP as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['detectedByAP'] = $values;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('rogueMac', get_object_vars($data)) && null !== ($data->rogueMac ?? null)) {
-            $dataArray['rogueMac'] = $data->rogueMac ?? null;
+            $dataArray['rogueMac'] = $data->rogueMac;
         }
         if (array_key_exists('encryption', get_object_vars($data)) && null !== ($data->encryption ?? null)) {
-            $dataArray['encryption'] = $data->encryption ?? null;
+            $dataArray['encryption'] = $data->encryption;
         }
         if (array_key_exists('radio', get_object_vars($data)) && null !== ($data->radio ?? null)) {
-            $dataArray['radio'] = $data->radio ?? null;
+            $dataArray['radio'] = $data->radio;
         }
         if (array_key_exists('lastDetected', get_object_vars($data)) && null !== ($data->lastDetected ?? null)) {
-            $dataArray['lastDetected'] = $data->lastDetected ?? null;
+            $dataArray['lastDetected'] = $data->lastDetected;
         }
         if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
-            $dataArray['ssid'] = $data->ssid ?? null;
+            $dataArray['ssid'] = $data->ssid;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('rogueAPMac', get_object_vars($data)) && null !== ($data->rogueAPMac ?? null)) {
-            $dataArray['rogueAPMac'] = $data->rogueAPMac ?? null;
+            $dataArray['rogueAPMac'] = $data->rogueAPMac;
         }
         if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
-            $dataArray['classification'] = $data->classification ?? null;
+            $dataArray['classification'] = $data->classification;
         }
         if (array_key_exists('matchResult', get_object_vars($data)) && null !== ($data->matchResult ?? null)) {
-            $dataArray['matchResult'] = $data->matchResult ?? null;
+            $dataArray['matchResult'] = $data->matchResult;
         }
         return $dataArray;
     }

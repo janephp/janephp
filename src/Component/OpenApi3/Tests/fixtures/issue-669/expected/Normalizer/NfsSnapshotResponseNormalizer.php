@@ -79,13 +79,13 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['size_gib'] = $data->sizeGib ?? null;
-        $dataArray['region'] = $data->region ?? null;
-        $dataArray['status'] = $data->status ?? null;
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['share_id'] = $data->shareId ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['size_gib'] = $data->sizeGib;
+        $dataArray['region'] = $data->region;
+        $dataArray['status'] = $data->status;
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
+        $dataArray['share_id'] = $data->shareId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

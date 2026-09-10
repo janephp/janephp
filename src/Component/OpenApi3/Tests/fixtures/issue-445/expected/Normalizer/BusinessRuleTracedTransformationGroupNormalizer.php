@@ -71,17 +71,17 @@ class BusinessRuleTracedTransformationGroupNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
         if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
-            $dataArray['input'] = $data->input ?? null;
+            $dataArray['input'] = $data->input;
         }
         if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
-            $dataArray['output'] = $data->output ?? null;
+            $dataArray['output'] = $data->output;
         }
         if (array_key_exists('transformations', get_object_vars($data)) && null !== ($data->transformations ?? null)) {
             $values = [];
-            foreach ($data->transformations ?? null as $value) {
+            foreach ($data->transformations as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['transformations'] = $values;

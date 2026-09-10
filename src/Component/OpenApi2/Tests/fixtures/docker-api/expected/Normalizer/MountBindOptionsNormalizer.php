@@ -55,10 +55,10 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('propagation', get_object_vars($data)) && null !== ($data->propagation ?? null)) {
-            $dataArray['Propagation'] = $data->propagation ?? null;
+            $dataArray['Propagation'] = $data->propagation;
         }
         if (array_key_exists('nonRecursive', get_object_vars($data)) && null !== ($data->nonRecursive ?? null)) {
-            $dataArray['NonRecursive'] = $data->nonRecursive ?? null;
+            $dataArray['NonRecursive'] = $data->nonRecursive;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountBindOptionsConstraint());

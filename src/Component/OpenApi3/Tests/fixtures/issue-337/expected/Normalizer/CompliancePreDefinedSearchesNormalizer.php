@@ -60,11 +60,11 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
-            $dataArray['totalSize'] = $data->totalSize ?? null;
+            $dataArray['totalSize'] = $data->totalSize;
         }
         if (array_key_exists('predefinedSearches', get_object_vars($data)) && null !== ($data->predefinedSearches ?? null)) {
             $values = [];
-            foreach ($data->predefinedSearches ?? null as $value) {
+            foreach ($data->predefinedSearches as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['predefinedSearches'] = $values;

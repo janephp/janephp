@@ -62,10 +62,10 @@ class CurrentUtilizationNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('memory', get_object_vars($data)) && null !== ($data->memory ?? null)) {
-            $dataArray['memory'] = $data->memory ?? null;
+            $dataArray['memory'] = $data->memory;
         }
         if (array_key_exists('cpu', get_object_vars($data)) && null !== ($data->cpu ?? null)) {
-            $dataArray['cpu'] = $data->cpu ?? null;
+            $dataArray['cpu'] = $data->cpu;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

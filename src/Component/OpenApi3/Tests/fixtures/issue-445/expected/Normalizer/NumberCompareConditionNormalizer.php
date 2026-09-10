@@ -83,21 +83,21 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
-            $dataArray['fieldPath'] = $data->fieldPath ?? null;
+            $dataArray['fieldPath'] = $data->fieldPath;
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $value = $data->mode ?? null;
-            if (is_string($data->mode ?? null)) {
-                $value = $data->mode ?? null;
+            $value = $data->mode;
+            if (is_string($data->mode)) {
+                $value = $data->mode;
             }
             $dataArray['mode'] = $value;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

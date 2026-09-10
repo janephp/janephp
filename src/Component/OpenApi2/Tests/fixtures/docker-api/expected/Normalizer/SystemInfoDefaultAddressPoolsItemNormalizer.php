@@ -52,10 +52,10 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('base', get_object_vars($data)) && null !== ($data->base ?? null)) {
-            $dataArray['Base'] = $data->base ?? null;
+            $dataArray['Base'] = $data->base;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['Size'] = $data->size ?? null;
+            $dataArray['Size'] = $data->size;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemConstraint());

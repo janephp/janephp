@@ -49,10 +49,10 @@ class ApQueryQueryCriteriaExtraNotFiltersItemNormalizer implements DenormalizerI
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         return $dataArray;
     }

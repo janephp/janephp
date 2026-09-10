@@ -61,14 +61,14 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->content ?? null as $key => $value) {
+            foreach ($data->content as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        $value_1 = $data->contentFieldsUpdateOptions ?? null;
-        if (is_string($data->contentFieldsUpdateOptions ?? null)) {
-            $value_1 = $data->contentFieldsUpdateOptions ?? null;
+        $value_1 = $data->contentFieldsUpdateOptions;
+        if (is_string($data->contentFieldsUpdateOptions)) {
+            $value_1 = $data->contentFieldsUpdateOptions;
         }
         $dataArray['contentFieldsUpdateOptions'] = $value_1;
         return $dataArray;

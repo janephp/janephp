@@ -52,7 +52,7 @@ class ResponseOneClicksCreateNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

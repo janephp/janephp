@@ -56,10 +56,10 @@ class ApiUpdateAgentDeploymentVisibilityInputPublicNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('visibility', get_object_vars($data)) && null !== ($data->visibility ?? null)) {
-            $dataArray['visibility'] = $data->visibility ?? null;
+            $dataArray['visibility'] = $data->visibility;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

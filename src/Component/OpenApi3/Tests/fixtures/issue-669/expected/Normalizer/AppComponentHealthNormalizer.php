@@ -78,22 +78,22 @@ class AppComponentHealthNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('cpuUsagePercent', get_object_vars($data)) && null !== ($data->cpuUsagePercent ?? null)) {
-            $dataArray['cpu_usage_percent'] = $data->cpuUsagePercent ?? null;
+            $dataArray['cpu_usage_percent'] = $data->cpuUsagePercent;
         }
         if (array_key_exists('memoryUsagePercent', get_object_vars($data)) && null !== ($data->memoryUsagePercent ?? null)) {
-            $dataArray['memory_usage_percent'] = $data->memoryUsagePercent ?? null;
+            $dataArray['memory_usage_percent'] = $data->memoryUsagePercent;
         }
         if (array_key_exists('replicasDesired', get_object_vars($data)) && null !== ($data->replicasDesired ?? null)) {
-            $dataArray['replicas_desired'] = $data->replicasDesired ?? null;
+            $dataArray['replicas_desired'] = $data->replicasDesired;
         }
         if (array_key_exists('replicasReady', get_object_vars($data)) && null !== ($data->replicasReady ?? null)) {
-            $dataArray['replicas_ready'] = $data->replicasReady ?? null;
+            $dataArray['replicas_ready'] = $data->replicasReady;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

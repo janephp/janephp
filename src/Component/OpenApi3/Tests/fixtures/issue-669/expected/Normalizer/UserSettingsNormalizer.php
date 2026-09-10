@@ -75,24 +75,24 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('pgAllowReplication', get_object_vars($data)) && null !== ($data->pgAllowReplication ?? null)) {
-            $dataArray['pg_allow_replication'] = $data->pgAllowReplication ?? null;
+            $dataArray['pg_allow_replication'] = $data->pgAllowReplication;
         }
         if (array_key_exists('opensearchAcl', get_object_vars($data)) && null !== ($data->opensearchAcl ?? null)) {
             $values = [];
-            foreach ($data->opensearchAcl ?? null as $value) {
+            foreach ($data->opensearchAcl as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['opensearch_acl'] = $values;
         }
         if (array_key_exists('acl', get_object_vars($data)) && null !== ($data->acl ?? null)) {
             $values_1 = [];
-            foreach ($data->acl ?? null as $value_1) {
+            foreach ($data->acl as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['acl'] = $values_1;
         }
         if (array_key_exists('mongoUserSettings', get_object_vars($data)) && null !== ($data->mongoUserSettings ?? null)) {
-            $dataArray['mongo_user_settings'] = ($data->mongoUserSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongoUserSettings ?? null, 'json', $context));
+            $dataArray['mongo_user_settings'] = $data->mongoUserSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongoUserSettings, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -48,8 +48,8 @@ class TupleOfStringAndStringNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['item1'] = $data->item1 ?? null;
-        $dataArray['item2'] = $data->item2 ?? null;
+        $dataArray['item1'] = $data->item1;
+        $dataArray['item2'] = $data->item2;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

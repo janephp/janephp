@@ -56,10 +56,10 @@ class KafkaTopicPartitionConsumerGroupsItemNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('groupName', get_object_vars($data)) && null !== ($data->groupName ?? null)) {
-            $dataArray['group_name'] = $data->groupName ?? null;
+            $dataArray['group_name'] = $data->groupName;
         }
         if (array_key_exists('offset', get_object_vars($data)) && null !== ($data->offset ?? null)) {
-            $dataArray['offset'] = $data->offset ?? null;
+            $dataArray['offset'] = $data->offset;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

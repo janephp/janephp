@@ -106,49 +106,49 @@ class DpskDpskQueryListListItemNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
-            $dataArray['tenantId'] = $data->tenantId ?? null;
+            $dataArray['tenantId'] = $data->tenantId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
-            $dataArray['wlanId'] = $data->wlanId ?? null;
+            $dataArray['wlanId'] = $data->wlanId;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('ueMac', get_object_vars($data)) && null !== ($data->ueMac ?? null)) {
-            $dataArray['ueMac'] = $data->ueMac ?? null;
+            $dataArray['ueMac'] = $data->ueMac;
         }
         if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
-            $dataArray['userRoleId'] = $data->userRoleId ?? null;
+            $dataArray['userRoleId'] = $data->userRoleId;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
-            $dataArray['group'] = $data->group ?? null;
+            $dataArray['group'] = $data->group;
         }
         if (array_key_exists('expired', get_object_vars($data)) && null !== ($data->expired ?? null)) {
-            $dataArray['expired'] = $data->expired ?? null;
+            $dataArray['expired'] = $data->expired;
         }
         if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
-            $dataArray['ttl'] = $data->ttl ?? null;
+            $dataArray['ttl'] = $data->ttl;
         }
         if (array_key_exists('expirationStartTime', get_object_vars($data)) && null !== ($data->expirationStartTime ?? null)) {
-            $dataArray['expirationStartTime'] = $data->expirationStartTime ?? null;
+            $dataArray['expirationStartTime'] = $data->expirationStartTime;
         }
         if (array_key_exists('expirationTime', get_object_vars($data)) && null !== ($data->expirationTime ?? null)) {
-            $dataArray['expirationTime'] = $data->expirationTime ?? null;
+            $dataArray['expirationTime'] = $data->expirationTime;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         return $dataArray;
     }

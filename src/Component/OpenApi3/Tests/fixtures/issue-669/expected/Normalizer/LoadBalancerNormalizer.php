@@ -204,97 +204,97 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
-            $dataArray['project_id'] = $data->projectId ?? null;
+            $dataArray['project_id'] = $data->projectId;
         }
         if (array_key_exists('sizeUnit', get_object_vars($data)) && null !== ($data->sizeUnit ?? null)) {
-            $dataArray['size_unit'] = $data->sizeUnit ?? null;
+            $dataArray['size_unit'] = $data->sizeUnit;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
-            $dataArray['algorithm'] = $data->algorithm ?? null;
+            $dataArray['algorithm'] = $data->algorithm;
         }
         $values = [];
-        foreach ($data->forwardingRules ?? null as $value) {
+        foreach ($data->forwardingRules as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['forwarding_rules'] = $values;
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
-            $dataArray['health_check'] = ($data->healthCheck ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck ?? null, 'json', $context));
+            $dataArray['health_check'] = $data->healthCheck === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
         }
         if (array_key_exists('stickySessions', get_object_vars($data)) && null !== ($data->stickySessions ?? null)) {
-            $dataArray['sticky_sessions'] = ($data->stickySessions ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->stickySessions ?? null, 'json', $context));
+            $dataArray['sticky_sessions'] = $data->stickySessions === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->stickySessions, 'json', $context));
         }
         if (array_key_exists('redirectHttpToHttps', get_object_vars($data)) && null !== ($data->redirectHttpToHttps ?? null)) {
-            $dataArray['redirect_http_to_https'] = $data->redirectHttpToHttps ?? null;
+            $dataArray['redirect_http_to_https'] = $data->redirectHttpToHttps;
         }
         if (array_key_exists('enableProxyProtocol', get_object_vars($data)) && null !== ($data->enableProxyProtocol ?? null)) {
-            $dataArray['enable_proxy_protocol'] = $data->enableProxyProtocol ?? null;
+            $dataArray['enable_proxy_protocol'] = $data->enableProxyProtocol;
         }
         if (array_key_exists('enableBackendKeepalive', get_object_vars($data)) && null !== ($data->enableBackendKeepalive ?? null)) {
-            $dataArray['enable_backend_keepalive'] = $data->enableBackendKeepalive ?? null;
+            $dataArray['enable_backend_keepalive'] = $data->enableBackendKeepalive;
         }
         if (array_key_exists('httpIdleTimeoutSeconds', get_object_vars($data)) && null !== ($data->httpIdleTimeoutSeconds ?? null)) {
-            $dataArray['http_idle_timeout_seconds'] = $data->httpIdleTimeoutSeconds ?? null;
+            $dataArray['http_idle_timeout_seconds'] = $data->httpIdleTimeoutSeconds;
         }
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('disableLetsEncryptDnsRecords', get_object_vars($data)) && null !== ($data->disableLetsEncryptDnsRecords ?? null)) {
-            $dataArray['disable_lets_encrypt_dns_records'] = $data->disableLetsEncryptDnsRecords ?? null;
+            $dataArray['disable_lets_encrypt_dns_records'] = $data->disableLetsEncryptDnsRecords;
         }
         if (array_key_exists('firewall', get_object_vars($data)) && null !== ($data->firewall ?? null)) {
-            $dataArray['firewall'] = ($data->firewall ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->firewall ?? null, 'json', $context));
+            $dataArray['firewall'] = $data->firewall === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->firewall, 'json', $context));
         }
         if (array_key_exists('network', get_object_vars($data)) && null !== ($data->network ?? null)) {
-            $dataArray['network'] = $data->network ?? null;
+            $dataArray['network'] = $data->network;
         }
         if (array_key_exists('networkStack', get_object_vars($data)) && null !== ($data->networkStack ?? null)) {
-            $dataArray['network_stack'] = $data->networkStack ?? null;
+            $dataArray['network_stack'] = $data->networkStack;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('domains', get_object_vars($data)) && null !== ($data->domains ?? null)) {
             $values_1 = [];
-            foreach ($data->domains ?? null as $value_1) {
+            foreach ($data->domains as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['domains'] = $values_1;
         }
         if (array_key_exists('glbSettings', get_object_vars($data)) && null !== ($data->glbSettings ?? null)) {
-            $dataArray['glb_settings'] = ($data->glbSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->glbSettings ?? null, 'json', $context));
+            $dataArray['glb_settings'] = $data->glbSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->glbSettings, 'json', $context));
         }
         if (array_key_exists('targetLoadBalancerIds', get_object_vars($data)) && null !== ($data->targetLoadBalancerIds ?? null)) {
             $values_2 = [];
-            foreach ($data->targetLoadBalancerIds ?? null as $value_2) {
+            foreach ($data->targetLoadBalancerIds as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['target_load_balancer_ids'] = $values_2;
         }
         if (array_key_exists('tlsCipherPolicy', get_object_vars($data)) && null !== ($data->tlsCipherPolicy ?? null)) {
-            $dataArray['tls_cipher_policy'] = $data->tlsCipherPolicy ?? null;
+            $dataArray['tls_cipher_policy'] = $data->tlsCipherPolicy;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
             $values_3 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->region ?? null as $key => $value_3) {
+            foreach ($data->region as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
             $dataArray['region'] = $values_3;
         }
         if (array_key_exists('dropletIds', get_object_vars($data)) && null !== ($data->dropletIds ?? null)) {
             $values_4 = [];
-            foreach ($data->dropletIds ?? null as $value_4) {
+            foreach ($data->dropletIds as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['droplet_ids'] = $values_4;
         }
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = $data->tag ?? null;
+            $dataArray['tag'] = $data->tag;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_5) {
             if (preg_match('/.*/', (string) $key_1)) {

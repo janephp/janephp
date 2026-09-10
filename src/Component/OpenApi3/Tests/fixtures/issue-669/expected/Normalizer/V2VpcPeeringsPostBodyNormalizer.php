@@ -60,11 +60,11 @@ class V2VpcPeeringsPostBodyNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->vpcIds ?? null as $value) {
+            foreach ($data->vpcIds as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;

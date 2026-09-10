@@ -49,7 +49,7 @@ class UserDeleteRequestNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('ownerTokenTransferUserId', get_object_vars($data)) && null !== ($data->ownerTokenTransferUserId ?? null)) {
-            $dataArray['ownerTokenTransferUserId'] = $data->ownerTokenTransferUserId ?? null;
+            $dataArray['ownerTokenTransferUserId'] = $data->ownerTokenTransferUserId;
         }
         return $dataArray;
     }

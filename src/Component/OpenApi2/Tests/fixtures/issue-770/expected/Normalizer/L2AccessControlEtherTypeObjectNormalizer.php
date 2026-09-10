@@ -46,7 +46,7 @@ class L2AccessControlEtherTypeObjectNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('etherType', get_object_vars($data)) && null !== ($data->etherType ?? null)) {
-            $dataArray['etherType'] = $data->etherType ?? null;
+            $dataArray['etherType'] = $data->etherType;
         }
         return $dataArray;
     }

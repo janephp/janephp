@@ -64,12 +64,12 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->appIds ?? null as $value) {
+        foreach ($data->appIds as $value) {
             $values[] = $value;
         }
         $dataArray['app_ids'] = $values;
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
-            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->date->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

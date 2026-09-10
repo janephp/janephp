@@ -57,13 +57,13 @@ class ReservedIpv6ActionTypeNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->type ?? null) and 'assign' === ($data->type ?? null)) {
+        if (null !== ($data->type ?? null) and 'assign' === $data->type) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->type ?? null) and 'unassign' === ($data->type ?? null)) {
+        if (null !== ($data->type ?? null) and 'unassign' === $data->type) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

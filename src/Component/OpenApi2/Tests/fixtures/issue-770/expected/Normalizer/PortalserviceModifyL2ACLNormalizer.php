@@ -59,17 +59,17 @@ class PortalserviceModifyL2ACLNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('restriction', get_object_vars($data)) && null !== ($data->restriction ?? null)) {
-            $dataArray['restriction'] = $data->restriction ?? null;
+            $dataArray['restriction'] = $data->restriction;
         }
         if (array_key_exists('ruleMacs', get_object_vars($data)) && null !== ($data->ruleMacs ?? null)) {
             $values = [];
-            foreach ($data->ruleMacs ?? null as $value) {
+            foreach ($data->ruleMacs as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleMacs'] = $values;

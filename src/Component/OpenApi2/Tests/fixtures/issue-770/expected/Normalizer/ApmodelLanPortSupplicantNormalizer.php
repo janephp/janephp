@@ -51,12 +51,12 @@ class ApmodelLanPortSupplicantNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         return $dataArray;
     }

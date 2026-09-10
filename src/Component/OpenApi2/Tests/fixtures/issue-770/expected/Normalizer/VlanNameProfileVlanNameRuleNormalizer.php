@@ -48,8 +48,8 @@ class VlanNameProfileVlanNameRuleNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vlanName'] = $data->vlanName ?? null;
-        $dataArray['vlanId'] = $data->vlanId ?? null;
+        $dataArray['vlanName'] = $data->vlanName;
+        $dataArray['vlanId'] = $data->vlanId;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

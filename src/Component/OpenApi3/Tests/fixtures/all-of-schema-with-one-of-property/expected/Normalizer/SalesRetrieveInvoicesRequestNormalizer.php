@@ -52,9 +52,9 @@ class SalesRetrieveInvoicesRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $dataArray['filter'] = ($data->filter ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
+            $dataArray['filter'] = $data->filter === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
         }
-        $dataArray['discriminator'] = $data->discriminator ?? null;
+        $dataArray['discriminator'] = $data->discriminator;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

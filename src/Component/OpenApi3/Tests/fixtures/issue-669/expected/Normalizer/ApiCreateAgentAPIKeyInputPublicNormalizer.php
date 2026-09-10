@@ -56,10 +56,10 @@ class ApiCreateAgentAPIKeyInputPublicNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
-            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
+            $dataArray['agent_uuid'] = $data->agentUuid;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

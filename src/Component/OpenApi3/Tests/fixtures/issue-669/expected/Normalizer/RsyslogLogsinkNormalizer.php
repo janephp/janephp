@@ -86,24 +86,24 @@ class RsyslogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['server'] = $data->server ?? null;
-        $dataArray['port'] = $data->port ?? null;
-        $dataArray['tls'] = $data->tls ?? null;
-        $dataArray['format'] = $data->format ?? null;
+        $dataArray['server'] = $data->server;
+        $dataArray['port'] = $data->port;
+        $dataArray['tls'] = $data->tls;
+        $dataArray['format'] = $data->format;
         if (array_key_exists('logline', get_object_vars($data)) && null !== ($data->logline ?? null)) {
-            $dataArray['logline'] = $data->logline ?? null;
+            $dataArray['logline'] = $data->logline;
         }
         if (array_key_exists('sd', get_object_vars($data)) && null !== ($data->sd ?? null)) {
-            $dataArray['sd'] = $data->sd ?? null;
+            $dataArray['sd'] = $data->sd;
         }
         if (array_key_exists('ca', get_object_vars($data)) && null !== ($data->ca ?? null)) {
-            $dataArray['ca'] = $data->ca ?? null;
+            $dataArray['ca'] = $data->ca;
         }
         if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
-            $dataArray['key'] = $data->key ?? null;
+            $dataArray['key'] = $data->key;
         }
         if (array_key_exists('cert', get_object_vars($data)) && null !== ($data->cert ?? null)) {
-            $dataArray['cert'] = $data->cert ?? null;
+            $dataArray['cert'] = $data->cert;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

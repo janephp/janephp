@@ -70,11 +70,11 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['success'] = $data->success ?? null;
-        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['success'] = $data->success;
+        $dataArray['retriesLeft'] = $data->retriesLeft;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('uri', get_object_vars($data)) && null !== ($data->uri ?? null)) {
-            $dataArray['uri'] = $data->uri ?? null;
+            $dataArray['uri'] = $data->uri;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

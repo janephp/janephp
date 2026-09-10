@@ -68,26 +68,26 @@ class SystemLwapp2scgConfigurationNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('policy', get_object_vars($data)) && null !== ($data->policy ?? null)) {
-            $dataArray['policy'] = $data->policy ?? null;
+            $dataArray['policy'] = $data->policy;
         }
         if (array_key_exists('pasvMaxPort', get_object_vars($data)) && null !== ($data->pasvMaxPort ?? null)) {
-            $dataArray['pasvMaxPort'] = $data->pasvMaxPort ?? null;
+            $dataArray['pasvMaxPort'] = $data->pasvMaxPort;
         }
         if (array_key_exists('pasvMinPort', get_object_vars($data)) && null !== ($data->pasvMinPort ?? null)) {
-            $dataArray['pasvMinPort'] = $data->pasvMinPort ?? null;
+            $dataArray['pasvMinPort'] = $data->pasvMinPort;
         }
         if (array_key_exists('apList', get_object_vars($data)) && null !== ($data->apList ?? null)) {
             $values = [];
-            foreach ($data->apList ?? null as $value) {
+            foreach ($data->apList as $value) {
                 $values[] = $value;
             }
             $dataArray['apList'] = $values;
         }
         if (array_key_exists('acl', get_object_vars($data)) && null !== ($data->acl ?? null)) {
-            $dataArray['acl'] = $data->acl ?? null;
+            $dataArray['acl'] = $data->acl;
         }
         if (array_key_exists('natIpTranslation', get_object_vars($data)) && null !== ($data->natIpTranslation ?? null)) {
-            $dataArray['natIpTranslation'] = $data->natIpTranslation ?? null;
+            $dataArray['natIpTranslation'] = $data->natIpTranslation;
         }
         return $dataArray;
     }

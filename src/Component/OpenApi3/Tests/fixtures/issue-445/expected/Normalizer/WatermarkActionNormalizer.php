@@ -112,30 +112,30 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('watermarkFilePath', get_object_vars($data)) && null !== ($data->watermarkFilePath ?? null)) {
-            $dataArray['watermarkFilePath'] = $data->watermarkFilePath ?? null;
+            $dataArray['watermarkFilePath'] = $data->watermarkFilePath;
         }
         if (array_key_exists('marginLeft', get_object_vars($data)) && null !== ($data->marginLeft ?? null)) {
-            $dataArray['marginLeft'] = $data->marginLeft ?? null;
+            $dataArray['marginLeft'] = $data->marginLeft;
         }
         if (array_key_exists('marginTop', get_object_vars($data)) && null !== ($data->marginTop ?? null)) {
-            $dataArray['marginTop'] = $data->marginTop ?? null;
+            $dataArray['marginTop'] = $data->marginTop;
         }
         if (array_key_exists('marginRight', get_object_vars($data)) && null !== ($data->marginRight ?? null)) {
-            $dataArray['marginRight'] = $data->marginRight ?? null;
+            $dataArray['marginRight'] = $data->marginRight;
         }
         if (array_key_exists('marginBottom', get_object_vars($data)) && null !== ($data->marginBottom ?? null)) {
-            $dataArray['marginBottom'] = $data->marginBottom ?? null;
+            $dataArray['marginBottom'] = $data->marginBottom;
         }
         if (array_key_exists('opacity', get_object_vars($data)) && null !== ($data->opacity ?? null)) {
-            $dataArray['opacity'] = $data->opacity ?? null;
+            $dataArray['opacity'] = $data->opacity;
         }
         if (array_key_exists('widthRatio', get_object_vars($data)) && null !== ($data->widthRatio ?? null)) {
-            $dataArray['widthRatio'] = $data->widthRatio ?? null;
+            $dataArray['widthRatio'] = $data->widthRatio;
         }
         if (array_key_exists('heightRatio', get_object_vars($data)) && null !== ($data->heightRatio ?? null)) {
-            $dataArray['heightRatio'] = $data->heightRatio ?? null;
+            $dataArray['heightRatio'] = $data->heightRatio;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

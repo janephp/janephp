@@ -59,9 +59,9 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['position'] = $data->position ?? null;
-        $dataArray['label'] = $data->label ?? null;
-        $dataArray['votes'] = $data->votes ?? null;
+        $dataArray['position'] = $data->position;
+        $dataArray['label'] = $data->label;
+        $dataArray['votes'] = $data->votes;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

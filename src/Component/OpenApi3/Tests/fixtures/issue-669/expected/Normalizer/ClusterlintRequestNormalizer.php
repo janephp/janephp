@@ -81,28 +81,28 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('includeGroups', get_object_vars($data)) && null !== ($data->includeGroups ?? null)) {
             $values = [];
-            foreach ($data->includeGroups ?? null as $value) {
+            foreach ($data->includeGroups as $value) {
                 $values[] = $value;
             }
             $dataArray['include_groups'] = $values;
         }
         if (array_key_exists('includeChecks', get_object_vars($data)) && null !== ($data->includeChecks ?? null)) {
             $values_1 = [];
-            foreach ($data->includeChecks ?? null as $value_1) {
+            foreach ($data->includeChecks as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['include_checks'] = $values_1;
         }
         if (array_key_exists('excludeGroups', get_object_vars($data)) && null !== ($data->excludeGroups ?? null)) {
             $values_2 = [];
-            foreach ($data->excludeGroups ?? null as $value_2) {
+            foreach ($data->excludeGroups as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['exclude_groups'] = $values_2;
         }
         if (array_key_exists('excludeChecks', get_object_vars($data)) && null !== ($data->excludeChecks ?? null)) {
             $values_3 = [];
-            foreach ($data->excludeChecks ?? null as $value_3) {
+            foreach ($data->excludeChecks as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['exclude_checks'] = $values_3;

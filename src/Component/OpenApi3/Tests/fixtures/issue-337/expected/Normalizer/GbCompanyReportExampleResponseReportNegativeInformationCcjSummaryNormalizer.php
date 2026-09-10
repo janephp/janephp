@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
     {
         $dataArray = [];
         if (array_key_exists('exactRegistered', get_object_vars($data)) && null !== ($data->exactRegistered ?? null)) {
-            $dataArray['exactRegistered'] = $data->exactRegistered ?? null;
+            $dataArray['exactRegistered'] = $data->exactRegistered;
         }
         if (array_key_exists('possibleRegistered', get_object_vars($data)) && null !== ($data->possibleRegistered ?? null)) {
-            $dataArray['possibleRegistered'] = $data->possibleRegistered ?? null;
+            $dataArray['possibleRegistered'] = $data->possibleRegistered;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

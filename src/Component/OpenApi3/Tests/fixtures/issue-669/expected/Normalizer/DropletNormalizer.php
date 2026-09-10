@@ -174,60 +174,60 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['memory'] = $data->memory ?? null;
-        $dataArray['vcpus'] = $data->vcpus ?? null;
-        $dataArray['disk'] = $data->disk ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['memory'] = $data->memory;
+        $dataArray['vcpus'] = $data->vcpus;
+        $dataArray['disk'] = $data->disk;
         if (array_key_exists('diskInfo', get_object_vars($data)) && null !== ($data->diskInfo ?? null)) {
             $values = [];
-            foreach ($data->diskInfo ?? null as $value) {
+            foreach ($data->diskInfo as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['disk_info'] = $values;
         }
-        $dataArray['locked'] = $data->locked ?? null;
-        $dataArray['status'] = $data->status ?? null;
+        $dataArray['locked'] = $data->locked;
+        $dataArray['status'] = $data->status;
         if (array_key_exists('kernel', get_object_vars($data)) && null !== ($data->kernel ?? null)) {
-            $dataArray['kernel'] = ($data->kernel ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kernel ?? null, 'json', $context));
+            $dataArray['kernel'] = $data->kernel === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kernel, 'json', $context));
         }
-        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         $values_1 = [];
-        foreach ($data->features ?? null as $value_1) {
+        foreach ($data->features as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['features'] = $values_1;
         $values_2 = [];
-        foreach ($data->backupIds ?? null as $value_2) {
+        foreach ($data->backupIds as $value_2) {
             $values_2[] = $value_2;
         }
         $dataArray['backup_ids'] = $values_2;
-        $dataArray['next_backup_window'] = ($data->nextBackupWindow ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow ?? null, 'json', $context));
+        $dataArray['next_backup_window'] = $data->nextBackupWindow === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow, 'json', $context));
         $values_3 = [];
-        foreach ($data->snapshotIds ?? null as $value_3) {
+        foreach ($data->snapshotIds as $value_3) {
             $values_3[] = $value_3;
         }
         $dataArray['snapshot_ids'] = $values_3;
-        $dataArray['image'] = ($data->image ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image ?? null, 'json', $context));
+        $dataArray['image'] = $data->image === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
         $values_4 = [];
-        foreach ($data->volumeIds ?? null as $value_4) {
+        foreach ($data->volumeIds as $value_4) {
             $values_4[] = $value_4;
         }
         $dataArray['volume_ids'] = $values_4;
-        $dataArray['size'] = ($data->size ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->size ?? null, 'json', $context));
-        $dataArray['size_slug'] = $data->sizeSlug ?? null;
-        $dataArray['networks'] = ($data->networks ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->networks ?? null, 'json', $context));
-        $dataArray['region'] = ($data->region ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region ?? null, 'json', $context));
+        $dataArray['size'] = $data->size === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->size, 'json', $context));
+        $dataArray['size_slug'] = $data->sizeSlug;
+        $dataArray['networks'] = $data->networks === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->networks, 'json', $context));
+        $dataArray['region'] = $data->region === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
         $values_5 = [];
-        foreach ($data->tags ?? null as $value_5) {
+        foreach ($data->tags as $value_5) {
             $values_5[] = $value_5;
         }
         $dataArray['tags'] = $values_5;
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
-            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+            $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('gpuInfo', get_object_vars($data)) && null !== ($data->gpuInfo ?? null)) {
-            $dataArray['gpu_info'] = ($data->gpuInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo ?? null, 'json', $context));
+            $dataArray['gpu_info'] = $data->gpuInfo === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {

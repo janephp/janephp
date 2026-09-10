@@ -58,8 +58,8 @@ class OutputFormatSetXmpWritebackStateRequestItemNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->enabled ?? null;
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['enabled'] = $data->enabled;
+        $dataArray['id'] = $data->id;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

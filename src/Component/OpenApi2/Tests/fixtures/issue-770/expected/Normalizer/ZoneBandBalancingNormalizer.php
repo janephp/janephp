@@ -46,7 +46,7 @@ class ZoneBandBalancingNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('wifi24Percentage', get_object_vars($data)) && null !== ($data->wifi24Percentage ?? null)) {
-            $dataArray['wifi24Percentage'] = $data->wifi24Percentage ?? null;
+            $dataArray['wifi24Percentage'] = $data->wifi24Percentage;
         }
         return $dataArray;
     }

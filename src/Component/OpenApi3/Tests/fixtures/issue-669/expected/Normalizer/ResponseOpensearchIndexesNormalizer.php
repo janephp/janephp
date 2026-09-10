@@ -61,7 +61,7 @@ class ResponseOpensearchIndexesNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         if (array_key_exists('indexes', get_object_vars($data)) && null !== ($data->indexes ?? null)) {
             $values = [];
-            foreach ($data->indexes ?? null as $value) {
+            foreach ($data->indexes as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

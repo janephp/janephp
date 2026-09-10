@@ -70,21 +70,21 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->templateEngine ?? null;
-        if (is_string($data->templateEngine ?? null)) {
-            $value = $data->templateEngine ?? null;
+        $value = $data->templateEngine;
+        if (is_string($data->templateEngine)) {
+            $value = $data->templateEngine;
         }
         $dataArray['templateEngine'] = $value;
-        $value_1 = $data->displayPatternType ?? null;
-        if (is_string($data->displayPatternType ?? null)) {
-            $value_1 = $data->displayPatternType ?? null;
+        $value_1 = $data->displayPatternType;
+        if (is_string($data->displayPatternType)) {
+            $value_1 = $data->displayPatternType;
         }
         $dataArray['displayPatternType'] = $value_1;
         if (array_key_exists('templates', get_object_vars($data)) && null !== ($data->templates ?? null)) {
-            $value_2 = $data->templates ?? null;
-            if (is_object($data->templates ?? null)) {
+            $value_2 = $data->templates;
+            if (is_object($data->templates)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->templates ?? null as $key => $value_3) {
+                foreach ($data->templates as $key => $value_3) {
                     $values[$key] = $value_3;
                 }
                 $value_2 = $values;

@@ -48,8 +48,8 @@ class ShareUserNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['displayName'] = $data->displayName ?? null;
-        $dataArray['emailHash'] = $data->emailHash ?? null;
+        $dataArray['displayName'] = $data->displayName;
+        $dataArray['emailHash'] = $data->emailHash;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

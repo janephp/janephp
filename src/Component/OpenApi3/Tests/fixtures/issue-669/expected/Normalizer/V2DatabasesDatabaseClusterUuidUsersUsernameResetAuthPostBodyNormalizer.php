@@ -52,7 +52,7 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBodyNormalizer imp
     {
         $dataArray = [];
         if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
-            $dataArray['mysql_settings'] = ($data->mysqlSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings ?? null, 'json', $context));
+            $dataArray['mysql_settings'] = $data->mysqlSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

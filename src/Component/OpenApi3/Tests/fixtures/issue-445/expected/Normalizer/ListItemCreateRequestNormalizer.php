@@ -61,16 +61,16 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        $dataArray['contentSchemaId'] = $data->contentSchemaId;
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->content ?? null as $key => $value) {
+            foreach ($data->content as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
         return $dataArray;
     }

@@ -65,15 +65,15 @@ class ResponseAllKernelsNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         if (array_key_exists('kernels', get_object_vars($data)) && null !== ($data->kernels ?? null)) {
             $values = [];
-            foreach ($data->kernels ?? null as $value) {
+            foreach ($data->kernels as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['kernels'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
-        $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
+        $dataArray['meta'] = $data->meta === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

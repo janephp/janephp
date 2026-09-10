@@ -68,19 +68,19 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
     {
         $dataArray = [];
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('street', get_object_vars($data)) && null !== ($data->street ?? null)) {
-            $dataArray['street'] = $data->street ?? null;
+            $dataArray['street'] = $data->street;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('postCode', get_object_vars($data)) && null !== ($data->postCode ?? null)) {
-            $dataArray['postCode'] = $data->postCode ?? null;
+            $dataArray['postCode'] = $data->postCode;
         }
         if (array_key_exists('province', get_object_vars($data)) && null !== ($data->province ?? null)) {
-            $dataArray['province'] = $data->province ?? null;
+            $dataArray['province'] = $data->province;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

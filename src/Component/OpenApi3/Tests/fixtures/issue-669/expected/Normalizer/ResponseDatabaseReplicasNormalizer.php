@@ -57,7 +57,7 @@ class ResponseDatabaseReplicasNormalizer implements DenormalizerInterface, Norma
         $dataArray = [];
         if (array_key_exists('replicas', get_object_vars($data)) && null !== ($data->replicas ?? null)) {
             $values = [];
-            foreach ($data->replicas ?? null as $value) {
+            foreach ($data->replicas as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['replicas'] = $values;

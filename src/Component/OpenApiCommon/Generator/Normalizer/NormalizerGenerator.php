@@ -29,14 +29,15 @@ trait NormalizerGenerator
         if ($classGuess instanceof ParentClass) {
             foreach ($classGuess->getChildEntryKeys() as $discriminatorValue) {
                 $objectVar = new Expr\Variable('data');
-                $propertyVar = new Expr\BinaryOp\Coalesce(
-                    new Expr\PropertyFetch($objectVar, $this->getDiscriminatorProperty($classGuess)->getPhpName()),
+                $propertyVar = new Expr\PropertyFetch($objectVar, $this->getDiscriminatorProperty($classGuess)->getPhpName());
+                $guardedPropertyVar = new Expr\BinaryOp\Coalesce(
+                    $propertyVar,
                     new Expr\ConstFetch(new Name('null'))
                 );
 
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\LogicalAnd(
-                        new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                        new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $guardedPropertyVar),
                         new Expr\BinaryOp\Identical(new Scalar\String_($discriminatorValue), $propertyVar)
                     ),
                     [

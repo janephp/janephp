@@ -80,29 +80,29 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('agentWorkspaceName', get_object_vars($data)) && null !== ($data->agentWorkspaceName ?? null)) {
-            $dataArray['agent_workspace_name'] = $data->agentWorkspaceName ?? null;
+            $dataArray['agent_workspace_name'] = $data->agentWorkspaceName;
         }
         if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
-            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
+            $dataArray['dataset_uuid'] = $data->datasetUuid;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
-            foreach ($data->metrics ?? null as $value) {
+            foreach ($data->metrics as $value) {
                 $values[] = $value;
             }
             $dataArray['metrics'] = $values;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = ($data->starMetric ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric ?? null, 'json', $context));
+            $dataArray['star_metric'] = $data->starMetric === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
         }
         if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
-            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
+            $dataArray['workspace_uuid'] = $data->workspaceUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

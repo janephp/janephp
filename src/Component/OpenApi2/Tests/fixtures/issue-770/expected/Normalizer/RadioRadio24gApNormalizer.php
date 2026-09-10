@@ -80,35 +80,35 @@ class RadioRadio24gApNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('autoCellSizing', get_object_vars($data)) && null !== ($data->autoCellSizing ?? null)) {
-            $dataArray['autoCellSizing'] = $data->autoCellSizing ?? null;
+            $dataArray['autoCellSizing'] = $data->autoCellSizing;
         }
         if (array_key_exists('txPower', get_object_vars($data)) && null !== ($data->txPower ?? null)) {
-            $dataArray['txPower'] = $data->txPower ?? null;
+            $dataArray['txPower'] = $data->txPower;
         }
         if (array_key_exists('channelWidth', get_object_vars($data)) && null !== ($data->channelWidth ?? null)) {
-            $dataArray['channelWidth'] = $data->channelWidth ?? null;
+            $dataArray['channelWidth'] = $data->channelWidth;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('channelRange', get_object_vars($data)) && null !== ($data->channelRange ?? null)) {
             $values = [];
-            foreach ($data->channelRange ?? null as $value) {
+            foreach ($data->channelRange as $value) {
                 $values[] = $value;
             }
             $dataArray['channelRange'] = $values;
         }
         if (array_key_exists('wlanGroupId', get_object_vars($data)) && null !== ($data->wlanGroupId ?? null)) {
-            $dataArray['wlanGroupId'] = $data->wlanGroupId ?? null;
+            $dataArray['wlanGroupId'] = $data->wlanGroupId;
         }
         if (array_key_exists('wlanServiceEnabled', get_object_vars($data)) && null !== ($data->wlanServiceEnabled ?? null)) {
-            $dataArray['wlanServiceEnabled'] = $data->wlanServiceEnabled ?? null;
+            $dataArray['wlanServiceEnabled'] = $data->wlanServiceEnabled;
         }
         if (array_key_exists('protectionMode', get_object_vars($data)) && null !== ($data->protectionMode ?? null)) {
-            $dataArray['protectionMode'] = $data->protectionMode ?? null;
+            $dataArray['protectionMode'] = $data->protectionMode;
         }
         if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
-            $dataArray['autoChannelSelection'] = ($data->autoChannelSelection ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection ?? null, 'json', $context));
+            $dataArray['autoChannelSelection'] = $data->autoChannelSelection === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
         }
         return $dataArray;
     }

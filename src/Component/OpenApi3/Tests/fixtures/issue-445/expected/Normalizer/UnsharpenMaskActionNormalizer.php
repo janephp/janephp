@@ -72,15 +72,15 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('radius', get_object_vars($data)) && null !== ($data->radius ?? null)) {
-            $dataArray['radius'] = $data->radius ?? null;
+            $dataArray['radius'] = $data->radius;
         }
         if (array_key_exists('threshold', get_object_vars($data)) && null !== ($data->threshold ?? null)) {
-            $dataArray['threshold'] = $data->threshold ?? null;
+            $dataArray['threshold'] = $data->threshold;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

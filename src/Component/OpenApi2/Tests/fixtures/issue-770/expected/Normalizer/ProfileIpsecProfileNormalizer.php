@@ -118,73 +118,73 @@ class ProfileIpsecProfileNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('serverAddr', get_object_vars($data)) && null !== ($data->serverAddr ?? null)) {
-            $dataArray['serverAddr'] = $data->serverAddr ?? null;
+            $dataArray['serverAddr'] = $data->serverAddr;
         }
         if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
-            $dataArray['authType'] = $data->authType ?? null;
+            $dataArray['authType'] = $data->authType;
         }
         if (array_key_exists('tunnelMode', get_object_vars($data)) && null !== ($data->tunnelMode ?? null)) {
-            $dataArray['tunnelMode'] = $data->tunnelMode ?? null;
+            $dataArray['tunnelMode'] = $data->tunnelMode;
         }
         if (array_key_exists('preSharedKey', get_object_vars($data)) && null !== ($data->preSharedKey ?? null)) {
-            $dataArray['preSharedKey'] = $data->preSharedKey ?? null;
+            $dataArray['preSharedKey'] = $data->preSharedKey;
         }
         if (array_key_exists('ikeSecurityAssociation', get_object_vars($data)) && null !== ($data->ikeSecurityAssociation ?? null)) {
-            $dataArray['ikeSecurityAssociation'] = ($data->ikeSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ikeSecurityAssociation ?? null, 'json', $context));
+            $dataArray['ikeSecurityAssociation'] = $data->ikeSecurityAssociation === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ikeSecurityAssociation, 'json', $context));
         }
         if (array_key_exists('espSecurityAssociation', get_object_vars($data)) && null !== ($data->espSecurityAssociation ?? null)) {
-            $dataArray['espSecurityAssociation'] = ($data->espSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->espSecurityAssociation ?? null, 'json', $context));
+            $dataArray['espSecurityAssociation'] = $data->espSecurityAssociation === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->espSecurityAssociation, 'json', $context));
         }
         if (array_key_exists('ikeRekeyTime', get_object_vars($data)) && null !== ($data->ikeRekeyTime ?? null)) {
-            $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime ?? null;
+            $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime;
         }
         if (array_key_exists('ikeRekeyTimeUnit', get_object_vars($data)) && null !== ($data->ikeRekeyTimeUnit ?? null)) {
-            $dataArray['ikeRekeyTimeUnit'] = $data->ikeRekeyTimeUnit ?? null;
+            $dataArray['ikeRekeyTimeUnit'] = $data->ikeRekeyTimeUnit;
         }
         if (array_key_exists('espRekeyTime', get_object_vars($data)) && null !== ($data->espRekeyTime ?? null)) {
-            $dataArray['espRekeyTime'] = $data->espRekeyTime ?? null;
+            $dataArray['espRekeyTime'] = $data->espRekeyTime;
         }
         if (array_key_exists('espRekeyTimeUnit', get_object_vars($data)) && null !== ($data->espRekeyTimeUnit ?? null)) {
-            $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit ?? null;
+            $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit;
         }
         if (array_key_exists('cmProtocolOption', get_object_vars($data)) && null !== ($data->cmProtocolOption ?? null)) {
-            $dataArray['cmProtocolOption'] = ($data->cmProtocolOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cmProtocolOption ?? null, 'json', $context));
+            $dataArray['cmProtocolOption'] = $data->cmProtocolOption === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cmProtocolOption, 'json', $context));
         }
         if (array_key_exists('advancedOption', get_object_vars($data)) && null !== ($data->advancedOption ?? null)) {
-            $dataArray['advancedOption'] = ($data->advancedOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->advancedOption ?? null, 'json', $context));
+            $dataArray['advancedOption'] = $data->advancedOption === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->advancedOption, 'json', $context));
         }
         if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
-            $dataArray['ipMode'] = $data->ipMode ?? null;
+            $dataArray['ipMode'] = $data->ipMode;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
-            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+            $dataArray['createDateTime'] = $data->createDateTime;
         }
         if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
-            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime;
         }
         if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
-            $dataArray['creatorId'] = $data->creatorId ?? null;
+            $dataArray['creatorId'] = $data->creatorId;
         }
         if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
-            $dataArray['modifierId'] = $data->modifierId ?? null;
+            $dataArray['modifierId'] = $data->modifierId;
         }
         if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
-            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+            $dataArray['creatorUsername'] = $data->creatorUsername;
         }
         if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
-            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+            $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         return $dataArray;
     }

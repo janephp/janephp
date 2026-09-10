@@ -82,16 +82,16 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->changeCommands ?? null as $value) {
+        foreach ($data->changeCommands as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $value_1 = $data->filterRequest ?? null;
-        if (is_object($data->filterRequest ?? null)) {
-            $value_1 = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
+        $dataArray['kind'] = $data->kind;
+        $value_1 = $data->filterRequest;
+        if (is_object($data->filterRequest)) {
+            $value_1 = $data->filterRequest === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
         }
         $dataArray['filterRequest'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

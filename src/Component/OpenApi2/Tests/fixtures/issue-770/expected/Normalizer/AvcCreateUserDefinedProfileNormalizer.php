@@ -64,18 +64,18 @@ class AvcCreateUserDefinedProfileNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('destIp', get_object_vars($data)) && null !== ($data->destIp ?? null)) {
-            $dataArray['destIp'] = $data->destIp ?? null;
+            $dataArray['destIp'] = $data->destIp;
         }
         if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
-            $dataArray['netmask'] = $data->netmask ?? null;
+            $dataArray['netmask'] = $data->netmask;
         }
-        $dataArray['destPort'] = $data->destPort ?? null;
-        $dataArray['protocol'] = $data->protocol ?? null;
+        $dataArray['destPort'] = $data->destPort;
+        $dataArray['protocol'] = $data->protocol;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

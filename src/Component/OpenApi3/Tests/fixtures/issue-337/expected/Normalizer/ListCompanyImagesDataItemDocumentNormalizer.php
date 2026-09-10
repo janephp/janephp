@@ -60,13 +60,13 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('imageType', get_object_vars($data)) && null !== ($data->imageType ?? null)) {
-            $dataArray['imageType'] = $data->imageType ?? null;
+            $dataArray['imageType'] = $data->imageType;
         }
         if (array_key_exists('imageCode', get_object_vars($data)) && null !== ($data->imageCode ?? null)) {
-            $dataArray['imageCode'] = $data->imageCode ?? null;
+            $dataArray['imageCode'] = $data->imageCode;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

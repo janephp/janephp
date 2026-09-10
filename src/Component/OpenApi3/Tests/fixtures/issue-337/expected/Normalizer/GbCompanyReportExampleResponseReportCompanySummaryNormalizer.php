@@ -84,31 +84,31 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
     {
         $dataArray = [];
         if (array_key_exists('businessName', get_object_vars($data)) && null !== ($data->businessName ?? null)) {
-            $dataArray['businessName'] = $data->businessName ?? null;
+            $dataArray['businessName'] = $data->businessName;
         }
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         if (array_key_exists('companyNumber', get_object_vars($data)) && null !== ($data->companyNumber ?? null)) {
-            $dataArray['companyNumber'] = $data->companyNumber ?? null;
+            $dataArray['companyNumber'] = $data->companyNumber;
         }
         if (array_key_exists('companyRegistrationNumber', get_object_vars($data)) && null !== ($data->companyRegistrationNumber ?? null)) {
-            $dataArray['companyRegistrationNumber'] = $data->companyRegistrationNumber ?? null;
+            $dataArray['companyRegistrationNumber'] = $data->companyRegistrationNumber;
         }
         if (array_key_exists('mainActivity', get_object_vars($data)) && null !== ($data->mainActivity ?? null)) {
-            $dataArray['mainActivity'] = ($data->mainActivity ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainActivity ?? null, 'json', $context));
+            $dataArray['mainActivity'] = $data->mainActivity === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainActivity, 'json', $context));
         }
         if (array_key_exists('companyStatus', get_object_vars($data)) && null !== ($data->companyStatus ?? null)) {
-            $dataArray['companyStatus'] = ($data->companyStatus ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus ?? null, 'json', $context));
+            $dataArray['companyStatus'] = $data->companyStatus === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
         }
         if (array_key_exists('latestTurnoverFigure', get_object_vars($data)) && null !== ($data->latestTurnoverFigure ?? null)) {
-            $dataArray['latestTurnoverFigure'] = ($data->latestTurnoverFigure ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure ?? null, 'json', $context));
+            $dataArray['latestTurnoverFigure'] = $data->latestTurnoverFigure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure, 'json', $context));
         }
         if (array_key_exists('latestShareholdersEquityFigure', get_object_vars($data)) && null !== ($data->latestShareholdersEquityFigure ?? null)) {
-            $dataArray['latestShareholdersEquityFigure'] = ($data->latestShareholdersEquityFigure ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestShareholdersEquityFigure ?? null, 'json', $context));
+            $dataArray['latestShareholdersEquityFigure'] = $data->latestShareholdersEquityFigure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestShareholdersEquityFigure, 'json', $context));
         }
         if (array_key_exists('creditRating', get_object_vars($data)) && null !== ($data->creditRating ?? null)) {
-            $dataArray['creditRating'] = ($data->creditRating ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditRating ?? null, 'json', $context));
+            $dataArray['creditRating'] = $data->creditRating === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditRating, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

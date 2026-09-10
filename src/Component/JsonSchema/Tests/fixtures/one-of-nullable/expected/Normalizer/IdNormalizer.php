@@ -46,7 +46,7 @@ class IdNormalizer implements DenormalizerInterface, NormalizerInterface, Denorm
     {
         $dataArray = [];
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         return $dataArray;
     }

@@ -58,16 +58,16 @@ class DomainModifyDomainNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('domainType', get_object_vars($data)) && null !== ($data->domainType ?? null)) {
-            $dataArray['domainType'] = $data->domainType ?? null;
+            $dataArray['domainType'] = $data->domainType;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
-            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus;
         }
         return $dataArray;
     }

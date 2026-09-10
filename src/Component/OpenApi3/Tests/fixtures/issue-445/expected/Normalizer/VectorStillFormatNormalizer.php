@@ -71,14 +71,14 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
-            $dataArray['extension'] = $data->extension ?? null;
+            $dataArray['extension'] = $data->extension;
         }
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
-            $value = $data->resizeAction ?? null;
-            if (is_object($data->resizeAction ?? null)) {
-                $value = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
+            $value = $data->resizeAction;
+            if (is_object($data->resizeAction)) {
+                $value = $data->resizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
             }
             $dataArray['resizeAction'] = $value;
         }

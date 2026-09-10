@@ -48,8 +48,8 @@ class ProfileProviderPLMNNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mcc'] = $data->mcc ?? null;
-        $dataArray['mnc'] = $data->mnc ?? null;
+        $dataArray['mcc'] = $data->mcc;
+        $dataArray['mnc'] = $data->mnc;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

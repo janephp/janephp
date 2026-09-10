@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
     {
         $dataArray = [];
         if (array_key_exists('outstanding', get_object_vars($data)) && null !== ($data->outstanding ?? null)) {
-            $dataArray['outstanding'] = $data->outstanding ?? null;
+            $dataArray['outstanding'] = $data->outstanding;
         }
         if (array_key_exists('satisfied', get_object_vars($data)) && null !== ($data->satisfied ?? null)) {
-            $dataArray['satisfied'] = $data->satisfied ?? null;
+            $dataArray['satisfied'] = $data->satisfied;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -73,19 +73,19 @@ class SourceOutputFormatsNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = $data->image ?? null;
+            $dataArray['image'] = $data->image;
         }
         if (array_key_exists('video', get_object_vars($data)) && null !== ($data->video ?? null)) {
-            $dataArray['video'] = $data->video ?? null;
+            $dataArray['video'] = $data->video;
         }
         if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
-            $dataArray['document'] = $data->document ?? null;
+            $dataArray['document'] = $data->document;
         }
         if (array_key_exists('audio', get_object_vars($data)) && null !== ($data->audio ?? null)) {
-            $dataArray['audio'] = $data->audio ?? null;
+            $dataArray['audio'] = $data->audio;
         }
         if (array_key_exists('vector', get_object_vars($data)) && null !== ($data->vector ?? null)) {
-            $dataArray['vector'] = $data->vector ?? null;
+            $dataArray['vector'] = $data->vector;
         }
         return $dataArray;
     }

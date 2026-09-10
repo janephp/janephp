@@ -48,9 +48,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['msgref'] = $data->msgref ?? null;
+        $dataArray['msgref'] = $data->msgref;
         if (array_key_exists('msgRef2', get_object_vars($data)) && null !== ($data->msgRef2 ?? null)) {
-            $dataArray['msg_ref'] = $data->msgRef2 ?? null;
+            $dataArray['msg_ref'] = $data->msgRef2;
         }
         return $dataArray;
     }

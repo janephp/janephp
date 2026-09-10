@@ -50,7 +50,7 @@ class UserRoleDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->ids ?? null as $value) {
+        foreach ($data->ids as $value) {
             $values[] = $value;
         }
         $dataArray['ids'] = $values;

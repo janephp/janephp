@@ -71,19 +71,19 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['importedListItemCount'] = $data->importedListItemCount ?? null;
-        $dataArray['skippedListItemCount'] = $data->skippedListItemCount ?? null;
-        $dataArray['totalListItemCount'] = $data->totalListItemCount ?? null;
+        $dataArray['importedListItemCount'] = $data->importedListItemCount;
+        $dataArray['skippedListItemCount'] = $data->skippedListItemCount;
+        $dataArray['totalListItemCount'] = $data->totalListItemCount;
         if (array_key_exists('skippedListItemIds', get_object_vars($data)) && null !== ($data->skippedListItemIds ?? null)) {
             $values = [];
-            foreach ($data->skippedListItemIds ?? null as $value) {
+            foreach ($data->skippedListItemIds as $value) {
                 $values[] = $value;
             }
             $dataArray['skippedListItemIds'] = $values;
         }
         if (array_key_exists('importedListItemIds', get_object_vars($data)) && null !== ($data->importedListItemIds ?? null)) {
             $values_1 = [];
-            foreach ($data->importedListItemIds ?? null as $value_1) {
+            foreach ($data->importedListItemIds as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['importedListItemIds'] = $values_1;

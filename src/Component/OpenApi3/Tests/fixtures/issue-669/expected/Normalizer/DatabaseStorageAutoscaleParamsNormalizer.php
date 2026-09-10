@@ -62,12 +62,12 @@ class DatabaseStorageAutoscaleParamsNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['enabled'] = $data->enabled;
         if (array_key_exists('thresholdPercent', get_object_vars($data)) && null !== ($data->thresholdPercent ?? null)) {
-            $dataArray['threshold_percent'] = $data->thresholdPercent ?? null;
+            $dataArray['threshold_percent'] = $data->thresholdPercent;
         }
         if (array_key_exists('incrementGib', get_object_vars($data)) && null !== ($data->incrementGib ?? null)) {
-            $dataArray['increment_gib'] = $data->incrementGib ?? null;
+            $dataArray['increment_gib'] = $data->incrementGib;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -48,8 +48,8 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['code'] = $data->code ?? null;
-        $dataArray['message'] = $data->message ?? null;
+        $dataArray['code'] = $data->code;
+        $dataArray['message'] = $data->message;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

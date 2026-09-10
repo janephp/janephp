@@ -68,13 +68,13 @@ class DropletCreateBackupPolicyNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('plan', get_object_vars($data)) && null !== ($data->plan ?? null)) {
-            $dataArray['plan'] = $data->plan ?? null;
+            $dataArray['plan'] = $data->plan;
         }
         if (array_key_exists('weekday', get_object_vars($data)) && null !== ($data->weekday ?? null)) {
-            $dataArray['weekday'] = $data->weekday ?? null;
+            $dataArray['weekday'] = $data->weekday;
         }
         if (array_key_exists('hour', get_object_vars($data)) && null !== ($data->hour ?? null)) {
-            $dataArray['hour'] = $data->hour ?? null;
+            $dataArray['hour'] = $data->hour;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

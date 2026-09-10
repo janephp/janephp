@@ -290,172 +290,172 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('autovacuumFreezeMaxAge', get_object_vars($data)) && null !== ($data->autovacuumFreezeMaxAge ?? null)) {
-            $dataArray['autovacuum_freeze_max_age'] = $data->autovacuumFreezeMaxAge ?? null;
+            $dataArray['autovacuum_freeze_max_age'] = $data->autovacuumFreezeMaxAge;
         }
         if (array_key_exists('autovacuumMaxWorkers', get_object_vars($data)) && null !== ($data->autovacuumMaxWorkers ?? null)) {
-            $dataArray['autovacuum_max_workers'] = $data->autovacuumMaxWorkers ?? null;
+            $dataArray['autovacuum_max_workers'] = $data->autovacuumMaxWorkers;
         }
         if (array_key_exists('autovacuumNaptime', get_object_vars($data)) && null !== ($data->autovacuumNaptime ?? null)) {
-            $dataArray['autovacuum_naptime'] = $data->autovacuumNaptime ?? null;
+            $dataArray['autovacuum_naptime'] = $data->autovacuumNaptime;
         }
         if (array_key_exists('autovacuumVacuumThreshold', get_object_vars($data)) && null !== ($data->autovacuumVacuumThreshold ?? null)) {
-            $dataArray['autovacuum_vacuum_threshold'] = $data->autovacuumVacuumThreshold ?? null;
+            $dataArray['autovacuum_vacuum_threshold'] = $data->autovacuumVacuumThreshold;
         }
         if (array_key_exists('autovacuumAnalyzeThreshold', get_object_vars($data)) && null !== ($data->autovacuumAnalyzeThreshold ?? null)) {
-            $dataArray['autovacuum_analyze_threshold'] = $data->autovacuumAnalyzeThreshold ?? null;
+            $dataArray['autovacuum_analyze_threshold'] = $data->autovacuumAnalyzeThreshold;
         }
         if (array_key_exists('autovacuumVacuumScaleFactor', get_object_vars($data)) && null !== ($data->autovacuumVacuumScaleFactor ?? null)) {
-            $dataArray['autovacuum_vacuum_scale_factor'] = $data->autovacuumVacuumScaleFactor ?? null;
+            $dataArray['autovacuum_vacuum_scale_factor'] = $data->autovacuumVacuumScaleFactor;
         }
         if (array_key_exists('autovacuumAnalyzeScaleFactor', get_object_vars($data)) && null !== ($data->autovacuumAnalyzeScaleFactor ?? null)) {
-            $dataArray['autovacuum_analyze_scale_factor'] = $data->autovacuumAnalyzeScaleFactor ?? null;
+            $dataArray['autovacuum_analyze_scale_factor'] = $data->autovacuumAnalyzeScaleFactor;
         }
         if (array_key_exists('autovacuumVacuumCostDelay', get_object_vars($data)) && null !== ($data->autovacuumVacuumCostDelay ?? null)) {
-            $dataArray['autovacuum_vacuum_cost_delay'] = $data->autovacuumVacuumCostDelay ?? null;
+            $dataArray['autovacuum_vacuum_cost_delay'] = $data->autovacuumVacuumCostDelay;
         }
         if (array_key_exists('autovacuumVacuumCostLimit', get_object_vars($data)) && null !== ($data->autovacuumVacuumCostLimit ?? null)) {
-            $dataArray['autovacuum_vacuum_cost_limit'] = $data->autovacuumVacuumCostLimit ?? null;
+            $dataArray['autovacuum_vacuum_cost_limit'] = $data->autovacuumVacuumCostLimit;
         }
         if (array_key_exists('backupHour', get_object_vars($data)) && null !== ($data->backupHour ?? null)) {
-            $dataArray['backup_hour'] = $data->backupHour ?? null;
+            $dataArray['backup_hour'] = $data->backupHour;
         }
         if (array_key_exists('backupMinute', get_object_vars($data)) && null !== ($data->backupMinute ?? null)) {
-            $dataArray['backup_minute'] = $data->backupMinute ?? null;
+            $dataArray['backup_minute'] = $data->backupMinute;
         }
         if (array_key_exists('bgwriterDelay', get_object_vars($data)) && null !== ($data->bgwriterDelay ?? null)) {
-            $dataArray['bgwriter_delay'] = $data->bgwriterDelay ?? null;
+            $dataArray['bgwriter_delay'] = $data->bgwriterDelay;
         }
         if (array_key_exists('bgwriterFlushAfter', get_object_vars($data)) && null !== ($data->bgwriterFlushAfter ?? null)) {
-            $dataArray['bgwriter_flush_after'] = $data->bgwriterFlushAfter ?? null;
+            $dataArray['bgwriter_flush_after'] = $data->bgwriterFlushAfter;
         }
         if (array_key_exists('bgwriterLruMaxpages', get_object_vars($data)) && null !== ($data->bgwriterLruMaxpages ?? null)) {
-            $dataArray['bgwriter_lru_maxpages'] = $data->bgwriterLruMaxpages ?? null;
+            $dataArray['bgwriter_lru_maxpages'] = $data->bgwriterLruMaxpages;
         }
         if (array_key_exists('bgwriterLruMultiplier', get_object_vars($data)) && null !== ($data->bgwriterLruMultiplier ?? null)) {
-            $dataArray['bgwriter_lru_multiplier'] = $data->bgwriterLruMultiplier ?? null;
+            $dataArray['bgwriter_lru_multiplier'] = $data->bgwriterLruMultiplier;
         }
         if (array_key_exists('deadlockTimeout', get_object_vars($data)) && null !== ($data->deadlockTimeout ?? null)) {
-            $dataArray['deadlock_timeout'] = $data->deadlockTimeout ?? null;
+            $dataArray['deadlock_timeout'] = $data->deadlockTimeout;
         }
         if (array_key_exists('defaultToastCompression', get_object_vars($data)) && null !== ($data->defaultToastCompression ?? null)) {
-            $dataArray['default_toast_compression'] = $data->defaultToastCompression ?? null;
+            $dataArray['default_toast_compression'] = $data->defaultToastCompression;
         }
         if (array_key_exists('idleInTransactionSessionTimeout', get_object_vars($data)) && null !== ($data->idleInTransactionSessionTimeout ?? null)) {
-            $dataArray['idle_in_transaction_session_timeout'] = $data->idleInTransactionSessionTimeout ?? null;
+            $dataArray['idle_in_transaction_session_timeout'] = $data->idleInTransactionSessionTimeout;
         }
         if (array_key_exists('jit', get_object_vars($data)) && null !== ($data->jit ?? null)) {
-            $dataArray['jit'] = $data->jit ?? null;
+            $dataArray['jit'] = $data->jit;
         }
         if (array_key_exists('logAutovacuumMinDuration', get_object_vars($data)) && null !== ($data->logAutovacuumMinDuration ?? null)) {
-            $dataArray['log_autovacuum_min_duration'] = $data->logAutovacuumMinDuration ?? null;
+            $dataArray['log_autovacuum_min_duration'] = $data->logAutovacuumMinDuration;
         }
         if (array_key_exists('logErrorVerbosity', get_object_vars($data)) && null !== ($data->logErrorVerbosity ?? null)) {
-            $dataArray['log_error_verbosity'] = $data->logErrorVerbosity ?? null;
+            $dataArray['log_error_verbosity'] = $data->logErrorVerbosity;
         }
         if (array_key_exists('logLinePrefix', get_object_vars($data)) && null !== ($data->logLinePrefix ?? null)) {
-            $dataArray['log_line_prefix'] = $data->logLinePrefix ?? null;
+            $dataArray['log_line_prefix'] = $data->logLinePrefix;
         }
         if (array_key_exists('logMinDurationStatement', get_object_vars($data)) && null !== ($data->logMinDurationStatement ?? null)) {
-            $dataArray['log_min_duration_statement'] = $data->logMinDurationStatement ?? null;
+            $dataArray['log_min_duration_statement'] = $data->logMinDurationStatement;
         }
         if (array_key_exists('maxFilesPerProcess', get_object_vars($data)) && null !== ($data->maxFilesPerProcess ?? null)) {
-            $dataArray['max_files_per_process'] = $data->maxFilesPerProcess ?? null;
+            $dataArray['max_files_per_process'] = $data->maxFilesPerProcess;
         }
         if (array_key_exists('maxPreparedTransactions', get_object_vars($data)) && null !== ($data->maxPreparedTransactions ?? null)) {
-            $dataArray['max_prepared_transactions'] = $data->maxPreparedTransactions ?? null;
+            $dataArray['max_prepared_transactions'] = $data->maxPreparedTransactions;
         }
         if (array_key_exists('maxPredLocksPerTransaction', get_object_vars($data)) && null !== ($data->maxPredLocksPerTransaction ?? null)) {
-            $dataArray['max_pred_locks_per_transaction'] = $data->maxPredLocksPerTransaction ?? null;
+            $dataArray['max_pred_locks_per_transaction'] = $data->maxPredLocksPerTransaction;
         }
         if (array_key_exists('maxLocksPerTransaction', get_object_vars($data)) && null !== ($data->maxLocksPerTransaction ?? null)) {
-            $dataArray['max_locks_per_transaction'] = $data->maxLocksPerTransaction ?? null;
+            $dataArray['max_locks_per_transaction'] = $data->maxLocksPerTransaction;
         }
         if (array_key_exists('maxStackDepth', get_object_vars($data)) && null !== ($data->maxStackDepth ?? null)) {
-            $dataArray['max_stack_depth'] = $data->maxStackDepth ?? null;
+            $dataArray['max_stack_depth'] = $data->maxStackDepth;
         }
         if (array_key_exists('maxStandbyArchiveDelay', get_object_vars($data)) && null !== ($data->maxStandbyArchiveDelay ?? null)) {
-            $dataArray['max_standby_archive_delay'] = $data->maxStandbyArchiveDelay ?? null;
+            $dataArray['max_standby_archive_delay'] = $data->maxStandbyArchiveDelay;
         }
         if (array_key_exists('maxStandbyStreamingDelay', get_object_vars($data)) && null !== ($data->maxStandbyStreamingDelay ?? null)) {
-            $dataArray['max_standby_streaming_delay'] = $data->maxStandbyStreamingDelay ?? null;
+            $dataArray['max_standby_streaming_delay'] = $data->maxStandbyStreamingDelay;
         }
         if (array_key_exists('maxReplicationSlots', get_object_vars($data)) && null !== ($data->maxReplicationSlots ?? null)) {
-            $dataArray['max_replication_slots'] = $data->maxReplicationSlots ?? null;
+            $dataArray['max_replication_slots'] = $data->maxReplicationSlots;
         }
         if (array_key_exists('maxLogicalReplicationWorkers', get_object_vars($data)) && null !== ($data->maxLogicalReplicationWorkers ?? null)) {
-            $dataArray['max_logical_replication_workers'] = $data->maxLogicalReplicationWorkers ?? null;
+            $dataArray['max_logical_replication_workers'] = $data->maxLogicalReplicationWorkers;
         }
         if (array_key_exists('maxParallelWorkers', get_object_vars($data)) && null !== ($data->maxParallelWorkers ?? null)) {
-            $dataArray['max_parallel_workers'] = $data->maxParallelWorkers ?? null;
+            $dataArray['max_parallel_workers'] = $data->maxParallelWorkers;
         }
         if (array_key_exists('maxParallelWorkersPerGather', get_object_vars($data)) && null !== ($data->maxParallelWorkersPerGather ?? null)) {
-            $dataArray['max_parallel_workers_per_gather'] = $data->maxParallelWorkersPerGather ?? null;
+            $dataArray['max_parallel_workers_per_gather'] = $data->maxParallelWorkersPerGather;
         }
         if (array_key_exists('maxWorkerProcesses', get_object_vars($data)) && null !== ($data->maxWorkerProcesses ?? null)) {
-            $dataArray['max_worker_processes'] = $data->maxWorkerProcesses ?? null;
+            $dataArray['max_worker_processes'] = $data->maxWorkerProcesses;
         }
         if (array_key_exists('pgPartmanBgwRole', get_object_vars($data)) && null !== ($data->pgPartmanBgwRole ?? null)) {
-            $dataArray['pg_partman_bgw.role'] = $data->pgPartmanBgwRole ?? null;
+            $dataArray['pg_partman_bgw.role'] = $data->pgPartmanBgwRole;
         }
         if (array_key_exists('pgPartmanBgwInterval', get_object_vars($data)) && null !== ($data->pgPartmanBgwInterval ?? null)) {
-            $dataArray['pg_partman_bgw.interval'] = $data->pgPartmanBgwInterval ?? null;
+            $dataArray['pg_partman_bgw.interval'] = $data->pgPartmanBgwInterval;
         }
         if (array_key_exists('pgStatStatementsTrack', get_object_vars($data)) && null !== ($data->pgStatStatementsTrack ?? null)) {
-            $dataArray['pg_stat_statements.track'] = $data->pgStatStatementsTrack ?? null;
+            $dataArray['pg_stat_statements.track'] = $data->pgStatStatementsTrack;
         }
         if (array_key_exists('tempFileLimit', get_object_vars($data)) && null !== ($data->tempFileLimit ?? null)) {
-            $dataArray['temp_file_limit'] = $data->tempFileLimit ?? null;
+            $dataArray['temp_file_limit'] = $data->tempFileLimit;
         }
         if (array_key_exists('timezone', get_object_vars($data)) && null !== ($data->timezone ?? null)) {
-            $dataArray['timezone'] = $data->timezone ?? null;
+            $dataArray['timezone'] = $data->timezone;
         }
         if (array_key_exists('trackActivityQuerySize', get_object_vars($data)) && null !== ($data->trackActivityQuerySize ?? null)) {
-            $dataArray['track_activity_query_size'] = $data->trackActivityQuerySize ?? null;
+            $dataArray['track_activity_query_size'] = $data->trackActivityQuerySize;
         }
         if (array_key_exists('trackCommitTimestamp', get_object_vars($data)) && null !== ($data->trackCommitTimestamp ?? null)) {
-            $dataArray['track_commit_timestamp'] = $data->trackCommitTimestamp ?? null;
+            $dataArray['track_commit_timestamp'] = $data->trackCommitTimestamp;
         }
         if (array_key_exists('trackFunctions', get_object_vars($data)) && null !== ($data->trackFunctions ?? null)) {
-            $dataArray['track_functions'] = $data->trackFunctions ?? null;
+            $dataArray['track_functions'] = $data->trackFunctions;
         }
         if (array_key_exists('trackIoTiming', get_object_vars($data)) && null !== ($data->trackIoTiming ?? null)) {
-            $dataArray['track_io_timing'] = $data->trackIoTiming ?? null;
+            $dataArray['track_io_timing'] = $data->trackIoTiming;
         }
         if (array_key_exists('maxWalSenders', get_object_vars($data)) && null !== ($data->maxWalSenders ?? null)) {
-            $dataArray['max_wal_senders'] = $data->maxWalSenders ?? null;
+            $dataArray['max_wal_senders'] = $data->maxWalSenders;
         }
         if (array_key_exists('walSenderTimeout', get_object_vars($data)) && null !== ($data->walSenderTimeout ?? null)) {
-            $dataArray['wal_sender_timeout'] = $data->walSenderTimeout ?? null;
+            $dataArray['wal_sender_timeout'] = $data->walSenderTimeout;
         }
         if (array_key_exists('walWriterDelay', get_object_vars($data)) && null !== ($data->walWriterDelay ?? null)) {
-            $dataArray['wal_writer_delay'] = $data->walWriterDelay ?? null;
+            $dataArray['wal_writer_delay'] = $data->walWriterDelay;
         }
         if (array_key_exists('sharedBuffersPercentage', get_object_vars($data)) && null !== ($data->sharedBuffersPercentage ?? null)) {
-            $dataArray['shared_buffers_percentage'] = $data->sharedBuffersPercentage ?? null;
+            $dataArray['shared_buffers_percentage'] = $data->sharedBuffersPercentage;
         }
         if (array_key_exists('pgbouncer', get_object_vars($data)) && null !== ($data->pgbouncer ?? null)) {
-            $dataArray['pgbouncer'] = ($data->pgbouncer ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pgbouncer ?? null, 'json', $context));
+            $dataArray['pgbouncer'] = $data->pgbouncer === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pgbouncer, 'json', $context));
         }
         if (array_key_exists('workMem', get_object_vars($data)) && null !== ($data->workMem ?? null)) {
-            $dataArray['work_mem'] = $data->workMem ?? null;
+            $dataArray['work_mem'] = $data->workMem;
         }
         if (array_key_exists('timescaledb', get_object_vars($data)) && null !== ($data->timescaledb ?? null)) {
-            $dataArray['timescaledb'] = ($data->timescaledb ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->timescaledb ?? null, 'json', $context));
+            $dataArray['timescaledb'] = $data->timescaledb === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->timescaledb, 'json', $context));
         }
         if (array_key_exists('synchronousReplication', get_object_vars($data)) && null !== ($data->synchronousReplication ?? null)) {
-            $dataArray['synchronous_replication'] = $data->synchronousReplication ?? null;
+            $dataArray['synchronous_replication'] = $data->synchronousReplication;
         }
         if (array_key_exists('statMonitorEnable', get_object_vars($data)) && null !== ($data->statMonitorEnable ?? null)) {
-            $dataArray['stat_monitor_enable'] = $data->statMonitorEnable ?? null;
+            $dataArray['stat_monitor_enable'] = $data->statMonitorEnable;
         }
         if (array_key_exists('maxFailoverReplicationTimeLag', get_object_vars($data)) && null !== ($data->maxFailoverReplicationTimeLag ?? null)) {
-            $dataArray['max_failover_replication_time_lag'] = $data->maxFailoverReplicationTimeLag ?? null;
+            $dataArray['max_failover_replication_time_lag'] = $data->maxFailoverReplicationTimeLag;
         }
         if (array_key_exists('maxConnections', get_object_vars($data)) && null !== ($data->maxConnections ?? null)) {
-            $dataArray['max_connections'] = $data->maxConnections ?? null;
+            $dataArray['max_connections'] = $data->maxConnections;
         }
         if (array_key_exists('maxSlotWalKeepSize', get_object_vars($data)) && null !== ($data->maxSlotWalKeepSize ?? null)) {
-            $dataArray['max_slot_wal_keep_size'] = $data->maxSlotWalKeepSize ?? null;
+            $dataArray['max_slot_wal_keep_size'] = $data->maxSlotWalKeepSize;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

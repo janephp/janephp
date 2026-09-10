@@ -56,10 +56,10 @@ class DiskInfoSizeNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
-            $dataArray['unit'] = $data->unit ?? null;
+            $dataArray['unit'] = $data->unit;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

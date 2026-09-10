@@ -104,26 +104,26 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('connectionBandwidthInMbps', get_object_vars($data)) && null !== ($data->connectionBandwidthInMbps ?? null)) {
-            $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps ?? null;
+            $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('naasProvider', get_object_vars($data)) && null !== ($data->naasProvider ?? null)) {
-            $dataArray['naas_provider'] = $data->naasProvider ?? null;
+            $dataArray['naas_provider'] = $data->naasProvider;
         }
         if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->vpcIds ?? null as $value) {
+            foreach ($data->vpcIds as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;
         }
         if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
-            $dataArray['bgp'] = ($data->bgp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp ?? null, 'json', $context));
+            $dataArray['bgp'] = $data->bgp === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

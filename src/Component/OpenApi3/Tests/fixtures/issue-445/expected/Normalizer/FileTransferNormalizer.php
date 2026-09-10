@@ -73,20 +73,20 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
-            $dataArray['identifier'] = $data->identifier ?? null;
+            $dataArray['identifier'] = $data->identifier;
         }
-        $dataArray['requestId'] = $data->requestId ?? null;
-        $dataArray['transferId'] = $data->transferId ?? null;
-        $value = $data->state ?? null;
-        if (is_string($data->state ?? null)) {
-            $value = $data->state ?? null;
+        $dataArray['requestId'] = $data->requestId;
+        $dataArray['transferId'] = $data->transferId;
+        $value = $data->state;
+        if (is_string($data->state)) {
+            $value = $data->state;
         }
         $dataArray['state'] = $value;
         if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
-            $dataArray['contentId'] = $data->contentId ?? null;
+            $dataArray['contentId'] = $data->contentId;
         }
         return $dataArray;
     }

@@ -64,16 +64,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     {
         $dataArray = [];
         if (array_key_exists('comments', get_object_vars($data)) && null !== ($data->comments ?? null)) {
-            $dataArray['comments'] = $data->comments ?? null;
+            $dataArray['comments'] = $data->comments;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

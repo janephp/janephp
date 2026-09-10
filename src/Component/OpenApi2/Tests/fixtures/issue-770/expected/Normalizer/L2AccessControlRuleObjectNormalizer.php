@@ -45,7 +45,7 @@ class L2AccessControlRuleObjectNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->mac ?? null;
+        $dataArray['mac'] = $data->mac;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

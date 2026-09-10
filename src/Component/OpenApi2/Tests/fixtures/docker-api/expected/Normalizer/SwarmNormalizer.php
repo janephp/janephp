@@ -86,41 +86,41 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
-            $dataArray['ID'] = $data->iD ?? null;
+            $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['Version'] = ($data->version ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version ?? null, 'json', $context));
+            $dataArray['Version'] = $data->version === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['CreatedAt'] = $data->createdAt ?? null;
+            $dataArray['CreatedAt'] = $data->createdAt;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['UpdatedAt'] = $data->updatedAt ?? null;
+            $dataArray['UpdatedAt'] = $data->updatedAt;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = ($data->spec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+            $dataArray['Spec'] = $data->spec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('tLSInfo', get_object_vars($data)) && null !== ($data->tLSInfo ?? null)) {
-            $dataArray['TLSInfo'] = ($data->tLSInfo ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tLSInfo ?? null, 'json', $context));
+            $dataArray['TLSInfo'] = $data->tLSInfo === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tLSInfo, 'json', $context));
         }
         if (array_key_exists('rootRotationInProgress', get_object_vars($data)) && null !== ($data->rootRotationInProgress ?? null)) {
-            $dataArray['RootRotationInProgress'] = $data->rootRotationInProgress ?? null;
+            $dataArray['RootRotationInProgress'] = $data->rootRotationInProgress;
         }
         if (array_key_exists('dataPathPort', get_object_vars($data)) && null !== ($data->dataPathPort ?? null)) {
-            $dataArray['DataPathPort'] = $data->dataPathPort ?? null;
+            $dataArray['DataPathPort'] = $data->dataPathPort;
         }
         if (array_key_exists('defaultAddrPool', get_object_vars($data)) && null !== ($data->defaultAddrPool ?? null)) {
             $values = [];
-            foreach ($data->defaultAddrPool ?? null as $value) {
+            foreach ($data->defaultAddrPool as $value) {
                 $values[] = $value;
             }
             $dataArray['DefaultAddrPool'] = $values;
         }
         if (array_key_exists('subnetSize', get_object_vars($data)) && null !== ($data->subnetSize ?? null)) {
-            $dataArray['SubnetSize'] = $data->subnetSize ?? null;
+            $dataArray['SubnetSize'] = $data->subnetSize;
         }
         if (array_key_exists('joinTokens', get_object_vars($data)) && null !== ($data->joinTokens ?? null)) {
-            $dataArray['JoinTokens'] = ($data->joinTokens ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->joinTokens ?? null, 'json', $context));
+            $dataArray['JoinTokens'] = $data->joinTokens === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->joinTokens, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmConstraint());

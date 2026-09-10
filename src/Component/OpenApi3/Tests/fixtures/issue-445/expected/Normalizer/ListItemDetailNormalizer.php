@@ -122,20 +122,20 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['contentSchemaId'] = $data->contentSchemaId;
         if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->content ?? null as $key => $value) {
+            foreach ($data->content as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
         if (array_key_exists('displayValues', get_object_vars($data)) && null !== ($data->displayValues ?? null)) {
-            $value_1 = $data->displayValues ?? null;
-            if (is_object($data->displayValues ?? null)) {
+            $value_1 = $data->displayValues;
+            if (is_object($data->displayValues)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->displayValues ?? null as $key_1 => $value_2) {
+                foreach ($data->displayValues as $key_1 => $value_2) {
                     $values_1[$key_1] = $value_2;
                 }
                 $value_1 = $values_1;
@@ -144,36 +144,36 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (array_key_exists('brokenReferenceIds', get_object_vars($data)) && null !== ($data->brokenReferenceIds ?? null)) {
             $values_2 = [];
-            foreach ($data->brokenReferenceIds ?? null as $value_3) {
+            foreach ($data->brokenReferenceIds as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['brokenReferenceIds'] = $values_2;
         }
         if (array_key_exists('brokenRelationTargetIds', get_object_vars($data)) && null !== ($data->brokenRelationTargetIds ?? null)) {
             $values_3 = [];
-            foreach ($data->brokenRelationTargetIds ?? null as $value_4) {
+            foreach ($data->brokenRelationTargetIds as $value_4) {
                 $values_3[] = $value_4;
             }
             $dataArray['brokenRelationTargetIds'] = $values_3;
         }
         if (array_key_exists('brokenIndirectReferenceIds', get_object_vars($data)) && null !== ($data->brokenIndirectReferenceIds ?? null)) {
             $values_4 = [];
-            foreach ($data->brokenIndirectReferenceIds ?? null as $value_5) {
+            foreach ($data->brokenIndirectReferenceIds as $value_5) {
                 $values_4[] = $value_5;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_4;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value_6 = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value_6 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value_6 = $data->audit;
+            if (is_object($data->audit)) {
+                $value_6 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_6;
         }
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
-            $value_7 = $data->activity ?? null;
-            if (is_object($data->activity ?? null)) {
-                $value_7 = ($data->activity ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity ?? null, 'json', $context));
+            $value_7 = $data->activity;
+            if (is_object($data->activity)) {
+                $value_7 = $data->activity === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
             }
             $dataArray['activity'] = $value_7;
         }

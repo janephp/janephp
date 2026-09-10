@@ -68,20 +68,20 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
             $values = [];
-            foreach ($data->emails ?? null as $value) {
+            foreach ($data->emails as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['emails'] = $values;
         }
         if (array_key_exists('emailLanguage', get_object_vars($data)) && null !== ($data->emailLanguage ?? null)) {
-            $dataArray['emailLanguage'] = $data->emailLanguage ?? null;
+            $dataArray['emailLanguage'] = $data->emailLanguage;
         }
         if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
-            $dataArray['emailSubject'] = $data->emailSubject ?? null;
+            $dataArray['emailSubject'] = $data->emailSubject;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

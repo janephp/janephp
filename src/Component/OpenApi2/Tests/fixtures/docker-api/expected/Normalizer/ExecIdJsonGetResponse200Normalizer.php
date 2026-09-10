@@ -94,37 +94,37 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('canRemove', get_object_vars($data)) && null !== ($data->canRemove ?? null)) {
-            $dataArray['CanRemove'] = $data->canRemove ?? null;
+            $dataArray['CanRemove'] = $data->canRemove;
         }
         if (array_key_exists('detachKeys', get_object_vars($data)) && null !== ($data->detachKeys ?? null)) {
-            $dataArray['DetachKeys'] = $data->detachKeys ?? null;
+            $dataArray['DetachKeys'] = $data->detachKeys;
         }
         if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
-            $dataArray['ID'] = $data->iD ?? null;
+            $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('running', get_object_vars($data)) && null !== ($data->running ?? null)) {
-            $dataArray['Running'] = $data->running ?? null;
+            $dataArray['Running'] = $data->running;
         }
         if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
-            $dataArray['ExitCode'] = $data->exitCode ?? null;
+            $dataArray['ExitCode'] = $data->exitCode;
         }
         if (array_key_exists('processConfig', get_object_vars($data)) && null !== ($data->processConfig ?? null)) {
-            $dataArray['ProcessConfig'] = ($data->processConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->processConfig ?? null, 'json', $context));
+            $dataArray['ProcessConfig'] = $data->processConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->processConfig, 'json', $context));
         }
         if (array_key_exists('openStdin', get_object_vars($data)) && null !== ($data->openStdin ?? null)) {
-            $dataArray['OpenStdin'] = $data->openStdin ?? null;
+            $dataArray['OpenStdin'] = $data->openStdin;
         }
         if (array_key_exists('openStderr', get_object_vars($data)) && null !== ($data->openStderr ?? null)) {
-            $dataArray['OpenStderr'] = $data->openStderr ?? null;
+            $dataArray['OpenStderr'] = $data->openStderr;
         }
         if (array_key_exists('openStdout', get_object_vars($data)) && null !== ($data->openStdout ?? null)) {
-            $dataArray['OpenStdout'] = $data->openStdout ?? null;
+            $dataArray['OpenStdout'] = $data->openStdout;
         }
         if (array_key_exists('containerID', get_object_vars($data)) && null !== ($data->containerID ?? null)) {
-            $dataArray['ContainerID'] = $data->containerID ?? null;
+            $dataArray['ContainerID'] = $data->containerID;
         }
         if (array_key_exists('pid', get_object_vars($data)) && null !== ($data->pid ?? null)) {
-            $dataArray['Pid'] = $data->pid ?? null;
+            $dataArray['Pid'] = $data->pid;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ExecIdJsonGetResponse200Constraint());

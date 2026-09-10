@@ -71,24 +71,24 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         if (array_key_exists('constraints', get_object_vars($data)) && null !== ($data->constraints ?? null)) {
             $values = [];
-            foreach ($data->constraints ?? null as $value) {
+            foreach ($data->constraints as $value) {
                 $values[] = $value;
             }
             $dataArray['Constraints'] = $values;
         }
         if (array_key_exists('preferences', get_object_vars($data)) && null !== ($data->preferences ?? null)) {
             $values_1 = [];
-            foreach ($data->preferences ?? null as $value_1) {
+            foreach ($data->preferences as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Preferences'] = $values_1;
         }
         if (array_key_exists('maxReplicas', get_object_vars($data)) && null !== ($data->maxReplicas ?? null)) {
-            $dataArray['MaxReplicas'] = $data->maxReplicas ?? null;
+            $dataArray['MaxReplicas'] = $data->maxReplicas;
         }
         if (array_key_exists('platforms', get_object_vars($data)) && null !== ($data->platforms ?? null)) {
             $values_2 = [];
-            foreach ($data->platforms ?? null as $value_2) {
+            foreach ($data->platforms as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['Platforms'] = $values_2;

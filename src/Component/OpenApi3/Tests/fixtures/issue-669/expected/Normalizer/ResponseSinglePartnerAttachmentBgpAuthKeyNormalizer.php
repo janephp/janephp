@@ -57,7 +57,7 @@ class ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer implements Denormalize
         $dataArray = [];
         if (array_key_exists('bgpAuthKey', get_object_vars($data)) && null !== ($data->bgpAuthKey ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->bgpAuthKey ?? null as $key => $value) {
+            foreach ($data->bgpAuthKey as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['bgp_auth_key'] = $values;

@@ -67,10 +67,10 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
-            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
+            $dataArray['businessProcessId'] = $data->businessProcessId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

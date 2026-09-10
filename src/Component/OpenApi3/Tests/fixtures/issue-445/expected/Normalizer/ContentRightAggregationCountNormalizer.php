@@ -52,12 +52,12 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->contentRight ?? null;
-        if (is_string($data->contentRight ?? null)) {
-            $value = $data->contentRight ?? null;
+        $value = $data->contentRight;
+        if (is_string($data->contentRight)) {
+            $value = $data->contentRight;
         }
         $dataArray['contentRight'] = $value;
-        $dataArray['count'] = $data->count ?? null;
+        $dataArray['count'] = $data->count;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

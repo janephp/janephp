@@ -55,10 +55,10 @@ class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
-            $dataArray['identifier'] = $data->identifier ?? null;
+            $dataArray['identifier'] = $data->identifier;
         }
         if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
-            $dataArray['requestId'] = $data->requestId ?? null;
+            $dataArray['requestId'] = $data->requestId;
         }
         return $dataArray;
     }

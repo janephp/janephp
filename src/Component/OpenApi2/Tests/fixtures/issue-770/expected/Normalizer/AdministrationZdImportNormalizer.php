@@ -59,17 +59,17 @@ class AdministrationZdImportNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['user'] = $data->user ?? null;
+            $dataArray['user'] = $data->user;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('apMacList', get_object_vars($data)) && null !== ($data->apMacList ?? null)) {
             $values = [];
-            foreach ($data->apMacList ?? null as $value) {
+            foreach ($data->apMacList as $value) {
                 $values[] = $value;
             }
             $dataArray['apMacList'] = $values;

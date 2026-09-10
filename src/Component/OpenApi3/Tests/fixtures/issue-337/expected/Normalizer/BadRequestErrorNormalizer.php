@@ -60,13 +60,13 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
-            $dataArray['correlationId'] = $data->correlationId ?? null;
+            $dataArray['correlationId'] = $data->correlationId;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
-            $dataArray['details'] = $data->details ?? null;
+            $dataArray['details'] = $data->details;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

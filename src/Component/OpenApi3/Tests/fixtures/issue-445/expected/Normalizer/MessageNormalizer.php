@@ -72,22 +72,22 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ConsoleMessage' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ConsoleMessage' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'NodeInfoMessage' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'NodeInfoMessage' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LiveStreamMessage' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LiveStreamMessage' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['retries'] = $data->retries ?? null;
-        $dataArray['priority'] = $data->priority ?? null;
-        $dataArray['deduplicate'] = $data->deduplicate ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['retries'] = $data->retries;
+        $dataArray['priority'] = $data->priority;
+        $dataArray['deduplicate'] = $data->deduplicate;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

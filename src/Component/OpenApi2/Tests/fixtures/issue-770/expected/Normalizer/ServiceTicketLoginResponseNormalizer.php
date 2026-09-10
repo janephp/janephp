@@ -49,10 +49,10 @@ class ServiceTicketLoginResponseNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('controllerVersion', get_object_vars($data)) && null !== ($data->controllerVersion ?? null)) {
-            $dataArray['controllerVersion'] = $data->controllerVersion ?? null;
+            $dataArray['controllerVersion'] = $data->controllerVersion;
         }
         if (array_key_exists('serviceTicket', get_object_vars($data)) && null !== ($data->serviceTicket ?? null)) {
-            $dataArray['serviceTicket'] = $data->serviceTicket ?? null;
+            $dataArray['serviceTicket'] = $data->serviceTicket;
         }
         return $dataArray;
     }

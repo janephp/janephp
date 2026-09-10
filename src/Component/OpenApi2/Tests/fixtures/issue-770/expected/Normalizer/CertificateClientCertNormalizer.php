@@ -74,35 +74,35 @@ class CertificateClientCertNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
-            $dataArray['data'] = $data->data ?? null;
+            $dataArray['data'] = $data->data;
         }
         if (array_key_exists('information', get_object_vars($data)) && null !== ($data->information ?? null)) {
-            $dataArray['information'] = $data->information ?? null;
+            $dataArray['information'] = $data->information;
         }
         if (array_key_exists('intermediateData', get_object_vars($data)) && null !== ($data->intermediateData ?? null)) {
             $values = [];
-            foreach ($data->intermediateData ?? null as $value) {
+            foreach ($data->intermediateData as $value) {
                 $values[] = $value;
             }
             $dataArray['intermediateData'] = $values;
         }
         if (array_key_exists('rootData', get_object_vars($data)) && null !== ($data->rootData ?? null)) {
-            $dataArray['rootData'] = $data->rootData ?? null;
+            $dataArray['rootData'] = $data->rootData;
         }
         if (array_key_exists('privateKeyData', get_object_vars($data)) && null !== ($data->privateKeyData ?? null)) {
-            $dataArray['privateKeyData'] = $data->privateKeyData ?? null;
+            $dataArray['privateKeyData'] = $data->privateKeyData;
         }
         if (array_key_exists('publicKey', get_object_vars($data)) && null !== ($data->publicKey ?? null)) {
-            $dataArray['publicKey'] = $data->publicKey ?? null;
+            $dataArray['publicKey'] = $data->publicKey;
         }
         return $dataArray;
     }

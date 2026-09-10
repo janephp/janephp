@@ -86,44 +86,44 @@ class AaaAuthenticationServerNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
-            $dataArray['serviceType'] = $data->serviceType ?? null;
+            $dataArray['serviceType'] = $data->serviceType;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
-            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+            $dataArray['mvnoId'] = $data->mvnoId;
         }
         if (array_key_exists('partnerDomainId', get_object_vars($data)) && null !== ($data->partnerDomainId ?? null)) {
-            $dataArray['partnerDomainId'] = $data->partnerDomainId ?? null;
+            $dataArray['partnerDomainId'] = $data->partnerDomainId;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('primary', get_object_vars($data)) && null !== ($data->primary ?? null)) {
-            $dataArray['primary'] = ($data->primary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primary ?? null, 'json', $context));
+            $dataArray['primary'] = $data->primary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primary, 'json', $context));
         }
         if (array_key_exists('secondary', get_object_vars($data)) && null !== ($data->secondary ?? null)) {
-            $dataArray['secondary'] = ($data->secondary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondary ?? null, 'json', $context));
+            $dataArray['secondary'] = $data->secondary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondary, 'json', $context));
         }
         if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->mappings ?? null as $value) {
+            foreach ($data->mappings as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
         if (array_key_exists('standbyPrimary', get_object_vars($data)) && null !== ($data->standbyPrimary ?? null)) {
-            $dataArray['standbyPrimary'] = ($data->standbyPrimary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary ?? null, 'json', $context));
+            $dataArray['standbyPrimary'] = $data->standbyPrimary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary, 'json', $context));
         }
         if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
-            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled ?? null;
+            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled;
         }
         return $dataArray;
     }

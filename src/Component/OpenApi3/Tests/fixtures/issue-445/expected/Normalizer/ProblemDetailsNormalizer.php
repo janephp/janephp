@@ -83,23 +83,23 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
-            $dataArray['detail'] = $data->detail ?? null;
+            $dataArray['detail'] = $data->detail;
         }
         if (array_key_exists('instance', get_object_vars($data)) && null !== ($data->instance ?? null)) {
-            $dataArray['instance'] = $data->instance ?? null;
+            $dataArray['instance'] = $data->instance;
         }
         if (array_key_exists('extensions', get_object_vars($data)) && null !== ($data->extensions ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->extensions ?? null as $key => $value) {
+            foreach ($data->extensions as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['extensions'] = $values;

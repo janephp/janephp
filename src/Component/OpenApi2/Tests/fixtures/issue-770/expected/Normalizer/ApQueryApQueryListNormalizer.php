@@ -65,20 +65,20 @@ class ApQueryApQueryListNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('firstIndex', get_object_vars($data)) && null !== ($data->firstIndex ?? null)) {
-            $dataArray['firstIndex'] = $data->firstIndex ?? null;
+            $dataArray['firstIndex'] = $data->firstIndex;
         }
         if (array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
-            $dataArray['hasMore'] = $data->hasMore ?? null;
+            $dataArray['hasMore'] = $data->hasMore;
         }
         if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
-            $dataArray['totalCount'] = $data->totalCount ?? null;
+            $dataArray['totalCount'] = $data->totalCount;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = ($data->extra ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra ?? null, 'json', $context));
+            $dataArray['extra'] = $data->extra === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
         }
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->list ?? null as $value) {
+            foreach ($data->list as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;

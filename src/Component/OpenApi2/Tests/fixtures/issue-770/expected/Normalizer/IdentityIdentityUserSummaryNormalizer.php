@@ -67,28 +67,28 @@ class IdentityIdentityUserSummaryNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
-            $dataArray['displayName'] = $data->displayName ?? null;
+            $dataArray['displayName'] = $data->displayName;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('userSource', get_object_vars($data)) && null !== ($data->userSource ?? null)) {
-            $dataArray['userSource'] = $data->userSource ?? null;
+            $dataArray['userSource'] = $data->userSource;
         }
         if (array_key_exists('userType', get_object_vars($data)) && null !== ($data->userType ?? null)) {
-            $dataArray['userType'] = $data->userType ?? null;
+            $dataArray['userType'] = $data->userType;
         }
         if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
-            $dataArray['isDisabled'] = $data->isDisabled ?? null;
+            $dataArray['isDisabled'] = $data->isDisabled;
         }
         if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
-            $dataArray['createdOn'] = $data->createdOn ?? null;
+            $dataArray['createdOn'] = $data->createdOn;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         return $dataArray;
     }

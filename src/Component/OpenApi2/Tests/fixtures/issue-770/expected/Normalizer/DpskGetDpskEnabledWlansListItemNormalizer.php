@@ -52,13 +52,13 @@ class DpskGetDpskEnabledWlansListItemNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
-            $dataArray['wlanId'] = $data->wlanId ?? null;
+            $dataArray['wlanId'] = $data->wlanId;
         }
         if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
-            $dataArray['ssid'] = $data->ssid ?? null;
+            $dataArray['ssid'] = $data->ssid;
         }
         if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
-            $dataArray['wlanName'] = $data->wlanName ?? null;
+            $dataArray['wlanName'] = $data->wlanName;
         }
         return $dataArray;
     }

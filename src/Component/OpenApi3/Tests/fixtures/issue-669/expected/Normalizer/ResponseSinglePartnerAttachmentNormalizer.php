@@ -52,7 +52,7 @@ class ResponseSinglePartnerAttachmentNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('partnerAttachment', get_object_vars($data)) && null !== ($data->partnerAttachment ?? null)) {
-            $dataArray['partner_attachment'] = ($data->partnerAttachment ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->partnerAttachment ?? null, 'json', $context));
+            $dataArray['partner_attachment'] = $data->partnerAttachment === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->partnerAttachment, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -56,10 +56,10 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
-            $dataArray['number'] = $data->number ?? null;
+            $dataArray['number'] = $data->number;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

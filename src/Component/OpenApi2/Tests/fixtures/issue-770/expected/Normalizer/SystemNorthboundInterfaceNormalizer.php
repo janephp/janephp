@@ -52,13 +52,13 @@ class SystemNorthboundInterfaceNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('radiusAuthType', get_object_vars($data)) && null !== ($data->radiusAuthType ?? null)) {
-            $dataArray['radiusAuthType'] = $data->radiusAuthType ?? null;
+            $dataArray['radiusAuthType'] = $data->radiusAuthType;
         }
         return $dataArray;
     }

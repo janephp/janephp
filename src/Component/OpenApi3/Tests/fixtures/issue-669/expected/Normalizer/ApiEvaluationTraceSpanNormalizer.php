@@ -96,41 +96,41 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->input ?? null as $key => $value) {
+            foreach ($data->input as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input'] = $values;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->output ?? null as $key_1 => $value_1) {
+            foreach ($data->output as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['output'] = $values_1;
         }
         if (array_key_exists('retrieverChunks', get_object_vars($data)) && null !== ($data->retrieverChunks ?? null)) {
             $values_2 = [];
-            foreach ($data->retrieverChunks ?? null as $value_2) {
+            foreach ($data->retrieverChunks as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['retriever_chunks'] = $values_2;
         }
         if (array_key_exists('spanLevelMetricResults', get_object_vars($data)) && null !== ($data->spanLevelMetricResults ?? null)) {
             $values_3 = [];
-            foreach ($data->spanLevelMetricResults ?? null as $value_3) {
+            foreach ($data->spanLevelMetricResults as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['span_level_metric_results'] = $values_3;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
             if (preg_match('/.*/', (string) $key_2)) {

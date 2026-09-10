@@ -51,7 +51,7 @@ class ProfileGetL3RoamingConfigNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         if (array_key_exists('dataPlanes', get_object_vars($data)) && null !== ($data->dataPlanes ?? null)) {
             $values = [];
-            foreach ($data->dataPlanes ?? null as $value) {
+            foreach ($data->dataPlanes as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['dataPlanes'] = $values;

@@ -80,15 +80,15 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('layerId', get_object_vars($data)) && null !== ($data->layerId ?? null)) {
-            $dataArray['layerId'] = $data->layerId ?? null;
+            $dataArray['layerId'] = $data->layerId;
         }
         if (array_key_exists('defaultValues', get_object_vars($data)) && null !== ($data->defaultValues ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->defaultValues ?? null as $key => $value) {
+            foreach ($data->defaultValues as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['defaultValues'] = $values;

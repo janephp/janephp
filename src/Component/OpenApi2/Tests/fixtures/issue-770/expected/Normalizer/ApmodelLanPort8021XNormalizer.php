@@ -51,12 +51,12 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('authenticator', get_object_vars($data)) && null !== ($data->authenticator ?? null)) {
-            $dataArray['authenticator'] = ($data->authenticator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticator ?? null, 'json', $context));
+            $dataArray['authenticator'] = $data->authenticator === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticator, 'json', $context));
         }
         if (array_key_exists('supplicant', get_object_vars($data)) && null !== ($data->supplicant ?? null)) {
-            $dataArray['supplicant'] = ($data->supplicant ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->supplicant ?? null, 'json', $context));
+            $dataArray['supplicant'] = $data->supplicant === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->supplicant, 'json', $context));
         }
         return $dataArray;
     }

@@ -52,10 +52,10 @@ class ThrottleDeviceNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['Path'] = $data->path ?? null;
+            $dataArray['Path'] = $data->path;
         }
         if (array_key_exists('rate', get_object_vars($data)) && null !== ($data->rate ?? null)) {
-            $dataArray['Rate'] = $data->rate ?? null;
+            $dataArray['Rate'] = $data->rate;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ThrottleDeviceConstraint());

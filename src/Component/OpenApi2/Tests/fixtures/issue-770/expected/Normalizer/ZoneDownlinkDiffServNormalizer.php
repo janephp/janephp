@@ -52,10 +52,10 @@ class ZoneDownlinkDiffServNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('downlinkEnable', get_object_vars($data)) && null !== ($data->downlinkEnable ?? null)) {
-            $dataArray['downlinkEnable'] = $data->downlinkEnable ?? null;
+            $dataArray['downlinkEnable'] = $data->downlinkEnable;
         }
         if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
-            $dataArray['downlink'] = $data->downlink ?? null;
+            $dataArray['downlink'] = $data->downlink;
         }
         return $dataArray;
     }

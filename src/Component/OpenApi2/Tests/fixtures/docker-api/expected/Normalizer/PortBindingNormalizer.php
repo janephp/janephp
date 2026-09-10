@@ -52,10 +52,10 @@ class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
-            $dataArray['HostIp'] = $data->hostIp ?? null;
+            $dataArray['HostIp'] = $data->hostIp;
         }
         if (array_key_exists('hostPort', get_object_vars($data)) && null !== ($data->hostPort ?? null)) {
-            $dataArray['HostPort'] = $data->hostPort ?? null;
+            $dataArray['HostPort'] = $data->hostPort;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PortBindingConstraint());

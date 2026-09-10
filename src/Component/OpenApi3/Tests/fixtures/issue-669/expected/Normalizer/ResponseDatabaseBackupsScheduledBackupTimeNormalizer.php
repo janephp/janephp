@@ -60,13 +60,13 @@ class ResponseDatabaseBackupsScheduledBackupTimeNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('backupHour', get_object_vars($data)) && null !== ($data->backupHour ?? null)) {
-            $dataArray['backup_hour'] = $data->backupHour ?? null;
+            $dataArray['backup_hour'] = $data->backupHour;
         }
         if (array_key_exists('backupMinute', get_object_vars($data)) && null !== ($data->backupMinute ?? null)) {
-            $dataArray['backup_minute'] = $data->backupMinute ?? null;
+            $dataArray['backup_minute'] = $data->backupMinute;
         }
         if (array_key_exists('backupIntervalHours', get_object_vars($data)) && null !== ($data->backupIntervalHours ?? null)) {
-            $dataArray['backup_interval_hours'] = $data->backupIntervalHours ?? null;
+            $dataArray['backup_interval_hours'] = $data->backupIntervalHours;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

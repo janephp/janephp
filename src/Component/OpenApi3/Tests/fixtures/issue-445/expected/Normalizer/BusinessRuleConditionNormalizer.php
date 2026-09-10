@@ -117,76 +117,76 @@ class BusinessRuleConditionNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'BooleanCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BooleanCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'AndCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'AndCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'OrCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'OrCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LayerAssignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LayerAssignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LayerUnassignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LayerUnassignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentPermissionSetAssignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentPermissionSetAssignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentPermissionSetUnassignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentPermissionSetUnassignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'FieldValueChangedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'FieldValueChangedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'MatchRegexCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'MatchRegexCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'TagboxItemAssignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TagboxItemAssignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'TagboxItemUnassignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TagboxItemUnassignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentSchemaCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentSchemaCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'NumberCompareCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'NumberCompareCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentRelationItemAssignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentRelationItemAssignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentRelationItemUnassignedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentRelationItemUnassignedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'GeoPointWithinPolygonCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'GeoPointWithinPolygonCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentPermissionSetsChangedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentPermissionSetsChangedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'ContentRelationItemsChangedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ContentRelationItemsChangedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'LayersChangedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'LayersChangedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'TagboxItemsChangedCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'TagboxItemsChangedCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'FieldEmptyCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'FieldEmptyCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'NotCondition' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'NotCondition' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

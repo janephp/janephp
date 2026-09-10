@@ -118,63 +118,63 @@ class PortalserviceCreateGuestAccessNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['portalCustomization'] = ($data->portalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->portalCustomization ?? null, 'json', $context));
+        $dataArray['portalCustomization'] = $data->portalCustomization === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->portalCustomization, 'json', $context));
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
+            $dataArray['redirect'] = $data->redirect === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
         }
         if (array_key_exists('smsGateway', get_object_vars($data)) && null !== ($data->smsGateway ?? null)) {
-            $dataArray['smsGateway'] = ($data->smsGateway ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->smsGateway ?? null, 'json', $context));
+            $dataArray['smsGateway'] = $data->smsGateway === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->smsGateway, 'json', $context));
         }
-        $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
+        $dataArray['userSession'] = $data->userSession === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession, 'json', $context));
         if (array_key_exists('selfRegistration', get_object_vars($data)) && null !== ($data->selfRegistration ?? null)) {
-            $dataArray['selfRegistration'] = $data->selfRegistration ?? null;
+            $dataArray['selfRegistration'] = $data->selfRegistration;
         }
         if (array_key_exists('smtpServerEnabled', get_object_vars($data)) && null !== ($data->smtpServerEnabled ?? null)) {
-            $dataArray['smtpServerEnabled'] = $data->smtpServerEnabled ?? null;
+            $dataArray['smtpServerEnabled'] = $data->smtpServerEnabled;
         }
         if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
-            $dataArray['expirationValue'] = $data->expirationValue ?? null;
+            $dataArray['expirationValue'] = $data->expirationValue;
         }
         if (array_key_exists('expirationUnit', get_object_vars($data)) && null !== ($data->expirationUnit ?? null)) {
-            $dataArray['expirationUnit'] = $data->expirationUnit ?? null;
+            $dataArray['expirationUnit'] = $data->expirationUnit;
         }
         if (array_key_exists('passEffectSince', get_object_vars($data)) && null !== ($data->passEffectSince ?? null)) {
-            $dataArray['passEffectSince'] = $data->passEffectSince ?? null;
+            $dataArray['passEffectSince'] = $data->passEffectSince;
         }
         if (array_key_exists('passUseDays', get_object_vars($data)) && null !== ($data->passUseDays ?? null)) {
-            $dataArray['passUseDays'] = $data->passUseDays ?? null;
+            $dataArray['passUseDays'] = $data->passUseDays;
         }
         if (array_key_exists('maxAllowedDeviceLimitNum', get_object_vars($data)) && null !== ($data->maxAllowedDeviceLimitNum ?? null)) {
-            $dataArray['maxAllowedDeviceLimitNum'] = $data->maxAllowedDeviceLimitNum ?? null;
+            $dataArray['maxAllowedDeviceLimitNum'] = $data->maxAllowedDeviceLimitNum;
         }
         if (array_key_exists('sponsorApproval', get_object_vars($data)) && null !== ($data->sponsorApproval ?? null)) {
-            $dataArray['sponsorApproval'] = $data->sponsorApproval ?? null;
+            $dataArray['sponsorApproval'] = $data->sponsorApproval;
         }
         if (array_key_exists('sponsorAuthServer', get_object_vars($data)) && null !== ($data->sponsorAuthServer ?? null)) {
-            $dataArray['sponsorAuthServer'] = $data->sponsorAuthServer ?? null;
+            $dataArray['sponsorAuthServer'] = $data->sponsorAuthServer;
         }
         if (array_key_exists('sponsorEmailAddress', get_object_vars($data)) && null !== ($data->sponsorEmailAddress ?? null)) {
             $values = [];
-            foreach ($data->sponsorEmailAddress ?? null as $value) {
+            foreach ($data->sponsorEmailAddress as $value) {
                 $values[] = $value;
             }
             $dataArray['sponsorEmailAddress'] = $values;
         }
         if (array_key_exists('notificationMethod', get_object_vars($data)) && null !== ($data->notificationMethod ?? null)) {
-            $dataArray['notificationMethod'] = $data->notificationMethod ?? null;
+            $dataArray['notificationMethod'] = $data->notificationMethod;
         }
         if (array_key_exists('requireLoginAgain', get_object_vars($data)) && null !== ($data->requireLoginAgain ?? null)) {
-            $dataArray['requireLoginAgain'] = $data->requireLoginAgain ?? null;
+            $dataArray['requireLoginAgain'] = $data->requireLoginAgain;
         }
         if (array_key_exists('sessionValue', get_object_vars($data)) && null !== ($data->sessionValue ?? null)) {
-            $dataArray['sessionValue'] = $data->sessionValue ?? null;
+            $dataArray['sessionValue'] = $data->sessionValue;
         }
         if (array_key_exists('sessionUnit', get_object_vars($data)) && null !== ($data->sessionUnit ?? null)) {
-            $dataArray['sessionUnit'] = $data->sessionUnit ?? null;
+            $dataArray['sessionUnit'] = $data->sessionUnit;
         }
         return $dataArray;
     }

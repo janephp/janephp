@@ -51,7 +51,7 @@ class AppIngressSpecRuleStringMatchExactNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['exact'] = $data->exact ?? null;
+        $dataArray['exact'] = $data->exact;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

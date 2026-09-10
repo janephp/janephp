@@ -52,10 +52,10 @@ class ProfileUplinkRateLimitingNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('uplinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->uplinkRateLimitingEnabled ?? null)) {
-            $dataArray['uplinkRateLimitingEnabled'] = $data->uplinkRateLimitingEnabled ?? null;
+            $dataArray['uplinkRateLimitingEnabled'] = $data->uplinkRateLimitingEnabled;
         }
         if (array_key_exists('uplinkRateLimitingBps', get_object_vars($data)) && null !== ($data->uplinkRateLimitingBps ?? null)) {
-            $dataArray['uplinkRateLimitingBps'] = $data->uplinkRateLimitingBps ?? null;
+            $dataArray['uplinkRateLimitingBps'] = $data->uplinkRateLimitingBps;
         }
         return $dataArray;
     }

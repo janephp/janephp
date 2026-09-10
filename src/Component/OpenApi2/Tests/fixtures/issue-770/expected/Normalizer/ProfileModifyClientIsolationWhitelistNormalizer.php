@@ -62,20 +62,20 @@ class ProfileModifyClientIsolationWhitelistNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('whitelist', get_object_vars($data)) && null !== ($data->whitelist ?? null)) {
             $values = [];
-            foreach ($data->whitelist ?? null as $value) {
+            foreach ($data->whitelist as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['whitelist'] = $values;
         }
         if (array_key_exists('clientIsolationAutoEnabled', get_object_vars($data)) && null !== ($data->clientIsolationAutoEnabled ?? null)) {
-            $dataArray['clientIsolationAutoEnabled'] = $data->clientIsolationAutoEnabled ?? null;
+            $dataArray['clientIsolationAutoEnabled'] = $data->clientIsolationAutoEnabled;
         }
         return $dataArray;
     }

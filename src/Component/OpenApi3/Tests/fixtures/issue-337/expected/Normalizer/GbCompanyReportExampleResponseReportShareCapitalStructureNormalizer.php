@@ -67,14 +67,14 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     {
         $dataArray = [];
         if (array_key_exists('issuedShareCapital', get_object_vars($data)) && null !== ($data->issuedShareCapital ?? null)) {
-            $dataArray['issuedShareCapital'] = ($data->issuedShareCapital ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->issuedShareCapital ?? null, 'json', $context));
+            $dataArray['issuedShareCapital'] = $data->issuedShareCapital === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->issuedShareCapital, 'json', $context));
         }
         if (array_key_exists('numberOfSharesIssued', get_object_vars($data)) && null !== ($data->numberOfSharesIssued ?? null)) {
-            $dataArray['numberOfSharesIssued'] = $data->numberOfSharesIssued ?? null;
+            $dataArray['numberOfSharesIssued'] = $data->numberOfSharesIssued;
         }
         if (array_key_exists('shareHolders', get_object_vars($data)) && null !== ($data->shareHolders ?? null)) {
             $values = [];
-            foreach ($data->shareHolders ?? null as $value) {
+            foreach ($data->shareHolders as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['shareHolders'] = $values;

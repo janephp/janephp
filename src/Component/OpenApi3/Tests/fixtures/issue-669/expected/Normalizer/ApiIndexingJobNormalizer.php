@@ -135,57 +135,57 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('completedDatasources', get_object_vars($data)) && null !== ($data->completedDatasources ?? null)) {
-            $dataArray['completed_datasources'] = $data->completedDatasources ?? null;
+            $dataArray['completed_datasources'] = $data->completedDatasources;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('dataSourceJobs', get_object_vars($data)) && null !== ($data->dataSourceJobs ?? null)) {
             $values = [];
-            foreach ($data->dataSourceJobs ?? null as $value) {
+            foreach ($data->dataSourceJobs as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data_source_jobs'] = $values;
         }
         if (array_key_exists('dataSourceUuids', get_object_vars($data)) && null !== ($data->dataSourceUuids ?? null)) {
             $values_1 = [];
-            foreach ($data->dataSourceUuids ?? null as $value_1) {
+            foreach ($data->dataSourceUuids as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['data_source_uuids'] = $values_1;
         }
         if (array_key_exists('finishedAt', get_object_vars($data)) && null !== ($data->finishedAt ?? null)) {
-            $dataArray['finished_at'] = ($data->finishedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['finished_at'] = $data->finishedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('isReportAvailable', get_object_vars($data)) && null !== ($data->isReportAvailable ?? null)) {
-            $dataArray['is_report_available'] = $data->isReportAvailable ?? null;
+            $dataArray['is_report_available'] = $data->isReportAvailable;
         }
         if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
-            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid;
         }
         if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
-            $dataArray['phase'] = $data->phase ?? null;
+            $dataArray['phase'] = $data->phase;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('tokens', get_object_vars($data)) && null !== ($data->tokens ?? null)) {
-            $dataArray['tokens'] = $data->tokens ?? null;
+            $dataArray['tokens'] = $data->tokens;
         }
         if (array_key_exists('totalDatasources', get_object_vars($data)) && null !== ($data->totalDatasources ?? null)) {
-            $dataArray['total_datasources'] = $data->totalDatasources ?? null;
+            $dataArray['total_datasources'] = $data->totalDatasources;
         }
         if (array_key_exists('totalTokens', get_object_vars($data)) && null !== ($data->totalTokens ?? null)) {
-            $dataArray['total_tokens'] = $data->totalTokens ?? null;
+            $dataArray['total_tokens'] = $data->totalTokens;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
-            $dataArray['uuid'] = $data->uuid ?? null;
+            $dataArray['uuid'] = $data->uuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

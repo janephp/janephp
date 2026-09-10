@@ -79,20 +79,20 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('iconOneOf', get_object_vars($data)) && null !== ($data->iconOneOf ?? null)) {
-            $value = $data->iconOneOf ?? null;
-            if (is_object($data->iconOneOf ?? null)) {
-                $value = ($data->iconOneOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf ?? null, 'json', $context));
-            } elseif (is_null($data->iconOneOf ?? null)) {
-                $value = $data->iconOneOf ?? null;
+            $value = $data->iconOneOf;
+            if (is_object($data->iconOneOf)) {
+                $value = $data->iconOneOf === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf, 'json', $context));
+            } elseif (is_null($data->iconOneOf)) {
+                $value = $data->iconOneOf;
             }
             $dataArray['iconOneOf'] = $value;
         }
         if (array_key_exists('iconAnyOf', get_object_vars($data)) && null !== ($data->iconAnyOf ?? null)) {
-            $value_1 = $data->iconAnyOf ?? null;
-            if (is_object($data->iconAnyOf ?? null)) {
-                $value_1 = ($data->iconAnyOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf ?? null, 'json', $context));
-            } elseif (is_null($data->iconAnyOf ?? null)) {
-                $value_1 = $data->iconAnyOf ?? null;
+            $value_1 = $data->iconAnyOf;
+            if (is_object($data->iconAnyOf)) {
+                $value_1 = $data->iconAnyOf === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf, 'json', $context));
+            } elseif (is_null($data->iconAnyOf)) {
+                $value_1 = $data->iconAnyOf;
             }
             $dataArray['iconAnyOf'] = $value_1;
         }

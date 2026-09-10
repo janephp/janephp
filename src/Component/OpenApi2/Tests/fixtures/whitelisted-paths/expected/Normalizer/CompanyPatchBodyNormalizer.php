@@ -52,10 +52,10 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('wantsTimestampTimers', get_object_vars($data)) && null !== ($data->wantsTimestampTimers ?? null)) {
-            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers ?? null;
+            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers;
         }
         if (array_key_exists('weeklyCapacity', get_object_vars($data)) && null !== ($data->weeklyCapacity ?? null)) {
-            $dataArray['weekly_capacity'] = $data->weeklyCapacity ?? null;
+            $dataArray['weekly_capacity'] = $data->weeklyCapacity;
         }
         return $dataArray;
     }

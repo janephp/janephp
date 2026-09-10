@@ -102,33 +102,33 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['uuid'] = $data->uuid ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['state'] = $data->state ?? null;
+        $dataArray['uuid'] = $data->uuid;
+        $dataArray['name'] = $data->name;
+        $dataArray['state'] = $data->state;
         if (array_key_exists('appName', get_object_vars($data)) && null !== ($data->appName ?? null)) {
-            $dataArray['app_name'] = $data->appName ?? null;
+            $dataArray['app_name'] = $data->appName;
         }
-        $dataArray['app_slug'] = $data->appSlug ?? null;
+        $dataArray['app_slug'] = $data->appSlug;
         if (array_key_exists('planName', get_object_vars($data)) && null !== ($data->planName ?? null)) {
-            $dataArray['plan_name'] = $data->planName ?? null;
+            $dataArray['plan_name'] = $data->planName;
         }
-        $dataArray['plan_slug'] = $data->planSlug ?? null;
+        $dataArray['plan_slug'] = $data->planSlug;
         if (array_key_exists('planPricePerMonth', get_object_vars($data)) && null !== ($data->planPricePerMonth ?? null)) {
-            $dataArray['plan_price_per_month'] = $data->planPricePerMonth ?? null;
+            $dataArray['plan_price_per_month'] = $data->planPricePerMonth;
         }
-        $dataArray['has_config'] = $data->hasConfig ?? null;
+        $dataArray['has_config'] = $data->hasConfig;
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = [];
-            foreach ($data->metadata ?? null as $value) {
+            foreach ($data->metadata as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metadata'] = $values;
         }
         if (array_key_exists('ssoUrl', get_object_vars($data)) && null !== ($data->ssoUrl ?? null)) {
-            $dataArray['sso_url'] = $data->ssoUrl ?? null;
+            $dataArray['sso_url'] = $data->ssoUrl;
         }
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

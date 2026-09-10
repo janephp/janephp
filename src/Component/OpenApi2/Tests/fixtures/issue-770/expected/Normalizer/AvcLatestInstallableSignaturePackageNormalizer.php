@@ -56,17 +56,17 @@ class AvcLatestInstallableSignaturePackageNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('binariesInfo', get_object_vars($data)) && null !== ($data->binariesInfo ?? null)) {
             $values = [];
-            foreach ($data->binariesInfo ?? null as $value) {
+            foreach ($data->binariesInfo as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['binariesInfo'] = $values;
         }
         if (array_key_exists('lastCheckedTime', get_object_vars($data)) && null !== ($data->lastCheckedTime ?? null)) {
-            $dataArray['lastCheckedTime'] = $data->lastCheckedTime ?? null;
+            $dataArray['lastCheckedTime'] = $data->lastCheckedTime;
         }
         return $dataArray;
     }

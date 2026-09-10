@@ -52,7 +52,7 @@ class ApiCreateModelAPIKeyOutputNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('apiKeyInfo', get_object_vars($data)) && null !== ($data->apiKeyInfo ?? null)) {
-            $dataArray['api_key_info'] = ($data->apiKeyInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->apiKeyInfo ?? null, 'json', $context));
+            $dataArray['api_key_info'] = $data->apiKeyInfo === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->apiKeyInfo, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

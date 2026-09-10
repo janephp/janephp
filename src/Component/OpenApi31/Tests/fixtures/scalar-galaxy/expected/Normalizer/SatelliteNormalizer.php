@@ -87,24 +87,24 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $value = $data->description ?? null;
-            if (is_string($data->description ?? null)) {
-                $value = $data->description ?? null;
-            } elseif (is_null($data->description ?? null)) {
-                $value = $data->description ?? null;
+            $value = $data->description;
+            if (is_string($data->description)) {
+                $value = $data->description;
+            } elseif (is_null($data->description)) {
+                $value = $data->description;
             }
             $dataArray['description'] = $value;
         }
         if (array_key_exists('diameter', get_object_vars($data)) && null !== ($data->diameter ?? null)) {
-            $dataArray['diameter'] = $data->diameter ?? null;
+            $dataArray['diameter'] = $data->diameter;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('orbit', get_object_vars($data)) && null !== ($data->orbit ?? null)) {
-            $dataArray['orbit'] = ($data->orbit ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->orbit ?? null, 'json', $context));
+            $dataArray['orbit'] = $data->orbit === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->orbit, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

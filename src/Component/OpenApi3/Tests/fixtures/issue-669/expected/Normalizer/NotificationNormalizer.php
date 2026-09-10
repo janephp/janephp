@@ -64,12 +64,12 @@ class NotificationNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->email ?? null as $value) {
+        foreach ($data->email as $value) {
             $values[] = $value;
         }
         $dataArray['email'] = $values;
         $values_1 = [];
-        foreach ($data->slack ?? null as $value_1) {
+        foreach ($data->slack as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['slack'] = $values_1;

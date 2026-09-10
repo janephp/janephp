@@ -63,19 +63,19 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->executionScope ?? null;
-        if (is_string($data->executionScope ?? null)) {
-            $value = $data->executionScope ?? null;
+        $value = $data->executionScope;
+        if (is_string($data->executionScope)) {
+            $value = $data->executionScope;
         }
         $dataArray['executionScope'] = $value;
-        $value_1 = $data->documentType ?? null;
-        if (is_string($data->documentType ?? null)) {
-            $value_1 = $data->documentType ?? null;
+        $value_1 = $data->documentType;
+        if (is_string($data->documentType)) {
+            $value_1 = $data->documentType;
         }
         $dataArray['documentType'] = $value_1;
-        $value_2 = $data->action ?? null;
-        if (is_string($data->action ?? null)) {
-            $value_2 = $data->action ?? null;
+        $value_2 = $data->action;
+        if (is_string($data->action)) {
+            $value_2 = $data->action;
         }
         $dataArray['action'] = $value_2;
         return $dataArray;

@@ -64,25 +64,25 @@ class DpProfileDpDhcpProfileBasicBONormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('profileName', get_object_vars($data)) && null !== ($data->profileName ?? null)) {
-            $dataArray['profileName'] = $data->profileName ?? null;
+            $dataArray['profileName'] = $data->profileName;
         }
         if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
-            $dataArray['profileId'] = $data->profileId ?? null;
+            $dataArray['profileId'] = $data->profileId;
         }
         if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
-            $dataArray['domainName'] = $data->domainName ?? null;
+            $dataArray['domainName'] = $data->domainName;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('primaryDnsServer', get_object_vars($data)) && null !== ($data->primaryDnsServer ?? null)) {
-            $dataArray['primaryDnsServer'] = $data->primaryDnsServer ?? null;
+            $dataArray['primaryDnsServer'] = $data->primaryDnsServer;
         }
         if (array_key_exists('secondaryDnsServer', get_object_vars($data)) && null !== ($data->secondaryDnsServer ?? null)) {
-            $dataArray['secondaryDnsServer'] = $data->secondaryDnsServer ?? null;
+            $dataArray['secondaryDnsServer'] = $data->secondaryDnsServer;
         }
         if (array_key_exists('defaultLeaseTime', get_object_vars($data)) && null !== ($data->defaultLeaseTime ?? null)) {
-            $dataArray['defaultLeaseTime'] = $data->defaultLeaseTime ?? null;
+            $dataArray['defaultLeaseTime'] = $data->defaultLeaseTime;
         }
         return $dataArray;
     }

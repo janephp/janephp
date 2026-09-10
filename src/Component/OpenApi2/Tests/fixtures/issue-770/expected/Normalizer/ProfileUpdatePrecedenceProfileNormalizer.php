@@ -63,21 +63,21 @@ class ProfileUpdatePrecedenceProfileNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('vlanPrecedence', get_object_vars($data)) && null !== ($data->vlanPrecedence ?? null)) {
             $values = [];
-            foreach ($data->vlanPrecedence ?? null as $value) {
+            foreach ($data->vlanPrecedence as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vlanPrecedence'] = $values;
         }
         if (array_key_exists('rateLimitingPrecedence', get_object_vars($data)) && null !== ($data->rateLimitingPrecedence ?? null)) {
             $values_1 = [];
-            foreach ($data->rateLimitingPrecedence ?? null as $value_1) {
+            foreach ($data->rateLimitingPrecedence as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rateLimitingPrecedence'] = $values_1;

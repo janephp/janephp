@@ -48,8 +48,8 @@ class ContentDownloadRequestItemNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentId'] = $data->contentId ?? null;
-        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+        $dataArray['contentId'] = $data->contentId;
+        $dataArray['outputFormatId'] = $data->outputFormatId;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

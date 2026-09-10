@@ -46,7 +46,7 @@ class IdentityModifyGuestPassNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
-            $dataArray['isDisabled'] = $data->isDisabled ?? null;
+            $dataArray['isDisabled'] = $data->isDisabled;
         }
         return $dataArray;
     }

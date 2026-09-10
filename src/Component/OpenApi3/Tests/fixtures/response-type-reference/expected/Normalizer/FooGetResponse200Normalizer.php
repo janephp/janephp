@@ -56,10 +56,10 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['bar'] = $data->bar ?? null;
+            $dataArray['bar'] = $data->bar;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

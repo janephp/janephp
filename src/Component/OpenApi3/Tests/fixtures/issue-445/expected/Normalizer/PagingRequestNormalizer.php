@@ -51,9 +51,9 @@ class PagingRequestNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['limit'] = $data->limit ?? null;
+        $dataArray['limit'] = $data->limit;
         if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
-            $dataArray['pageToken'] = $data->pageToken ?? null;
+            $dataArray['pageToken'] = $data->pageToken;
         }
         return $dataArray;
     }

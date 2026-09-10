@@ -55,16 +55,16 @@ class WlanQueryWlanBssidNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
-            $dataArray['wlanName'] = $data->wlanName ?? null;
+            $dataArray['wlanName'] = $data->wlanName;
         }
         if (array_key_exists('bssid', get_object_vars($data)) && null !== ($data->bssid ?? null)) {
-            $dataArray['bssid'] = $data->bssid ?? null;
+            $dataArray['bssid'] = $data->bssid;
         }
         if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
-            $dataArray['wlanId'] = $data->wlanId ?? null;
+            $dataArray['wlanId'] = $data->wlanId;
         }
         if (array_key_exists('radioId', get_object_vars($data)) && null !== ($data->radioId ?? null)) {
-            $dataArray['radioId'] = $data->radioId ?? null;
+            $dataArray['radioId'] = $data->radioId;
         }
         return $dataArray;
     }

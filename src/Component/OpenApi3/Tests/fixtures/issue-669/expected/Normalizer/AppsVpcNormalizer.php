@@ -60,11 +60,11 @@ class AppsVpcNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('egressIps', get_object_vars($data)) && null !== ($data->egressIps ?? null)) {
             $values = [];
-            foreach ($data->egressIps ?? null as $value) {
+            foreach ($data->egressIps as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['egress_ips'] = $values;

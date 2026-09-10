@@ -60,13 +60,13 @@ class ByoipPrefixValidationsItemNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('note', get_object_vars($data)) && null !== ($data->note ?? null)) {
-            $dataArray['note'] = $data->note ?? null;
+            $dataArray['note'] = $data->note;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

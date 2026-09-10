@@ -104,37 +104,37 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
-            $dataArray['category'] = $data->category ?? null;
+            $dataArray['category'] = $data->category;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('inverted', get_object_vars($data)) && null !== ($data->inverted ?? null)) {
-            $dataArray['inverted'] = $data->inverted ?? null;
+            $dataArray['inverted'] = $data->inverted;
         }
         if (array_key_exists('isMetricGoal', get_object_vars($data)) && null !== ($data->isMetricGoal ?? null)) {
-            $dataArray['is_metric_goal'] = $data->isMetricGoal ?? null;
+            $dataArray['is_metric_goal'] = $data->isMetricGoal;
         }
         if (array_key_exists('metricName', get_object_vars($data)) && null !== ($data->metricName ?? null)) {
-            $dataArray['metric_name'] = $data->metricName ?? null;
+            $dataArray['metric_name'] = $data->metricName;
         }
         if (array_key_exists('metricRank', get_object_vars($data)) && null !== ($data->metricRank ?? null)) {
-            $dataArray['metric_rank'] = $data->metricRank ?? null;
+            $dataArray['metric_rank'] = $data->metricRank;
         }
         if (array_key_exists('metricType', get_object_vars($data)) && null !== ($data->metricType ?? null)) {
-            $dataArray['metric_type'] = $data->metricType ?? null;
+            $dataArray['metric_type'] = $data->metricType;
         }
         if (array_key_exists('metricUuid', get_object_vars($data)) && null !== ($data->metricUuid ?? null)) {
-            $dataArray['metric_uuid'] = $data->metricUuid ?? null;
+            $dataArray['metric_uuid'] = $data->metricUuid;
         }
         if (array_key_exists('metricValueType', get_object_vars($data)) && null !== ($data->metricValueType ?? null)) {
-            $dataArray['metric_value_type'] = $data->metricValueType ?? null;
+            $dataArray['metric_value_type'] = $data->metricValueType;
         }
         if (array_key_exists('rangeMax', get_object_vars($data)) && null !== ($data->rangeMax ?? null)) {
-            $dataArray['range_max'] = $data->rangeMax ?? null;
+            $dataArray['range_max'] = $data->rangeMax;
         }
         if (array_key_exists('rangeMin', get_object_vars($data)) && null !== ($data->rangeMin ?? null)) {
-            $dataArray['range_min'] = $data->rangeMin ?? null;
+            $dataArray['range_min'] = $data->rangeMin;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

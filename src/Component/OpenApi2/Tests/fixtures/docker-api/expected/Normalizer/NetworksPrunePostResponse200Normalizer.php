@@ -54,7 +54,7 @@ class NetworksPrunePostResponse200Normalizer implements DenormalizerInterface, N
         $dataArray = [];
         if (array_key_exists('networksDeleted', get_object_vars($data)) && null !== ($data->networksDeleted ?? null)) {
             $values = [];
-            foreach ($data->networksDeleted ?? null as $value) {
+            foreach ($data->networksDeleted as $value) {
                 $values[] = $value;
             }
             $dataArray['NetworksDeleted'] = $values;

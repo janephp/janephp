@@ -61,11 +61,11 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['satisfied'] = $data->satisfied ?? null;
+        $dataArray['satisfied'] = $data->satisfied;
         if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
-            $dataArray['reason'] = $data->reason ?? null;
+            $dataArray['reason'] = $data->reason;
         }
         return $dataArray;
     }

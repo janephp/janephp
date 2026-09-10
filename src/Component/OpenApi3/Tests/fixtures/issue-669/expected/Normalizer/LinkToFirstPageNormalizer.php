@@ -52,7 +52,7 @@ class LinkToFirstPageNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
-            $dataArray['first'] = $data->first ?? null;
+            $dataArray['first'] = $data->first;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -70,15 +70,15 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['field'] = $data->field ?? null;
-        $value = $data->location ?? null;
-        if (is_object($data->location ?? null)) {
-            $value = ($data->location ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
+        $dataArray['kind'] = $data->kind;
+        $dataArray['field'] = $data->field;
+        $value = $data->location;
+        if (is_object($data->location)) {
+            $value = $data->location === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location, 'json', $context));
         }
         $dataArray['location'] = $value;
         if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
-            $dataArray['distance'] = $data->distance ?? null;
+            $dataArray['distance'] = $data->distance;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

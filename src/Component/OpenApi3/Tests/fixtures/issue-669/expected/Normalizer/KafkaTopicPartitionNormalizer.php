@@ -76,20 +76,20 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('inSyncReplicas', get_object_vars($data)) && null !== ($data->inSyncReplicas ?? null)) {
-            $dataArray['in_sync_replicas'] = $data->inSyncReplicas ?? null;
+            $dataArray['in_sync_replicas'] = $data->inSyncReplicas;
         }
         if (array_key_exists('earliestOffset', get_object_vars($data)) && null !== ($data->earliestOffset ?? null)) {
-            $dataArray['earliest_offset'] = $data->earliestOffset ?? null;
+            $dataArray['earliest_offset'] = $data->earliestOffset;
         }
         if (array_key_exists('consumerGroups', get_object_vars($data)) && null !== ($data->consumerGroups ?? null)) {
             $values = [];
-            foreach ($data->consumerGroups ?? null as $value) {
+            foreach ($data->consumerGroups as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['consumer_groups'] = $values;

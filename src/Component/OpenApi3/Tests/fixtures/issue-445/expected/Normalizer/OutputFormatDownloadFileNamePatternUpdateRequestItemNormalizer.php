@@ -59,12 +59,12 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('patterns', get_object_vars($data)) && null !== ($data->patterns ?? null)) {
-            $value = $data->patterns ?? null;
-            if (is_object($data->patterns ?? null)) {
+            $value = $data->patterns;
+            if (is_object($data->patterns)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->patterns ?? null as $key => $value_1) {
+                foreach ($data->patterns as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;

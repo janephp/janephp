@@ -58,13 +58,13 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('leader', get_object_vars($data)) && null !== ($data->leader ?? null)) {
-            $dataArray['Leader'] = $data->leader ?? null;
+            $dataArray['Leader'] = $data->leader;
         }
         if (array_key_exists('reachability', get_object_vars($data)) && null !== ($data->reachability ?? null)) {
-            $dataArray['Reachability'] = $data->reachability ?? null;
+            $dataArray['Reachability'] = $data->reachability;
         }
         if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
-            $dataArray['Addr'] = $data->addr ?? null;
+            $dataArray['Addr'] = $data->addr;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ManagerStatusConstraint());

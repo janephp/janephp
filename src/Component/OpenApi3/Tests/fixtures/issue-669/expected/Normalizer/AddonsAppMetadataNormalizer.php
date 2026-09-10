@@ -75,14 +75,14 @@ class AddonsAppMetadataNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['display_name'] = $data->displayName ?? null;
-        $dataArray['description'] = $data->description ?? null;
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['display_name'] = $data->displayName;
+        $dataArray['description'] = $data->description;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = [];
-            foreach ($data->options ?? null as $value) {
+            foreach ($data->options as $value) {
                 $values[] = $value;
             }
             $dataArray['options'] = $values;

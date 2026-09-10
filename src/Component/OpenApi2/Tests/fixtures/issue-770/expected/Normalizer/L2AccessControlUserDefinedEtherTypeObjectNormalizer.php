@@ -48,8 +48,8 @@ class L2AccessControlUserDefinedEtherTypeObjectNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['etherType'] = $data->etherType ?? null;
-        $dataArray['protocolName'] = $data->protocolName ?? null;
+        $dataArray['etherType'] = $data->etherType;
+        $dataArray['protocolName'] = $data->protocolName;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

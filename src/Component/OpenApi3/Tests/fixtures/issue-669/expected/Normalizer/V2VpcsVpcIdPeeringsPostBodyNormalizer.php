@@ -55,8 +55,8 @@ class V2VpcsVpcIdPeeringsPostBodyNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['vpc_id'] = $data->vpcId ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['vpc_id'] = $data->vpcId;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

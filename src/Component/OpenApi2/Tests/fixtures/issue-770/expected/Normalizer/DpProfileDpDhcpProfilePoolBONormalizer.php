@@ -111,72 +111,72 @@ class DpProfileDpDhcpProfilePoolBONormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('leaseTime', get_object_vars($data)) && null !== ($data->leaseTime ?? null)) {
-            $dataArray['leaseTime'] = $data->leaseTime ?? null;
+            $dataArray['leaseTime'] = $data->leaseTime;
         }
         if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
-            $dataArray['hostName'] = $data->hostName ?? null;
+            $dataArray['hostName'] = $data->hostName;
         }
         if (array_key_exists('primaryDnsServer', get_object_vars($data)) && null !== ($data->primaryDnsServer ?? null)) {
-            $dataArray['primaryDnsServer'] = $data->primaryDnsServer ?? null;
+            $dataArray['primaryDnsServer'] = $data->primaryDnsServer;
         }
         if (array_key_exists('secondaryRouter', get_object_vars($data)) && null !== ($data->secondaryRouter ?? null)) {
-            $dataArray['secondaryRouter'] = $data->secondaryRouter ?? null;
+            $dataArray['secondaryRouter'] = $data->secondaryRouter;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('netMask', get_object_vars($data)) && null !== ($data->netMask ?? null)) {
-            $dataArray['netMask'] = $data->netMask ?? null;
+            $dataArray['netMask'] = $data->netMask;
         }
         if (array_key_exists('ipRange', get_object_vars($data)) && null !== ($data->ipRange ?? null)) {
-            $dataArray['ipRange'] = $data->ipRange ?? null;
+            $dataArray['ipRange'] = $data->ipRange;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('vlanType', get_object_vars($data)) && null !== ($data->vlanType ?? null)) {
-            $dataArray['vlanType'] = $data->vlanType ?? null;
+            $dataArray['vlanType'] = $data->vlanType;
         }
         if (array_key_exists('secondaryDnsServer', get_object_vars($data)) && null !== ($data->secondaryDnsServer ?? null)) {
-            $dataArray['secondaryDnsServer'] = $data->secondaryDnsServer ?? null;
+            $dataArray['secondaryDnsServer'] = $data->secondaryDnsServer;
         }
         if (array_key_exists('primaryRouter', get_object_vars($data)) && null !== ($data->primaryRouter ?? null)) {
-            $dataArray['primaryRouter'] = $data->primaryRouter ?? null;
+            $dataArray['primaryRouter'] = $data->primaryRouter;
         }
         if (array_key_exists('broadcastAddress', get_object_vars($data)) && null !== ($data->broadcastAddress ?? null)) {
-            $dataArray['broadcastAddress'] = $data->broadcastAddress ?? null;
+            $dataArray['broadcastAddress'] = $data->broadcastAddress;
         }
         if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
-            $dataArray['profileId'] = $data->profileId ?? null;
+            $dataArray['profileId'] = $data->profileId;
         }
         if (array_key_exists('vlanRange', get_object_vars($data)) && null !== ($data->vlanRange ?? null)) {
-            $dataArray['vlanRange'] = $data->vlanRange ?? null;
+            $dataArray['vlanRange'] = $data->vlanRange;
         }
         if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
-            $dataArray['domainName'] = $data->domainName ?? null;
+            $dataArray['domainName'] = $data->domainName;
         }
         if (array_key_exists('poolId', get_object_vars($data)) && null !== ($data->poolId ?? null)) {
-            $dataArray['poolId'] = $data->poolId ?? null;
+            $dataArray['poolId'] = $data->poolId;
         }
         if (array_key_exists('qinqVlanRanges', get_object_vars($data)) && null !== ($data->qinqVlanRanges ?? null)) {
             $values = [];
-            foreach ($data->qinqVlanRanges ?? null as $value) {
+            foreach ($data->qinqVlanRanges as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['qinqVlanRanges'] = $values;
         }
         if (array_key_exists('subOptionSpaces', get_object_vars($data)) && null !== ($data->subOptionSpaces ?? null)) {
             $values_1 = [];
-            foreach ($data->subOptionSpaces ?? null as $value_1) {
+            foreach ($data->subOptionSpaces as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['subOptionSpaces'] = $values_1;
         }
         if (array_key_exists('excludeAddressRange', get_object_vars($data)) && null !== ($data->excludeAddressRange ?? null)) {
-            $dataArray['excludeAddressRange'] = $data->excludeAddressRange ?? null;
+            $dataArray['excludeAddressRange'] = $data->excludeAddressRange;
         }
         if (array_key_exists('poolName', get_object_vars($data)) && null !== ($data->poolName ?? null)) {
-            $dataArray['poolName'] = $data->poolName ?? null;
+            $dataArray['poolName'] = $data->poolName;
         }
         return $dataArray;
     }

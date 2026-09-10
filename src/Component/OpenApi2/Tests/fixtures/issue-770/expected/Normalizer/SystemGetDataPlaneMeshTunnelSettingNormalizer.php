@@ -49,7 +49,7 @@ class SystemGetDataPlaneMeshTunnelSettingNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('encrypted', get_object_vars($data)) && null !== ($data->encrypted ?? null)) {
-            $dataArray['encrypted'] = $data->encrypted ?? null;
+            $dataArray['encrypted'] = $data->encrypted;
         }
         return $dataArray;
     }

@@ -64,16 +64,16 @@ class NetworkV4Normalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
-            $dataArray['ip_address'] = $data->ipAddress ?? null;
+            $dataArray['ip_address'] = $data->ipAddress;
         }
         if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
-            $dataArray['netmask'] = $data->netmask ?? null;
+            $dataArray['netmask'] = $data->netmask;
         }
         if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
-            $dataArray['gateway'] = $data->gateway ?? null;
+            $dataArray['gateway'] = $data->gateway;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

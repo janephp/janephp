@@ -55,16 +55,16 @@ class ServiceTestingConfigLoginRequestNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
-            $dataArray['userName'] = $data->userName ?? null;
+            $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('timeZoneUtcOffset', get_object_vars($data)) && null !== ($data->timeZoneUtcOffset ?? null)) {
-            $dataArray['timeZoneUtcOffset'] = $data->timeZoneUtcOffset ?? null;
+            $dataArray['timeZoneUtcOffset'] = $data->timeZoneUtcOffset;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         return $dataArray;
     }

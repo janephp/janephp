@@ -49,10 +49,10 @@ class ScguserScgUserGroupRoleLabelValueNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
-            $dataArray['label'] = $data->label ?? null;
+            $dataArray['label'] = $data->label;
         }
         if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
-            $dataArray['value'] = $data->value ?? null;
+            $dataArray['value'] = $data->value;
         }
         return $dataArray;
     }

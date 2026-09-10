@@ -56,10 +56,10 @@ class ApiDropboxOauth2GetTokensInputNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('redirectUrl', get_object_vars($data)) && null !== ($data->redirectUrl ?? null)) {
-            $dataArray['redirect_url'] = $data->redirectUrl ?? null;
+            $dataArray['redirect_url'] = $data->redirectUrl;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

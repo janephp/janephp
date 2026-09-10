@@ -68,16 +68,16 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['path'] = $data->path ?? null;
-        $dataArray['isWritable'] = $data->isWritable ?? null;
-        $value = $data->dataType ?? null;
-        if (is_string($data->dataType ?? null)) {
-            $value = $data->dataType ?? null;
+        $dataArray['path'] = $data->path;
+        $dataArray['isWritable'] = $data->isWritable;
+        $value = $data->dataType;
+        if (is_string($data->dataType)) {
+            $value = $data->dataType;
         }
         $dataArray['dataType'] = $value;
         if (array_key_exists('availableKeyFields', get_object_vars($data)) && null !== ($data->availableKeyFields ?? null)) {
             $values = [];
-            foreach ($data->availableKeyFields ?? null as $value_1) {
+            foreach ($data->availableKeyFields as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['availableKeyFields'] = $values;

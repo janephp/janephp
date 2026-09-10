@@ -49,7 +49,7 @@ class CommonRecoverySsidNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('recoverySsidEnabled', get_object_vars($data)) && null !== ($data->recoverySsidEnabled ?? null)) {
-            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled ?? null;
+            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled;
         }
         return $dataArray;
     }

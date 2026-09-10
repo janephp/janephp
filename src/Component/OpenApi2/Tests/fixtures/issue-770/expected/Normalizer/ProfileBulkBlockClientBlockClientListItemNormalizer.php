@@ -54,14 +54,14 @@ class ProfileBulkBlockClientBlockClientListItemNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->mac ?? null;
+        $dataArray['mac'] = $data->mac;
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
-            $dataArray['zoneId'] = $data->zoneId ?? null;
+            $dataArray['zoneId'] = $data->zoneId;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['apMac'] = $data->apMac ?? null;
+        $dataArray['apMac'] = $data->apMac;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

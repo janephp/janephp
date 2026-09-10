@@ -84,25 +84,25 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
+        $dataArray['id'] = $data->id;
         if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
-            $dataArray['document'] = $data->document ?? null;
+            $dataArray['document'] = $data->document;
         }
         if (array_key_exists('scopeType', get_object_vars($data)) && null !== ($data->scopeType ?? null)) {
-            $dataArray['scopeType'] = $data->scopeType ?? null;
+            $dataArray['scopeType'] = $data->scopeType;
         }
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
         if (array_key_exists('traceJob', get_object_vars($data)) && null !== ($data->traceJob ?? null)) {
-            $value = $data->traceJob ?? null;
-            if (is_object($data->traceJob ?? null)) {
-                $value = ($data->traceJob ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->traceJob ?? null, 'json', $context));
+            $value = $data->traceJob;
+            if (is_object($data->traceJob)) {
+                $value = $data->traceJob === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->traceJob, 'json', $context));
             }
             $dataArray['traceJob'] = $value;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value_1 = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value_1 = $data->audit;
+            if (is_object($data->audit)) {
+                $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_1;
         }

@@ -101,24 +101,24 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['alerts'] = ($data->alerts ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alerts ?? null, 'json', $context));
-        $dataArray['compare'] = $data->compare ?? null;
-        $dataArray['description'] = $data->description ?? null;
-        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['alerts'] = $data->alerts === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alerts, 'json', $context));
+        $dataArray['compare'] = $data->compare;
+        $dataArray['description'] = $data->description;
+        $dataArray['enabled'] = $data->enabled;
         $values = [];
-        foreach ($data->entities ?? null as $value) {
+        foreach ($data->entities as $value) {
             $values[] = $value;
         }
         $dataArray['entities'] = $values;
         $values_1 = [];
-        foreach ($data->tags ?? null as $value_1) {
+        foreach ($data->tags as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['tags'] = $values_1;
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['uuid'] = $data->uuid ?? null;
-        $dataArray['value'] = $data->value ?? null;
-        $dataArray['window'] = $data->window ?? null;
+        $dataArray['type'] = $data->type;
+        $dataArray['uuid'] = $data->uuid;
+        $dataArray['value'] = $data->value;
+        $dataArray['window'] = $data->window;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;

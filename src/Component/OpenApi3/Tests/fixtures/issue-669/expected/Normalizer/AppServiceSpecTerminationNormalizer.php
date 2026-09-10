@@ -56,10 +56,10 @@ class AppServiceSpecTerminationNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('drainSeconds', get_object_vars($data)) && null !== ($data->drainSeconds ?? null)) {
-            $dataArray['drain_seconds'] = $data->drainSeconds ?? null;
+            $dataArray['drain_seconds'] = $data->drainSeconds;
         }
         if (array_key_exists('gracePeriodSeconds', get_object_vars($data)) && null !== ($data->gracePeriodSeconds ?? null)) {
-            $dataArray['grace_period_seconds'] = $data->gracePeriodSeconds ?? null;
+            $dataArray['grace_period_seconds'] = $data->gracePeriodSeconds;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

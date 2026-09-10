@@ -86,17 +86,17 @@ class SpecialEventNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
-            $dataArray['eventId'] = $data->eventId ?? null;
+            $dataArray['eventId'] = $data->eventId;
         }
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['location'] = $data->location ?? null;
-        $dataArray['eventDescription'] = $data->eventDescription ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['location'] = $data->location;
+        $dataArray['eventDescription'] = $data->eventDescription;
         $values = [];
-        foreach ($data->dates ?? null as $value) {
+        foreach ($data->dates as $value) {
             $values[] = $value->format('Y-m-d');
         }
         $dataArray['dates'] = $values;
-        $dataArray['price'] = $data->price ?? null;
+        $dataArray['price'] = $data->price;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

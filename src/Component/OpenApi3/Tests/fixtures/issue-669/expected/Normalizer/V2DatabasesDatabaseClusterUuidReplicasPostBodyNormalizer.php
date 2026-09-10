@@ -99,31 +99,31 @@ class V2DatabasesDatabaseClusterUuidReplicasPostBodyNormalizer implements Denorm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
-            $dataArray['size'] = $data->size ?? null;
+            $dataArray['size'] = $data->size;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('privateNetworkUuid', get_object_vars($data)) && null !== ($data->privateNetworkUuid ?? null)) {
-            $dataArray['private_network_uuid'] = $data->privateNetworkUuid ?? null;
+            $dataArray['private_network_uuid'] = $data->privateNetworkUuid;
         }
         if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
-            $dataArray['connection'] = ($data->connection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection ?? null, 'json', $context));
+            $dataArray['connection'] = $data->connection === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection, 'json', $context));
         }
         if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
-            $dataArray['private_connection'] = ($data->privateConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection ?? null, 'json', $context));
+            $dataArray['private_connection'] = $data->privateConnection === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection, 'json', $context));
         }
         if (array_key_exists('storageSizeMib', get_object_vars($data)) && null !== ($data->storageSizeMib ?? null)) {
-            $dataArray['storage_size_mib'] = $data->storageSizeMib ?? null;
+            $dataArray['storage_size_mib'] = $data->storageSizeMib;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

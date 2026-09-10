@@ -57,7 +57,7 @@ class ReservedIpv6ListNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         if (array_key_exists('reservedIpv6s', get_object_vars($data)) && null !== ($data->reservedIpv6s ?? null)) {
             $values = [];
-            foreach ($data->reservedIpv6s ?? null as $value) {
+            foreach ($data->reservedIpv6s as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reserved_ipv6s'] = $values;

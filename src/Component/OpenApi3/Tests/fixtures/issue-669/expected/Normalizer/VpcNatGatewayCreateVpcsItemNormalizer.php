@@ -58,9 +58,9 @@ class VpcNatGatewayCreateVpcsItemNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+        $dataArray['vpc_uuid'] = $data->vpcUuid;
         if (array_key_exists('defaultGateway', get_object_vars($data)) && null !== ($data->defaultGateway ?? null)) {
-            $dataArray['default_gateway'] = $data->defaultGateway ?? null;
+            $dataArray['default_gateway'] = $data->defaultGateway;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -49,7 +49,7 @@ class SystemModifyDataPlaneStateNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('isDataCenter', get_object_vars($data)) && null !== ($data->isDataCenter ?? null)) {
-            $dataArray['isDataCenter'] = $data->isDataCenter ?? null;
+            $dataArray['isDataCenter'] = $data->isDataCenter;
         }
         return $dataArray;
     }

@@ -76,22 +76,22 @@ class AlertNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('threshold', get_object_vars($data)) && null !== ($data->threshold ?? null)) {
-            $dataArray['threshold'] = $data->threshold ?? null;
+            $dataArray['threshold'] = $data->threshold;
         }
         if (array_key_exists('comparison', get_object_vars($data)) && null !== ($data->comparison ?? null)) {
-            $dataArray['comparison'] = $data->comparison ?? null;
+            $dataArray['comparison'] = $data->comparison;
         }
         if (array_key_exists('notifications', get_object_vars($data)) && null !== ($data->notifications ?? null)) {
-            $dataArray['notifications'] = ($data->notifications ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->notifications ?? null, 'json', $context));
+            $dataArray['notifications'] = $data->notifications === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->notifications, 'json', $context));
         }
         if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
-            $dataArray['period'] = $data->period ?? null;
+            $dataArray['period'] = $data->period;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

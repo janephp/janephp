@@ -58,19 +58,19 @@ class ZoneBonjourGatewayPolicySummaryNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('lastModifiedBy', get_object_vars($data)) && null !== ($data->lastModifiedBy ?? null)) {
-            $dataArray['lastModifiedBy'] = $data->lastModifiedBy ?? null;
+            $dataArray['lastModifiedBy'] = $data->lastModifiedBy;
         }
         if (array_key_exists('lastModifiedOn', get_object_vars($data)) && null !== ($data->lastModifiedOn ?? null)) {
-            $dataArray['lastModifiedOn'] = $data->lastModifiedOn ?? null;
+            $dataArray['lastModifiedOn'] = $data->lastModifiedOn;
         }
         return $dataArray;
     }

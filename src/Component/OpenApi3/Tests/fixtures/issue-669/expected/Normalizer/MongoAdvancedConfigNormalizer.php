@@ -68,19 +68,19 @@ class MongoAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('defaultReadConcern', get_object_vars($data)) && null !== ($data->defaultReadConcern ?? null)) {
-            $dataArray['default_read_concern'] = $data->defaultReadConcern ?? null;
+            $dataArray['default_read_concern'] = $data->defaultReadConcern;
         }
         if (array_key_exists('defaultWriteConcern', get_object_vars($data)) && null !== ($data->defaultWriteConcern ?? null)) {
-            $dataArray['default_write_concern'] = $data->defaultWriteConcern ?? null;
+            $dataArray['default_write_concern'] = $data->defaultWriteConcern;
         }
         if (array_key_exists('transactionLifetimeLimitSeconds', get_object_vars($data)) && null !== ($data->transactionLifetimeLimitSeconds ?? null)) {
-            $dataArray['transaction_lifetime_limit_seconds'] = $data->transactionLifetimeLimitSeconds ?? null;
+            $dataArray['transaction_lifetime_limit_seconds'] = $data->transactionLifetimeLimitSeconds;
         }
         if (array_key_exists('slowOpThresholdMs', get_object_vars($data)) && null !== ($data->slowOpThresholdMs ?? null)) {
-            $dataArray['slow_op_threshold_ms'] = $data->slowOpThresholdMs ?? null;
+            $dataArray['slow_op_threshold_ms'] = $data->slowOpThresholdMs;
         }
         if (array_key_exists('verbosity', get_object_vars($data)) && null !== ($data->verbosity ?? null)) {
-            $dataArray['verbosity'] = $data->verbosity ?? null;
+            $dataArray['verbosity'] = $data->verbosity;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

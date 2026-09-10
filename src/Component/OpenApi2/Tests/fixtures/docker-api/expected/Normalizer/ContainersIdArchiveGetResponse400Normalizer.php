@@ -49,7 +49,7 @@ class ContainersIdArchiveGetResponse400Normalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
-            $dataArray['message'] = $data->message ?? null;
+            $dataArray['message'] = $data->message;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdArchiveGetResponse400Constraint());

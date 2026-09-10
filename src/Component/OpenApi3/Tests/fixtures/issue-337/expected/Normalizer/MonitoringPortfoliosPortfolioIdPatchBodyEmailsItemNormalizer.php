@@ -60,13 +60,13 @@ class MonitoringPortfoliosPortfolioIdPatchBodyEmailsItemNormalizer implements De
     {
         $dataArray = [];
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
         if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
-            $dataArray['emailAddress'] = $data->emailAddress ?? null;
+            $dataArray['emailAddress'] = $data->emailAddress;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

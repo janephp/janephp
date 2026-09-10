@@ -111,40 +111,40 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
-            $dataArray['count'] = $data->count ?? null;
+            $dataArray['count'] = $data->count;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->tags ?? null as $value) {
+            foreach ($data->tags as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->labels ?? null as $key => $value_1) {
+            foreach ($data->labels as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['labels'] = $values_1;
         }
         if (array_key_exists('taints', get_object_vars($data)) && null !== ($data->taints ?? null)) {
             $values_2 = [];
-            foreach ($data->taints ?? null as $value_2) {
+            foreach ($data->taints as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['taints'] = $values_2;
         }
         if (array_key_exists('autoScale', get_object_vars($data)) && null !== ($data->autoScale ?? null)) {
-            $dataArray['auto_scale'] = $data->autoScale ?? null;
+            $dataArray['auto_scale'] = $data->autoScale;
         }
         if (array_key_exists('minNodes', get_object_vars($data)) && null !== ($data->minNodes ?? null)) {
-            $dataArray['min_nodes'] = $data->minNodes ?? null;
+            $dataArray['min_nodes'] = $data->minNodes;
         }
         if (array_key_exists('maxNodes', get_object_vars($data)) && null !== ($data->maxNodes ?? null)) {
-            $dataArray['max_nodes'] = $data->maxNodes ?? null;
+            $dataArray['max_nodes'] = $data->maxNodes;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {

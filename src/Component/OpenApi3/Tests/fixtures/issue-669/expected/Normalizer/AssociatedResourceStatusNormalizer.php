@@ -68,16 +68,16 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
-            $dataArray['droplet'] = ($data->droplet ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet ?? null, 'json', $context));
+            $dataArray['droplet'] = $data->droplet === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
         }
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
-            $dataArray['resources'] = ($data->resources ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resources ?? null, 'json', $context));
+            $dataArray['resources'] = $data->resources === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resources, 'json', $context));
         }
         if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
-            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['completed_at'] = $data->completedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('failures', get_object_vars($data)) && null !== ($data->failures ?? null)) {
-            $dataArray['failures'] = $data->failures ?? null;
+            $dataArray['failures'] = $data->failures;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -110,44 +110,44 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->id ?? null;
+        $dataArray['Id'] = $data->id;
         if (array_key_exists('repoTags', get_object_vars($data)) && null !== ($data->repoTags ?? null)) {
             $values = [];
-            foreach ($data->repoTags ?? null as $value) {
+            foreach ($data->repoTags as $value) {
                 $values[] = $value;
             }
             $dataArray['RepoTags'] = $values;
         }
         if (array_key_exists('repoDigests', get_object_vars($data)) && null !== ($data->repoDigests ?? null)) {
             $values_1 = [];
-            foreach ($data->repoDigests ?? null as $value_1) {
+            foreach ($data->repoDigests as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['RepoDigests'] = $values_1;
         }
-        $dataArray['Parent'] = $data->parent ?? null;
-        $dataArray['Comment'] = $data->comment ?? null;
-        $dataArray['Created'] = $data->created ?? null;
-        $dataArray['Container'] = $data->container ?? null;
+        $dataArray['Parent'] = $data->parent;
+        $dataArray['Comment'] = $data->comment;
+        $dataArray['Created'] = $data->created;
+        $dataArray['Container'] = $data->container;
         if (array_key_exists('containerConfig', get_object_vars($data)) && null !== ($data->containerConfig ?? null)) {
-            $dataArray['ContainerConfig'] = ($data->containerConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerConfig ?? null, 'json', $context));
+            $dataArray['ContainerConfig'] = $data->containerConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerConfig, 'json', $context));
         }
-        $dataArray['DockerVersion'] = $data->dockerVersion ?? null;
-        $dataArray['Author'] = $data->author ?? null;
+        $dataArray['DockerVersion'] = $data->dockerVersion;
+        $dataArray['Author'] = $data->author;
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['Config'] = ($data->config ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            $dataArray['Config'] = $data->config === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         }
-        $dataArray['Architecture'] = $data->architecture ?? null;
-        $dataArray['Os'] = $data->os ?? null;
+        $dataArray['Architecture'] = $data->architecture;
+        $dataArray['Os'] = $data->os;
         if (array_key_exists('osVersion', get_object_vars($data)) && null !== ($data->osVersion ?? null)) {
-            $dataArray['OsVersion'] = $data->osVersion ?? null;
+            $dataArray['OsVersion'] = $data->osVersion;
         }
-        $dataArray['Size'] = $data->size ?? null;
-        $dataArray['VirtualSize'] = $data->virtualSize ?? null;
-        $dataArray['GraphDriver'] = ($data->graphDriver ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver ?? null, 'json', $context));
-        $dataArray['RootFS'] = ($data->rootFS ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootFS ?? null, 'json', $context));
+        $dataArray['Size'] = $data->size;
+        $dataArray['VirtualSize'] = $data->virtualSize;
+        $dataArray['GraphDriver'] = $data->graphDriver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver, 'json', $context));
+        $dataArray['RootFS'] = $data->rootFS === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootFS, 'json', $context));
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
-            $dataArray['Metadata'] = ($data->metadata ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->metadata ?? null, 'json', $context));
+            $dataArray['Metadata'] = $data->metadata === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->metadata, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageConstraint());

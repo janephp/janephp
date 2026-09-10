@@ -61,22 +61,22 @@ class ProfileCreateAccountingProfileNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('realmMappings', get_object_vars($data)) && null !== ($data->realmMappings ?? null)) {
             $values = [];
-            foreach ($data->realmMappings ?? null as $value) {
+            foreach ($data->realmMappings as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realmMappings'] = $values;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
-            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+            $dataArray['mvnoId'] = $data->mvnoId;
         }
         return $dataArray;
     }

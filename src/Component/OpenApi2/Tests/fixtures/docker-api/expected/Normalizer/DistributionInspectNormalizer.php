@@ -55,9 +55,9 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Descriptor'] = ($data->descriptor ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->descriptor ?? null, 'json', $context));
+        $dataArray['Descriptor'] = $data->descriptor === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->descriptor, 'json', $context));
         $values = [];
-        foreach ($data->platforms ?? null as $value) {
+        foreach ($data->platforms as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Platforms'] = $values;

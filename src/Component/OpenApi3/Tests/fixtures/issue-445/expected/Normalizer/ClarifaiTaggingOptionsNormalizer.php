@@ -116,29 +116,29 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('tagOutputFormatId', get_object_vars($data)) && null !== ($data->tagOutputFormatId ?? null)) {
-            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId ?? null;
+            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId;
         }
         if (array_key_exists('keywordLookupCacheName', get_object_vars($data)) && null !== ($data->keywordLookupCacheName ?? null)) {
-            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName ?? null;
+            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName;
         }
         if (array_key_exists('taggingLayerId', get_object_vars($data)) && null !== ($data->taggingLayerId ?? null)) {
-            $dataArray['taggingLayerId'] = $data->taggingLayerId ?? null;
+            $dataArray['taggingLayerId'] = $data->taggingLayerId;
         }
         if (array_key_exists('foundTagsFieldId', get_object_vars($data)) && null !== ($data->foundTagsFieldId ?? null)) {
-            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId ?? null;
+            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId;
         }
         if (array_key_exists('missingKeywordsFieldId', get_object_vars($data)) && null !== ($data->missingKeywordsFieldId ?? null)) {
-            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId ?? null;
+            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
-            $dataArray['language'] = $data->language ?? null;
+            $dataArray['language'] = $data->language;
         }
         if (array_key_exists('minimumValue', get_object_vars($data)) && null !== ($data->minimumValue ?? null)) {
-            $dataArray['minimumValue'] = $data->minimumValue ?? null;
+            $dataArray['minimumValue'] = $data->minimumValue;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -52,10 +52,10 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
-            $dataArray['ID'] = $data->iD ?? null;
+            $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('expected', get_object_vars($data)) && null !== ($data->expected ?? null)) {
-            $dataArray['Expected'] = $data->expected ?? null;
+            $dataArray['Expected'] = $data->expected;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\CommitConstraint());

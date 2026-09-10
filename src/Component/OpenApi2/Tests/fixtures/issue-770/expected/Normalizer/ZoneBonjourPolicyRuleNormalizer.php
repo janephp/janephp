@@ -57,14 +57,14 @@ class ZoneBonjourPolicyRuleNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['bridgeService'] = $data->bridgeService ?? null;
+        $dataArray['bridgeService'] = $data->bridgeService;
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
-        $dataArray['fromVlan'] = $data->fromVlan ?? null;
-        $dataArray['toVlan'] = $data->toVlan ?? null;
+        $dataArray['fromVlan'] = $data->fromVlan;
+        $dataArray['toVlan'] = $data->toVlan;
         if (array_key_exists('notes', get_object_vars($data)) && null !== ($data->notes ?? null)) {
-            $dataArray['notes'] = $data->notes ?? null;
+            $dataArray['notes'] = $data->notes;
         }
         return $dataArray;
     }

@@ -50,7 +50,7 @@ class SciModifyEventCodeNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->sciAcceptedEventCodes ?? null as $value) {
+        foreach ($data->sciAcceptedEventCodes as $value) {
             $values[] = $value;
         }
         $dataArray['sciAcceptedEventCodes'] = $values;

@@ -61,22 +61,22 @@ class DhcppoolsDhcpClientInfoNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
-            $dataArray['clientMac'] = $data->clientMac ?? null;
+            $dataArray['clientMac'] = $data->clientMac;
         }
         if (array_key_exists('clientIp', get_object_vars($data)) && null !== ($data->clientIp ?? null)) {
-            $dataArray['clientIp'] = $data->clientIp ?? null;
+            $dataArray['clientIp'] = $data->clientIp;
         }
         if (array_key_exists('leaseTime', get_object_vars($data)) && null !== ($data->leaseTime ?? null)) {
-            $dataArray['leaseTime'] = $data->leaseTime ?? null;
+            $dataArray['leaseTime'] = $data->leaseTime;
         }
         if (array_key_exists('leaseTimeHours', get_object_vars($data)) && null !== ($data->leaseTimeHours ?? null)) {
-            $dataArray['leaseTimeHours'] = $data->leaseTimeHours ?? null;
+            $dataArray['leaseTimeHours'] = $data->leaseTimeHours;
         }
         if (array_key_exists('leaseTimeMinutes', get_object_vars($data)) && null !== ($data->leaseTimeMinutes ?? null)) {
-            $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes ?? null;
+            $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes;
         }
         if (array_key_exists('leaseExpiryTime', get_object_vars($data)) && null !== ($data->leaseExpiryTime ?? null)) {
-            $dataArray['leaseExpiryTime'] = $data->leaseExpiryTime ?? null;
+            $dataArray['leaseExpiryTime'] = $data->leaseExpiryTime;
         }
         return $dataArray;
     }

@@ -75,22 +75,22 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
-            $dataArray['safeNumber'] = $data->safeNumber ?? null;
+            $dataArray['safeNumber'] = $data->safeNumber;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
-            $dataArray['countryCode'] = $data->countryCode ?? null;
+            $dataArray['countryCode'] = $data->countryCode;
         }
         if (array_key_exists('portfolioId', get_object_vars($data)) && null !== ($data->portfolioId ?? null)) {
-            $dataArray['portfolioId'] = $data->portfolioId ?? null;
+            $dataArray['portfolioId'] = $data->portfolioId;
         }
         if (array_key_exists('portfolioName', get_object_vars($data)) && null !== ($data->portfolioName ?? null)) {
-            $dataArray['portfolioName'] = $data->portfolioName ?? null;
+            $dataArray['portfolioName'] = $data->portfolioName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

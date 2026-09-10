@@ -64,19 +64,19 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('disable', get_object_vars($data)) && null !== ($data->disable ?? null)) {
-            $dataArray['Disable'] = $data->disable ?? null;
+            $dataArray['Disable'] = $data->disable;
         }
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = $data->user ?? null;
+            $dataArray['User'] = $data->user;
         }
         if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
-            $dataArray['Role'] = $data->role ?? null;
+            $dataArray['Role'] = $data->role;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['Type'] = $data->type ?? null;
+            $dataArray['Type'] = $data->type;
         }
         if (array_key_exists('level', get_object_vars($data)) && null !== ($data->level ?? null)) {
-            $dataArray['Level'] = $data->level ?? null;
+            $dataArray['Level'] = $data->level;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());

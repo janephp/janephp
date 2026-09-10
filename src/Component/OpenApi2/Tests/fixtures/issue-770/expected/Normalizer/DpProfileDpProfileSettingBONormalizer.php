@@ -67,28 +67,28 @@ class DpProfileDpProfileSettingBONormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('dpVersion', get_object_vars($data)) && null !== ($data->dpVersion ?? null)) {
-            $dataArray['dpVersion'] = $data->dpVersion ?? null;
+            $dataArray['dpVersion'] = $data->dpVersion;
         }
         if (array_key_exists('dhcpProfileId', get_object_vars($data)) && null !== ($data->dhcpProfileId ?? null)) {
-            $dataArray['dhcpProfileId'] = $data->dhcpProfileId ?? null;
+            $dataArray['dhcpProfileId'] = $data->dhcpProfileId;
         }
         if (array_key_exists('dhcpProfileName', get_object_vars($data)) && null !== ($data->dhcpProfileName ?? null)) {
-            $dataArray['dhcpProfileName'] = $data->dhcpProfileName ?? null;
+            $dataArray['dhcpProfileName'] = $data->dhcpProfileName;
         }
         if (array_key_exists('dpName', get_object_vars($data)) && null !== ($data->dpName ?? null)) {
-            $dataArray['dpName'] = $data->dpName ?? null;
+            $dataArray['dpName'] = $data->dpName;
         }
         if (array_key_exists('dpKey', get_object_vars($data)) && null !== ($data->dpKey ?? null)) {
-            $dataArray['dpKey'] = $data->dpKey ?? null;
+            $dataArray['dpKey'] = $data->dpKey;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('natProfileId', get_object_vars($data)) && null !== ($data->natProfileId ?? null)) {
-            $dataArray['natProfileId'] = $data->natProfileId ?? null;
+            $dataArray['natProfileId'] = $data->natProfileId;
         }
         if (array_key_exists('natProfileName', get_object_vars($data)) && null !== ($data->natProfileName ?? null)) {
-            $dataArray['natProfileName'] = $data->natProfileName ?? null;
+            $dataArray['natProfileName'] = $data->natProfileName;
         }
         return $dataArray;
     }

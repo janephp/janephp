@@ -58,16 +58,16 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
-            $dataArray['username'] = $data->username ?? null;
+            $dataArray['username'] = $data->username;
         }
         if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
-            $dataArray['password'] = $data->password ?? null;
+            $dataArray['password'] = $data->password;
         }
         if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
-            $dataArray['email'] = $data->email ?? null;
+            $dataArray['email'] = $data->email;
         }
         if (array_key_exists('serveraddress', get_object_vars($data)) && null !== ($data->serveraddress ?? null)) {
-            $dataArray['serveraddress'] = $data->serveraddress ?? null;
+            $dataArray['serveraddress'] = $data->serveraddress;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\AuthConfigConstraint());

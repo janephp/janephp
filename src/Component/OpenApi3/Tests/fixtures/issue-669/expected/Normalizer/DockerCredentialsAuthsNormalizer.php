@@ -52,7 +52,7 @@ class DockerCredentialsAuthsNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('registryDigitaloceanCom', get_object_vars($data)) && null !== ($data->registryDigitaloceanCom ?? null)) {
-            $dataArray['registry.digitalocean.com'] = ($data->registryDigitaloceanCom ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->registryDigitaloceanCom ?? null, 'json', $context));
+            $dataArray['registry.digitalocean.com'] = $data->registryDigitaloceanCom === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->registryDigitaloceanCom, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -56,10 +56,10 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItemNor
     {
         $dataArray = [];
         if (array_key_exists('csUserId', get_object_vars($data)) && null !== ($data->csUserId ?? null)) {
-            $dataArray['csUserId'] = $data->csUserId ?? null;
+            $dataArray['csUserId'] = $data->csUserId;
         }
         if (array_key_exists('permissions', get_object_vars($data)) && null !== ($data->permissions ?? null)) {
-            $dataArray['permissions'] = $data->permissions ?? null;
+            $dataArray['permissions'] = $data->permissions;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

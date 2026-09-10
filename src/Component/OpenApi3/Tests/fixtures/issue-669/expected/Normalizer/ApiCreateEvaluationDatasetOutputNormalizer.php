@@ -52,7 +52,7 @@ class ApiCreateEvaluationDatasetOutputNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('evaluationDatasetUuid', get_object_vars($data)) && null !== ($data->evaluationDatasetUuid ?? null)) {
-            $dataArray['evaluation_dataset_uuid'] = $data->evaluationDatasetUuid ?? null;
+            $dataArray['evaluation_dataset_uuid'] = $data->evaluationDatasetUuid;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

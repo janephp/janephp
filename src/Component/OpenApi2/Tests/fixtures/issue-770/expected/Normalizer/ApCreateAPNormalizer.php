@@ -102,49 +102,49 @@ class ApCreateAPNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->mac ?? null;
-        $dataArray['zoneId'] = $data->zoneId ?? null;
+        $dataArray['mac'] = $data->mac;
+        $dataArray['zoneId'] = $data->zoneId;
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
-            $dataArray['apGroupId'] = $data->apGroupId ?? null;
+            $dataArray['apGroupId'] = $data->apGroupId;
         }
         if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
-            $dataArray['serial'] = $data->serial ?? null;
+            $dataArray['serial'] = $data->serial;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('gpsSource', get_object_vars($data)) && null !== ($data->gpsSource ?? null)) {
-            $dataArray['gpsSource'] = $data->gpsSource ?? null;
+            $dataArray['gpsSource'] = $data->gpsSource;
         }
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
-            $dataArray['latitude'] = $data->latitude ?? null;
+            $dataArray['latitude'] = $data->latitude;
         }
         if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
-            $dataArray['longitude'] = $data->longitude ?? null;
+            $dataArray['longitude'] = $data->longitude;
         }
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = $data->location ?? null;
+            $dataArray['location'] = $data->location;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('administrativeState', get_object_vars($data)) && null !== ($data->administrativeState ?? null)) {
-            $dataArray['administrativeState'] = $data->administrativeState ?? null;
+            $dataArray['administrativeState'] = $data->administrativeState;
         }
         if (array_key_exists('provisionChecklist', get_object_vars($data)) && null !== ($data->provisionChecklist ?? null)) {
-            $dataArray['provisionChecklist'] = $data->provisionChecklist ?? null;
+            $dataArray['provisionChecklist'] = $data->provisionChecklist;
         }
         if (array_key_exists('awsVenue', get_object_vars($data)) && null !== ($data->awsVenue ?? null)) {
-            $dataArray['awsVenue'] = $data->awsVenue ?? null;
+            $dataArray['awsVenue'] = $data->awsVenue;
         }
         if (array_key_exists('testSpeedEnabled', get_object_vars($data)) && null !== ($data->testSpeedEnabled ?? null)) {
-            $dataArray['testSpeedEnabled'] = $data->testSpeedEnabled ?? null;
+            $dataArray['testSpeedEnabled'] = $data->testSpeedEnabled;
         }
         if (array_key_exists('bssColoringEnable', get_object_vars($data)) && null !== ($data->bssColoringEnable ?? null)) {
-            $dataArray['bssColoringEnable'] = $data->bssColoringEnable ?? null;
+            $dataArray['bssColoringEnable'] = $data->bssColoringEnable;
         }
         return $dataArray;
     }

@@ -46,7 +46,7 @@ class UrlFilteringModifyUrlFilteringPolicyBlockByThreatLevelConfigNormalizer imp
     {
         $dataArray = [];
         if (array_key_exists('webReputationScore', get_object_vars($data)) && null !== ($data->webReputationScore ?? null)) {
-            $dataArray['webReputationScore'] = $data->webReputationScore ?? null;
+            $dataArray['webReputationScore'] = $data->webReputationScore;
         }
         return $dataArray;
     }

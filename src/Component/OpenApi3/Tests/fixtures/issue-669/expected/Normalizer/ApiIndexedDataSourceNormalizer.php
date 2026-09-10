@@ -112,46 +112,46 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
-            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['completed_at'] = $data->completedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('dataSourceUuid', get_object_vars($data)) && null !== ($data->dataSourceUuid ?? null)) {
-            $dataArray['data_source_uuid'] = $data->dataSourceUuid ?? null;
+            $dataArray['data_source_uuid'] = $data->dataSourceUuid;
         }
         if (array_key_exists('errorDetails', get_object_vars($data)) && null !== ($data->errorDetails ?? null)) {
-            $dataArray['error_details'] = $data->errorDetails ?? null;
+            $dataArray['error_details'] = $data->errorDetails;
         }
         if (array_key_exists('errorMsg', get_object_vars($data)) && null !== ($data->errorMsg ?? null)) {
-            $dataArray['error_msg'] = $data->errorMsg ?? null;
+            $dataArray['error_msg'] = $data->errorMsg;
         }
         if (array_key_exists('failedItemCount', get_object_vars($data)) && null !== ($data->failedItemCount ?? null)) {
-            $dataArray['failed_item_count'] = $data->failedItemCount ?? null;
+            $dataArray['failed_item_count'] = $data->failedItemCount;
         }
         if (array_key_exists('indexedFileCount', get_object_vars($data)) && null !== ($data->indexedFileCount ?? null)) {
-            $dataArray['indexed_file_count'] = $data->indexedFileCount ?? null;
+            $dataArray['indexed_file_count'] = $data->indexedFileCount;
         }
         if (array_key_exists('indexedItemCount', get_object_vars($data)) && null !== ($data->indexedItemCount ?? null)) {
-            $dataArray['indexed_item_count'] = $data->indexedItemCount ?? null;
+            $dataArray['indexed_item_count'] = $data->indexedItemCount;
         }
         if (array_key_exists('removedItemCount', get_object_vars($data)) && null !== ($data->removedItemCount ?? null)) {
-            $dataArray['removed_item_count'] = $data->removedItemCount ?? null;
+            $dataArray['removed_item_count'] = $data->removedItemCount;
         }
         if (array_key_exists('skippedItemCount', get_object_vars($data)) && null !== ($data->skippedItemCount ?? null)) {
-            $dataArray['skipped_item_count'] = $data->skippedItemCount ?? null;
+            $dataArray['skipped_item_count'] = $data->skippedItemCount;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
-            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
+            $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('totalBytes', get_object_vars($data)) && null !== ($data->totalBytes ?? null)) {
-            $dataArray['total_bytes'] = $data->totalBytes ?? null;
+            $dataArray['total_bytes'] = $data->totalBytes;
         }
         if (array_key_exists('totalBytesIndexed', get_object_vars($data)) && null !== ($data->totalBytesIndexed ?? null)) {
-            $dataArray['total_bytes_indexed'] = $data->totalBytesIndexed ?? null;
+            $dataArray['total_bytes_indexed'] = $data->totalBytesIndexed;
         }
         if (array_key_exists('totalFileCount', get_object_vars($data)) && null !== ($data->totalFileCount ?? null)) {
-            $dataArray['total_file_count'] = $data->totalFileCount ?? null;
+            $dataArray['total_file_count'] = $data->totalFileCount;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

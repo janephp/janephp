@@ -64,16 +64,16 @@ class ApiPagesNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
-            $dataArray['first'] = $data->first ?? null;
+            $dataArray['first'] = $data->first;
         }
         if (array_key_exists('last', get_object_vars($data)) && null !== ($data->last ?? null)) {
-            $dataArray['last'] = $data->last ?? null;
+            $dataArray['last'] = $data->last;
         }
         if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
-            $dataArray['next'] = $data->next ?? null;
+            $dataArray['next'] = $data->next;
         }
         if (array_key_exists('previous', get_object_vars($data)) && null !== ($data->previous ?? null)) {
-            $dataArray['previous'] = $data->previous ?? null;
+            $dataArray['previous'] = $data->previous;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

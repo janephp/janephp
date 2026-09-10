@@ -49,10 +49,10 @@ class SciSciEventCodeListItemNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
-            $dataArray['code'] = $data->code ?? null;
+            $dataArray['code'] = $data->code;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         return $dataArray;
     }

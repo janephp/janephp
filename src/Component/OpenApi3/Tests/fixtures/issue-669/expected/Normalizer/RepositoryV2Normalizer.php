@@ -68,19 +68,19 @@ class RepositoryV2Normalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
-            $dataArray['registry_name'] = $data->registryName ?? null;
+            $dataArray['registry_name'] = $data->registryName;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('latestManifest', get_object_vars($data)) && null !== ($data->latestManifest ?? null)) {
-            $dataArray['latest_manifest'] = ($data->latestManifest ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->latestManifest ?? null, 'json', $context));
+            $dataArray['latest_manifest'] = $data->latestManifest === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->latestManifest, 'json', $context));
         }
         if (array_key_exists('tagCount', get_object_vars($data)) && null !== ($data->tagCount ?? null)) {
-            $dataArray['tag_count'] = $data->tagCount ?? null;
+            $dataArray['tag_count'] = $data->tagCount;
         }
         if (array_key_exists('manifestCount', get_object_vars($data)) && null !== ($data->manifestCount ?? null)) {
-            $dataArray['manifest_count'] = $data->manifestCount ?? null;
+            $dataArray['manifest_count'] = $data->manifestCount;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

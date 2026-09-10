@@ -61,19 +61,19 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['Protocol'] = $data->protocol ?? null;
+            $dataArray['Protocol'] = $data->protocol;
         }
         if (array_key_exists('targetPort', get_object_vars($data)) && null !== ($data->targetPort ?? null)) {
-            $dataArray['TargetPort'] = $data->targetPort ?? null;
+            $dataArray['TargetPort'] = $data->targetPort;
         }
         if (array_key_exists('publishedPort', get_object_vars($data)) && null !== ($data->publishedPort ?? null)) {
-            $dataArray['PublishedPort'] = $data->publishedPort ?? null;
+            $dataArray['PublishedPort'] = $data->publishedPort;
         }
         if (array_key_exists('publishMode', get_object_vars($data)) && null !== ($data->publishMode ?? null)) {
-            $dataArray['PublishMode'] = $data->publishMode ?? null;
+            $dataArray['PublishMode'] = $data->publishMode;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\EndpointPortConfigConstraint());

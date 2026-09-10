@@ -64,14 +64,14 @@ class ResponseProblemDetailsResponse400Normalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status ?? null;
+            $dataArray['status'] = $data->status;
         }
         if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
-            $dataArray['title'] = $data->title ?? null;
+            $dataArray['title'] = $data->title;
         }
-        $dataArray['type'] = $data->type ?? null;
+        $dataArray['type'] = $data->type;
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
-            $dataArray['detail'] = $data->detail ?? null;
+            $dataArray['detail'] = $data->detail;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -55,13 +55,13 @@ class IdentitySessionDurationNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('requireLoginAgain', get_object_vars($data)) && null !== ($data->requireLoginAgain ?? null)) {
-            $dataArray['requireLoginAgain'] = $data->requireLoginAgain ?? null;
+            $dataArray['requireLoginAgain'] = $data->requireLoginAgain;
         }
         if (array_key_exists('sessionValue', get_object_vars($data)) && null !== ($data->sessionValue ?? null)) {
-            $dataArray['sessionValue'] = $data->sessionValue ?? null;
+            $dataArray['sessionValue'] = $data->sessionValue;
         }
         if (array_key_exists('sessionUnit', get_object_vars($data)) && null !== ($data->sessionUnit ?? null)) {
-            $dataArray['sessionUnit'] = $data->sessionUnit ?? null;
+            $dataArray['sessionUnit'] = $data->sessionUnit;
         }
         return $dataArray;
     }

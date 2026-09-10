@@ -65,14 +65,14 @@ class AppHealthNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray = [];
         if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->components ?? null as $value) {
+            foreach ($data->components as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['components'] = $values;
         }
         if (array_key_exists('functionsComponents', get_object_vars($data)) && null !== ($data->functionsComponents ?? null)) {
             $values_1 = [];
-            foreach ($data->functionsComponents ?? null as $value_1) {
+            foreach ($data->functionsComponents as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['functions_components'] = $values_1;

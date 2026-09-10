@@ -57,19 +57,19 @@ class BusinessProcessDetailsDataBaseNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataBatchResponse' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataBatchResponse' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataSchemaImport' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataSchemaImport' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataCdnPurge' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataCdnPurge' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataContentImport' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessDetailsDataContentImport' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

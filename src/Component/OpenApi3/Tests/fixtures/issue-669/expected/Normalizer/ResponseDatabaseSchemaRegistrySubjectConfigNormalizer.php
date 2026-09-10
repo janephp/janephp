@@ -55,8 +55,8 @@ class ResponseDatabaseSchemaRegistrySubjectConfigNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['subject_name'] = $data->subjectName ?? null;
-        $dataArray['compatibility_level'] = $data->compatibilityLevel ?? null;
+        $dataArray['subject_name'] = $data->subjectName;
+        $dataArray['compatibility_level'] = $data->compatibilityLevel;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

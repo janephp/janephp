@@ -55,7 +55,7 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
     {
         $dataArray = [];
         if (array_key_exists('isProcessed', get_object_vars($data)) && null !== ($data->isProcessed ?? null)) {
-            $dataArray['isProcessed'] = $data->isProcessed ?? null;
+            $dataArray['isProcessed'] = $data->isProcessed;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

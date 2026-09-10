@@ -73,28 +73,28 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['Type'] = $data->type ?? null;
+            $dataArray['Type'] = $data->type;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['Name'] = $data->name ?? null;
+            $dataArray['Name'] = $data->name;
         }
         if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
-            $dataArray['Source'] = $data->source ?? null;
+            $dataArray['Source'] = $data->source;
         }
         if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
-            $dataArray['Destination'] = $data->destination ?? null;
+            $dataArray['Destination'] = $data->destination;
         }
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver ?? null;
+            $dataArray['Driver'] = $data->driver;
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = $data->mode ?? null;
+            $dataArray['Mode'] = $data->mode;
         }
         if (array_key_exists('rW', get_object_vars($data)) && null !== ($data->rW ?? null)) {
-            $dataArray['RW'] = $data->rW ?? null;
+            $dataArray['RW'] = $data->rW;
         }
         if (array_key_exists('propagation', get_object_vars($data)) && null !== ($data->propagation ?? null)) {
-            $dataArray['Propagation'] = $data->propagation ?? null;
+            $dataArray['Propagation'] = $data->propagation;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountPointConstraint());

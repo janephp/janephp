@@ -78,22 +78,22 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('shareholderType', get_object_vars($data)) && null !== ($data->shareholderType ?? null)) {
-            $dataArray['shareholderType'] = $data->shareholderType ?? null;
+            $dataArray['shareholderType'] = $data->shareholderType;
         }
         if (array_key_exists('shareType', get_object_vars($data)) && null !== ($data->shareType ?? null)) {
-            $dataArray['shareType'] = $data->shareType ?? null;
+            $dataArray['shareType'] = $data->shareType;
         }
         if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
-            $dataArray['currency'] = $data->currency ?? null;
+            $dataArray['currency'] = $data->currency;
         }
         if (array_key_exists('totalNumberOfSharesOwned', get_object_vars($data)) && null !== ($data->totalNumberOfSharesOwned ?? null)) {
-            $dataArray['totalNumberOfSharesOwned'] = $data->totalNumberOfSharesOwned ?? null;
+            $dataArray['totalNumberOfSharesOwned'] = $data->totalNumberOfSharesOwned;
         }
         if (array_key_exists('percentSharesHeld', get_object_vars($data)) && null !== ($data->percentSharesHeld ?? null)) {
-            $dataArray['percentSharesHeld'] = $data->percentSharesHeld ?? null;
+            $dataArray['percentSharesHeld'] = $data->percentSharesHeld;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

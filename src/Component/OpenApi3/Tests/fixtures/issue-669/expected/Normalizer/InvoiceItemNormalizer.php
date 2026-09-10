@@ -92,37 +92,37 @@ class InvoiceItemNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('product', get_object_vars($data)) && null !== ($data->product ?? null)) {
-            $dataArray['product'] = $data->product ?? null;
+            $dataArray['product'] = $data->product;
         }
         if (array_key_exists('resourceUuid', get_object_vars($data)) && null !== ($data->resourceUuid ?? null)) {
-            $dataArray['resource_uuid'] = $data->resourceUuid ?? null;
+            $dataArray['resource_uuid'] = $data->resourceUuid;
         }
         if (array_key_exists('resourceId', get_object_vars($data)) && null !== ($data->resourceId ?? null)) {
-            $dataArray['resource_id'] = $data->resourceId ?? null;
+            $dataArray['resource_id'] = $data->resourceId;
         }
         if (array_key_exists('groupDescription', get_object_vars($data)) && null !== ($data->groupDescription ?? null)) {
-            $dataArray['group_description'] = $data->groupDescription ?? null;
+            $dataArray['group_description'] = $data->groupDescription;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount ?? null;
+            $dataArray['amount'] = $data->amount;
         }
         if (array_key_exists('duration', get_object_vars($data)) && null !== ($data->duration ?? null)) {
-            $dataArray['duration'] = $data->duration ?? null;
+            $dataArray['duration'] = $data->duration;
         }
         if (array_key_exists('durationUnit', get_object_vars($data)) && null !== ($data->durationUnit ?? null)) {
-            $dataArray['duration_unit'] = $data->durationUnit ?? null;
+            $dataArray['duration_unit'] = $data->durationUnit;
         }
         if (array_key_exists('startTime', get_object_vars($data)) && null !== ($data->startTime ?? null)) {
-            $dataArray['start_time'] = $data->startTime ?? null;
+            $dataArray['start_time'] = $data->startTime;
         }
         if (array_key_exists('endTime', get_object_vars($data)) && null !== ($data->endTime ?? null)) {
-            $dataArray['end_time'] = $data->endTime ?? null;
+            $dataArray['end_time'] = $data->endTime;
         }
         if (array_key_exists('projectName', get_object_vars($data)) && null !== ($data->projectName ?? null)) {
-            $dataArray['project_name'] = $data->projectName ?? null;
+            $dataArray['project_name'] = $data->projectName;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

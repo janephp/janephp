@@ -55,16 +55,16 @@ class AaaGroupAttrIdentityUserRoleMappingUserRoleNormalizer implements Denormali
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('userTrafficProfile', get_object_vars($data)) && null !== ($data->userTrafficProfile ?? null)) {
-            $dataArray['userTrafficProfile'] = ($data->userTrafficProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile ?? null, 'json', $context));
+            $dataArray['userTrafficProfile'] = $data->userTrafficProfile === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile, 'json', $context));
         }
         if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
-            $dataArray['firewallProfileId'] = $data->firewallProfileId ?? null;
+            $dataArray['firewallProfileId'] = $data->firewallProfileId;
         }
         return $dataArray;
     }

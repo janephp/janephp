@@ -59,12 +59,12 @@ class DocumentUploadNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['file'] = $data->file ?? null;
+        $dataArray['file'] = $data->file;
         if (array_key_exists('preview', get_object_vars($data)) && null !== ($data->preview ?? null)) {
-            $dataArray['preview'] = $data->preview ?? null;
+            $dataArray['preview'] = $data->preview;
         }
         if (array_key_exists('note', get_object_vars($data)) && null !== ($data->note ?? null)) {
-            $dataArray['note'] = $data->note ?? null;
+            $dataArray['note'] = $data->note;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

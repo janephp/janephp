@@ -56,10 +56,10 @@ class ApiGoogleDriveDataSourceNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('folderId', get_object_vars($data)) && null !== ($data->folderId ?? null)) {
-            $dataArray['folder_id'] = $data->folderId ?? null;
+            $dataArray['folder_id'] = $data->folderId;
         }
         if (array_key_exists('refreshToken', get_object_vars($data)) && null !== ($data->refreshToken ?? null)) {
-            $dataArray['refresh_token'] = $data->refreshToken ?? null;
+            $dataArray['refresh_token'] = $data->refreshToken;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

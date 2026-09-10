@@ -55,9 +55,9 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->id ?? null;
+        $dataArray['Id'] = $data->id;
         $values = [];
-        foreach ($data->warnings ?? null as $value) {
+        foreach ($data->warnings as $value) {
             $values[] = $value;
         }
         $dataArray['Warnings'] = $values;

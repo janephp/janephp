@@ -58,19 +58,19 @@ class AdministrationLicensesNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
-            $dataArray['count'] = $data->count ?? null;
+            $dataArray['count'] = $data->count;
         }
         if (array_key_exists('createTime', get_object_vars($data)) && null !== ($data->createTime ?? null)) {
-            $dataArray['createTime'] = $data->createTime ?? null;
+            $dataArray['createTime'] = $data->createTime;
         }
         if (array_key_exists('expireDate', get_object_vars($data)) && null !== ($data->expireDate ?? null)) {
-            $dataArray['expireDate'] = $data->expireDate ?? null;
+            $dataArray['expireDate'] = $data->expireDate;
         }
         return $dataArray;
     }

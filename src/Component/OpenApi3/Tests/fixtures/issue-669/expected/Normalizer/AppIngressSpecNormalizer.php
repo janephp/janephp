@@ -57,7 +57,7 @@ class AppIngressSpecNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->rules ?? null as $value) {
+            foreach ($data->rules as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;

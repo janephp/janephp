@@ -87,45 +87,45 @@ class RadioRadio5gApGroupNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('autoCellSizing', get_object_vars($data)) && null !== ($data->autoCellSizing ?? null)) {
-            $dataArray['autoCellSizing'] = $data->autoCellSizing ?? null;
+            $dataArray['autoCellSizing'] = $data->autoCellSizing;
         }
         if (array_key_exists('txPower', get_object_vars($data)) && null !== ($data->txPower ?? null)) {
-            $dataArray['txPower'] = $data->txPower ?? null;
+            $dataArray['txPower'] = $data->txPower;
         }
         if (array_key_exists('channelWidth', get_object_vars($data)) && null !== ($data->channelWidth ?? null)) {
-            $dataArray['channelWidth'] = $data->channelWidth ?? null;
+            $dataArray['channelWidth'] = $data->channelWidth;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('channelIndoor', get_object_vars($data)) && null !== ($data->channelIndoor ?? null)) {
-            $dataArray['channelIndoor'] = $data->channelIndoor ?? null;
+            $dataArray['channelIndoor'] = $data->channelIndoor;
         }
         if (array_key_exists('channelRange', get_object_vars($data)) && null !== ($data->channelRange ?? null)) {
             $values = [];
-            foreach ($data->channelRange ?? null as $value) {
+            foreach ($data->channelRange as $value) {
                 $values[] = $value;
             }
             $dataArray['channelRange'] = $values;
         }
         if (array_key_exists('channelRangeIndoor', get_object_vars($data)) && null !== ($data->channelRangeIndoor ?? null)) {
             $values_1 = [];
-            foreach ($data->channelRangeIndoor ?? null as $value_1) {
+            foreach ($data->channelRangeIndoor as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['channelRangeIndoor'] = $values_1;
         }
         if (array_key_exists('secondaryChannel', get_object_vars($data)) && null !== ($data->secondaryChannel ?? null)) {
-            $dataArray['secondaryChannel'] = $data->secondaryChannel ?? null;
+            $dataArray['secondaryChannel'] = $data->secondaryChannel;
         }
         if (array_key_exists('secondaryChannelIndoor', get_object_vars($data)) && null !== ($data->secondaryChannelIndoor ?? null)) {
-            $dataArray['secondaryChannelIndoor'] = $data->secondaryChannelIndoor ?? null;
+            $dataArray['secondaryChannelIndoor'] = $data->secondaryChannelIndoor;
         }
         if (array_key_exists('wlanGroupId', get_object_vars($data)) && null !== ($data->wlanGroupId ?? null)) {
-            $dataArray['wlanGroupId'] = $data->wlanGroupId ?? null;
+            $dataArray['wlanGroupId'] = $data->wlanGroupId;
         }
         if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
-            $dataArray['autoChannelSelection'] = ($data->autoChannelSelection ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection ?? null, 'json', $context));
+            $dataArray['autoChannelSelection'] = $data->autoChannelSelection === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
         }
         return $dataArray;
     }

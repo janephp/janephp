@@ -56,11 +56,11 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('stateHit', get_object_vars($data)) && null !== ($data->stateHit ?? null)) {
-            $dataArray['stateHit'] = $data->stateHit ?? null;
+            $dataArray['stateHit'] = $data->stateHit;
         }
-        $value = $data->businessProcess ?? null;
-        if (is_object($data->businessProcess ?? null)) {
-            $value = ($data->businessProcess ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess ?? null, 'json', $context));
+        $value = $data->businessProcess;
+        if (is_object($data->businessProcess)) {
+            $value = $data->businessProcess === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess, 'json', $context));
         }
         $dataArray['businessProcess'] = $value;
         return $dataArray;

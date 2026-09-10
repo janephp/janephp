@@ -67,16 +67,16 @@ class ApiChunkingOptionsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('childChunkSize', get_object_vars($data)) && null !== ($data->childChunkSize ?? null)) {
-            $dataArray['child_chunk_size'] = $data->childChunkSize ?? null;
+            $dataArray['child_chunk_size'] = $data->childChunkSize;
         }
         if (array_key_exists('maxChunkSize', get_object_vars($data)) && null !== ($data->maxChunkSize ?? null)) {
-            $dataArray['max_chunk_size'] = $data->maxChunkSize ?? null;
+            $dataArray['max_chunk_size'] = $data->maxChunkSize;
         }
         if (array_key_exists('parentChunkSize', get_object_vars($data)) && null !== ($data->parentChunkSize ?? null)) {
-            $dataArray['parent_chunk_size'] = $data->parentChunkSize ?? null;
+            $dataArray['parent_chunk_size'] = $data->parentChunkSize;
         }
         if (array_key_exists('semanticThreshold', get_object_vars($data)) && null !== ($data->semanticThreshold ?? null)) {
-            $dataArray['semantic_threshold'] = $data->semanticThreshold ?? null;
+            $dataArray['semantic_threshold'] = $data->semanticThreshold;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

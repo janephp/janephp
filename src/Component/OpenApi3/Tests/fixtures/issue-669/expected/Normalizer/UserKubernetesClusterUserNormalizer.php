@@ -60,11 +60,11 @@ class UserKubernetesClusterUserNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
-            $dataArray['username'] = $data->username ?? null;
+            $dataArray['username'] = $data->username;
         }
         if (array_key_exists('groups', get_object_vars($data)) && null !== ($data->groups ?? null)) {
             $values = [];
-            foreach ($data->groups ?? null as $value) {
+            foreach ($data->groups as $value) {
                 $values[] = $value;
             }
             $dataArray['groups'] = $values;

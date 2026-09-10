@@ -80,28 +80,28 @@ class InvoiceSummaryUserBillingAddressNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('addressLine1', get_object_vars($data)) && null !== ($data->addressLine1 ?? null)) {
-            $dataArray['address_line1'] = $data->addressLine1 ?? null;
+            $dataArray['address_line1'] = $data->addressLine1;
         }
         if (array_key_exists('addressLine2', get_object_vars($data)) && null !== ($data->addressLine2 ?? null)) {
-            $dataArray['address_line2'] = $data->addressLine2 ?? null;
+            $dataArray['address_line2'] = $data->addressLine2;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region ?? null;
+            $dataArray['region'] = $data->region;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postal_code'] = $data->postalCode ?? null;
+            $dataArray['postal_code'] = $data->postalCode;
         }
         if (array_key_exists('countryIso2Code', get_object_vars($data)) && null !== ($data->countryIso2Code ?? null)) {
-            $dataArray['country_iso2_code'] = $data->countryIso2Code ?? null;
+            $dataArray['country_iso2_code'] = $data->countryIso2Code;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
-            $dataArray['created_at'] = $data->createdAt ?? null;
+            $dataArray['created_at'] = $data->createdAt;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
-            $dataArray['updated_at'] = $data->updatedAt ?? null;
+            $dataArray['updated_at'] = $data->updatedAt;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

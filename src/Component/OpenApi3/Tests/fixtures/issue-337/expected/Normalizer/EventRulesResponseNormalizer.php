@@ -89,28 +89,28 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
-            $dataArray['isActive'] = $data->isActive ?? null;
+            $dataArray['isActive'] = $data->isActive;
         }
         if (array_key_exists('ruleCode', get_object_vars($data)) && null !== ($data->ruleCode ?? null)) {
-            $dataArray['ruleCode'] = $data->ruleCode ?? null;
+            $dataArray['ruleCode'] = $data->ruleCode;
         }
         if (array_key_exists('ruleCountryCode', get_object_vars($data)) && null !== ($data->ruleCountryCode ?? null)) {
-            $dataArray['ruleCountryCode'] = $data->ruleCountryCode ?? null;
+            $dataArray['ruleCountryCode'] = $data->ruleCountryCode;
         }
         if (array_key_exists('ruleType', get_object_vars($data)) && null !== ($data->ruleType ?? null)) {
-            $dataArray['ruleType'] = $data->ruleType ?? null;
+            $dataArray['ruleType'] = $data->ruleType;
         }
         if (array_key_exists('ruleTypeName', get_object_vars($data)) && null !== ($data->ruleTypeName ?? null)) {
-            $dataArray['ruleTypeName'] = $data->ruleTypeName ?? null;
+            $dataArray['ruleTypeName'] = $data->ruleTypeName;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('param0', get_object_vars($data)) && null !== ($data->param0 ?? null)) {
-            $dataArray['param0'] = $data->param0 ?? null;
+            $dataArray['param0'] = $data->param0;
         }
         if (array_key_exists('param1', get_object_vars($data)) && null !== ($data->param1 ?? null)) {
-            $dataArray['param1'] = $data->param1 ?? null;
+            $dataArray['param1'] = $data->param1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

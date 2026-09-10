@@ -148,44 +148,44 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
     {
         $dataArray = [];
         if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
-            $dataArray['traceLevel'] = $data->traceLevel ?? null;
+            $dataArray['traceLevel'] = $data->traceLevel;
         }
         if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
-            $dataArray['traceId'] = $data->traceId ?? null;
+            $dataArray['traceId'] = $data->traceId;
         }
         if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
-            $dataArray['traceJobId'] = $data->traceJobId ?? null;
+            $dataArray['traceJobId'] = $data->traceJobId;
         }
         if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
-            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
+            $dataArray['httpStatusCode'] = $data->httpStatusCode;
         }
         if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
-            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
+            $dataArray['exceptionMessage'] = $data->exceptionMessage;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
-            $dataArray['customerId'] = $data->customerId ?? null;
+            $dataArray['customerId'] = $data->customerId;
         }
         if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
-            $dataArray['customerAlias'] = $data->customerAlias ?? null;
+            $dataArray['customerAlias'] = $data->customerAlias;
         }
         if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
-            $dataArray['userId'] = $data->userId ?? null;
+            $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('argumentName', get_object_vars($data)) && null !== ($data->argumentName ?? null)) {
-            $dataArray['argumentName'] = $data->argumentName ?? null;
+            $dataArray['argumentName'] = $data->argumentName;
         }
         if (array_key_exists('argumentValue', get_object_vars($data)) && null !== ($data->argumentValue ?? null)) {
-            $dataArray['argumentValue'] = $data->argumentValue ?? null;
+            $dataArray['argumentValue'] = $data->argumentValue;
         }
         if (array_key_exists('minAcceptableValue', get_object_vars($data)) && null !== ($data->minAcceptableValue ?? null)) {
-            $dataArray['minAcceptableValue'] = $data->minAcceptableValue ?? null;
+            $dataArray['minAcceptableValue'] = $data->minAcceptableValue;
         }
         if (array_key_exists('maxAcceptableValue', get_object_vars($data)) && null !== ($data->maxAcceptableValue ?? null)) {
-            $dataArray['maxAcceptableValue'] = $data->maxAcceptableValue ?? null;
+            $dataArray['maxAcceptableValue'] = $data->maxAcceptableValue;
         }
         if (array_key_exists('outputFormatId', get_object_vars($data)) && null !== ($data->outputFormatId ?? null)) {
-            $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+            $dataArray['outputFormatId'] = $data->outputFormatId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

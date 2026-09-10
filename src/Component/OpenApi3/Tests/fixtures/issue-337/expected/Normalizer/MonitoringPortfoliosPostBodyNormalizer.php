@@ -74,21 +74,21 @@ class MonitoringPortfoliosPostBodyNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('isDefault', get_object_vars($data)) && null !== ($data->isDefault ?? null)) {
-            $dataArray['isDefault'] = $data->isDefault ?? null;
+            $dataArray['isDefault'] = $data->isDefault;
         }
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
-            $dataArray['emails'] = ($data->emails ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails ?? null, 'json', $context));
+            $dataArray['emails'] = $data->emails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails, 'json', $context));
         }
         if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
-            $dataArray['emailSubject'] = $data->emailSubject ?? null;
+            $dataArray['emailSubject'] = $data->emailSubject;
         }
         if (array_key_exists('emailLanguage', get_object_vars($data)) && null !== ($data->emailLanguage ?? null)) {
-            $dataArray['emailLanguage'] = $data->emailLanguage ?? null;
+            $dataArray['emailLanguage'] = $data->emailLanguage;
         }
         if (array_key_exists('frequency', get_object_vars($data)) && null !== ($data->frequency ?? null)) {
-            $dataArray['frequency'] = $data->frequency ?? null;
+            $dataArray['frequency'] = $data->frequency;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

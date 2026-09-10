@@ -74,12 +74,12 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->metric ?? null as $key => $value) {
+        foreach ($data->metric as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['metric'] = $values;
         $values_1 = [];
-        foreach ($data->values ?? null as $value_1) {
+        foreach ($data->values as $value_1) {
             $values_2 = [];
             foreach ($value_1 as $value_2) {
                 $value_3 = $value_2;

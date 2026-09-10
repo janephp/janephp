@@ -119,33 +119,33 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
-            $dataArray['fileExtension'] = $data->fileExtension ?? null;
+            $dataArray['fileExtension'] = $data->fileExtension;
         }
         if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
-            $dataArray['filePath'] = $data->filePath ?? null;
+            $dataArray['filePath'] = $data->filePath;
         }
         if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
-            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes;
         }
         if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
-            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
+            $dataArray['sha1Hash'] = $data->sha1Hash;
         }
         if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
-            $dataArray['originalFileName'] = $data->originalFileName ?? null;
+            $dataArray['originalFileName'] = $data->originalFileName;
         }
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('durationInSeconds', get_object_vars($data)) && null !== ($data->durationInSeconds ?? null)) {
-            $dataArray['durationInSeconds'] = $data->durationInSeconds ?? null;
+            $dataArray['durationInSeconds'] = $data->durationInSeconds;
         }
         if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
-            $dataArray['width'] = $data->width ?? null;
+            $dataArray['width'] = $data->width;
         }
         if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
-            $dataArray['height'] = $data->height ?? null;
+            $dataArray['height'] = $data->height;
         }
         if (array_key_exists('sprites', get_object_vars($data)) && null !== ($data->sprites ?? null)) {
             $values = [];
-            foreach ($data->sprites ?? null as $value) {
+            foreach ($data->sprites as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sprites'] = $values;

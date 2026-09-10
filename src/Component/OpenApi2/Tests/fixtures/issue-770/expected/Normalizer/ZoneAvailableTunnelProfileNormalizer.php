@@ -61,19 +61,19 @@ class ZoneAvailableTunnelProfileNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('tunnelType', get_object_vars($data)) && null !== ($data->tunnelType ?? null)) {
-            $dataArray['tunnelType'] = $data->tunnelType ?? null;
+            $dataArray['tunnelType'] = $data->tunnelType;
         }
         if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
-            $dataArray['ipMode'] = $data->ipMode ?? null;
+            $dataArray['ipMode'] = $data->ipMode;
         }
         if (array_key_exists('aaaAffinityEnabled', get_object_vars($data)) && null !== ($data->aaaAffinityEnabled ?? null)) {
-            $dataArray['aaaAffinityEnabled'] = $data->aaaAffinityEnabled ?? null;
+            $dataArray['aaaAffinityEnabled'] = $data->aaaAffinityEnabled;
         }
         return $dataArray;
     }

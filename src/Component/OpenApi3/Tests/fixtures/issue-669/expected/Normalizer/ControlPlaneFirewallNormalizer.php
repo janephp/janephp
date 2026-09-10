@@ -63,11 +63,11 @@ class ControlPlaneFirewallNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
-            $dataArray['enabled'] = $data->enabled ?? null;
+            $dataArray['enabled'] = $data->enabled;
         }
         if (array_key_exists('allowedAddresses', get_object_vars($data)) && null !== ($data->allowedAddresses ?? null)) {
             $values = [];
-            foreach ($data->allowedAddresses ?? null as $value) {
+            foreach ($data->allowedAddresses as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed_addresses'] = $values;

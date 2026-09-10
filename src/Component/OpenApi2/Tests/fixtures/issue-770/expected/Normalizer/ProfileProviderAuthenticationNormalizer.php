@@ -58,15 +58,15 @@ class ProfileProviderAuthenticationNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['realm'] = $data->realm ?? null;
-        $dataArray['serviceType'] = $data->serviceType ?? null;
+        $dataArray['realm'] = $data->realm;
+        $dataArray['serviceType'] = $data->serviceType;
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
-            $dataArray['vlanId'] = $data->vlanId ?? null;
+            $dataArray['vlanId'] = $data->vlanId;
         }
         return $dataArray;
     }

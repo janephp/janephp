@@ -70,21 +70,21 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->contentIds ?? null as $value) {
+        foreach ($data->contentIds as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
-            $value_1 = $data->references ?? null;
-            if (is_object($data->references ?? null)) {
-                $value_1 = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
+            $value_1 = $data->references;
+            if (is_object($data->references)) {
+                $value_1 = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value_1;
         }
         if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
-            $value_2 = $data->shares ?? null;
-            if (is_object($data->shares ?? null)) {
-                $value_2 = ($data->shares ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares ?? null, 'json', $context));
+            $value_2 = $data->shares;
+            if (is_object($data->shares)) {
+                $value_2 = $data->shares === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
             }
             $dataArray['shares'] = $value_2;
         }

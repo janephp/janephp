@@ -57,13 +57,13 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         $dataArray = [];
         if (array_key_exists('imagesDeleted', get_object_vars($data)) && null !== ($data->imagesDeleted ?? null)) {
             $values = [];
-            foreach ($data->imagesDeleted ?? null as $value) {
+            foreach ($data->imagesDeleted as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ImagesDeleted'] = $values;
         }
         if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
-            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesPrunePostResponse200Constraint());

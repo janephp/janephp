@@ -49,10 +49,10 @@ class AdministrationLicensesSummaryCapacityControlLicenseCountNormalizer impleme
     {
         $dataArray = [];
         if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
-            $dataArray['totalCount'] = $data->totalCount ?? null;
+            $dataArray['totalCount'] = $data->totalCount;
         }
         if (array_key_exists('usedCount', get_object_vars($data)) && null !== ($data->usedCount ?? null)) {
-            $dataArray['usedCount'] = $data->usedCount ?? null;
+            $dataArray['usedCount'] = $data->usedCount;
         }
         return $dataArray;
     }

@@ -57,7 +57,7 @@ class VpcPeeringCreateNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->vpcIds ?? null as $value) {
+            foreach ($data->vpcIds as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;

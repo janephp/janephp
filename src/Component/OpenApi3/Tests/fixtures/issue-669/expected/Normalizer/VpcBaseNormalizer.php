@@ -64,7 +64,7 @@ class VpcBaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('urn', get_object_vars($data)) && null !== ($data->urn ?? null)) {
-            $dataArray['urn'] = $data->urn ?? null;
+            $dataArray['urn'] = $data->urn;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

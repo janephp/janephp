@@ -58,14 +58,14 @@ class IdentityCreateSubscriptionPackageNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['name'] = $data->name ?? null;
+        $dataArray['name'] = $data->name;
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
-        $dataArray['expirationInterval'] = $data->expirationInterval ?? null;
-        $dataArray['expirationValue'] = $data->expirationValue ?? null;
+        $dataArray['expirationInterval'] = $data->expirationInterval;
+        $dataArray['expirationValue'] = $data->expirationValue;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

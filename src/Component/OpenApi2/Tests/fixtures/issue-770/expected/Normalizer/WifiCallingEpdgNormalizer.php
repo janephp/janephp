@@ -49,10 +49,10 @@ class WifiCallingEpdgNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('fqdn', get_object_vars($data)) && null !== ($data->fqdn ?? null)) {
-            $dataArray['fqdn'] = $data->fqdn ?? null;
+            $dataArray['fqdn'] = $data->fqdn;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         return $dataArray;
     }

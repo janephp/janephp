@@ -51,9 +51,9 @@ class CommonRateLimitingNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['maxOutstandingRequestsPerServer'] = $data->maxOutstandingRequestsPerServer ?? null;
-        $dataArray['threshold'] = $data->threshold ?? null;
-        $dataArray['sanityTimer'] = $data->sanityTimer ?? null;
+        $dataArray['maxOutstandingRequestsPerServer'] = $data->maxOutstandingRequestsPerServer;
+        $dataArray['threshold'] = $data->threshold;
+        $dataArray['sanityTimer'] = $data->sanityTimer;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

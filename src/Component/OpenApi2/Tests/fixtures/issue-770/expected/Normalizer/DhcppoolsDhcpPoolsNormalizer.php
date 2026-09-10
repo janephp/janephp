@@ -65,23 +65,23 @@ class DhcppoolsDhcpPoolsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
-            $dataArray['tenantId'] = $data->tenantId ?? null;
+            $dataArray['tenantId'] = $data->tenantId;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
-            $dataArray['domainId'] = $data->domainId ?? null;
+            $dataArray['domainId'] = $data->domainId;
         }
         if (array_key_exists('domainEntity', get_object_vars($data)) && null !== ($data->domainEntity ?? null)) {
-            $dataArray['domainEntity'] = $data->domainEntity ?? null;
+            $dataArray['domainEntity'] = $data->domainEntity;
         }
         if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
-            $dataArray['apMac'] = $data->apMac ?? null;
+            $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('poolInfoList', get_object_vars($data)) && null !== ($data->poolInfoList ?? null)) {
             $values = [];
-            foreach ($data->poolInfoList ?? null as $value) {
+            foreach ($data->poolInfoList as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['poolInfoList'] = $values;

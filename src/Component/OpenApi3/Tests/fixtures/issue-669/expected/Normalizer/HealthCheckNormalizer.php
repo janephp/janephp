@@ -76,25 +76,25 @@ class HealthCheckNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
-            $dataArray['protocol'] = $data->protocol ?? null;
+            $dataArray['protocol'] = $data->protocol;
         }
         if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
-            $dataArray['port'] = $data->port ?? null;
+            $dataArray['port'] = $data->port;
         }
         if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
-            $dataArray['path'] = $data->path ?? null;
+            $dataArray['path'] = $data->path;
         }
         if (array_key_exists('checkIntervalSeconds', get_object_vars($data)) && null !== ($data->checkIntervalSeconds ?? null)) {
-            $dataArray['check_interval_seconds'] = $data->checkIntervalSeconds ?? null;
+            $dataArray['check_interval_seconds'] = $data->checkIntervalSeconds;
         }
         if (array_key_exists('responseTimeoutSeconds', get_object_vars($data)) && null !== ($data->responseTimeoutSeconds ?? null)) {
-            $dataArray['response_timeout_seconds'] = $data->responseTimeoutSeconds ?? null;
+            $dataArray['response_timeout_seconds'] = $data->responseTimeoutSeconds;
         }
         if (array_key_exists('unhealthyThreshold', get_object_vars($data)) && null !== ($data->unhealthyThreshold ?? null)) {
-            $dataArray['unhealthy_threshold'] = $data->unhealthyThreshold ?? null;
+            $dataArray['unhealthy_threshold'] = $data->unhealthyThreshold;
         }
         if (array_key_exists('healthyThreshold', get_object_vars($data)) && null !== ($data->healthyThreshold ?? null)) {
-            $dataArray['healthy_threshold'] = $data->healthyThreshold ?? null;
+            $dataArray['healthy_threshold'] = $data->healthyThreshold;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -76,20 +76,20 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $value = $data->name ?? null;
-            if (is_string($data->name ?? null)) {
-                $value = $data->name ?? null;
-            } elseif (is_null($data->name ?? null)) {
-                $value = $data->name ?? null;
+            $value = $data->name;
+            if (is_string($data->name)) {
+                $value = $data->name;
+            } elseif (is_null($data->name)) {
+                $value = $data->name;
             }
             $dataArray['name'] = $value;
         }
         if (array_key_exists('attachment', get_object_vars($data)) && null !== ($data->attachment ?? null)) {
-            $value_1 = $data->attachment ?? null;
-            if (is_string($data->attachment ?? null)) {
-                $value_1 = $data->attachment ?? null;
-            } elseif (is_null($data->attachment ?? null)) {
-                $value_1 = $data->attachment ?? null;
+            $value_1 = $data->attachment;
+            if (is_string($data->attachment)) {
+                $value_1 = $data->attachment;
+            } elseif (is_null($data->attachment)) {
+                $value_1 = $data->attachment;
             }
             $dataArray['_attachment'] = $value_1;
         }

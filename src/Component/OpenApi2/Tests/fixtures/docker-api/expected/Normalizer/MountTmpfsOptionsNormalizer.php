@@ -52,10 +52,10 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('sizeBytes', get_object_vars($data)) && null !== ($data->sizeBytes ?? null)) {
-            $dataArray['SizeBytes'] = $data->sizeBytes ?? null;
+            $dataArray['SizeBytes'] = $data->sizeBytes;
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = $data->mode ?? null;
+            $dataArray['Mode'] = $data->mode;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountTmpfsOptionsConstraint());

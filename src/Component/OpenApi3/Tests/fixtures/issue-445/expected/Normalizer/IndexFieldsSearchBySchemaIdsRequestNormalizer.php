@@ -61,14 +61,14 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
         $dataArray = [];
         if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values = [];
-            foreach ($data->schemaIds ?? null as $value) {
+            foreach ($data->schemaIds as $value) {
                 $values[] = $value;
             }
             $dataArray['schemaIds'] = $values;
         }
-        $value_1 = $data->searchMode ?? null;
-        if (is_string($data->searchMode ?? null)) {
-            $value_1 = $data->searchMode ?? null;
+        $value_1 = $data->searchMode;
+        if (is_string($data->searchMode)) {
+            $value_1 = $data->searchMode;
         }
         $dataArray['searchMode'] = $value_1;
         return $dataArray;

@@ -61,11 +61,11 @@ class BusinessRuleTracedActionNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
-            $dataArray['traceRefId'] = $data->traceRefId ?? null;
+            $dataArray['traceRefId'] = $data->traceRefId;
         }
-        $dataArray['documentModified'] = $data->documentModified ?? null;
+        $dataArray['documentModified'] = $data->documentModified;
         if (array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
-            $dataArray['text'] = $data->text ?? null;
+            $dataArray['text'] = $data->text;
         }
         return $dataArray;
     }

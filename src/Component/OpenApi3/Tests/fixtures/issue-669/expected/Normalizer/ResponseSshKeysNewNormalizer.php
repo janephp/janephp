@@ -52,7 +52,7 @@ class ResponseSshKeysNewNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('sshKey', get_object_vars($data)) && null !== ($data->sshKey ?? null)) {
-            $dataArray['ssh_key'] = ($data->sshKey ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sshKey ?? null, 'json', $context));
+            $dataArray['ssh_key'] = $data->sshKey === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sshKey, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

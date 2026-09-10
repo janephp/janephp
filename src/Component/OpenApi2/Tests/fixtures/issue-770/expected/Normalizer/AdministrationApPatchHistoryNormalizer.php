@@ -59,17 +59,17 @@ class AdministrationApPatchHistoryNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('startDateTime', get_object_vars($data)) && null !== ($data->startDateTime ?? null)) {
-            $dataArray['startDateTime'] = $data->startDateTime ?? null;
+            $dataArray['startDateTime'] = $data->startDateTime;
         }
         if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
-            $dataArray['fileName'] = $data->fileName ?? null;
+            $dataArray['fileName'] = $data->fileName;
         }
         if (array_key_exists('apFwVersion', get_object_vars($data)) && null !== ($data->apFwVersion ?? null)) {
-            $dataArray['apFwVersion'] = $data->apFwVersion ?? null;
+            $dataArray['apFwVersion'] = $data->apFwVersion;
         }
         if (array_key_exists('apModelList', get_object_vars($data)) && null !== ($data->apModelList ?? null)) {
             $values = [];
-            foreach ($data->apModelList ?? null as $value) {
+            foreach ($data->apModelList as $value) {
                 $values[] = $value;
             }
             $dataArray['apModelList'] = $values;

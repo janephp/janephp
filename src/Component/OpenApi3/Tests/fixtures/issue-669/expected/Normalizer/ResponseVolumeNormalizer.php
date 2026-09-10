@@ -57,7 +57,7 @@ class ResponseVolumeNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         if (array_key_exists('volume', get_object_vars($data)) && null !== ($data->volume ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->volume ?? null as $key => $value) {
+            foreach ($data->volume as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['volume'] = $values;

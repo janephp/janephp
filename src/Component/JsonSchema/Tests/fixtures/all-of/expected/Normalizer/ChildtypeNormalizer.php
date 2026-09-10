@@ -43,10 +43,10 @@ class ChildtypeNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('childProperty', get_object_vars($data)) && null !== ($data->childProperty ?? null)) {
-            $dataArray['childProperty'] = $data->childProperty ?? null;
+            $dataArray['childProperty'] = $data->childProperty;
         }
         if (array_key_exists('inheritedProperty', get_object_vars($data)) && null !== ($data->inheritedProperty ?? null)) {
-            $dataArray['inheritedProperty'] = $data->inheritedProperty ?? null;
+            $dataArray['inheritedProperty'] = $data->inheritedProperty;
         }
         return $dataArray;
     }

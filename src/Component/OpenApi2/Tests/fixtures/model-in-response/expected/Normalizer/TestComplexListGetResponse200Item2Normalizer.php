@@ -52,13 +52,13 @@ class TestComplexListGetResponse200Item2Normalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('image32', get_object_vars($data)) && null !== ($data->image32 ?? null)) {
-            $dataArray['image_32'] = $data->image32 ?? null;
+            $dataArray['image_32'] = $data->image32;
         }
         if (array_key_exists('image64', get_object_vars($data)) && null !== ($data->image64 ?? null)) {
-            $dataArray['image_64'] = $data->image64 ?? null;
+            $dataArray['image_64'] = $data->image64;
         }
         if (array_key_exists('image128', get_object_vars($data)) && null !== ($data->image128 ?? null)) {
-            $dataArray['image_128'] = $data->image128 ?? null;
+            $dataArray['image_128'] = $data->image128;
         }
         return $dataArray;
     }

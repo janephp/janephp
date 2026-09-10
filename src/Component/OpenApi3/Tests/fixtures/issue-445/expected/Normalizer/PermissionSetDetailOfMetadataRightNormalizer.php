@@ -95,11 +95,11 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $value = $data->names ?? null;
-        if (is_object($data->names ?? null)) {
+        $dataArray['id'] = $data->id;
+        $value = $data->names;
+        if (is_object($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->names ?? null as $key => $value_1) {
+            foreach ($data->names as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
@@ -107,24 +107,24 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
         $dataArray['names'] = $value;
         if (array_key_exists('userRolesRights', get_object_vars($data)) && null !== ($data->userRolesRights ?? null)) {
             $values_1 = [];
-            foreach ($data->userRolesRights ?? null as $value_2) {
+            foreach ($data->userRolesRights as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['userRolesRights'] = $values_1;
         }
         if (array_key_exists('userRolesPermissionSetRights', get_object_vars($data)) && null !== ($data->userRolesPermissionSetRights ?? null)) {
             $values_2 = [];
-            foreach ($data->userRolesPermissionSetRights ?? null as $value_3) {
+            foreach ($data->userRolesPermissionSetRights as $value_3) {
                 $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['userRolesPermissionSetRights'] = $values_2;
         }
-        $dataArray['exclusive'] = $data->exclusive ?? null;
-        $dataArray['ownerTokenId'] = $data->ownerTokenId ?? null;
+        $dataArray['exclusive'] = $data->exclusive;
+        $dataArray['ownerTokenId'] = $data->ownerTokenId;
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value_4 = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value_4 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value_4 = $data->audit;
+            if (is_object($data->audit)) {
+                $value_4 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_4;
         }

@@ -91,35 +91,35 @@ class PgbouncerAdvancedConfigNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('serverResetQueryAlways', get_object_vars($data)) && null !== ($data->serverResetQueryAlways ?? null)) {
-            $dataArray['server_reset_query_always'] = $data->serverResetQueryAlways ?? null;
+            $dataArray['server_reset_query_always'] = $data->serverResetQueryAlways;
         }
         if (array_key_exists('ignoreStartupParameters', get_object_vars($data)) && null !== ($data->ignoreStartupParameters ?? null)) {
             $values = [];
-            foreach ($data->ignoreStartupParameters ?? null as $value) {
+            foreach ($data->ignoreStartupParameters as $value) {
                 $values[] = $value;
             }
             $dataArray['ignore_startup_parameters'] = $values;
         }
         if (array_key_exists('minPoolSize', get_object_vars($data)) && null !== ($data->minPoolSize ?? null)) {
-            $dataArray['min_pool_size'] = $data->minPoolSize ?? null;
+            $dataArray['min_pool_size'] = $data->minPoolSize;
         }
         if (array_key_exists('serverLifetime', get_object_vars($data)) && null !== ($data->serverLifetime ?? null)) {
-            $dataArray['server_lifetime'] = $data->serverLifetime ?? null;
+            $dataArray['server_lifetime'] = $data->serverLifetime;
         }
         if (array_key_exists('serverIdleTimeout', get_object_vars($data)) && null !== ($data->serverIdleTimeout ?? null)) {
-            $dataArray['server_idle_timeout'] = $data->serverIdleTimeout ?? null;
+            $dataArray['server_idle_timeout'] = $data->serverIdleTimeout;
         }
         if (array_key_exists('autodbPoolSize', get_object_vars($data)) && null !== ($data->autodbPoolSize ?? null)) {
-            $dataArray['autodb_pool_size'] = $data->autodbPoolSize ?? null;
+            $dataArray['autodb_pool_size'] = $data->autodbPoolSize;
         }
         if (array_key_exists('autodbPoolMode', get_object_vars($data)) && null !== ($data->autodbPoolMode ?? null)) {
-            $dataArray['autodb_pool_mode'] = $data->autodbPoolMode ?? null;
+            $dataArray['autodb_pool_mode'] = $data->autodbPoolMode;
         }
         if (array_key_exists('autodbMaxDbConnections', get_object_vars($data)) && null !== ($data->autodbMaxDbConnections ?? null)) {
-            $dataArray['autodb_max_db_connections'] = $data->autodbMaxDbConnections ?? null;
+            $dataArray['autodb_max_db_connections'] = $data->autodbMaxDbConnections;
         }
         if (array_key_exists('autodbIdleTimeout', get_object_vars($data)) && null !== ($data->autodbIdleTimeout ?? null)) {
-            $dataArray['autodb_idle_timeout'] = $data->autodbIdleTimeout ?? null;
+            $dataArray['autodb_idle_timeout'] = $data->autodbIdleTimeout;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

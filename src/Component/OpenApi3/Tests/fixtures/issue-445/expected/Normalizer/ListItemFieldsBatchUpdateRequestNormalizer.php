@@ -69,17 +69,17 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->listItemIds ?? null as $value) {
+        foreach ($data->listItemIds as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
         $values_1 = [];
-        foreach ($data->changeCommands ?? null as $value_1) {
+        foreach ($data->changeCommands as $value_1) {
             $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['changeCommands'] = $values_1;
-        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

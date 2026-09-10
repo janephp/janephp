@@ -54,7 +54,7 @@ class ContentPermissionsUpdateRequestNormalizer implements DenormalizerInterface
         $dataArray = [];
         if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values = [];
-            foreach ($data->contentPermissionSetIds ?? null as $value) {
+            foreach ($data->contentPermissionSetIds as $value) {
                 $values[] = $value;
             }
             $dataArray['contentPermissionSetIds'] = $values;

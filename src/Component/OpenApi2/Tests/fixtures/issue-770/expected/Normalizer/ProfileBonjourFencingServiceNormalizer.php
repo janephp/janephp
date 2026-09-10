@@ -55,16 +55,16 @@ class ProfileBonjourFencingServiceNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('sourceType', get_object_vars($data)) && null !== ($data->sourceType ?? null)) {
-            $dataArray['sourceType'] = $data->sourceType ?? null;
+            $dataArray['sourceType'] = $data->sourceType;
         }
         if (array_key_exists('neighborApMac', get_object_vars($data)) && null !== ($data->neighborApMac ?? null)) {
-            $dataArray['neighborApMac'] = $data->neighborApMac ?? null;
+            $dataArray['neighborApMac'] = $data->neighborApMac;
         }
         if (array_key_exists('neighborApName', get_object_vars($data)) && null !== ($data->neighborApName ?? null)) {
-            $dataArray['neighborApName'] = $data->neighborApName ?? null;
+            $dataArray['neighborApName'] = $data->neighborApName;
         }
         if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
-            $dataArray['serviceType'] = $data->serviceType ?? null;
+            $dataArray['serviceType'] = $data->serviceType;
         }
         return $dataArray;
     }

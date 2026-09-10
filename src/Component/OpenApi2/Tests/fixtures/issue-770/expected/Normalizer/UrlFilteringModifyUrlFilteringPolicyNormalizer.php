@@ -103,55 +103,55 @@ class UrlFilteringModifyUrlFilteringPolicyNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('filteringLevel', get_object_vars($data)) && null !== ($data->filteringLevel ?? null)) {
-            $dataArray['filteringLevel'] = $data->filteringLevel ?? null;
+            $dataArray['filteringLevel'] = $data->filteringLevel;
         }
         if (array_key_exists('blockCategories', get_object_vars($data)) && null !== ($data->blockCategories ?? null)) {
             $values = [];
-            foreach ($data->blockCategories ?? null as $value) {
+            foreach ($data->blockCategories as $value) {
                 $values[] = $value;
             }
             $dataArray['blockCategories'] = $values;
         }
         if (array_key_exists('safeSearchGoogleEnabled', get_object_vars($data)) && null !== ($data->safeSearchGoogleEnabled ?? null)) {
-            $dataArray['safeSearchGoogleEnabled'] = $data->safeSearchGoogleEnabled ?? null;
+            $dataArray['safeSearchGoogleEnabled'] = $data->safeSearchGoogleEnabled;
         }
         if (array_key_exists('safeSearchGoogleDns', get_object_vars($data)) && null !== ($data->safeSearchGoogleDns ?? null)) {
-            $dataArray['safeSearchGoogleDns'] = $data->safeSearchGoogleDns ?? null;
+            $dataArray['safeSearchGoogleDns'] = $data->safeSearchGoogleDns;
         }
         if (array_key_exists('safeSearchYouTubeEnabled', get_object_vars($data)) && null !== ($data->safeSearchYouTubeEnabled ?? null)) {
-            $dataArray['safeSearchYouTubeEnabled'] = $data->safeSearchYouTubeEnabled ?? null;
+            $dataArray['safeSearchYouTubeEnabled'] = $data->safeSearchYouTubeEnabled;
         }
         if (array_key_exists('safeSearchYouTubeDns', get_object_vars($data)) && null !== ($data->safeSearchYouTubeDns ?? null)) {
-            $dataArray['safeSearchYouTubeDns'] = $data->safeSearchYouTubeDns ?? null;
+            $dataArray['safeSearchYouTubeDns'] = $data->safeSearchYouTubeDns;
         }
         if (array_key_exists('safeSearchBingEnabled', get_object_vars($data)) && null !== ($data->safeSearchBingEnabled ?? null)) {
-            $dataArray['safeSearchBingEnabled'] = $data->safeSearchBingEnabled ?? null;
+            $dataArray['safeSearchBingEnabled'] = $data->safeSearchBingEnabled;
         }
         if (array_key_exists('safeSearchBingDns', get_object_vars($data)) && null !== ($data->safeSearchBingDns ?? null)) {
-            $dataArray['safeSearchBingDns'] = $data->safeSearchBingDns ?? null;
+            $dataArray['safeSearchBingDns'] = $data->safeSearchBingDns;
         }
         if (array_key_exists('whitelist', get_object_vars($data)) && null !== ($data->whitelist ?? null)) {
             $values_1 = [];
-            foreach ($data->whitelist ?? null as $value_1) {
+            foreach ($data->whitelist as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['whitelist'] = $values_1;
         }
         if (array_key_exists('blacklist', get_object_vars($data)) && null !== ($data->blacklist ?? null)) {
             $values_2 = [];
-            foreach ($data->blacklist ?? null as $value_2) {
+            foreach ($data->blacklist as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['blacklist'] = $values_2;
         }
         if (array_key_exists('blockByThreatLevelConfig', get_object_vars($data)) && null !== ($data->blockByThreatLevelConfig ?? null)) {
-            $dataArray['blockByThreatLevelConfig'] = ($data->blockByThreatLevelConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig ?? null, 'json', $context));
+            $dataArray['blockByThreatLevelConfig'] = $data->blockByThreatLevelConfig === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig, 'json', $context));
         }
         return $dataArray;
     }

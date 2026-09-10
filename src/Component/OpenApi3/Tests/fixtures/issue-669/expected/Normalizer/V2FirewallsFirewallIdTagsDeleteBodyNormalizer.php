@@ -56,7 +56,7 @@ class V2FirewallsFirewallIdTagsDeleteBodyNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->tags ?? null as $value) {
+        foreach ($data->tags as $value) {
             $values[] = $value;
         }
         $dataArray['tags'] = $values;

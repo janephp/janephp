@@ -66,20 +66,20 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== ($data->kind ?? null) and 'ListItemNamedCacheConfiguration' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'ListItemNamedCacheConfiguration' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== ($data->kind ?? null) and 'InverseListItemNamedCacheConfiguration' === ($data->kind ?? null)) {
+        if (null !== ($data->kind ?? null) and 'InverseListItemNamedCacheConfiguration' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
-        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['caseSensitive'] = $data->caseSensitive;
+        $dataArray['kind'] = $data->kind;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

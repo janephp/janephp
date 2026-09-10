@@ -40,7 +40,7 @@ class ParenttypeNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('inheritedProperty', get_object_vars($data)) && null !== ($data->inheritedProperty ?? null)) {
-            $dataArray['inheritedProperty'] = $data->inheritedProperty ?? null;
+            $dataArray['inheritedProperty'] = $data->inheritedProperty;
         }
         return $dataArray;
     }

@@ -48,8 +48,8 @@ class ProfileProviderHomeOIsNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['oi'] = $data->oi ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['oi'] = $data->oi;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

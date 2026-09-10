@@ -87,20 +87,20 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['timestamp'] = $data->timestamp->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind;
         if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
-            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
+            $dataArray['businessProcessId'] = $data->businessProcessId;
         }
         if (array_key_exists('lifeCycle', get_object_vars($data)) && null !== ($data->lifeCycle ?? null)) {
-            $value = $data->lifeCycle ?? null;
-            if (is_string($data->lifeCycle ?? null)) {
-                $value = $data->lifeCycle ?? null;
+            $value = $data->lifeCycle;
+            if (is_string($data->lifeCycle)) {
+                $value = $data->lifeCycle;
             }
             $dataArray['lifeCycle'] = $value;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['state'] = $data->state ?? null;
+            $dataArray['state'] = $data->state;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

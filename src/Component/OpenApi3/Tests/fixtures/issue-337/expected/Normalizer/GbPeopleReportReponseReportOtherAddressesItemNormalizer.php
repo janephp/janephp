@@ -76,25 +76,25 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
     {
         $dataArray = [];
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
-            $dataArray['type'] = $data->type ?? null;
+            $dataArray['type'] = $data->type;
         }
         if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
-            $dataArray['simpleValue'] = $data->simpleValue ?? null;
+            $dataArray['simpleValue'] = $data->simpleValue;
         }
         if (array_key_exists('street', get_object_vars($data)) && null !== ($data->street ?? null)) {
-            $dataArray['street'] = $data->street ?? null;
+            $dataArray['street'] = $data->street;
         }
         if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
-            $dataArray['city'] = $data->city ?? null;
+            $dataArray['city'] = $data->city;
         }
         if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
-            $dataArray['postalCode'] = $data->postalCode ?? null;
+            $dataArray['postalCode'] = $data->postalCode;
         }
         if (array_key_exists('province', get_object_vars($data)) && null !== ($data->province ?? null)) {
-            $dataArray['province'] = $data->province ?? null;
+            $dataArray['province'] = $data->province;
         }
         if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
-            $dataArray['country'] = $data->country ?? null;
+            $dataArray['country'] = $data->country;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

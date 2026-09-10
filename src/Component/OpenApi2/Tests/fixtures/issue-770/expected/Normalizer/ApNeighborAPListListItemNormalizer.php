@@ -76,37 +76,37 @@ class ApNeighborAPListListItemNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
-            $dataArray['mac'] = $data->mac ?? null;
+            $dataArray['mac'] = $data->mac;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
-            $dataArray['zoneName'] = $data->zoneName ?? null;
+            $dataArray['zoneName'] = $data->zoneName;
         }
         if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
-            $dataArray['ip'] = $data->ip ?? null;
+            $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('externalIp', get_object_vars($data)) && null !== ($data->externalIp ?? null)) {
-            $dataArray['externalIp'] = $data->externalIp ?? null;
+            $dataArray['externalIp'] = $data->externalIp;
         }
         if (array_key_exists('externalPort', get_object_vars($data)) && null !== ($data->externalPort ?? null)) {
-            $dataArray['externalPort'] = $data->externalPort ?? null;
+            $dataArray['externalPort'] = $data->externalPort;
         }
         if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
-            $dataArray['model'] = $data->model ?? null;
+            $dataArray['model'] = $data->model;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version ?? null;
+            $dataArray['version'] = $data->version;
         }
         if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
-            $dataArray['channel'] = $data->channel ?? null;
+            $dataArray['channel'] = $data->channel;
         }
         if (array_key_exists('signal', get_object_vars($data)) && null !== ($data->signal ?? null)) {
-            $dataArray['signal'] = $data->signal ?? null;
+            $dataArray['signal'] = $data->signal;
         }
         if (array_key_exists('connectionState', get_object_vars($data)) && null !== ($data->connectionState ?? null)) {
-            $dataArray['connectionState'] = $data->connectionState ?? null;
+            $dataArray['connectionState'] = $data->connectionState;
         }
         return $dataArray;
     }

@@ -138,8 +138,9 @@ trait NormalizerGenerator
                 continue;
             }
 
-            $propertyVar = new Expr\BinaryOp\Coalesce(
-                new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+            $propertyVar = new Expr\PropertyFetch($objectVariable, $property->getPhpName());
+            $guardedPropertyVar = new Expr\BinaryOp\Coalesce(
+                $propertyVar,
                 new Expr\ConstFetch(new Name('null'))
             );
 
@@ -154,18 +155,18 @@ trait NormalizerGenerator
             }
 
             if (!$includeNullValue) {
-                $statements[] = $this->createIncludeNullDisabledStatement($objectVariable, $property, $propertyVar, $normalizationStatements);
+                $statements[] = $this->createIncludeNullDisabledStatement($objectVariable, $property, $guardedPropertyVar, $normalizationStatements);
 
                 continue;
             }
 
-            $statements = array_merge($statements, $this->createRegularPropertyStatement($objectVariable, $property, $propertyVar, $normalizationStatements, $context, $skipNullValues, $dataVariable));
+            $statements = array_merge($statements, $this->createRegularPropertyStatement($objectVariable, $property, $guardedPropertyVar, $normalizationStatements, $context, $skipNullValues, $dataVariable));
         }
 
         return $statements;
     }
 
-    private function createIncludeNullDisabledStatement(Expr\Variable $objectVariable, Property $property, Expr $propertyVar, array $normalizationStatements): Stmt\If_
+    private function createIncludeNullDisabledStatement(Expr\Variable $objectVariable, Property $property, Expr $guardedPropertyVar, array $normalizationStatements): Stmt\If_
     {
         if (!$property->isRequired()) {
             return new Stmt\If_(
@@ -175,24 +176,24 @@ trait NormalizerGenerator
         }
 
         return new Stmt\If_(
-            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $guardedPropertyVar),
             ['stmts' => $normalizationStatements]
         );
     }
 
-    private function createRegularPropertyStatement(Expr\Variable $objectVariable, Property $property, Expr $propertyVar, array $normalizationStatements, Context $context, bool $skipNullValues, Expr\Variable $dataVariable): array
+    private function createRegularPropertyStatement(Expr\Variable $objectVariable, Property $property, Expr $guardedPropertyVar, array $normalizationStatements, Context $context, bool $skipNullValues, Expr\Variable $dataVariable): array
     {
         if (!$property->isRequired()) {
             $statement = new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
                     $this->isPropertyInitialized($objectVariable, $property),
-                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $guardedPropertyVar)
                 ),
                 ['stmts' => $normalizationStatements]
             );
         } else {
             $statement = new Stmt\If_(
-                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $guardedPropertyVar),
                 ['stmts' => $normalizationStatements]
             );
         }

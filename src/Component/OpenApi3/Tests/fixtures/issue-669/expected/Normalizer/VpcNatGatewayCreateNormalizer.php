@@ -83,23 +83,23 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['type'] = $data->type ?? null;
-        $dataArray['region'] = $data->region ?? null;
-        $dataArray['size'] = $data->size ?? null;
+        $dataArray['name'] = $data->name;
+        $dataArray['type'] = $data->type;
+        $dataArray['region'] = $data->region;
+        $dataArray['size'] = $data->size;
         $values = [];
-        foreach ($data->vpcs ?? null as $value) {
+        foreach ($data->vpcs as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['vpcs'] = $values;
         if (array_key_exists('udpTimeoutSeconds', get_object_vars($data)) && null !== ($data->udpTimeoutSeconds ?? null)) {
-            $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds ?? null;
+            $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds;
         }
         if (array_key_exists('icmpTimeoutSeconds', get_object_vars($data)) && null !== ($data->icmpTimeoutSeconds ?? null)) {
-            $dataArray['icmp_timeout_seconds'] = $data->icmpTimeoutSeconds ?? null;
+            $dataArray['icmp_timeout_seconds'] = $data->icmpTimeoutSeconds;
         }
         if (array_key_exists('tcpTimeoutSeconds', get_object_vars($data)) && null !== ($data->tcpTimeoutSeconds ?? null)) {
-            $dataArray['tcp_timeout_seconds'] = $data->tcpTimeoutSeconds ?? null;
+            $dataArray['tcp_timeout_seconds'] = $data->tcpTimeoutSeconds;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

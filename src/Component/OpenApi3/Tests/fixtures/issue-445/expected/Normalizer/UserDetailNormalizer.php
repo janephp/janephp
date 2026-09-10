@@ -199,76 +199,76 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
-            $dataArray['firstName'] = $data->firstName ?? null;
+            $dataArray['firstName'] = $data->firstName;
         }
         if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
-            $dataArray['lastName'] = $data->lastName ?? null;
+            $dataArray['lastName'] = $data->lastName;
         }
-        $dataArray['emailAddress'] = $data->emailAddress ?? null;
-        $dataArray['isDeleted'] = $data->isDeleted ?? null;
+        $dataArray['emailAddress'] = $data->emailAddress;
+        $dataArray['isDeleted'] = $data->isDeleted;
         if (array_key_exists('userRoles', get_object_vars($data)) && null !== ($data->userRoles ?? null)) {
             $values = [];
-            foreach ($data->userRoles ?? null as $value) {
+            foreach ($data->userRoles as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['userRoles'] = $values;
         }
         if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
-            $dataArray['comment'] = $data->comment ?? null;
+            $dataArray['comment'] = $data->comment;
         }
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
-            $dataArray['languageCode'] = $data->languageCode ?? null;
+            $dataArray['languageCode'] = $data->languageCode;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $value_1 = $data->address ?? null;
-            if (is_object($data->address ?? null)) {
-                $value_1 = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
+            $value_1 = $data->address;
+            if (is_object($data->address)) {
+                $value_1 = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value_1;
         }
         if (array_key_exists('identityProviderId', get_object_vars($data)) && null !== ($data->identityProviderId ?? null)) {
-            $dataArray['identityProviderId'] = $data->identityProviderId ?? null;
+            $dataArray['identityProviderId'] = $data->identityProviderId;
         }
         if (array_key_exists('ownerTokens', get_object_vars($data)) && null !== ($data->ownerTokens ?? null)) {
             $values_1 = [];
-            foreach ($data->ownerTokens ?? null as $value_2) {
+            foreach ($data->ownerTokens as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['ownerTokens'] = $values_1;
         }
         if (array_key_exists('authorizationState', get_object_vars($data)) && null !== ($data->authorizationState ?? null)) {
-            $value_3 = $data->authorizationState ?? null;
-            if (is_string($data->authorizationState ?? null)) {
-                $value_3 = $data->authorizationState ?? null;
+            $value_3 = $data->authorizationState;
+            if (is_string($data->authorizationState)) {
+                $value_3 = $data->authorizationState;
             }
             $dataArray['authorizationState'] = $value_3;
         }
         if (array_key_exists('isLocked', get_object_vars($data)) && null !== ($data->isLocked ?? null)) {
-            $dataArray['isLocked'] = $data->isLocked ?? null;
+            $dataArray['isLocked'] = $data->isLocked;
         }
         if (array_key_exists('lifeCycle', get_object_vars($data)) && null !== ($data->lifeCycle ?? null)) {
-            $value_4 = $data->lifeCycle ?? null;
-            if (is_string($data->lifeCycle ?? null)) {
-                $value_4 = $data->lifeCycle ?? null;
+            $value_4 = $data->lifeCycle;
+            if (is_string($data->lifeCycle)) {
+                $value_4 = $data->lifeCycle;
             }
             $dataArray['lifeCycle'] = $value_4;
         }
         if (array_key_exists('isSupportUser', get_object_vars($data)) && null !== ($data->isSupportUser ?? null)) {
-            $dataArray['isSupportUser'] = $data->isSupportUser ?? null;
+            $dataArray['isSupportUser'] = $data->isSupportUser;
         }
         if (array_key_exists('isReadOnly', get_object_vars($data)) && null !== ($data->isReadOnly ?? null)) {
-            $dataArray['isReadOnly'] = $data->isReadOnly ?? null;
+            $dataArray['isReadOnly'] = $data->isReadOnly;
         }
         if (array_key_exists('isFederated', get_object_vars($data)) && null !== ($data->isFederated ?? null)) {
-            $dataArray['isFederated'] = $data->isFederated ?? null;
+            $dataArray['isFederated'] = $data->isFederated;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
-            $value_5 = $data->audit ?? null;
-            if (is_object($data->audit ?? null)) {
-                $value_5 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
+            $value_5 = $data->audit;
+            if (is_object($data->audit)) {
+                $value_5 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_5;
         }

@@ -54,7 +54,7 @@ class BulkResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         if (array_key_exists('rows', get_object_vars($data)) && null !== ($data->rows ?? null)) {
             $values = [];
-            foreach ($data->rows ?? null as $value) {
+            foreach ($data->rows as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rows'] = $values;

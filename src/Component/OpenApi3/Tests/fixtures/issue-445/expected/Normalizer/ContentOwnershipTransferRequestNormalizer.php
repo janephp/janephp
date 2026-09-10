@@ -45,7 +45,7 @@ class ContentOwnershipTransferRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->transferUserId ?? null;
+        $dataArray['transferUserId'] = $data->transferUserId;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

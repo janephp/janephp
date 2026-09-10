@@ -52,7 +52,7 @@ class VolumeWriteFileSystemTypeNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('filesystemType', get_object_vars($data)) && null !== ($data->filesystemType ?? null)) {
-            $dataArray['filesystem_type'] = $data->filesystemType ?? null;
+            $dataArray['filesystem_type'] = $data->filesystemType;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

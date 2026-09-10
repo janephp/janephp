@@ -52,7 +52,7 @@ class ResponseByoipPrefixUpdateNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('byoipPrefix', get_object_vars($data)) && null !== ($data->byoipPrefix ?? null)) {
-            $dataArray['byoip_prefix'] = ($data->byoipPrefix ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->byoipPrefix ?? null, 'json', $context));
+            $dataArray['byoip_prefix'] = $data->byoipPrefix === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->byoipPrefix, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

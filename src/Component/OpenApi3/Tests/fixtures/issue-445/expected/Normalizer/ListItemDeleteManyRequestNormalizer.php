@@ -62,12 +62,12 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->listItemIds ?? null as $value) {
+        foreach ($data->listItemIds as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
-        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
-        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval;
+        $dataArray['notifyProgress'] = $data->notifyProgress;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

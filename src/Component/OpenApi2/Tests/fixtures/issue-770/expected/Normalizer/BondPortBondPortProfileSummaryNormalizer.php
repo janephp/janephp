@@ -55,13 +55,13 @@ class BondPortBondPortProfileSummaryNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('isDefault', get_object_vars($data)) && null !== ($data->isDefault ?? null)) {
-            $dataArray['isDefault'] = $data->isDefault ?? null;
+            $dataArray['isDefault'] = $data->isDefault;
         }
         return $dataArray;
     }

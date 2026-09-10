@@ -115,29 +115,29 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
-            $dataArray['id'] = $data->id ?? null;
+            $dataArray['id'] = $data->id;
         }
-        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
-        $dataArray['contentId'] = $data->contentId ?? null;
-        $value = $data->renderingState ?? null;
-        if (is_string($data->renderingState ?? null)) {
-            $value = $data->renderingState ?? null;
+        $dataArray['outputFormatId'] = $data->outputFormatId;
+        $dataArray['contentId'] = $data->contentId;
+        $value = $data->renderingState;
+        if (is_string($data->renderingState)) {
+            $value = $data->renderingState;
         }
         $dataArray['renderingState'] = $value;
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
-            $value_1 = $data->detail ?? null;
-            if (is_object($data->detail ?? null)) {
-                $value_1 = ($data->detail ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail ?? null, 'json', $context));
+            $value_1 = $data->detail;
+            if (is_object($data->detail)) {
+                $value_1 = $data->detail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
             }
             $dataArray['detail'] = $value_1;
         }
         if (array_key_exists('backupTimestamp', get_object_vars($data)) && null !== ($data->backupTimestamp ?? null)) {
-            $dataArray['backupTimestamp'] = ($data->backupTimestamp ?? null)?->format('Y-m-d\TH:i:sP');
+            $dataArray['backupTimestamp'] = $data->backupTimestamp?->format('Y-m-d\TH:i:sP');
         }
-        $dataArray['attemptsLeft'] = $data->attemptsLeft ?? null;
-        $dataArray['fileVersion'] = $data->fileVersion ?? null;
-        $dataArray['dynamicRendering'] = $data->dynamicRendering ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['attemptsLeft'] = $data->attemptsLeft;
+        $dataArray['fileVersion'] = $data->fileVersion;
+        $dataArray['dynamicRendering'] = $data->dynamicRendering;
+        $dataArray['kind'] = $data->kind;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;

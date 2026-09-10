@@ -59,9 +59,9 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->transferUserId ?? null;
+        $dataArray['transferUserId'] = $data->transferUserId;
         if (array_key_exists('permissionSetId', get_object_vars($data)) && null !== ($data->permissionSetId ?? null)) {
-            $dataArray['permissionSetId'] = $data->permissionSetId ?? null;
+            $dataArray['permissionSetId'] = $data->permissionSetId;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,19 +58,19 @@ class MduSegmentationProfileEthernetPortProfileConfigNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name ?? null;
+            $dataArray['name'] = $data->name;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['description'] = $data->description ?? null;
+            $dataArray['description'] = $data->description;
         }
         if (array_key_exists('userSidePortMaxClient', get_object_vars($data)) && null !== ($data->userSidePortMaxClient ?? null)) {
-            $dataArray['userSidePortMaxClient'] = $data->userSidePortMaxClient ?? null;
+            $dataArray['userSidePortMaxClient'] = $data->userSidePortMaxClient;
         }
         if (array_key_exists('userSidePortUplinkLimit', get_object_vars($data)) && null !== ($data->userSidePortUplinkLimit ?? null)) {
-            $dataArray['userSidePortUplinkLimit'] = $data->userSidePortUplinkLimit ?? null;
+            $dataArray['userSidePortUplinkLimit'] = $data->userSidePortUplinkLimit;
         }
         if (array_key_exists('userSidePortDownlinkLimit', get_object_vars($data)) && null !== ($data->userSidePortDownlinkLimit ?? null)) {
-            $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit ?? null;
+            $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit;
         }
         return $dataArray;
     }

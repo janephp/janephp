@@ -54,9 +54,9 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Prefix'] = $data->prefix ?? null;
-        $dataArray['Capability'] = $data->capability ?? null;
-        $dataArray['Version'] = $data->version ?? null;
+        $dataArray['Prefix'] = $data->prefix;
+        $dataArray['Capability'] = $data->capability;
+        $dataArray['Version'] = $data->version;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginInterfaceTypeConstraint());
         }
