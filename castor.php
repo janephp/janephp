@@ -60,6 +60,21 @@ function qa_mago_generated(bool $generateBaseline = false): void
     io()->success($generateBaseline ? 'Baseline regenerated.' : 'No new findings in generated code.');
 }
 
+#[AsTask('corpus', namespace: 'qa', description: 'Smoke-run the generator over the pinned real-world specs of corpus/specs.json (generation, syntax, Mago report)')]
+function qa_corpus(?string $spec = null, int $timeout = 900): void
+{
+    // Fetching, generating (in a child process per spec), the php-parser
+    // syntax gate and the Mago report live in corpus/run.php, which needs the
+    // project autoloader; this task only gives it the project's conventions.
+    $params = [\PHP_BINARY, __DIR__ . '/corpus/run.php', '--timeout=' . $timeout];
+
+    if (null !== $spec) {
+        $params[] = '--spec=' . $spec;
+    }
+
+    run($params, context: context()->withTimeout(null));
+}
+
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
 function doc_install(): void
 {

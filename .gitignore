@@ -23,3 +23,6 @@ tools/*/vendor
 .castor*
 site/
 .build/
+
+# Corpus smoke job (castor qa:corpus): fetched specs and generated output
+.corpus/
