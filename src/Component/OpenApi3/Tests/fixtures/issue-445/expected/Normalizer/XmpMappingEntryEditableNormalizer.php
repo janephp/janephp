@@ -86,7 +86,8 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
             $value_1 = $data->configuration;
             if (is_object($data->configuration)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->configuration, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['configuration'] = $value_1;
         }

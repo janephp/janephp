@@ -91,16 +91,20 @@ class ConnectionPoolNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user'] = $data->user;
         }
         if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
-            $dataArray['connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->connection, 'json', $context);
+            $dataArray['connection'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
-            $dataArray['private_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->privateConnection, 'json', $context);
+            $dataArray['private_connection'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('standbyConnection', get_object_vars($data)) && null !== ($data->standbyConnection ?? null)) {
-            $dataArray['standby_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyConnection, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->standbyConnection, 'json', $context);
+            $dataArray['standby_connection'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('standbyPrivateConnection', get_object_vars($data)) && null !== ($data->standbyPrivateConnection ?? null)) {
-            $dataArray['standby_private_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrivateConnection, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->standbyPrivateConnection, 'json', $context);
+            $dataArray['standby_private_connection'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

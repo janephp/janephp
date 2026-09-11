@@ -60,7 +60,8 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
         }
         $value = $data->businessProcess;
         if (is_object($data->businessProcess)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->businessProcess, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['businessProcess'] = $value;
         return $dataArray;

@@ -129,7 +129,8 @@ class ResponseFloatingIpActionActionNormalizer implements DenormalizerInterface,
             $dataArray['resource_type'] = $data->resourceType;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->region, 'json', $context);
+            $dataArray['region'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
             $dataArray['region_slug'] = $data->regionSlug;

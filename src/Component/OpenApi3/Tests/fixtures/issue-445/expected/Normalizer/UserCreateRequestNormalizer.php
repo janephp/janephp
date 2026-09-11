@@ -103,7 +103,8 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value_1 = $data->address;
             if (is_object($data->address)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->address, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['address'] = $value_1;
         }

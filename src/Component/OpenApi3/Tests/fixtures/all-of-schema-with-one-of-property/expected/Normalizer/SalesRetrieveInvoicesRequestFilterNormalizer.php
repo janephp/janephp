@@ -100,9 +100,11 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             foreach ($data->links as $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
-                    $value_2 = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $normalized = $this->normalizer->normalize($value_1, 'json', $context);
+                    $value_2 = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($normalized) : $normalized;
                 } elseif (is_object($value_1)) {
-                    $value_2 = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $normalized_1 = $this->normalizer->normalize($value_1, 'json', $context);
+                    $value_2 = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($normalized_1) : $normalized_1;
                 }
                 $values_1[] = $value_2;
             }

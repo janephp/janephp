@@ -52,7 +52,8 @@ class ResponseVolumeSnapshotNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('snapshot', get_object_vars($data)) && null !== ($data->snapshot ?? null)) {
-            $dataArray['snapshot'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->snapshot, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->snapshot, 'json', $context);
+            $dataArray['snapshot'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

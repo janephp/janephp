@@ -74,10 +74,12 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingNormaliz
             $dataArray['commonDescription'] = $data->commonDescription;
         }
         if (array_key_exists('creditLimit', get_object_vars($data)) && null !== ($data->creditLimit ?? null)) {
-            $dataArray['creditLimit'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->creditLimit, 'json', $context);
+            $dataArray['creditLimit'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('providerValue', get_object_vars($data)) && null !== ($data->providerValue ?? null)) {
-            $dataArray['providerValue'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->providerValue, 'json', $context);
+            $dataArray['providerValue'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('providerDescription', get_object_vars($data)) && null !== ($data->providerDescription ?? null)) {
             $dataArray['providerDescription'] = $data->providerDescription;

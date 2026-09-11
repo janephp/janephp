@@ -48,7 +48,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Issue
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails', 'json');
         }
-        if (stripos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError', 'json');
         }
     }

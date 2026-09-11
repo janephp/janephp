@@ -65,7 +65,8 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         if (array_key_exists('notification', get_object_vars($data)) && null !== ($data->notification ?? null)) {
             $value = $data->notification;
             if (is_object($data->notification)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->notification, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->notification, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['notification'] = $value;
         }

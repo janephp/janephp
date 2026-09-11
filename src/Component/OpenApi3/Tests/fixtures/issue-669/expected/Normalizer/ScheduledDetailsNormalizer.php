@@ -61,7 +61,8 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['cron'] = $data->cron;
         if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
-            $dataArray['body'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->body, 'json', $context);
+            $dataArray['body'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

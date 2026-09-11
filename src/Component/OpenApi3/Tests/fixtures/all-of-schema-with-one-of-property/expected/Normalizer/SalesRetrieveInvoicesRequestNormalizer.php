@@ -52,7 +52,8 @@ class SalesRetrieveInvoicesRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $dataArray['filter'] = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+            $dataArray['filter'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['discriminator'] = $data->discriminator;
         return $dataArray;

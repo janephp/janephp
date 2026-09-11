@@ -55,7 +55,8 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('metadataReferences', get_object_vars($data)) && null !== ($data->metadataReferences ?? null)) {
             $value = $data->metadataReferences;
             if (is_object($data->metadataReferences)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->metadataReferences, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->metadataReferences, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['metadataReferences'] = $value;
         }

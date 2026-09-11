@@ -52,7 +52,8 @@ class ResponseReservedIpNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('reservedIp', get_object_vars($data)) && null !== ($data->reservedIp ?? null)) {
-            $dataArray['reserved_ip'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIp, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->reservedIp, 'json', $context);
+            $dataArray['reserved_ip'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

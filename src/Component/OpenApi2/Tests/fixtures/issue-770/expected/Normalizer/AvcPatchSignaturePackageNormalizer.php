@@ -46,7 +46,8 @@ class AvcPatchSignaturePackageNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('checkLatestInstallableSettings', get_object_vars($data)) && null !== ($data->checkLatestInstallableSettings ?? null)) {
-            $dataArray['checkLatestInstallableSettings'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context);
+            $dataArray['checkLatestInstallableSettings'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

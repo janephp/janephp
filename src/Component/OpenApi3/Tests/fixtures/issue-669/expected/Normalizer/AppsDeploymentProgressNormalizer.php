@@ -95,7 +95,8 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
             foreach ($data->steps as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['steps'] = $values;
         }
@@ -105,7 +106,8 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('summarySteps', get_object_vars($data)) && null !== ($data->summarySteps ?? null)) {
             $values_1 = [];
             foreach ($data->summarySteps as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['summary_steps'] = $values_1;
         }

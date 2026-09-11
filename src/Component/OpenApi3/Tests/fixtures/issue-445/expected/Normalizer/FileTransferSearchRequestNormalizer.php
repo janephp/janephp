@@ -94,7 +94,8 @@ class FileTransferSearchRequestNormalizer implements DenormalizerInterface, Norm
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filter'] = $value_1;
         }

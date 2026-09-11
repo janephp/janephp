@@ -63,13 +63,17 @@ class LogsinkUpdateNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $value = $data->config;
         if (is_object($data->config)) {
-            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         } elseif (is_object($data->config)) {
-            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         } elseif (is_object($data->config)) {
-            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         } elseif (is_object($data->config)) {
-            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         $dataArray['config'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

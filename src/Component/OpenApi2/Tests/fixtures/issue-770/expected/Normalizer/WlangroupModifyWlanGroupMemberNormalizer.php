@@ -55,7 +55,8 @@ class WlangroupModifyWlanGroupMemberNormalizer implements DenormalizerInterface,
             $dataArray['accessVlan'] = $data->accessVlan;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->vlanPooling, 'json', $context);
+            $dataArray['vlanPooling'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('nasId', get_object_vars($data)) && null !== ($data->nasId ?? null)) {
             $dataArray['nasId'] = $data->nasId;

@@ -52,7 +52,8 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('field3', get_object_vars($data)) && null !== ($data->field3 ?? null)) {
-            $dataArray['field-3'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($this->normalizer->normalize($data->field3, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->field3, 'json', $context);
+            $dataArray['field-3'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

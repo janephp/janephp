@@ -184,28 +184,32 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('attachedChildAgents', get_object_vars($data)) && null !== ($data->attachedChildAgents ?? null)) {
             $values = [];
             foreach ($data->attachedChildAgents as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['attached_child_agents'] = $values;
         }
         if (array_key_exists('attachedFunctions', get_object_vars($data)) && null !== ($data->attachedFunctions ?? null)) {
             $values_1 = [];
             foreach ($data->attachedFunctions as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['attached_functions'] = $values_1;
         }
         if (array_key_exists('attachedGuardrails', get_object_vars($data)) && null !== ($data->attachedGuardrails ?? null)) {
             $values_2 = [];
             foreach ($data->attachedGuardrails as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['attached_guardrails'] = $values_2;
         }
         if (array_key_exists('attachedKnowledgebases', get_object_vars($data)) && null !== ($data->attachedKnowledgebases ?? null)) {
             $values_3 = [];
             foreach ($data->attachedKnowledgebases as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['attached_knowledgebases'] = $values_3;
         }

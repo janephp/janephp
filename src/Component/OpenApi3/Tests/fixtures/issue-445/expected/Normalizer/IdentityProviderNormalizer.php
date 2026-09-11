@@ -114,7 +114,8 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('claimMapping', get_object_vars($data)) && null !== ($data->claimMapping ?? null)) {
             $values = [];
             foreach ($data->claimMapping as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['claimMapping'] = $values;
         }
@@ -124,7 +125,8 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('groupMapping', get_object_vars($data)) && null !== ($data->groupMapping ?? null)) {
             $values_1 = [];
             foreach ($data->groupMapping as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['groupMapping'] = $values_1;
         }

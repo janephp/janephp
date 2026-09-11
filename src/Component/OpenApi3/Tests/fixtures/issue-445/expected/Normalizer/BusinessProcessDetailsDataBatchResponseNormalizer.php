@@ -67,7 +67,8 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         $dataArray['docType'] = $data->docType;
         $value = $data->response;
         if (is_object($data->response)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->response, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->response, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['response'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

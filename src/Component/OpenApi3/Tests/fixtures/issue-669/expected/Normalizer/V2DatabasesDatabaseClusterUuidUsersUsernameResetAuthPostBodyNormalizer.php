@@ -52,7 +52,8 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBodyNormalizer imp
     {
         $dataArray = [];
         if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
-            $dataArray['mysql_settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->mysqlSettings, 'json', $context);
+            $dataArray['mysql_settings'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

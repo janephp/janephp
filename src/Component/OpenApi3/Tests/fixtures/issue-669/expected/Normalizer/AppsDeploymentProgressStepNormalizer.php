@@ -108,7 +108,8 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
-            $dataArray['reason'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->reason, 'json', $context);
+            $dataArray['reason'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
             $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');

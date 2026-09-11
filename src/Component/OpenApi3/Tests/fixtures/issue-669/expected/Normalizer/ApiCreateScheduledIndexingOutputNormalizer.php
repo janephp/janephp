@@ -52,7 +52,8 @@ class ApiCreateScheduledIndexingOutputNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('indexingInfo', get_object_vars($data)) && null !== ($data->indexingInfo ?? null)) {
-            $dataArray['indexing_info'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->indexingInfo, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->indexingInfo, 'json', $context);
+            $dataArray['indexing_info'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

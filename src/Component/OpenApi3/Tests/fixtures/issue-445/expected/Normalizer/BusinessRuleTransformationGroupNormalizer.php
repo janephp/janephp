@@ -84,7 +84,8 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
         if (array_key_exists('transformations', get_object_vars($data)) && null !== ($data->transformations ?? null)) {
             $values_1 = [];
             foreach ($data->transformations as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['transformations'] = $values_1;
         }

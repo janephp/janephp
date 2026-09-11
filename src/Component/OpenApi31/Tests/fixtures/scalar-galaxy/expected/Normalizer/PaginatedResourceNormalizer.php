@@ -55,7 +55,8 @@ class PaginatedResourceNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
-            $dataArray['meta'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

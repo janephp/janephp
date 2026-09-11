@@ -94,7 +94,8 @@ class IdentityUsernamePasswordCredentialsImplDtoNormalizer implements Denormaliz
             $dataArray['authenticationMethod'] = $data->authenticationMethod;
         }
         if (array_key_exists('authenticationServerConfig', get_object_vars($data)) && null !== ($data->authenticationServerConfig ?? null)) {
-            $dataArray['authenticationServerConfig'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationServerConfig, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->authenticationServerConfig, 'json', $context);
+            $dataArray['authenticationServerConfig'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('passwordCreation', get_object_vars($data)) && null !== ($data->passwordCreation ?? null)) {
             $dataArray['passwordCreation'] = $data->passwordCreation;

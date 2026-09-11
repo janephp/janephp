@@ -126,7 +126,8 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_1 = [];
             foreach ($data->sort as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['sort'] = $values_1;
         }
@@ -137,7 +138,8 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_2 = $data->filter;
             if (is_object($data->filter)) {
-                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_2 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['filter'] = $value_2;
         }

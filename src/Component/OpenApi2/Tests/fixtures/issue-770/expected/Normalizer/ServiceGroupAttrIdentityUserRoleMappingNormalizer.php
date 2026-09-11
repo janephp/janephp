@@ -55,7 +55,8 @@ class ServiceGroupAttrIdentityUserRoleMappingNormalizer implements DenormalizerI
             $dataArray['id'] = $data->id;
         }
         $dataArray['groupAttr'] = $data->groupAttr;
-        $dataArray['userRole'] = $data->userRole === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userRole, 'json', $context));
+        $normalized = $data->userRole === null ? null : $this->normalizer->normalize($data->userRole, 'json', $context);
+        $dataArray['userRole'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

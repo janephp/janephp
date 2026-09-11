@@ -118,20 +118,24 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->operator, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->operator, 'json', $context);
+            $dataArray['operator'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('identityProviders', get_object_vars($data)) && null !== ($data->identityProviders ?? null)) {
             $values = [];
             foreach ($data->identityProviders as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['identityProviders'] = $values;
         }
         if (array_key_exists('defaultIdentityProvider', get_object_vars($data)) && null !== ($data->defaultIdentityProvider ?? null)) {
-            $dataArray['defaultIdentityProvider'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context);
+            $dataArray['defaultIdentityProvider'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('signupSsid', get_object_vars($data)) && null !== ($data->signupSsid ?? null)) {
-            $dataArray['signupSsid'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->signupSsid, 'json', $context);
+            $dataArray['signupSsid'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('internetOption', get_object_vars($data)) && null !== ($data->internetOption ?? null)) {
             $dataArray['internetOption'] = $data->internetOption;
@@ -148,14 +152,16 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
         if (array_key_exists('connectionCapabilities', get_object_vars($data)) && null !== ($data->connectionCapabilities ?? null)) {
             $values_1 = [];
             foreach ($data->connectionCapabilities as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['connectionCapabilities'] = $values_1;
         }
         if (array_key_exists('customConnectionCapabilities', get_object_vars($data)) && null !== ($data->customConnectionCapabilities ?? null)) {
             $values_2 = [];
             foreach ($data->customConnectionCapabilities as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_5 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['customConnectionCapabilities'] = $values_2;
         }

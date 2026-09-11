@@ -56,10 +56,12 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('field2', get_object_vars($data)) && null !== ($data->field2 ?? null)) {
-            $dataArray['field-2'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($this->normalizer->normalize($data->field2, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->field2, 'json', $context);
+            $dataArray['field-2'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('field2Bis', get_object_vars($data)) && null !== ($data->field2Bis ?? null)) {
-            $dataArray['field-2-bis'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($this->normalizer->normalize($data->field2Bis, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->field2Bis, 'json', $context);
+            $dataArray['field-2-bis'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

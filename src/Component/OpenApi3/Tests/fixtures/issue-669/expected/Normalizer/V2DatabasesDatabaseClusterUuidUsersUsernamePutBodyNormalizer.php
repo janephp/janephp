@@ -52,7 +52,8 @@ class V2DatabasesDatabaseClusterUuidUsersUsernamePutBodyNormalizer implements De
     {
         $dataArray = [];
         if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
-            $dataArray['settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->settings, 'json', $context);
+            $dataArray['settings'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

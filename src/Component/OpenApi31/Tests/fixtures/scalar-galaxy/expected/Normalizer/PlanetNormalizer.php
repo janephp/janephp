@@ -148,12 +148,14 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['habitabilityIndex'] = $data->habitabilityIndex;
         }
         if (array_key_exists('physicalProperties', get_object_vars($data)) && null !== ($data->physicalProperties ?? null)) {
-            $dataArray['physicalProperties'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->physicalProperties, 'json', $context);
+            $dataArray['physicalProperties'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('atmosphere', get_object_vars($data)) && null !== ($data->atmosphere ?? null)) {
             $values = [];
             foreach ($data->atmosphere as $value_1) {
-                $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['atmosphere'] = $values;
         }
@@ -172,12 +174,14 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (array_key_exists('satellites', get_object_vars($data)) && null !== ($data->satellites ?? null)) {
             $values_1 = [];
             foreach ($data->satellites as $value_3) {
-                $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_2 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['satellites'] = $values_1;
         }
         if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
-            $dataArray['creator'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->creator, 'json', $context);
+            $dataArray['creator'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];

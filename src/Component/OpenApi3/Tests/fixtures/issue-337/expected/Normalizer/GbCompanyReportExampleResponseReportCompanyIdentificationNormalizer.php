@@ -68,19 +68,22 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     {
         $dataArray = [];
         if (array_key_exists('basicInformation', get_object_vars($data)) && null !== ($data->basicInformation ?? null)) {
-            $dataArray['basicInformation'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->basicInformation, 'json', $context);
+            $dataArray['basicInformation'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('activityClassifications', get_object_vars($data)) && null !== ($data->activityClassifications ?? null)) {
             $values = [];
             foreach ($data->activityClassifications as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['activityClassifications'] = $values;
         }
         if (array_key_exists('previousNames', get_object_vars($data)) && null !== ($data->previousNames ?? null)) {
             $values_1 = [];
             foreach ($data->previousNames as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_2 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['previousNames'] = $values_1;
         }

@@ -83,7 +83,8 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('spriteResizeAction', get_object_vars($data)) && null !== ($data->spriteResizeAction ?? null)) {
             $value = $data->spriteResizeAction;
             if (is_object($data->spriteResizeAction)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->spriteResizeAction, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['spriteResizeAction'] = $value;
         }

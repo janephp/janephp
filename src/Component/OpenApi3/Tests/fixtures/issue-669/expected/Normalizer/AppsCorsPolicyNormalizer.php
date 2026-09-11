@@ -93,7 +93,8 @@ class AppsCorsPolicyNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('allowOrigins', get_object_vars($data)) && null !== ($data->allowOrigins ?? null)) {
             $values = [];
             foreach ($data->allowOrigins as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['allow_origins'] = $values;
         }

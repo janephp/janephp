@@ -65,11 +65,13 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
         $dataArray = [];
         $values = [];
         foreach ($data->backups as $value) {
-            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['backups'] = $values;
         if (array_key_exists('scheduledBackupTime', get_object_vars($data)) && null !== ($data->scheduledBackupTime ?? null)) {
-            $dataArray['scheduled_backup_time'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledBackupTime, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->scheduledBackupTime, 'json', $context);
+            $dataArray['scheduled_backup_time'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('backupProgress', get_object_vars($data)) && null !== ($data->backupProgress ?? null)) {
             $dataArray['backup_progress'] = $data->backupProgress;

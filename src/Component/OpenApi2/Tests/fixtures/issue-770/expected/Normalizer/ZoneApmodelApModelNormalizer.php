@@ -104,13 +104,16 @@ class ZoneApmodelApModelNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['ledStatusEnabled'] = $data->ledStatusEnabled;
         }
         if (array_key_exists('lldp', get_object_vars($data)) && null !== ($data->lldp ?? null)) {
-            $dataArray['lldp'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lldp, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->lldp, 'json', $context);
+            $dataArray['lldp'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('lacp', get_object_vars($data)) && null !== ($data->lacp ?? null)) {
-            $dataArray['lacp'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lacp, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->lacp, 'json', $context);
+            $dataArray['lacp'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('cellularSettings', get_object_vars($data)) && null !== ($data->cellularSettings ?? null)) {
-            $dataArray['cellularSettings'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cellularSettings, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->cellularSettings, 'json', $context);
+            $dataArray['cellularSettings'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('ledMode', get_object_vars($data)) && null !== ($data->ledMode ?? null)) {
             $dataArray['ledMode'] = $data->ledMode;
@@ -134,15 +137,18 @@ class ZoneApmodelApModelNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['radioBand'] = $data->radioBand;
         }
         if (array_key_exists('externalAntenna24', get_object_vars($data)) && null !== ($data->externalAntenna24 ?? null)) {
-            $dataArray['externalAntenna24'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna24, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->externalAntenna24, 'json', $context);
+            $dataArray['externalAntenna24'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('externalAntenna50', get_object_vars($data)) && null !== ($data->externalAntenna50 ?? null)) {
-            $dataArray['externalAntenna50'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna50, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->externalAntenna50, 'json', $context);
+            $dataArray['externalAntenna50'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('lanPorts', get_object_vars($data)) && null !== ($data->lanPorts ?? null)) {
             $values = [];
             foreach ($data->lanPorts as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_5 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['lanPorts'] = $values;
         }

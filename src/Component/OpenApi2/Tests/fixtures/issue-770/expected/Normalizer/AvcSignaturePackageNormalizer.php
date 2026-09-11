@@ -82,15 +82,18 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('binariesInfo', get_object_vars($data)) && null !== ($data->binariesInfo ?? null)) {
             $values = [];
             foreach ($data->binariesInfo as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['binariesInfo'] = $values;
         }
         if (array_key_exists('checkLatestInstallableSettings', get_object_vars($data)) && null !== ($data->checkLatestInstallableSettings ?? null)) {
-            $dataArray['checkLatestInstallableSettings'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context);
+            $dataArray['checkLatestInstallableSettings'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('latestInstallable', get_object_vars($data)) && null !== ($data->latestInstallable ?? null)) {
-            $dataArray['latestInstallable'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->latestInstallable, 'json', $context);
+            $dataArray['latestInstallable'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

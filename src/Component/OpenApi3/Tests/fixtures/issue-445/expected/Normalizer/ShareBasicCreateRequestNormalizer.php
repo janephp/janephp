@@ -135,7 +135,8 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $values = [];
         foreach ($data->contents as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['contents'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
@@ -154,7 +155,8 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('recipientEmails', get_object_vars($data)) && null !== ($data->recipientEmails ?? null)) {
             $values_2 = [];
             foreach ($data->recipientEmails as $value_3) {
-                $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['recipientEmails'] = $values_2;
         }

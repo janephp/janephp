@@ -57,7 +57,8 @@ class V2LoadBalancersLbIdForwardingRulesDeleteBodyNormalizer implements Denormal
         $dataArray = [];
         $values = [];
         foreach ($data->forwardingRules as $value) {
-            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['forwarding_rules'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

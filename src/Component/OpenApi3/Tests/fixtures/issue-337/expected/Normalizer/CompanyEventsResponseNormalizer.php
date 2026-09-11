@@ -72,12 +72,14 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
             foreach ($data->data as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
-            $dataArray['paging'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->paging, 'json', $context);
+            $dataArray['paging'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

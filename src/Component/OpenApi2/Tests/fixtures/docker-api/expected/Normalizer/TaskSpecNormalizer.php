@@ -80,22 +80,28 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('pluginSpec', get_object_vars($data)) && null !== ($data->pluginSpec ?? null)) {
-            $dataArray['PluginSpec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->pluginSpec, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->pluginSpec, 'json', $context);
+            $dataArray['PluginSpec'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('containerSpec', get_object_vars($data)) && null !== ($data->containerSpec ?? null)) {
-            $dataArray['ContainerSpec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerSpec, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->containerSpec, 'json', $context);
+            $dataArray['ContainerSpec'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('networkAttachmentSpec', get_object_vars($data)) && null !== ($data->networkAttachmentSpec ?? null)) {
-            $dataArray['NetworkAttachmentSpec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkAttachmentSpec, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->networkAttachmentSpec, 'json', $context);
+            $dataArray['NetworkAttachmentSpec'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
-            $dataArray['Resources'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->resources, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->resources, 'json', $context);
+            $dataArray['Resources'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('restartPolicy', get_object_vars($data)) && null !== ($data->restartPolicy ?? null)) {
-            $dataArray['RestartPolicy'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->restartPolicy, 'json', $context);
+            $dataArray['RestartPolicy'] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('placement', get_object_vars($data)) && null !== ($data->placement ?? null)) {
-            $dataArray['Placement'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->placement, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->placement, 'json', $context);
+            $dataArray['Placement'] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('forceUpdate', get_object_vars($data)) && null !== ($data->forceUpdate ?? null)) {
             $dataArray['ForceUpdate'] = $data->forceUpdate;
@@ -106,12 +112,14 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values = [];
             foreach ($data->networks as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_6 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_6) ? new \Docker\Api\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['Networks'] = $values;
         }
         if (array_key_exists('logDriver', get_object_vars($data)) && null !== ($data->logDriver ?? null)) {
-            $dataArray['LogDriver'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logDriver, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->logDriver, 'json', $context);
+            $dataArray['LogDriver'] = \is_iterable($normalized_7) ? new \Docker\Api\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecConstraint());

@@ -86,7 +86,8 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filter'] = $value;
         }

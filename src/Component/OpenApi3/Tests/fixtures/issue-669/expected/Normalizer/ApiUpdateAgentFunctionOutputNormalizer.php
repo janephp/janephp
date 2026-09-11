@@ -52,7 +52,8 @@ class ApiUpdateAgentFunctionOutputNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('agent', get_object_vars($data)) && null !== ($data->agent ?? null)) {
-            $dataArray['agent'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agent, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->agent, 'json', $context);
+            $dataArray['agent'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

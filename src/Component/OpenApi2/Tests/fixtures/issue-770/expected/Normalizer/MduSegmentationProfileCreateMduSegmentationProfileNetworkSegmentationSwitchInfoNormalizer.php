@@ -79,14 +79,16 @@ class MduSegmentationProfileCreateMduSegmentationProfileNetworkSegmentationSwitc
         if (array_key_exists('distributionSwitches', get_object_vars($data)) && null !== ($data->distributionSwitches ?? null)) {
             $values_1 = [];
             foreach ($data->distributionSwitches as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['distributionSwitches'] = $values_1;
         }
         if (array_key_exists('accessSwitches', get_object_vars($data)) && null !== ($data->accessSwitches ?? null)) {
             $values_2 = [];
             foreach ($data->accessSwitches as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_1 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['accessSwitches'] = $values_2;
         }

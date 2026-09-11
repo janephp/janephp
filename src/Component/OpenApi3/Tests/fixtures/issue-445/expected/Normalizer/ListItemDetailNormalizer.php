@@ -166,14 +166,16 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_6 = $data->audit;
             if (is_object($data->audit)) {
-                $value_6 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_6 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['audit'] = $value_6;
         }
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
             $value_7 = $data->activity;
             if (is_object($data->activity)) {
-                $value_7 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->activity, 'json', $context);
+                $value_7 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['activity'] = $value_7;
         }

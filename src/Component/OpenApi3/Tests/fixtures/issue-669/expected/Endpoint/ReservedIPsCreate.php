@@ -61,7 +61,7 @@ class ReservedIPsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (stripos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
     }

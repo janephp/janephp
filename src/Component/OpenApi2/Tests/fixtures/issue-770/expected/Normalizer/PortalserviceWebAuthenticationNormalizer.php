@@ -82,13 +82,16 @@ class PortalserviceWebAuthenticationNormalizer implements DenormalizerInterface,
             $dataArray['portalLanguage'] = $data->portalLanguage;
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->redirect, 'json', $context);
+            $dataArray['redirect'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
-            $dataArray['userSession'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->userSession, 'json', $context);
+            $dataArray['userSession'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('webAuthenticationPortalCustomization', get_object_vars($data)) && null !== ($data->webAuthenticationPortalCustomization ?? null)) {
-            $dataArray['webAuthenticationPortalCustomization'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->webAuthenticationPortalCustomization, 'json', $context);
+            $dataArray['webAuthenticationPortalCustomization'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

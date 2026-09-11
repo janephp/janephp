@@ -52,7 +52,8 @@ class ApiCreateKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('knowledgeBaseDataSource', get_object_vars($data)) && null !== ($data->knowledgeBaseDataSource ?? null)) {
-            $dataArray['knowledge_base_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->knowledgeBaseDataSource, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->knowledgeBaseDataSource, 'json', $context);
+            $dataArray['knowledge_base_data_source'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -137,7 +137,8 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filter'] = $value;
         }
@@ -152,17 +153,20 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['names'] = $value_1;
         $values_1 = [];
         foreach ($data->sort as $value_3) {
-            $values_1[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['sort'] = $values_1;
         $values_2 = [];
         foreach ($data->sortFields as $value_4) {
-            $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+            $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+            $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['sortFields'] = $values_2;
         $values_3 = [];
         foreach ($data->aggregations as $value_5) {
-            $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+            $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+            $values_3[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         $dataArray['aggregations'] = $values_3;
         $values_4 = [];
@@ -186,7 +190,8 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['missingResultsDisplayPatterns'] = $value_8;
         $value_10 = $data->audit;
         if (is_object($data->audit)) {
-            $value_10 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->audit, 'json', $context);
+            $value_10 = \is_iterable($normalized_4) ? new \PicturePark\API\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         $dataArray['audit'] = $value_10;
         $dataArray['viewForAll'] = $data->viewForAll;

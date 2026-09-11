@@ -104,7 +104,8 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['type'] = $data->type;
         }
         if (array_key_exists('orbit', get_object_vars($data)) && null !== ($data->orbit ?? null)) {
-            $dataArray['orbit'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->orbit, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->orbit, 'json', $context);
+            $dataArray['orbit'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

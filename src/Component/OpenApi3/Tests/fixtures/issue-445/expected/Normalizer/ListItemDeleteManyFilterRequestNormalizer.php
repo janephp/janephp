@@ -63,7 +63,8 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
         $dataArray = [];
         $value = $data->filterRequest;
         if (is_object($data->filterRequest)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->filterRequest, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['filterRequest'] = $value;
         $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval;

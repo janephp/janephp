@@ -73,10 +73,12 @@ class DhcpMsgStatsDhcpMsgStatsNormalizer implements DenormalizerInterface, Norma
             $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('dhcpMsgRecvdStats', get_object_vars($data)) && null !== ($data->dhcpMsgRecvdStats ?? null)) {
-            $dataArray['dhcpMsgRecvdStats'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgRecvdStats, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->dhcpMsgRecvdStats, 'json', $context);
+            $dataArray['dhcpMsgRecvdStats'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('dhcpMsgSentStats', get_object_vars($data)) && null !== ($data->dhcpMsgSentStats ?? null)) {
-            $dataArray['dhcpMsgSentStats'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgSentStats, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->dhcpMsgSentStats, 'json', $context);
+            $dataArray['dhcpMsgSentStats'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         return $dataArray;
     }

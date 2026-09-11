@@ -63,7 +63,8 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $value = $data->userEmail;
         if (is_object($data->userEmail)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userEmail, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->userEmail, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['userEmail'] = $value;
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {

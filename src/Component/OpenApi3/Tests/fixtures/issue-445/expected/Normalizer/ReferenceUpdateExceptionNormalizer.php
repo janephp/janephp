@@ -169,7 +169,8 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('exceptions', get_object_vars($data)) && null !== ($data->exceptions ?? null)) {
             $values = [];
             foreach ($data->exceptions as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['exceptions'] = $values;
         }

@@ -128,14 +128,16 @@ class OutputFormatUpdateManyRequestItemNormalizer implements DenormalizerInterfa
         if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
             $value = $data->sourceOutputFormats;
             if (is_object($data->sourceOutputFormats)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->sourceOutputFormats, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
         if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
             $value_1 = $data->format;
             if (is_object($data->format)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->format, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['format'] = $value_1;
         }

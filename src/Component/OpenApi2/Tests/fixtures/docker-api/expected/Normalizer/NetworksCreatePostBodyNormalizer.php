@@ -115,7 +115,8 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $dataArray['Ingress'] = $data->ingress;
         }
         if (array_key_exists('iPAM', get_object_vars($data)) && null !== ($data->iPAM ?? null)) {
-            $dataArray['IPAM'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->iPAM, 'json', $context);
+            $dataArray['IPAM'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('enableIPv6', get_object_vars($data)) && null !== ($data->enableIPv6 ?? null)) {
             $dataArray['EnableIPv6'] = $data->enableIPv6;

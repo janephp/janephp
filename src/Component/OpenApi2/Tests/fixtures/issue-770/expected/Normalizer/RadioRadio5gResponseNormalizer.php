@@ -207,10 +207,12 @@ class RadioRadio5gResponseNormalizer implements DenormalizerInterface, Normalize
             $dataArray['protectionMode'] = $data->protectionMode;
         }
         if (array_key_exists('backgroundScanning', get_object_vars($data)) && null !== ($data->backgroundScanning ?? null)) {
-            $dataArray['backgroundScanning'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->backgroundScanning, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->backgroundScanning, 'json', $context);
+            $dataArray['backgroundScanning'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
-            $dataArray['autoChannelSelection'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->autoChannelSelection, 'json', $context);
+            $dataArray['autoChannelSelection'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         return $dataArray;
     }

@@ -89,14 +89,16 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('nodeStateList', get_object_vars($data)) && null !== ($data->nodeStateList ?? null)) {
             $values = [];
             foreach ($data->nodeStateList as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['nodeStateList'] = $values;
         }
         if (array_key_exists('managementServiceStateList', get_object_vars($data)) && null !== ($data->managementServiceStateList ?? null)) {
             $values_1 = [];
             foreach ($data->managementServiceStateList as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['managementServiceStateList'] = $values_1;
         }

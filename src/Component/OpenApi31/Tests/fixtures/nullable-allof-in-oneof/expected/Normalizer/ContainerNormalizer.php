@@ -81,7 +81,8 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconOneOf', get_object_vars($data)) && null !== ($data->iconOneOf ?? null)) {
             $value = $data->iconOneOf;
             if (is_object($data->iconOneOf)) {
-                $value = new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->iconOneOf, 'json', $context);
+                $value = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($normalized) : $normalized;
             } elseif (is_null($data->iconOneOf)) {
                 $value = $data->iconOneOf;
             }
@@ -90,7 +91,8 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconAnyOf', get_object_vars($data)) && null !== ($data->iconAnyOf ?? null)) {
             $value_1 = $data->iconAnyOf;
             if (is_object($data->iconAnyOf)) {
-                $value_1 = new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->iconAnyOf, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($normalized_1) : $normalized_1;
             } elseif (is_null($data->iconAnyOf)) {
                 $value_1 = $data->iconAnyOf;
             }

@@ -144,7 +144,8 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('userRoles', get_object_vars($data)) && null !== ($data->userRoles ?? null)) {
             $values = [];
             foreach ($data->userRoles as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['userRoles'] = $values;
         }
@@ -157,7 +158,8 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value_1 = $data->address;
             if (is_object($data->address)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->address, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['address'] = $value_1;
         }

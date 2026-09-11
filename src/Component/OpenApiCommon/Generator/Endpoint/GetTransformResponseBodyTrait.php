@@ -234,6 +234,7 @@ EOD
         $returnTypes = [];
         $throwTypes = [];
         $statements = [];
+        $strtolowerCalls = [];
 
         foreach (($response->content ?? null ?? []) as $contentType => $content) {
             $baseContentType = ContentType::withoutParameters($contentType);
@@ -262,9 +263,7 @@ EOD
                     new Expr\BinaryOp\NotIdentical(
                         new Expr\FuncCall(new Name('stripos'), [
                             new Arg(
-                                new Expr\FuncCall(new Name('strtolower'), [
-                                    new Expr\Variable('contentType'),
-                                ]),
+                                $this->createStrtolowerContentTypeExpression($strtolowerCalls)
                             ),
                             new Arg(new Scalar\String_($baseContentType)),
                         ]),
@@ -299,9 +298,7 @@ EOD
                     new Expr\BinaryOp\NotIdentical(
                         new Expr\FuncCall(new Name('stripos'), [
                             new Arg(
-                                new Expr\FuncCall(new Name('strtolower'), [
-                                    new Expr\Variable('contentType'),
-                                ]),
+                                $this->createStrtolowerContentTypeExpression($strtolowerCalls)
                             ),
                             new Arg(new Scalar\String_($baseContentType)),
                         ]),
@@ -315,11 +312,15 @@ EOD
         }
 
         if ('default' === $status) {
+            $this->castStrtolowerContentTypeArguments($strtolowerCalls);
+
             return [$returnTypes, $throwTypes, $statements];
         }
 
         // Avoid useless imbrication of ifs
         if (\count($statements) === 1 && $statements[0] instanceof Stmt\If_) {
+            // The "null !== $contentType" guard below makes an explicit cast
+            // redundant: Mago would flag it as a redundant-cast.
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
                     new Expr\BinaryOp\NotIdentical(
@@ -337,12 +338,37 @@ EOD
             )]];
         }
 
+        $this->castStrtolowerContentTypeArguments($strtolowerCalls);
+
         return [$returnTypes, $throwTypes, [new Stmt\If_(
             $this->createStatusCondition($status),
             [
                 'stmts' => $statements,
             ]
         )]];
+    }
+
+    /**
+     * Collect the strtolower("content-type" header) call sites so their
+     * argument can receive an explicit (string) cast on code paths that are
+     * not guarded by a "null !== $contentType" check: the header may be
+     * absent at runtime there.
+     */
+    private function createStrtolowerContentTypeExpression(array &$strtolowerCalls): Expr\FuncCall
+    {
+        $call = new Expr\FuncCall(new Name('strtolower'), [
+            new Arg(new Expr\Variable('contentType')),
+        ]);
+        $strtolowerCalls[] = $call;
+
+        return $call;
+    }
+
+    private function castStrtolowerContentTypeArguments(array $strtolowerCalls): void
+    {
+        foreach ($strtolowerCalls as $call) {
+            $call->args[0]->value = new Expr\Cast\String_($call->args[0]->value);
+        }
     }
 
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, string $format = 'json'): array

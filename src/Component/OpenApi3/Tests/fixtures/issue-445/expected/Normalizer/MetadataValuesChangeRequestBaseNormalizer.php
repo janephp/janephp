@@ -78,7 +78,8 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
         }
         $values = [];
         foreach ($data->changeCommands as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

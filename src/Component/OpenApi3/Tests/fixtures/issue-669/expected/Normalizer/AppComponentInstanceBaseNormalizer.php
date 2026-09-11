@@ -78,7 +78,8 @@ class AppComponentInstanceBaseNormalizer implements DenormalizerInterface, Norma
             $dataArray['instance_size_slug'] = $value;
         }
         if (array_key_exists('autoscaling', get_object_vars($data)) && null !== ($data->autoscaling ?? null)) {
-            $dataArray['autoscaling'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->autoscaling, 'json', $context);
+            $dataArray['autoscaling'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

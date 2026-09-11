@@ -66,14 +66,16 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         if (array_key_exists('exact', get_object_vars($data)) && null !== ($data->exact ?? null)) {
             $values = [];
             foreach ($data->exact as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['exact'] = $values;
         }
         if (array_key_exists('possible', get_object_vars($data)) && null !== ($data->possible ?? null)) {
             $values_1 = [];
             foreach ($data->possible as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['possible'] = $values_1;
         }

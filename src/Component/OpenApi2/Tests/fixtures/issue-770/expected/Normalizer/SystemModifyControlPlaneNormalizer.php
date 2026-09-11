@@ -70,28 +70,35 @@ class SystemModifyControlPlaneNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('ipv4ControlInterface', get_object_vars($data)) && null !== ($data->ipv4ControlInterface ?? null)) {
-            $dataArray['ipv4ControlInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv4ControlInterface, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->ipv4ControlInterface, 'json', $context);
+            $dataArray['ipv4ControlInterface'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('ipv4ClusterInterface', get_object_vars($data)) && null !== ($data->ipv4ClusterInterface ?? null)) {
-            $dataArray['ipv4ClusterInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv4ClusterInterface, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->ipv4ClusterInterface, 'json', $context);
+            $dataArray['ipv4ClusterInterface'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('ipv4ManagementInterface', get_object_vars($data)) && null !== ($data->ipv4ManagementInterface ?? null)) {
-            $dataArray['ipv4ManagementInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv4ManagementInterface, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->ipv4ManagementInterface, 'json', $context);
+            $dataArray['ipv4ManagementInterface'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('ipv6ControlInterface', get_object_vars($data)) && null !== ($data->ipv6ControlInterface ?? null)) {
-            $dataArray['ipv6ControlInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv6ControlInterface, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->ipv6ControlInterface, 'json', $context);
+            $dataArray['ipv6ControlInterface'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('ipv6ManagementInterface', get_object_vars($data)) && null !== ($data->ipv6ManagementInterface ?? null)) {
-            $dataArray['ipv6ManagementInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv6ManagementInterface, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->ipv6ManagementInterface, 'json', $context);
+            $dataArray['ipv6ManagementInterface'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('enableAccessAndCoreSeparation', get_object_vars($data)) && null !== ($data->enableAccessAndCoreSeparation ?? null)) {
             $dataArray['enableAccessAndCoreSeparation'] = $data->enableAccessAndCoreSeparation;
         }
         if (array_key_exists('ipv4AccessAndCoreSeparation', get_object_vars($data)) && null !== ($data->ipv4AccessAndCoreSeparation ?? null)) {
-            $dataArray['ipv4AccessAndCoreSeparation'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv4AccessAndCoreSeparation, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->ipv4AccessAndCoreSeparation, 'json', $context);
+            $dataArray['ipv4AccessAndCoreSeparation'] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('ipv6AccessAndCoreSeparation', get_object_vars($data)) && null !== ($data->ipv6AccessAndCoreSeparation ?? null)) {
-            $dataArray['ipv6AccessAndCoreSeparation'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv6AccessAndCoreSeparation, 'json', $context));
+            $normalized_6 = $this->normalizer->normalize($data->ipv6AccessAndCoreSeparation, 'json', $context);
+            $dataArray['ipv6AccessAndCoreSeparation'] = \is_iterable($normalized_6) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_6) : $normalized_6;
         }
         return $dataArray;
     }

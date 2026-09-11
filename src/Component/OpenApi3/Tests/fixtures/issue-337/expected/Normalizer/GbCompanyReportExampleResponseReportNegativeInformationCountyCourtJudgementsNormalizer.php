@@ -52,7 +52,8 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     {
         $dataArray = [];
         if (array_key_exists('registered', get_object_vars($data)) && null !== ($data->registered ?? null)) {
-            $dataArray['registered'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->registered, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->registered, 'json', $context);
+            $dataArray['registered'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

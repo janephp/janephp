@@ -75,7 +75,8 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
         $dataArray['listItemIds'] = $values;
         $values_1 = [];
         foreach ($data->changeCommands as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['changeCommands'] = $values_1;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

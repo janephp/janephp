@@ -125,14 +125,16 @@ class CommonDhcpSiteConfigListRefNormalizer implements DenormalizerInterface, No
         if (array_key_exists('siteAps', get_object_vars($data)) && null !== ($data->siteAps ?? null)) {
             $values = [];
             foreach ($data->siteAps as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['siteAps'] = $values;
         }
         if (array_key_exists('siteProfiles', get_object_vars($data)) && null !== ($data->siteProfiles ?? null)) {
             $values_1 = [];
             foreach ($data->siteProfiles as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['siteProfiles'] = $values_1;
         }

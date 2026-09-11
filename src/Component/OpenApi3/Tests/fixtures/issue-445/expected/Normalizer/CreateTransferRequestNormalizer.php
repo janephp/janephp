@@ -93,14 +93,16 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('files', get_object_vars($data)) && null !== ($data->files ?? null)) {
             $values = [];
             foreach ($data->files as $value_1) {
-                $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['files'] = $values;
         }
         if (array_key_exists('webLinks', get_object_vars($data)) && null !== ($data->webLinks ?? null)) {
             $values_1 = [];
             foreach ($data->webLinks as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_1 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['webLinks'] = $values_1;
         }

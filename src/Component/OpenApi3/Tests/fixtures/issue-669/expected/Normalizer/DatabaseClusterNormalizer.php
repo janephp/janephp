@@ -214,25 +214,32 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['tags'] = $values;
         }
         if (array_key_exists('uiConnection', get_object_vars($data)) && null !== ($data->uiConnection ?? null)) {
-            $dataArray['ui_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->uiConnection, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->uiConnection, 'json', $context);
+            $dataArray['ui_connection'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('schemaRegistryConnection', get_object_vars($data)) && null !== ($data->schemaRegistryConnection ?? null)) {
-            $dataArray['schema_registry_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->schemaRegistryConnection, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->schemaRegistryConnection, 'json', $context);
+            $dataArray['schema_registry_connection'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
-            $dataArray['connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->connection, 'json', $context);
+            $dataArray['connection'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
-            $dataArray['private_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->privateConnection, 'json', $context);
+            $dataArray['private_connection'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('standbyConnection', get_object_vars($data)) && null !== ($data->standbyConnection ?? null)) {
-            $dataArray['standby_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyConnection, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->standbyConnection, 'json', $context);
+            $dataArray['standby_connection'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('standbyPrivateConnection', get_object_vars($data)) && null !== ($data->standbyPrivateConnection ?? null)) {
-            $dataArray['standby_private_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrivateConnection, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->standbyPrivateConnection, 'json', $context);
+            $dataArray['standby_private_connection'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('maintenanceWindow', get_object_vars($data)) && null !== ($data->maintenanceWindow ?? null)) {
-            $dataArray['maintenance_window'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenanceWindow, 'json', $context));
+            $normalized_6 = $this->normalizer->normalize($data->maintenanceWindow, 'json', $context);
+            $dataArray['maintenance_window'] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
         }
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
             $dataArray['project_id'] = $data->projectId;
@@ -240,7 +247,8 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values_1 = [];
             foreach ($data->rules as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_7 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_7) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_7) : $normalized_7;
             }
             $dataArray['rules'] = $values_1;
         }
@@ -248,7 +256,8 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['storage_size_mib'] = $data->storageSizeMib;
         }
         if (array_key_exists('autoscale', get_object_vars($data)) && null !== ($data->autoscale ?? null)) {
-            $dataArray['autoscale'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscale, 'json', $context));
+            $normalized_8 = $this->normalizer->normalize($data->autoscale, 'json', $context);
+            $dataArray['autoscale'] = \is_iterable($normalized_8) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_8) : $normalized_8;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

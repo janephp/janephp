@@ -59,7 +59,8 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['label'] = $data->label;
         }
         if (array_key_exists('sub', get_object_vars($data)) && null !== ($data->sub ?? null)) {
-            $dataArray['sub'] = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($this->normalizer->normalize($data->sub, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->sub, 'json', $context);
+            $dataArray['sub'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

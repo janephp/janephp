@@ -59,10 +59,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('productData', get_object_vars($data)) && null !== ($data->productData ?? null)) {
-            $dataArray['product_data'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($this->normalizer->normalize($data->productData, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->productData, 'json', $context);
+            $dataArray['product_data'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('product', get_object_vars($data)) && null !== ($data->product ?? null)) {
-            $dataArray['product'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($this->normalizer->normalize($data->product, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->product, 'json', $context);
+            $dataArray['product'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

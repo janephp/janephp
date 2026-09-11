@@ -125,7 +125,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['object'] = $values_1;
         }
         if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
-            $dataArray['subObject'] = new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->subObject, 'json', $context);
+            $dataArray['subObject'] = \is_iterable($normalized) ? new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

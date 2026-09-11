@@ -58,7 +58,8 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
         if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = [];
             foreach ($data->companies as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['companies'] = $values;
         }

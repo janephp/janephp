@@ -64,7 +64,8 @@ class EventManagementEventDataResponseNormalizer implements DenormalizerInterfac
             $dataArray['error'] = $data->error;
         }
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
-            $dataArray['data'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->data, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->data, 'json', $context);
+            $dataArray['data'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
             $dataArray['extra'] = $data->extra;

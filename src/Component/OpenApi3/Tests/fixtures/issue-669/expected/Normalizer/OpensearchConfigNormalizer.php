@@ -79,7 +79,8 @@ class OpensearchConfigNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['id'] = $data->id;
         }
         if (array_key_exists('credentials', get_object_vars($data)) && null !== ($data->credentials ?? null)) {
-            $dataArray['credentials'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->credentials, 'json', $context);
+            $dataArray['credentials'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['endpoint'] = $data->endpoint;
         if (array_key_exists('clusterUuid', get_object_vars($data)) && null !== ($data->clusterUuid ?? null)) {

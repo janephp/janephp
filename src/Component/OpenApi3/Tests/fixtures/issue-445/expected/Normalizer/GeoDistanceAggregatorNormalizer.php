@@ -130,14 +130,16 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('aggregators', get_object_vars($data)) && null !== ($data->aggregators ?? null)) {
             $values_1 = [];
             foreach ($data->aggregators as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['aggregators'] = $values_1;
         }
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_3 = $data->filter;
             if (is_object($data->filter)) {
-                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_3 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['filter'] = $value_3;
         }
@@ -145,12 +147,14 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['field'] = $data->field;
         $value_4 = $data->location;
         if (is_object($data->location)) {
-            $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->location, 'json', $context);
+            $value_4 = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['location'] = $value_4;
         $values_2 = [];
         foreach ($data->ranges as $value_5) {
-            $values_2[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+            $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+            $values_2[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         $dataArray['ranges'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_6) {

@@ -244,7 +244,8 @@ class ClusterNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $dataArray['node_pools'] = $values_1;
         if (array_key_exists('maintenancePolicy', get_object_vars($data)) && null !== ($data->maintenancePolicy ?? null)) {
-            $dataArray['maintenance_policy'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenancePolicy, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->maintenancePolicy, 'json', $context);
+            $dataArray['maintenance_policy'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('autoUpgrade', get_object_vars($data)) && null !== ($data->autoUpgrade ?? null)) {
             $dataArray['auto_upgrade'] = $data->autoUpgrade;
@@ -256,25 +257,32 @@ class ClusterNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['ha'] = $data->ha;
         }
         if (array_key_exists('controlPlaneFirewall', get_object_vars($data)) && null !== ($data->controlPlaneFirewall ?? null)) {
-            $dataArray['control_plane_firewall'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->controlPlaneFirewall, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->controlPlaneFirewall, 'json', $context);
+            $dataArray['control_plane_firewall'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('clusterAutoscalerConfiguration', get_object_vars($data)) && null !== ($data->clusterAutoscalerConfiguration ?? null)) {
-            $dataArray['cluster_autoscaler_configuration'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->clusterAutoscalerConfiguration, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->clusterAutoscalerConfiguration, 'json', $context);
+            $dataArray['cluster_autoscaler_configuration'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('routingAgent', get_object_vars($data)) && null !== ($data->routingAgent ?? null)) {
-            $dataArray['routing_agent'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->routingAgent, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->routingAgent, 'json', $context);
+            $dataArray['routing_agent'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('amdGpuDevicePlugin', get_object_vars($data)) && null !== ($data->amdGpuDevicePlugin ?? null)) {
-            $dataArray['amd_gpu_device_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDevicePlugin, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->amdGpuDevicePlugin, 'json', $context);
+            $dataArray['amd_gpu_device_plugin'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('amdGpuDeviceMetricsExporterPlugin', get_object_vars($data)) && null !== ($data->amdGpuDeviceMetricsExporterPlugin ?? null)) {
-            $dataArray['amd_gpu_device_metrics_exporter_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDeviceMetricsExporterPlugin, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->amdGpuDeviceMetricsExporterPlugin, 'json', $context);
+            $dataArray['amd_gpu_device_metrics_exporter_plugin'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('nvidiaGpuDevicePlugin', get_object_vars($data)) && null !== ($data->nvidiaGpuDevicePlugin ?? null)) {
-            $dataArray['nvidia_gpu_device_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nvidiaGpuDevicePlugin, 'json', $context));
+            $normalized_6 = $this->normalizer->normalize($data->nvidiaGpuDevicePlugin, 'json', $context);
+            $dataArray['nvidia_gpu_device_plugin'] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
         }
         if (array_key_exists('rdmaSharedDevPlugin', get_object_vars($data)) && null !== ($data->rdmaSharedDevPlugin ?? null)) {
-            $dataArray['rdma_shared_dev_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->rdmaSharedDevPlugin, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->rdmaSharedDevPlugin, 'json', $context);
+            $dataArray['rdma_shared_dev_plugin'] = \is_iterable($normalized_7) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {

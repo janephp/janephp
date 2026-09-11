@@ -71,19 +71,24 @@ class ThingCollectionNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('absent', get_object_vars($data)) && null !== ($data->absent ?? null)) {
-            $dataArray['absent'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($this->normalizer->normalize($data->absent, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->absent, 'json', $context);
+            $dataArray['absent'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('explicitOpen', get_object_vars($data)) && null !== ($data->explicitOpen ?? null)) {
-            $dataArray['explicitOpen'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($this->normalizer->normalize($data->explicitOpen, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->explicitOpen, 'json', $context);
+            $dataArray['explicitOpen'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('closed', get_object_vars($data)) && null !== ($data->closed ?? null)) {
-            $dataArray['closed'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($this->normalizer->normalize($data->closed, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->closed, 'json', $context);
+            $dataArray['closed'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('typedMap', get_object_vars($data)) && null !== ($data->typedMap ?? null)) {
-            $dataArray['typedMap'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($this->normalizer->normalize($data->typedMap, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->typedMap, 'json', $context);
+            $dataArray['typedMap'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('patternOnly', get_object_vars($data)) && null !== ($data->patternOnly ?? null)) {
-            $dataArray['patternOnly'] = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($this->normalizer->normalize($data->patternOnly, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->patternOnly, 'json', $context);
+            $dataArray['patternOnly'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

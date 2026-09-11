@@ -67,7 +67,8 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
             $value = $data->error;
             if (is_object($data->error)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->error, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['error'] = $value;
         }

@@ -58,7 +58,8 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         if (array_key_exists('imagesDeleted', get_object_vars($data)) && null !== ($data->imagesDeleted ?? null)) {
             $values = [];
             foreach ($data->imagesDeleted as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['ImagesDeleted'] = $values;
         }

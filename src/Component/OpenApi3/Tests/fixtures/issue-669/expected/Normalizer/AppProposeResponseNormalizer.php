@@ -94,7 +94,8 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['existing_static_apps'] = $data->existingStaticApps;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['spec'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('appCost', get_object_vars($data)) && null !== ($data->appCost ?? null)) {
             $dataArray['app_cost'] = $data->appCost;

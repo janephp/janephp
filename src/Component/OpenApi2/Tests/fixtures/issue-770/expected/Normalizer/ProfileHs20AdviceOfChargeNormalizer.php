@@ -57,12 +57,14 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $dataArray['type'] = $data->type;
         if (array_key_exists('naiRealm', get_object_vars($data)) && null !== ($data->naiRealm ?? null)) {
-            $dataArray['naiRealm'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->naiRealm, 'json', $context);
+            $dataArray['naiRealm'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('planInformations', get_object_vars($data)) && null !== ($data->planInformations ?? null)) {
             $values = [];
             foreach ($data->planInformations as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['planInformations'] = $values;
         }

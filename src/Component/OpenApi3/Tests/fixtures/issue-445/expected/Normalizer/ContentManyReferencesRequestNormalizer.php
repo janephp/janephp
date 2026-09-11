@@ -77,14 +77,16 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
             $value_1 = $data->references;
             if (is_object($data->references)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->references, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['references'] = $value_1;
         }
         if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
             $value_2 = $data->shares;
             if (is_object($data->shares)) {
-                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->shares, 'json', $context);
+                $value_2 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['shares'] = $value_2;
         }

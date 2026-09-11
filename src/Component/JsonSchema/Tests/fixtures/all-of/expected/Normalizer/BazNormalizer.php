@@ -52,13 +52,16 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['foo'] = $data->foo;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['Bar'] = new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->bar, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->bar, 'json', $context);
+            $dataArray['Bar'] = \is_iterable($normalized) ? new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
-            $dataArray['Baz'] = new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->baz, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->baz, 'json', $context);
+            $dataArray['Baz'] = \is_iterable($normalized_1) ? new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('inlineProperty', get_object_vars($data)) && null !== ($data->inlineProperty ?? null)) {
-            $dataArray['inlineProperty'] = new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->inlineProperty, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->inlineProperty, 'json', $context);
+            $dataArray['inlineProperty'] = \is_iterable($normalized_2) ? new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

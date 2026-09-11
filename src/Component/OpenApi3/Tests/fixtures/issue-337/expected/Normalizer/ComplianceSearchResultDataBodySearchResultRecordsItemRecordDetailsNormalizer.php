@@ -133,7 +133,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
         if (array_key_exists('iDs', get_object_vars($data)) && null !== ($data->iDs ?? null)) {
             $values = [];
             foreach ($data->iDs as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['iDs'] = $values;
         }
@@ -141,10 +142,12 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             $dataArray['lastUpdatedDate'] = $data->lastUpdatedDate;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->name, 'json', $context);
+            $dataArray['name'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('recordState', get_object_vars($data)) && null !== ($data->recordState ?? null)) {
-            $dataArray['recordState'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->recordState, 'json', $context);
+            $dataArray['recordState'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('searchDate', get_object_vars($data)) && null !== ($data->searchDate ?? null)) {
             $dataArray['searchDate'] = $data->searchDate;

@@ -52,7 +52,8 @@ class ApiLinksNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
-            $dataArray['pages'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pages, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->pages, 'json', $context);
+            $dataArray['pages'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -141,23 +141,29 @@ class ServiceModifyEntireRadiusAuthenticationNormalizer implements DenormalizerI
             $dataArray['locationDeliveryEnabled'] = $data->locationDeliveryEnabled;
         }
         $dataArray['type'] = $data->type;
-        $dataArray['primary'] = $data->primary === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primary, 'json', $context));
+        $normalized = $data->primary === null ? null : $this->normalizer->normalize($data->primary, 'json', $context);
+        $dataArray['primary'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('secondary', get_object_vars($data)) && null !== ($data->secondary ?? null)) {
-            $dataArray['secondary'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondary, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->secondary, 'json', $context);
+            $dataArray['secondary'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('healthCheckPolicy', get_object_vars($data)) && null !== ($data->healthCheckPolicy ?? null)) {
-            $dataArray['healthCheckPolicy'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->healthCheckPolicy, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->healthCheckPolicy, 'json', $context);
+            $dataArray['healthCheckPolicy'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
-        $dataArray['rateLimiting'] = $data->rateLimiting === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->rateLimiting, 'json', $context));
+        $normalized_3 = $data->rateLimiting === null ? null : $this->normalizer->normalize($data->rateLimiting, 'json', $context);
+        $dataArray['rateLimiting'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
             foreach ($data->mappings as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_4 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['mappings'] = $values;
         }
         if (array_key_exists('standbyPrimary', get_object_vars($data)) && null !== ($data->standbyPrimary ?? null)) {
-            $dataArray['standbyPrimary'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->standbyPrimary, 'json', $context);
+            $dataArray['standbyPrimary'] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
             $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled;

@@ -137,16 +137,20 @@ class PortalserviceGuestAccessNormalizer implements DenormalizerInterface, Norma
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('portalCustomization', get_object_vars($data)) && null !== ($data->portalCustomization ?? null)) {
-            $dataArray['portalCustomization'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->portalCustomization, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->portalCustomization, 'json', $context);
+            $dataArray['portalCustomization'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->redirect, 'json', $context);
+            $dataArray['redirect'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('smsGateway', get_object_vars($data)) && null !== ($data->smsGateway ?? null)) {
-            $dataArray['smsGateway'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->smsGateway, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->smsGateway, 'json', $context);
+            $dataArray['smsGateway'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
-            $dataArray['userSession'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->userSession, 'json', $context);
+            $dataArray['userSession'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('selfRegistration', get_object_vars($data)) && null !== ($data->selfRegistration ?? null)) {
             $dataArray['selfRegistration'] = $data->selfRegistration;

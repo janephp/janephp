@@ -92,21 +92,24 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
         if (array_key_exists('conditions', get_object_vars($data)) && null !== ($data->conditions ?? null)) {
             $values = [];
             foreach ($data->conditions as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['conditions'] = $values;
         }
         if (array_key_exists('transformationGroups', get_object_vars($data)) && null !== ($data->transformationGroups ?? null)) {
             $values_1 = [];
             foreach ($data->transformationGroups as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['transformationGroups'] = $values_1;
         }
         if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values_2 = [];
             foreach ($data->actions as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['actions'] = $values_2;
         }

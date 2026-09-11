@@ -75,20 +75,24 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
             $dataArray['directorId'] = $data->directorId;
         }
         if (array_key_exists('directorSummary', get_object_vars($data)) && null !== ($data->directorSummary ?? null)) {
-            $dataArray['directorSummary'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorSummary, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->directorSummary, 'json', $context);
+            $dataArray['directorSummary'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('directorDetails', get_object_vars($data)) && null !== ($data->directorDetails ?? null)) {
-            $dataArray['directorDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorDetails, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->directorDetails, 'json', $context);
+            $dataArray['directorDetails'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('otherAddresses', get_object_vars($data)) && null !== ($data->otherAddresses ?? null)) {
             $values = [];
             foreach ($data->otherAddresses as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_2 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['otherAddresses'] = $values;
         }
         if (array_key_exists('directorships', get_object_vars($data)) && null !== ($data->directorships ?? null)) {
-            $dataArray['directorships'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorships, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->directorships, 'json', $context);
+            $dataArray['directorships'] = \is_iterable($normalized_3) ? new \CreditSafe\API\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

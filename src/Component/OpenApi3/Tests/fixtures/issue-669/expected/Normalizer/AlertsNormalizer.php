@@ -70,7 +70,8 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['email'] = $values;
         $values_1 = [];
         foreach ($data->slack as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['slack'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

@@ -237,7 +237,8 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('schemaIndexingInfo', get_object_vars($data)) && null !== ($data->schemaIndexingInfo ?? null)) {
             $value_4 = $data->schemaIndexingInfo;
             if (is_object($data->schemaIndexingInfo)) {
-                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context);
+                $value_4 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }
@@ -250,7 +251,8 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_5 = $data->filter;
             if (is_object($data->filter)) {
-                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_5 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['filter'] = $value_5;
         }

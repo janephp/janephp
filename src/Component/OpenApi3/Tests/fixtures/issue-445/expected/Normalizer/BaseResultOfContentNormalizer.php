@@ -64,7 +64,8 @@ class BaseResultOfContentNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['totalResults'] = $data->totalResults;
         $values = [];
         foreach ($data->results as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;

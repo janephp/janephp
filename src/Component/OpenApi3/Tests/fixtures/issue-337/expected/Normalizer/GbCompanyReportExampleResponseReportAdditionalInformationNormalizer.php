@@ -102,45 +102,52 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
         if (array_key_exists('companyHistory', get_object_vars($data)) && null !== ($data->companyHistory ?? null)) {
             $values = [];
             foreach ($data->companyHistory as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['companyHistory'] = $values;
         }
         if (array_key_exists('mortgageSummary', get_object_vars($data)) && null !== ($data->mortgageSummary ?? null)) {
-            $dataArray['mortgageSummary'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mortgageSummary, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->mortgageSummary, 'json', $context);
+            $dataArray['mortgageSummary'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('mortgageDetails', get_object_vars($data)) && null !== ($data->mortgageDetails ?? null)) {
             $values_1 = [];
             foreach ($data->mortgageDetails as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_2 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['mortgageDetails'] = $values_1;
         }
         if (array_key_exists('commentaries', get_object_vars($data)) && null !== ($data->commentaries ?? null)) {
             $values_2 = [];
             foreach ($data->commentaries as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_3 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_3) ? new \CreditSafe\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['commentaries'] = $values_2;
         }
         if (array_key_exists('ratingHistory', get_object_vars($data)) && null !== ($data->ratingHistory ?? null)) {
             $values_3 = [];
             foreach ($data->ratingHistory as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_4 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_4) ? new \CreditSafe\API\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['ratingHistory'] = $values_3;
         }
         if (array_key_exists('creditLimitHistory', get_object_vars($data)) && null !== ($data->creditLimitHistory ?? null)) {
             $values_4 = [];
             foreach ($data->creditLimitHistory as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_5 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_5) ? new \CreditSafe\API\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['creditLimitHistory'] = $values_4;
         }
         if (array_key_exists('badDebtDetails', get_object_vars($data)) && null !== ($data->badDebtDetails ?? null)) {
             $values_5 = [];
             foreach ($data->badDebtDetails as $value_5) {
-                $values_5[] = $value_5 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_6 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = \is_iterable($normalized_6) ? new \CreditSafe\API\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['badDebtDetails'] = $values_5;
         }

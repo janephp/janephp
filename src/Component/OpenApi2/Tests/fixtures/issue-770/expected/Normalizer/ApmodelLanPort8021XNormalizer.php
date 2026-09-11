@@ -53,10 +53,12 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['type'] = $data->type;
         if (array_key_exists('authenticator', get_object_vars($data)) && null !== ($data->authenticator ?? null)) {
-            $dataArray['authenticator'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticator, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->authenticator, 'json', $context);
+            $dataArray['authenticator'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('supplicant', get_object_vars($data)) && null !== ($data->supplicant ?? null)) {
-            $dataArray['supplicant'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->supplicant, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->supplicant, 'json', $context);
+            $dataArray['supplicant'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         return $dataArray;
     }

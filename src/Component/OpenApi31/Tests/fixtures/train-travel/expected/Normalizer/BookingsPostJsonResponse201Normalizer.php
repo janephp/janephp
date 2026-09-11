@@ -93,7 +93,8 @@ class BookingsPostJsonResponse201Normalizer implements DenormalizerInterface, No
             $dataArray['has_dog'] = $data->hasDog;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

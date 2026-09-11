@@ -56,10 +56,12 @@ class OptionsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
-            $dataArray['options'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->options, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+            $dataArray['options'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('versionAvailability', get_object_vars($data)) && null !== ($data->versionAvailability ?? null)) {
-            $dataArray['version_availability'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->versionAvailability, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->versionAvailability, 'json', $context);
+            $dataArray['version_availability'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

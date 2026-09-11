@@ -44,7 +44,7 @@ class CreatePets extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime
         if (201 === $status) {
             return null;
         }
-        if (stripos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error', 'json');
         }
     }

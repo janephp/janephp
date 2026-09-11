@@ -142,17 +142,20 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $value = $data->creator;
         if (is_object($data->creator)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->creator, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['creator'] = $value;
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->audit, 'json', $context);
+            $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['audit'] = $value_1;
         $values = [];
         foreach ($data->contentSelections as $value_2) {
-            $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+            $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+            $values[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['contentSelections'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
@@ -165,7 +168,8 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $value_4 = $data->data;
             if (is_object($data->data)) {
-                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->data, 'json', $context));
+                $normalized_3 = $this->normalizer->normalize($data->data, 'json', $context);
+                $value_4 = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['data'] = $value_4;
         }
@@ -186,7 +190,8 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (array_key_exists('schemas', get_object_vars($data)) && null !== ($data->schemas ?? null)) {
             $values_2 = [];
             foreach ($data->schemas as $value_7) {
-                $values_2[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
+                $normalized_4 = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
+                $values_2[] = \is_iterable($normalized_4) ? new \PicturePark\API\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['schemas'] = $values_2;
         }

@@ -95,14 +95,16 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('traceJob', get_object_vars($data)) && null !== ($data->traceJob ?? null)) {
             $value = $data->traceJob;
             if (is_object($data->traceJob)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->traceJob, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->traceJob, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['traceJob'] = $value;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_1 = $data->audit;
             if (is_object($data->audit)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['audit'] = $value_1;
         }

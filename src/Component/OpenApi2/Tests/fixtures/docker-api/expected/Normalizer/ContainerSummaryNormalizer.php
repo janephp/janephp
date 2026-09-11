@@ -131,7 +131,8 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values_1 = [];
             foreach ($data->ports as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['Ports'] = $values_1;
         }
@@ -155,15 +156,18 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['Status'] = $data->status;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->hostConfig, 'json', $context);
+            $dataArray['HostConfig'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('networkSettings', get_object_vars($data)) && null !== ($data->networkSettings ?? null)) {
-            $dataArray['NetworkSettings'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->networkSettings, 'json', $context);
+            $dataArray['NetworkSettings'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_3 = [];
             foreach ($data->mounts as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['Mounts'] = $values_3;
         }

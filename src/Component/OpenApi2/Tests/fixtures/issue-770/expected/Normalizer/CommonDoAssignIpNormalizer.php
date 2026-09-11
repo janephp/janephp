@@ -101,7 +101,8 @@ class CommonDoAssignIpNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('siteAps', get_object_vars($data)) && null !== ($data->siteAps ?? null)) {
             $values = [];
             foreach ($data->siteAps as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['siteAps'] = $values;
         }

@@ -115,7 +115,8 @@ class ByoipPrefixNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (array_key_exists('validations', get_object_vars($data)) && null !== ($data->validations ?? null)) {
             $values = [];
             foreach ($data->validations as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['validations'] = $values;
         }

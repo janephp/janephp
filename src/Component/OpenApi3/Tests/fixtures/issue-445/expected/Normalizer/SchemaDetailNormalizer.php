@@ -252,34 +252,39 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $values_4 = [];
         foreach ($data->displayPatterns as $value_6) {
-            $values_4[] = $value_6 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+            $normalized = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
+            $values_4[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['displayPatterns'] = $values_4;
         if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
             $values_5 = [];
             foreach ($data->fields as $value_7) {
-                $values_5[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
+                $normalized_1 = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
+                $values_5[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['fields'] = $values_5;
         }
         if (array_key_exists('fieldsOverwrite', get_object_vars($data)) && null !== ($data->fieldsOverwrite ?? null)) {
             $values_6 = [];
             foreach ($data->fieldsOverwrite as $value_8) {
-                $values_6[] = $value_8 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
+                $normalized_2 = $value_8 === null ? null : $this->normalizer->normalize($value_8, 'json', $context);
+                $values_6[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['fieldsOverwrite'] = $values_6;
         }
         if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_7 = [];
             foreach ($data->sort as $value_9) {
-                $values_7[] = $value_9 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_9, 'json', $context));
+                $normalized_3 = $value_9 === null ? null : $this->normalizer->normalize($value_9, 'json', $context);
+                $values_7[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['sort'] = $values_7;
         }
         if (array_key_exists('aggregations', get_object_vars($data)) && null !== ($data->aggregations ?? null)) {
             $values_8 = [];
             foreach ($data->aggregations as $value_10) {
-                $values_8[] = $value_10 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_10, 'json', $context));
+                $normalized_4 = $value_10 === null ? null : $this->normalizer->normalize($value_10, 'json', $context);
+                $values_8[] = \is_iterable($normalized_4) ? new \PicturePark\API\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['aggregations'] = $values_8;
         }
@@ -310,14 +315,16 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_14 = $data->audit;
             if (is_object($data->audit)) {
-                $value_14 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_5 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_14 = \is_iterable($normalized_5) ? new \PicturePark\API\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['audit'] = $value_14;
         }
         if (array_key_exists('searchFieldCount', get_object_vars($data)) && null !== ($data->searchFieldCount ?? null)) {
             $value_15 = $data->searchFieldCount;
             if (is_object($data->searchFieldCount)) {
-                $value_15 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->searchFieldCount, 'json', $context));
+                $normalized_6 = $this->normalizer->normalize($data->searchFieldCount, 'json', $context);
+                $value_15 = \is_iterable($normalized_6) ? new \PicturePark\API\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['searchFieldCount'] = $value_15;
         }

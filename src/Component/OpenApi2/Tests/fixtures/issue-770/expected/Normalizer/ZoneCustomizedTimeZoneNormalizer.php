@@ -61,10 +61,12 @@ class ZoneCustomizedTimeZoneNormalizer implements DenormalizerInterface, Normali
         $dataArray['gmtOffset'] = $data->gmtOffset;
         $dataArray['gmtOffsetMinute'] = $data->gmtOffsetMinute;
         if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
-            $dataArray['start'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->start, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->start, 'json', $context);
+            $dataArray['start'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
-            $dataArray['end'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->end, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->end, 'json', $context);
+            $dataArray['end'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         return $dataArray;
     }

@@ -76,7 +76,8 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['Version'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->version, 'json', $context);
+            $dataArray['Version'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['CreatedAt'] = $data->createdAt;
@@ -85,16 +86,20 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['UpdatedAt'] = $data->updatedAt;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['Spec'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
-            $dataArray['Description'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->description, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->description, 'json', $context);
+            $dataArray['Description'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['Status'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->status, 'json', $context);
+            $dataArray['Status'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('managerStatus', get_object_vars($data)) && null !== ($data->managerStatus ?? null)) {
-            $dataArray['ManagerStatus'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->managerStatus, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->managerStatus, 'json', $context);
+            $dataArray['ManagerStatus'] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeConstraint());

@@ -64,7 +64,8 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
         if (array_key_exists('outputFormat', get_object_vars($data)) && null !== ($data->outputFormat ?? null)) {
             $value = $data->outputFormat;
             if (is_object($data->outputFormat)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->outputFormat, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->outputFormat, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['outputFormat'] = $value;
         }

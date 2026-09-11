@@ -64,16 +64,20 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('match', get_object_vars($data)) && null !== ($data->match ?? null)) {
-            $dataArray['match'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->match, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->match, 'json', $context);
+            $dataArray['match'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
-            $dataArray['cors'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->cors, 'json', $context);
+            $dataArray['cors'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('component', get_object_vars($data)) && null !== ($data->component ?? null)) {
-            $dataArray['component'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->component, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->component, 'json', $context);
+            $dataArray['component'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->redirect, 'json', $context);
+            $dataArray['redirect'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

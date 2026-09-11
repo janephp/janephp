@@ -120,11 +120,13 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['domainNames'] = $values;
         $values_1 = [];
         foreach ($data->friendlyNames as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['friendlyNames'] = $values_1;
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
-            $dataArray['certificate'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->certificate, 'json', $context);
+            $dataArray['certificate'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;
@@ -132,19 +134,22 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('adviceOfCharges', get_object_vars($data)) && null !== ($data->adviceOfCharges ?? null)) {
             $values_2 = [];
             foreach ($data->adviceOfCharges as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['adviceOfCharges'] = $values_2;
         }
         if (array_key_exists('operatorIcons', get_object_vars($data)) && null !== ($data->operatorIcons ?? null)) {
             $values_3 = [];
             foreach ($data->operatorIcons as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['operatorIcons'] = $values_3;
         }
         if (array_key_exists('termsConditions', get_object_vars($data)) && null !== ($data->termsConditions ?? null)) {
-            $dataArray['termsConditions'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->termsConditions, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->termsConditions, 'json', $context);
+            $dataArray['termsConditions'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
             $dataArray['createDateTime'] = $data->createDateTime;

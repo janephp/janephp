@@ -61,7 +61,8 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('userRole', get_object_vars($data)) && null !== ($data->userRole ?? null)) {
             $value = $data->userRole;
             if (is_object($data->userRole)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userRole, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->userRole, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['userRole'] = $value;
         }

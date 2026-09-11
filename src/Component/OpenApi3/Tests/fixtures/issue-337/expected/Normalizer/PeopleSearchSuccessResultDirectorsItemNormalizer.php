@@ -100,10 +100,12 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
             $dataArray['country'] = $data->country;
         }
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->company, 'json', $context);
+            $dataArray['company'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->address, 'json', $context);
+            $dataArray['address'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
             $dataArray['status'] = $data->status;

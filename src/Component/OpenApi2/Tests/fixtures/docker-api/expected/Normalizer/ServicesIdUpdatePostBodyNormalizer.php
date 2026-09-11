@@ -88,26 +88,32 @@ class ServicesIdUpdatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('taskTemplate', get_object_vars($data)) && null !== ($data->taskTemplate ?? null)) {
-            $dataArray['TaskTemplate'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskTemplate, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->taskTemplate, 'json', $context);
+            $dataArray['TaskTemplate'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->mode, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->mode, 'json', $context);
+            $dataArray['Mode'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('updateConfig', get_object_vars($data)) && null !== ($data->updateConfig ?? null)) {
-            $dataArray['UpdateConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateConfig, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->updateConfig, 'json', $context);
+            $dataArray['UpdateConfig'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('rollbackConfig', get_object_vars($data)) && null !== ($data->rollbackConfig ?? null)) {
-            $dataArray['RollbackConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rollbackConfig, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->rollbackConfig, 'json', $context);
+            $dataArray['RollbackConfig'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values_1 = [];
             foreach ($data->networks as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['Networks'] = $values_1;
         }
         if (array_key_exists('endpointSpec', get_object_vars($data)) && null !== ($data->endpointSpec ?? null)) {
-            $dataArray['EndpointSpec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointSpec, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->endpointSpec, 'json', $context);
+            $dataArray['EndpointSpec'] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServicesIdUpdatePostBodyConstraint());

@@ -70,7 +70,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $dataArray['id'] = $data->id;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->name, 'json', $context);
+            $dataArray['name'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
             $dataArray['type'] = $data->type;

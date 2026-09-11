@@ -63,19 +63,22 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['Spec'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
             foreach ($data->ports as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['Ports'] = $values;
         }
         if (array_key_exists('virtualIPs', get_object_vars($data)) && null !== ($data->virtualIPs ?? null)) {
             $values_1 = [];
             foreach ($data->virtualIPs as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_2 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['VirtualIPs'] = $values_1;
         }

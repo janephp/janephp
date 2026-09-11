@@ -63,7 +63,8 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (is_array($data->attributes)) {
                 $values = [];
                 foreach ($data->attributes as $value_1) {
-                    $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                    $values[] = \is_iterable($normalized) ? new \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\JsonObject($normalized) : $normalized;
                 }
                 $value = $values;
             } elseif (is_null($data->attributes)) {

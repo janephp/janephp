@@ -136,7 +136,8 @@ class IdentityModifyUserNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['password'] = $data->password;
         }
         if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
-            $dataArray['subscriberPackage'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->subscriberPackage, 'json', $context);
+            $dataArray['subscriberPackage'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

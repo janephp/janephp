@@ -62,12 +62,14 @@ class AppJobInvocationsNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('jobInvocations', get_object_vars($data)) && null !== ($data->jobInvocations ?? null)) {
             $values = [];
             foreach ($data->jobInvocations as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['job_invocations'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -64,13 +64,16 @@ class GbCompanyReportExampleResponseReportCreditScoreNormalizer implements Denor
     {
         $dataArray = [];
         if (array_key_exists('currentCreditRating', get_object_vars($data)) && null !== ($data->currentCreditRating ?? null)) {
-            $dataArray['currentCreditRating'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentCreditRating, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->currentCreditRating, 'json', $context);
+            $dataArray['currentCreditRating'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('currentContractLimit', get_object_vars($data)) && null !== ($data->currentContractLimit ?? null)) {
-            $dataArray['currentContractLimit'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentContractLimit, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->currentContractLimit, 'json', $context);
+            $dataArray['currentContractLimit'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('previousCreditRating', get_object_vars($data)) && null !== ($data->previousCreditRating ?? null)) {
-            $dataArray['previousCreditRating'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->previousCreditRating, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->previousCreditRating, 'json', $context);
+            $dataArray['previousCreditRating'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('latestRatingChangeDate', get_object_vars($data)) && null !== ($data->latestRatingChangeDate ?? null)) {
             $dataArray['latestRatingChangeDate'] = $data->latestRatingChangeDate;

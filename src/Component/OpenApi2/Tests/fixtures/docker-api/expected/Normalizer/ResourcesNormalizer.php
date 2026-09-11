@@ -204,35 +204,40 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('blkioWeightDevice', get_object_vars($data)) && null !== ($data->blkioWeightDevice ?? null)) {
             $values = [];
             foreach ($data->blkioWeightDevice as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['BlkioWeightDevice'] = $values;
         }
         if (array_key_exists('blkioDeviceReadBps', get_object_vars($data)) && null !== ($data->blkioDeviceReadBps ?? null)) {
             $values_1 = [];
             foreach ($data->blkioDeviceReadBps as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['BlkioDeviceReadBps'] = $values_1;
         }
         if (array_key_exists('blkioDeviceWriteBps', get_object_vars($data)) && null !== ($data->blkioDeviceWriteBps ?? null)) {
             $values_2 = [];
             foreach ($data->blkioDeviceWriteBps as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['BlkioDeviceWriteBps'] = $values_2;
         }
         if (array_key_exists('blkioDeviceReadIOps', get_object_vars($data)) && null !== ($data->blkioDeviceReadIOps ?? null)) {
             $values_3 = [];
             foreach ($data->blkioDeviceReadIOps as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['BlkioDeviceReadIOps'] = $values_3;
         }
         if (array_key_exists('blkioDeviceWriteIOps', get_object_vars($data)) && null !== ($data->blkioDeviceWriteIOps ?? null)) {
             $values_4 = [];
             foreach ($data->blkioDeviceWriteIOps as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_4 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['BlkioDeviceWriteIOps'] = $values_4;
         }
@@ -257,7 +262,8 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('devices', get_object_vars($data)) && null !== ($data->devices ?? null)) {
             $values_5 = [];
             foreach ($data->devices as $value_5) {
-                $values_5[] = $value_5 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_5 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['Devices'] = $values_5;
         }
@@ -271,7 +277,8 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('deviceRequests', get_object_vars($data)) && null !== ($data->deviceRequests ?? null)) {
             $values_7 = [];
             foreach ($data->deviceRequests as $value_7) {
-                $values_7[] = $value_7 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
+                $normalized_6 = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = \is_iterable($normalized_6) ? new \Docker\Api\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['DeviceRequests'] = $values_7;
         }
@@ -305,7 +312,8 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('ulimits', get_object_vars($data)) && null !== ($data->ulimits ?? null)) {
             $values_8 = [];
             foreach ($data->ulimits as $value_8) {
-                $values_8[] = $value_8 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
+                $normalized_7 = $value_8 === null ? null : $this->normalizer->normalize($value_8, 'json', $context);
+                $values_8[] = \is_iterable($normalized_7) ? new \Docker\Api\Runtime\JsonObject($normalized_7) : $normalized_7;
             }
             $dataArray['Ulimits'] = $values_8;
         }

@@ -71,11 +71,13 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $dataArray['Name'] = $data->name;
         $dataArray['Enabled'] = $data->enabled;
-        $dataArray['Settings'] = $data->settings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
+        $normalized = $data->settings === null ? null : $this->normalizer->normalize($data->settings, 'json', $context);
+        $dataArray['Settings'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('pluginReference', get_object_vars($data)) && null !== ($data->pluginReference ?? null)) {
             $dataArray['PluginReference'] = $data->pluginReference;
         }
-        $dataArray['Config'] = $data->config === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+        $normalized_1 = $data->config === null ? null : $this->normalizer->normalize($data->config, 'json', $context);
+        $dataArray['Config'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConstraint());
         }

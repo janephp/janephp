@@ -52,7 +52,8 @@ class ResponseTagsExistingNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tag, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->tag, 'json', $context);
+            $dataArray['tag'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

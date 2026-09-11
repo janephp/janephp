@@ -88,25 +88,29 @@ class IdentityModifyIdentityUserRoleNormalizer implements DenormalizerInterface,
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('userTrafficProfile', get_object_vars($data)) && null !== ($data->userTrafficProfile ?? null)) {
-            $dataArray['userTrafficProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->userTrafficProfile, 'json', $context);
+            $dataArray['userTrafficProfile'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
             $dataArray['firewallProfileId'] = $data->firewallProfileId;
         }
         if (array_key_exists('maxDevices', get_object_vars($data)) && null !== ($data->maxDevices ?? null)) {
-            $dataArray['maxDevices'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->maxDevices, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->maxDevices, 'json', $context);
+            $dataArray['maxDevices'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('vlanId', get_object_vars($data)) && null !== ($data->vlanId ?? null)) {
             $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->vlanPooling, 'json', $context);
+            $dataArray['vlanPooling'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('timeSchedulePolicy', get_object_vars($data)) && null !== ($data->timeSchedulePolicy ?? null)) {
             $dataArray['timeSchedulePolicy'] = $data->timeSchedulePolicy;
         }
         if (array_key_exists('timeScheduleList', get_object_vars($data)) && null !== ($data->timeScheduleList ?? null)) {
-            $dataArray['timeScheduleList'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->timeScheduleList, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->timeScheduleList, 'json', $context);
+            $dataArray['timeScheduleList'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         return $dataArray;
     }

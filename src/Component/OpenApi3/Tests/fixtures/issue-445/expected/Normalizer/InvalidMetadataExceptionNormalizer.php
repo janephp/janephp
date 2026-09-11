@@ -159,14 +159,16 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('metadataErrors', get_object_vars($data)) && null !== ($data->metadataErrors ?? null)) {
             $values = [];
             foreach ($data->metadataErrors as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['metadataErrors'] = $values;
         }
         if (array_key_exists('validationErrors', get_object_vars($data)) && null !== ($data->validationErrors ?? null)) {
             $values_1 = [];
             foreach ($data->validationErrors as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['validationErrors'] = $values_1;
         }

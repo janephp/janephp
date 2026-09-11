@@ -78,7 +78,8 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
             $value = $data->resizeAction;
             if (is_object($data->resizeAction)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->resizeAction, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['resizeAction'] = $value;
         }

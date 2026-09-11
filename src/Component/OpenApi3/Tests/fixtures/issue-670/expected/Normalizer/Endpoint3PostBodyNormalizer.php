@@ -52,7 +52,8 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('postField3', get_object_vars($data)) && null !== ($data->postField3 ?? null)) {
-            $dataArray['post-field-3'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($this->normalizer->normalize($data->postField3, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->postField3, 'json', $context);
+            $dataArray['post-field-3'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -368,7 +368,8 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('epsInfo', get_object_vars($data)) && null !== ($data->epsInfo ?? null)) {
             $value_6 = $data->epsInfo;
             if (is_object($data->epsInfo)) {
-                $value_6 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->epsInfo, 'json', $context);
+                $value_6 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['epsInfo'] = $value_6;
         }

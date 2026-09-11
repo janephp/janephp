@@ -99,10 +99,12 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $dataArray['imageId'] = $data->imageId;
         }
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->company, 'json', $context);
+            $dataArray['company'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
-            $dataArray['document'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->document, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->document, 'json', $context);
+            $dataArray['document'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
             $dataArray['format'] = $data->format;
@@ -129,7 +131,8 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $dataArray['status'] = $data->status;
         }
         if (array_key_exists('localProperties', get_object_vars($data)) && null !== ($data->localProperties ?? null)) {
-            $dataArray['localProperties'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->localProperties, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->localProperties, 'json', $context);
+            $dataArray['localProperties'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

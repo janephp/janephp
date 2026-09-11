@@ -68,7 +68,8 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('aggregationResultItems', get_object_vars($data)) && null !== ($data->aggregationResultItems ?? null)) {
             $values = [];
             foreach ($data->aggregationResultItems as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['aggregationResultItems'] = $values;
         }

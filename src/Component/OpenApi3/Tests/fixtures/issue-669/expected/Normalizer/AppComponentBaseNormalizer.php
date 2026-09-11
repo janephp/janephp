@@ -111,19 +111,24 @@ class AppComponentBaseNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('git', get_object_vars($data)) && null !== ($data->git ?? null)) {
-            $dataArray['git'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->git, 'json', $context);
+            $dataArray['git'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('github', get_object_vars($data)) && null !== ($data->github ?? null)) {
-            $dataArray['github'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->github, 'json', $context);
+            $dataArray['github'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('gitlab', get_object_vars($data)) && null !== ($data->gitlab ?? null)) {
-            $dataArray['gitlab'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->gitlab, 'json', $context);
+            $dataArray['gitlab'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('bitbucket', get_object_vars($data)) && null !== ($data->bitbucket ?? null)) {
-            $dataArray['bitbucket'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->bitbucket, 'json', $context);
+            $dataArray['bitbucket'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->image, 'json', $context);
+            $dataArray['image'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('dockerfilePath', get_object_vars($data)) && null !== ($data->dockerfilePath ?? null)) {
             $dataArray['dockerfile_path'] = $data->dockerfilePath;
@@ -140,7 +145,8 @@ class AppComponentBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('envs', get_object_vars($data)) && null !== ($data->envs ?? null)) {
             $values = [];
             foreach ($data->envs as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_5 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['envs'] = $values;
         }
@@ -150,7 +156,8 @@ class AppComponentBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('logDestinations', get_object_vars($data)) && null !== ($data->logDestinations ?? null)) {
             $values_1 = [];
             foreach ($data->logDestinations as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_6 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['log_destinations'] = $values_1;
         }

@@ -52,7 +52,8 @@ class ComplianceSearchResultDataNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
-            $dataArray['body'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->body, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->body, 'json', $context);
+            $dataArray['body'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -64,16 +64,20 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['Hostname'] = $data->hostname;
         }
         if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
-            $dataArray['Platform'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->platform, 'json', $context);
+            $dataArray['Platform'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
-            $dataArray['Resources'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->resources, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->resources, 'json', $context);
+            $dataArray['Resources'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('engine', get_object_vars($data)) && null !== ($data->engine ?? null)) {
-            $dataArray['Engine'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->engine, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->engine, 'json', $context);
+            $dataArray['Engine'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('tLSInfo', get_object_vars($data)) && null !== ($data->tLSInfo ?? null)) {
-            $dataArray['TLSInfo'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tLSInfo, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->tLSInfo, 'json', $context);
+            $dataArray['TLSInfo'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeDescriptionConstraint());

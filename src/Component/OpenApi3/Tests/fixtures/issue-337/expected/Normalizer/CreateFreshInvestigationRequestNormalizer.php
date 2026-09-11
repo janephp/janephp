@@ -70,13 +70,15 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
             $dataArray['consent'] = $data->consent;
         }
         if (array_key_exists('contactInfo', get_object_vars($data)) && null !== ($data->contactInfo ?? null)) {
-            $dataArray['contactInfo'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactInfo, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->contactInfo, 'json', $context);
+            $dataArray['contactInfo'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('chargeReference', get_object_vars($data)) && null !== ($data->chargeReference ?? null)) {
             $dataArray['chargeReference'] = $data->chargeReference;
         }
         if (array_key_exists('searchCriteria', get_object_vars($data)) && null !== ($data->searchCriteria ?? null)) {
-            $dataArray['searchCriteria'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->searchCriteria, 'json', $context);
+            $dataArray['searchCriteria'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

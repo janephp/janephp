@@ -57,7 +57,8 @@ class ZoneApmodelLanPortSettingNormalizer implements DenormalizerInterface, Norm
         $dataArray['portName'] = $data->portName;
         $dataArray['enabled'] = $data->enabled;
         if (array_key_exists('ethPortProfile', get_object_vars($data)) && null !== ($data->ethPortProfile ?? null)) {
-            $dataArray['ethPortProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ethPortProfile, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->ethPortProfile, 'json', $context);
+            $dataArray['ethPortProfile'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

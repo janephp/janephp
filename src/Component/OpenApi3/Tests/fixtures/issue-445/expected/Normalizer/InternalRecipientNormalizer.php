@@ -63,7 +63,8 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $value = $data->recipient;
         if (is_object($data->recipient)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->recipient, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->recipient, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['recipient'] = $value;
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {

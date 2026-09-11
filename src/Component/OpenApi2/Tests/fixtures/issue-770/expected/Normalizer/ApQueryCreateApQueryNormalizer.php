@@ -860,7 +860,8 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $dataArray['latency6G'] = $data->latency6G;
         }
         if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
-            $dataArray['indoorMapXy'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->indoorMapXy, 'json', $context);
+            $dataArray['indoorMapXy'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
             $dataArray['apGroupId'] = $data->apGroupId;
@@ -1108,7 +1109,8 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('cellularGpsHistory', get_object_vars($data)) && null !== ($data->cellularGpsHistory ?? null)) {
             $values = [];
             foreach ($data->cellularGpsHistory as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['cellularGpsHistory'] = $values;
         }

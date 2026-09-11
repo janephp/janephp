@@ -52,7 +52,8 @@ class ResponseExistingLoadBalancerNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('loadBalancer', get_object_vars($data)) && null !== ($data->loadBalancer ?? null)) {
-            $dataArray['load_balancer'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->loadBalancer, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->loadBalancer, 'json', $context);
+            $dataArray['load_balancer'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

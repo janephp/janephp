@@ -10,6 +10,7 @@ use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 class ObjectType extends Type
 {
@@ -45,6 +46,26 @@ class ObjectType extends Type
         ]);
     }
 
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
+    {
+        if (static::class !== self::class) {
+            return parent::createNormalizationStatement($context, $input, $normalizerFromObject, $inputMayBeNull);
+        }
+
+        $normalizedVar = new Expr\Variable($context->getUniqueVariableName('normalized'));
+        $statements = [
+            new Stmt\Expression(new Expr\Assign($normalizedVar, $this->createNormalizationValueStatement($context, $input, $normalizerFromObject, $inputMayBeNull))),
+        ];
+
+        return [$statements, new Expr\Ternary(
+            new Expr\FuncCall(new Name('\is_iterable'), [new Arg($normalizedVar)]),
+            new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())), [
+                new Arg($normalizedVar),
+            ]),
+            $normalizedVar
+        )];
+    }
+
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
@@ -52,13 +73,11 @@ class ObjectType extends Type
             $normalizerVar = new Expr\Variable('normalizer');
         }
 
-        $statement = new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())), [
-            new Arg(new Expr\MethodCall($normalizerVar, 'normalize', [
-                new Arg($input),
-                new Arg(new Scalar\String_('json')),
-                new Arg(new Expr\Variable('context')),
-            ])),
-        ], []);
+        $statement = new Expr\MethodCall($normalizerVar, 'normalize', [
+            new Arg($input),
+            new Arg(new Scalar\String_('json')),
+            new Arg(new Expr\Variable('context')),
+        ]);
 
         if (!$inputMayBeNull) {
             return $statement;

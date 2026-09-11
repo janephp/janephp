@@ -52,10 +52,12 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('limits', get_object_vars($data)) && null !== ($data->limits ?? null)) {
-            $dataArray['Limits'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->limits, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->limits, 'json', $context);
+            $dataArray['Limits'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('reservation', get_object_vars($data)) && null !== ($data->reservation ?? null)) {
-            $dataArray['Reservation'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->reservation, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->reservation, 'json', $context);
+            $dataArray['Reservation'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecResourcesConstraint());

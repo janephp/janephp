@@ -52,7 +52,8 @@ class ServiceTestingConfigNormalizer implements DenormalizerInterface, Normalize
             $dataArray['id'] = $data->id;
         }
         if (array_key_exists('loginRequest', get_object_vars($data)) && null !== ($data->loginRequest ?? null)) {
-            $dataArray['loginRequest'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->loginRequest, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->loginRequest, 'json', $context);
+            $dataArray['loginRequest'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

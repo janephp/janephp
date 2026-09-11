@@ -82,19 +82,23 @@ class AprulesApRuleConfigurationNormalizer implements DenormalizerInterface, Nor
             $dataArray['type'] = $data->type;
         }
         if (array_key_exists('ipAddressRange', get_object_vars($data)) && null !== ($data->ipAddressRange ?? null)) {
-            $dataArray['ipAddressRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->ipAddressRange, 'json', $context);
+            $dataArray['ipAddressRange'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('subnet', get_object_vars($data)) && null !== ($data->subnet ?? null)) {
-            $dataArray['subnet'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subnet, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->subnet, 'json', $context);
+            $dataArray['subnet'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('gpsCoordinates', get_object_vars($data)) && null !== ($data->gpsCoordinates ?? null)) {
-            $dataArray['gpsCoordinates'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->gpsCoordinates, 'json', $context);
+            $dataArray['gpsCoordinates'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('provisionTag', get_object_vars($data)) && null !== ($data->provisionTag ?? null)) {
             $dataArray['provisionTag'] = $data->provisionTag;
         }
         if (array_key_exists('mobilityZone', get_object_vars($data)) && null !== ($data->mobilityZone ?? null)) {
-            $dataArray['mobilityZone'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->mobilityZone, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->mobilityZone, 'json', $context);
+            $dataArray['mobilityZone'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         return $dataArray;
     }

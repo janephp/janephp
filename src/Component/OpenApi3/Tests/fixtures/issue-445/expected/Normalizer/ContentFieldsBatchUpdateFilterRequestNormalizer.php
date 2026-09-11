@@ -83,7 +83,8 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $dataArray = [];
         $values = [];
         foreach ($data->changeCommands as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
@@ -91,7 +92,8 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $dataArray['kind'] = $data->kind;
         $value_1 = $data->filterRequest;
         if (is_object($data->filterRequest)) {
-            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->filterRequest, 'json', $context);
+            $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['filterRequest'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

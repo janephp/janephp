@@ -56,7 +56,8 @@ class ApiRollbackToAgentVersionOutputNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('auditHeader', get_object_vars($data)) && null !== ($data->auditHeader ?? null)) {
-            $dataArray['audit_header'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->auditHeader, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->auditHeader, 'json', $context);
+            $dataArray['audit_header'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
             $dataArray['version_hash'] = $data->versionHash;

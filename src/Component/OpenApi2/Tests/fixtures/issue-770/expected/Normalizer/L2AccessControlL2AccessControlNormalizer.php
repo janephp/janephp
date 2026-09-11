@@ -117,7 +117,8 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
             foreach ($data->rules as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['rules'] = $values;
         }
@@ -127,14 +128,16 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (array_key_exists('etherTypes', get_object_vars($data)) && null !== ($data->etherTypes ?? null)) {
             $values_1 = [];
             foreach ($data->etherTypes as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['etherTypes'] = $values_1;
         }
         if (array_key_exists('userDefinedEtherTypes', get_object_vars($data)) && null !== ($data->userDefinedEtherTypes ?? null)) {
             $values_2 = [];
             foreach ($data->userDefinedEtherTypes as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['userDefinedEtherTypes'] = $values_2;
         }

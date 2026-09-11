@@ -212,7 +212,8 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('userRoles', get_object_vars($data)) && null !== ($data->userRoles ?? null)) {
             $values = [];
             foreach ($data->userRoles as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['userRoles'] = $values;
         }
@@ -225,7 +226,8 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value_1 = $data->address;
             if (is_object($data->address)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->address, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['address'] = $value_1;
         }
@@ -235,7 +237,8 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('ownerTokens', get_object_vars($data)) && null !== ($data->ownerTokens ?? null)) {
             $values_1 = [];
             foreach ($data->ownerTokens as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['ownerTokens'] = $values_1;
         }
@@ -268,7 +271,8 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_5 = $data->audit;
             if (is_object($data->audit)) {
-                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_3 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_5 = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['audit'] = $value_5;
         }

@@ -74,14 +74,16 @@ class FirewallRulesNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('inboundRules', get_object_vars($data)) && null !== ($data->inboundRules ?? null)) {
             $values = [];
             foreach ($data->inboundRules as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['inbound_rules'] = $values;
         }
         if (array_key_exists('outboundRules', get_object_vars($data)) && null !== ($data->outboundRules ?? null)) {
             $values_1 = [];
             foreach ($data->outboundRules as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['outbound_rules'] = $values_1;
         }

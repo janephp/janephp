@@ -52,7 +52,8 @@ class ResponseExistingProjectNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('project', get_object_vars($data)) && null !== ($data->project ?? null)) {
-            $dataArray['project'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->project, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->project, 'json', $context);
+            $dataArray['project'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

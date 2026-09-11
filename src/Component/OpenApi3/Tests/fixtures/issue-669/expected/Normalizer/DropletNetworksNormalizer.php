@@ -66,14 +66,16 @@ class DropletNetworksNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('v4', get_object_vars($data)) && null !== ($data->v4 ?? null)) {
             $values = [];
             foreach ($data->v4 as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['v4'] = $values;
         }
         if (array_key_exists('v6', get_object_vars($data)) && null !== ($data->v6 ?? null)) {
             $values_1 = [];
             foreach ($data->v6 as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['v6'] = $values_1;
         }

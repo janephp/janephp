@@ -103,7 +103,8 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('iPAMConfig', get_object_vars($data)) && null !== ($data->iPAMConfig ?? null)) {
-            $dataArray['IPAMConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAMConfig, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->iPAMConfig, 'json', $context);
+            $dataArray['IPAMConfig'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
             $values = [];

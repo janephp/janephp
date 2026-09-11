@@ -75,7 +75,8 @@ class CompletedFreshInvestigationSearchCriteriaNormalizer implements Denormalize
             $dataArray['additionalInfo'] = $data->additionalInfo;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->address, 'json', $context);
+            $dataArray['address'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
             $dataArray['countryCode'] = $data->countryCode;

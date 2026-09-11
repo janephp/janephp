@@ -73,10 +73,10 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArray
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse', 'json');
         }
-        if (stripos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error', 'json');
         }
-        if (stripos(strtolower($contentType), 'application/problem+json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/problem+json') !== false) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;

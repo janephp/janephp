@@ -87,7 +87,8 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['component_name'] = $data->componentName;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['spec'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
             $values = [];
@@ -99,7 +100,8 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (array_key_exists('slackWebhooks', get_object_vars($data)) && null !== ($data->slackWebhooks ?? null)) {
             $values_1 = [];
             foreach ($data->slackWebhooks as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['slack_webhooks'] = $values_1;
         }
@@ -107,7 +109,8 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['phase'] = $data->phase;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->progress, 'json', $context);
+            $dataArray['progress'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

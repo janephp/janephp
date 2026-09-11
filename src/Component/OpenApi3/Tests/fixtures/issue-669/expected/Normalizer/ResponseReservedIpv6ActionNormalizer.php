@@ -52,7 +52,8 @@ class ResponseReservedIpv6ActionNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['action'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->action, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->action, 'json', $context);
+            $dataArray['action'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

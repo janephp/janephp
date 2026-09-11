@@ -46,7 +46,8 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['foo'] = $data->foo;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['bar'] = new \Jane\Component\JsonSchema\Tests\Expected\Schema2\Runtime\JsonObject($this->normalizer->normalize($data->bar, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->bar, 'json', $context);
+            $dataArray['bar'] = \is_iterable($normalized) ? new \Jane\Component\JsonSchema\Tests\Expected\Schema2\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

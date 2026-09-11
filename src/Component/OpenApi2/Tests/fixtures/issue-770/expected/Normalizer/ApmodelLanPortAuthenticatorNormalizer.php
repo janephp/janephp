@@ -61,13 +61,15 @@ class ApmodelLanPortAuthenticatorNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('authentication', get_object_vars($data)) && null !== ($data->authentication ?? null)) {
-            $dataArray['authentication'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authentication, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->authentication, 'json', $context);
+            $dataArray['authentication'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('disabledAccounting', get_object_vars($data)) && null !== ($data->disabledAccounting ?? null)) {
             $dataArray['disabledAccounting'] = $data->disabledAccounting;
         }
         if (array_key_exists('accounting', get_object_vars($data)) && null !== ($data->accounting ?? null)) {
-            $dataArray['accounting'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->accounting, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->accounting, 'json', $context);
+            $dataArray['accounting'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['macAuthByPassEnabled'] = $data->macAuthByPassEnabled;
         return $dataArray;

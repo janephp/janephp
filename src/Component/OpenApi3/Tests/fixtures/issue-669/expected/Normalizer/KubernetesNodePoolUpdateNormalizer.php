@@ -133,7 +133,8 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('taints', get_object_vars($data)) && null !== ($data->taints ?? null)) {
             $values_2 = [];
             foreach ($data->taints as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['taints'] = $values_2;
         }

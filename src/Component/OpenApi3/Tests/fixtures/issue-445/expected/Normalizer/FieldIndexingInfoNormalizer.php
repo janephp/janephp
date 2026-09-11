@@ -87,7 +87,8 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('relatedSchemaIndexing', get_object_vars($data)) && null !== ($data->relatedSchemaIndexing ?? null)) {
             $value = $data->relatedSchemaIndexing;
             if (is_object($data->relatedSchemaIndexing)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->relatedSchemaIndexing, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->relatedSchemaIndexing, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['relatedSchemaIndexing'] = $value;
         }

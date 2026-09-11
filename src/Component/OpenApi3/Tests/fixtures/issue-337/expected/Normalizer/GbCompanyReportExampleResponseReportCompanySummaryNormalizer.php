@@ -96,19 +96,24 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
             $dataArray['companyRegistrationNumber'] = $data->companyRegistrationNumber;
         }
         if (array_key_exists('mainActivity', get_object_vars($data)) && null !== ($data->mainActivity ?? null)) {
-            $dataArray['mainActivity'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainActivity, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->mainActivity, 'json', $context);
+            $dataArray['mainActivity'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('companyStatus', get_object_vars($data)) && null !== ($data->companyStatus ?? null)) {
-            $dataArray['companyStatus'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->companyStatus, 'json', $context);
+            $dataArray['companyStatus'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('latestTurnoverFigure', get_object_vars($data)) && null !== ($data->latestTurnoverFigure ?? null)) {
-            $dataArray['latestTurnoverFigure'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->latestTurnoverFigure, 'json', $context);
+            $dataArray['latestTurnoverFigure'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('latestShareholdersEquityFigure', get_object_vars($data)) && null !== ($data->latestShareholdersEquityFigure ?? null)) {
-            $dataArray['latestShareholdersEquityFigure'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestShareholdersEquityFigure, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->latestShareholdersEquityFigure, 'json', $context);
+            $dataArray['latestShareholdersEquityFigure'] = \is_iterable($normalized_3) ? new \CreditSafe\API\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('creditRating', get_object_vars($data)) && null !== ($data->creditRating ?? null)) {
-            $dataArray['creditRating'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditRating, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->creditRating, 'json', $context);
+            $dataArray['creditRating'] = \is_iterable($normalized_4) ? new \CreditSafe\API\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

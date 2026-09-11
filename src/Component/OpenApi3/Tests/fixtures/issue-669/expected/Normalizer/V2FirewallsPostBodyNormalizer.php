@@ -139,14 +139,16 @@ class V2FirewallsPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('inboundRules', get_object_vars($data)) && null !== ($data->inboundRules ?? null)) {
             $values_2 = [];
             foreach ($data->inboundRules as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['inbound_rules'] = $values_2;
         }
         if (array_key_exists('outboundRules', get_object_vars($data)) && null !== ($data->outboundRules ?? null)) {
             $values_3 = [];
             foreach ($data->outboundRules as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['outbound_rules'] = $values_3;
         }

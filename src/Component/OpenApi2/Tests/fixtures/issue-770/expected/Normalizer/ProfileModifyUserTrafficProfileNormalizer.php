@@ -95,15 +95,18 @@ class ProfileModifyUserTrafficProfileNormalizer implements DenormalizerInterface
             $dataArray['defaultAction'] = $data->defaultAction;
         }
         if (array_key_exists('uplinkRateLimiting', get_object_vars($data)) && null !== ($data->uplinkRateLimiting ?? null)) {
-            $dataArray['uplinkRateLimiting'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->uplinkRateLimiting, 'json', $context);
+            $dataArray['uplinkRateLimiting'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('downlinkRateLimiting', get_object_vars($data)) && null !== ($data->downlinkRateLimiting ?? null)) {
-            $dataArray['downlinkRateLimiting'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->downlinkRateLimiting, 'json', $context);
+            $dataArray['downlinkRateLimiting'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('ipAclRules', get_object_vars($data)) && null !== ($data->ipAclRules ?? null)) {
             $values = [];
             foreach ($data->ipAclRules as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_2 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['ipAclRules'] = $values;
         }

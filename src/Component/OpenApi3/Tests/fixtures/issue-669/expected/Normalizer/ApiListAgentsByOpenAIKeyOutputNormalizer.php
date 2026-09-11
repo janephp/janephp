@@ -66,15 +66,18 @@ class ApiListAgentsByOpenAIKeyOutputNormalizer implements DenormalizerInterface,
         if (array_key_exists('agents', get_object_vars($data)) && null !== ($data->agents ?? null)) {
             $values = [];
             foreach ($data->agents as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['agents'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
-            $dataArray['meta'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

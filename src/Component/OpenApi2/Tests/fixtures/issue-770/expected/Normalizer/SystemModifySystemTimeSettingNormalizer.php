@@ -76,13 +76,16 @@ class SystemModifySystemTimeSettingNormalizer implements DenormalizerInterface, 
             $dataArray['timezone'] = $data->timezone;
         }
         if (array_key_exists('authenticationKey', get_object_vars($data)) && null !== ($data->authenticationKey ?? null)) {
-            $dataArray['authenticationKey'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->authenticationKey, 'json', $context);
+            $dataArray['authenticationKey'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('secondaryAuthenticationKey', get_object_vars($data)) && null !== ($data->secondaryAuthenticationKey ?? null)) {
-            $dataArray['secondaryAuthenticationKey'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryAuthenticationKey, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->secondaryAuthenticationKey, 'json', $context);
+            $dataArray['secondaryAuthenticationKey'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('thirdAuthenticationKey', get_object_vars($data)) && null !== ($data->thirdAuthenticationKey ?? null)) {
-            $dataArray['thirdAuthenticationKey'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->thirdAuthenticationKey, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->thirdAuthenticationKey, 'json', $context);
+            $dataArray['thirdAuthenticationKey'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

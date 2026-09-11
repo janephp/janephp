@@ -88,13 +88,16 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $dataArray['Consistency'] = $data->consistency;
         }
         if (array_key_exists('bindOptions', get_object_vars($data)) && null !== ($data->bindOptions ?? null)) {
-            $dataArray['BindOptions'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->bindOptions, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->bindOptions, 'json', $context);
+            $dataArray['BindOptions'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('volumeOptions', get_object_vars($data)) && null !== ($data->volumeOptions ?? null)) {
-            $dataArray['VolumeOptions'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->volumeOptions, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->volumeOptions, 'json', $context);
+            $dataArray['VolumeOptions'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('tmpfsOptions', get_object_vars($data)) && null !== ($data->tmpfsOptions ?? null)) {
-            $dataArray['TmpfsOptions'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tmpfsOptions, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->tmpfsOptions, 'json', $context);
+            $dataArray['TmpfsOptions'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountConstraint());

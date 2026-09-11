@@ -65,12 +65,14 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
             foreach ($data->data as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
-            $dataArray['meta'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

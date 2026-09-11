@@ -174,7 +174,8 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['id'] = $data->id;
         }
         if (array_key_exists('client', get_object_vars($data)) && null !== ($data->client ?? null)) {
-            $dataArray['client'] = new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->client, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->client, 'json', $context);
+            $dataArray['client'] = \is_iterable($normalized) ? new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name;

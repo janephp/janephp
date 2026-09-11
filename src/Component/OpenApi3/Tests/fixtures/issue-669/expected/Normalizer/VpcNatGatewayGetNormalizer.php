@@ -132,12 +132,14 @@ class VpcNatGatewayGetNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('vpcs', get_object_vars($data)) && null !== ($data->vpcs ?? null)) {
             $values = [];
             foreach ($data->vpcs as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['vpcs'] = $values;
         }
         if (array_key_exists('egresses', get_object_vars($data)) && null !== ($data->egresses ?? null)) {
-            $dataArray['egresses'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egresses, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->egresses, 'json', $context);
+            $dataArray['egresses'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('udpTimeoutSeconds', get_object_vars($data)) && null !== ($data->udpTimeoutSeconds ?? null)) {
             $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds;

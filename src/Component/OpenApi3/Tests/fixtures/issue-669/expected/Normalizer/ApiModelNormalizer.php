@@ -142,7 +142,8 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if (array_key_exists('agreement', get_object_vars($data)) && null !== ($data->agreement ?? null)) {
-            $dataArray['agreement'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agreement, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->agreement, 'json', $context);
+            $dataArray['agreement'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
@@ -201,7 +202,8 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->version, 'json', $context);
+            $dataArray['version'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
