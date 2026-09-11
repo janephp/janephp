@@ -50,7 +50,7 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->runtimeArgs = $values;
         }
-        elseif (\array_key_exists('runtimeArgs', $data) && $data['runtimeArgs'] === null) {
+        elseif (\array_key_exists('runtimeArgs', $data)) {
             $object->runtimeArgs = null;
         }
         return $object;

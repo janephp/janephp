@@ -118,13 +118,13 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
             $object->indexId = $data['indexId'];
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
             $object->fieldNamespace = $data['fieldNamespace'];
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -138,7 +138,7 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -152,7 +152,7 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $object->descriptions = $value_2;
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
         }
         if (\array_key_exists('required', $data)) {

@@ -54,19 +54,19 @@ class NumericRangeNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('from', $data) && $data['from'] !== null) {
             $object->from = $data['from'];
         }
-        elseif (\array_key_exists('from', $data) && $data['from'] === null) {
+        elseif (\array_key_exists('from', $data)) {
             $object->from = null;
         }
         if (\array_key_exists('to', $data) && $data['to'] !== null) {
             $object->to = $data['to'];
         }
-        elseif (\array_key_exists('to', $data) && $data['to'] === null) {
+        elseif (\array_key_exists('to', $data)) {
             $object->to = null;
         }
         return $object;

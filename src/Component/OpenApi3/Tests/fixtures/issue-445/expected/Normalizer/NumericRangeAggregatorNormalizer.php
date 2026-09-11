@@ -53,7 +53,7 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -65,7 +65,7 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             $object->aggregators = $values_1;
             unset($data['aggregators']);
         }
-        elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
+        elseif (\array_key_exists('aggregators', $data)) {
             $object->aggregators = null;
             unset($data['aggregators']);
         }
@@ -77,7 +77,7 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             $object->filter = $value_3;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -89,7 +89,7 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             $object->field = $data['field'];
             unset($data['field']);
         }
-        elseif (\array_key_exists('field', $data) && $data['field'] === null) {
+        elseif (\array_key_exists('field', $data)) {
             $object->field = null;
             unset($data['field']);
         }
@@ -133,7 +133,7 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_3 = $data->filter;
             if (is_object($data->filter)) {
-                $value_3 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_3;
         }

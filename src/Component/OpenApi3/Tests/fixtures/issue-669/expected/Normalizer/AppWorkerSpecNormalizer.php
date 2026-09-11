@@ -137,19 +137,19 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('git', get_object_vars($data)) && null !== ($data->git ?? null)) {
-            $dataArray['git'] = $data->git === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git, 'json', $context));
+            $dataArray['git'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git, 'json', $context));
         }
         if (array_key_exists('github', get_object_vars($data)) && null !== ($data->github ?? null)) {
-            $dataArray['github'] = $data->github === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github, 'json', $context));
+            $dataArray['github'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github, 'json', $context));
         }
         if (array_key_exists('gitlab', get_object_vars($data)) && null !== ($data->gitlab ?? null)) {
-            $dataArray['gitlab'] = $data->gitlab === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab, 'json', $context));
+            $dataArray['gitlab'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab, 'json', $context));
         }
         if (array_key_exists('bitbucket', get_object_vars($data)) && null !== ($data->bitbucket ?? null)) {
-            $dataArray['bitbucket'] = $data->bitbucket === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket, 'json', $context));
+            $dataArray['bitbucket'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket, 'json', $context));
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = $data->image === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
+            $dataArray['image'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
         }
         if (array_key_exists('dockerfilePath', get_object_vars($data)) && null !== ($data->dockerfilePath ?? null)) {
             $dataArray['dockerfile_path'] = $data->dockerfilePath;
@@ -193,13 +193,13 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['instance_size_slug'] = $value_2;
         }
         if (array_key_exists('autoscaling', get_object_vars($data)) && null !== ($data->autoscaling ?? null)) {
-            $dataArray['autoscaling'] = $data->autoscaling === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling, 'json', $context));
+            $dataArray['autoscaling'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling, 'json', $context));
         }
         if (array_key_exists('termination', get_object_vars($data)) && null !== ($data->termination ?? null)) {
-            $dataArray['termination'] = $data->termination === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->termination, 'json', $context));
+            $dataArray['termination'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->termination, 'json', $context));
         }
         if (array_key_exists('livenessHealthCheck', get_object_vars($data)) && null !== ($data->livenessHealthCheck ?? null)) {
-            $dataArray['liveness_health_check'] = $data->livenessHealthCheck === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->livenessHealthCheck, 'json', $context));
+            $dataArray['liveness_health_check'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->livenessHealthCheck, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

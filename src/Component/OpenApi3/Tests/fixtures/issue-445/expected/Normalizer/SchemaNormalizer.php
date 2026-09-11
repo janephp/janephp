@@ -46,7 +46,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] !== null) {
             $object->parentSchemaId = $data['parentSchemaId'];
         }
-        elseif (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] === null) {
+        elseif (\array_key_exists('parentSchemaId', $data)) {
             $object->parentSchemaId = null;
         }
         if (\array_key_exists('types', $data) && $data['types'] !== null) {
@@ -56,7 +56,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->types = $values;
         }
-        elseif (\array_key_exists('types', $data) && $data['types'] === null) {
+        elseif (\array_key_exists('types', $data)) {
             $object->types = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -70,7 +70,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->names = $value_1;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -84,7 +84,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->descriptions = $value_3;
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
@@ -94,7 +94,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->layerSchemaIds = $values_3;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('fieldCount', $data)) {

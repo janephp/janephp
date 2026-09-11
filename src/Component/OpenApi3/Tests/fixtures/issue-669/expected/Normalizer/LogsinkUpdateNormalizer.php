@@ -63,13 +63,13 @@ class LogsinkUpdateNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $value = $data->config;
         if (is_object($data->config)) {
-            $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         } elseif (is_object($data->config)) {
-            $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         } elseif (is_object($data->config)) {
-            $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         } elseif (is_object($data->config)) {
-            $value = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         }
         $dataArray['config'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

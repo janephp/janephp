@@ -87,9 +87,9 @@ class Type
         return [[], $this->createDenormalizationValueStatement($context, $input, $normalizerFromObject)];
     }
 
-    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
-        return [[], $this->createNormalizationValueStatement($context, $input, $normalizerFromObject)];
+        return [[], $this->createNormalizationValueStatement($context, $input, $normalizerFromObject, $inputMayBeNull)];
     }
 
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
@@ -97,7 +97,7 @@ class Type
         return $input;
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         return $input;
     }

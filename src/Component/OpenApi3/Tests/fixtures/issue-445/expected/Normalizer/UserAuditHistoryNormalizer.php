@@ -47,7 +47,7 @@ class UserAuditHistoryNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
             $object->modifiedByUser = $data['modifiedByUser'];
         }
-        elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
+        elseif (\array_key_exists('modifiedByUser', $data)) {
             $object->modifiedByUser = null;
         }
         return $object;

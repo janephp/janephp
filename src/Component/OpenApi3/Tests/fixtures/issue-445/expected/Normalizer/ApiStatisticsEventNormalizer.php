@@ -57,7 +57,7 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
             $object->requestsPerClient = $values;
             unset($data['requestsPerClient']);
         }
-        elseif (\array_key_exists('requestsPerClient', $data) && $data['requestsPerClient'] === null) {
+        elseif (\array_key_exists('requestsPerClient', $data)) {
             $object->requestsPerClient = null;
             unset($data['requestsPerClient']);
         }

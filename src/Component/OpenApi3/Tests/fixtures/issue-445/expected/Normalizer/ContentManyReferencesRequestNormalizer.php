@@ -51,7 +51,7 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
             }
             $object->references = $value_1;
         }
-        elseif (\array_key_exists('references', $data) && $data['references'] === null) {
+        elseif (\array_key_exists('references', $data)) {
             $object->references = null;
         }
         if (\array_key_exists('shares', $data) && $data['shares'] !== null) {
@@ -61,7 +61,7 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
             }
             $object->shares = $value_2;
         }
-        elseif (\array_key_exists('shares', $data) && $data['shares'] === null) {
+        elseif (\array_key_exists('shares', $data)) {
             $object->shares = null;
         }
         return $object;
@@ -77,14 +77,14 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
             $value_1 = $data->references;
             if (is_object($data->references)) {
-                $value_1 = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value_1;
         }
         if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
             $value_2 = $data->shares;
             if (is_object($data->shares)) {
-                $value_2 = $data->shares === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
+                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
             }
             $dataArray['shares'] = $value_2;
         }

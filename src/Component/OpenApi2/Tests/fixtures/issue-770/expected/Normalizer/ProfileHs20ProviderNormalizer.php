@@ -155,7 +155,7 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['accountings'] = $values_4;
         }
         if (array_key_exists('osu', get_object_vars($data)) && null !== ($data->osu ?? null)) {
-            $dataArray['osu'] = $data->osu === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->osu, 'json', $context));
+            $dataArray['osu'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->osu, 'json', $context));
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;

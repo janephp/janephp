@@ -114,7 +114,7 @@ class RadioRadio6gApNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['wlanServiceEnabled'] = $data->wlanServiceEnabled;
         }
         if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
-            $dataArray['autoChannelSelection'] = $data->autoChannelSelection === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
+            $dataArray['autoChannelSelection'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
         }
         if (array_key_exists('bssMinRate', get_object_vars($data)) && null !== ($data->bssMinRate ?? null)) {
             $dataArray['bssMinRate'] = $data->bssMinRate;

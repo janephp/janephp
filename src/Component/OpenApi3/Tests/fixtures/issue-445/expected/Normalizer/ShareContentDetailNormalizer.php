@@ -47,7 +47,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('content', $data)) {
@@ -64,7 +64,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->metadata = $values_2;
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
         if (\array_key_exists('id', $data)) {
@@ -98,7 +98,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('iconUrl', $data) && $data['iconUrl'] !== null) {
             $object->iconUrl = $data['iconUrl'];
         }
-        elseif (\array_key_exists('iconUrl', $data) && $data['iconUrl'] === null) {
+        elseif (\array_key_exists('iconUrl', $data)) {
             $object->iconUrl = null;
         }
         return $object;

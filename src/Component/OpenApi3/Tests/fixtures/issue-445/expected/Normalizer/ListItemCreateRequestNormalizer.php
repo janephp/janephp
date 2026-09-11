@@ -47,13 +47,13 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->content = $values;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->requestId = $data['requestId'];
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
         }
         return $object;

@@ -40,7 +40,7 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('errorType', $data) && $data['errorType'] !== null) {
             $object->errorType = $data['errorType'];
         }
-        elseif (\array_key_exists('errorType', $data) && $data['errorType'] === null) {
+        elseif (\array_key_exists('errorType', $data)) {
             $object->errorType = null;
         }
         if (\array_key_exists('lineNumber', $data)) {
@@ -52,19 +52,19 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
             $object->path = $data['path'];
         }
-        elseif (\array_key_exists('path', $data) && $data['path'] === null) {
+        elseif (\array_key_exists('path', $data)) {
             $object->path = null;
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->message = $data['message'];
         }
-        elseif (\array_key_exists('message', $data) && $data['message'] === null) {
+        elseif (\array_key_exists('message', $data)) {
             $object->message = null;
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->schemaId = $data['schemaId'];
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
         }
         return $object;

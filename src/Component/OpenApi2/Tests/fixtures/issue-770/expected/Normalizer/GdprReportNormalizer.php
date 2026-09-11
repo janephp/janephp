@@ -54,7 +54,7 @@ class GdprReportNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['clientMac'] = $data->clientMac;
         $dataArray['action'] = $data->action;
         if (array_key_exists('ftp', get_object_vars($data)) && null !== ($data->ftp ?? null)) {
-            $dataArray['ftp'] = $data->ftp === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ftp, 'json', $context));
+            $dataArray['ftp'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ftp, 'json', $context));
         }
         return $dataArray;
     }

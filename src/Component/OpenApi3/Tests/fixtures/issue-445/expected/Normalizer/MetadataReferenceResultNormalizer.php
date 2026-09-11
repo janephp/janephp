@@ -60,7 +60,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
             unset($data['pageToken']);
         }
@@ -68,7 +68,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             $object->isReferencedByRestrictedItem = $data['isReferencedByRestrictedItem'];
             unset($data['isReferencedByRestrictedItem']);
         }
-        elseif (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] === null) {
+        elseif (\array_key_exists('isReferencedByRestrictedItem', $data)) {
             $object->isReferencedByRestrictedItem = null;
             unset($data['isReferencedByRestrictedItem']);
         }

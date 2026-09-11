@@ -47,7 +47,7 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
             $object->bar = $value;
             unset($data['bar']);
         }
-        elseif (\array_key_exists('bar', $data) && $data['bar'] === null) {
+        elseif (\array_key_exists('bar', $data)) {
             $object->bar = null;
             unset($data['bar']);
         }

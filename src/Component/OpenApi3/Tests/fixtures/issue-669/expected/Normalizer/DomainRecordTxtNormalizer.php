@@ -57,7 +57,7 @@ class DomainRecordTxtNormalizer implements DenormalizerInterface, NormalizerInte
             $object->priority = $data['priority'];
             unset($data['priority']);
         }
-        elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
+        elseif (\array_key_exists('priority', $data)) {
             $object->priority = null;
             unset($data['priority']);
         }
@@ -65,7 +65,7 @@ class DomainRecordTxtNormalizer implements DenormalizerInterface, NormalizerInte
             $object->port = $data['port'];
             unset($data['port']);
         }
-        elseif (\array_key_exists('port', $data) && $data['port'] === null) {
+        elseif (\array_key_exists('port', $data)) {
             $object->port = null;
             unset($data['port']);
         }
@@ -77,7 +77,7 @@ class DomainRecordTxtNormalizer implements DenormalizerInterface, NormalizerInte
             $object->weight = $data['weight'];
             unset($data['weight']);
         }
-        elseif (\array_key_exists('weight', $data) && $data['weight'] === null) {
+        elseif (\array_key_exists('weight', $data)) {
             $object->weight = null;
             unset($data['weight']);
         }
@@ -85,7 +85,7 @@ class DomainRecordTxtNormalizer implements DenormalizerInterface, NormalizerInte
             $object->flags = $data['flags'];
             unset($data['flags']);
         }
-        elseif (\array_key_exists('flags', $data) && $data['flags'] === null) {
+        elseif (\array_key_exists('flags', $data)) {
             $object->flags = null;
             unset($data['flags']);
         }
@@ -93,7 +93,7 @@ class DomainRecordTxtNormalizer implements DenormalizerInterface, NormalizerInte
             $object->tag = $data['tag'];
             unset($data['tag']);
         }
-        elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
+        elseif (\array_key_exists('tag', $data)) {
             $object->tag = null;
             unset($data['tag']);
         }

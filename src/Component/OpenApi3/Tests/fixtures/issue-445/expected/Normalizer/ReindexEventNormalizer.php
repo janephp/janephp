@@ -53,7 +53,7 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }

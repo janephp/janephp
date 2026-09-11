@@ -44,7 +44,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
             unset($data['searchString']);
         }
@@ -56,7 +56,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->searchBehaviors = $values;
             unset($data['searchBehaviors']);
         }
-        elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
+        elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
             unset($data['searchBehaviors']);
         }
@@ -68,7 +68,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->filter = $value_1;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -80,7 +80,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->aggregationFilters = $values_1;
             unset($data['aggregationFilters']);
         }
-        elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
+        elseif (\array_key_exists('aggregationFilters', $data)) {
             $object->aggregationFilters = null;
             unset($data['aggregationFilters']);
         }
@@ -104,7 +104,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->schemaIds = $values_2;
             unset($data['schemaIds']);
         }
-        elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
+        elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
             unset($data['schemaIds']);
         }
@@ -116,7 +116,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->searchLanguages = $values_3;
             unset($data['searchLanguages']);
         }
-        elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
+        elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
             unset($data['searchLanguages']);
         }
@@ -159,7 +159,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }

@@ -54,7 +54,7 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('scopeType', $data) && $data['scopeType'] !== null) {
             $object->scopeType = $data['scopeType'];
         }
-        elseif (\array_key_exists('scopeType', $data) && $data['scopeType'] === null) {
+        elseif (\array_key_exists('scopeType', $data)) {
             $object->scopeType = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -64,7 +64,7 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
             }
             $object->filter = $value;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('limit', $data)) {
@@ -73,7 +73,7 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->pageToken = $data['pageToken'];
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
         }
         return $object;
@@ -89,7 +89,7 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

@@ -54,13 +54,13 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('createdByUser', $data) && $data['createdByUser'] !== null) {
             $object->createdByUser = $data['createdByUser'];
         }
-        elseif (\array_key_exists('createdByUser', $data) && $data['createdByUser'] === null) {
+        elseif (\array_key_exists('createdByUser', $data)) {
             $object->createdByUser = null;
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
             $object->modifiedByUser = $data['modifiedByUser'];
         }
-        elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
+        elseif (\array_key_exists('modifiedByUser', $data)) {
             $object->modifiedByUser = null;
         }
         return $object;

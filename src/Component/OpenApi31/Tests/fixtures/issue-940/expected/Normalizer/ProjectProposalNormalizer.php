@@ -50,7 +50,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             $object->users = $value;
             unset($data['users']);
         }
-        elseif (\array_key_exists('users', $data) && $data['users'] === null) {
+        elseif (\array_key_exists('users', $data)) {
             $object->users = null;
             unset($data['users']);
         }
@@ -67,7 +67,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $value = $data->users;
             if (is_object($data->users)) {
-                $value = $data->users === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\JsonObject($this->normalizer->normalize($data->users, 'json', $context));
+                $value = new \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\JsonObject($this->normalizer->normalize($data->users, 'json', $context));
             } elseif (is_null($data->users)) {
                 $value = $data->users;
             }

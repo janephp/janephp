@@ -124,7 +124,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Entrypoint'] = $values;
         $dataArray['WorkDir'] = $data->workDir;
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = $data->user === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->user, 'json', $context));
+            $dataArray['User'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->user, 'json', $context));
         }
         $dataArray['Network'] = $data->network === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->network, 'json', $context));
         $dataArray['Linux'] = $data->linux === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->linux, 'json', $context));
@@ -143,7 +143,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Env'] = $values_2;
         $dataArray['Args'] = $data->args === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->args, 'json', $context));
         if (array_key_exists('rootfs', get_object_vars($data)) && null !== ($data->rootfs ?? null)) {
-            $dataArray['rootfs'] = $data->rootfs === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootfs, 'json', $context));
+            $dataArray['rootfs'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootfs, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigConstraint());

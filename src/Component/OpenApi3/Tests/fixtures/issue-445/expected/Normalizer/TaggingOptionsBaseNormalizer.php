@@ -46,31 +46,31 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
             $object->tagOutputFormatId = $data['tagOutputFormatId'];
         }
-        elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
+        elseif (\array_key_exists('tagOutputFormatId', $data)) {
             $object->tagOutputFormatId = null;
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
             $object->keywordLookupCacheName = $data['keywordLookupCacheName'];
         }
-        elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
+        elseif (\array_key_exists('keywordLookupCacheName', $data)) {
             $object->keywordLookupCacheName = null;
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
             $object->taggingLayerId = $data['taggingLayerId'];
         }
-        elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
+        elseif (\array_key_exists('taggingLayerId', $data)) {
             $object->taggingLayerId = null;
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
             $object->foundTagsFieldId = $data['foundTagsFieldId'];
         }
-        elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
+        elseif (\array_key_exists('foundTagsFieldId', $data)) {
             $object->foundTagsFieldId = null;
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
             $object->missingKeywordsFieldId = $data['missingKeywordsFieldId'];
         }
-        elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
+        elseif (\array_key_exists('missingKeywordsFieldId', $data)) {
             $object->missingKeywordsFieldId = null;
         }
         if (\array_key_exists('kind', $data)) {

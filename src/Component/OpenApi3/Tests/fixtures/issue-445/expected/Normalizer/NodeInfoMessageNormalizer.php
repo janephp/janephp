@@ -44,7 +44,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -68,7 +68,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->nodeId = $data['nodeId'];
             unset($data['nodeId']);
         }
-        elseif (\array_key_exists('nodeId', $data) && $data['nodeId'] === null) {
+        elseif (\array_key_exists('nodeId', $data)) {
             $object->nodeId = null;
             unset($data['nodeId']);
         }
@@ -76,7 +76,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->hostName = $data['hostName'];
             unset($data['hostName']);
         }
-        elseif (\array_key_exists('hostName', $data) && $data['hostName'] === null) {
+        elseif (\array_key_exists('hostName', $data)) {
             $object->hostName = null;
             unset($data['hostName']);
         }
@@ -92,7 +92,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->serviceName = $data['serviceName'];
             unset($data['serviceName']);
         }
-        elseif (\array_key_exists('serviceName', $data) && $data['serviceName'] === null) {
+        elseif (\array_key_exists('serviceName', $data)) {
             $object->serviceName = null;
             unset($data['serviceName']);
         }
@@ -100,7 +100,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->fileVersion = $data['fileVersion'];
             unset($data['fileVersion']);
         }
-        elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
+        elseif (\array_key_exists('fileVersion', $data)) {
             $object->fileVersion = null;
             unset($data['fileVersion']);
         }
@@ -108,7 +108,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->productVersion = $data['productVersion'];
             unset($data['productVersion']);
         }
-        elseif (\array_key_exists('productVersion', $data) && $data['productVersion'] === null) {
+        elseif (\array_key_exists('productVersion', $data)) {
             $object->productVersion = null;
             unset($data['productVersion']);
         }
@@ -116,7 +116,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->release = $data['release'];
             unset($data['release']);
         }
-        elseif (\array_key_exists('release', $data) && $data['release'] === null) {
+        elseif (\array_key_exists('release', $data)) {
             $object->release = null;
             unset($data['release']);
         }
@@ -124,7 +124,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->logLevel = $data['logLevel'];
             unset($data['logLevel']);
         }
-        elseif (\array_key_exists('logLevel', $data) && $data['logLevel'] === null) {
+        elseif (\array_key_exists('logLevel', $data)) {
             $object->logLevel = null;
             unset($data['logLevel']);
         }

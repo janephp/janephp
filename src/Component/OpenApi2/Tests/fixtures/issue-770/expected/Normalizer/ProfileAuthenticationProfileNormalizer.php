@@ -128,7 +128,7 @@ class ProfileAuthenticationProfileNormalizer implements DenormalizerInterface, N
             $dataArray['isContainDirectoryService'] = $data->isContainDirectoryService;
         }
         if (array_key_exists('ttgCommonSetting', get_object_vars($data)) && null !== ($data->ttgCommonSetting ?? null)) {
-            $dataArray['ttgCommonSetting'] = $data->ttgCommonSetting === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ttgCommonSetting, 'json', $context));
+            $dataArray['ttgCommonSetting'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ttgCommonSetting, 'json', $context));
         }
         if (array_key_exists('realmMappings', get_object_vars($data)) && null !== ($data->realmMappings ?? null)) {
             $values = [];

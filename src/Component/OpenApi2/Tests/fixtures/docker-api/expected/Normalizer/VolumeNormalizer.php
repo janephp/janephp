@@ -79,7 +79,7 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('UsageData', $data) && $data['UsageData'] !== null) {
             $object->usageData = $this->denormalizer->denormalize($data['UsageData'], \Docker\Api\Model\VolumeUsageData::class, 'json', $context);
         }
-        elseif (\array_key_exists('UsageData', $data) && $data['UsageData'] === null) {
+        elseif (\array_key_exists('UsageData', $data)) {
             $object->usageData = null;
         }
         return $object;
@@ -112,7 +112,7 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $dataArray['Options'] = $values_2;
         if (array_key_exists('usageData', get_object_vars($data)) && null !== ($data->usageData ?? null)) {
-            $dataArray['UsageData'] = $data->usageData === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->usageData, 'json', $context));
+            $dataArray['UsageData'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->usageData, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumeConstraint());

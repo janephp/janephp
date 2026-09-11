@@ -45,7 +45,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->aggregationName = $data['aggregationName'];
             unset($data['aggregationName']);
         }
-        elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
+        elseif (\array_key_exists('aggregationName', $data)) {
             $object->aggregationName = null;
             unset($data['aggregationName']);
         }
@@ -109,7 +109,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->notSupportedFilterType = $data['notSupportedFilterType'];
             unset($data['notSupportedFilterType']);
         }
-        elseif (\array_key_exists('notSupportedFilterType', $data) && $data['notSupportedFilterType'] === null) {
+        elseif (\array_key_exists('notSupportedFilterType', $data)) {
             $object->notSupportedFilterType = null;
             unset($data['notSupportedFilterType']);
         }
@@ -121,7 +121,7 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             $object->supportedFilterTypes = $values;
             unset($data['supportedFilterTypes']);
         }
-        elseif (\array_key_exists('supportedFilterTypes', $data) && $data['supportedFilterTypes'] === null) {
+        elseif (\array_key_exists('supportedFilterTypes', $data)) {
             $object->supportedFilterTypes = null;
             unset($data['supportedFilterTypes']);
         }

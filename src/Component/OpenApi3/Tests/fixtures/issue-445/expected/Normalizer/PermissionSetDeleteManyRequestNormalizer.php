@@ -44,7 +44,7 @@ class PermissionSetDeleteManyRequestNormalizer implements DenormalizerInterface,
             }
             $object->permissionSetIds = $values;
         }
-        elseif (\array_key_exists('permissionSetIds', $data) && $data['permissionSetIds'] === null) {
+        elseif (\array_key_exists('permissionSetIds', $data)) {
             $object->permissionSetIds = null;
         }
         return $object;

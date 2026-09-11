@@ -58,7 +58,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->description = $value;
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
         if (\array_key_exists('type', $data)) {
@@ -93,7 +93,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->image = $value_2;
         }
-        elseif (\array_key_exists('image', $data) && $data['image'] === null) {
+        elseif (\array_key_exists('image', $data)) {
             $object->image = null;
         }
         if (\array_key_exists('satellites', $data)) {
@@ -148,7 +148,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['habitabilityIndex'] = $data->habitabilityIndex;
         }
         if (array_key_exists('physicalProperties', get_object_vars($data)) && null !== ($data->physicalProperties ?? null)) {
-            $dataArray['physicalProperties'] = $data->physicalProperties === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties, 'json', $context));
+            $dataArray['physicalProperties'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties, 'json', $context));
         }
         if (array_key_exists('atmosphere', get_object_vars($data)) && null !== ($data->atmosphere ?? null)) {
             $values = [];
@@ -177,7 +177,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['satellites'] = $values_1;
         }
         if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
-            $dataArray['creator'] = $data->creator === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
+            $dataArray['creator'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];

@@ -44,7 +44,7 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
@@ -54,7 +54,7 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->metadata = $values_1;
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
         if (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] !== null) {
@@ -64,7 +64,7 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->contentPermissionSetIds = $values_2;
         }
-        elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
+        elseif (\array_key_exists('contentPermissionSetIds', $data)) {
             $object->contentPermissionSetIds = null;
         }
         return $object;

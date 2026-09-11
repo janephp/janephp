@@ -47,7 +47,7 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->name = $value;
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
             unset($data['name']);
         }
@@ -61,7 +61,7 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->attachment = $value_1;
             unset($data['_attachment']);
         }
-        elseif (\array_key_exists('_attachment', $data) && $data['_attachment'] === null) {
+        elseif (\array_key_exists('_attachment', $data)) {
             $object->attachment = null;
             unset($data['_attachment']);
         }

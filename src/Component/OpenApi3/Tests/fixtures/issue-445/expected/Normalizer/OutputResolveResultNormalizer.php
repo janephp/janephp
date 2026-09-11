@@ -43,7 +43,7 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('outputFormatId', $data)) {
@@ -65,7 +65,7 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('fileSize', $data) && $data['fileSize'] !== null) {
             $object->fileSize = $data['fileSize'];
         }
-        elseif (\array_key_exists('fileSize', $data) && $data['fileSize'] === null) {
+        elseif (\array_key_exists('fileSize', $data)) {
             $object->fileSize = null;
         }
         return $object;

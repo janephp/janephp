@@ -64,16 +64,16 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if (array_key_exists('match', get_object_vars($data)) && null !== ($data->match ?? null)) {
-            $dataArray['match'] = $data->match === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->match, 'json', $context));
+            $dataArray['match'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->match, 'json', $context));
         }
         if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
-            $dataArray['cors'] = $data->cors === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors, 'json', $context));
+            $dataArray['cors'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors, 'json', $context));
         }
         if (array_key_exists('component', get_object_vars($data)) && null !== ($data->component ?? null)) {
-            $dataArray['component'] = $data->component === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->component, 'json', $context));
+            $dataArray['component'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->component, 'json', $context));
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = $data->redirect === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
+            $dataArray['redirect'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

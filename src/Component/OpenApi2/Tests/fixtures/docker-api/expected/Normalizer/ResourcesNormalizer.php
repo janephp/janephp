@@ -156,13 +156,13 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('Init', $data) && $data['Init'] !== null) {
             $object->init = $data['Init'];
         }
-        elseif (\array_key_exists('Init', $data) && $data['Init'] === null) {
+        elseif (\array_key_exists('Init', $data)) {
             $object->init = null;
         }
         if (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] !== null) {
             $object->pidsLimit = $data['PidsLimit'];
         }
-        elseif (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] === null) {
+        elseif (\array_key_exists('PidsLimit', $data)) {
             $object->pidsLimit = null;
         }
         if (\array_key_exists('Ulimits', $data)) {

@@ -59,7 +59,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['label'] = $data->label;
         }
         if (array_key_exists('parent', get_object_vars($data)) && null !== ($data->parent ?? null)) {
-            $dataArray['parent'] = $data->parent === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($this->normalizer->normalize($data->parent, 'json', $context));
+            $dataArray['parent'] = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($this->normalizer->normalize($data->parent, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

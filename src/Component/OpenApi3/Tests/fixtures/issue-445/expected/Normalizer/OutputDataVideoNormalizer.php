@@ -44,7 +44,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
-        elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
+        elseif (\array_key_exists('fileExtension', $data)) {
             $object->fileExtension = null;
             unset($data['fileExtension']);
         }
@@ -52,7 +52,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
             unset($data['filePath']);
         }
@@ -60,7 +60,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
-        elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
+        elseif (\array_key_exists('fileSizeInBytes', $data)) {
             $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
@@ -68,7 +68,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
-        elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
+        elseif (\array_key_exists('sha1Hash', $data)) {
             $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
@@ -76,7 +76,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->originalFileName = $data['originalFileName'];
             unset($data['originalFileName']);
         }
-        elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
+        elseif (\array_key_exists('originalFileName', $data)) {
             $object->originalFileName = null;
             unset($data['originalFileName']);
         }
@@ -104,7 +104,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             $object->sprites = $values;
             unset($data['sprites']);
         }
-        elseif (\array_key_exists('sprites', $data) && $data['sprites'] === null) {
+        elseif (\array_key_exists('sprites', $data)) {
             $object->sprites = null;
             unset($data['sprites']);
         }

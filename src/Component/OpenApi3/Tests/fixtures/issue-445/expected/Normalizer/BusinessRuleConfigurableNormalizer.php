@@ -47,7 +47,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -59,7 +59,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->triggerPoint = $value;
             unset($data['triggerPoint']);
         }
-        elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
+        elseif (\array_key_exists('triggerPoint', $data)) {
             $object->triggerPoint = null;
             unset($data['triggerPoint']);
         }
@@ -79,7 +79,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->names = $value_1;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -95,7 +95,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->description = $value_3;
             unset($data['description']);
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
             unset($data['description']);
         }
@@ -115,7 +115,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->condition = $value_5;
             unset($data['condition']);
         }
-        elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
+        elseif (\array_key_exists('condition', $data)) {
             $object->condition = null;
             unset($data['condition']);
         }
@@ -127,7 +127,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->transformationGroups = $values_2;
             unset($data['transformationGroups']);
         }
-        elseif (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] === null) {
+        elseif (\array_key_exists('transformationGroups', $data)) {
             $object->transformationGroups = null;
             unset($data['transformationGroups']);
         }
@@ -139,7 +139,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->actions = $values_3;
             unset($data['actions']);
         }
-        elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
+        elseif (\array_key_exists('actions', $data)) {
             $object->actions = null;
             unset($data['actions']);
         }
@@ -159,7 +159,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('triggerPoint', get_object_vars($data)) && null !== ($data->triggerPoint ?? null)) {
             $value = $data->triggerPoint;
             if (is_object($data->triggerPoint)) {
-                $value = $data->triggerPoint === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
             }
             $dataArray['triggerPoint'] = $value;
         }
@@ -191,7 +191,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
             $value_5 = $data->condition;
             if (is_object($data->condition)) {
-                $value_5 = $data->condition === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition, 'json', $context));
+                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition, 'json', $context));
             }
             $dataArray['condition'] = $value_5;
         }

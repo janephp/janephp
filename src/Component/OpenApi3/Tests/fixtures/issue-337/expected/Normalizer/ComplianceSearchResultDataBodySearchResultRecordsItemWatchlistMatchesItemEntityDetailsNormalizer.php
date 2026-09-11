@@ -144,7 +144,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $dataArray['listReferenceNumber'] = $data->listReferenceNumber;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
+            $dataArray['name'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
         }
         if (array_key_exists('reasonListed', get_object_vars($data)) && null !== ($data->reasonListed ?? null)) {
             $dataArray['reasonListed'] = $data->reasonListed;

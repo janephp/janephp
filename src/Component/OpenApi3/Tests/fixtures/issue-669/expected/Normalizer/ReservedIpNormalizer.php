@@ -84,7 +84,7 @@ class ReservedIpNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
+            $dataArray['region'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
         }
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
             $value = $data->droplet;
@@ -95,7 +95,7 @@ class ReservedIpNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $value = $values;
             } elseif (is_object($data->droplet)) {
-                $value = $data->droplet === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
+                $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
             }
             $dataArray['droplet'] = $value;
         }

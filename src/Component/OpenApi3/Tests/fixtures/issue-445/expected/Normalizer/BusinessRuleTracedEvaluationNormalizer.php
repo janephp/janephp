@@ -50,7 +50,7 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             }
             $object->conditions = $values;
         }
-        elseif (\array_key_exists('conditions', $data) && $data['conditions'] === null) {
+        elseif (\array_key_exists('conditions', $data)) {
             $object->conditions = null;
         }
         if (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] !== null) {
@@ -60,7 +60,7 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             }
             $object->transformationGroups = $values_1;
         }
-        elseif (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] === null) {
+        elseif (\array_key_exists('transformationGroups', $data)) {
             $object->transformationGroups = null;
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
@@ -70,7 +70,7 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             }
             $object->actions = $values_2;
         }
-        elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
+        elseif (\array_key_exists('actions', $data)) {
             $object->actions = null;
         }
         if (\array_key_exists('variables', $data) && $data['variables'] !== null) {
@@ -80,7 +80,7 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             }
             $object->variables = $values_3;
         }
-        elseif (\array_key_exists('variables', $data) && $data['variables'] === null) {
+        elseif (\array_key_exists('variables', $data)) {
             $object->variables = null;
         }
         return $object;

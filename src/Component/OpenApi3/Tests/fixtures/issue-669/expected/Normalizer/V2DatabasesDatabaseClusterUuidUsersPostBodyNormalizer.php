@@ -84,10 +84,10 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
         $dataArray = [];
         $dataArray['name'] = $data->name;
         if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
-            $dataArray['mysql_settings'] = $data->mysqlSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings, 'json', $context));
+            $dataArray['mysql_settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings, 'json', $context));
         }
         if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
-            $dataArray['settings'] = $data->settings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
+            $dataArray['settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
         }
         if (array_key_exists('readonly', get_object_vars($data)) && null !== ($data->readonly ?? null)) {
             $dataArray['readonly'] = $data->readonly;

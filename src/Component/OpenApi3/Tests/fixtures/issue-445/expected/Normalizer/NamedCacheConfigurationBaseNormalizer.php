@@ -52,7 +52,7 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->name = $data['name'];
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('caseSensitive', $data)) {

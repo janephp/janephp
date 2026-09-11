@@ -44,7 +44,7 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
             }
             $object->schemaIds = $values;
         }
-        elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
+        elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
         }
         if (\array_key_exists('searchMode', $data)) {

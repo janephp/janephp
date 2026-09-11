@@ -63,7 +63,7 @@ class ApiCreateEvaluationDatasetInputPublicNormalizer implements DenormalizerInt
             $dataArray['dataset_type'] = $data->datasetType;
         }
         if (array_key_exists('fileUploadDataset', get_object_vars($data)) && null !== ($data->fileUploadDataset ?? null)) {
-            $dataArray['file_upload_dataset'] = $data->fileUploadDataset === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataset, 'json', $context));
+            $dataArray['file_upload_dataset'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataset, 'json', $context));
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name;

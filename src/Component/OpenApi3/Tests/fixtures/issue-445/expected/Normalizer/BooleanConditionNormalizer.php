@@ -41,7 +41,7 @@ class BooleanConditionNormalizer implements DenormalizerInterface, NormalizerInt
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -57,7 +57,7 @@ class BooleanConditionNormalizer implements DenormalizerInterface, NormalizerInt
             $object->conditions = $values;
             unset($data['conditions']);
         }
-        elseif (\array_key_exists('conditions', $data) && $data['conditions'] === null) {
+        elseif (\array_key_exists('conditions', $data)) {
             $object->conditions = null;
             unset($data['conditions']);
         }

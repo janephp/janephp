@@ -56,7 +56,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -64,7 +64,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->firstName = $data['firstName'];
             unset($data['firstName']);
         }
-        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        elseif (\array_key_exists('firstName', $data)) {
             $object->firstName = null;
             unset($data['firstName']);
         }
@@ -72,7 +72,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->lastName = $data['lastName'];
             unset($data['lastName']);
         }
-        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
             unset($data['lastName']);
         }
@@ -92,7 +92,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->userRoles = $values;
             unset($data['userRoles']);
         }
-        elseif (\array_key_exists('userRoles', $data) && $data['userRoles'] === null) {
+        elseif (\array_key_exists('userRoles', $data)) {
             $object->userRoles = null;
             unset($data['userRoles']);
         }
@@ -100,7 +100,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->comment = $data['comment'];
             unset($data['comment']);
         }
-        elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
+        elseif (\array_key_exists('comment', $data)) {
             $object->comment = null;
             unset($data['comment']);
         }
@@ -108,7 +108,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->languageCode = $data['languageCode'];
             unset($data['languageCode']);
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+        elseif (\array_key_exists('languageCode', $data)) {
             $object->languageCode = null;
             unset($data['languageCode']);
         }
@@ -120,7 +120,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->address = $value_1;
             unset($data['address']);
         }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        elseif (\array_key_exists('address', $data)) {
             $object->address = null;
             unset($data['address']);
         }
@@ -128,7 +128,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->identityProviderId = $data['identityProviderId'];
             unset($data['identityProviderId']);
         }
-        elseif (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] === null) {
+        elseif (\array_key_exists('identityProviderId', $data)) {
             $object->identityProviderId = null;
             unset($data['identityProviderId']);
         }
@@ -140,7 +140,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->ownerTokens = $values_1;
             unset($data['ownerTokens']);
         }
-        elseif (\array_key_exists('ownerTokens', $data) && $data['ownerTokens'] === null) {
+        elseif (\array_key_exists('ownerTokens', $data)) {
             $object->ownerTokens = null;
             unset($data['ownerTokens']);
         }
@@ -184,7 +184,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->audit = $value_5;
             unset($data['audit']);
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
             unset($data['audit']);
         }
@@ -225,7 +225,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value_1 = $data->address;
             if (is_object($data->address)) {
-                $value_1 = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value_1;
         }
@@ -268,7 +268,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_5 = $data->audit;
             if (is_object($data->audit)) {
-                $value_5 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_5;
         }

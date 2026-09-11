@@ -66,7 +66,7 @@ class AppComponentInstanceBaseAutoscalingNormalizer implements DenormalizerInter
             $dataArray['max_instance_count'] = $data->maxInstanceCount;
         }
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
-            $dataArray['metrics'] = $data->metrics === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics, 'json', $context));
+            $dataArray['metrics'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -61,7 +61,7 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
             unset($data['requestId']);
         }

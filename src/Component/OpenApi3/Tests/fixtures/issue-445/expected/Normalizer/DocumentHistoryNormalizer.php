@@ -43,7 +43,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('documentVersion', $data)) {
@@ -52,7 +52,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->documentType = $data['documentType'];
         }
-        elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
+        elseif (\array_key_exists('documentType', $data)) {
             $object->documentType = null;
         }
         if (\array_key_exists('documentDate', $data)) {
@@ -65,7 +65,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
             $object->document = $data['document'];
         }
-        elseif (\array_key_exists('document', $data) && $data['document'] === null) {
+        elseif (\array_key_exists('document', $data)) {
             $object->document = null;
         }
         if (\array_key_exists('timestamp', $data)) {
@@ -82,7 +82,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->audit = $value;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         if (\array_key_exists('deleted', $data)) {
@@ -111,7 +111,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value = $data->audit;
             if (is_object($data->audit)) {
-                $value = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }

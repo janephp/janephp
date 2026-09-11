@@ -78,13 +78,13 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
-            $dataArray['metrics'] = $data->metrics === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics, 'json', $context));
+            $dataArray['metrics'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics, 'json', $context));
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = $data->starMetric === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
+            $dataArray['star_metric'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
             $dataArray['test_case_uuid'] = $data->testCaseUuid;

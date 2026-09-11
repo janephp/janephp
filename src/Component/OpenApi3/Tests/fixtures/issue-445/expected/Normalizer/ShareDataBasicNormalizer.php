@@ -65,7 +65,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             $object->languageCode = $data['languageCode'];
             unset($data['languageCode']);
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+        elseif (\array_key_exists('languageCode', $data)) {
             $object->languageCode = null;
             unset($data['languageCode']);
         }

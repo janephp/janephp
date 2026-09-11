@@ -48,7 +48,7 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             $object->invoiceIds = $values;
             unset($data['invoiceIds']);
         }
-        elseif (\array_key_exists('invoiceIds', $data) && $data['invoiceIds'] === null) {
+        elseif (\array_key_exists('invoiceIds', $data)) {
             $object->invoiceIds = null;
             unset($data['invoiceIds']);
         }
@@ -66,7 +66,7 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             $object->links = $values_1;
             unset($data['links']);
         }
-        elseif (\array_key_exists('links', $data) && $data['links'] === null) {
+        elseif (\array_key_exists('links', $data)) {
             $object->links = null;
             unset($data['links']);
         }
@@ -74,7 +74,7 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             $object->includePositions = $data['includePositions'];
             unset($data['includePositions']);
         }
-        elseif (\array_key_exists('includePositions', $data) && $data['includePositions'] === null) {
+        elseif (\array_key_exists('includePositions', $data)) {
             $object->includePositions = null;
             unset($data['includePositions']);
         }
@@ -100,9 +100,9 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             foreach ($data->links as $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
-                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $value_2 = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 } elseif (is_object($value_1)) {
-                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $value_2 = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $values_1[] = $value_2;
             }

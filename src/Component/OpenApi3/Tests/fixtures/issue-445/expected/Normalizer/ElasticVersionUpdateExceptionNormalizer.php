@@ -45,7 +45,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
             $object->expectedVersion = $data['expectedVersion'];
             unset($data['expectedVersion']);
         }
-        elseif (\array_key_exists('expectedVersion', $data) && $data['expectedVersion'] === null) {
+        elseif (\array_key_exists('expectedVersion', $data)) {
             $object->expectedVersion = null;
             unset($data['expectedVersion']);
         }
@@ -85,7 +85,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
             $object->actualVersion = $data['actualVersion'];
             unset($data['actualVersion']);
         }
-        elseif (\array_key_exists('actualVersion', $data) && $data['actualVersion'] === null) {
+        elseif (\array_key_exists('actualVersion', $data)) {
             $object->actualVersion = null;
             unset($data['actualVersion']);
         }

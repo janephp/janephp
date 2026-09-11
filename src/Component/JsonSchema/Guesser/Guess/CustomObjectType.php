@@ -39,7 +39,7 @@ class CustomObjectType extends Type
         ]);
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
         if (!$normalizerFromObject) {

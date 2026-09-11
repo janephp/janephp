@@ -43,7 +43,7 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->traceRefId = $data['traceRefId'];
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
         if (\array_key_exists('satisfied', $data)) {
@@ -52,7 +52,7 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
         if (\array_key_exists('reason', $data) && $data['reason'] !== null) {
             $object->reason = $data['reason'];
         }
-        elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
+        elseif (\array_key_exists('reason', $data)) {
             $object->reason = null;
         }
         return $object;

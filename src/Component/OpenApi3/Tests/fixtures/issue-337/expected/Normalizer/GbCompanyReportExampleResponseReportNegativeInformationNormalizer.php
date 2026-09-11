@@ -56,10 +56,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
     {
         $dataArray = [];
         if (array_key_exists('ccjSummary', get_object_vars($data)) && null !== ($data->ccjSummary ?? null)) {
-            $dataArray['ccjSummary'] = $data->ccjSummary === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ccjSummary, 'json', $context));
+            $dataArray['ccjSummary'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ccjSummary, 'json', $context));
         }
         if (array_key_exists('countyCourtJudgements', get_object_vars($data)) && null !== ($data->countyCourtJudgements ?? null)) {
-            $dataArray['countyCourtJudgements'] = $data->countyCourtJudgements === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->countyCourtJudgements, 'json', $context));
+            $dataArray['countyCourtJudgements'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->countyCourtJudgements, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

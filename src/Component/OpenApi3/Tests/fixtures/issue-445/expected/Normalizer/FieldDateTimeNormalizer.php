@@ -66,7 +66,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }
@@ -74,7 +74,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
@@ -90,7 +90,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -106,7 +106,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -138,7 +138,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->format = $data['format'];
             unset($data['format']);
         }
-        elseif (\array_key_exists('format', $data) && $data['format'] === null) {
+        elseif (\array_key_exists('format', $data)) {
             $object->format = null;
             unset($data['format']);
         }

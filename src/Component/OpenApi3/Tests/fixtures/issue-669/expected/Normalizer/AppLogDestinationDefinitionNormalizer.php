@@ -69,16 +69,16 @@ class AppLogDestinationDefinitionNormalizer implements DenormalizerInterface, No
         $dataArray = [];
         $dataArray['name'] = $data->name;
         if (array_key_exists('papertrail', get_object_vars($data)) && null !== ($data->papertrail ?? null)) {
-            $dataArray['papertrail'] = $data->papertrail === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->papertrail, 'json', $context));
+            $dataArray['papertrail'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->papertrail, 'json', $context));
         }
         if (array_key_exists('datadog', get_object_vars($data)) && null !== ($data->datadog ?? null)) {
-            $dataArray['datadog'] = $data->datadog === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->datadog, 'json', $context));
+            $dataArray['datadog'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->datadog, 'json', $context));
         }
         if (array_key_exists('logtail', get_object_vars($data)) && null !== ($data->logtail ?? null)) {
-            $dataArray['logtail'] = $data->logtail === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logtail, 'json', $context));
+            $dataArray['logtail'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logtail, 'json', $context));
         }
         if (array_key_exists('openSearch', get_object_vars($data)) && null !== ($data->openSearch ?? null)) {
-            $dataArray['open_search'] = $data->openSearch === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->openSearch, 'json', $context));
+            $dataArray['open_search'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->openSearch, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

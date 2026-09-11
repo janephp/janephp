@@ -44,7 +44,7 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->contentOrLayerSchemaIds = $values;
         }
-        elseif (\array_key_exists('contentOrLayerSchemaIds', $data) && $data['contentOrLayerSchemaIds'] === null) {
+        elseif (\array_key_exists('contentOrLayerSchemaIds', $data)) {
             $object->contentOrLayerSchemaIds = null;
         }
         if (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] !== null) {
@@ -54,7 +54,7 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->listSchemaIds = $values_1;
         }
-        elseif (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] === null) {
+        elseif (\array_key_exists('listSchemaIds', $data)) {
             $object->listSchemaIds = null;
         }
         if (\array_key_exists('state', $data)) {
@@ -75,7 +75,7 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->fieldIdsToCleanup = $values_2;
         }
-        elseif (\array_key_exists('fieldIdsToCleanup', $data) && $data['fieldIdsToCleanup'] === null) {
+        elseif (\array_key_exists('fieldIdsToCleanup', $data)) {
             $object->fieldIdsToCleanup = null;
         }
         return $object;

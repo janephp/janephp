@@ -41,7 +41,7 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
             $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
-        elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
+        elseif (\array_key_exists('fieldPath', $data)) {
             $object->fieldPath = null;
             unset($data['fieldPath']);
         }
@@ -65,7 +65,7 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
             $object->polygon = $values;
             unset($data['polygon']);
         }
-        elseif (\array_key_exists('polygon', $data) && $data['polygon'] === null) {
+        elseif (\array_key_exists('polygon', $data)) {
             $object->polygon = null;
             unset($data['polygon']);
         }

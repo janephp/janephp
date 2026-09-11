@@ -51,7 +51,7 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('distance', $data)) {

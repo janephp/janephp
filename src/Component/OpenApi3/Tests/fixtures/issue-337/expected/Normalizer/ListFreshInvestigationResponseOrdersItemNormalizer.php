@@ -109,16 +109,16 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
             $dataArray['chargeReference'] = $data->chargeReference;
         }
         if (array_key_exists('contactDetails', get_object_vars($data)) && null !== ($data->contactDetails ?? null)) {
-            $dataArray['contactDetails'] = $data->contactDetails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactDetails, 'json', $context));
+            $dataArray['contactDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactDetails, 'json', $context));
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['status'] = $data->status === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
+            $dataArray['status'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
         }
         if (array_key_exists('consent', get_object_vars($data)) && null !== ($data->consent ?? null)) {
             $dataArray['consent'] = $data->consent;
         }
         if (array_key_exists('searchCriteria', get_object_vars($data)) && null !== ($data->searchCriteria ?? null)) {
-            $dataArray['searchCriteria'] = $data->searchCriteria === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria, 'json', $context));
+            $dataArray['searchCriteria'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

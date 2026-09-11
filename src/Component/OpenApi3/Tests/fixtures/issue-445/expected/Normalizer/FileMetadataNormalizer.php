@@ -48,7 +48,7 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -62,55 +62,55 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->descriptions = $value_2;
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->fileExtension = $data['fileExtension'];
         }
-        elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
+        elseif (\array_key_exists('fileExtension', $data)) {
             $object->fileExtension = null;
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
             $object->fileName = $data['fileName'];
         }
-        elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
+        elseif (\array_key_exists('fileName', $data)) {
             $object->fileName = null;
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->filePath = $data['filePath'];
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->fileSizeInBytes = $data['fileSizeInBytes'];
         }
-        elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
+        elseif (\array_key_exists('fileSizeInBytes', $data)) {
             $object->fileSizeInBytes = null;
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->sha1Hash = $data['sha1Hash'];
         }
-        elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
+        elseif (\array_key_exists('sha1Hash', $data)) {
             $object->sha1Hash = null;
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
             $object->xmpMetadata = $data['xmpMetadata'];
         }
-        elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
+        elseif (\array_key_exists('xmpMetadata', $data)) {
             $object->xmpMetadata = null;
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
             $object->exifMetadata = $data['exifMetadata'];
         }
-        elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
+        elseif (\array_key_exists('exifMetadata', $data)) {
             $object->exifMetadata = null;
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->language = $data['language'];
         }
-        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+        elseif (\array_key_exists('language', $data)) {
             $object->language = null;
         }
         return $object;

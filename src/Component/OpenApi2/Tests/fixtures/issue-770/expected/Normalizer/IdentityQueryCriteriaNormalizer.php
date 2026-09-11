@@ -106,10 +106,10 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['extraNotFilters'] = $data->extraNotFilters;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
-            $dataArray['options'] = $data->options === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->options, 'json', $context));
+            $dataArray['options'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->options, 'json', $context));
         }
         if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
-            $dataArray['extraTimeRange'] = $data->extraTimeRange === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange, 'json', $context));
+            $dataArray['extraTimeRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange, 'json', $context));
         }
         if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
             $dataArray['fullTextSearch'] = $data->fullTextSearch;
@@ -122,7 +122,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['attributes'] = $values_1;
         }
         if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
-            $dataArray['sortInfo'] = $data->sortInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo, 'json', $context));
+            $dataArray['sortInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo, 'json', $context));
         }
         if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
             $dataArray['page'] = $data->page;

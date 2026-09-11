@@ -46,7 +46,7 @@ class ProfileProviderOnlineSignupNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('externalOSU', get_object_vars($data)) && null !== ($data->externalOSU ?? null)) {
-            $dataArray['externalOSU'] = $data->externalOSU === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalOSU, 'json', $context));
+            $dataArray['externalOSU'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalOSU, 'json', $context));
         }
         return $dataArray;
     }

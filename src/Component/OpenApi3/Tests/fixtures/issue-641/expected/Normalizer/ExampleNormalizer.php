@@ -44,7 +44,7 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->property1 = $data['property1'];
             unset($data['property1']);
         }
-        elseif (\array_key_exists('property1', $data) && $data['property1'] === null) {
+        elseif (\array_key_exists('property1', $data)) {
             $object->property1 = null;
             unset($data['property1']);
         }

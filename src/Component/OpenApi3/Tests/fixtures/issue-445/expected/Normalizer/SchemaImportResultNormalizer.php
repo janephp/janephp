@@ -53,7 +53,7 @@ class SchemaImportResultNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->skippedSchemaIds = $values;
         }
-        elseif (\array_key_exists('skippedSchemaIds', $data) && $data['skippedSchemaIds'] === null) {
+        elseif (\array_key_exists('skippedSchemaIds', $data)) {
             $object->skippedSchemaIds = null;
         }
         if (\array_key_exists('importedSchemaIds', $data) && $data['importedSchemaIds'] !== null) {
@@ -63,7 +63,7 @@ class SchemaImportResultNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->importedSchemaIds = $values_1;
         }
-        elseif (\array_key_exists('importedSchemaIds', $data) && $data['importedSchemaIds'] === null) {
+        elseif (\array_key_exists('importedSchemaIds', $data)) {
             $object->importedSchemaIds = null;
         }
         return $object;

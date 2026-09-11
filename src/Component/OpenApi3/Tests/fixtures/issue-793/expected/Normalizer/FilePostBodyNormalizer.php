@@ -52,7 +52,7 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->fileNullable = $data['fileNullable'];
             unset($data['fileNullable']);
         }
-        elseif (\array_key_exists('fileNullable', $data) && $data['fileNullable'] === null) {
+        elseif (\array_key_exists('fileNullable', $data)) {
             $object->fileNullable = null;
             unset($data['fileNullable']);
         }

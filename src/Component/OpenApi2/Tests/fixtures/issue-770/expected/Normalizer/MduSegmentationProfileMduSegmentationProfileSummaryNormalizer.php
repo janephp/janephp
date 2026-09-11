@@ -87,10 +87,10 @@ class MduSegmentationProfileMduSegmentationProfileSummaryNormalizer implements D
             $dataArray['apGroupInfoList'] = $values_1;
         }
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = $data->networkSegmentationSwitchInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
+            $dataArray['networkSegmentationSwitchInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
         }
         if (array_key_exists('reviewData', get_object_vars($data)) && null !== ($data->reviewData ?? null)) {
-            $dataArray['reviewData'] = $data->reviewData === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->reviewData, 'json', $context));
+            $dataArray['reviewData'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->reviewData, 'json', $context));
         }
         return $dataArray;
     }

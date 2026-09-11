@@ -49,7 +49,7 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
             $object->items = $values;
             unset($data['items']);
         }
-        elseif (\array_key_exists('items', $data) && $data['items'] === null) {
+        elseif (\array_key_exists('items', $data)) {
             $object->items = null;
             unset($data['items']);
         }

@@ -92,7 +92,7 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['acl'] = $values_1;
         }
         if (array_key_exists('mongoUserSettings', get_object_vars($data)) && null !== ($data->mongoUserSettings ?? null)) {
-            $dataArray['mongo_user_settings'] = $data->mongoUserSettings === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongoUserSettings, 'json', $context));
+            $dataArray['mongo_user_settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongoUserSettings, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -43,7 +43,7 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->searchString = $data['searchString'];
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -53,7 +53,7 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->filter = $value;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
@@ -66,7 +66,7 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->schemaIds = $values;
         }
-        elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
+        elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
@@ -76,7 +76,7 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->searchLanguages = $values_1;
         }
-        elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
+        elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
@@ -97,7 +97,7 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

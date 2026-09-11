@@ -75,7 +75,7 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['Data'] = $data->data;
         }
         if (array_key_exists('templating', get_object_vars($data)) && null !== ($data->templating ?? null)) {
-            $dataArray['Templating'] = $data->templating === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating, 'json', $context));
+            $dataArray['Templating'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ConfigSpecConstraint());

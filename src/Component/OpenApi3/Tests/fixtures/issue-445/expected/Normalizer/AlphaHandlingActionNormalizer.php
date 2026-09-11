@@ -53,7 +53,7 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
             $object->replacementRgbColorHexCode = $data['replacementRgbColorHexCode'];
             unset($data['replacementRgbColorHexCode']);
         }
-        elseif (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] === null) {
+        elseif (\array_key_exists('replacementRgbColorHexCode', $data)) {
             $object->replacementRgbColorHexCode = null;
             unset($data['replacementRgbColorHexCode']);
         }

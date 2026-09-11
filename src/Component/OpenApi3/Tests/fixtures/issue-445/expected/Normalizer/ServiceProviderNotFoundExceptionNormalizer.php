@@ -45,7 +45,7 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
             $object->missingServiceProviderId = $data['missingServiceProviderId'];
             unset($data['missingServiceProviderId']);
         }
-        elseif (\array_key_exists('missingServiceProviderId', $data) && $data['missingServiceProviderId'] === null) {
+        elseif (\array_key_exists('missingServiceProviderId', $data)) {
             $object->missingServiceProviderId = null;
             unset($data['missingServiceProviderId']);
         }

@@ -59,7 +59,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -83,7 +83,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->filter = $value;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -95,7 +95,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->listItemCreateTemplate = $data['listItemCreateTemplate'];
             unset($data['listItemCreateTemplate']);
         }
-        elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
+        elseif (\array_key_exists('listItemCreateTemplate', $data)) {
             $object->listItemCreateTemplate = null;
             unset($data['listItemCreateTemplate']);
         }
@@ -107,7 +107,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->maximumItems = $data['maximumItems'];
             unset($data['maximumItems']);
         }
-        elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
+        elseif (\array_key_exists('maximumItems', $data)) {
             $object->maximumItems = null;
             unset($data['maximumItems']);
         }
@@ -119,7 +119,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->minimumItems = $data['minimumItems'];
             unset($data['minimumItems']);
         }
-        elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
+        elseif (\array_key_exists('minimumItems', $data)) {
             $object->minimumItems = null;
             unset($data['minimumItems']);
         }
@@ -146,7 +146,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

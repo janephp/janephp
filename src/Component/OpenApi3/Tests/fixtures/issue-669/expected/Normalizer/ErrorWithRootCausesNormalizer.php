@@ -49,7 +49,7 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
             $object->messages = $values;
             unset($data['messages']);
         }
-        elseif (\array_key_exists('messages', $data) && $data['messages'] === null) {
+        elseif (\array_key_exists('messages', $data)) {
             $object->messages = null;
             unset($data['messages']);
         }

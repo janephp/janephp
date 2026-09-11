@@ -40,7 +40,7 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
         if (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] !== null) {
             $object->permissionSetId = $data['permissionSetId'];
         }
-        elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
+        elseif (\array_key_exists('permissionSetId', $data)) {
             $object->permissionSetId = null;
         }
         if (\array_key_exists('permissionSetRights', $data) && $data['permissionSetRights'] !== null) {
@@ -50,7 +50,7 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
             }
             $object->permissionSetRights = $values;
         }
-        elseif (\array_key_exists('permissionSetRights', $data) && $data['permissionSetRights'] === null) {
+        elseif (\array_key_exists('permissionSetRights', $data)) {
             $object->permissionSetRights = null;
         }
         return $object;

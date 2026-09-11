@@ -214,7 +214,7 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['run_name'] = $data->runName;
         }
         if (array_key_exists('starMetricResult', get_object_vars($data)) && null !== ($data->starMetricResult ?? null)) {
-            $dataArray['star_metric_result'] = $data->starMetricResult === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetricResult, 'json', $context));
+            $dataArray['star_metric_result'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetricResult, 'json', $context));
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
             $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');

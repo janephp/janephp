@@ -56,7 +56,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->filter = $value;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('names', $data)) {
@@ -137,7 +137,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
@@ -186,7 +186,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['missingResultsDisplayPatterns'] = $value_8;
         $value_10 = $data->audit;
         if (is_object($data->audit)) {
-            $value_10 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $value_10 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_10;
         $dataArray['viewForAll'] = $data->viewForAll;

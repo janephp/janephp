@@ -44,7 +44,7 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
             $object->name = $data['name'];
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
             unset($data['name']);
         }
@@ -60,7 +60,7 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
             unset($data['schemaId']);
         }

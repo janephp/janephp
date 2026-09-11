@@ -53,7 +53,7 @@ class PathHierarchyAnalyzerNormalizer implements DenormalizerInterface, Normaliz
             $object->fieldSuffix = $data['fieldSuffix'];
             unset($data['fieldSuffix']);
         }
-        elseif (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] === null) {
+        elseif (\array_key_exists('fieldSuffix', $data)) {
             $object->fieldSuffix = null;
             unset($data['fieldSuffix']);
         }

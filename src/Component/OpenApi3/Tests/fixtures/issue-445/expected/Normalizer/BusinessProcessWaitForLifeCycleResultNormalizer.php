@@ -44,7 +44,7 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
             }
             $object->lifeCycleHit = $value;
         }
-        elseif (\array_key_exists('lifeCycleHit', $data) && $data['lifeCycleHit'] === null) {
+        elseif (\array_key_exists('lifeCycleHit', $data)) {
             $object->lifeCycleHit = null;
         }
         if (\array_key_exists('businessProcess', $data)) {
@@ -68,7 +68,7 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
         }
         $value_1 = $data->businessProcess;
         if (is_object($data->businessProcess)) {
-            $value_1 = $data->businessProcess === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess, 'json', $context));
+            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess, 'json', $context));
         }
         $dataArray['businessProcess'] = $value_1;
         return $dataArray;

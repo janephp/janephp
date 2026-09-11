@@ -48,7 +48,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->eventDate = $date->setTime(0, 0, 0);
             unset($data['eventDate']);
         }
-        elseif (\array_key_exists('eventDate', $data) && $data['eventDate'] === null) {
+        elseif (\array_key_exists('eventDate', $data)) {
             $object->eventDate = null;
             unset($data['eventDate']);
         }
@@ -60,7 +60,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->createdAt = $date_1;
             unset($data['createdAt']);
         }
-        elseif (\array_key_exists('createdAt', $data) && $data['createdAt'] === null) {
+        elseif (\array_key_exists('createdAt', $data)) {
             $object->createdAt = null;
             unset($data['createdAt']);
         }
@@ -82,7 +82,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->plainDate = $value;
             unset($data['plainDate']);
         }
-        elseif (\array_key_exists('plainDate', $data) && $data['plainDate'] === null) {
+        elseif (\array_key_exists('plainDate', $data)) {
             $object->plainDate = null;
             unset($data['plainDate']);
         }

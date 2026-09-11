@@ -239,15 +239,12 @@ trait DenormalizerGenerator
             ]);
 
             if (!$context->isStrict() || $property->isNullable()) {
-                $invertCondition = new Expr\BinaryOp\BooleanAnd(
-                    $baseCondition,
-                    new Expr\BinaryOp\Identical(
-                        $propertyVar,
-                        new Expr\ConstFetch(new Name('null'))
-                    )
-                );
-
-                $statements[] = new Stmt\ElseIf_($invertCondition, [
+                // Reached only when the "if" above did not match, i.e. the key
+                // is absent or the value is null: "null === $data[$property]"
+                // is implied by the guard combination and re-checking the key
+                // with the value condition is statically redundant. Testing
+                // the key alone keeps null assignment limited to present keys.
+                $statements[] = new Stmt\ElseIf_($baseCondition, [
                     new Stmt\Expression(new Expr\Assign(
                         new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
                         new Expr\ConstFetch(new Name('null')),

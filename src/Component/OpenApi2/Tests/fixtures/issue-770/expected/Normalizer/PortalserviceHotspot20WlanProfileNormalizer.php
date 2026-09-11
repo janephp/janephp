@@ -118,7 +118,7 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
-            $dataArray['operator'] = $data->operator === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->operator, 'json', $context));
+            $dataArray['operator'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->operator, 'json', $context));
         }
         if (array_key_exists('identityProviders', get_object_vars($data)) && null !== ($data->identityProviders ?? null)) {
             $values = [];
@@ -128,10 +128,10 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
             $dataArray['identityProviders'] = $values;
         }
         if (array_key_exists('defaultIdentityProvider', get_object_vars($data)) && null !== ($data->defaultIdentityProvider ?? null)) {
-            $dataArray['defaultIdentityProvider'] = $data->defaultIdentityProvider === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context));
+            $dataArray['defaultIdentityProvider'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context));
         }
         if (array_key_exists('signupSsid', get_object_vars($data)) && null !== ($data->signupSsid ?? null)) {
-            $dataArray['signupSsid'] = $data->signupSsid === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
+            $dataArray['signupSsid'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
         }
         if (array_key_exists('internetOption', get_object_vars($data)) && null !== ($data->internetOption ?? null)) {
             $dataArray['internetOption'] = $data->internetOption;

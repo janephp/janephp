@@ -73,7 +73,7 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('LastUsedAt', $data) && $data['LastUsedAt'] !== null) {
             $object->lastUsedAt = $data['LastUsedAt'];
         }
-        elseif (\array_key_exists('LastUsedAt', $data) && $data['LastUsedAt'] === null) {
+        elseif (\array_key_exists('LastUsedAt', $data)) {
             $object->lastUsedAt = null;
         }
         if (\array_key_exists('UsageCount', $data)) {

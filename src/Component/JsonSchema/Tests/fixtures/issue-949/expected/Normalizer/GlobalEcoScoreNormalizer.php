@@ -50,7 +50,7 @@ class GlobalEcoScoreNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->emissionFactors = $value;
         }
-        elseif (\array_key_exists('emission_factors', $data) && $data['emission_factors'] === null) {
+        elseif (\array_key_exists('emission_factors', $data)) {
             $object->emissionFactors = null;
         }
         if (\array_key_exists('tracingId', $data)) {

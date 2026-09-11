@@ -99,7 +99,7 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['Version'] = $data->version === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
+            $dataArray['Version'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['CreatedAt'] = $data->createdAt;
@@ -118,7 +118,7 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = $data->spec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $dataArray['Spec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('serviceID', get_object_vars($data)) && null !== ($data->serviceID ?? null)) {
             $dataArray['ServiceID'] = $data->serviceID;
@@ -137,13 +137,13 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['AssignedGenericResources'] = $values_1;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
-            $dataArray['Status'] = $data->status === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
+            $dataArray['Status'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->status, 'json', $context));
         }
         if (array_key_exists('desiredState', get_object_vars($data)) && null !== ($data->desiredState ?? null)) {
             $dataArray['DesiredState'] = $data->desiredState;
         }
         if (array_key_exists('jobIteration', get_object_vars($data)) && null !== ($data->jobIteration ?? null)) {
-            $dataArray['JobIteration'] = $data->jobIteration === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->jobIteration, 'json', $context));
+            $dataArray['JobIteration'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->jobIteration, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskConstraint());

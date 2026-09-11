@@ -56,10 +56,10 @@ class ApiGetAgentUsageOutputNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('logInsightsUsage', get_object_vars($data)) && null !== ($data->logInsightsUsage ?? null)) {
-            $dataArray['log_insights_usage'] = $data->logInsightsUsage === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logInsightsUsage, 'json', $context));
+            $dataArray['log_insights_usage'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logInsightsUsage, 'json', $context));
         }
         if (array_key_exists('usage', get_object_vars($data)) && null !== ($data->usage ?? null)) {
-            $dataArray['usage'] = $data->usage === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->usage, 'json', $context));
+            $dataArray['usage'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->usage, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

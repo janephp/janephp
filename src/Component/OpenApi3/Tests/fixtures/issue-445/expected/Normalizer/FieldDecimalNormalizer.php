@@ -69,7 +69,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }
@@ -77,7 +77,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
@@ -93,7 +93,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -109,7 +109,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -141,7 +141,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->pattern = $data['pattern'];
             unset($data['pattern']);
         }
-        elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
+        elseif (\array_key_exists('pattern', $data)) {
             $object->pattern = null;
             unset($data['pattern']);
         }
@@ -149,7 +149,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->minimum = $data['minimum'];
             unset($data['minimum']);
         }
-        elseif (\array_key_exists('minimum', $data) && $data['minimum'] === null) {
+        elseif (\array_key_exists('minimum', $data)) {
             $object->minimum = null;
             unset($data['minimum']);
         }
@@ -157,7 +157,7 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->maximum = $data['maximum'];
             unset($data['maximum']);
         }
-        elseif (\array_key_exists('maximum', $data) && $data['maximum'] === null) {
+        elseif (\array_key_exists('maximum', $data)) {
             $object->maximum = null;
             unset($data['maximum']);
         }

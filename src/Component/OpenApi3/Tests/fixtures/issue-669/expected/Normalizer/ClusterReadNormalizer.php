@@ -109,7 +109,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->maintenancePolicy = $this->denormalizer->denormalize($data['maintenance_policy'], \Jane\Generated\DigitalOcean\Model\MaintenancePolicy::class, 'json', $context);
             unset($data['maintenance_policy']);
         }
-        elseif (\array_key_exists('maintenance_policy', $data) && $data['maintenance_policy'] === null) {
+        elseif (\array_key_exists('maintenance_policy', $data)) {
             $object->maintenancePolicy = null;
             unset($data['maintenance_policy']);
         }
@@ -157,7 +157,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->registries = $values_3;
             unset($data['registries']);
         }
-        elseif (\array_key_exists('registries', $data) && $data['registries'] === null) {
+        elseif (\array_key_exists('registries', $data)) {
             $object->registries = null;
             unset($data['registries']);
         }
@@ -165,7 +165,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->controlPlaneFirewall = $this->denormalizer->denormalize($data['control_plane_firewall'], \Jane\Generated\DigitalOcean\Model\ControlPlaneFirewall::class, 'json', $context);
             unset($data['control_plane_firewall']);
         }
-        elseif (\array_key_exists('control_plane_firewall', $data) && $data['control_plane_firewall'] === null) {
+        elseif (\array_key_exists('control_plane_firewall', $data)) {
             $object->controlPlaneFirewall = null;
             unset($data['control_plane_firewall']);
         }
@@ -173,7 +173,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->clusterAutoscalerConfiguration = $this->denormalizer->denormalize($data['cluster_autoscaler_configuration'], \Jane\Generated\DigitalOcean\Model\ClusterAutoscalerConfiguration::class, 'json', $context);
             unset($data['cluster_autoscaler_configuration']);
         }
-        elseif (\array_key_exists('cluster_autoscaler_configuration', $data) && $data['cluster_autoscaler_configuration'] === null) {
+        elseif (\array_key_exists('cluster_autoscaler_configuration', $data)) {
             $object->clusterAutoscalerConfiguration = null;
             unset($data['cluster_autoscaler_configuration']);
         }
@@ -181,7 +181,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->routingAgent = $this->denormalizer->denormalize($data['routing_agent'], \Jane\Generated\DigitalOcean\Model\RoutingAgent::class, 'json', $context);
             unset($data['routing_agent']);
         }
-        elseif (\array_key_exists('routing_agent', $data) && $data['routing_agent'] === null) {
+        elseif (\array_key_exists('routing_agent', $data)) {
             $object->routingAgent = null;
             unset($data['routing_agent']);
         }
@@ -189,7 +189,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->amdGpuDevicePlugin = $this->denormalizer->denormalize($data['amd_gpu_device_plugin'], \Jane\Generated\DigitalOcean\Model\AmdGpuDevicePlugin::class, 'json', $context);
             unset($data['amd_gpu_device_plugin']);
         }
-        elseif (\array_key_exists('amd_gpu_device_plugin', $data) && $data['amd_gpu_device_plugin'] === null) {
+        elseif (\array_key_exists('amd_gpu_device_plugin', $data)) {
             $object->amdGpuDevicePlugin = null;
             unset($data['amd_gpu_device_plugin']);
         }
@@ -197,7 +197,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->amdGpuDeviceMetricsExporterPlugin = $this->denormalizer->denormalize($data['amd_gpu_device_metrics_exporter_plugin'], \Jane\Generated\DigitalOcean\Model\AmdGpuDeviceMetricsExporterPlugin::class, 'json', $context);
             unset($data['amd_gpu_device_metrics_exporter_plugin']);
         }
-        elseif (\array_key_exists('amd_gpu_device_metrics_exporter_plugin', $data) && $data['amd_gpu_device_metrics_exporter_plugin'] === null) {
+        elseif (\array_key_exists('amd_gpu_device_metrics_exporter_plugin', $data)) {
             $object->amdGpuDeviceMetricsExporterPlugin = null;
             unset($data['amd_gpu_device_metrics_exporter_plugin']);
         }
@@ -205,7 +205,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->nvidiaGpuDevicePlugin = $this->denormalizer->denormalize($data['nvidia_gpu_device_plugin'], \Jane\Generated\DigitalOcean\Model\NvidiaGpuDevicePlugin::class, 'json', $context);
             unset($data['nvidia_gpu_device_plugin']);
         }
-        elseif (\array_key_exists('nvidia_gpu_device_plugin', $data) && $data['nvidia_gpu_device_plugin'] === null) {
+        elseif (\array_key_exists('nvidia_gpu_device_plugin', $data)) {
             $object->nvidiaGpuDevicePlugin = null;
             unset($data['nvidia_gpu_device_plugin']);
         }
@@ -213,7 +213,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->rdmaSharedDevPlugin = $this->denormalizer->denormalize($data['rdma_shared_dev_plugin'], \Jane\Generated\DigitalOcean\Model\RdmaSharedDevPlugin::class, 'json', $context);
             unset($data['rdma_shared_dev_plugin']);
         }
-        elseif (\array_key_exists('rdma_shared_dev_plugin', $data) && $data['rdma_shared_dev_plugin'] === null) {
+        elseif (\array_key_exists('rdma_shared_dev_plugin', $data)) {
             $object->rdmaSharedDevPlugin = null;
             unset($data['rdma_shared_dev_plugin']);
         }
@@ -256,7 +256,7 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $dataArray['node_pools'] = $values_1;
         if (array_key_exists('maintenancePolicy', get_object_vars($data)) && null !== ($data->maintenancePolicy ?? null)) {
-            $dataArray['maintenance_policy'] = $data->maintenancePolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenancePolicy, 'json', $context));
+            $dataArray['maintenance_policy'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenancePolicy, 'json', $context));
         }
         if (array_key_exists('autoUpgrade', get_object_vars($data)) && null !== ($data->autoUpgrade ?? null)) {
             $dataArray['auto_upgrade'] = $data->autoUpgrade;
@@ -275,25 +275,25 @@ class ClusterReadNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['registries'] = $values_3;
         }
         if (array_key_exists('controlPlaneFirewall', get_object_vars($data)) && null !== ($data->controlPlaneFirewall ?? null)) {
-            $dataArray['control_plane_firewall'] = $data->controlPlaneFirewall === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->controlPlaneFirewall, 'json', $context));
+            $dataArray['control_plane_firewall'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->controlPlaneFirewall, 'json', $context));
         }
         if (array_key_exists('clusterAutoscalerConfiguration', get_object_vars($data)) && null !== ($data->clusterAutoscalerConfiguration ?? null)) {
-            $dataArray['cluster_autoscaler_configuration'] = $data->clusterAutoscalerConfiguration === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->clusterAutoscalerConfiguration, 'json', $context));
+            $dataArray['cluster_autoscaler_configuration'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->clusterAutoscalerConfiguration, 'json', $context));
         }
         if (array_key_exists('routingAgent', get_object_vars($data)) && null !== ($data->routingAgent ?? null)) {
-            $dataArray['routing_agent'] = $data->routingAgent === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->routingAgent, 'json', $context));
+            $dataArray['routing_agent'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->routingAgent, 'json', $context));
         }
         if (array_key_exists('amdGpuDevicePlugin', get_object_vars($data)) && null !== ($data->amdGpuDevicePlugin ?? null)) {
-            $dataArray['amd_gpu_device_plugin'] = $data->amdGpuDevicePlugin === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDevicePlugin, 'json', $context));
+            $dataArray['amd_gpu_device_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDevicePlugin, 'json', $context));
         }
         if (array_key_exists('amdGpuDeviceMetricsExporterPlugin', get_object_vars($data)) && null !== ($data->amdGpuDeviceMetricsExporterPlugin ?? null)) {
-            $dataArray['amd_gpu_device_metrics_exporter_plugin'] = $data->amdGpuDeviceMetricsExporterPlugin === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDeviceMetricsExporterPlugin, 'json', $context));
+            $dataArray['amd_gpu_device_metrics_exporter_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->amdGpuDeviceMetricsExporterPlugin, 'json', $context));
         }
         if (array_key_exists('nvidiaGpuDevicePlugin', get_object_vars($data)) && null !== ($data->nvidiaGpuDevicePlugin ?? null)) {
-            $dataArray['nvidia_gpu_device_plugin'] = $data->nvidiaGpuDevicePlugin === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nvidiaGpuDevicePlugin, 'json', $context));
+            $dataArray['nvidia_gpu_device_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nvidiaGpuDevicePlugin, 'json', $context));
         }
         if (array_key_exists('rdmaSharedDevPlugin', get_object_vars($data)) && null !== ($data->rdmaSharedDevPlugin ?? null)) {
-            $dataArray['rdma_shared_dev_plugin'] = $data->rdmaSharedDevPlugin === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->rdmaSharedDevPlugin, 'json', $context));
+            $dataArray['rdma_shared_dev_plugin'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->rdmaSharedDevPlugin, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_4) {
             if (preg_match('/.*/', (string) $key_1)) {

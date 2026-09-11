@@ -76,7 +76,7 @@ class WlanWlanVlanNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['coreSVlan'] = $data->coreSVlan;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = $data->vlanPooling === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
+            $dataArray['vlanPooling'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
         }
         return $dataArray;
     }

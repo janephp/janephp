@@ -53,7 +53,7 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
             $object->documentType = $data['documentType'];
             unset($data['documentType']);
         }
-        elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
+        elseif (\array_key_exists('documentType', $data)) {
             $object->documentType = null;
             unset($data['documentType']);
         }

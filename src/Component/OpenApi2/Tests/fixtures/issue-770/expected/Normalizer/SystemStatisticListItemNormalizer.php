@@ -88,40 +88,40 @@ class SystemStatisticListItemNormalizer implements DenormalizerInterface, Normal
             $dataArray['timestamp'] = $data->timestamp;
         }
         if (array_key_exists('cpu', get_object_vars($data)) && null !== ($data->cpu ?? null)) {
-            $dataArray['cpu'] = $data->cpu === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cpu, 'json', $context));
+            $dataArray['cpu'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cpu, 'json', $context));
         }
         if (array_key_exists('disk', get_object_vars($data)) && null !== ($data->disk ?? null)) {
-            $dataArray['disk'] = $data->disk === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->disk, 'json', $context));
+            $dataArray['disk'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->disk, 'json', $context));
         }
         if (array_key_exists('memory', get_object_vars($data)) && null !== ($data->memory ?? null)) {
-            $dataArray['memory'] = $data->memory === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->memory, 'json', $context));
+            $dataArray['memory'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->memory, 'json', $context));
         }
         if (array_key_exists('port0', get_object_vars($data)) && null !== ($data->port0 ?? null)) {
-            $dataArray['port0'] = $data->port0 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port0, 'json', $context));
+            $dataArray['port0'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port0, 'json', $context));
         }
         if (array_key_exists('port1', get_object_vars($data)) && null !== ($data->port1 ?? null)) {
-            $dataArray['port1'] = $data->port1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port1, 'json', $context));
+            $dataArray['port1'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port1, 'json', $context));
         }
         if (array_key_exists('port2', get_object_vars($data)) && null !== ($data->port2 ?? null)) {
-            $dataArray['port2'] = $data->port2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port2, 'json', $context));
+            $dataArray['port2'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port2, 'json', $context));
         }
         if (array_key_exists('port3', get_object_vars($data)) && null !== ($data->port3 ?? null)) {
-            $dataArray['port3'] = $data->port3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port3, 'json', $context));
+            $dataArray['port3'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port3, 'json', $context));
         }
         if (array_key_exists('port4', get_object_vars($data)) && null !== ($data->port4 ?? null)) {
-            $dataArray['port4'] = $data->port4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port4, 'json', $context));
+            $dataArray['port4'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port4, 'json', $context));
         }
         if (array_key_exists('port5', get_object_vars($data)) && null !== ($data->port5 ?? null)) {
-            $dataArray['port5'] = $data->port5 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port5, 'json', $context));
+            $dataArray['port5'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->port5, 'json', $context));
         }
         if (array_key_exists('control', get_object_vars($data)) && null !== ($data->control ?? null)) {
-            $dataArray['control'] = $data->control === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->control, 'json', $context));
+            $dataArray['control'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->control, 'json', $context));
         }
         if (array_key_exists('cluster', get_object_vars($data)) && null !== ($data->cluster ?? null)) {
-            $dataArray['cluster'] = $data->cluster === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cluster, 'json', $context));
+            $dataArray['cluster'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cluster, 'json', $context));
         }
         if (array_key_exists('management', get_object_vars($data)) && null !== ($data->management ?? null)) {
-            $dataArray['management'] = $data->management === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->management, 'json', $context));
+            $dataArray['management'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->management, 'json', $context));
         }
         return $dataArray;
     }

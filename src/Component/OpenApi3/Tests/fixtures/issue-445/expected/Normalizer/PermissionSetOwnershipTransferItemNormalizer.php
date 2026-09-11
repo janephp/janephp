@@ -45,7 +45,7 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
             $object->permissionSetId = $data['permissionSetId'];
             unset($data['permissionSetId']);
         }
-        elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
+        elseif (\array_key_exists('permissionSetId', $data)) {
             $object->permissionSetId = null;
             unset($data['permissionSetId']);
         }

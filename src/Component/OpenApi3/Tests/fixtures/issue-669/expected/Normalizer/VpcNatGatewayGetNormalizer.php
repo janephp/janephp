@@ -137,7 +137,7 @@ class VpcNatGatewayGetNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['vpcs'] = $values;
         }
         if (array_key_exists('egresses', get_object_vars($data)) && null !== ($data->egresses ?? null)) {
-            $dataArray['egresses'] = $data->egresses === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egresses, 'json', $context));
+            $dataArray['egresses'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egresses, 'json', $context));
         }
         if (array_key_exists('udpTimeoutSeconds', get_object_vars($data)) && null !== ($data->udpTimeoutSeconds ?? null)) {
             $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds;

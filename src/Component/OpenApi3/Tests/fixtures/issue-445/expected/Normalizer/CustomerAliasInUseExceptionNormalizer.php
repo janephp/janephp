@@ -45,7 +45,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->existingCustomerId = $data['existingCustomerId'];
             unset($data['existingCustomerId']);
         }
-        elseif (\array_key_exists('existingCustomerId', $data) && $data['existingCustomerId'] === null) {
+        elseif (\array_key_exists('existingCustomerId', $data)) {
             $object->existingCustomerId = null;
             unset($data['existingCustomerId']);
         }
@@ -109,7 +109,7 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
             $object->alias = $data['alias'];
             unset($data['alias']);
         }
-        elseif (\array_key_exists('alias', $data) && $data['alias'] === null) {
+        elseif (\array_key_exists('alias', $data)) {
             $object->alias = null;
             unset($data['alias']);
         }

@@ -45,7 +45,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             $object->externalId = $data['externalId'];
             unset($data['externalId']);
         }
-        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+        elseif (\array_key_exists('externalId', $data)) {
             $object->externalId = null;
             unset($data['externalId']);
         }
@@ -85,7 +85,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             $object->detailErrorMessage = $data['detailErrorMessage'];
             unset($data['detailErrorMessage']);
         }
-        elseif (\array_key_exists('detailErrorMessage', $data) && $data['detailErrorMessage'] === null) {
+        elseif (\array_key_exists('detailErrorMessage', $data)) {
             $object->detailErrorMessage = null;
             unset($data['detailErrorMessage']);
         }

@@ -80,7 +80,7 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
         }
         $dataArray['maxDevices'] = $data->maxDevices === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->maxDevices, 'json', $context));
         if (array_key_exists('sessionDuration', get_object_vars($data)) && null !== ($data->sessionDuration ?? null)) {
-            $dataArray['sessionDuration'] = $data->sessionDuration === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sessionDuration, 'json', $context));
+            $dataArray['sessionDuration'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sessionDuration, 'json', $context));
         }
         return $dataArray;
     }

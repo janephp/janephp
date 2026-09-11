@@ -40,19 +40,19 @@ class IdentityProviderBasicInfoNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->name = $data['name'];
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('displayName', $data) && $data['displayName'] !== null) {
             $object->displayName = $data['displayName'];
         }
-        elseif (\array_key_exists('displayName', $data) && $data['displayName'] === null) {
+        elseif (\array_key_exists('displayName', $data)) {
             $object->displayName = null;
         }
         return $object;

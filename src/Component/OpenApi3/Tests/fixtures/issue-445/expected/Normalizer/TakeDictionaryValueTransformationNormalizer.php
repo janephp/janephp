@@ -41,7 +41,7 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
             $object->key = $data['key'];
             unset($data['key']);
         }
-        elseif (\array_key_exists('key', $data) && $data['key'] === null) {
+        elseif (\array_key_exists('key', $data)) {
             $object->key = null;
             unset($data['key']);
         }

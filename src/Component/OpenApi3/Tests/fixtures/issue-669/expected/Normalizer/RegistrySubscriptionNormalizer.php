@@ -68,7 +68,7 @@ class RegistrySubscriptionNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('tier', get_object_vars($data)) && null !== ($data->tier ?? null)) {
-            $dataArray['tier'] = $data->tier === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tier, 'json', $context));
+            $dataArray['tier'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tier, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

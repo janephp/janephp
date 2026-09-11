@@ -41,7 +41,7 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
-        elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
+        elseif (\array_key_exists('fieldPath', $data)) {
             $object->fieldPath = null;
             unset($data['fieldPath']);
         }
@@ -61,7 +61,7 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             $object->regex = $data['regex'];
             unset($data['regex']);
         }
-        elseif (\array_key_exists('regex', $data) && $data['regex'] === null) {
+        elseif (\array_key_exists('regex', $data)) {
             $object->regex = null;
             unset($data['regex']);
         }
@@ -69,7 +69,7 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             $object->storeIn = $data['storeIn'];
             unset($data['storeIn']);
         }
-        elseif (\array_key_exists('storeIn', $data) && $data['storeIn'] === null) {
+        elseif (\array_key_exists('storeIn', $data)) {
             $object->storeIn = null;
             unset($data['storeIn']);
         }

@@ -60,7 +60,7 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
             $object->businessProcessId = $data['businessProcessId'];
         }
-        elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
+        elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
         }
         if (\array_key_exists('fileTransferCount', $data)) {
@@ -69,7 +69,7 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('collectionId', $data) && $data['collectionId'] !== null) {
             $object->collectionId = $data['collectionId'];
         }
-        elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
+        elseif (\array_key_exists('collectionId', $data)) {
             $object->collectionId = null;
         }
         return $object;

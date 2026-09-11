@@ -55,13 +55,13 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('viewUrl', $data) && $data['viewUrl'] !== null) {
             $object->viewUrl = $data['viewUrl'];
         }
-        elseif (\array_key_exists('viewUrl', $data) && $data['viewUrl'] === null) {
+        elseif (\array_key_exists('viewUrl', $data)) {
             $object->viewUrl = null;
         }
         if (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] !== null) {
             $object->downloadUrl = $data['downloadUrl'];
         }
-        elseif (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] === null) {
+        elseif (\array_key_exists('downloadUrl', $data)) {
             $object->downloadUrl = null;
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
@@ -71,7 +71,7 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->detail = $value;
         }
-        elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
+        elseif (\array_key_exists('detail', $data)) {
             $object->detail = null;
         }
         if (\array_key_exists('dynamicRendering', $data)) {
@@ -102,7 +102,7 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
             $value = $data->detail;
             if (is_object($data->detail)) {
-                $value = $data->detail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
             }
             $dataArray['detail'] = $value;
         }

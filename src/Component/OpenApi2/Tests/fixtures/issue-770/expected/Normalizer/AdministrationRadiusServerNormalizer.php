@@ -91,7 +91,7 @@ class AdministrationRadiusServerNormalizer implements DenormalizerInterface, Nor
         }
         $dataArray['ipFqdn'] = $data->ipFqdn;
         if (array_key_exists('secondaryRadiusServer', get_object_vars($data)) && null !== ($data->secondaryRadiusServer ?? null)) {
-            $dataArray['secondaryRadiusServer'] = $data->secondaryRadiusServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryRadiusServer, 'json', $context));
+            $dataArray['secondaryRadiusServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryRadiusServer, 'json', $context));
         }
         if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
             $dataArray['tlsEnabled'] = $data->tlsEnabled;

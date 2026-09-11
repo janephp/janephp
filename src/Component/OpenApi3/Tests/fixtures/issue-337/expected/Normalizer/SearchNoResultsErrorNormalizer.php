@@ -77,7 +77,7 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             $dataArray['companies'] = $values;
         }
         if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
-            $dataArray['messages'] = $data->messages === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->messages, 'json', $context));
+            $dataArray['messages'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->messages, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

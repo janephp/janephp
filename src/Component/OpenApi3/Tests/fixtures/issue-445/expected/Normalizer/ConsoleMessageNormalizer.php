@@ -44,7 +44,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -68,7 +68,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             $object->command = $data['command'];
             unset($data['command']);
         }
-        elseif (\array_key_exists('command', $data) && $data['command'] === null) {
+        elseif (\array_key_exists('command', $data)) {
             $object->command = null;
             unset($data['command']);
         }
@@ -80,7 +80,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             $object->arguments = $values;
             unset($data['arguments']);
         }
-        elseif (\array_key_exists('arguments', $data) && $data['arguments'] === null) {
+        elseif (\array_key_exists('arguments', $data)) {
             $object->arguments = null;
             unset($data['arguments']);
         }
@@ -88,7 +88,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             $object->targetQueue = $data['targetQueue'];
             unset($data['targetQueue']);
         }
-        elseif (\array_key_exists('targetQueue', $data) && $data['targetQueue'] === null) {
+        elseif (\array_key_exists('targetQueue', $data)) {
             $object->targetQueue = null;
             unset($data['targetQueue']);
         }

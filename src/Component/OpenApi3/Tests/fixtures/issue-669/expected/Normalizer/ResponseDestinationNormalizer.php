@@ -52,7 +52,7 @@ class ResponseDestinationNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
-            $dataArray['destination'] = $data->destination === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destination, 'json', $context));
+            $dataArray['destination'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destination, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

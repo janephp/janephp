@@ -67,7 +67,7 @@ class SciSciProfileListNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['list'] = $values;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = $data->extra === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
+            $dataArray['extra'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

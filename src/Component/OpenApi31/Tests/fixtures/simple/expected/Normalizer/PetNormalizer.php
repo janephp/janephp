@@ -55,7 +55,7 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->tag = $value;
             unset($data['tag']);
         }
-        elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
+        elseif (\array_key_exists('tag', $data)) {
             $object->tag = null;
             unset($data['tag']);
         }

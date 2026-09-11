@@ -44,7 +44,7 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -56,7 +56,7 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
-        elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
+        elseif (\array_key_exists('fieldPath', $data)) {
             $object->fieldPath = null;
             unset($data['fieldPath']);
         }

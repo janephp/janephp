@@ -45,7 +45,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->aggregationName = $data['aggregationName'];
             unset($data['aggregationName']);
         }
-        elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
+        elseif (\array_key_exists('aggregationName', $data)) {
             $object->aggregationName = null;
             unset($data['aggregationName']);
         }
@@ -109,7 +109,7 @@ class AggregationNameInvalidExceptionNormalizer implements DenormalizerInterface
             $object->aggregationPrefix = $data['aggregationPrefix'];
             unset($data['aggregationPrefix']);
         }
-        elseif (\array_key_exists('aggregationPrefix', $data) && $data['aggregationPrefix'] === null) {
+        elseif (\array_key_exists('aggregationPrefix', $data)) {
             $object->aggregationPrefix = null;
             unset($data['aggregationPrefix']);
         }

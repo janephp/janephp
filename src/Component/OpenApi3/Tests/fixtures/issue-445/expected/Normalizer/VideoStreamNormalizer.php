@@ -52,19 +52,19 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('bitRate', $data) && $data['bitRate'] !== null) {
             $object->bitRate = $data['bitRate'];
         }
-        elseif (\array_key_exists('bitRate', $data) && $data['bitRate'] === null) {
+        elseif (\array_key_exists('bitRate', $data)) {
             $object->bitRate = null;
         }
         if (\array_key_exists('codec', $data) && $data['codec'] !== null) {
             $object->codec = $data['codec'];
         }
-        elseif (\array_key_exists('codec', $data) && $data['codec'] === null) {
+        elseif (\array_key_exists('codec', $data)) {
             $object->codec = null;
         }
         if (\array_key_exists('displayAspectRatio', $data) && $data['displayAspectRatio'] !== null) {
             $object->displayAspectRatio = $data['displayAspectRatio'];
         }
-        elseif (\array_key_exists('displayAspectRatio', $data) && $data['displayAspectRatio'] === null) {
+        elseif (\array_key_exists('displayAspectRatio', $data)) {
             $object->displayAspectRatio = null;
         }
         if (\array_key_exists('durationInSeconds', $data)) {
@@ -73,61 +73,61 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
             $object->format = $data['format'];
         }
-        elseif (\array_key_exists('format', $data) && $data['format'] === null) {
+        elseif (\array_key_exists('format', $data)) {
             $object->format = null;
         }
         if (\array_key_exists('frameCount', $data) && $data['frameCount'] !== null) {
             $object->frameCount = $data['frameCount'];
         }
-        elseif (\array_key_exists('frameCount', $data) && $data['frameCount'] === null) {
+        elseif (\array_key_exists('frameCount', $data)) {
             $object->frameCount = null;
         }
         if (\array_key_exists('frameRate', $data) && $data['frameRate'] !== null) {
             $object->frameRate = $data['frameRate'];
         }
-        elseif (\array_key_exists('frameRate', $data) && $data['frameRate'] === null) {
+        elseif (\array_key_exists('frameRate', $data)) {
             $object->frameRate = null;
         }
         if (\array_key_exists('height', $data) && $data['height'] !== null) {
             $object->height = $data['height'];
         }
-        elseif (\array_key_exists('height', $data) && $data['height'] === null) {
+        elseif (\array_key_exists('height', $data)) {
             $object->height = null;
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->language = $data['language'];
         }
-        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+        elseif (\array_key_exists('language', $data)) {
             $object->language = null;
         }
         if (\array_key_exists('pixelAspectRatio', $data) && $data['pixelAspectRatio'] !== null) {
             $object->pixelAspectRatio = $data['pixelAspectRatio'];
         }
-        elseif (\array_key_exists('pixelAspectRatio', $data) && $data['pixelAspectRatio'] === null) {
+        elseif (\array_key_exists('pixelAspectRatio', $data)) {
             $object->pixelAspectRatio = null;
         }
         if (\array_key_exists('resolution', $data) && $data['resolution'] !== null) {
             $object->resolution = $data['resolution'];
         }
-        elseif (\array_key_exists('resolution', $data) && $data['resolution'] === null) {
+        elseif (\array_key_exists('resolution', $data)) {
             $object->resolution = null;
         }
         if (\array_key_exists('streamSize', $data) && $data['streamSize'] !== null) {
             $object->streamSize = $data['streamSize'];
         }
-        elseif (\array_key_exists('streamSize', $data) && $data['streamSize'] === null) {
+        elseif (\array_key_exists('streamSize', $data)) {
             $object->streamSize = null;
         }
         if (\array_key_exists('width', $data) && $data['width'] !== null) {
             $object->width = $data['width'];
         }
-        elseif (\array_key_exists('width', $data) && $data['width'] === null) {
+        elseif (\array_key_exists('width', $data)) {
             $object->width = null;
         }
         if (\array_key_exists('rotation', $data) && $data['rotation'] !== null) {
             $object->rotation = $data['rotation'];
         }
-        elseif (\array_key_exists('rotation', $data) && $data['rotation'] === null) {
+        elseif (\array_key_exists('rotation', $data)) {
             $object->rotation = null;
         }
         return $object;

@@ -61,7 +61,7 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
             }
             $object->userRolesRights = $values_1;
         }
-        elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
+        elseif (\array_key_exists('userRolesRights', $data)) {
             $object->userRolesRights = null;
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
@@ -71,7 +71,7 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
             }
             $object->userRolesPermissionSetRights = $values_2;
         }
-        elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
+        elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
         }
         if (\array_key_exists('exclusive', $data)) {
@@ -87,7 +87,7 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
             }
             $object->audit = $value_4;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         return $object;
@@ -124,7 +124,7 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_4 = $data->audit;
             if (is_object($data->audit)) {
-                $value_4 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_4;
         }

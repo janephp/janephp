@@ -67,7 +67,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     {
         $dataArray = [];
         if (array_key_exists('issuedShareCapital', get_object_vars($data)) && null !== ($data->issuedShareCapital ?? null)) {
-            $dataArray['issuedShareCapital'] = $data->issuedShareCapital === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->issuedShareCapital, 'json', $context));
+            $dataArray['issuedShareCapital'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->issuedShareCapital, 'json', $context));
         }
         if (array_key_exists('numberOfSharesIssued', get_object_vars($data)) && null !== ($data->numberOfSharesIssued ?? null)) {
             $dataArray['numberOfSharesIssued'] = $data->numberOfSharesIssued;

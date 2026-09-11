@@ -52,7 +52,7 @@ class ResponseTagsNewNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
-            $dataArray['tag'] = $data->tag === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tag, 'json', $context));
+            $dataArray['tag'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tag, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

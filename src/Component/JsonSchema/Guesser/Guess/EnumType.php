@@ -39,7 +39,7 @@ class EnumType extends Type
         );
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         return new Expr\PropertyFetch($input, 'value');
     }

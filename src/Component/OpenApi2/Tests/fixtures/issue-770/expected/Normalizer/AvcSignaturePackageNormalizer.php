@@ -87,10 +87,10 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['binariesInfo'] = $values;
         }
         if (array_key_exists('checkLatestInstallableSettings', get_object_vars($data)) && null !== ($data->checkLatestInstallableSettings ?? null)) {
-            $dataArray['checkLatestInstallableSettings'] = $data->checkLatestInstallableSettings === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context));
+            $dataArray['checkLatestInstallableSettings'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings, 'json', $context));
         }
         if (array_key_exists('latestInstallable', get_object_vars($data)) && null !== ($data->latestInstallable ?? null)) {
-            $dataArray['latestInstallable'] = $data->latestInstallable === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable, 'json', $context));
+            $dataArray['latestInstallable'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->latestInstallable, 'json', $context));
         }
         return $dataArray;
     }

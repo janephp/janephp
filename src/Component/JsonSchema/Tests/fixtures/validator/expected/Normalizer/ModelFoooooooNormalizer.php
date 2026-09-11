@@ -143,7 +143,7 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->dateNullableFormat = $date_1->setTime(0, 0, 0);
         }
-        elseif (\array_key_exists('dateNullableFormat', $data) && $data['dateNullableFormat'] === null) {
+        elseif (\array_key_exists('dateNullableFormat', $data)) {
             $object->dateNullableFormat = null;
         }
         if (\array_key_exists('dateTimeFormat', $data)) {
@@ -270,7 +270,7 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['dateTimeFormat'] = $data->dateTimeFormat->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = $data->foo === null ? null : new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->foo, 'json', $context));
+            $dataArray['foo'] = new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->foo, 'json', $context));
         }
         if (array_key_exists('arrayEmptyItems', get_object_vars($data)) && null !== ($data->arrayEmptyItems ?? null)) {
             $values_4 = [];

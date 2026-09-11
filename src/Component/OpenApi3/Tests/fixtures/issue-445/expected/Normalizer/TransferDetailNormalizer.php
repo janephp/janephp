@@ -65,7 +65,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
-        elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
+        elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
@@ -77,7 +77,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->collectionId = $data['collectionId'];
             unset($data['collectionId']);
         }
-        elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
+        elseif (\array_key_exists('collectionId', $data)) {
             $object->collectionId = null;
             unset($data['collectionId']);
         }
@@ -121,7 +121,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->lastDataExtractionProgressTimeStamp = $date;
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
-        elseif (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] === null) {
+        elseif (\array_key_exists('lastDataExtractionProgressTimeStamp', $data)) {
             $object->lastDataExtractionProgressTimeStamp = null;
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
@@ -133,7 +133,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->lastFileUploadProgressTimeStamp = $date_1;
             unset($data['lastFileUploadProgressTimeStamp']);
         }
-        elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] === null) {
+        elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data)) {
             $object->lastFileUploadProgressTimeStamp = null;
             unset($data['lastFileUploadProgressTimeStamp']);
         }
@@ -168,7 +168,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $value_2 = $data->audit;
         if (is_object($data->audit)) {
-            $value_2 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_2;
         if (array_key_exists('itemProgress', get_object_vars($data)) && null !== ($data->itemProgress ?? null)) {

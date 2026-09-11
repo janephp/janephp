@@ -40,7 +40,7 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('onlyNull', $data) && $data['onlyNull'] !== null) {
             $object->onlyNull = $data['onlyNull'];
         }
-        elseif (\array_key_exists('onlyNull', $data) && $data['onlyNull'] === null) {
+        elseif (\array_key_exists('onlyNull', $data)) {
             $object->onlyNull = null;
         }
         if (\array_key_exists('nullOrString', $data) && $data['nullOrString'] !== null) {
@@ -52,13 +52,13 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->nullOrString = $value;
         }
-        elseif (\array_key_exists('nullOrString', $data) && $data['nullOrString'] === null) {
+        elseif (\array_key_exists('nullOrString', $data)) {
             $object->nullOrString = null;
         }
         if (\array_key_exists('required', $data) && $data['required'] !== null) {
             $object->required = $data['required'];
         }
-        elseif (\array_key_exists('required', $data) && $data['required'] === null) {
+        elseif (\array_key_exists('required', $data)) {
             $object->required = null;
         }
         if (\array_key_exists('requiredNull', $data) && $data['requiredNull'] !== null) {
@@ -70,7 +70,7 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->requiredNull = $value_1;
         }
-        elseif (\array_key_exists('requiredNull', $data) && $data['requiredNull'] === null) {
+        elseif (\array_key_exists('requiredNull', $data)) {
             $object->requiredNull = null;
         }
         return $object;

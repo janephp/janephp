@@ -41,7 +41,7 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -57,7 +57,7 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
             $object->transformations = $values;
             unset($data['transformations']);
         }
-        elseif (\array_key_exists('transformations', $data) && $data['transformations'] === null) {
+        elseif (\array_key_exists('transformations', $data)) {
             $object->transformations = null;
             unset($data['transformations']);
         }

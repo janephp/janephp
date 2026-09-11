@@ -51,7 +51,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -59,7 +59,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -71,7 +71,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -83,7 +83,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -91,7 +91,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -99,7 +99,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -107,7 +107,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->fieldId = $data['fieldId'];
             unset($data['fieldId']);
         }
-        elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
+        elseif (\array_key_exists('fieldId', $data)) {
             $object->fieldId = null;
             unset($data['fieldId']);
         }
@@ -115,7 +115,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             $object->propertyName = $data['propertyName'];
             unset($data['propertyName']);
         }
-        elseif (\array_key_exists('propertyName', $data) && $data['propertyName'] === null) {
+        elseif (\array_key_exists('propertyName', $data)) {
             $object->propertyName = null;
             unset($data['propertyName']);
         }

@@ -40,31 +40,31 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
             $object->emailAddress = $data['emailAddress'];
         }
-        elseif (\array_key_exists('emailAddress', $data) && $data['emailAddress'] === null) {
+        elseif (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = null;
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->firstName = $data['firstName'];
         }
-        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        elseif (\array_key_exists('firstName', $data)) {
             $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->lastName = $data['lastName'];
         }
-        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->languageCode = $data['languageCode'];
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+        elseif (\array_key_exists('languageCode', $data)) {
             $object->languageCode = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
@@ -74,7 +74,7 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
             }
             $object->address = $value;
         }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        elseif (\array_key_exists('address', $data)) {
             $object->address = null;
         }
         return $object;
@@ -100,7 +100,7 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value = $data->address;
             if (is_object($data->address)) {
-                $value = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value;
         }

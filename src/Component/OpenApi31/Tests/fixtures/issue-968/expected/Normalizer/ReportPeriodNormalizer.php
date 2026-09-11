@@ -50,7 +50,7 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->from = $value;
             unset($data['from']);
         }
-        elseif (\array_key_exists('from', $data) && $data['from'] === null) {
+        elseif (\array_key_exists('from', $data)) {
             $object->from = null;
             unset($data['from']);
         }

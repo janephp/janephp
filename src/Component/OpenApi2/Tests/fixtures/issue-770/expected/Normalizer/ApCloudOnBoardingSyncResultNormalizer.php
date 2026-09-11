@@ -52,7 +52,7 @@ class ApCloudOnBoardingSyncResultNormalizer implements DenormalizerInterface, No
             $dataArray['syncedCount'] = $data->syncedCount;
         }
         if (array_key_exists('failAps', get_object_vars($data)) && null !== ($data->failAps ?? null)) {
-            $dataArray['failAps'] = $data->failAps === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->failAps, 'json', $context));
+            $dataArray['failAps'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->failAps, 'json', $context));
         }
         return $dataArray;
     }

@@ -168,13 +168,13 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('Init', $data) && $data['Init'] !== null) {
             $object->init = $data['Init'];
         }
-        elseif (\array_key_exists('Init', $data) && $data['Init'] === null) {
+        elseif (\array_key_exists('Init', $data)) {
             $object->init = null;
         }
         if (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] !== null) {
             $object->pidsLimit = $data['PidsLimit'];
         }
-        elseif (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] === null) {
+        elseif (\array_key_exists('PidsLimit', $data)) {
             $object->pidsLimit = null;
         }
         if (\array_key_exists('Ulimits', $data)) {
@@ -538,7 +538,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ContainerIDFile'] = $data->containerIDFile;
         }
         if (array_key_exists('logConfig', get_object_vars($data)) && null !== ($data->logConfig ?? null)) {
-            $dataArray['LogConfig'] = $data->logConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logConfig, 'json', $context));
+            $dataArray['LogConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logConfig, 'json', $context));
         }
         if (array_key_exists('networkMode', get_object_vars($data)) && null !== ($data->networkMode ?? null)) {
             $dataArray['NetworkMode'] = $data->networkMode;
@@ -555,7 +555,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['PortBindings'] = $values_10;
         }
         if (array_key_exists('restartPolicy', get_object_vars($data)) && null !== ($data->restartPolicy ?? null)) {
-            $dataArray['RestartPolicy'] = $data->restartPolicy === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
+            $dataArray['RestartPolicy'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
         }
         if (array_key_exists('autoRemove', get_object_vars($data)) && null !== ($data->autoRemove ?? null)) {
             $dataArray['AutoRemove'] = $data->autoRemove;

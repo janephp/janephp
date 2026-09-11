@@ -210,7 +210,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('RegistryConfig', $data) && $data['RegistryConfig'] !== null) {
             $object->registryConfig = $this->denormalizer->denormalize($data['RegistryConfig'], \Docker\Api\Model\RegistryServiceConfig::class, 'json', $context);
         }
-        elseif (\array_key_exists('RegistryConfig', $data) && $data['RegistryConfig'] === null) {
+        elseif (\array_key_exists('RegistryConfig', $data)) {
             $object->registryConfig = null;
         }
         if (\array_key_exists('GenericResources', $data)) {
@@ -347,7 +347,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DockerRootDir'] = $data->dockerRootDir;
         }
         if (array_key_exists('plugins', get_object_vars($data)) && null !== ($data->plugins ?? null)) {
-            $dataArray['Plugins'] = $data->plugins === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->plugins, 'json', $context));
+            $dataArray['Plugins'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->plugins, 'json', $context));
         }
         if (array_key_exists('memoryLimit', get_object_vars($data)) && null !== ($data->memoryLimit ?? null)) {
             $dataArray['MemoryLimit'] = $data->memoryLimit;
@@ -434,7 +434,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['IndexServerAddress'] = $data->indexServerAddress;
         }
         if (array_key_exists('registryConfig', get_object_vars($data)) && null !== ($data->registryConfig ?? null)) {
-            $dataArray['RegistryConfig'] = $data->registryConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->registryConfig, 'json', $context));
+            $dataArray['RegistryConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->registryConfig, 'json', $context));
         }
         if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values_2 = [];
@@ -485,7 +485,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DefaultRuntime'] = $data->defaultRuntime;
         }
         if (array_key_exists('swarm', get_object_vars($data)) && null !== ($data->swarm ?? null)) {
-            $dataArray['Swarm'] = $data->swarm === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->swarm, 'json', $context));
+            $dataArray['Swarm'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->swarm, 'json', $context));
         }
         if (array_key_exists('liveRestoreEnabled', get_object_vars($data)) && null !== ($data->liveRestoreEnabled ?? null)) {
             $dataArray['LiveRestoreEnabled'] = $data->liveRestoreEnabled;
@@ -497,13 +497,13 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['InitBinary'] = $data->initBinary;
         }
         if (array_key_exists('containerdCommit', get_object_vars($data)) && null !== ($data->containerdCommit ?? null)) {
-            $dataArray['ContainerdCommit'] = $data->containerdCommit === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerdCommit, 'json', $context));
+            $dataArray['ContainerdCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerdCommit, 'json', $context));
         }
         if (array_key_exists('runcCommit', get_object_vars($data)) && null !== ($data->runcCommit ?? null)) {
-            $dataArray['RuncCommit'] = $data->runcCommit === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->runcCommit, 'json', $context));
+            $dataArray['RuncCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->runcCommit, 'json', $context));
         }
         if (array_key_exists('initCommit', get_object_vars($data)) && null !== ($data->initCommit ?? null)) {
-            $dataArray['InitCommit'] = $data->initCommit === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->initCommit, 'json', $context));
+            $dataArray['InitCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->initCommit, 'json', $context));
         }
         if (array_key_exists('securityOptions', get_object_vars($data)) && null !== ($data->securityOptions ?? null)) {
             $values_5 = [];

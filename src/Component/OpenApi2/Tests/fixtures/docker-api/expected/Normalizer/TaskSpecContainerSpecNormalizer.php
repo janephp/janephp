@@ -157,7 +157,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('Init', $data) && $data['Init'] !== null) {
             $object->init = $data['Init'];
         }
-        elseif (\array_key_exists('Init', $data) && $data['Init'] === null) {
+        elseif (\array_key_exists('Init', $data)) {
             $object->init = null;
         }
         if (\array_key_exists('Sysctls', $data)) {
@@ -241,7 +241,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Groups'] = $values_4;
         }
         if (array_key_exists('privileges', get_object_vars($data)) && null !== ($data->privileges ?? null)) {
-            $dataArray['Privileges'] = $data->privileges === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->privileges, 'json', $context));
+            $dataArray['Privileges'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->privileges, 'json', $context));
         }
         if (array_key_exists('tTY', get_object_vars($data)) && null !== ($data->tTY ?? null)) {
             $dataArray['TTY'] = $data->tTY;
@@ -266,7 +266,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['StopGracePeriod'] = $data->stopGracePeriod;
         }
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
-            $dataArray['HealthCheck'] = $data->healthCheck === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
+            $dataArray['HealthCheck'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
         }
         if (array_key_exists('hosts', get_object_vars($data)) && null !== ($data->hosts ?? null)) {
             $values_6 = [];
@@ -276,7 +276,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Hosts'] = $values_6;
         }
         if (array_key_exists('dNSConfig', get_object_vars($data)) && null !== ($data->dNSConfig ?? null)) {
-            $dataArray['DNSConfig'] = $data->dNSConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dNSConfig, 'json', $context));
+            $dataArray['DNSConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->dNSConfig, 'json', $context));
         }
         if (array_key_exists('secrets', get_object_vars($data)) && null !== ($data->secrets ?? null)) {
             $values_7 = [];

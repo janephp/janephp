@@ -40,7 +40,7 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('appId', $data) && $data['appId'] !== null) {
             $object->appId = $data['appId'];
         }
-        elseif (\array_key_exists('appId', $data) && $data['appId'] === null) {
+        elseif (\array_key_exists('appId', $data)) {
             $object->appId = null;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
@@ -54,7 +54,7 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->name = $value;
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
@@ -68,13 +68,13 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->description = $value_2;
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
         if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
             $object->icon = $data['icon'];
         }
-        elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
+        elseif (\array_key_exists('icon', $data)) {
             $object->icon = null;
         }
         return $object;

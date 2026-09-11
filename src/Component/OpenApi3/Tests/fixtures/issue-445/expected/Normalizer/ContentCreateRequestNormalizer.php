@@ -47,7 +47,7 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
@@ -57,7 +57,7 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->content = $values_1;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
@@ -67,7 +67,7 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->metadata = $values_2;
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
         if (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] !== null) {
@@ -77,13 +77,13 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->contentPermissionSetIds = $values_3;
         }
-        elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
+        elseif (\array_key_exists('contentPermissionSetIds', $data)) {
             $object->contentPermissionSetIds = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->requestId = $data['requestId'];
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
         }
         return $object;

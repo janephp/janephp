@@ -62,7 +62,7 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
             $object->next = $value;
             unset($data['next']);
         }
-        elseif (\array_key_exists('next', $data) && $data['next'] === null) {
+        elseif (\array_key_exists('next', $data)) {
             $object->next = null;
             unset($data['next']);
         }

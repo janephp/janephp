@@ -41,7 +41,7 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
             $object->lastRunAt = $data['last_run_at'];
             unset($data['last_run_at']);
         }
-        elseif (\array_key_exists('last_run_at', $data) && $data['last_run_at'] === null) {
+        elseif (\array_key_exists('last_run_at', $data)) {
             $object->lastRunAt = null;
             unset($data['last_run_at']);
         }
@@ -49,7 +49,7 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
             $object->nextRunAt = $data['next_run_at'];
             unset($data['next_run_at']);
         }
-        elseif (\array_key_exists('next_run_at', $data) && $data['next_run_at'] === null) {
+        elseif (\array_key_exists('next_run_at', $data)) {
             $object->nextRunAt = null;
             unset($data['next_run_at']);
         }

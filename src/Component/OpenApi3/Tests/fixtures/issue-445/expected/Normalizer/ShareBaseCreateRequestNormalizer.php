@@ -49,7 +49,7 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->description = $data['description'];
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
@@ -59,7 +59,7 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
             }
             $object->expirationDate = $date;
         }
-        elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
+        elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
         if (\array_key_exists('contents', $data)) {
@@ -76,7 +76,7 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
             }
             $object->layerSchemaIds = $values_1;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('outputAccess', $data)) {

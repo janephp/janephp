@@ -54,7 +54,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->body = $value;
             unset($data['body']);
         }
-        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+        elseif (\array_key_exists('body', $data)) {
             $object->body = null;
             unset($data['body']);
         }

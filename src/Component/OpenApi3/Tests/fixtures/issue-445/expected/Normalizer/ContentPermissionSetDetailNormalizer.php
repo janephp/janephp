@@ -64,7 +64,7 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
             $object->userRolesRights = $values_1;
             unset($data['userRolesRights']);
         }
-        elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
+        elseif (\array_key_exists('userRolesRights', $data)) {
             $object->userRolesRights = null;
             unset($data['userRolesRights']);
         }
@@ -76,7 +76,7 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
             $object->userRolesPermissionSetRights = $values_2;
             unset($data['userRolesPermissionSetRights']);
         }
-        elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
+        elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
             unset($data['userRolesPermissionSetRights']);
         }
@@ -96,7 +96,7 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
             $object->audit = $value_4;
             unset($data['audit']);
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
             unset($data['audit']);
         }
@@ -139,7 +139,7 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_4 = $data->audit;
             if (is_object($data->audit)) {
-                $value_4 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_4;
         }

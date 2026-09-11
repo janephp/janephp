@@ -49,7 +49,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->resizeAction = $value;
             unset($data['resizeAction']);
         }
-        elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
+        elseif (\array_key_exists('resizeAction', $data)) {
             $object->resizeAction = null;
             unset($data['resizeAction']);
         }
@@ -61,7 +61,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->audioCodec = $value_1;
             unset($data['audioCodec']);
         }
-        elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
+        elseif (\array_key_exists('audioCodec', $data)) {
             $object->audioCodec = null;
             unset($data['audioCodec']);
         }
@@ -77,7 +77,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->extension = $data['extension'];
             unset($data['extension']);
         }
-        elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
+        elseif (\array_key_exists('extension', $data)) {
             $object->extension = null;
             unset($data['extension']);
         }
@@ -95,14 +95,14 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
             $value = $data->resizeAction;
             if (is_object($data->resizeAction)) {
-                $value = $data->resizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
             }
             $dataArray['resizeAction'] = $value;
         }
         if (array_key_exists('audioCodec', get_object_vars($data)) && null !== ($data->audioCodec ?? null)) {
             $value_1 = $data->audioCodec;
             if (is_object($data->audioCodec)) {
-                $value_1 = $data->audioCodec === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec, 'json', $context));
             }
             $dataArray['audioCodec'] = $value_1;
         }

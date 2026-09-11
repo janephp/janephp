@@ -44,7 +44,7 @@ class BulkResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->rows = $values;
         }
-        elseif (\array_key_exists('rows', $data) && $data['rows'] === null) {
+        elseif (\array_key_exists('rows', $data)) {
             $object->rows = null;
         }
         return $object;

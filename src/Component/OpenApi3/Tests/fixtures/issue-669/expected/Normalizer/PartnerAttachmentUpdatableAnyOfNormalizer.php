@@ -52,7 +52,7 @@ class PartnerAttachmentUpdatableAnyOfNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
-            $dataArray['bgp'] = $data->bgp === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp, 'json', $context));
+            $dataArray['bgp'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,7 +47,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
             unset($data['searchString']);
         }
@@ -59,7 +59,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->searchBehaviors = $values;
             unset($data['searchBehaviors']);
         }
-        elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
+        elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
             unset($data['searchBehaviors']);
         }
@@ -71,7 +71,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->filter = $value_1;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -91,7 +91,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->userRightsFilter = $values_1;
             unset($data['userRightsFilter']);
         }
-        elseif (\array_key_exists('userRightsFilter', $data) && $data['userRightsFilter'] === null) {
+        elseif (\array_key_exists('userRightsFilter', $data)) {
             $object->userRightsFilter = null;
             unset($data['userRightsFilter']);
         }
@@ -103,7 +103,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->aggregationFilters = $values_2;
             unset($data['aggregationFilters']);
         }
-        elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
+        elseif (\array_key_exists('aggregationFilters', $data)) {
             $object->aggregationFilters = null;
             unset($data['aggregationFilters']);
         }
@@ -146,7 +146,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }

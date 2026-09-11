@@ -96,19 +96,19 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
             $dataArray['companyRegistrationNumber'] = $data->companyRegistrationNumber;
         }
         if (array_key_exists('mainActivity', get_object_vars($data)) && null !== ($data->mainActivity ?? null)) {
-            $dataArray['mainActivity'] = $data->mainActivity === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainActivity, 'json', $context));
+            $dataArray['mainActivity'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainActivity, 'json', $context));
         }
         if (array_key_exists('companyStatus', get_object_vars($data)) && null !== ($data->companyStatus ?? null)) {
-            $dataArray['companyStatus'] = $data->companyStatus === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
+            $dataArray['companyStatus'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
         }
         if (array_key_exists('latestTurnoverFigure', get_object_vars($data)) && null !== ($data->latestTurnoverFigure ?? null)) {
-            $dataArray['latestTurnoverFigure'] = $data->latestTurnoverFigure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure, 'json', $context));
+            $dataArray['latestTurnoverFigure'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure, 'json', $context));
         }
         if (array_key_exists('latestShareholdersEquityFigure', get_object_vars($data)) && null !== ($data->latestShareholdersEquityFigure ?? null)) {
-            $dataArray['latestShareholdersEquityFigure'] = $data->latestShareholdersEquityFigure === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestShareholdersEquityFigure, 'json', $context));
+            $dataArray['latestShareholdersEquityFigure'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestShareholdersEquityFigure, 'json', $context));
         }
         if (array_key_exists('creditRating', get_object_vars($data)) && null !== ($data->creditRating ?? null)) {
-            $dataArray['creditRating'] = $data->creditRating === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditRating, 'json', $context));
+            $dataArray['creditRating'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditRating, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

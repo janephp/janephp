@@ -75,7 +75,7 @@ class ArrayType extends Type
         );
     }
 
-    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
@@ -86,6 +86,8 @@ class ArrayType extends Type
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
         $loopKeyVar = $this->createLoopKeyStatement($context);
 
+        // Loop items keep their null-safety wrapper even when the array itself
+        // is known non-null: item nullability is not implied by the array's.
         list($subStatements, $outputExpr) = $this->itemType->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
         $loopStatements = array_merge($subStatements, [

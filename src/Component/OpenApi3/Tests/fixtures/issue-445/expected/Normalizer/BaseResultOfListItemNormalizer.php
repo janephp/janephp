@@ -53,7 +53,7 @@ class BaseResultOfListItemNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->pageToken = $data['pageToken'];
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
         }
         return $object;

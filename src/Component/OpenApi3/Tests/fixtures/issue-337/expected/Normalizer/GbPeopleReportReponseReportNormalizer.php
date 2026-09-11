@@ -75,10 +75,10 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
             $dataArray['directorId'] = $data->directorId;
         }
         if (array_key_exists('directorSummary', get_object_vars($data)) && null !== ($data->directorSummary ?? null)) {
-            $dataArray['directorSummary'] = $data->directorSummary === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorSummary, 'json', $context));
+            $dataArray['directorSummary'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorSummary, 'json', $context));
         }
         if (array_key_exists('directorDetails', get_object_vars($data)) && null !== ($data->directorDetails ?? null)) {
-            $dataArray['directorDetails'] = $data->directorDetails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorDetails, 'json', $context));
+            $dataArray['directorDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorDetails, 'json', $context));
         }
         if (array_key_exists('otherAddresses', get_object_vars($data)) && null !== ($data->otherAddresses ?? null)) {
             $values = [];
@@ -88,7 +88,7 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
             $dataArray['otherAddresses'] = $values;
         }
         if (array_key_exists('directorships', get_object_vars($data)) && null !== ($data->directorships ?? null)) {
-            $dataArray['directorships'] = $data->directorships === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorships, 'json', $context));
+            $dataArray['directorships'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->directorships, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

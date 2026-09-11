@@ -88,16 +88,16 @@ class ServicesCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $dataArray['Labels'] = $values;
         }
         if (array_key_exists('taskTemplate', get_object_vars($data)) && null !== ($data->taskTemplate ?? null)) {
-            $dataArray['TaskTemplate'] = $data->taskTemplate === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskTemplate, 'json', $context));
+            $dataArray['TaskTemplate'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->taskTemplate, 'json', $context));
         }
         if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
-            $dataArray['Mode'] = $data->mode === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->mode, 'json', $context));
+            $dataArray['Mode'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->mode, 'json', $context));
         }
         if (array_key_exists('updateConfig', get_object_vars($data)) && null !== ($data->updateConfig ?? null)) {
-            $dataArray['UpdateConfig'] = $data->updateConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateConfig, 'json', $context));
+            $dataArray['UpdateConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateConfig, 'json', $context));
         }
         if (array_key_exists('rollbackConfig', get_object_vars($data)) && null !== ($data->rollbackConfig ?? null)) {
-            $dataArray['RollbackConfig'] = $data->rollbackConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rollbackConfig, 'json', $context));
+            $dataArray['RollbackConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rollbackConfig, 'json', $context));
         }
         if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values_1 = [];
@@ -107,7 +107,7 @@ class ServicesCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $dataArray['Networks'] = $values_1;
         }
         if (array_key_exists('endpointSpec', get_object_vars($data)) && null !== ($data->endpointSpec ?? null)) {
-            $dataArray['EndpointSpec'] = $data->endpointSpec === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointSpec, 'json', $context));
+            $dataArray['EndpointSpec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointSpec, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServicesCreatePostBodyConstraint());

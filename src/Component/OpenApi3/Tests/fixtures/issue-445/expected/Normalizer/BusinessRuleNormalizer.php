@@ -52,7 +52,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
@@ -62,7 +62,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->triggerPoint = $value;
         }
-        elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
+        elseif (\array_key_exists('triggerPoint', $data)) {
             $object->triggerPoint = null;
         }
         if (\array_key_exists('isEnabled', $data)) {
@@ -79,7 +79,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->names = $value_1;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
@@ -93,7 +93,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->description = $value_3;
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
         if (\array_key_exists('enableTracing', $data)) {
@@ -119,7 +119,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('triggerPoint', get_object_vars($data)) && null !== ($data->triggerPoint ?? null)) {
             $value = $data->triggerPoint;
             if (is_object($data->triggerPoint)) {
-                $value = $data->triggerPoint === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
             }
             $dataArray['triggerPoint'] = $value;
         }

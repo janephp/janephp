@@ -49,7 +49,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->identifier = $data['identifier'];
             unset($data['identifier']);
         }
-        elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
+        elseif (\array_key_exists('identifier', $data)) {
             $object->identifier = null;
             unset($data['identifier']);
         }
@@ -73,7 +73,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
             unset($data['contentId']);
         }
@@ -93,7 +93,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->fileMetadata = $value_2;
             unset($data['fileMetadata']);
         }
-        elseif (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] === null) {
+        elseif (\array_key_exists('fileMetadata', $data)) {
             $object->fileMetadata = null;
             unset($data['fileMetadata']);
         }
@@ -105,7 +105,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->outputItems = $values;
             unset($data['outputItems']);
         }
-        elseif (\array_key_exists('outputItems', $data) && $data['outputItems'] === null) {
+        elseif (\array_key_exists('outputItems', $data)) {
             $object->outputItems = null;
             unset($data['outputItems']);
         }
@@ -136,13 +136,13 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('fileMetadata', get_object_vars($data)) && null !== ($data->fileMetadata ?? null)) {
             $value_2 = $data->fileMetadata;
             if (is_object($data->fileMetadata)) {
-                $value_2 = $data->fileMetadata === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata, 'json', $context));
+                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata, 'json', $context));
             }
             $dataArray['fileMetadata'] = $value_2;
         }

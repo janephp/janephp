@@ -47,7 +47,7 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -59,7 +59,7 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
             $object->separators = $data['separators'];
             unset($data['separators']);
         }
-        elseif (\array_key_exists('separators', $data) && $data['separators'] === null) {
+        elseif (\array_key_exists('separators', $data)) {
             $object->separators = null;
             unset($data['separators']);
         }

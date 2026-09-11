@@ -40,7 +40,7 @@ class PermissionUserRoleRightsOfMetadataRightNormalizer implements DenormalizerI
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
             $object->userRoleId = $data['userRoleId'];
         }
-        elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
+        elseif (\array_key_exists('userRoleId', $data)) {
             $object->userRoleId = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -54,7 +54,7 @@ class PermissionUserRoleRightsOfMetadataRightNormalizer implements DenormalizerI
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('rights', $data) && $data['rights'] !== null) {
@@ -64,7 +64,7 @@ class PermissionUserRoleRightsOfMetadataRightNormalizer implements DenormalizerI
             }
             $object->rights = $values_1;
         }
-        elseif (\array_key_exists('rights', $data) && $data['rights'] === null) {
+        elseif (\array_key_exists('rights', $data)) {
             $object->rights = null;
         }
         return $object;

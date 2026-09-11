@@ -44,7 +44,7 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
             }
             $object->inputs = $values;
         }
-        elseif (\array_key_exists('inputs', $data) && $data['inputs'] === null) {
+        elseif (\array_key_exists('inputs', $data)) {
             $object->inputs = null;
         }
         if (\array_key_exists('transformations', $data) && $data['transformations'] !== null) {
@@ -54,19 +54,19 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
             }
             $object->transformations = $values_1;
         }
-        elseif (\array_key_exists('transformations', $data) && $data['transformations'] === null) {
+        elseif (\array_key_exists('transformations', $data)) {
             $object->transformations = null;
         }
         if (\array_key_exists('storeIn', $data) && $data['storeIn'] !== null) {
             $object->storeIn = $data['storeIn'];
         }
-        elseif (\array_key_exists('storeIn', $data) && $data['storeIn'] === null) {
+        elseif (\array_key_exists('storeIn', $data)) {
             $object->storeIn = null;
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->traceRefId = $data['traceRefId'];
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
         return $object;

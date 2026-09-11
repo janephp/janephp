@@ -68,7 +68,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     {
         $dataArray = [];
         if (array_key_exists('basicInformation', get_object_vars($data)) && null !== ($data->basicInformation ?? null)) {
-            $dataArray['basicInformation'] = $data->basicInformation === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation, 'json', $context));
+            $dataArray['basicInformation'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation, 'json', $context));
         }
         if (array_key_exists('activityClassifications', get_object_vars($data)) && null !== ($data->activityClassifications ?? null)) {
             $values = [];

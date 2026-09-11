@@ -53,7 +53,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -77,7 +77,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             $object->filter = $value;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -89,7 +89,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             $object->listItemCreateTemplate = $data['listItemCreateTemplate'];
             unset($data['listItemCreateTemplate']);
         }
-        elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
+        elseif (\array_key_exists('listItemCreateTemplate', $data)) {
             $object->listItemCreateTemplate = null;
             unset($data['listItemCreateTemplate']);
         }
@@ -116,7 +116,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

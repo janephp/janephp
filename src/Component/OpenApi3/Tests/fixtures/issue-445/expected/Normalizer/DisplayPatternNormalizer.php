@@ -62,7 +62,7 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->templates = $value_2;
         }
-        elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
+        elseif (\array_key_exists('templates', $data)) {
             $object->templates = null;
         }
         return $object;

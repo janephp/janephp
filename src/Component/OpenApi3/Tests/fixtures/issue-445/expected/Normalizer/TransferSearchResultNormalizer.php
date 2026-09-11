@@ -60,7 +60,7 @@ class TransferSearchResultNormalizer implements DenormalizerInterface, Normalize
             $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
             unset($data['pageToken']);
         }
@@ -68,7 +68,7 @@ class TransferSearchResultNormalizer implements DenormalizerInterface, Normalize
             $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
             unset($data['searchString']);
         }
@@ -84,7 +84,7 @@ class TransferSearchResultNormalizer implements DenormalizerInterface, Normalize
             $object->queryDebugInformation = $values_1;
             unset($data['queryDebugInformation']);
         }
-        elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
+        elseif (\array_key_exists('queryDebugInformation', $data)) {
             $object->queryDebugInformation = null;
             unset($data['queryDebugInformation']);
         }

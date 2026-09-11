@@ -228,7 +228,7 @@ class MultipleType extends Type
         );
     }
 
-    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));
         $statements = [
@@ -238,7 +238,10 @@ class MultipleType extends Type
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
         foreach ($this->getTypesSorted() as $type) {
-            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input, $normalizerFromObject);
+            // Every branch condition (is_object(), is_string(), !is_null(), ...)
+            // already guarantees a non-null input, so the branch statements are
+            // emitted without their null-safety wrappers.
+            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input, $normalizerFromObject, false);
 
             $condition = $type->createNormalizationConditionStatement($input);
             $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);

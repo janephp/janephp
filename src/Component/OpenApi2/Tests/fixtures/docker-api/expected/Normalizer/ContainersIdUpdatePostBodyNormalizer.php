@@ -156,13 +156,13 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('Init', $data) && $data['Init'] !== null) {
             $object->init = $data['Init'];
         }
-        elseif (\array_key_exists('Init', $data) && $data['Init'] === null) {
+        elseif (\array_key_exists('Init', $data)) {
             $object->init = null;
         }
         if (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] !== null) {
             $object->pidsLimit = $data['PidsLimit'];
         }
-        elseif (\array_key_exists('PidsLimit', $data) && $data['PidsLimit'] === null) {
+        elseif (\array_key_exists('PidsLimit', $data)) {
             $object->pidsLimit = null;
         }
         if (\array_key_exists('Ulimits', $data)) {
@@ -325,7 +325,7 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
             $dataArray['IOMaximumBandwidth'] = $data->iOMaximumBandwidth;
         }
         if (array_key_exists('restartPolicy', get_object_vars($data)) && null !== ($data->restartPolicy ?? null)) {
-            $dataArray['RestartPolicy'] = $data->restartPolicy === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
+            $dataArray['RestartPolicy'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->restartPolicy, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdUpdatePostBodyConstraint());

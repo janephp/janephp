@@ -58,7 +58,7 @@ class PermissionSetCreateRequestOfMetadataRightNormalizer implements Denormalize
             }
             $object->userRolesRights = $values_1;
         }
-        elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
+        elseif (\array_key_exists('userRolesRights', $data)) {
             $object->userRolesRights = null;
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
@@ -68,7 +68,7 @@ class PermissionSetCreateRequestOfMetadataRightNormalizer implements Denormalize
             }
             $object->userRolesPermissionSetRights = $values_2;
         }
-        elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
+        elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
         }
         if (\array_key_exists('exclusive', $data)) {
@@ -77,7 +77,7 @@ class PermissionSetCreateRequestOfMetadataRightNormalizer implements Denormalize
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->requestId = $data['requestId'];
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
         }
         return $object;

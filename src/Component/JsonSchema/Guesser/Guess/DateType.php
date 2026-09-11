@@ -96,7 +96,7 @@ class DateType extends ObjectType
         ];
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         if ($this->isNullable($this->object)) {
             // $object?->format($format);

@@ -73,7 +73,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
             $dataArray['companyName'] = $data->companyName;
         }
         if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
-            $dataArray['amount'] = $data->amount === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->amount, 'json', $context));
+            $dataArray['amount'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->amount, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

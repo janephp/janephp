@@ -41,7 +41,7 @@ class UnassignContentPermissionSetsActionNormalizer implements DenormalizerInter
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class UnassignContentPermissionSetsActionNormalizer implements DenormalizerInter
             $object->permissionSetIds = $data['permissionSetIds'];
             unset($data['permissionSetIds']);
         }
-        elseif (\array_key_exists('permissionSetIds', $data) && $data['permissionSetIds'] === null) {
+        elseif (\array_key_exists('permissionSetIds', $data)) {
             $object->permissionSetIds = null;
             unset($data['permissionSetIds']);
         }

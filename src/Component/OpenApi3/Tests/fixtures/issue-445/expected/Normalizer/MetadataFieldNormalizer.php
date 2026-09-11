@@ -60,7 +60,7 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->availableKeyFields = $values;
         }
-        elseif (\array_key_exists('availableKeyFields', $data) && $data['availableKeyFields'] === null) {
+        elseif (\array_key_exists('availableKeyFields', $data)) {
             $object->availableKeyFields = null;
         }
         return $object;

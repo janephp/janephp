@@ -51,7 +51,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
             }
             $object->patterns = $value;
         }
-        elseif (\array_key_exists('patterns', $data) && $data['patterns'] === null) {
+        elseif (\array_key_exists('patterns', $data)) {
             $object->patterns = null;
         }
         return $object;

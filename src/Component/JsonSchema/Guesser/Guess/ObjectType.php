@@ -45,23 +45,29 @@ class ObjectType extends Type
         ]);
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
         if (!$normalizerFromObject) {
             $normalizerVar = new Expr\Variable('normalizer');
         }
 
+        $statement = new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())), [
+            new Arg(new Expr\MethodCall($normalizerVar, 'normalize', [
+                new Arg($input),
+                new Arg(new Scalar\String_('json')),
+                new Arg(new Expr\Variable('context')),
+            ])),
+        ], []);
+
+        if (!$inputMayBeNull) {
+            return $statement;
+        }
+
         return new Expr\Ternary(
             new Expr\BinaryOp\Identical($input, new Expr\ConstFetch(new Name('null'))),
             new Expr\ConstFetch(new Name('null')),
-            new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())), [
-                new Arg(new Expr\MethodCall($normalizerVar, 'normalize', [
-                    new Arg($input),
-                    new Arg(new Scalar\String_('json')),
-                    new Arg(new Expr\Variable('context')),
-                ])),
-            ], [])
+            $statement
         );
     }
 

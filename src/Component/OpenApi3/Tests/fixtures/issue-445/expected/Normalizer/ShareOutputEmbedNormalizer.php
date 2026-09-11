@@ -52,7 +52,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->viewUrl = $data['viewUrl'];
             unset($data['viewUrl']);
         }
-        elseif (\array_key_exists('viewUrl', $data) && $data['viewUrl'] === null) {
+        elseif (\array_key_exists('viewUrl', $data)) {
             $object->viewUrl = null;
             unset($data['viewUrl']);
         }
@@ -60,7 +60,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->downloadUrl = $data['downloadUrl'];
             unset($data['downloadUrl']);
         }
-        elseif (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] === null) {
+        elseif (\array_key_exists('downloadUrl', $data)) {
             $object->downloadUrl = null;
             unset($data['downloadUrl']);
         }
@@ -72,7 +72,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->detail = $value;
             unset($data['detail']);
         }
-        elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
+        elseif (\array_key_exists('detail', $data)) {
             $object->detail = null;
             unset($data['detail']);
         }
@@ -88,7 +88,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->token = $data['token'];
             unset($data['token']);
         }
-        elseif (\array_key_exists('token', $data) && $data['token'] === null) {
+        elseif (\array_key_exists('token', $data)) {
             $object->token = null;
             unset($data['token']);
         }
@@ -113,7 +113,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
             $value = $data->detail;
             if (is_object($data->detail)) {
-                $value = $data->detail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
             }
             $dataArray['detail'] = $value;
         }

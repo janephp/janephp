@@ -45,7 +45,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
             $object->aggregationName = $data['aggregationName'];
             unset($data['aggregationName']);
         }
-        elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
+        elseif (\array_key_exists('aggregationName', $data)) {
             $object->aggregationName = null;
             unset($data['aggregationName']);
         }
@@ -57,7 +57,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
             $object->filter = $value;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -65,7 +65,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
             $object->temporaryAggregatorRequestId = $data['temporaryAggregatorRequestId'];
             unset($data['temporaryAggregatorRequestId']);
         }
-        elseif (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] === null) {
+        elseif (\array_key_exists('temporaryAggregatorRequestId', $data)) {
             $object->temporaryAggregatorRequestId = null;
             unset($data['temporaryAggregatorRequestId']);
         }
@@ -86,7 +86,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

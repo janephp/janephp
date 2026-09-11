@@ -47,7 +47,7 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             }
             $object->outputIds = $values;
         }
-        elseif (\array_key_exists('outputIds', $data) && $data['outputIds'] === null) {
+        elseif (\array_key_exists('outputIds', $data)) {
             $object->outputIds = null;
         }
         if (\array_key_exists('contentIds', $data) && $data['contentIds'] !== null) {
@@ -57,7 +57,7 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             }
             $object->contentIds = $values_1;
         }
-        elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
+        elseif (\array_key_exists('contentIds', $data)) {
             $object->contentIds = null;
         }
         if (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] !== null) {
@@ -67,7 +67,7 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             }
             $object->fileExtensions = $values_2;
         }
-        elseif (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] === null) {
+        elseif (\array_key_exists('fileExtensions', $data)) {
             $object->fileExtensions = null;
         }
         if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
@@ -77,7 +77,7 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             }
             $object->outputFormatIds = $values_3;
         }
-        elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
+        elseif (\array_key_exists('outputFormatIds', $data)) {
             $object->outputFormatIds = null;
         }
         if (\array_key_exists('includeCompleted', $data)) {

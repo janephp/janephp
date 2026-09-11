@@ -83,7 +83,7 @@ class PatternMultipleType extends Type
         return [$statements, $valuesVar];
     }
 
-    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
@@ -96,7 +96,7 @@ class PatternMultipleType extends Type
         $loopStatements = [];
 
         foreach ($this->types as $pattern => $type) {
-            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
+            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject, false);
             $loopStatements = array_merge($loopStatements, [
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(

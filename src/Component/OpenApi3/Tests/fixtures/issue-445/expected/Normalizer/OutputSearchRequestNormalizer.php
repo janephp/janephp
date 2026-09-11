@@ -43,7 +43,7 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->pageToken = $data['pageToken'];
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
         }
         if (\array_key_exists('contentIds', $data) && $data['contentIds'] !== null) {
@@ -53,7 +53,7 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->contentIds = $values;
         }
-        elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
+        elseif (\array_key_exists('contentIds', $data)) {
             $object->contentIds = null;
         }
         if (\array_key_exists('renderingStates', $data) && $data['renderingStates'] !== null) {
@@ -63,7 +63,7 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->renderingStates = $values_1;
         }
-        elseif (\array_key_exists('renderingStates', $data) && $data['renderingStates'] === null) {
+        elseif (\array_key_exists('renderingStates', $data)) {
             $object->renderingStates = null;
         }
         if (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] !== null) {
@@ -73,7 +73,7 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->fileExtensions = $values_2;
         }
-        elseif (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] === null) {
+        elseif (\array_key_exists('fileExtensions', $data)) {
             $object->fileExtensions = null;
         }
         if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
@@ -83,7 +83,7 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->outputFormatIds = $values_3;
         }
-        elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
+        elseif (\array_key_exists('outputFormatIds', $data)) {
             $object->outputFormatIds = null;
         }
         return $object;

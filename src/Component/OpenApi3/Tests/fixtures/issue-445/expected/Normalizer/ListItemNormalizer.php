@@ -44,7 +44,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->audit = $value;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         if (\array_key_exists('id', $data)) {
@@ -53,7 +53,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('contentSchemaId', $data) && $data['contentSchemaId'] !== null) {
             $object->contentSchemaId = $data['contentSchemaId'];
         }
-        elseif (\array_key_exists('contentSchemaId', $data) && $data['contentSchemaId'] === null) {
+        elseif (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = null;
         }
         if (\array_key_exists('displayValues', $data) && $data['displayValues'] !== null) {
@@ -67,7 +67,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->displayValues = $value_1;
         }
-        elseif (\array_key_exists('displayValues', $data) && $data['displayValues'] === null) {
+        elseif (\array_key_exists('displayValues', $data)) {
             $object->displayValues = null;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
@@ -77,7 +77,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->content = $values_1;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] !== null) {
@@ -87,7 +87,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->brokenReferenceIds = $values_2;
         }
-        elseif (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenReferenceIds', $data)) {
             $object->brokenReferenceIds = null;
         }
         if (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] !== null) {
@@ -97,7 +97,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->brokenRelationTargetIds = $values_3;
         }
-        elseif (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] === null) {
+        elseif (\array_key_exists('brokenRelationTargetIds', $data)) {
             $object->brokenRelationTargetIds = null;
         }
         if (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] !== null) {
@@ -107,7 +107,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->brokenIndirectReferenceIds = $values_4;
         }
-        elseif (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenIndirectReferenceIds', $data)) {
             $object->brokenIndirectReferenceIds = null;
         }
         if (\array_key_exists('lifeCycle', $data)) {
@@ -125,7 +125,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value = $data->audit;
             if (is_object($data->audit)) {
-                $value = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }

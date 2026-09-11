@@ -127,7 +127,7 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['EnableIPv6'] = $data->enableIPv6;
         }
         if (array_key_exists('iPAM', get_object_vars($data)) && null !== ($data->iPAM ?? null)) {
-            $dataArray['IPAM'] = $data->iPAM === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM, 'json', $context));
+            $dataArray['IPAM'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM, 'json', $context));
         }
         if (array_key_exists('internal', get_object_vars($data)) && null !== ($data->internal ?? null)) {
             $dataArray['Internal'] = $data->internal;

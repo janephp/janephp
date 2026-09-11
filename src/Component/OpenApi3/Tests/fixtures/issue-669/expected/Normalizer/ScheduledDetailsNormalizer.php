@@ -45,7 +45,7 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
             $object->body = $this->denormalizer->denormalize($data['body'], \Jane\Generated\DigitalOcean\Model\ScheduledDetailsBody::class, 'json', $context);
             unset($data['body']);
         }
-        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+        elseif (\array_key_exists('body', $data)) {
             $object->body = null;
             unset($data['body']);
         }
@@ -61,7 +61,7 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['cron'] = $data->cron;
         if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
-            $dataArray['body'] = $data->body === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body, 'json', $context));
+            $dataArray['body'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

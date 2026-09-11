@@ -49,7 +49,7 @@ class ShareEmbedUpdateRequestNormalizer implements DenormalizerInterface, Normal
             $object->expirationDate = $date;
             unset($data['expirationDate']);
         }
-        elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
+        elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
             unset($data['expirationDate']);
         }
@@ -57,7 +57,7 @@ class ShareEmbedUpdateRequestNormalizer implements DenormalizerInterface, Normal
             $object->description = $data['description'];
             unset($data['description']);
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
             unset($data['description']);
         }
@@ -77,7 +77,7 @@ class ShareEmbedUpdateRequestNormalizer implements DenormalizerInterface, Normal
             $object->layerSchemaIds = $values_1;
             unset($data['layerSchemaIds']);
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
             unset($data['layerSchemaIds']);
         }

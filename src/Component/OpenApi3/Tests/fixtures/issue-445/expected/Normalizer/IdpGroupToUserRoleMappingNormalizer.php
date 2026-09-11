@@ -40,13 +40,13 @@ class IdpGroupToUserRoleMappingNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('group', $data) && $data['group'] !== null) {
             $object->group = $data['group'];
         }
-        elseif (\array_key_exists('group', $data) && $data['group'] === null) {
+        elseif (\array_key_exists('group', $data)) {
             $object->group = null;
         }
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
             $object->userRoleId = $data['userRoleId'];
         }
-        elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
+        elseif (\array_key_exists('userRoleId', $data)) {
             $object->userRoleId = null;
         }
         return $object;

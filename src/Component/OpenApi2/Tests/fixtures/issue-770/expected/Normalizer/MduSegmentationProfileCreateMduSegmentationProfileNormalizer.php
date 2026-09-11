@@ -80,7 +80,7 @@ class MduSegmentationProfileCreateMduSegmentationProfileNormalizer implements De
             $dataArray['apGroupInfoList'] = $values_1;
         }
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = $data->networkSegmentationSwitchInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
+            $dataArray['networkSegmentationSwitchInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
         }
         return $dataArray;
     }

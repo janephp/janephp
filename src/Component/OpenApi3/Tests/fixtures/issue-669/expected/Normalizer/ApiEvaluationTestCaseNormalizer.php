@@ -148,7 +148,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['created_by_user_id'] = $data->createdByUserId;
         }
         if (array_key_exists('dataset', get_object_vars($data)) && null !== ($data->dataset ?? null)) {
-            $dataArray['dataset'] = $data->dataset === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dataset, 'json', $context));
+            $dataArray['dataset'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dataset, 'json', $context));
         }
         if (array_key_exists('datasetName', get_object_vars($data)) && null !== ($data->datasetName ?? null)) {
             $dataArray['dataset_name'] = $data->datasetName;
@@ -173,7 +173,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = $data->starMetric === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
+            $dataArray['star_metric'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
             $dataArray['test_case_uuid'] = $data->testCaseUuid;

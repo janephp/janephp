@@ -40,7 +40,7 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
             $object->foo = $data['foo'];
         }
-        elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
+        elseif (\array_key_exists('foo', $data)) {
             $object->foo = null;
         }
         return $object;

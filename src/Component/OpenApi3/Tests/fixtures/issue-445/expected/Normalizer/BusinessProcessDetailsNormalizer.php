@@ -55,7 +55,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->referenceId = $data['referenceId'];
             unset($data['referenceId']);
         }
-        elseif (\array_key_exists('referenceId', $data) && $data['referenceId'] === null) {
+        elseif (\array_key_exists('referenceId', $data)) {
             $object->referenceId = null;
             unset($data['referenceId']);
         }
@@ -63,7 +63,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->referenceDocType = $data['referenceDocType'];
             unset($data['referenceDocType']);
         }
-        elseif (\array_key_exists('referenceDocType', $data) && $data['referenceDocType'] === null) {
+        elseif (\array_key_exists('referenceDocType', $data)) {
             $object->referenceDocType = null;
             unset($data['referenceDocType']);
         }
@@ -115,7 +115,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->stateHistory = $values;
             unset($data['stateHistory']);
         }
-        elseif (\array_key_exists('stateHistory', $data) && $data['stateHistory'] === null) {
+        elseif (\array_key_exists('stateHistory', $data)) {
             $object->stateHistory = null;
             unset($data['stateHistory']);
         }
@@ -123,7 +123,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->currentState = $data['currentState'];
             unset($data['currentState']);
         }
-        elseif (\array_key_exists('currentState', $data) && $data['currentState'] === null) {
+        elseif (\array_key_exists('currentState', $data)) {
             $object->currentState = null;
             unset($data['currentState']);
         }
@@ -135,7 +135,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->lastReportedProgress = $date_2;
             unset($data['lastReportedProgress']);
         }
-        elseif (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] === null) {
+        elseif (\array_key_exists('lastReportedProgress', $data)) {
             $object->lastReportedProgress = null;
             unset($data['lastReportedProgress']);
         }
@@ -143,7 +143,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->continuationBusinessProcessId = $data['continuationBusinessProcessId'];
             unset($data['continuationBusinessProcessId']);
         }
-        elseif (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] === null) {
+        elseif (\array_key_exists('continuationBusinessProcessId', $data)) {
             $object->continuationBusinessProcessId = null;
             unset($data['continuationBusinessProcessId']);
         }
@@ -159,7 +159,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->details = $value_3;
             unset($data['details']);
         }
-        elseif (\array_key_exists('details', $data) && $data['details'] === null) {
+        elseif (\array_key_exists('details', $data)) {
             $object->details = null;
             unset($data['details']);
         }
@@ -215,7 +215,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
             $value_3 = $data->details;
             if (is_object($data->details)) {
-                $value_3 = $data->details === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->details, 'json', $context));
+                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->details, 'json', $context));
             }
             $dataArray['details'] = $value_3;
         }

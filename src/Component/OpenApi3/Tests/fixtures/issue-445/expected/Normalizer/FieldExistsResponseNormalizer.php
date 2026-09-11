@@ -52,7 +52,7 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->schemaId = $data['schemaId'];
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
         }
         return $object;

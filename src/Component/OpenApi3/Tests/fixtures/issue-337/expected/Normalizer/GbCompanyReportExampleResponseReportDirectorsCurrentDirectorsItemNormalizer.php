@@ -107,7 +107,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
             $dataArray['surname'] = $data->surname;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+            $dataArray['address'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
         }
         if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
             $dataArray['gender'] = $data->gender;

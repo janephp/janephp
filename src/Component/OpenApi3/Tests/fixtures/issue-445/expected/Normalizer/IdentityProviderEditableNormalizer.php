@@ -44,13 +44,13 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
             }
             $object->claimMapping = $values;
         }
-        elseif (\array_key_exists('claimMapping', $data) && $data['claimMapping'] === null) {
+        elseif (\array_key_exists('claimMapping', $data)) {
             $object->claimMapping = null;
         }
         if (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] !== null) {
             $object->groupClaimType = $data['groupClaimType'];
         }
-        elseif (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] === null) {
+        elseif (\array_key_exists('groupClaimType', $data)) {
             $object->groupClaimType = null;
         }
         if (\array_key_exists('groupMapping', $data) && $data['groupMapping'] !== null) {
@@ -60,13 +60,13 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
             }
             $object->groupMapping = $values_1;
         }
-        elseif (\array_key_exists('groupMapping', $data) && $data['groupMapping'] === null) {
+        elseif (\array_key_exists('groupMapping', $data)) {
             $object->groupMapping = null;
         }
         if (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] !== null) {
             $object->fallbackUserRoleId = $data['fallbackUserRoleId'];
         }
-        elseif (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] === null) {
+        elseif (\array_key_exists('fallbackUserRoleId', $data)) {
             $object->fallbackUserRoleId = null;
         }
         return $object;

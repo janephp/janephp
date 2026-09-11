@@ -104,13 +104,13 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['ledStatusEnabled'] = $data->ledStatusEnabled;
         }
         if (array_key_exists('lldp', get_object_vars($data)) && null !== ($data->lldp ?? null)) {
-            $dataArray['lldp'] = $data->lldp === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lldp, 'json', $context));
+            $dataArray['lldp'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lldp, 'json', $context));
         }
         if (array_key_exists('lacp', get_object_vars($data)) && null !== ($data->lacp ?? null)) {
-            $dataArray['lacp'] = $data->lacp === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lacp, 'json', $context));
+            $dataArray['lacp'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lacp, 'json', $context));
         }
         if (array_key_exists('cellularSettings', get_object_vars($data)) && null !== ($data->cellularSettings ?? null)) {
-            $dataArray['cellularSettings'] = $data->cellularSettings === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cellularSettings, 'json', $context));
+            $dataArray['cellularSettings'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cellularSettings, 'json', $context));
         }
         if (array_key_exists('ledMode', get_object_vars($data)) && null !== ($data->ledMode ?? null)) {
             $dataArray['ledMode'] = $data->ledMode;
@@ -134,10 +134,10 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['radioBand'] = $data->radioBand;
         }
         if (array_key_exists('externalAntenna24', get_object_vars($data)) && null !== ($data->externalAntenna24 ?? null)) {
-            $dataArray['externalAntenna24'] = $data->externalAntenna24 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna24, 'json', $context));
+            $dataArray['externalAntenna24'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna24, 'json', $context));
         }
         if (array_key_exists('externalAntenna50', get_object_vars($data)) && null !== ($data->externalAntenna50 ?? null)) {
-            $dataArray['externalAntenna50'] = $data->externalAntenna50 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna50, 'json', $context));
+            $dataArray['externalAntenna50'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna50, 'json', $context));
         }
         if (array_key_exists('lanPorts', get_object_vars($data)) && null !== ($data->lanPorts ?? null)) {
             $values = [];

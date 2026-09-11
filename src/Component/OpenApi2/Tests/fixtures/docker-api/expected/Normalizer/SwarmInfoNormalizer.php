@@ -65,25 +65,25 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $object->remoteManagers = $values;
         }
-        elseif (\array_key_exists('RemoteManagers', $data) && $data['RemoteManagers'] === null) {
+        elseif (\array_key_exists('RemoteManagers', $data)) {
             $object->remoteManagers = null;
         }
         if (\array_key_exists('Nodes', $data) && $data['Nodes'] !== null) {
             $object->nodes = $data['Nodes'];
         }
-        elseif (\array_key_exists('Nodes', $data) && $data['Nodes'] === null) {
+        elseif (\array_key_exists('Nodes', $data)) {
             $object->nodes = null;
         }
         if (\array_key_exists('Managers', $data) && $data['Managers'] !== null) {
             $object->managers = $data['Managers'];
         }
-        elseif (\array_key_exists('Managers', $data) && $data['Managers'] === null) {
+        elseif (\array_key_exists('Managers', $data)) {
             $object->managers = null;
         }
         if (\array_key_exists('Cluster', $data) && $data['Cluster'] !== null) {
             $object->cluster = $this->denormalizer->denormalize($data['Cluster'], \Docker\Api\Model\ClusterInfo::class, 'json', $context);
         }
-        elseif (\array_key_exists('Cluster', $data) && $data['Cluster'] === null) {
+        elseif (\array_key_exists('Cluster', $data)) {
             $object->cluster = null;
         }
         return $object;
@@ -120,7 +120,7 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['Managers'] = $data->managers;
         }
         if (array_key_exists('cluster', get_object_vars($data)) && null !== ($data->cluster ?? null)) {
-            $dataArray['Cluster'] = $data->cluster === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cluster, 'json', $context));
+            $dataArray['Cluster'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cluster, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInfoConstraint());

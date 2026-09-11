@@ -40,13 +40,13 @@ class BusinessRuleFiredEventDetailNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->documentType = $data['documentType'];
         }
-        elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
+        elseif (\array_key_exists('documentType', $data)) {
             $object->documentType = null;
         }
         if (\array_key_exists('ruleIds', $data) && $data['ruleIds'] !== null) {
@@ -56,7 +56,7 @@ class BusinessRuleFiredEventDetailNormalizer implements DenormalizerInterface, N
             }
             $object->ruleIds = $values;
         }
-        elseif (\array_key_exists('ruleIds', $data) && $data['ruleIds'] === null) {
+        elseif (\array_key_exists('ruleIds', $data)) {
             $object->ruleIds = null;
         }
         return $object;

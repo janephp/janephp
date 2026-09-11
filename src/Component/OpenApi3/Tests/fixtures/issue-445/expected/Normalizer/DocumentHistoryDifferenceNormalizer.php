@@ -40,7 +40,7 @@ class DocumentHistoryDifferenceNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('oldDocumentVersion', $data)) {
@@ -52,7 +52,7 @@ class DocumentHistoryDifferenceNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('patch', $data) && $data['patch'] !== null) {
             $object->patch = $data['patch'];
         }
-        elseif (\array_key_exists('patch', $data) && $data['patch'] === null) {
+        elseif (\array_key_exists('patch', $data)) {
             $object->patch = null;
         }
         return $object;

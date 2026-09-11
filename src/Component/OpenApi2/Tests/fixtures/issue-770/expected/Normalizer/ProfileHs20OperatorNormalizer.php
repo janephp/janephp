@@ -124,7 +124,7 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['friendlyNames'] = $values_1;
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
-            $dataArray['certificate'] = $data->certificate === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
+            $dataArray['certificate'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;
@@ -144,7 +144,7 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['operatorIcons'] = $values_3;
         }
         if (array_key_exists('termsConditions', get_object_vars($data)) && null !== ($data->termsConditions ?? null)) {
-            $dataArray['termsConditions'] = $data->termsConditions === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->termsConditions, 'json', $context));
+            $dataArray['termsConditions'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->termsConditions, 'json', $context));
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
             $dataArray['createDateTime'] = $data->createDateTime;

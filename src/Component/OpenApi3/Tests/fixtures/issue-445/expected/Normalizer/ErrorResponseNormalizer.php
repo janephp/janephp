@@ -40,19 +40,19 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('exception', $data) && $data['exception'] !== null) {
             $object->exception = $data['exception'];
         }
-        elseif (\array_key_exists('exception', $data) && $data['exception'] === null) {
+        elseif (\array_key_exists('exception', $data)) {
             $object->exception = null;
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->traceId = $data['traceId'];
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->traceJobId = $data['traceJobId'];
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
         }
         return $object;

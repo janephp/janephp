@@ -80,7 +80,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->kernel = $this->denormalizer->denormalize($data['kernel'], \Jane\Generated\DigitalOcean\Model\Kernel::class, 'json', $context);
             unset($data['kernel']);
         }
-        elseif (\array_key_exists('kernel', $data) && $data['kernel'] === null) {
+        elseif (\array_key_exists('kernel', $data)) {
             $object->kernel = null;
             unset($data['kernel']);
         }
@@ -189,7 +189,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['locked'] = $data->locked;
         $dataArray['status'] = $data->status;
         if (array_key_exists('kernel', get_object_vars($data)) && null !== ($data->kernel ?? null)) {
-            $dataArray['kernel'] = $data->kernel === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kernel, 'json', $context));
+            $dataArray['kernel'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kernel, 'json', $context));
         }
         $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         $values_1 = [];
@@ -227,7 +227,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['vpc_uuid'] = $data->vpcUuid;
         }
         if (array_key_exists('gpuInfo', get_object_vars($data)) && null !== ($data->gpuInfo ?? null)) {
-            $dataArray['gpu_info'] = $data->gpuInfo === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo, 'json', $context));
+            $dataArray['gpu_info'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {

@@ -63,7 +63,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->slug = $data['slug'];
             unset($data['slug']);
         }
-        elseif (\array_key_exists('slug', $data) && $data['slug'] === null) {
+        elseif (\array_key_exists('slug', $data)) {
             $object->slug = null;
             unset($data['slug']);
         }
@@ -91,7 +91,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
         }
-        elseif (\array_key_exists('min_disk_size', $data) && $data['min_disk_size'] === null) {
+        elseif (\array_key_exists('min_disk_size', $data)) {
             $object->minDiskSize = null;
             unset($data['min_disk_size']);
         }
@@ -99,7 +99,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
-        elseif (\array_key_exists('size_gigabytes', $data) && $data['size_gigabytes'] === null) {
+        elseif (\array_key_exists('size_gigabytes', $data)) {
             $object->sizeGigabytes = null;
             unset($data['size_gigabytes']);
         }
@@ -115,7 +115,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->tags = $values_1;
             unset($data['tags']);
         }
-        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+        elseif (\array_key_exists('tags', $data)) {
             $object->tags = null;
             unset($data['tags']);
         }

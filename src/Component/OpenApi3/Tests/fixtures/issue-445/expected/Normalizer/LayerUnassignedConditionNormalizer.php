@@ -41,7 +41,7 @@ class LayerUnassignedConditionNormalizer implements DenormalizerInterface, Norma
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class LayerUnassignedConditionNormalizer implements DenormalizerInterface, Norma
             $object->layerId = $data['layerId'];
             unset($data['layerId']);
         }
-        elseif (\array_key_exists('layerId', $data) && $data['layerId'] === null) {
+        elseif (\array_key_exists('layerId', $data)) {
             $object->layerId = null;
             unset($data['layerId']);
         }

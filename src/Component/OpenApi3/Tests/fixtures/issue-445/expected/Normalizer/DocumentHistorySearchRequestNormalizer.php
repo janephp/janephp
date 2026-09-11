@@ -57,13 +57,13 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->pageToken = $data['pageToken'];
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('documentVersion', $data)) {
@@ -72,7 +72,7 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->documentType = $data['documentType'];
         }
-        elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
+        elseif (\array_key_exists('documentType', $data)) {
             $object->documentType = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
@@ -82,7 +82,7 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
             }
             $object->sort = $values;
         }
-        elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
+        elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
         return $object;

@@ -40,7 +40,7 @@ class LayerIdsByRootSchemaNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('rootSchemaId', $data) && $data['rootSchemaId'] !== null) {
             $object->rootSchemaId = $data['rootSchemaId'];
         }
-        elseif (\array_key_exists('rootSchemaId', $data) && $data['rootSchemaId'] === null) {
+        elseif (\array_key_exists('rootSchemaId', $data)) {
             $object->rootSchemaId = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
@@ -50,7 +50,7 @@ class LayerIdsByRootSchemaNormalizer implements DenormalizerInterface, Normalize
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         return $object;

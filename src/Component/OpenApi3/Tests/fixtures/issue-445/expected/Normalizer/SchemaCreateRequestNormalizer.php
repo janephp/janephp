@@ -46,7 +46,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] !== null) {
             $object->parentSchemaId = $data['parentSchemaId'];
         }
-        elseif (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] === null) {
+        elseif (\array_key_exists('parentSchemaId', $data)) {
             $object->parentSchemaId = null;
         }
         if (\array_key_exists('types', $data) && $data['types'] !== null) {
@@ -56,7 +56,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->types = $values;
         }
-        elseif (\array_key_exists('types', $data) && $data['types'] === null) {
+        elseif (\array_key_exists('types', $data)) {
             $object->types = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -70,7 +70,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->names = $value_1;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -84,7 +84,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->descriptions = $value_3;
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
         }
         if (\array_key_exists('displayPatterns', $data)) {
@@ -101,7 +101,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->fields = $values_4;
         }
-        elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
+        elseif (\array_key_exists('fields', $data)) {
             $object->fields = null;
         }
         if (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] !== null) {
@@ -111,7 +111,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->fieldsOverwrite = $values_5;
         }
-        elseif (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] === null) {
+        elseif (\array_key_exists('fieldsOverwrite', $data)) {
             $object->fieldsOverwrite = null;
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
@@ -121,7 +121,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->aggregations = $values_6;
         }
-        elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
+        elseif (\array_key_exists('aggregations', $data)) {
             $object->aggregations = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
@@ -131,7 +131,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->sort = $values_7;
         }
-        elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
+        elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
         if (\array_key_exists('viewForAll', $data)) {
@@ -144,7 +144,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->schemaPermissionSetIds = $values_8;
         }
-        elseif (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] === null) {
+        elseif (\array_key_exists('schemaPermissionSetIds', $data)) {
             $object->schemaPermissionSetIds = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
@@ -154,7 +154,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->layerSchemaIds = $values_9;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] !== null) {
@@ -164,7 +164,7 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->referencedInContentSchemaIds = $values_10;
         }
-        elseif (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] === null) {
+        elseif (\array_key_exists('referencedInContentSchemaIds', $data)) {
             $object->referencedInContentSchemaIds = null;
         }
         return $object;

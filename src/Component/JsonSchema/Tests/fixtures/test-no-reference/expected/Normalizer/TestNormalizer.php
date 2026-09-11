@@ -46,7 +46,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['string'] = $data->string;
         }
         if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
-            $dataArray['subObject'] = $data->subObject === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
+            $dataArray['subObject'] = new \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
         }
         return $dataArray;
     }

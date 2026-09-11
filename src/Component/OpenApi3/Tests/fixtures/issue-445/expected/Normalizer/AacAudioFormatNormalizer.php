@@ -45,7 +45,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->extension = $data['extension'];
             unset($data['extension']);
         }
-        elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
+        elseif (\array_key_exists('extension', $data)) {
             $object->extension = null;
             unset($data['extension']);
         }
@@ -69,7 +69,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->bitrate = $data['bitrate'];
             unset($data['bitrate']);
         }
-        elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
+        elseif (\array_key_exists('bitrate', $data)) {
             $object->bitrate = null;
             unset($data['bitrate']);
         }
@@ -77,7 +77,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->variableBitRate = $data['variableBitRate'];
             unset($data['variableBitRate']);
         }
-        elseif (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] === null) {
+        elseif (\array_key_exists('variableBitRate', $data)) {
             $object->variableBitRate = null;
             unset($data['variableBitRate']);
         }

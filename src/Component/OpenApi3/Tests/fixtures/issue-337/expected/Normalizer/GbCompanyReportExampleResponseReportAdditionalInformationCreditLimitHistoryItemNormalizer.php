@@ -59,7 +59,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
             $dataArray['date'] = $data->date;
         }
         if (array_key_exists('companyValue', get_object_vars($data)) && null !== ($data->companyValue ?? null)) {
-            $dataArray['companyValue'] = $data->companyValue === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyValue, 'json', $context));
+            $dataArray['companyValue'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyValue, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -60,7 +60,7 @@ class SinksResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
-            $dataArray['destination'] = $data->destination === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destination, 'json', $context));
+            $dataArray['destination'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destination, 'json', $context));
         }
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
             $values = [];

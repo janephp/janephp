@@ -63,7 +63,7 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
         $dataArray = [];
         $value = $data->filterRequest;
         if (is_object($data->filterRequest)) {
-            $value = $data->filterRequest === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
         }
         $dataArray['filterRequest'] = $value;
         $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval;

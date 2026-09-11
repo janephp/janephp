@@ -73,10 +73,10 @@ class DhcpMsgStatsDhcpMsgStatsNormalizer implements DenormalizerInterface, Norma
             $dataArray['apMac'] = $data->apMac;
         }
         if (array_key_exists('dhcpMsgRecvdStats', get_object_vars($data)) && null !== ($data->dhcpMsgRecvdStats ?? null)) {
-            $dataArray['dhcpMsgRecvdStats'] = $data->dhcpMsgRecvdStats === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgRecvdStats, 'json', $context));
+            $dataArray['dhcpMsgRecvdStats'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgRecvdStats, 'json', $context));
         }
         if (array_key_exists('dhcpMsgSentStats', get_object_vars($data)) && null !== ($data->dhcpMsgSentStats ?? null)) {
-            $dataArray['dhcpMsgSentStats'] = $data->dhcpMsgSentStats === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgSentStats, 'json', $context));
+            $dataArray['dhcpMsgSentStats'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpMsgSentStats, 'json', $context));
         }
         return $dataArray;
     }

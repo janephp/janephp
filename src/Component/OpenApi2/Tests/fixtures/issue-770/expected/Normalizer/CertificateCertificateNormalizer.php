@@ -108,7 +108,7 @@ class CertificateCertificateNormalizer implements DenormalizerInterface, Normali
             $dataArray['privateKeyData'] = $data->privateKeyData;
         }
         if (array_key_exists('certificasSigningRequest', get_object_vars($data)) && null !== ($data->certificasSigningRequest ?? null)) {
-            $dataArray['certificasSigningRequest'] = $data->certificasSigningRequest === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificasSigningRequest, 'json', $context));
+            $dataArray['certificasSigningRequest'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->certificasSigningRequest, 'json', $context));
         }
         if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
             $dataArray['passphrase'] = $data->passphrase;

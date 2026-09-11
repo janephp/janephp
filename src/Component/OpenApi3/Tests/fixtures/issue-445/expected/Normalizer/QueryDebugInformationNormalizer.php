@@ -40,25 +40,25 @@ class QueryDebugInformationNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('general', $data) && $data['general'] !== null) {
             $object->general = $data['general'];
         }
-        elseif (\array_key_exists('general', $data) && $data['general'] === null) {
+        elseif (\array_key_exists('general', $data)) {
             $object->general = null;
         }
         if (\array_key_exists('auditTrail', $data) && $data['auditTrail'] !== null) {
             $object->auditTrail = $data['auditTrail'];
         }
-        elseif (\array_key_exists('auditTrail', $data) && $data['auditTrail'] === null) {
+        elseif (\array_key_exists('auditTrail', $data)) {
             $object->auditTrail = null;
         }
         if (\array_key_exists('request', $data) && $data['request'] !== null) {
             $object->request = $data['request'];
         }
-        elseif (\array_key_exists('request', $data) && $data['request'] === null) {
+        elseif (\array_key_exists('request', $data)) {
             $object->request = null;
         }
         if (\array_key_exists('response', $data) && $data['response'] !== null) {
             $object->response = $data['response'];
         }
-        elseif (\array_key_exists('response', $data) && $data['response'] === null) {
+        elseif (\array_key_exists('response', $data)) {
             $object->response = null;
         }
         return $object;

@@ -46,7 +46,7 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
             $object->identifier = $data['identifier'];
         }
-        elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
+        elseif (\array_key_exists('identifier', $data)) {
             $object->identifier = null;
         }
         if (\array_key_exists('requestId', $data)) {
@@ -65,7 +65,7 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->contentId = $data['contentId'];
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
         }
         return $object;

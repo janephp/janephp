@@ -49,7 +49,7 @@ class VolumesExt4Normalizer implements DenormalizerInterface, NormalizerInterfac
             $object->dropletIds = $values;
             unset($data['droplet_ids']);
         }
-        elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
+        elseif (\array_key_exists('droplet_ids', $data)) {
             $object->dropletIds = null;
             unset($data['droplet_ids']);
         }
@@ -77,7 +77,7 @@ class VolumesExt4Normalizer implements DenormalizerInterface, NormalizerInterfac
             $object->tags = $values_1;
             unset($data['tags']);
         }
-        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+        elseif (\array_key_exists('tags', $data)) {
             $object->tags = null;
             unset($data['tags']);
         }

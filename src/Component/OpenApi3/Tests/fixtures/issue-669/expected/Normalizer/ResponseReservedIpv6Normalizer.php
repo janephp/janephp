@@ -52,7 +52,7 @@ class ResponseReservedIpv6Normalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('reservedIpv6', get_object_vars($data)) && null !== ($data->reservedIpv6 ?? null)) {
-            $dataArray['reserved_ipv6'] = $data->reservedIpv6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIpv6, 'json', $context));
+            $dataArray['reserved_ipv6'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIpv6, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,31 +58,31 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->fileExtension = $data['fileExtension'];
         }
-        elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
+        elseif (\array_key_exists('fileExtension', $data)) {
             $object->fileExtension = null;
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->filePath = $data['filePath'];
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->fileSizeInBytes = $data['fileSizeInBytes'];
         }
-        elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
+        elseif (\array_key_exists('fileSizeInBytes', $data)) {
             $object->fileSizeInBytes = null;
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->sha1Hash = $data['sha1Hash'];
         }
-        elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
+        elseif (\array_key_exists('sha1Hash', $data)) {
             $object->sha1Hash = null;
         }
         if (\array_key_exists('originalFileName', $data) && $data['originalFileName'] !== null) {
             $object->originalFileName = $data['originalFileName'];
         }
-        elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
+        elseif (\array_key_exists('originalFileName', $data)) {
             $object->originalFileName = null;
         }
         if (\array_key_exists('kind', $data)) {

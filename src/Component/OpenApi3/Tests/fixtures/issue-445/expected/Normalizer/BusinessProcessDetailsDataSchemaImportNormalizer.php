@@ -49,7 +49,7 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
             $object->schemaImportResult = $value;
             unset($data['schemaImportResult']);
         }
-        elseif (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] === null) {
+        elseif (\array_key_exists('schemaImportResult', $data)) {
             $object->schemaImportResult = null;
             unset($data['schemaImportResult']);
         }
@@ -61,7 +61,7 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
             $object->listItemImportResult = $value_1;
             unset($data['listItemImportResult']);
         }
-        elseif (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] === null) {
+        elseif (\array_key_exists('listItemImportResult', $data)) {
             $object->listItemImportResult = null;
             unset($data['listItemImportResult']);
         }
@@ -79,14 +79,14 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         if (array_key_exists('schemaImportResult', get_object_vars($data)) && null !== ($data->schemaImportResult ?? null)) {
             $value = $data->schemaImportResult;
             if (is_object($data->schemaImportResult)) {
-                $value = $data->schemaImportResult === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaImportResult, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaImportResult, 'json', $context));
             }
             $dataArray['schemaImportResult'] = $value;
         }
         if (array_key_exists('listItemImportResult', get_object_vars($data)) && null !== ($data->listItemImportResult ?? null)) {
             $value_1 = $data->listItemImportResult;
             if (is_object($data->listItemImportResult)) {
-                $value_1 = $data->listItemImportResult === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->listItemImportResult, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->listItemImportResult, 'json', $context));
             }
             $dataArray['listItemImportResult'] = $value_1;
         }

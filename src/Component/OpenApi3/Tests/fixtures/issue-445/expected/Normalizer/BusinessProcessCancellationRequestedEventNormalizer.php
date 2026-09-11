@@ -53,7 +53,7 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
             $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
-        elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
+        elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }

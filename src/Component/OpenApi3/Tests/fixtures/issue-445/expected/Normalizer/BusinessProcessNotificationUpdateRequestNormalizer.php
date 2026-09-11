@@ -65,7 +65,7 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
             $object->navigationLink = $data['navigationLink'];
             unset($data['navigationLink']);
         }
-        elseif (\array_key_exists('navigationLink', $data) && $data['navigationLink'] === null) {
+        elseif (\array_key_exists('navigationLink', $data)) {
             $object->navigationLink = null;
             unset($data['navigationLink']);
         }
