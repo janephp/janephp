@@ -47,7 +47,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.32.0
         with:
-          php-version: 8.4
+          php-version: 8.5
           coverage: none
       - name: composer install
         run: composer update --prefer-stable
@@ -68,7 +68,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.32.0
         with:
-          php-version: 8.4
+          php-version: 8.5
           coverage: none
       - name: composer install
         run: composer update --prefer-stable
@@ -82,23 +82,25 @@ jobs:
       max-parallel: 15
       fail-fast: false
       matrix:
-        php-versions:  ['8.1', '8.2', '8.3', '8.4']
+        php-versions:  ['8.3', '8.4', '8.5']
         symfony-require: ['']
         include:
-          - php-versions: '8.4'
-            symfony-require: '6.4.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '7.0.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '7.1.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '7.2.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '7.3.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '7.4.*'
-          - php-versions: '8.4'
+          - php-versions: '8.5'
             symfony-require: '8.0.*'
+          - php-versions: '8.3'
+            symfony-require: '7.0.*'
+          - php-versions: '8.3'
+            symfony-require: '7.4.*'
     env:
       SYMFONY_REQUIRE: ${{ matrix.symfony-require }}
     name: tests-${{ matrix.php-versions }} - SF ${{ matrix.symfony-require }}
@@ -149,7 +151,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.28.0
         with:
-          php-version: 8.1
+          php-version: 8.3
           extensions: mbstring, fileinfo, json, intl, dom
       - name: composer install
         run: composer update --prefer-lowest --prefer-stable
