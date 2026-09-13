@@ -6,7 +6,7 @@
 # docs/contributing/adrs/0011-static-analysis-of-generated-code.md).
 
 # Pinned so the committed baseline does not depend on the contributor's PHP.
-php-version = "8.4"
+php-version = "8.5"
 
 [source]
 paths = [

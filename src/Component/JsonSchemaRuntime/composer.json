@@ -22,17 +22,14 @@
         ]
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "league/uri": "^6.7.2 || ^7.4",
         "php-jsonpointer/php-jsonpointer": "^3.0 || ^4.0",
-        "symfony/serializer": "^5.4 || ^6.4 || ^7.0 || ^8.0",
-        "symfony/yaml": "^5.4 || ^6.4 || ^7.0 || ^8.0"
+        "symfony/serializer": "^7.0 || ^8.0",
+        "symfony/yaml": "^7.0 || ^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5"
-    },
-    "conflict": {
-        "symfony/framework-bundle": "5.1.0"
     },
     "extra": {
         "branch-alias": {
