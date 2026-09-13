@@ -78,8 +78,9 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @throws \PicturePark\API\Exception\ContentDownloadTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -113,6 +114,7 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ContentDownloadPreconditionFailedException($response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

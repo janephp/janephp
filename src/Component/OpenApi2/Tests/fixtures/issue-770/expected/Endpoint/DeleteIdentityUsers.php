@@ -47,6 +47,7 @@ class DeleteIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

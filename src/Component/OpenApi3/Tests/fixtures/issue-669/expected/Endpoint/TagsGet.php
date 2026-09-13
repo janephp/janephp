@@ -42,8 +42,9 @@ class TagsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class TagsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

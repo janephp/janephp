@@ -49,8 +49,9 @@ class FilteredEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
      * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse
+     * @return \CreditSafe\API\Model\EventRulesResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -78,6 +79,7 @@ class FilteredEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

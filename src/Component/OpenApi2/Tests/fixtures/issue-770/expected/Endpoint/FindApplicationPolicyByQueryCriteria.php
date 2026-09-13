@@ -48,8 +48,9 @@ class FindApplicationPolicyByQueryCriteria extends \Jane\Component\OpenApi3\Test
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindApplicationPolicyByQueryCriteria extends \Jane\Component\OpenApi3\Test
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

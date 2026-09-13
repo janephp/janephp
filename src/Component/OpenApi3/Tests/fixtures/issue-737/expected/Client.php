@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue737\Runtime\Cl
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue737\Model\FilePostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue737\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\Issue737\Model\FilePostBody $requestBody = null)
     {

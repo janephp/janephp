@@ -77,7 +77,7 @@ class GenerateCommand extends BaseGenerateCommand
         $registry = new Registry();
         $registry->setOpenApiClass($this->matcher->match($schemaFile));
         $registry->setWhitelistedPaths($options['whitelisted-paths'] ?? []);
-        $registry->setThrowUnexpectedStatusCode($options['throw-unexpected-status-code'] ?? false);
+        $registry->setThrowUnexpectedStatusCode($options['throw-unexpected-status-code'] ?? true);
         $registry->setGenerateErrorExceptions($options['generate-error-exceptions'] ?? true);
 
         $customQueryResolver = [];

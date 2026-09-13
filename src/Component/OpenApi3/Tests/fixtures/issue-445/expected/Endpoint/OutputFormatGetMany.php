@@ -54,8 +54,9 @@ class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint i
      * @throws \PicturePark\API\Exception\OutputFormatGetManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputFormatDetail[]
+     * @return \PicturePark\API\Model\OutputFormatDetail[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -85,6 +86,7 @@ class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint i
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

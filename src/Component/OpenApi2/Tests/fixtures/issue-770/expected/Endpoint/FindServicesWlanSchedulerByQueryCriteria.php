@@ -48,6 +48,7 @@ class FindServicesWlanSchedulerByQueryCriteria extends \Jane\Component\OpenApi3\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class FindServicesWlanSchedulerByQueryCriteria extends \Jane\Component\OpenApi3\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

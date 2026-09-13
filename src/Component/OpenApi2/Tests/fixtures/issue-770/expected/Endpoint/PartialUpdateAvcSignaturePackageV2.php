@@ -48,6 +48,7 @@ class PartialUpdateAvcSignaturePackageV2 extends \Jane\Component\OpenApi3\Tests\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2UnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class PartialUpdateAvcSignaturePackageV2 extends \Jane\Component\OpenApi3\Tests\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

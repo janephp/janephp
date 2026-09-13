@@ -39,13 +39,15 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryReso
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
+        throw new \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

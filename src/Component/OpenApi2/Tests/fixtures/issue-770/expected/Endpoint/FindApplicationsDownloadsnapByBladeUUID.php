@@ -48,6 +48,7 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -72,6 +73,7 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

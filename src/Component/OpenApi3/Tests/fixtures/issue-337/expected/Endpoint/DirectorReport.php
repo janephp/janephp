@@ -63,8 +63,9 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
      * @throws \CreditSafe\API\Exception\DirectorReportBadRequestException
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\GbPeopleReportReponse
+     * @return \CreditSafe\API\Model\GbPeopleReportReponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -97,6 +98,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

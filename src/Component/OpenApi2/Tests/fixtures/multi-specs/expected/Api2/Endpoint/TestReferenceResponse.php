@@ -20,8 +20,9 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Api2
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Api2\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Api1\Model\Body
+     * @return \Jane\Component\OpenApi2\Tests\Expected\Api1\Model\Body
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -30,6 +31,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Api2
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Api1\Model\Body', 'json');
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Api2\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

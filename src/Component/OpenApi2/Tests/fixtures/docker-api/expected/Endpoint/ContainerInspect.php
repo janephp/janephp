@@ -48,8 +48,9 @@ class ContainerInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implement
      *
      * @throws \Docker\Api\Exception\ContainerInspectNotFoundException
      * @throws \Docker\Api\Exception\ContainerInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdJsonGetResponse200
+     * @return \Docker\Api\Model\ContainersIdJsonGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class ContainerInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

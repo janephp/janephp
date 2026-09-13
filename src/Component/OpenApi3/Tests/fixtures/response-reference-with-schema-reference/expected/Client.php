@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWi
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Exception\TestBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function test()
     {

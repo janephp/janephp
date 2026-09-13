@@ -6,7 +6,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Clie
 {
     /**
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function retrieveCompany()
     {
@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Clie
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
      * @param \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\CompanyPatchBody $payload json payload
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function updateCompany(\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\CompanyPatchBody $payload)
     {
@@ -34,7 +34,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Clie
      *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 100.  (Default: 100)
      * } $queryParameters
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function listProjects(array $queryParameters = [])
     {
@@ -44,7 +44,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Clie
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
      * @param \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody $payload json payload
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function createProject(\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody $payload)
     {

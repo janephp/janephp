@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableRefere
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\GetUserNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account
      */
     public function getUser()
     {

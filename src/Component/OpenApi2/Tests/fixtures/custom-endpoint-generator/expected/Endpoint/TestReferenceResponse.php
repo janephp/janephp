@@ -20,6 +20,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Cust
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Cust
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

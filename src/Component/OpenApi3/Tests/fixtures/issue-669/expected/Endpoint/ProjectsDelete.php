@@ -44,6 +44,7 @@ class ProjectsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeletePreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -72,6 +73,7 @@ class ProjectsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

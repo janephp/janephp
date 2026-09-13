@@ -34,6 +34,7 @@ class SwarmJoin extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      * @throws \Docker\Api\Exception\SwarmJoinBadRequestException
      * @throws \Docker\Api\Exception\SwarmJoinInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmJoinServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -53,6 +54,7 @@ class SwarmJoin extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         if (503 === $status) {
             throw new \Docker\Api\Exception\SwarmJoinServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

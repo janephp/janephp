@@ -40,6 +40,7 @@ class ContentPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEnd
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class ContentPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEnd
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

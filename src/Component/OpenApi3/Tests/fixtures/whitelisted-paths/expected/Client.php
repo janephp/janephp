@@ -15,8 +15,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Ru
      *    "expansions"?: array, //A comma separated list of fields to expand.
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error|null
      */
     public function findTweetsById(array $queryParameters, array $accept = [])
     {
@@ -29,6 +30,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Ru
      *    "dry_run"?: bool, //Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Exception\BadResponseException
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error
      */

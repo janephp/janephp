@@ -57,8 +57,9 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @throws \PicturePark\API\Exception\ListItemGetManyConflictException
      * @throws \PicturePark\API\Exception\ListItemGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemDetail[]
+     * @return \PicturePark\API\Model\ListItemDetail[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +89,7 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -28,6 +28,7 @@ class GetByTestInteger extends \Jane\Component\OpenApi3\Tests\Expected\Parameter
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -38,6 +39,7 @@ class GetByTestInteger extends \Jane\Component\OpenApi3\Tests\Expected\Parameter
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

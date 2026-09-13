@@ -10,8 +10,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Cl
      * @param array{
      *    "userState": string, //User state
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue299\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function getUsers(array $queryParameters)
     {

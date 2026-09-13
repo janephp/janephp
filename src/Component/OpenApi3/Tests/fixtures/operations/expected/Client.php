@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Operations;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -13,6 +14,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\TestNoTag());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -21,6 +23,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrl());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -29,6 +32,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlById());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -37,6 +41,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlWithExtension());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -45,6 +50,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\DeleteTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -53,6 +59,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -61,6 +68,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\HeadTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -69,6 +77,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\OptionsTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -77,6 +86,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PatchTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -85,6 +95,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PostTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -93,38 +104,43 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PutTest());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
      */
     public function getThings()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThings());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
      */
     public function getThingsById()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThingsById());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
      */
     public function getAnotherThing()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThing());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
      */
     public function getAnotherThingById()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThingById());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */

@@ -13,8 +13,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\Cl
      * @param array{
      *    "X-Sort-Order"?: string, //Sort order
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue803\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]
      */
     public function getFiles(array $queryParameters = [], array $headerParameters = [])
     {

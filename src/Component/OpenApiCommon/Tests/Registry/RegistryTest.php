@@ -15,7 +15,8 @@ class RegistryTest extends TestCase
 
         self::assertSame([], $registry->getWhitelistedPaths());
         self::assertSame([], $registry->getCustomQueryResolver());
-        self::assertFalse($registry->getThrowUnexpectedStatusCode());
+        // Undeclared statuses throw by default since 8.0 (#377, #815).
+        self::assertTrue($registry->getThrowUnexpectedStatusCode());
         self::assertTrue($registry->getGenerateErrorExceptions());
     }
 
@@ -33,12 +34,12 @@ class RegistryTest extends TestCase
         $registry = new Registry();
         $registry->setWhitelistedPaths(['/foo']);
         $registry->setCustomQueryResolver(['__type' => ['get' => 'Bar']]);
-        $registry->setThrowUnexpectedStatusCode(true);
+        $registry->setThrowUnexpectedStatusCode(false);
         $registry->setGenerateErrorExceptions(false);
 
         self::assertSame(['/foo'], $registry->getWhitelistedPaths());
         self::assertSame(['__type' => ['get' => 'Bar']], $registry->getCustomQueryResolver());
-        self::assertTrue($registry->getThrowUnexpectedStatusCode());
+        self::assertFalse($registry->getThrowUnexpectedStatusCode());
         self::assertFalse($registry->getGenerateErrorExceptions());
     }
 }

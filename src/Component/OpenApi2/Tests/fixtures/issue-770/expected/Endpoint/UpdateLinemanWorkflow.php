@@ -59,6 +59,7 @@ class UpdateLinemanWorkflow extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -81,6 +82,7 @@ class UpdateLinemanWorkflow extends \Jane\Component\OpenApi3\Tests\Expected\Issu
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

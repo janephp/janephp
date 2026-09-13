@@ -47,6 +47,7 @@ class ContainerRestart extends \Docker\Api\Runtime\Client\BaseEndpoint implement
      *
      * @throws \Docker\Api\Exception\ContainerRestartNotFoundException
      * @throws \Docker\Api\Exception\ContainerRestartInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -63,6 +64,7 @@ class ContainerRestart extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerRestartInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

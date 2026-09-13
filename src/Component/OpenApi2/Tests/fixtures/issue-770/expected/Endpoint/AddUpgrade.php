@@ -46,8 +46,9 @@ class AddUpgrade extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -68,6 +69,7 @@ class AddUpgrade extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

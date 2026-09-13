@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Runtime\Cl
 {
     /**
      * @param \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\Document
+     * @return \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\Document
      */
     public function uploadDocument(\Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload $requestBody)
     {

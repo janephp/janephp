@@ -49,6 +49,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -88,6 +89,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -20,6 +20,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Yaml
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Yaml\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Yaml
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Yaml\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

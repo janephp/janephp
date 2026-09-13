@@ -59,6 +59,7 @@ class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -81,6 +82,7 @@ class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Issu
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

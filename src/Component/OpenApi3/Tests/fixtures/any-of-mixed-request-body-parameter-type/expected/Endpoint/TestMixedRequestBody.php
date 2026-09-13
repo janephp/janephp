@@ -30,6 +30,7 @@ class TestMixedRequestBody extends \Jane\Component\OpenApi3\Tests\Expected\AnyOf
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfMixedRequestBodyParameterType\Exception\BadResponseException
      *
      * @return null
      */
@@ -40,6 +41,7 @@ class TestMixedRequestBody extends \Jane\Component\OpenApi3\Tests\Expected\AnyOf
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfMixedRequestBodyParameterType\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

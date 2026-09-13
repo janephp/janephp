@@ -25,8 +25,9 @@ class GetPets extends \Jane\Component\OpenApi3\Tests\FetchModeEager\Runtime\Clie
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\GetPetsNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class GetPets extends \Jane\Component\OpenApi3\Tests\FetchModeEager\Runtime\Clie
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\GetPetsNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse404', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

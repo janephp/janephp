@@ -47,6 +47,7 @@ class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

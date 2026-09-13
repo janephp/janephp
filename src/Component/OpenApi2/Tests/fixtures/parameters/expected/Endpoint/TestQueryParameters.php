@@ -48,6 +48,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Parame
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -58,6 +59,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Parame
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

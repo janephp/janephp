@@ -5,24 +5,27 @@ namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityL
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function getFoo()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetFoo());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function getBar()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBar());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function getBaz()
     {

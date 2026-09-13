@@ -48,6 +48,7 @@ class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Te
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Te
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

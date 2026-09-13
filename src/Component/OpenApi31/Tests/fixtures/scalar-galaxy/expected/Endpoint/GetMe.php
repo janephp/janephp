@@ -38,8 +38,9 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetMeUnauthorizedException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetMeForbiddenException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -54,6 +55,7 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
         if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetMeForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

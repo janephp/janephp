@@ -38,6 +38,7 @@ class DatabasesInstallUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -63,6 +64,7 @@ class DatabasesInstallUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

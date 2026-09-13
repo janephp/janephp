@@ -49,6 +49,7 @@ class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Iss
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Iss
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

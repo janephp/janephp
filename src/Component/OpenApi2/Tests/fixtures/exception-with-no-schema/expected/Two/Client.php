@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Two\Runtime\Client\
 {
     /**
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Two\Exception\TestTwoNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Two\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Two\Model\TestTwoGetResponse200
+     * @return \Jane\Component\OpenApi2\Tests\Expected\Two\Model\TestTwoGetResponse200
      */
     public function testTwo()
     {

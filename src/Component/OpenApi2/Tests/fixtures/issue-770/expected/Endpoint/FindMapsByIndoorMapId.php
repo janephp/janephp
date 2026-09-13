@@ -48,8 +48,9 @@ class FindMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Issu
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

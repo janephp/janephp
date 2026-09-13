@@ -60,8 +60,9 @@ class SchemaUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
      * @throws \PicturePark\API\Exception\SchemaUpdateConflictException
      * @throws \PicturePark\API\Exception\SchemaUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaUpdateResult
+     * @return \PicturePark\API\Model\SchemaUpdateResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -91,6 +92,7 @@ class SchemaUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -37,6 +37,7 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -62,6 +63,7 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

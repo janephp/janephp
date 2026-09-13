@@ -38,8 +38,9 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Issue
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue963\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -51,6 +52,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Issue
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Issue963\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -20,8 +20,9 @@ class GetEmptyTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespon
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -30,6 +31,7 @@ class GetEmptyTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespon
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace', 'json');
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

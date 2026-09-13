@@ -20,6 +20,7 @@ class HeadPets extends \Jane\Component\OpenApi3\Tests\FetchModeHead\Runtime\Clie
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeHead\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class HeadPets extends \Jane\Component\OpenApi3\Tests\FetchModeHead\Runtime\Clie
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\FetchModeHead\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

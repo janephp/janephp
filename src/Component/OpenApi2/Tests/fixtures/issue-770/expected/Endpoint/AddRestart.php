@@ -46,6 +46,7 @@ class AddRestart extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class AddRestart extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

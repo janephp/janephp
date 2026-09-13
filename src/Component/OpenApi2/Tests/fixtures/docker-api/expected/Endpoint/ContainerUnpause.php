@@ -35,6 +35,7 @@ class ContainerUnpause extends \Docker\Api\Runtime\Client\BaseEndpoint implement
      *
      * @throws \Docker\Api\Exception\ContainerUnpauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerUnpauseInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -51,6 +52,7 @@ class ContainerUnpause extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerUnpauseInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

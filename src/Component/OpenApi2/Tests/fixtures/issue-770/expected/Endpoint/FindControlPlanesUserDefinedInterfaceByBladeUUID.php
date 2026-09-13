@@ -48,8 +48,9 @@ class FindControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\O
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\O
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

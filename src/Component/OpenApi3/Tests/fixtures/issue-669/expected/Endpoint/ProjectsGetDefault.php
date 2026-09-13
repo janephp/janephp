@@ -28,8 +28,9 @@ class ProjectsGetDefault extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class ProjectsGetDefault extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

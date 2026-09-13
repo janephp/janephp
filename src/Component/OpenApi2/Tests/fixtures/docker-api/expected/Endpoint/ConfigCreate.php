@@ -34,8 +34,9 @@ class ConfigCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\ConfigCreateConflictException
      * @throws \Docker\Api\Exception\ConfigCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class ConfigCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\ConfigCreateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

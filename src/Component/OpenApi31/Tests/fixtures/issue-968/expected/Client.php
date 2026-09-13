@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Issue968;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue968\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report
      */
     public function getReport()
     {

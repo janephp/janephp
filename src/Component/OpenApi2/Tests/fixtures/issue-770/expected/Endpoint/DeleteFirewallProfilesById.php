@@ -48,6 +48,7 @@ class DeleteFirewallProfilesById extends \Jane\Component\OpenApi3\Tests\Expected
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class DeleteFirewallProfilesById extends \Jane\Component\OpenApi3\Tests\Expected
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

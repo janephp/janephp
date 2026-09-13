@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Yaml;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\Yaml\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Yaml\Exception\BadResponseException
      *
      * @return null
      */

@@ -40,8 +40,9 @@ class XmpMappingDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
      * @throws \PicturePark\API\Exception\XmpMappingDeleteConflictException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -71,6 +72,7 @@ class XmpMappingDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\XmpMappingDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

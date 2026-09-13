@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Client\Cl
 {
     /**
      * @param \Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget $requestBody
+     * @throws \Jane\Component\OpenApi31\Tests\Issue1006\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget
+     * @return \Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget
      */
     public function createWidget(\Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget $requestBody)
     {

@@ -36,8 +36,9 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *
      * @throws \Docker\Api\Exception\PluginInspectNotFoundException
      * @throws \Docker\Api\Exception\PluginInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin
+     * @return \Docker\Api\Model\Plugin
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -52,6 +53,7 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

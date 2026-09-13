@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Issue831;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Issue831\Exception\BadResponseException
      *
      * @return null
      */
@@ -14,6 +15,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Cl
     }
     /**
      * @param string $orderId
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Issue831\Exception\BadResponseException
      *
      * @return null
      */
@@ -22,6 +24,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Cl
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Endpoint\_Clone($orderId));
     }
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Issue831\Exception\BadResponseException
      *
      * @return null
      */

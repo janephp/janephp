@@ -45,8 +45,9 @@ class XmpMappingUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
      * @throws \PicturePark\API\Exception\XmpMappingUpdateConflictException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -76,6 +77,7 @@ class XmpMappingUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\XmpMappingUpdateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

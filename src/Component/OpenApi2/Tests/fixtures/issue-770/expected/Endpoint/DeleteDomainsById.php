@@ -48,6 +48,7 @@ class DeleteDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class DeleteDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

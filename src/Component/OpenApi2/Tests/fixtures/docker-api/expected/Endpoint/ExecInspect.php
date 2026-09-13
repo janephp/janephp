@@ -35,8 +35,9 @@ class ExecInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *
      * @throws \Docker\Api\Exception\ExecInspectNotFoundException
      * @throws \Docker\Api\Exception\ExecInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ExecIdJsonGetResponse200
+     * @return \Docker\Api\Model\ExecIdJsonGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -51,6 +52,7 @@ class ExecInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (500 === $status) {
             throw new \Docker\Api\Exception\ExecInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

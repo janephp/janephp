@@ -42,8 +42,9 @@ class SchemaSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
      * @throws \PicturePark\API\Exception\SchemaSearchConflictException
      * @throws \PicturePark\API\Exception\SchemaSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaSearchResult
+     * @return \PicturePark\API\Model\SchemaSearchResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class SchemaSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaSearchInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

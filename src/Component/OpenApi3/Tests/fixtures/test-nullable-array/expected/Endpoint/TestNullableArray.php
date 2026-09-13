@@ -20,6 +20,7 @@ class TestNullableArray extends \Jane\Component\OpenApi3\Tests\Expected\TestNull
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class TestNullableArray extends \Jane\Component\OpenApi3\Tests\Expected\TestNull
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

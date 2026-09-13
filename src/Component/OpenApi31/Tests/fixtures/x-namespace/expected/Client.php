@@ -5,24 +5,27 @@ namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem
+     * @return \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem
      */
     public function getFlatItems()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\GetFlatItems());
     }
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200
      */
     public function getNamespacedReport()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\Admin\Reports\GetNamespacedReport());
     }
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem
+     * @return \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem
      */
     public function getTaggedItems()
     {

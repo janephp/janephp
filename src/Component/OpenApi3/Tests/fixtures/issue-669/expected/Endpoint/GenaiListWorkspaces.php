@@ -28,8 +28,9 @@ class GenaiListWorkspaces extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class GenaiListWorkspaces extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

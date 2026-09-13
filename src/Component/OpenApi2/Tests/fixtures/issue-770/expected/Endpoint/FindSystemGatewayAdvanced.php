@@ -45,8 +45,9 @@ class FindSystemGatewayAdvanced extends \Jane\Component\OpenApi3\Tests\Expected\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindSystemGatewayAdvanced extends \Jane\Component\OpenApi3\Tests\Expected\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

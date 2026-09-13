@@ -48,6 +48,7 @@ class FindServicesHotspot20ProfileByQueryCriteria extends \Jane\Component\OpenAp
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class FindServicesHotspot20ProfileByQueryCriteria extends \Jane\Component\OpenAp
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

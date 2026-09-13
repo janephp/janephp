@@ -50,6 +50,7 @@ class PortfolioUserPermissions extends \CreditSafe\API\Runtime\Client\BaseEndpoi
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsUnauthorizedException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsForbiddenException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -97,6 +98,7 @@ class PortfolioUserPermissions extends \CreditSafe\API\Runtime\Client\BaseEndpoi
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

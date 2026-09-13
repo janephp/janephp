@@ -41,8 +41,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerListBadRequestException
      * @throws \Docker\Api\Exception\ContainerListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainerSummary[]
+     * @return \Docker\Api\Model\ContainerSummary[]
      */
     public function containerList(array $queryParameters = [])
     {
@@ -58,8 +59,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerCreateNotFoundException
      * @throws \Docker\Api\Exception\ContainerCreateConflictException
      * @throws \Docker\Api\Exception\ContainerCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersCreatePostResponse201
+     * @return \Docker\Api\Model\ContainersCreatePostResponse201
      */
     public function containerCreate(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = [])
     {
@@ -73,8 +75,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerInspectNotFoundException
      * @throws \Docker\Api\Exception\ContainerInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdJsonGetResponse200
+     * @return \Docker\Api\Model\ContainersIdJsonGetResponse200
      */
     public function containerInspect(string $id, array $queryParameters = [])
     {
@@ -90,8 +93,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerTopNotFoundException
      * @throws \Docker\Api\Exception\ContainerTopInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdTopGetResponse200
+     * @return \Docker\Api\Model\ContainersIdTopGetResponse200
      */
     public function containerTop(string $id, array $queryParameters = [])
     {
@@ -116,8 +120,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerLogsNotFoundException
      * @throws \Docker\Api\Exception\ContainerLogsInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function containerLogs(string $id, array $queryParameters = [])
     {
@@ -134,8 +139,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $id ID or name of the container
      * @throws \Docker\Api\Exception\ContainerChangesNotFoundException
      * @throws \Docker\Api\Exception\ContainerChangesInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdChangesGetResponse200Item[]
+     * @return \Docker\Api\Model\ContainersIdChangesGetResponse200Item[]
      */
     public function containerChanges(string $id)
     {
@@ -146,6 +152,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $id ID or name of the container
      * @throws \Docker\Api\Exception\ContainerExportNotFoundException
      * @throws \Docker\Api\Exception\ContainerExportInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -190,6 +197,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerStatsNotFoundException
      * @throws \Docker\Api\Exception\ContainerStatsInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -206,6 +214,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerResizeNotFoundException
      * @throws \Docker\Api\Exception\ContainerResizeInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -222,6 +231,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerStartNotFoundException
      * @throws \Docker\Api\Exception\ContainerStartInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -236,6 +246,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerStopNotFoundException
      * @throws \Docker\Api\Exception\ContainerStopInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -250,6 +261,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerRestartNotFoundException
      * @throws \Docker\Api\Exception\ContainerRestartInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -268,6 +280,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerKillNotFoundException
      * @throws \Docker\Api\Exception\ContainerKillConflictException
      * @throws \Docker\Api\Exception\ContainerKillInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -283,8 +296,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param \Docker\Api\Model\ContainersIdUpdatePostBody $update
      * @throws \Docker\Api\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\Api\Exception\ContainerUpdateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdUpdatePostResponse200
+     * @return \Docker\Api\Model\ContainersIdUpdatePostResponse200
      */
     public function containerUpdate(string $id, \Docker\Api\Model\ContainersIdUpdatePostBody $update)
     {
@@ -298,6 +312,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerRenameNotFoundException
      * @throws \Docker\Api\Exception\ContainerRenameConflictException
      * @throws \Docker\Api\Exception\ContainerRenameInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -316,6 +331,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $id ID or name of the container
      * @throws \Docker\Api\Exception\ContainerPauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerPauseInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -328,6 +344,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $id ID or name of the container
      * @throws \Docker\Api\Exception\ContainerUnpauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerUnpauseInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -451,6 +468,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerAttachBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachNotFoundException
      * @throws \Docker\Api\Exception\ContainerAttachInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -473,6 +491,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketNotFoundException
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -489,8 +508,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerWaitNotFoundException
      * @throws \Docker\Api\Exception\ContainerWaitInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersIdWaitPostResponse200
+     * @return \Docker\Api\Model\ContainersIdWaitPostResponse200
      */
     public function containerWait(string $id, array $queryParameters = [])
     {
@@ -507,6 +527,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerDeleteNotFoundException
      * @throws \Docker\Api\Exception\ContainerDeleteConflictException
      * @throws \Docker\Api\Exception\ContainerDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -523,6 +544,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerArchiveBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveNotFoundException
      * @throws \Docker\Api\Exception\ContainerArchiveInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -542,6 +564,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerArchiveInfoBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveInfoNotFoundException
      * @throws \Docker\Api\Exception\ContainerArchiveInfoInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -568,6 +591,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PutContainerArchiveForbiddenException
     * @throws \Docker\Api\Exception\PutContainerArchiveNotFoundException
     * @throws \Docker\Api\Exception\PutContainerArchiveInternalServerErrorException
+    * @throws \Docker\Api\Exception\BadResponseException
     *
     * @return null
     */
@@ -584,8 +608,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune containers with (or without, in case `label!=...` is used) the specified labels.
      * } $queryParameters
      * @throws \Docker\Api\Exception\ContainerPruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersPrunePostResponse200
+     * @return \Docker\Api\Model\ContainersPrunePostResponse200
      */
     public function containerPrune(array $queryParameters = [])
     {
@@ -608,8 +633,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *    "digests"?: bool, //Show digest information as a `RepoDigests` field on each image.
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImageListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImageSummary[]
+     * @return \Docker\Api\Model\ImageSummary[]
      */
     public function imageList(array $queryParameters = [])
     {
@@ -681,6 +707,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $headerParameters
      * @throws \Docker\Api\Exception\ImageBuildBadRequestException
      * @throws \Docker\Api\Exception\ImageBuildInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -707,8 +734,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `private`
      * } $queryParameters
      * @throws \Docker\Api\Exception\BuildPruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\BuildPrunePostResponse200
+     * @return \Docker\Api\Model\BuildPrunePostResponse200
      */
     public function buildPrune(array $queryParameters = [])
     {
@@ -739,6 +767,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $headerParameters
      * @throws \Docker\Api\Exception\ImageCreateNotFoundException
      * @throws \Docker\Api\Exception\ImageCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -751,8 +780,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name Image name or id
      * @throws \Docker\Api\Exception\ImageInspectNotFoundException
      * @throws \Docker\Api\Exception\ImageInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Image
+     * @return \Docker\Api\Model\Image
      */
     public function imageInspect(string $name)
     {
@@ -763,8 +793,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name Image name or ID
      * @throws \Docker\Api\Exception\ImageHistoryNotFoundException
      * @throws \Docker\Api\Exception\ImageHistoryInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImagesNameHistoryGetResponse200Item[]
+     * @return \Docker\Api\Model\ImagesNameHistoryGetResponse200Item[]
      */
     public function imageHistory(string $name)
     {
@@ -791,6 +822,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $headerParameters
      * @throws \Docker\Api\Exception\ImagePushNotFoundException
      * @throws \Docker\Api\Exception\ImagePushInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -809,6 +841,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ImageTagNotFoundException
      * @throws \Docker\Api\Exception\ImageTagConflictException
      * @throws \Docker\Api\Exception\ImageTagInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -831,8 +864,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ImageDeleteNotFoundException
      * @throws \Docker\Api\Exception\ImageDeleteConflictException
      * @throws \Docker\Api\Exception\ImageDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImageDeleteResponseItem[]
+     * @return \Docker\Api\Model\ImageDeleteResponseItem[]
      */
     public function imageDelete(string $name, array $queryParameters = [])
     {
@@ -850,8 +884,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `stars=<number>` Matches images that has at least 'number' stars.
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImageSearchInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImagesSearchGetResponse200Item[]
+     * @return \Docker\Api\Model\ImagesSearchGetResponse200Item[]
      */
     public function imageSearch(array $queryParameters)
     {
@@ -868,8 +903,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune images with (or without, in case `label!=...` is used) the specified labels.
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImagePruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImagesPrunePostResponse200
+     * @return \Docker\Api\Model\ImagesPrunePostResponse200
      */
     public function imagePrune(array $queryParameters = [])
     {
@@ -881,8 +917,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @param \Docker\Api\Model\AuthConfig $authConfig Authentication to check
      * @throws \Docker\Api\Exception\SystemAuthInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\AuthPostResponse200
+     * @return \Docker\Api\Model\AuthPostResponse200|null
      */
     public function systemAuth(\Docker\Api\Model\AuthConfig $authConfig)
     {
@@ -890,8 +927,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @throws \Docker\Api\Exception\SystemInfoInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SystemInfo
+     * @return \Docker\Api\Model\SystemInfo
      */
     public function systemInfo()
     {
@@ -899,8 +937,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @throws \Docker\Api\Exception\SystemVersionInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SystemVersion
+     * @return \Docker\Api\Model\SystemVersion
      */
     public function systemVersion()
     {
@@ -908,8 +947,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @throws \Docker\Api\Exception\SystemPingInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function systemPing()
     {
@@ -917,8 +957,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @throws \Docker\Api\Exception\SystemPingHeadInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function systemPingHead()
     {
@@ -937,8 +978,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImageCommitNotFoundException
      * @throws \Docker\Api\Exception\ImageCommitInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     public function imageCommit(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = [])
     {
@@ -991,8 +1033,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\SystemEventsBadRequestException
      * @throws \Docker\Api\Exception\SystemEventsInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\EventMessage
+     * @return \Docker\Api\Model\EventMessage
      */
     public function systemEvents(array $queryParameters = [])
     {
@@ -1000,8 +1043,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @throws \Docker\Api\Exception\SystemDataUsageInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SystemDfGetResponse200
+     * @return \Docker\Api\Model\SystemDfGetResponse200
      */
     public function systemDataUsage()
     {
@@ -1034,8 +1078,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @param string $name Image name or ID
      * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function imageGet(string $name)
     {
@@ -1057,8 +1102,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *    "names"?: array, //Image names to filter by
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImageGetAllInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function imageGetAll(array $queryParameters = [])
     {
@@ -1074,6 +1120,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *    "quiet"?: bool, //Suppress progress details during load.
      * } $queryParameters
      * @throws \Docker\Api\Exception\ImageLoadInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1088,8 +1135,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerExecNotFoundException
      * @throws \Docker\Api\Exception\ContainerExecConflictException
      * @throws \Docker\Api\Exception\ContainerExecInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     public function containerExec(string $id, \Docker\Api\Model\ContainersIdExecPostBody $execConfig)
     {
@@ -1104,6 +1152,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param \Docker\Api\Model\ExecIdStartPostBody $execStartConfig
      * @throws \Docker\Api\Exception\ExecStartNotFoundException
      * @throws \Docker\Api\Exception\ExecStartConflictException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1123,6 +1172,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ExecResizeBadRequestException
      * @throws \Docker\Api\Exception\ExecResizeNotFoundException
      * @throws \Docker\Api\Exception\ExecResizeInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1135,8 +1185,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $id Exec instance ID
      * @throws \Docker\Api\Exception\ExecInspectNotFoundException
      * @throws \Docker\Api\Exception\ExecInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ExecIdJsonGetResponse200
+     * @return \Docker\Api\Model\ExecIdJsonGetResponse200
      */
     public function execInspect(string $id)
     {
@@ -1157,8 +1208,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `name=<volume-name>` Matches all or part of a volume name.
      * } $queryParameters
      * @throws \Docker\Api\Exception\VolumeListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\VolumesGetResponse200
+     * @return \Docker\Api\Model\VolumesGetResponse200
      */
     public function volumeList(array $queryParameters = [])
     {
@@ -1167,8 +1219,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * @param \Docker\Api\Model\VolumesCreatePostBody $volumeConfig Volume configuration
      * @throws \Docker\Api\Exception\VolumeCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Volume
+     * @return \Docker\Api\Model\Volume
      */
     public function volumeCreate(\Docker\Api\Model\VolumesCreatePostBody $volumeConfig)
     {
@@ -1183,6 +1236,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\VolumeDeleteNotFoundException
      * @throws \Docker\Api\Exception\VolumeDeleteConflictException
      * @throws \Docker\Api\Exception\VolumeDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1194,8 +1248,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name Volume name or ID
      * @throws \Docker\Api\Exception\VolumeInspectNotFoundException
      * @throws \Docker\Api\Exception\VolumeInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Volume
+     * @return \Docker\Api\Model\Volume
      */
     public function volumeInspect(string $name)
     {
@@ -1209,8 +1264,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
      * } $queryParameters
      * @throws \Docker\Api\Exception\VolumePruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\VolumesPrunePostResponse200
+     * @return \Docker\Api\Model\VolumesPrunePostResponse200
      */
     public function volumePrune(array $queryParameters = [])
     {
@@ -1242,8 +1298,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `type=["custom"|"builtin"]` Filters networks by type. The `custom` keyword returns all user-defined networks.
      * } $queryParameters
      * @throws \Docker\Api\Exception\NetworkListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Network[]
+     * @return \Docker\Api\Model\Network[]
      */
     public function networkList(array $queryParameters = [])
     {
@@ -1254,6 +1311,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkDeleteForbiddenException
      * @throws \Docker\Api\Exception\NetworkDeleteNotFoundException
      * @throws \Docker\Api\Exception\NetworkDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1269,8 +1327,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\NetworkInspectNotFoundException
      * @throws \Docker\Api\Exception\NetworkInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Network
+     * @return \Docker\Api\Model\Network
      */
     public function networkInspect(string $id, array $queryParameters = [])
     {
@@ -1281,8 +1340,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkCreateForbiddenException
      * @throws \Docker\Api\Exception\NetworkCreateNotFoundException
      * @throws \Docker\Api\Exception\NetworkCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\NetworksCreatePostResponse201
+     * @return \Docker\Api\Model\NetworksCreatePostResponse201
      */
     public function networkCreate(\Docker\Api\Model\NetworksCreatePostBody $networkConfig)
     {
@@ -1294,6 +1354,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkConnectForbiddenException
      * @throws \Docker\Api\Exception\NetworkConnectNotFoundException
      * @throws \Docker\Api\Exception\NetworkConnectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1307,6 +1368,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkDisconnectForbiddenException
      * @throws \Docker\Api\Exception\NetworkDisconnectNotFoundException
      * @throws \Docker\Api\Exception\NetworkDisconnectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1323,8 +1385,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune networks with (or without, in case `label!=...` is used) the specified labels.
      * } $queryParameters
      * @throws \Docker\Api\Exception\NetworkPruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\NetworksPrunePostResponse200
+     * @return \Docker\Api\Model\NetworksPrunePostResponse200
      */
     public function networkPrune(array $queryParameters = [])
     {
@@ -1342,8 +1405,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                        //- `enable=<true>|<false>`
      * } $queryParameters
      * @throws \Docker\Api\Exception\PluginListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin[]
+     * @return \Docker\Api\Model\Plugin[]
      */
     public function pluginList(array $queryParameters = [])
     {
@@ -1355,8 +1419,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                      //default if omitted.
      * } $queryParameters
      * @throws \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\PluginPrivilege[]
+     * @return \Docker\Api\Model\PluginPrivilege[]
      */
     public function getPluginPrivileges(array $queryParameters)
     {
@@ -1383,6 +1448,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                                //details.
      * } $headerParameters
      * @throws \Docker\Api\Exception\PluginPullInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1396,8 +1462,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * 
      * @throws \Docker\Api\Exception\PluginInspectNotFoundException
      * @throws \Docker\Api\Exception\PluginInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin
+     * @return \Docker\Api\Model\Plugin
      */
     public function pluginInspect(string $name)
     {
@@ -1413,8 +1480,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\PluginDeleteNotFoundException
      * @throws \Docker\Api\Exception\PluginDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin
+     * @return \Docker\Api\Model\Plugin
      */
     public function pluginDelete(string $name, array $queryParameters = [])
     {
@@ -1429,6 +1497,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\PluginEnableNotFoundException
      * @throws \Docker\Api\Exception\PluginEnableInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1442,6 +1511,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * 
      * @throws \Docker\Api\Exception\PluginDisableNotFoundException
      * @throws \Docker\Api\Exception\PluginDisableInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1468,6 +1538,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $headerParameters
      * @throws \Docker\Api\Exception\PluginUpgradeNotFoundException
      * @throws \Docker\Api\Exception\PluginUpgradeInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1482,6 +1553,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *                    //default if omitted.
      * } $queryParameters
      * @throws \Docker\Api\Exception\PluginCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1497,6 +1569,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * 
      * @throws \Docker\Api\Exception\PluginPushNotFoundException
      * @throws \Docker\Api\Exception\PluginPushInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1511,6 +1584,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $body
      * @throws \Docker\Api\Exception\PluginSetNotFoundException
      * @throws \Docker\Api\Exception\PluginSetInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1532,8 +1606,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\NodeListInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Node[]
+     * @return \Docker\Api\Model\Node[]
      */
     public function nodeList(array $queryParameters = [])
     {
@@ -1547,6 +1622,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NodeDeleteNotFoundException
      * @throws \Docker\Api\Exception\NodeDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1559,8 +1635,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NodeInspectNotFoundException
      * @throws \Docker\Api\Exception\NodeInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Node
+     * @return \Docker\Api\Model\Node
      */
     public function nodeInspect(string $id)
     {
@@ -1577,6 +1654,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NodeUpdateNotFoundException
      * @throws \Docker\Api\Exception\NodeUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1588,8 +1666,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmInspectNotFoundException
      * @throws \Docker\Api\Exception\SwarmInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Swarm
+     * @return \Docker\Api\Model\Swarm
      */
     public function swarmInspect()
     {
@@ -1600,8 +1679,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmInitBadRequestException
      * @throws \Docker\Api\Exception\SwarmInitInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInitServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function swarmInit(\Docker\Api\Model\SwarmInitPostBody $body)
     {
@@ -1612,6 +1692,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmJoinBadRequestException
      * @throws \Docker\Api\Exception\SwarmJoinInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmJoinServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1626,6 +1707,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\SwarmLeaveInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmLeaveServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1645,6 +1727,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmUpdateBadRequestException
      * @throws \Docker\Api\Exception\SwarmUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1655,8 +1738,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * @throws \Docker\Api\Exception\SwarmUnlockkeyInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockkeyServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SwarmUnlockkeyGetResponse200
+     * @return \Docker\Api\Model\SwarmUnlockkeyGetResponse200
      */
     public function swarmUnlockkey()
     {
@@ -1666,6 +1750,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param \Docker\Api\Model\SwarmUnlockPostBody $body
      * @throws \Docker\Api\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1688,8 +1773,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Service[]
+     * @return \Docker\Api\Model\Service[]
      */
     public function serviceList(array $queryParameters = [])
     {
@@ -1709,8 +1795,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceCreateConflictException
      * @throws \Docker\Api\Exception\ServiceCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ServicesCreatePostResponse201
+     * @return \Docker\Api\Model\ServicesCreatePostResponse201
      */
     public function serviceCreate(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = [])
     {
@@ -1721,6 +1808,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceDeleteNotFoundException
      * @throws \Docker\Api\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1736,8 +1824,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceInspectNotFoundException
      * @throws \Docker\Api\Exception\ServiceInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Service
+     * @return \Docker\Api\Model\Service
      */
     public function serviceInspect(string $id, array $queryParameters = [])
     {
@@ -1769,8 +1858,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceUpdateNotFoundException
      * @throws \Docker\Api\Exception\ServiceUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ServiceUpdateResponse
+     * @return \Docker\Api\Model\ServiceUpdateResponse
      */
     public function serviceUpdate(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters, array $headerParameters = [])
     {
@@ -1797,8 +1887,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceLogsNotFoundException
      * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceLogsServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function serviceLogs(string $id, array $queryParameters = [])
     {
@@ -1820,8 +1911,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\TaskListInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Task[]
+     * @return \Docker\Api\Model\Task[]
      */
     public function taskList(array $queryParameters = [])
     {
@@ -1832,8 +1924,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\TaskInspectNotFoundException
      * @throws \Docker\Api\Exception\TaskInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Task
+     * @return \Docker\Api\Model\Task
      */
     public function taskInspect(string $id)
     {
@@ -1860,8 +1953,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\TaskLogsNotFoundException
      * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskLogsServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function taskLogs(string $id, array $queryParameters = [])
     {
@@ -1881,8 +1975,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\SecretListInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Secret[]
+     * @return \Docker\Api\Model\Secret[]
      */
     public function secretList(array $queryParameters = [])
     {
@@ -1893,8 +1988,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SecretCreateConflictException
      * @throws \Docker\Api\Exception\SecretCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     public function secretCreate(\Docker\Api\Model\SecretsCreatePostBody $body)
     {
@@ -1905,6 +2001,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SecretDeleteNotFoundException
      * @throws \Docker\Api\Exception\SecretDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1917,8 +2014,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SecretInspectNotFoundException
      * @throws \Docker\Api\Exception\SecretInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Secret
+     * @return \Docker\Api\Model\Secret
      */
     public function secretInspect(string $id)
     {
@@ -1938,6 +2036,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\SecretUpdateNotFoundException
     * @throws \Docker\Api\Exception\SecretUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\SecretUpdateServiceUnavailableException
+    * @throws \Docker\Api\Exception\BadResponseException
     *
     * @return null
     */
@@ -1959,8 +2058,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * } $queryParameters
      * @throws \Docker\Api\Exception\ConfigListInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Config[]
+     * @return \Docker\Api\Model\Config[]
      */
     public function configList(array $queryParameters = [])
     {
@@ -1971,8 +2071,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ConfigCreateConflictException
      * @throws \Docker\Api\Exception\ConfigCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     public function configCreate(\Docker\Api\Model\ConfigsCreatePostBody $body)
     {
@@ -1983,6 +2084,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ConfigDeleteNotFoundException
      * @throws \Docker\Api\Exception\ConfigDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -1995,8 +2097,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ConfigInspectNotFoundException
      * @throws \Docker\Api\Exception\ConfigInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Config
+     * @return \Docker\Api\Model\Config
      */
     public function configInspect(string $id)
     {
@@ -2016,6 +2119,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ConfigUpdateNotFoundException
     * @throws \Docker\Api\Exception\ConfigUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\ConfigUpdateServiceUnavailableException
+    * @throws \Docker\Api\Exception\BadResponseException
     *
     * @return null
     */
@@ -2029,8 +2133,9 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name Image name or id
      * @throws \Docker\Api\Exception\DistributionInspectUnauthorizedException
      * @throws \Docker\Api\Exception\DistributionInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\DistributionInspect
+     * @return \Docker\Api\Model\DistributionInspect
      */
     public function distributionInspect(string $name)
     {
@@ -2039,6 +2144,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * @throws \Docker\Api\Exception\SessionBadRequestException
      * @throws \Docker\Api\Exception\SessionInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */

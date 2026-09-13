@@ -44,6 +44,7 @@ class DatabasesDestroyReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -69,6 +70,7 @@ class DatabasesDestroyReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

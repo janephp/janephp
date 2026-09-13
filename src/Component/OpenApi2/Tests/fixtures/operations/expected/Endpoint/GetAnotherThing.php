@@ -20,8 +20,9 @@ class GetAnotherThing extends \Jane\Component\OpenApi2\Tests\Expected\Operations
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Operations\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing
+     * @return \Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -30,6 +31,7 @@ class GetAnotherThing extends \Jane\Component\OpenApi2\Tests\Expected\Operations
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing', 'json');
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Operations\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

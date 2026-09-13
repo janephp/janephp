@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\FetchModeEager\Runtime\Clien
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\GetPetsNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeEager\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse200
      */
     public function getPets()
     {

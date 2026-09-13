@@ -42,8 +42,9 @@ class ContentAggregate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
      * @throws \PicturePark\API\Exception\ContentAggregateConflictException
      * @throws \PicturePark\API\Exception\ContentAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentAggregateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class ContentAggregate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentAggregateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

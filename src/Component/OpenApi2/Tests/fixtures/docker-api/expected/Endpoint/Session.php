@@ -26,6 +26,7 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
      *
      * @throws \Docker\Api\Exception\SessionBadRequestException
      * @throws \Docker\Api\Exception\SessionInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -42,6 +43,7 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
         if (500 === $status) {
             throw new \Docker\Api\Exception\SessionInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

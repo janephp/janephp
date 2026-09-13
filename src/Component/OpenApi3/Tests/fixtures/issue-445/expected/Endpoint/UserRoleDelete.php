@@ -40,6 +40,7 @@ class UserRoleDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
      * @throws \PicturePark\API\Exception\UserRoleDeleteConflictException
      * @throws \PicturePark\API\Exception\UserRoleDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class UserRoleDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserRoleDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

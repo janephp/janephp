@@ -47,6 +47,7 @@ class DeleteAvcApplicationPolicy extends \Jane\Component\OpenApi3\Tests\Expected
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteAvcApplicationPolicy extends \Jane\Component\OpenApi3\Tests\Expected
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

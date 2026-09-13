@@ -9,8 +9,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param null|\CreditSafe\API\Model\AuthenticationRequest $requestBody
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\AuthenticationSuccessResponse
+     * @return \CreditSafe\API\Model\AuthenticationSuccessResponse
      */
     public function generateAuthenticationToken(?\CreditSafe\API\Model\AuthenticationRequest $requestBody = null)
     {
@@ -49,6 +50,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanySearchBadRequestException
      * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanySearchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +73,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyCreditReportBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyCreditReportForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -90,6 +93,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -108,6 +112,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      * @throws \CreditSafe\API\Exception\CompanyReportJSONSchemaUnauthorizedException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -122,8 +127,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * } $headerParameters
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\AccessCountriesResponse
+     * @return \CreditSafe\API\Model\AccessCountriesResponse
      */
     public function countriesInSubscription(array $headerParameters)
     {
@@ -153,6 +159,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchBadRequestException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -172,8 +179,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DirectorReportBadRequestException
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\GbPeopleReportReponse
+     * @return \CreditSafe\API\Model\GbPeopleReportReponse
      */
     public function directorReport(string $personId, array $queryParameters, array $headerParameters)
     {
@@ -190,6 +198,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -209,8 +218,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * } $headerParameters
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\ListCompanyImages
+     * @return \CreditSafe\API\Model\ListCompanyImages
      */
     public function companyImageDocuments(array $queryParameters, array $headerParameters)
     {
@@ -226,8 +236,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * } $headerParameters
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\GbImageTypesResponse
+     * @return \CreditSafe\API\Model\GbImageTypesResponse
      */
     public function imageDocumentCategoryTypes(array $queryParameters, array $headerParameters)
     {
@@ -242,6 +253,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyImageBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -274,8 +286,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse
+     * @return \CreditSafe\API\Model\ListFreshInvestigationResponse
      */
     public function listSubmittedFreshInvestigations(array $queryParameters, array $headerParameters)
     {
@@ -291,8 +304,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationUnauthorizedException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse
+     * @return \CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse
      */
     public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters)
     {
@@ -307,6 +321,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -326,8 +341,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportBadRequestException
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\CompletedFreshInvestigation
+     * @return \CreditSafe\API\Model\CompletedFreshInvestigation
      */
     public function freshInvestigationReport(string $orderId, array $queryParameters, array $headerParameters)
     {
@@ -343,6 +359,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -366,6 +383,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\BankMatchBadRequestException
      * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
      * @throws \CreditSafe\API\Exception\BankMatchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -378,8 +396,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array{
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\UserDetails
+     * @return \CreditSafe\API\Model\UserDetails
      */
     public function monitoringUserDetails(array $headerParameters)
     {
@@ -401,8 +420,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyEventsUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyEventsForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyEventsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\CompanyEventsResponse
+     * @return \CreditSafe\API\Model\CompanyEventsResponse
      */
     public function companyEvents(string $id, array $queryParameters, array $headerParameters)
     {
@@ -417,8 +437,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\AllEventRulesUnauthorizedException
      * @throws \CreditSafe\API\Exception\AllEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\AllEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse
+     * @return \CreditSafe\API\Model\EventRulesResponse
      */
     public function allEventRules(array $headerParameters)
     {
@@ -433,8 +454,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse
+     * @return \CreditSafe\API\Model\EventRulesResponse
      */
     public function filteredEventRules(string $countryCode, array $headerParameters)
     {
@@ -458,8 +480,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\NotificationEventsUnauthorizedException
      * @throws \CreditSafe\API\Exception\NotificationEventsForbiddenException
      * @throws \CreditSafe\API\Exception\NotificationEventsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\NotificationEventsResponse
+     * @return \CreditSafe\API\Model\NotificationEventsResponse
      */
     public function notificationEvents(array $queryParameters, array $headerParameters)
     {
@@ -479,6 +502,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosForbiddenException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -496,6 +520,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -513,6 +538,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdUnauthorizedException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdForbiddenException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -530,6 +556,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdUnauthorizedException
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdForbiddenException
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -547,8 +574,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters)
     {
@@ -564,8 +592,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters)
     {
@@ -581,8 +610,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse
+     * @return \CreditSafe\API\Model\EventRulesResponse
      */
     public function listPortfolioEventRules(string $portfolioId, array $headerParameters)
     {
@@ -599,6 +629,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesUnauthorizedException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -618,8 +649,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeForbiddenException
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody, array $headerParameters)
     {
@@ -635,8 +667,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters)
     {
@@ -653,6 +686,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportUnauthorizedException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportForbiddenException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -671,6 +705,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsUnauthorizedException
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsForbiddenException
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -688,6 +723,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryUnauthorizedException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryForbiddenException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -712,6 +748,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredForbiddenException
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -731,6 +768,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventUnauthorizedException
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventForbiddenException
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -755,6 +793,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -773,6 +812,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyUnauthorizedException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -794,6 +834,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSForbiddenException
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -815,6 +856,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -836,6 +878,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -854,6 +897,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdUnauthorizedException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdForbiddenException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -872,6 +916,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -891,8 +936,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody, array $headerParameters)
     {
@@ -917,6 +963,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsForbiddenException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -934,6 +981,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsUnauthorizedException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsForbiddenException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -952,6 +1000,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\SharePortfolioIdUnauthorizedException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdForbiddenException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -973,8 +1022,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListDecisionTreesBadRequestException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\GuidSuccessResponse
+     * @return \CreditSafe\API\Model\GuidSuccessResponse
      */
     public function listDecisionTrees(array $queryParameters, array $headerParameters)
     {
@@ -996,6 +1046,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RunDecisionTreeUnauthorizedException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeForbiddenException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1012,6 +1063,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1027,8 +1079,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesBadRequestException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches
+     * @return \CreditSafe\API\Model\CompliancePreDefinedSearches
      */
     public function listOfCompanyPreDefinedSearches(array $headerParameters)
     {
@@ -1053,8 +1106,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\ComplianceSearchResult
+     * @return \CreditSafe\API\Model\ComplianceSearchResult
      */
     public function companyComplianceSearch(string $predefinedSearch, array $queryParameters, array $headerParameters)
     {
@@ -1069,6 +1123,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1084,8 +1139,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesBadRequestException
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches
+     * @return \CreditSafe\API\Model\CompliancePreDefinedSearches
      */
     public function listOfIndividualsPreDefinedSearches(array $headerParameters)
     {
@@ -1110,8 +1166,9 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchBadRequestException
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\ComplianceSearchResult
+     * @return \CreditSafe\API\Model\ComplianceSearchResult
      */
     public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters, array $headerParameters)
     {
@@ -1130,6 +1187,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CustomReportParametersUnauthorizedException
      * @throws \CreditSafe\API\Exception\CustomReportParametersForbiddenException
      * @throws \CreditSafe\API\Exception\CustomReportParametersNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */

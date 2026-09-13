@@ -15,8 +15,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime
      *    "Amazon-Advertising-API-Scope": string, //The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
      *                                            //profiles associated with the access token passed in the HTTP Authorization header.
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent
+     * @return \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent
      */
     public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody, array $headerParameters)
     {

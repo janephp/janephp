@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Issue823;
 class Client extends \Jane\Component\OpenApi3\Tests\Issue823\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Issue823\Exception\BadResponseException
      *
      * @return null
      */
@@ -13,6 +14,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Issue823\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Issue823\Endpoint\GetApiUser());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Issue823\Exception\BadResponseException
      *
      * @return null
      */

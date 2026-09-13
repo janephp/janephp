@@ -38,6 +38,7 @@ class DatabasesUpdateClusterMetricsCredentials extends \Jane\Generated\DigitalOc
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -60,6 +61,7 @@ class DatabasesUpdateClusterMetricsCredentials extends \Jane\Generated\DigitalOc
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -43,6 +43,7 @@ class DatabasesUpdateMajorVersion extends \Jane\Generated\DigitalOcean\Runtime\C
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -68,6 +69,7 @@ class DatabasesUpdateMajorVersion extends \Jane\Generated\DigitalOcean\Runtime\C
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

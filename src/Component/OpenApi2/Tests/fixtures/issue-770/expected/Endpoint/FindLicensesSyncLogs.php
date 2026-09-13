@@ -45,8 +45,9 @@ class FindLicensesSyncLogs extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindLicensesSyncLogs extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

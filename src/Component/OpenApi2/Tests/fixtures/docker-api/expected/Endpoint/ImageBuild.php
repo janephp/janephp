@@ -139,6 +139,7 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @throws \Docker\Api\Exception\ImageBuildBadRequestException
      * @throws \Docker\Api\Exception\ImageBuildInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -155,6 +156,7 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageBuildInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -51,6 +51,7 @@ class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Exp
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Exp
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

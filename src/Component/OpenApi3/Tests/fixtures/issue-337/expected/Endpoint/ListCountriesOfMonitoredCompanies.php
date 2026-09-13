@@ -50,8 +50,9 @@ class ListCountriesOfMonitoredCompanies extends \CreditSafe\API\Runtime\Client\B
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -97,6 +98,7 @@ class ListCountriesOfMonitoredCompanies extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

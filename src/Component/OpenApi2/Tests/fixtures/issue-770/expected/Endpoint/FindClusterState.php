@@ -45,8 +45,9 @@ class FindClusterState extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindClusterState extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

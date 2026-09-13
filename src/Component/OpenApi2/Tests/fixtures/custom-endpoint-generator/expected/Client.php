@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Exception\BadResponseException
      *
      * @return null
      */

@@ -14,8 +14,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetMuseumHoursBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetMuseumHoursNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours[]
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours[]
      */
     public function getMuseumHours(array $queryParameters = [], array $accept = [])
     {
@@ -32,8 +33,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]
      */
     public function listSpecialEvents(array $queryParameters = [], array $accept = [])
     {
@@ -45,8 +47,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
     public function createSpecialEvent(\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent $requestBody, array $accept = [])
     {
@@ -58,6 +61,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventUnauthorizedException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,8 +75,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetSpecialEventBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
     public function getSpecialEvent(string $eventId, array $accept = [])
     {
@@ -85,8 +90,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
     public function updateSpecialEvent(string $eventId, \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields $requestBody, array $accept = [])
     {
@@ -98,8 +104,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header application/json|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BuyMuseumTicketsBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BuyMuseumTicketsNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation
      */
     public function buyMuseumTickets(\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\BuyMuseumTickets $requestBody, array $accept = [])
     {
@@ -111,8 +118,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @param array $accept Accept content header image/png|application/problem+json
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function getTicketCode(string $ticketId, array $accept = [])
     {

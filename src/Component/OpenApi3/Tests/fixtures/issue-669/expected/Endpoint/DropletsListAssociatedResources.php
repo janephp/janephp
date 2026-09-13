@@ -47,8 +47,9 @@ class DropletsListAssociatedResources extends \Jane\Generated\DigitalOcean\Runti
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -72,6 +73,7 @@ class DropletsListAssociatedResources extends \Jane\Generated\DigitalOcean\Runti
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

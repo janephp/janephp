@@ -5,16 +5,18 @@ namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReferen
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo
      */
     public function getFoo()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Endpoint\GetFoo());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Baz
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Baz
      */
     public function getBaz()
     {

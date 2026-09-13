@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObje
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody = null)
     {

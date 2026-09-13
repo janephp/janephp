@@ -57,8 +57,9 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue803\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue803\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

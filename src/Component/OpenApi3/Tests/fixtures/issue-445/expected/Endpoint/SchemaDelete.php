@@ -55,6 +55,7 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
      * @throws \PicturePark\API\Exception\SchemaDeleteConflictException
      * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -91,6 +92,7 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

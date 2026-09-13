@@ -43,6 +43,7 @@ class DatabasesUpdateSqlMode extends \Jane\Generated\DigitalOcean\Runtime\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -68,6 +69,7 @@ class DatabasesUpdateSqlMode extends \Jane\Generated\DigitalOcean\Runtime\Client
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

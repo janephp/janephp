@@ -50,7 +50,7 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNo
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

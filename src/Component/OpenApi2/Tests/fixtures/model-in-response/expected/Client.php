@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace
      */
     public function getEmptyTest()
     {
@@ -15,8 +16,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Run
     /**
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestBadRequestException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema
      */
     public function getTest()
     {
@@ -26,16 +28,18 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Run
      * @param int $id id
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdBadRequestException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200
      */
     public function getTestById(int $id)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint\GetTestById($id));
     }
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema[]
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema[]
      */
     public function getTestList()
     {
@@ -43,7 +47,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Run
     }
     /**
      *
-     * @return null|array|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestComplexListGetResponsedefault
+     * @return array|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestComplexListGetResponsedefault
      */
     public function getTestComplexList()
     {

@@ -52,6 +52,7 @@ class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpo
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -99,6 +100,7 @@ class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpo
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

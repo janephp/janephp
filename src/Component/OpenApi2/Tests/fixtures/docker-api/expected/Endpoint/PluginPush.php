@@ -38,6 +38,7 @@ class PluginPush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @throws \Docker\Api\Exception\PluginPushNotFoundException
      * @throws \Docker\Api\Exception\PluginPushInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -54,6 +55,7 @@ class PluginPush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginPushInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

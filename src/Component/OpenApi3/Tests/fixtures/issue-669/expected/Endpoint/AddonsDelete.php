@@ -40,6 +40,7 @@ class AddonsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -65,6 +66,7 @@ class AddonsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -40,8 +40,9 @@ class AppsCancelDeployment extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class AppsCancelDeployment extends \Jane\Generated\DigitalOcean\Runtime\Client\B
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

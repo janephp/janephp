@@ -72,6 +72,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      * @throws \PicturePark\API\Exception\TransferUploadFileConflictException
      * @throws \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -103,6 +104,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

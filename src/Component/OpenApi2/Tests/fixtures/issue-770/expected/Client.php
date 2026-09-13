@@ -12,8 +12,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersByUserIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersByUserIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
     public function deleteUsersByUserId(string $userId, array $queryParameters)
     {
@@ -27,8 +28,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByUserIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByUserIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser
      */
     public function findUsersByUserId(string $userId, array $queryParameters)
     {
@@ -44,8 +46,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUsersByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUsersByUserIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUsersByUserIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
     public function partialUpdateUsersByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserModifyScgUser $body, array $queryParameters)
     {
@@ -59,8 +62,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUsersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -75,8 +79,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUsersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUsersUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
     public function addUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserCreateScgUser $body, array $queryParameters)
     {
@@ -91,8 +96,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUsersByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserList
      */
     public function findUsersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters)
     {
@@ -106,6 +112,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -123,8 +130,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
      */
     public function findUrlFilteringUrlFilteringPolicy(array $queryParameters)
     {
@@ -139,8 +147,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters)
     {
@@ -154,8 +163,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters)
     {
@@ -169,8 +179,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicy
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicy
      */
     public function findUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters)
     {
@@ -186,8 +197,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters)
     {
@@ -203,8 +215,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateUrlFilteringUrlFilteringPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters)
     {
@@ -217,8 +230,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringBlockCategoriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringBlockCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringBlockCategoriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringBlockCategoriesList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringBlockCategoriesList
      */
     public function findUrlFilteringBlockCategories(array $queryParameters)
     {
@@ -233,8 +247,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUrlFilteringByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
      */
     public function findUrlFilteringByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -248,8 +263,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsApPacketCaptureByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsApPacketCaptureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsApPacketCaptureByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
     public function findApsApPacketCaptureByApMac(string $apMac, array $queryParameters)
     {
@@ -264,6 +280,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -281,8 +298,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartFileCaptureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartFileCaptureByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartFileCaptureByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
     public function addApsApPacketCaptureStartFileCaptureByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters)
     {
@@ -298,8 +316,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
     public function addApsApPacketCaptureStartStreamingByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters)
     {
@@ -314,6 +333,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -330,8 +350,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyV2ByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyV2ByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyV2ByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
      */
     public function findApplicationPolicyV2ByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -346,8 +367,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRoguesInfoListByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRoguesInfoListByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRoguesInfoListByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueInfoRogueInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueInfoRogueInfoList
      */
     public function findRoguesInfoListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -362,8 +384,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindHistoricalclientByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindHistoricalclientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindHistoricalclientByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList
      */
     public function findHistoricalclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -378,8 +401,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAuthByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAuthByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
      */
     public function findServicesAaaServerAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -394,8 +418,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
      */
     public function findServicesAaaServerAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -410,6 +435,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourPolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourPolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -426,6 +452,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDscpProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDscpProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDscpProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -442,6 +469,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWechatProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWechatProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWechatProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -458,8 +486,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserDefinedByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserDefinedByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserDefinedByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfileList
      */
     public function findUserDefinedByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -474,8 +503,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDhcpProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDhcpProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDhcpProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
      */
     public function findServicesDhcpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -490,8 +520,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpskByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpskByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpskByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDpskQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDpskQueryList
      */
     public function findDpskByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -506,8 +537,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesTrafficClassProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesTrafficClassProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesTrafficClassProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
      */
     public function findServicesTrafficClassProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -522,6 +554,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWlanSchedulerByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -538,6 +571,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWebAuthenticationByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWebAuthenticationByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesWebAuthenticationByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -554,6 +588,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesGuestAccessByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesGuestAccessByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesGuestAccessByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -570,8 +605,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWiredclientByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWiredclientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWiredclientByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WiredClientQueryClientQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WiredClientQueryClientQueryList
      */
     public function findWiredclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -586,6 +622,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesL2AccessControlByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesL2AccessControlByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesL2AccessControlByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -602,8 +639,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationPolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
      */
     public function findApplicationPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -618,6 +656,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -634,6 +673,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -650,6 +690,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesEthernetPortProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesEthernetPortProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesEthernetPortProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -666,8 +707,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIndoorMapByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIndoorMapByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIndoorMapByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummaryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummaryList
      */
     public function findIndoorMapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -682,6 +724,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -698,8 +741,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesClientIsolationWhitelistByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesClientIsolationWhitelistByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesClientIsolationWhitelistByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
      */
     public function findServicesClientIsolationWhitelistByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -714,8 +758,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
      */
     public function findServicesBonjourFencingPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -730,8 +775,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWlanByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWlanByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWlanByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
      */
     public function findWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -746,6 +792,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspot20ProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -762,8 +809,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryApQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryApQueryList
      */
     public function findApByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryQueryCriteria $body, array $queryParameters)
     {
@@ -778,6 +826,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspotByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspotByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesHotspotByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -794,8 +843,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApWlanByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApWlanByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApWlanByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryApWlanBssidQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryApWlanBssidQueryList
      */
     public function findApWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -810,8 +860,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRadiusProxyStatsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRadiusProxyStatsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRadiusProxyStatsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RacStatsRadiusProxyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RacStatsRadiusProxyList
      */
     public function findRadiusProxyStatsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -826,8 +877,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClientByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClientByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
      */
     public function findClientByQueryCriteria(mixed $body, array $queryParameters)
     {
@@ -840,8 +892,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueMarkKnownBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueMarkKnownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueMarkKnownInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType
      */
     public function findRogueMarkKnown(array $queryParameters)
     {
@@ -856,8 +909,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkKnownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkKnownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkKnownUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRogueMarkKnown(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
@@ -872,8 +926,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueUnMarkForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueUnMarkInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueUnMarkUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRogueUnMark(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
@@ -888,8 +943,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkMaliciousForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkMaliciousInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkMaliciousUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRogueMarkMalicious(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
@@ -904,8 +960,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkIgnoreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkIgnoreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkIgnoreUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRogueMarkIgnore(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
@@ -920,8 +977,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkRogueForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkRogueInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRogueMarkRogueUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRogueMarkRogue(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
@@ -934,8 +992,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsStatsFtpBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsStatsFtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsStatsFtpInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting
      */
     public function findGlobalSettingsStatsFtp(array $queryParameters)
     {
@@ -950,8 +1009,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateGlobalSettingsStatsFtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateGlobalSettingsStatsFtpInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateGlobalSettingsStatsFtpUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateGlobalSettingsStatsFtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting $body, array $queryParameters)
     {
@@ -966,8 +1026,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGlobalSettingsSystemTimeValidateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGlobalSettingsSystemTimeValidateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGlobalSettingsSystemTimeValidateUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidationMessage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidationMessage
      */
     public function addGlobalSettingsSystemTimeValidate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidation $body, array $queryParameters)
     {
@@ -980,8 +1041,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsFriendlyNameLangBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsFriendlyNameLangForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsFriendlyNameLangInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFriendlyNameLangList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFriendlyNameLangList
      */
     public function findGlobalSettingsFriendlyNameLang(array $queryParameters)
     {
@@ -994,8 +1056,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsPortalLangBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsPortalLangForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindGlobalSettingsPortalLangInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemPortalLangList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemPortalLangList
      */
     public function findGlobalSettingsPortalLang(array $queryParameters)
     {
@@ -1010,8 +1073,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansAccountingServiceOrProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansAccountingServiceOrProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansAccountingServiceOrProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansAccountingServiceOrProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1026,8 +1090,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansL2ACLByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansL2ACLByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1042,8 +1107,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDevicePolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDevicePolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1058,8 +1124,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDiffServProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDiffServProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDiffServProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansDiffServProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1074,8 +1141,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansQosMapsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansQosMapsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansQosMapsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1091,8 +1159,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansQosMapsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansQosMapsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansQosMapsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1107,8 +1176,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDnsServerProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDnsServerProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansDnsServerProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansDnsServerProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1124,8 +1194,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroupList
      */
     public function findRkszonesWlangroupsByZoneId(string $zoneId, array $queryParameters)
     {
@@ -1141,8 +1212,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlangroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupCreateWlanGroup $body, array $queryParameters)
     {
@@ -1158,8 +1230,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersByMemberIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
@@ -1177,8 +1250,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsMembersByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsMembersByMemberIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters)
     {
@@ -1196,8 +1270,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlangroupsMembersByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlangroupsMembersByMemberIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters)
     {
@@ -1213,8 +1288,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanList
      */
     public function findRkszonesWlansByZoneId(string $zoneId, array $queryParameters)
     {
@@ -1230,8 +1306,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandardOpenWlan $body, array $queryParameters)
     {
@@ -1247,8 +1324,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansStandard8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
@@ -1264,8 +1342,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandardmacByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandardmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandardmacByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansStandardmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
@@ -1281,8 +1360,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansWisprByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
@@ -1298,8 +1378,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWispr8021XByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWispr8021XByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWispr8021XByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansWispr8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
@@ -1315,8 +1396,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWechatByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWechatByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWechatByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan $body, array $queryParameters)
     {
@@ -1332,8 +1414,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansGuestByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansGuestByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansGuestByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateGuestAccessWlan $body, array $queryParameters)
     {
@@ -1349,8 +1432,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWebauthByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWebauthByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWebauthByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWebAuthWlan $body, array $queryParameters)
     {
@@ -1366,8 +1450,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansHotspot20ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20Wlan $body, array $queryParameters)
     {
@@ -1383,8 +1468,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20openByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20openByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20openByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansHotspot20openByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters)
     {
@@ -1400,8 +1486,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20osenByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20osenByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20osenByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansHotspot20osenByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters)
     {
@@ -1416,6 +1503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansFlexiVpnProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansFlexiVpnProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansFlexiVpnProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -1433,8 +1521,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XmacByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansStandard8021XmacByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansStandard8021XmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
@@ -1450,8 +1539,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprmacByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansWisprmacByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlansWisprmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
@@ -1466,8 +1556,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlansByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlansById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1482,8 +1573,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanConfiguration
      */
     public function findRkszonesWlansById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1500,8 +1592,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters)
     {
@@ -1518,8 +1611,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlansByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesWlansByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters)
     {
@@ -1534,8 +1628,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1550,8 +1645,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlangroupsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroup
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroup
      */
     public function findRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1568,8 +1664,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlangroupsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesWlangroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroup $body, array $queryParameters)
     {
@@ -1585,8 +1682,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlangroupsMembersVlanOverrideByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
@@ -1602,8 +1700,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersNasIdByMemberIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersNasIdByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlangroupsMembersNasIdByMemberIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlangroupsMembersNasIdByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
@@ -1620,8 +1719,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsMembersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsMembersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlangroupsMembersByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRkszonesWlangroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember $body, array $queryParameters)
     {
@@ -1635,6 +1735,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -1651,6 +1752,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -1666,8 +1768,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestByFtpIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestByFtpIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
      */
     public function findFtpsTestByFtpId(string $ftpId, array $queryParameters)
     {
@@ -1681,6 +1784,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsByFtpIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFtpsByFtpIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -1696,8 +1800,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByFtpIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByFtpIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp
      */
     public function findFtpsByFtpId(string $ftpId, array $queryParameters)
     {
@@ -1713,6 +1818,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateFtpsByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateFtpsByFtpIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateFtpsByFtpIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -1729,8 +1835,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList
      */
     public function findFtpsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -1744,8 +1851,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsTestInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
      */
     public function findFtpsTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters)
     {
@@ -1760,8 +1868,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1776,8 +1885,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTrafficClassProfileRef
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTrafficClassProfileRef
      */
     public function findRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -1794,8 +1904,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesTrafficClassProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesTrafficClassProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesTrafficClassProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesTrafficClassProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters)
     {
@@ -1810,8 +1921,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -1825,8 +1937,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
      */
     public function findRkszonesTrafficClassProfileByZoneId(string $zoneId, array $queryParameters)
     {
@@ -1842,8 +1955,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesTrafficClassProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesTrafficClassProfileByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters)
     {
@@ -1859,8 +1973,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByZoneIdByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByZoneIdByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByZoneIdByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addBlockClientByZoneIdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters)
     {
@@ -1874,8 +1989,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteBlockClientById(string $id, array $queryParameters)
     {
@@ -1889,8 +2005,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient
      */
     public function findBlockClientById(string $id, array $queryParameters)
     {
@@ -1906,8 +2023,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateBlockClientByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateBlockClientByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters)
     {
@@ -1923,8 +2041,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateBlockClientByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateBlockClientByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters)
     {
@@ -1938,8 +2057,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteBlockClientInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -1954,8 +2074,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult[]
      */
     public function addBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBulkBlockClient $body, array $queryParameters)
     {
@@ -1971,8 +2092,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByApMacByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByApMacByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientByApMacByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addBlockClientByApMacByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters)
     {
@@ -1986,8 +2108,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByZoneByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByZoneByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByZoneByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
      */
     public function findBlockClientByZoneByZoneId(string $zoneId, array $queryParameters)
     {
@@ -2002,8 +2125,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindBlockClientByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
      */
     public function findBlockClientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2016,8 +2140,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupRoleLabelValueList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupRoleLabelValueList
      */
     public function findUserGroupsRoles(array $queryParameters)
     {
@@ -2032,8 +2157,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesPermissionsByRoleBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesPermissionsByRoleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsRolesPermissionsByRoleInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
      */
     public function findUserGroupsRolesPermissionsByRole(string $role, array $queryParameters)
     {
@@ -2046,8 +2172,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsCurrentUserPermissionCategoriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsCurrentUserPermissionCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsCurrentUserPermissionCategoriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
      */
     public function findUserGroupsCurrentUserPermissionCategories(array $queryParameters)
     {
@@ -2061,8 +2188,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -2077,8 +2205,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUserGroupsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUserGroupsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUserGroupsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
     public function addUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup $body, array $queryParameters)
     {
@@ -2092,8 +2221,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsByUserGroupIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsByUserGroupIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUserGroupsByUserGroupIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
     public function deleteUserGroupsByUserGroupId(string $userGroupId, array $queryParameters)
     {
@@ -2108,8 +2238,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByUserGroupIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByUserGroupIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByUserGroupIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup
      */
     public function findUserGroupsByUserGroupId(string $userGroupId, array $queryParameters)
     {
@@ -2125,8 +2256,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUserGroupsByUserGroupIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUserGroupsByUserGroupIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUserGroupsByUserGroupIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
     public function partialUpdateUserGroupsByUserGroupId(string $userGroupId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserPatchScgUserGroup $body, array $queryParameters)
     {
@@ -2141,8 +2273,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUserGroupsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupList
      */
     public function findUserGroupsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters)
     {
@@ -2156,6 +2289,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -2173,8 +2307,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList
      */
     public function findApSyslogServerProfiles(array $queryParameters)
     {
@@ -2189,8 +2324,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSyslogServerProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSyslogServerProfilesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileCreateApSyslogServerProfile $body, array $queryParameters)
     {
@@ -2204,8 +2340,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSyslogServerProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApSyslogServerProfilesById(string $id, array $queryParameters)
     {
@@ -2219,8 +2356,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfile
      */
     public function findApSyslogServerProfilesById(string $id, array $queryParameters)
     {
@@ -2236,6 +2374,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSyslogServerProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSyslogServerProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSyslogServerProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -2252,8 +2391,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationServiceList
      */
     public function findServicesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2267,8 +2407,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthById(string $id, array $queryParameters)
     {
@@ -2282,8 +2423,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAuthenticationService $body, array $queryParameters)
     {
@@ -2297,8 +2439,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLocalDbByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLocalDbByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLocalDbByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
      */
     public function findServicesAuthLocalDbById(string $id, array $queryParameters)
     {
@@ -2314,8 +2457,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLocalDbByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLocalDbByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLocalDbByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateServicesAuthLocalDbById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLocalDbAuthentication $body, array $queryParameters)
     {
@@ -2330,8 +2474,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
      */
     public function findServicesAuthRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2344,8 +2489,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
      */
     public function findServicesAuthRadius(array $queryParameters)
     {
@@ -2360,8 +2506,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthRadiusInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthRadiusUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addServicesAuthRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication $body, array $queryParameters)
     {
@@ -2375,8 +2522,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthRadiusById(string $id, array $queryParameters)
     {
@@ -2390,8 +2538,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationService
      */
     public function findServicesAuthRadiusById(string $id, array $queryParameters)
     {
@@ -2407,8 +2556,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAuthentication $body, array $queryParameters)
     {
@@ -2424,8 +2574,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAuthRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAuthRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication $body, array $queryParameters)
     {
@@ -2439,8 +2590,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusSecondaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusSecondaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthRadiusSecondaryById(string $id, array $queryParameters)
     {
@@ -2454,8 +2606,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusStandbyPrimaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthRadiusStandbyPrimaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthRadiusStandbyPrimaryById(string $id, array $queryParameters)
     {
@@ -2470,8 +2623,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
      */
     public function findServicesAuthAdByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2484,8 +2638,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
      */
     public function findServicesAuthAd(array $queryParameters)
     {
@@ -2500,8 +2655,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthAdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthAdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthAdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addServicesAuthAd(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateActiveDirectoryAuthentication $body, array $queryParameters)
     {
@@ -2515,8 +2671,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthAdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthAdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthAdById(string $id, array $queryParameters)
     {
@@ -2530,8 +2687,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthAdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryService
      */
     public function findServicesAuthAdById(string $id, array $queryParameters)
     {
@@ -2547,8 +2705,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthAdByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateServicesAuthAdById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyActiveDirectoryAuthentication $body, array $queryParameters)
     {
@@ -2562,8 +2721,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusStandbyPrimaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusStandbyPrimaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAcctRadiusStandbyPrimaryById(string $id, array $queryParameters)
     {
@@ -2576,8 +2736,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
      */
     public function findServicesAuthLdap(array $queryParameters)
     {
@@ -2592,8 +2753,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthLdapForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthLdapInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthLdapUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addServicesAuthLdap(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication $body, array $queryParameters)
     {
@@ -2607,8 +2769,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthLdapByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAuthLdapByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAuthLdapById(string $id, array $queryParameters)
     {
@@ -2622,8 +2785,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPService
      */
     public function findServicesAuthLdapById(string $id, array $queryParameters)
     {
@@ -2639,8 +2803,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAuthLdapByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateServicesAuthLdapById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLDAPAuthentication $body, array $queryParameters)
     {
@@ -2654,8 +2819,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAcctById(string $id, array $queryParameters)
     {
@@ -2671,6 +2837,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -2685,8 +2852,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
      */
     public function findServicesAcctRadius(array $queryParameters)
     {
@@ -2701,8 +2869,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctRadiusInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctRadiusUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addServicesAcctRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAccounting $body, array $queryParameters)
     {
@@ -2716,8 +2885,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAcctRadiusById(string $id, array $queryParameters)
     {
@@ -2731,8 +2901,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingService
      */
     public function findServicesAcctRadiusById(string $id, array $queryParameters)
     {
@@ -2748,8 +2919,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAcctRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateServicesAcctRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAccounting $body, array $queryParameters)
     {
@@ -2765,8 +2937,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAcctRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateServicesAcctRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting $body, array $queryParameters)
     {
@@ -2781,8 +2954,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
      */
     public function findServicesAuthLdapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2797,8 +2971,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAccountingServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAccountingServiceList
      */
     public function findServicesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2812,8 +2987,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAccountingService $body, array $queryParameters)
     {
@@ -2828,8 +3004,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAcctRadiusByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
      */
     public function findServicesAcctRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2843,8 +3020,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusSecondaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServicesAcctRadiusSecondaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteServicesAcctRadiusSecondaryById(string $id, array $queryParameters)
     {
@@ -2860,6 +3038,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthTestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthTestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAuthTestByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -2875,8 +3054,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthGuestByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthGuestByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
      */
     public function findServicesAuthGuestById(string $id, array $queryParameters)
     {
@@ -2891,8 +3071,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBondPortProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBondPortProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBondPortProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileQuery
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileQuery
      */
     public function findRkszonesBondPortProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -2906,6 +3087,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBondPortProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBondPortProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBondPortProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -2921,8 +3103,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileList
      */
     public function findRkszonesProfileBondPortByZoneId(string $zoneId, array $queryParameters)
     {
@@ -2938,8 +3121,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileBondPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileBondPortByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileBondPortByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesProfileBondPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortCreateBondPortProfile $body, array $queryParameters)
     {
@@ -2954,8 +3138,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileBondPortByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileBondPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileBondPortByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters)
     {
@@ -2970,8 +3155,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileWithEditInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileWithEditInfo
      */
     public function findRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters)
     {
@@ -2988,8 +3174,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileBondPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileBondPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileBondPortByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesProfileBondPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortModifyBondPortProfile $body, array $queryParameters)
     {
@@ -3003,8 +3190,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gByApMac(string $apMac, array $queryParameters)
     {
@@ -3018,8 +3206,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gByApMac(string $apMac, array $queryParameters)
     {
@@ -3033,8 +3222,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3048,8 +3238,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperByApMac(string $apMac, array $queryParameters)
     {
@@ -3063,8 +3254,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gByApMac(string $apMac, array $queryParameters)
     {
@@ -3078,8 +3270,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gTxPowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gTxPowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gTxPowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3093,8 +3286,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gTxPowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gTxPowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gTxPowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3108,8 +3302,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerTxPowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerTxPowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerTxPowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3123,8 +3318,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperTxPowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperTxPowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperTxPowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3138,8 +3334,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gTxPowerByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gTxPowerByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gTxPowerByApMac(string $apMac, array $queryParameters)
     {
@@ -3153,8 +3350,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelWidthByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelWidthByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
@@ -3168,8 +3366,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gChannelByApMac(string $apMac, array $queryParameters)
     {
@@ -3183,8 +3382,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelRangeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gChannelRangeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
@@ -3198,8 +3398,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelWidthByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelWidthByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
@@ -3213,8 +3414,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerChannelWidthByApMac(string $apMac, array $queryParameters)
     {
@@ -3228,8 +3430,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperChannelWidthByApMac(string $apMac, array $queryParameters)
     {
@@ -3243,8 +3446,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelWidthByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelWidthByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
@@ -3258,8 +3462,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gChannelByApMac(string $apMac, array $queryParameters)
     {
@@ -3273,8 +3478,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerChannelByApMac(string $apMac, array $queryParameters)
     {
@@ -3288,8 +3494,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperChannelByApMac(string $apMac, array $queryParameters)
     {
@@ -3303,8 +3510,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gChannelByApMac(string $apMac, array $queryParameters)
     {
@@ -3318,8 +3526,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelRangeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gChannelRangeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
@@ -3333,8 +3542,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerChannelRangeByApMac(string $apMac, array $queryParameters)
     {
@@ -3348,8 +3558,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperChannelRangeByApMac(string $apMac, array $queryParameters)
     {
@@ -3363,8 +3574,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelRangeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gChannelRangeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
@@ -3378,8 +3590,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gWlanGroupIdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gWlanGroupIdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
@@ -3393,8 +3606,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gWlanGroupIdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gWlanGroupIdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
@@ -3408,8 +3622,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
@@ -3423,8 +3638,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
@@ -3438,8 +3654,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gWlanGroupIdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gWlanGroupIdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
@@ -3453,8 +3670,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gBssMinRateByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gBssMinRateByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gBssMinRateByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gBssMinRateByApMac(string $apMac, array $queryParameters)
     {
@@ -3468,8 +3686,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMgmtTxRateByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMgmtTxRateByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMgmtTxRateByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gMgmtTxRateByApMac(string $apMac, array $queryParameters)
     {
@@ -3483,8 +3702,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac(string $apMac, array $queryParameters)
     {
@@ -3498,8 +3718,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMac(string $apMac, array $queryParameters)
     {
@@ -3513,8 +3734,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gProtectionModeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gProtectionModeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gProtectionModeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gProtectionModeByApMac(string $apMac, array $queryParameters)
     {
@@ -3528,8 +3750,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio24gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
@@ -3543,8 +3766,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
@@ -3558,8 +3782,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
@@ -3573,8 +3798,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
@@ -3588,8 +3814,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRadioConfigRadio6gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
@@ -3603,8 +3830,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLoginByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLoginByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLoginByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsLoginByApMac(string $apMac, array $queryParameters)
     {
@@ -3618,8 +3846,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSyslogByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSyslogByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSyslogByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsSyslogByApMac(string $apMac, array $queryParameters)
     {
@@ -3633,8 +3862,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsChannelEvaluationIntervalByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsChannelEvaluationIntervalByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsChannelEvaluationIntervalByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsChannelEvaluationIntervalByApMac(string $apMac, array $queryParameters)
     {
@@ -3648,8 +3878,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsApMgmtVlanByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsApMgmtVlanByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsApMgmtVlanByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsApMgmtVlanByApMac(string $apMac, array $queryParameters)
     {
@@ -3663,8 +3894,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsAltitudeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsAltitudeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsAltitudeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsAltitudeByApMac(string $apMac, array $queryParameters)
     {
@@ -3678,8 +3910,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsLocationByApMac(string $apMac, array $queryParameters)
     {
@@ -3693,8 +3926,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationAdditionalInfoByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationAdditionalInfoByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLocationAdditionalInfoByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsLocationAdditionalInfoByApMac(string $apMac, array $queryParameters)
     {
@@ -3708,8 +3942,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSmartMonitorByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSmartMonitorByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSmartMonitorByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsSmartMonitorByApMac(string $apMac, array $queryParameters)
     {
@@ -3723,8 +3958,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsBonjourGatewayByApMac(string $apMac, array $queryParameters)
     {
@@ -3738,8 +3974,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl24ByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl24ByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl24ByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsClientAdmissionControl24ByApMac(string $apMac, array $queryParameters)
     {
@@ -3753,8 +3990,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl50ByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl50ByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsClientAdmissionControl50ByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsClientAdmissionControl50ByApMac(string $apMac, array $queryParameters)
     {
@@ -3768,8 +4006,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsVenueProfileByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsVenueProfileByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsVenueProfileByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsVenueProfileByApMac(string $apMac, array $queryParameters)
     {
@@ -3783,8 +4022,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsMeshOptionsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsMeshOptionsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsMeshOptionsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsMeshOptionsByApMac(string $apMac, array $queryParameters)
     {
@@ -3798,8 +4038,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRecoverySsidByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRecoverySsidByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRecoverySsidByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRecoverySsidByApMac(string $apMac, array $queryParameters)
     {
@@ -3813,8 +4054,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWiredClientEnabledByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWiredClientEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWiredClientEnabledByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsDirectedMulticastFromWiredClientEnabledByApMac(string $apMac, array $queryParameters)
     {
@@ -3828,8 +4070,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsDirectedMulticastFromWirelessClientEnabledByApMac(string $apMac, array $queryParameters)
     {
@@ -3843,8 +4086,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromNetworkEnabledByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromNetworkEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsDirectedMulticastFromNetworkEnabledByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsDirectedMulticastFromNetworkEnabledByApMac(string $apMac, array $queryParameters)
     {
@@ -3858,8 +4102,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApReportThresholdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApReportThresholdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApReportThresholdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRogueApReportThresholdByApMac(string $apMac, array $queryParameters)
     {
@@ -3873,8 +4118,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApAggressivenessModeByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApAggressivenessModeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApAggressivenessModeByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRogueApAggressivenessModeByApMac(string $apMac, array $queryParameters)
     {
@@ -3888,8 +4134,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApJammingThresholdByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApJammingThresholdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRogueApJammingThresholdByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRogueApJammingThresholdByApMac(string $apMac, array $queryParameters)
     {
@@ -3903,8 +4150,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLteBandLockChannelsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLteBandLockChannelsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsLteBandLockChannelsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsLteBandLockChannelsByApMac(string $apMac, array $queryParameters)
     {
@@ -3918,8 +4166,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRksGreForwardBroadcastByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRksGreForwardBroadcastByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsRksGreForwardBroadcastByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsRksGreForwardBroadcastByApMac(string $apMac, array $queryParameters)
     {
@@ -3933,8 +4182,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalSummaryByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalSummaryByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalSummaryByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApOperationalSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApOperationalSummary
      */
     public function findApsOperationalSummaryByApMac(string $apMac, array $queryParameters)
     {
@@ -3948,6 +4198,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsPictureByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsPictureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsPictureByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -3963,6 +4214,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -3982,6 +4234,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsPictureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsPictureByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsPictureByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4001,8 +4254,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary
      */
     public function findApsLineman(array $queryParameters)
     {
@@ -4017,8 +4271,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSwitchoverClusterForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSwitchoverClusterInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSwitchoverClusterUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addApsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwitchoverAP $body, array $queryParameters)
     {
@@ -4032,8 +4287,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsGpsCoordinatesByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsGpsCoordinatesByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsGpsCoordinatesByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsGpsCoordinatesByApMac(string $apMac, array $queryParameters)
     {
@@ -4047,8 +4303,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSpecificByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSpecificByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsSpecificByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsSpecificByApMac(string $apMac, array $queryParameters)
     {
@@ -4064,8 +4321,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsSpecificByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsSpecificByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsSpecificByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateApsSpecificByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel $body, array $queryParameters)
     {
@@ -4079,6 +4337,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4095,6 +4354,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4111,8 +4371,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApsByApMac(string $apMac, array $queryParameters)
     {
@@ -4126,8 +4387,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration
      */
     public function findApsByApMac(string $apMac, array $queryParameters)
     {
@@ -4143,8 +4405,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApsByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApsByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters)
     {
@@ -4160,8 +4423,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters)
     {
@@ -4175,8 +4439,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic
      */
     public function findApsBonjourFencingStatisticByApMac(string $apMac, array $queryParameters)
     {
@@ -4190,6 +4455,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4207,8 +4473,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalNeighborByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalNeighborByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalNeighborByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApNeighborAPList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApNeighborAPList
      */
     public function findApsOperationalNeighborByApMac(string $apMac, array $queryParameters)
     {
@@ -4223,6 +4490,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4239,6 +4507,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4257,8 +4526,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApListEntry
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApListEntry
      */
     public function findAps(array $queryParameters)
     {
@@ -4273,8 +4543,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addAps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCreateAP $body, array $queryParameters)
     {
@@ -4289,8 +4560,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsMoveForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsMoveInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsMoveUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveResponse
      */
     public function addApsMove(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveRequest $body, array $queryParameters)
     {
@@ -4305,6 +4577,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4320,8 +4593,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBOList
      */
     public function findDpNatProfilesDpNatPoolsById(string $id, array $queryParameters)
     {
@@ -4337,8 +4611,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesDpNatPoolsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesDpNatPoolsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
     public function addDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters)
     {
@@ -4352,6 +4627,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4366,8 +4642,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBOList
      */
     public function findDpNatProfiles(array $queryParameters)
     {
@@ -4382,8 +4659,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpNatProfilesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
     public function addDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters)
     {
@@ -4397,6 +4675,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4412,8 +4691,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
     public function findDpNatProfilesById(string $id, array $queryParameters)
     {
@@ -4429,8 +4709,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
     public function updateDpNatProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters)
     {
@@ -4445,6 +4726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4461,8 +4743,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByPoolIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
     public function findDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
@@ -4479,8 +4762,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesDpNatPoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpNatProfilesDpNatPoolsByPoolIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
     public function updateDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters)
     {
@@ -4493,8 +4777,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesMulticastForwardingSettingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesMulticastForwardingSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesMulticastForwardingSettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting
      */
     public function findPlanesMulticastForwardingSetting(array $queryParameters)
     {
@@ -4509,6 +4794,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4524,8 +4810,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventEmailSettingsByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventEmailSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventEmailSettingsByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
      */
     public function findRkszonesEventEmailSettingsByZoneId(string $zoneId, array $queryParameters)
     {
@@ -4541,8 +4828,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventEmailSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventEmailSettingsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventEmailSettingsByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesEventEmailSettingsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters)
     {
@@ -4556,8 +4844,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventNotificationSettingsByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventNotificationSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventNotificationSettingsByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
      */
     public function findRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $queryParameters)
     {
@@ -4573,8 +4862,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventNotificationSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventNotificationSettingsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesEventNotificationSettingsByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $body, array $queryParameters)
     {
@@ -4589,6 +4879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4605,8 +4896,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSmsList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSmsList
      */
     public function findSmsGatewayByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -4620,8 +4912,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSmsGatewayInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms
      */
     public function findSmsGateway(array $queryParameters)
     {
@@ -4636,6 +4929,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -4651,8 +4945,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsCertificateByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsCertificateByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20OperatorsCertificateById(string $id, array $queryParameters)
     {
@@ -4666,8 +4961,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersAccountingsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersAccountingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersAccountingsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20IdentityprovidersAccountingsById(string $id, array $queryParameters)
     {
@@ -4681,8 +4977,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20IdentityprovidersOsuById(string $id, array $queryParameters)
     {
@@ -4696,8 +4993,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -4712,8 +5010,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
      */
     public function findProfilesHs20Operators(array $queryParameters)
     {
@@ -4728,8 +5027,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20OperatorsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20OperatorsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20OperatorsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters)
     {
@@ -4744,8 +5044,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
      */
     public function findProfilesHs20OperatorsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -4759,8 +5060,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20OperatorsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20OperatorsById(string $id, array $queryParameters)
     {
@@ -4774,8 +5076,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator
      */
     public function findProfilesHs20OperatorsById(string $id, array $queryParameters)
     {
@@ -4791,8 +5094,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20OperatorsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20OperatorsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyHS20Operator $body, array $queryParameters)
     {
@@ -4808,8 +5112,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesHs20OperatorsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesHs20OperatorsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters)
     {
@@ -4823,8 +5128,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -4839,8 +5145,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
      */
     public function findProfilesHs20Identityproviders(array $queryParameters)
     {
@@ -4855,8 +5162,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20IdentityprovidersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20IdentityprovidersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesHs20IdentityprovidersUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters)
     {
@@ -4871,8 +5179,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
      */
     public function findProfilesHs20IdentityprovidersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -4886,8 +5195,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesHs20IdentityprovidersById(string $id, array $queryParameters)
     {
@@ -4901,8 +5211,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider
      */
     public function findProfilesHs20IdentityprovidersById(string $id, array $queryParameters)
     {
@@ -4918,8 +5229,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20IdentityprovidersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20IdentityprovidersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesHs20IdentityprovidersByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesHs20IdentityprovidersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters)
     {
@@ -4934,8 +5246,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList
      */
     public function findProfilesTunnelIpsecByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -4949,8 +5262,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -4965,8 +5279,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesTunnelIpsec(array $queryParameters)
     {
@@ -4981,8 +5296,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelIpsecInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelIpsecUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile $body, array $queryParameters)
     {
@@ -4996,8 +5312,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelIpsecByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesTunnelIpsecById(string $id, array $queryParameters)
     {
@@ -5011,8 +5328,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfile
      */
     public function findProfilesTunnelIpsecById(string $id, array $queryParameters)
     {
@@ -5028,8 +5346,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelIpsecByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelIpsecByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelIpsecByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesTunnelIpsecById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile $body, array $queryParameters)
     {
@@ -5043,8 +5362,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkUserTrafficProfile $body, array $queryParameters)
     {
@@ -5059,8 +5379,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesUtp(array $queryParameters)
     {
@@ -5075,8 +5396,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateUserTrafficProfile $body, array $queryParameters)
     {
@@ -5090,8 +5412,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesUtpById(string $id, array $queryParameters)
     {
@@ -5105,8 +5428,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfile
      */
     public function findProfilesUtpById(string $id, array $queryParameters)
     {
@@ -5122,8 +5446,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesUtpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesUtpByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesUtpByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesUtpById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile $body, array $queryParameters)
     {
@@ -5139,8 +5464,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpCloneByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesUtpCloneByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
     public function addProfilesUtpCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
@@ -5155,8 +5481,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesVdp(array $queryParameters)
     {
@@ -5170,8 +5497,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesVdpByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesVdpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesVdpByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesVdpById(string $id, array $queryParameters)
     {
@@ -5185,8 +5513,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileVdpProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileVdpProfile
      */
     public function findProfilesVdpById(string $id, array $queryParameters)
     {
@@ -5201,6 +5530,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesVdpApproveByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesVdpApproveByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateProfilesVdpApproveByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -5216,8 +5546,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -5232,8 +5563,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
      */
     public function findProfilesDnsserver(array $queryParameters)
     {
@@ -5248,8 +5580,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDnsServerProfile $body, array $queryParameters)
     {
@@ -5263,8 +5596,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDnsserverByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesDnsserverById(string $id, array $queryParameters)
     {
@@ -5278,8 +5612,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile
      */
     public function findProfilesDnsserverById(string $id, array $queryParameters)
     {
@@ -5295,8 +5630,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDnsserverByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDnsserverByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesDnsserverById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDnsServerProfile $body, array $queryParameters)
     {
@@ -5312,8 +5648,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverCloneByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDnsserverCloneByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
     public function addProfilesDnsserverCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
@@ -5328,8 +5665,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesUtpByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfileList
      */
     public function findProfilesUtpByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -5343,8 +5681,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpUplinkRateLimitingByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpUplinkRateLimitingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpUplinkRateLimitingByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesUtpUplinkRateLimitingById(string $id, array $queryParameters)
     {
@@ -5358,8 +5697,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpDownlinkRateLimitingByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpDownlinkRateLimitingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesUtpDownlinkRateLimitingByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesUtpDownlinkRateLimitingById(string $id, array $queryParameters)
     {
@@ -5374,8 +5714,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
      */
     public function findProfilesDnsserverByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -5390,8 +5731,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
      */
     public function findProfilesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -5405,8 +5747,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAuthenticationProfile $body, array $queryParameters)
     {
@@ -5419,8 +5762,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
      */
     public function findProfilesAuth(array $queryParameters)
     {
@@ -5435,8 +5779,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAuthenticationProfile $body, array $queryParameters)
     {
@@ -5450,8 +5795,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAuthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesAuthById(string $id, array $queryParameters)
     {
@@ -5465,8 +5811,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfile
      */
     public function findProfilesAuthById(string $id, array $queryParameters)
     {
@@ -5482,8 +5829,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAuthByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAuthByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesAuthById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAuthenticationProfile $body, array $queryParameters)
     {
@@ -5499,8 +5847,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthCloneByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAuthCloneByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
     public function addProfilesAuthCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
@@ -5515,8 +5864,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
      */
     public function findProfilesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters)
     {
@@ -5530,8 +5880,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAccountingProfile $body, array $queryParameters)
     {
@@ -5544,8 +5895,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
      */
     public function findProfilesAcct(array $queryParameters)
     {
@@ -5560,8 +5912,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAccountingProfile $body, array $queryParameters)
     {
@@ -5574,8 +5927,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelL3RoamingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelL3RoamingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelL3RoamingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileGetL3RoamingConfig
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileGetL3RoamingConfig
      */
     public function findProfilesTunnelL3Roaming(array $queryParameters)
     {
@@ -5590,8 +5944,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelL3RoamingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelL3RoamingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelL3RoamingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesTunnelL3Roaming(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateL3RoamingConfig $body, array $queryParameters)
     {
@@ -5605,8 +5960,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -5619,8 +5975,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesBridge(array $queryParameters)
     {
@@ -5635,8 +5992,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesBridgeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesBridgeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesBridgeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBridgeProfile $body, array $queryParameters)
     {
@@ -5651,8 +6009,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList
      */
     public function findProfilesBridgeByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -5666,6 +6025,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesBridgeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -5681,8 +6041,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfile
      */
     public function findProfilesBridgeById(string $id, array $queryParameters)
     {
@@ -5698,8 +6059,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesBridgeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesBridgeByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesBridgeByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesBridgeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile $body, array $queryParameters)
     {
@@ -5714,8 +6076,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfileList
      */
     public function findProfilesLbsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters)
     {
@@ -5729,8 +6092,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -5745,8 +6109,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesLbsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesLbsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesLbsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters)
     {
@@ -5760,8 +6125,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesLbsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesLbsById(string $id, array $queryParameters)
     {
@@ -5775,8 +6141,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesLbsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile
      */
     public function findProfilesLbsById(string $id, array $queryParameters)
     {
@@ -5792,8 +6159,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesLbsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesLbsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesLbsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesLbsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters)
     {
@@ -5807,6 +6175,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDpGroupByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDpGroupByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesDpGroupByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -5822,8 +6191,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileReturnDPGroup
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileReturnDPGroup
      */
     public function findProfilesDpGroupById(string $id, array $queryParameters)
     {
@@ -5839,8 +6209,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDpGroupByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDpGroupByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesDpGroupByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesDpGroupById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDPGroup $body, array $queryParameters)
     {
@@ -5854,8 +6225,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDpGroupInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDpGroupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDpGroupList
      */
     public function findProfilesDpGroup(array $queryParameters)
     {
@@ -5870,8 +6242,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDpGroupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDpGroupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesDpGroupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesDpGroup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDPGroup $body, array $queryParameters)
     {
@@ -5885,8 +6258,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesAcctByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesAcctById(string $id, array $queryParameters)
     {
@@ -5900,8 +6274,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAcctByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfile
      */
     public function findProfilesAcctById(string $id, array $queryParameters)
     {
@@ -5917,8 +6292,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAcctByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesAcctByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesAcctById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile $body, array $queryParameters)
     {
@@ -5934,8 +6310,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctCloneByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesAcctCloneByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
     public function addProfilesAcctCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
@@ -5949,8 +6326,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -5963,8 +6341,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesL2ogre(array $queryParameters)
     {
@@ -5979,8 +6358,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesL2ogreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesL2ogreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesL2ogreUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL2oGREProfile $body, array $queryParameters)
     {
@@ -5995,8 +6375,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
      */
     public function findProfilesL2ogreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6010,6 +6391,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesL2ogreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6025,8 +6407,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile
      */
     public function findProfilesL2ogreById(string $id, array $queryParameters)
     {
@@ -6042,8 +6425,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesL2ogreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesL2ogreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesL2ogreByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesL2ogreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL2oGREProfile $body, array $queryParameters)
     {
@@ -6057,8 +6441,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -6071,8 +6456,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesTunnelRuckusgre(array $queryParameters)
     {
@@ -6087,8 +6473,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelRuckusgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelRuckusgreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelRuckusgreUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRuckusGREProfile $body, array $queryParameters)
     {
@@ -6102,6 +6489,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelRuckusgreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6117,8 +6505,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfile
      */
     public function findProfilesTunnelRuckusgreById(string $id, array $queryParameters)
     {
@@ -6134,8 +6523,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelRuckusgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelRuckusgreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelRuckusgreByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesTunnelRuckusgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRuckusGREProfile $body, array $queryParameters)
     {
@@ -6150,8 +6540,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelRuckusgreByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfileList
      */
     public function findProfilesTunnelRuckusgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6165,8 +6556,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -6179,8 +6571,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     public function findProfilesTunnelSoftgre(array $queryParameters)
     {
@@ -6195,8 +6588,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelSoftgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelSoftgreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddProfilesTunnelSoftgreUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile $body, array $queryParameters)
     {
@@ -6210,8 +6604,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesTunnelSoftgreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteProfilesTunnelSoftgreById(string $id, array $queryParameters)
     {
@@ -6225,8 +6620,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfile
      */
     public function findProfilesTunnelSoftgreById(string $id, array $queryParameters)
     {
@@ -6242,8 +6638,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelSoftgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelSoftgreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateProfilesTunnelSoftgreByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateProfilesTunnelSoftgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifySoftGREProfile $body, array $queryParameters)
     {
@@ -6258,8 +6655,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelSoftgreByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfileList
      */
     public function findProfilesTunnelSoftgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6274,8 +6672,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
     public function findProfilesAuthAuthServiceListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6289,8 +6688,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
     public function findProfilesAuthAuthorizationList(array $queryParameters)
     {
@@ -6305,8 +6705,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
     public function deleteRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileDeleteBulk $body, array $queryParameters)
     {
@@ -6320,8 +6721,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileList
      */
     public function findRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -6337,8 +6739,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
      */
     public function addRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters)
     {
@@ -6353,8 +6756,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
     public function deleteRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6369,8 +6773,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet
      */
     public function findRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6387,8 +6792,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVendorSpecificAttributeProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
     public function updateRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters)
     {
@@ -6403,8 +6809,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileQueryCriteriaResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileQueryCriteriaResult
      */
     public function findRkszonesVendorSpecificAttributeProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6419,8 +6826,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNorthboundDataStreamingProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNorthboundDataStreamingProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNorthboundDataStreamingProfileUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addNorthboundDataStreamingProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingCreateNorthboundDataStreamingProfile $body, array $queryParameters)
     {
@@ -6433,8 +6841,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes
      */
     public function findNorthboundDataStreamingEventCodes(array $queryParameters)
     {
@@ -6449,6 +6858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingEventCodesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingEventCodesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingEventCodesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6465,6 +6875,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6480,8 +6891,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNorthboundDataStreamingProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNorthboundDataStreamingProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteNorthboundDataStreamingProfileById(string $id, array $queryParameters)
     {
@@ -6495,8 +6907,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfile
      */
     public function findNorthboundDataStreamingProfileById(string $id, array $queryParameters)
     {
@@ -6512,6 +6925,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6526,8 +6940,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileListBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingProfileListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfileList
      */
     public function findNorthboundDataStreamingProfileList(array $queryParameters)
     {
@@ -6541,8 +6956,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteWifiCallingWifiCallingPolicyById(string $id, array $queryParameters)
     {
@@ -6556,8 +6972,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicy
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicy
      */
     public function findWifiCallingWifiCallingPolicyById(string $id, array $queryParameters)
     {
@@ -6573,8 +6990,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateWifiCallingWifiCallingPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters)
     {
@@ -6590,8 +7008,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWifiCallingWifiCallingPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters)
     {
@@ -6605,6 +7024,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6622,8 +7042,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingWifiCallingPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
      */
     public function findWifiCallingWifiCallingPolicy(array $queryParameters)
     {
@@ -6638,8 +7059,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWifiCallingWifiCallingPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWifiCallingWifiCallingPolicyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy $body, array $queryParameters)
     {
@@ -6654,8 +7076,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
      */
     public function findWifiCallingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -6669,8 +7092,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPools
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPools
      */
     public function findDhcpDataDhcpPoolsByApMac(string $apMac, array $queryParameters)
     {
@@ -6685,8 +7109,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByPoolIndexBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByPoolIndexForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpPoolsByPoolIndexInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPoolInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPoolInfo
      */
     public function findDhcpDataDhcpPoolsByPoolIndex(string $apMac, string $poolIndex, array $queryParameters)
     {
@@ -6700,8 +7125,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpMsgStatsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpMsgStatsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDhcpDataDhcpMsgStatsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcpMsgStatsDhcpMsgStats
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcpMsgStatsDhcpMsgStats
      */
     public function findDhcpDataDhcpMsgStatsByApMac(string $apMac, array $queryParameters)
     {
@@ -6714,6 +7140,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6732,6 +7159,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLinemanWorkflowUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -6748,8 +7176,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6764,8 +7193,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6780,8 +7210,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6796,8 +7227,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6812,8 +7244,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6828,8 +7261,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6844,8 +7278,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6860,8 +7295,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6876,8 +7312,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6892,8 +7329,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6908,8 +7346,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6924,8 +7363,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6940,8 +7380,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6956,8 +7397,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6972,8 +7414,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -6988,8 +7431,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7004,8 +7448,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7020,8 +7465,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7036,8 +7482,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7052,8 +7499,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7068,8 +7516,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7084,8 +7533,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7100,8 +7550,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7116,8 +7567,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7132,8 +7584,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7148,8 +7601,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7164,8 +7618,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7180,8 +7635,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7196,8 +7652,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7212,8 +7669,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7228,8 +7686,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7244,8 +7703,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7260,8 +7720,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7276,8 +7737,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7292,8 +7754,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7308,8 +7771,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7324,8 +7788,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7340,8 +7805,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7356,8 +7822,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7372,8 +7839,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7388,8 +7856,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gProtectionModeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7404,8 +7873,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7420,8 +7890,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7436,8 +7907,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7452,8 +7924,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7468,8 +7941,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7484,8 +7958,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRecoverySsidByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRecoverySsidByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRecoverySsidByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRecoverySsidById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7500,8 +7975,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7516,8 +7992,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7532,8 +8009,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7548,8 +8026,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApReportThresholdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApReportThresholdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApReportThresholdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRogueApReportThresholdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7564,8 +8043,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApAggressivenessModeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApAggressivenessModeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApAggressivenessModeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRogueApAggressivenessModeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7580,8 +8060,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApJammingThresholdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApJammingThresholdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRogueApJammingThresholdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRogueApJammingThresholdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7596,8 +8077,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLteBandLockChannelsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLteBandLockChannelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLteBandLockChannelsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsLteBandLockChannelsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7612,8 +8094,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRksGreForwardBroadcastByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRksGreForwardBroadcastByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRksGreForwardBroadcastByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsRksGreForwardBroadcastById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7628,8 +8111,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAwsVenueByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAwsVenueByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAwsVenueByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsAwsVenueById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7645,8 +8129,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApmodelByModelBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApmodelByModelInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters)
     {
@@ -7662,8 +8147,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsApmodelByModelBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsApmodelByModelInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
      */
     public function findRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters)
     {
@@ -7681,8 +8167,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters)
     {
@@ -7697,8 +8184,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7713,8 +8201,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
      */
     public function findRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7731,8 +8220,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesApgroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesApgroupsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters)
     {
@@ -7749,8 +8239,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters)
     {
@@ -7765,8 +8256,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsLocationById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7781,8 +8273,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationAdditionalInfoByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationAdditionalInfoByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationAdditionalInfoByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsLocationAdditionalInfoById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7797,8 +8290,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationBasedServiceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationBasedServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsLocationBasedServiceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsLocationBasedServiceById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7813,8 +8307,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl24ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl24ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsClientAdmissionControl24ById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7829,8 +8324,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl50ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsClientAdmissionControl50ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsClientAdmissionControl50ById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7845,8 +8341,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsVenueProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsVenueProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsVenueProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsVenueProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7861,8 +8358,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsChannelEvaluationIntervalByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsChannelEvaluationIntervalByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsChannelEvaluationIntervalByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsChannelEvaluationIntervalById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7877,8 +8375,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApMgmtVlanByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApMgmtVlanByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsApMgmtVlanByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsApMgmtVlanById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7893,8 +8392,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAltitudeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAltitudeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsAltitudeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsAltitudeById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7910,8 +8410,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsMembersByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsMembersByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsMembersByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters)
     {
@@ -7928,8 +8429,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters)
     {
@@ -7944,8 +8446,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsProtectionMode24ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsProtectionMode24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsProtectionMode24ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesApgroupsProtectionMode24ById(string $zoneId, string $id, array $queryParameters)
     {
@@ -7962,8 +8465,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsMembersByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRkszonesApgroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupAddMembers $body, array $queryParameters)
     {
@@ -7979,8 +8483,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList
      */
     public function findRkszonesApgroupsByZoneId(string $zoneId, array $queryParameters)
     {
@@ -7996,8 +8501,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesApgroupsByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesApgroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupCreateAPGroup $body, array $queryParameters)
     {
@@ -8011,8 +8517,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsDefaultByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsDefaultByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsDefaultByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
      */
     public function findRkszonesApgroupsDefaultByZoneId(string $zoneId, array $queryParameters)
     {
@@ -8026,6 +8533,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8040,8 +8548,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
      */
     public function findIdentityUserrole(array $queryParameters)
     {
@@ -8056,8 +8565,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserroleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserroleInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserroleUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole $body, array $queryParameters)
     {
@@ -8071,8 +8581,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUserroleByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteIdentityUserroleById(string $id, array $queryParameters)
     {
@@ -8086,8 +8597,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUserroleByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityUserRole
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityUserRole
      */
     public function findIdentityUserroleById(string $id, array $queryParameters)
     {
@@ -8103,8 +8615,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUserroleByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUserroleByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUserroleByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateIdentityUserroleById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole $body, array $queryParameters)
     {
@@ -8118,6 +8631,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8146,8 +8660,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
      */
     public function findIdentityUsers(array $queryParameters)
     {
@@ -8162,8 +8677,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUsersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUsersUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser $body, array $queryParameters)
     {
@@ -8177,8 +8693,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityUsersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteIdentityUsersById(string $id, array $queryParameters)
     {
@@ -8192,8 +8709,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration
      */
     public function findIdentityUsersById(string $id, array $queryParameters)
     {
@@ -8209,8 +8727,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUsersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUsersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityUsersByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateIdentityUsersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyUser $body, array $queryParameters)
     {
@@ -8225,6 +8744,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8240,6 +8760,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8263,8 +8784,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityGuestpassBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityGuestpassForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityGuestpassInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
      */
     public function findIdentityGuestpass(array $queryParameters)
     {
@@ -8278,8 +8800,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassByUserIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityGuestpassByUserIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteIdentityGuestpassByUserId(string $userId, array $queryParameters)
     {
@@ -8295,8 +8818,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityGuestpassByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityGuestpassByUserIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityGuestpassByUserIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateIdentityGuestpassByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyGuestPass $body, array $queryParameters)
     {
@@ -8311,8 +8835,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
     public function addIdentityPackageList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
@@ -8327,8 +8852,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
      */
     public function addIdentityGuestpassList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
@@ -8342,6 +8868,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8356,8 +8883,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
     public function findIdentityPackages(array $queryParameters)
     {
@@ -8372,8 +8900,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackagesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackagesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage $body, array $queryParameters)
     {
@@ -8387,8 +8916,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteIdentityPackagesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteIdentityPackagesById(string $id, array $queryParameters)
     {
@@ -8402,8 +8932,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackage
      */
     public function findIdentityPackagesById(string $id, array $queryParameters)
     {
@@ -8419,8 +8950,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityPackagesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityPackagesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateIdentityPackagesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateIdentityPackagesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifySubscriptionPackage $body, array $queryParameters)
     {
@@ -8437,6 +8969,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8451,8 +8984,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersAaaserverBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersAaaserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersAaaserverInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityAaaServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityAaaServerList
      */
     public function findIdentityUsersAaaserver(array $queryParameters)
     {
@@ -8467,8 +9001,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassGenerateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassGenerateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassGenerateUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addIdentityGuestpassGenerate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass $body, array $queryParameters)
     {
@@ -8481,8 +9016,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersPackagesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersPackagesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityPackageList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityPackageList
      */
     public function findIdentityUsersPackages(array $queryParameters)
     {
@@ -8495,8 +9031,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList
      */
     public function findIdentityUsersCountries(array $queryParameters)
     {
@@ -8511,8 +9048,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserRoleListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserRoleListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserRoleListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
      */
     public function addIdentityUserRoleList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
@@ -8527,8 +9065,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityUserListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
      */
     public function addIdentityUserList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
@@ -8543,8 +9082,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDisconnectForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDisconnectInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDisconnectUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addClientsBulkDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList $body, array $queryParameters)
     {
@@ -8560,8 +9100,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsByWlanNameByWlannameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsByWlanNameByWlannameInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsByWlanNameByWlannameUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
      */
     public function addClientsByWlanNameByWlanname(string $wlanname, mixed $body, array $queryParameters)
     {
@@ -8576,8 +9117,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDeauthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsBulkDeauthUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters)
     {
@@ -8592,8 +9134,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDeauthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDeauthUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters)
     {
@@ -8608,8 +9151,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDisconnectForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDisconnectInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClientsDisconnectUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addClientsDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClient $body, array $queryParameters)
     {
@@ -8624,8 +9168,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicyArray
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicyArray
      */
     public function findL3AccessControlPoliciesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -8639,6 +9184,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8654,8 +9200,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicy
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicy
      */
     public function findL3AccessControlPoliciesById(string $id, array $queryParameters)
     {
@@ -8671,8 +9218,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL3AccessControlPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL3AccessControlPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL3AccessControlPoliciesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateL3AccessControlPoliciesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL3AccessControlPolicy $body, array $queryParameters)
     {
@@ -8686,8 +9234,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL3AccessControlPoliciesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -8703,8 +9252,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL3AccessControlPoliciesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
     public function findL3AccessControlPolicies(array $queryParameters)
     {
@@ -8719,8 +9269,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL3AccessControlPoliciesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL3AccessControlPoliciesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL3AccessControlPoliciesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL3AccessControlPolicy $body, array $queryParameters)
     {
@@ -8734,8 +9285,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingDeleteBulkVlanPooling $body, array $queryParameters)
     {
@@ -8750,8 +9302,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddVlanpoolingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddVlanpoolingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddVlanpoolingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling $body, array $queryParameters)
     {
@@ -8765,8 +9318,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteVlanpoolingsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteVlanpoolingsById(string $id, array $queryParameters)
     {
@@ -8780,8 +9334,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling
      */
     public function findVlanpoolingsById(string $id, array $queryParameters)
     {
@@ -8797,8 +9352,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateVlanpoolingsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateVlanpoolingsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateVlanpoolingsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingModifyVlanPooling $body, array $queryParameters)
     {
@@ -8813,8 +9369,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPoolingList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPoolingList
      */
     public function findVlanpoolingsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -8827,6 +9384,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8840,8 +9398,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServiceTicketForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServiceTicketInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServiceTicketUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTicketLoginResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTicketLoginResponse
      */
     public function addServiceTicket(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTicketLoginRequest $body)
     {
@@ -8856,6 +9415,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8871,8 +9431,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBOList
      */
     public function findDpDhcpProfilesDpDhcpProfilePoolsById(string $id, array $queryParameters)
     {
@@ -8888,8 +9449,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfilePoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfilePoolsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
     public function addDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters)
     {
@@ -8903,6 +9465,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8917,8 +9480,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBOList
      */
     public function findDpDhcpProfiles(array $queryParameters)
     {
@@ -8933,8 +9497,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
     public function addDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters)
     {
@@ -8948,6 +9513,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -8963,8 +9529,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
     public function findDpDhcpProfilesById(string $id, array $queryParameters)
     {
@@ -8980,8 +9547,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
     public function updateDpDhcpProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters)
     {
@@ -8996,6 +9564,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9012,8 +9581,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
     public function findDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
@@ -9030,8 +9600,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
     public function updateDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters)
     {
@@ -9046,6 +9617,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9061,8 +9633,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBOList
      */
     public function findDpDhcpProfilesDpDhcpProfileHostsById(string $id, array $queryParameters)
     {
@@ -9078,8 +9651,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
     public function addDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters)
     {
@@ -9094,6 +9668,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9110,8 +9685,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
     public function findDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters)
     {
@@ -9128,8 +9704,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
     public function updateDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters)
     {
@@ -9144,6 +9721,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9159,8 +9737,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBOList
      */
     public function findDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, array $queryParameters)
     {
@@ -9176,6 +9755,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileOptionSpacesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileOptionSpacesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9192,6 +9772,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9208,8 +9789,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO
      */
     public function findDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters)
     {
@@ -9226,6 +9808,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9241,8 +9824,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -9258,8 +9842,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyProfileList
      */
     public function findDevicePolicy(array $queryParameters)
     {
@@ -9274,8 +9859,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDevicePolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDevicePolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDevicePolicyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy $body, array $queryParameters)
     {
@@ -9290,8 +9876,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria
      */
     public function findDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9305,8 +9892,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDevicePolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteDevicePolicyById(string $id, array $queryParameters)
     {
@@ -9320,8 +9908,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDevicePolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfile
      */
     public function findDevicePolicyById(string $id, array $queryParameters)
     {
@@ -9337,8 +9926,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDevicePolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDevicePolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateDevicePolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyModifyDomainDevicePolicy $body, array $queryParameters)
     {
@@ -9351,8 +9941,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterStateInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState
      */
     public function findClusterState(array $queryParameters)
     {
@@ -9366,8 +9957,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRtlsProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRtlsProfileList
      */
     public function findRkszonesRealTimeLocationServiceByZoneId(string $zoneId, array $queryParameters)
     {
@@ -9383,8 +9975,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRealTimeLocationServiceByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRealTimeLocationServiceByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRealTimeLocationServiceByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesRealTimeLocationServiceByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile $body, array $queryParameters)
     {
@@ -9399,8 +9992,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRealTimeLocationServiceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRealTimeLocationServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRealTimeLocationServiceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9415,8 +10009,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRealTimeLocationServiceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile
      */
     public function findRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9433,8 +10028,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRealTimeLocationServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRealTimeLocationServiceByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRealTimeLocationServiceByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesRealTimeLocationServiceById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRtlsProfile $body, array $queryParameters)
     {
@@ -9449,8 +10045,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -9464,8 +10061,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList
      */
     public function findRkszonesGeofenceProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -9481,8 +10079,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesGeofenceProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters)
     {
@@ -9497,8 +10096,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesGeofenceProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9513,8 +10113,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfile
      */
     public function findRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9531,8 +10132,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesGeofenceProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesGeofenceProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesGeofenceProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesGeofenceProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters)
     {
@@ -9546,8 +10148,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventNotificationSettingsByDomainIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventNotificationSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventNotificationSettingsByDomainIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
      */
     public function findDomainsEventNotificationSettingsByDomainId(string $domainId, array $queryParameters)
     {
@@ -9563,8 +10166,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventNotificationSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventNotificationSettingsByDomainIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventNotificationSettingsByDomainIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateDomainsEventNotificationSettingsByDomainId(string $domainId, array $body, array $queryParameters)
     {
@@ -9578,8 +10182,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventEmailSettingsByDomainIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventEmailSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsEventEmailSettingsByDomainIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
      */
     public function findDomainsEventEmailSettingsByDomainId(string $domainId, array $queryParameters)
     {
@@ -9595,8 +10200,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventEmailSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventEmailSettingsByDomainIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDomainsEventEmailSettingsByDomainIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateDomainsEventEmailSettingsByDomainId(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters)
     {
@@ -9611,8 +10217,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateAlertAlarmAck(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertAckBulkAlarms $body, array $queryParameters)
     {
@@ -9627,8 +10234,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateAlertAlarmClear(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertClearBulkAlarms $body, array $queryParameters)
     {
@@ -9643,8 +10251,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventSummaryInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventSummaryUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryEventSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryEventSummary
      */
     public function addAlertEventSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9659,8 +10268,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary
      */
     public function addAlertAlarmSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9675,8 +10285,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlarmListAlarmQueryResultList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlarmListAlarmQueryResultList
      */
     public function addAlertAlarmList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9691,8 +10302,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertEventListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventListEventQueryResultList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventListEventQueryResultList
      */
     public function addAlertEventList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9707,6 +10319,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9723,6 +10336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearByAlarmIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearByAlarmIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmClearByAlarmIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9738,6 +10352,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9755,8 +10370,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileList
      */
     public function findApSnmpAgentProfiles(array $queryParameters)
     {
@@ -9771,8 +10387,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSnmpAgentProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSnmpAgentProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApSnmpAgentProfilesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile $body, array $queryParameters)
     {
@@ -9786,8 +10403,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApSnmpAgentProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteApSnmpAgentProfilesById(string $id, array $queryParameters)
     {
@@ -9801,8 +10419,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSnmpAgentProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileSummary
      */
     public function findApSnmpAgentProfilesById(string $id, array $queryParameters)
     {
@@ -9818,6 +10437,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSnmpAgentProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSnmpAgentProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApSnmpAgentProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -9834,8 +10454,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -9849,8 +10470,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
      */
     public function findRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, array $queryParameters)
     {
@@ -9866,8 +10488,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpProfileByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters)
     {
@@ -9882,8 +10505,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9898,8 +10522,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpProfileRef
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpProfileRef
      */
     public function findRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters)
     {
@@ -9916,8 +10541,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDhcpSiteDhcpProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDhcpSiteDhcpProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters)
     {
@@ -9931,8 +10557,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteL2AccessControlsById(string $id, array $queryParameters)
     {
@@ -9946,8 +10573,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl
      */
     public function findL2AccessControlsById(string $id, array $queryParameters)
     {
@@ -9963,8 +10591,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL2AccessControlsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL2AccessControlsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateL2AccessControlsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateL2AccessControlsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlModifyL2AccessControl $body, array $queryParameters)
     {
@@ -9979,8 +10608,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
      */
     public function findL2AccessControlsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -9994,8 +10624,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteL2AccessControlsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -10011,8 +10642,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindL2AccessControlsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
      */
     public function findL2AccessControls(array $queryParameters)
     {
@@ -10027,8 +10659,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL2AccessControlsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL2AccessControlsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddL2AccessControlsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl $body, array $queryParameters)
     {
@@ -10043,8 +10676,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
     public function deleteAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileDelete $body, array $queryParameters)
     {
@@ -10059,8 +10693,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult
      */
     public function findAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetById $body, array $queryParameters)
     {
@@ -10076,8 +10711,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAccountSecurityByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAccountSecurityByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
     public function partialUpdateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters)
     {
@@ -10093,8 +10729,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAccountSecurityByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAccountSecurityByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
     public function updateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters)
     {
@@ -10108,6 +10745,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10122,8 +10760,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileProfileListResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileProfileListResult
      */
     public function findAccountSecurity(array $queryParameters)
     {
@@ -10138,8 +10777,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAccountSecurityInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAccountSecurityUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
     public function addAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileCreate $body, array $queryParameters)
     {
@@ -10153,6 +10793,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10167,8 +10808,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBOList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBOList
      */
     public function findDpProfileSettings(array $queryParameters)
     {
@@ -10183,6 +10825,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10198,6 +10841,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10213,8 +10857,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsByDpKeyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpProfileSettingsByDpKeyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO
      */
     public function findDpProfileSettingsByDpKey(string $dpKey, array $queryParameters)
     {
@@ -10230,6 +10875,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10245,8 +10891,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWhitelabelsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWhitelabelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWhitelabelsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteWhitelabelsById(string $id, array $queryParameters)
     {
@@ -10260,8 +10907,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomization
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomization
      */
     public function findWhitelabelsById(string $id, array $queryParameters)
     {
@@ -10277,8 +10925,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWhitelabelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWhitelabelsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateWhitelabelsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateWhitelabelsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters)
     {
@@ -10291,8 +10940,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList
      */
     public function findWhitelabels(array $queryParameters)
     {
@@ -10307,8 +10957,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWhitelabelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWhitelabelsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWhitelabelsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addWhitelabels(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationCreateWhiteLabelCustomization $body, array $queryParameters)
     {
@@ -10323,8 +10974,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10339,8 +10991,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServer
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServer
      */
     public function findRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10357,8 +11010,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters)
     {
@@ -10375,8 +11029,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaRadiusByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters)
     {
@@ -10391,8 +11046,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaRadiusByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServerList
      */
     public function findRkszonesAaaRadiusByZoneId(string $zoneId, array $queryParameters)
     {
@@ -10409,8 +11065,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaRadiusByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaRadiusByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaRadiusByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesAaaRadiusByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters)
     {
@@ -10425,8 +11082,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusSecondaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusSecondaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaRadiusSecondaryById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10441,8 +11099,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusStandbyPrimaryByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaRadiusStandbyPrimaryByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaRadiusStandbyPrimaryById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10456,8 +11115,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectoryList
      */
     public function findRkszonesAaaAdByZoneId(string $zoneId, array $queryParameters)
     {
@@ -10473,8 +11133,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaAdByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaAdByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaAdByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesAaaAdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer $body, array $queryParameters)
     {
@@ -10489,8 +11150,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaAdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaAdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10505,8 +11167,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectory
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectory
      */
     public function findRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10523,8 +11186,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaAdByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters)
     {
@@ -10541,8 +11205,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaAdByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters)
     {
@@ -10556,8 +11221,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServerList
      */
     public function findRkszonesAaaLdapByZoneId(string $zoneId, array $queryParameters)
     {
@@ -10573,8 +11239,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaLdapByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaLdapByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaLdapByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesAaaLdapByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateLDAPServer $body, array $queryParameters)
     {
@@ -10589,8 +11256,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaLdapByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaLdapByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10605,8 +11273,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaLdapByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServer
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServer
      */
     public function findRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10623,8 +11292,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesAaaLdapByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters)
     {
@@ -10641,8 +11311,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaLdapByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters)
     {
@@ -10657,8 +11328,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -10673,8 +11345,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList
      */
     public function findRkszonesAaaHttp2ByZoneId(string $zoneId, array $queryParameters)
     {
@@ -10691,8 +11364,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaHttp2ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaHttp2ByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesAaaHttp2ByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesAaaHttp2ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateHttp2Server $body, array $queryParameters)
     {
@@ -10707,8 +11381,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaHttp2ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaHttp2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaHttp2ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10723,8 +11398,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2Server
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2Server
      */
     public function findRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10741,8 +11417,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaHttp2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaHttp2ByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesAaaHttp2ByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesAaaHttp2ById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyHttp2Server $body, array $queryParameters)
     {
@@ -10757,8 +11434,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAaaByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAaaById(string $zoneId, string $id, array $queryParameters)
     {
@@ -10772,8 +11450,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneSwitchGroupLinksByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneSwitchGroupLinksByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneSwitchGroupLinksByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteZoneSwitchGroupLinksById(string $id, array $queryParameters)
     {
@@ -10787,8 +11466,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingBindingRecord
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingBindingRecord
      */
     public function findZoneSwitchGroupLinksById(string $id, array $queryParameters)
     {
@@ -10804,8 +11484,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneSwitchGroupLinksByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneSwitchGroupLinksByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneSwitchGroupLinksByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateZoneSwitchGroupLinksById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters)
     {
@@ -10823,8 +11504,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList
      */
     public function findZoneSwitchGroupLinks(array $queryParameters)
     {
@@ -10839,8 +11521,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneSwitchGroupLinksForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneSwitchGroupLinksInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneSwitchGroupLinksUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addZoneSwitchGroupLinks(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters)
     {
@@ -10854,6 +11537,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10869,8 +11553,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
      */
     public function findControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -10886,8 +11571,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPUserDefinedInterface $body, array $queryParameters)
     {
@@ -10901,8 +11587,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneConfiguration
      */
     public function findControlPlanesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -10918,8 +11605,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesByBladeUUIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateControlPlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane $body, array $queryParameters)
     {
@@ -10933,6 +11621,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesStaticRoutesByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesStaticRoutesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -10948,8 +11637,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesStaticRoutesByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesStaticRoutesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRouteList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRouteList
      */
     public function findControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -10965,8 +11655,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesStaticRoutesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesStaticRoutesByBladeUUIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPStaticRoute $body, array $queryParameters)
     {
@@ -10980,8 +11671,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesInterfacesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesInterfacesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesInterfacesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneInterfaceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneInterfaceList
      */
     public function findControlPlanesInterfaces(array $queryParameters)
     {
@@ -10996,8 +11688,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesIpSupportForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesIpSupportInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateControlPlanesIpSupportUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateControlPlanesIpSupport(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyIpSupportType $body, array $queryParameters)
     {
@@ -11010,8 +11703,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneList
      */
     public function findControlPlanes(array $queryParameters)
     {
@@ -11026,8 +11720,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsDeauthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsDeauthUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addWiredClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters)
     {
@@ -11042,8 +11737,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsBulkDeauthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsBulkDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddWiredClientsBulkDeauthUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addWiredClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters)
     {
@@ -11057,6 +11753,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11072,8 +11769,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileList
      */
     public function findRkszonesVlanNameProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -11089,8 +11787,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVlanNameProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVlanNameProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVlanNameProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesVlanNameProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters)
     {
@@ -11105,8 +11804,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11121,8 +11821,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVlanNameProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileWithEditInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileWithEditInfo
      */
     public function findRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11139,6 +11840,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVlanNameProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVlanNameProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesVlanNameProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11154,8 +11856,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteZoneScheduleUpgradeById(string $id, array $queryParameters)
     {
@@ -11169,8 +11872,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig
      */
     public function findZoneScheduleUpgradeById(string $id, array $queryParameters)
     {
@@ -11186,6 +11890,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneScheduleUpgradeByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateZoneScheduleUpgradeByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11201,6 +11906,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteZoneScheduleUpgradeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11215,8 +11921,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskList
      */
     public function findZoneScheduleUpgrade(array $queryParameters)
     {
@@ -11231,6 +11938,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneScheduleUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneScheduleUpgradeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZoneScheduleUpgradeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11245,8 +11953,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeHistoryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeHistoryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeHistoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeHistoryList
      */
     public function findZoneScheduleUpgradeHistory(array $queryParameters)
     {
@@ -11259,8 +11968,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemDevicesSummaryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemDevicesSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemDevicesSummaryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DeviceCapacityDevicesSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DeviceCapacityDevicesSummary
      */
     public function findSystemDevicesSummary(array $queryParameters)
     {
@@ -11274,6 +11984,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11289,8 +12000,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleConfiguration
      */
     public function findApRulesById(string $id, array $queryParameters)
     {
@@ -11306,8 +12018,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApRulesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApRulesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateApRulesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesModifyApRule $body, array $queryParameters)
     {
@@ -11320,8 +12033,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleList
      */
     public function findApRules(array $queryParameters)
     {
@@ -11336,8 +12050,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApRulesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApRulesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApRulesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addApRules(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule $body, array $queryParameters)
     {
@@ -11351,6 +12066,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityUpByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityUpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityUpByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11366,6 +12082,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11380,8 +12097,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneList
      */
     public function findPlanes(array $queryParameters)
     {
@@ -11395,8 +12113,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneConfiguration
      */
     public function findPlanesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -11412,8 +12131,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesByBladeUUIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdatePlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane $body, array $queryParameters)
     {
@@ -11427,8 +12147,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePlanesStaticRouteByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePlanesStaticRouteByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePlanesStaticRouteByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deletePlanesStaticRouteByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -11444,8 +12165,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlaneStatesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlaneStatesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlaneStatesByBladeUUIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdatePlaneStatesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlaneState $body, array $queryParameters)
     {
@@ -11461,8 +12183,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesDpTunnelSettingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesDpTunnelSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPlanesDpTunnelSettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGetDataPlaneMeshTunnelSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGetDataPlaneMeshTunnelSetting
      */
     public function findPlanesDpTunnelSetting(array $queryParameters, array $formParameters)
     {
@@ -11477,8 +12200,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdatePlanesDpTunnelSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdatePlanesDpTunnelSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdatePlanesDpTunnelSettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updatePlanesDpTunnelSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateDpMeshTunnelSetting $body, array $queryParameters)
     {
@@ -11493,8 +12217,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpsSwitchoverClusterForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpsSwitchoverClusterInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpsSwitchoverClusterUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addDpsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpSwitchoverDp $body, array $queryParameters)
     {
@@ -11509,8 +12234,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesFlexiVpnProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesFlexiVpnProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesFlexiVpnProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFlexiVpnProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFlexiVpnProfileList
      */
     public function findServicesFlexiVpnProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -11525,8 +12251,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
      */
     public function findRkszonesPortalDetectionProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -11541,8 +12268,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -11556,8 +12284,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
      */
     public function findRkszonesPortalDetectionProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -11573,8 +12302,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalDetectionProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalDetectionProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
@@ -11589,8 +12319,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalDetectionProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11605,8 +12336,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile
      */
     public function findRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11623,8 +12355,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalDetectionProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
@@ -11641,8 +12374,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalDetectionProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
@@ -11656,8 +12390,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList
      */
     public function findRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -11673,8 +12408,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSocialMediaLoginProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSocialMediaLoginProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSocialMediaLoginProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters)
     {
@@ -11689,8 +12425,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11705,8 +12442,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileWithEditInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileWithEditInfo
      */
     public function findRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -11723,6 +12461,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11738,6 +12477,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSocialMediaLoginProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -11753,8 +12493,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSyncProvisionApsToCloudServiceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSyncProvisionApsToCloudServiceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsSyncProvisionApsToCloudServiceUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCloudOnBoardingSyncResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCloudOnBoardingSyncResult
      */
     public function addApsSyncProvisionApsToCloudService(array $queryParameters)
     {
@@ -11770,8 +12511,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
      */
     public function addRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDoAssignIp $body, array $queryParameters)
     {
@@ -11785,8 +12527,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpSiteConfigByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpSiteConfigByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpSiteConfigByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
      */
     public function findRkszonesDhcpSiteDhcpSiteConfigByZoneId(string $zoneId, array $queryParameters)
     {
@@ -11801,8 +12544,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesServicesDhcpSiteConfigByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesServicesDhcpSiteConfigByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesServicesDhcpSiteConfigByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDhcpSiteConfigList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDhcpSiteConfigList
      */
     public function findRkszonesServicesDhcpSiteConfigByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria $body, array $queryParameters)
     {
@@ -11816,8 +12560,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
      */
     public function findRkszonesBonjourFencingPolicyByZoneId(string $zoneId, array $queryParameters)
     {
@@ -11833,8 +12578,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourFencingPolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourFencingPolicyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourFencingPolicyByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesBonjourFencingPolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBonjourFencingPolicy $body, array $queryParameters)
     {
@@ -11849,8 +12595,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesIpv6ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesIpv6InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesIpv6UnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesIpv6(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
@@ -11865,8 +12612,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDualForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDualInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDualUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesDual(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
@@ -11880,8 +12628,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSoftGreTunnelProfliesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSoftGreTunnelProfliesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSoftGreTunnelProfliesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSoftGreTunnelProfliesById(string $id, array $queryParameters)
     {
@@ -11895,8 +12644,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesIpsecProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesIpsecProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesIpsecProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesIpsecProfilesById(string $id, array $queryParameters)
     {
@@ -11911,8 +12661,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelByModelBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelByModelInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
      */
     public function findRkszonesApmodelByModel(string $zoneId, string $model, array $queryParameters)
     {
@@ -11929,8 +12680,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApmodelByModelInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApmodelByModelUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesApmodelByModel(string $zoneId, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters)
     {
@@ -11945,8 +12697,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelCommonAttributeByModelBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelCommonAttributeByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelCommonAttributeByModelInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCommonAttribute
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCommonAttribute
      */
     public function findRkszonesApmodelCommonAttributeByModel(string $zoneId, string $model, array $queryParameters)
     {
@@ -11960,8 +12713,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesById(string $id, array $queryParameters)
     {
@@ -11975,8 +12729,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneConfiguration
      */
     public function findRkszonesById(string $id, array $queryParameters)
     {
@@ -11992,8 +12747,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters)
     {
@@ -12009,8 +12765,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters)
     {
@@ -12024,8 +12781,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesMeshByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesMeshByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesMeshByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesMeshById(string $id, array $queryParameters)
     {
@@ -12039,8 +12797,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesMeshByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesMeshByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesMeshByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneMeshConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneMeshConfiguration
      */
     public function findRkszonesMeshById(string $id, array $queryParameters)
     {
@@ -12054,8 +12813,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSyslogByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSyslogByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSyslogByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSyslogById(string $id, array $queryParameters)
     {
@@ -12069,8 +12829,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSmartMonitorByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSmartMonitorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSmartMonitorByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSmartMonitorById(string $id, array $queryParameters)
     {
@@ -12084,8 +12845,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl24ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl24ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesClientAdmissionControl24ById(string $id, array $queryParameters)
     {
@@ -12099,8 +12861,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl50ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientAdmissionControl50ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesClientAdmissionControl50ById(string $id, array $queryParameters)
     {
@@ -12114,8 +12877,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing24ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing24ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesLoadBalancingClientLoadBalancing24ById(string $id, array $queryParameters)
     {
@@ -12129,8 +12893,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing50ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing50ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesLoadBalancingClientLoadBalancing50ById(string $id, array $queryParameters)
     {
@@ -12144,8 +12909,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingBandBalancingByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingBandBalancingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingBandBalancingByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesLoadBalancingBandBalancingById(string $id, array $queryParameters)
     {
@@ -12159,8 +12925,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVenueProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVenueProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVenueProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesVenueProfileById(string $id, array $queryParameters)
     {
@@ -12174,8 +12941,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRogueById(string $id, array $queryParameters)
     {
@@ -12189,8 +12957,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLocationBasedServiceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLocationBasedServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLocationBasedServiceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesLocationBasedServiceById(string $id, array $queryParameters)
     {
@@ -12204,8 +12973,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAltitudeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAltitudeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesAltitudeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesAltitudeById(string $id, array $queryParameters)
     {
@@ -12219,8 +12989,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSnmpAgentByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSnmpAgentByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSnmpAgentByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSnmpAgentById(string $id, array $queryParameters)
     {
@@ -12234,8 +13005,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRecoverySsidByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRecoverySsidByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRecoverySsidByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRecoverySsidById(string $id, array $queryParameters)
     {
@@ -12249,8 +13021,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio24gBackgroundScanningByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio24gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio24gBackgroundScanningByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRadioConfigRadio24gBackgroundScanningById(string $id, array $queryParameters)
     {
@@ -12264,8 +13037,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gBackgroundScanningByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gBackgroundScanningByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRadioConfigRadio5gBackgroundScanningById(string $id, array $queryParameters)
     {
@@ -12279,8 +13053,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRadioConfigRadio5gLowerBackgroundScanningById(string $id, array $queryParameters)
     {
@@ -12294,8 +13069,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRadioConfigRadio5gUpperBackgroundScanningById(string $id, array $queryParameters)
     {
@@ -12309,8 +13085,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio6gBackgroundScanningByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio6gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRadioConfigRadio6gBackgroundScanningByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRadioConfigRadio6gBackgroundScanningById(string $id, array $queryParameters)
     {
@@ -12324,8 +13101,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesLoadBalancingByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesLoadBalancingById(string $id, array $queryParameters)
     {
@@ -12341,8 +13119,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanScheduleList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanScheduleList
      */
     public function findRkszonesWlanSchedulersByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12358,8 +13137,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlanSchedulersByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlanSchedulersByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlanSchedulersByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesWlanSchedulersByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerCreateWlanScheduler $body, array $queryParameters)
     {
@@ -12374,8 +13154,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlanSchedulersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlanSchedulersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesWlanSchedulersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12390,8 +13171,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlanSchedulersByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanSchedule
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanSchedule
      */
     public function findRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12408,8 +13190,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlanSchedulersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlanSchedulersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlanSchedulersByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesWlanSchedulersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerModifyWlanScheduler $body, array $queryParameters)
     {
@@ -12423,8 +13206,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesPortalsWebauthByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12440,8 +13224,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters)
     {
@@ -12456,8 +13241,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12472,8 +13258,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWebauthByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication
      */
     public function findRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12490,8 +13277,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWebauthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWebauthByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWebauthByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesPortalsWebauthById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWebAuthentication $body, array $queryParameters)
     {
@@ -12505,8 +13293,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesPortalsHotspotByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12522,8 +13311,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotInternalByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotInternalByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotInternalByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsHotspotInternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters)
     {
@@ -12539,8 +13329,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotExternalByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotExternalByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotExternalByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsHotspotExternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters)
     {
@@ -12557,8 +13348,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotInternalByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotInternalByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotInternalByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesPortalsHotspotInternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters)
     {
@@ -12575,8 +13367,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotExternalByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotExternalByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotExternalByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesPortalsHotspotExternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters)
     {
@@ -12591,8 +13384,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthRedirectByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthRedirectByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWebauthRedirectByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsWebauthRedirectById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12608,8 +13402,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotSmartClientOnlyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotSmartClientOnlyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsHotspotSmartClientOnlyByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsHotspotSmartClientOnlyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters)
     {
@@ -12626,8 +13421,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotSmartClientOnlyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotSmartClientOnlyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesPortalsHotspotSmartClientOnlyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesPortalsHotspotSmartClientOnlyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters)
     {
@@ -12642,8 +13438,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestRedirectByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestRedirectByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestRedirectByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsGuestRedirectById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12658,8 +13455,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestSmsGatewayByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestSmsGatewayByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestSmsGatewayByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsGuestSmsGatewayById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12673,8 +13471,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesHs20sByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12690,8 +13489,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20sByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20sByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20sByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesHs20sByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile $body, array $queryParameters)
     {
@@ -12706,8 +13506,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20sByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20sByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20sByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesHs20sById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12722,8 +13523,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20sByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20WlanProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20WlanProfile
      */
     public function findRkszonesHs20sById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12740,8 +13542,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20sByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20sByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20sByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesHs20sById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile $body, array $queryParameters)
     {
@@ -12755,8 +13558,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesHs20VenuesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12772,8 +13576,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20VenuesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20VenuesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesHs20VenuesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesHs20VenuesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20VenueProfile $body, array $queryParameters)
     {
@@ -12788,8 +13593,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12804,8 +13610,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesHs20VenuesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20VeuneProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20VeuneProfile
      */
     public function findRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12822,8 +13629,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20VenuesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20VenuesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesHs20VenuesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesHs20VenuesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20VenueProfile $body, array $queryParameters)
     {
@@ -12838,8 +13646,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileEthernetPortByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesProfileEthernetPortByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12854,8 +13663,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile
      */
     public function findRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12872,8 +13682,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesProfileEthernetPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesProfileEthernetPortByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters)
     {
@@ -12890,8 +13701,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileEthernetPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesProfileEthernetPortByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters)
     {
@@ -12906,8 +13718,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourFencingPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicy
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicy
      */
     public function findRkszonesBonjourFencingPolicyById(string $zoneId, string $id, array $queryParameters)
     {
@@ -12924,8 +13737,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourFencingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourFencingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourFencingPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesBonjourFencingPolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy $body, array $queryParameters)
     {
@@ -12939,8 +13753,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesBonjourFencingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -12954,8 +13769,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyList
      */
     public function findRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -12971,8 +13787,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayPoliciesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayPoliciesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateBonjourGatewayPolicy $body, array $queryParameters)
     {
@@ -12987,6 +13804,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourGatewayPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourGatewayPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -13003,8 +13821,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyConfiguration
      */
     public function findRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13021,8 +13840,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourGatewayPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesBonjourGatewayPoliciesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayPolicy $body, array $queryParameters)
     {
@@ -13037,8 +13857,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist
      */
     public function findRkszonesClientIsolationWhitelistById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13055,8 +13876,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesClientIsolationWhitelistByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesClientIsolationWhitelistByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesClientIsolationWhitelistByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesClientIsolationWhitelistById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyClientIsolationWhitelist $body, array $queryParameters)
     {
@@ -13070,8 +13892,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesPortalsGuestByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13087,8 +13910,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsGuestByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsGuestByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsGuestByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess $body, array $queryParameters)
     {
@@ -13103,8 +13927,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsGuestByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13119,8 +13944,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsGuestByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceGuestAccess
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceGuestAccess
      */
     public function findRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13137,8 +13963,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsGuestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsGuestByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesPortalsGuestById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyGuestAccess $body, array $queryParameters)
     {
@@ -13154,8 +13981,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesL2ACLByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13171,8 +13999,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesL2ACLByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesL2ACLByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesL2ACLByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesL2ACLByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateL2ACL $body, array $queryParameters)
     {
@@ -13187,8 +14016,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesL2ACLByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesL2ACLByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13203,8 +14033,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesL2ACLByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceL2ACL
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceL2ACL
      */
     public function findRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13221,8 +14052,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesL2ACLByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesL2ACLByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesL2ACLById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyL2ACL $body, array $queryParameters)
     {
@@ -13237,8 +14069,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWechatByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWechatByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsWechatByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13253,8 +14086,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWechatConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWechatConfiguration
      */
     public function findRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13271,8 +14105,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWechatByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWechatByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsWechatByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesPortalsWechatById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWechat $body, array $queryParameters)
     {
@@ -13288,8 +14123,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsWechatByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
     public function findRkszonesPortalsWechatByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13305,8 +14141,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWechatByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWechatByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWechatByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesPortalsWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat $body, array $queryParameters)
     {
@@ -13320,8 +14157,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApFirmwareByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApFirmwareByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApFirmwareByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApFirmwareList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApFirmwareList
      */
     public function findRkszonesApFirmwareByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13337,8 +14175,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApFirmwareByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApFirmwareByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApFirmwareByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesApFirmwareByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModfiyApFirmware $body, array $queryParameters)
     {
@@ -13354,8 +14193,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyPorfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyPorfileList
      */
     public function findRkszonesDevicePolicyByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13371,8 +14211,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDevicePolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDevicePolicyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDevicePolicyByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesDevicePolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyCreateDevicePolicy $body, array $queryParameters)
     {
@@ -13386,8 +14227,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServList
      */
     public function findRkszonesDiffservByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13403,8 +14245,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDiffservByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDiffservByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDiffservByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesDiffservByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateDiffServProfile $body, array $queryParameters)
     {
@@ -13419,6 +14262,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDiffservByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDiffservByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDiffservByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -13435,8 +14279,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDiffservByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServConfiguration
      */
     public function findRkszonesDiffservById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13453,6 +14298,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDiffservByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDiffservByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDiffservByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -13468,8 +14314,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesClientIsolationWhitelistByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
      */
     public function findRkszonesClientIsolationWhitelistByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13485,8 +14332,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesClientIsolationWhitelistByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesClientIsolationWhitelistByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesClientIsolationWhitelistByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesClientIsolationWhitelistByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist $body, array $queryParameters)
     {
@@ -13500,8 +14348,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesClientIsolationWhitelist(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -13515,8 +14364,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableTunnelProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableTunnelProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableTunnelProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
      */
     public function findRkszonesAvailableTunnelProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13530,8 +14380,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableIpsecProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableIpsecProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAvailableIpsecProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
      */
     public function findRkszonesAvailableIpsecProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13547,8 +14398,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileEthernetPortByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
      */
     public function findRkszonesProfileEthernetPortByZoneId(string $zoneId, array $queryParameters)
     {
@@ -13564,8 +14416,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileEthernetPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileEthernetPortByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesProfileEthernetPortByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesProfileEthernetPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile $body, array $queryParameters)
     {
@@ -13579,6 +14432,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesBonjourFencingPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -13594,8 +14448,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesClientIsolationWhitelistByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesClientIsolationWhitelistById(string $id, array $queryParameters)
     {
@@ -13610,8 +14465,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDevicePolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDevicePolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13626,8 +14482,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDevicePolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyDevicePolicyPorfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyDevicePolicyPorfile
      */
     public function findRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13644,8 +14501,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDevicePolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesDevicePolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesDevicePolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyModifyDevicePolicy $body, array $queryParameters)
     {
@@ -13660,8 +14518,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsHotspotByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsHotspotByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesPortalsHotspotByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13676,8 +14535,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalsHotspotByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot
      */
     public function findRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters)
     {
@@ -13694,8 +14554,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsHotspotByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsHotspotByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesPortalsHotspotByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesPortalsHotspotById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot $body, array $queryParameters)
     {
@@ -13711,8 +14572,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayEnableByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayEnableByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesBonjourGatewayEnableByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addRkszonesBonjourGatewayEnableByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayEnable $body, array $queryParameters)
     {
@@ -13728,8 +14590,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneList
      */
     public function findRkszones(array $queryParameters)
     {
@@ -13744,8 +14607,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszones(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
@@ -13758,8 +14622,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterGeoRedundancyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterGeoRedundancyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterGeoRedundancyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings
      */
     public function findClusterGeoRedundancy(array $queryParameters)
     {
@@ -13774,6 +14639,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateClusterGeoRedundancyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateClusterGeoRedundancyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateClusterGeoRedundancyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -13790,8 +14656,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
      */
     public function findMapsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -13807,8 +14674,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMapsApsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMapsApsByIndoorMapIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMapsApsByIndoorMapIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     public function updateMapsApsByIndoorMapId(string $indoorMapId, array $body, array $queryParameters)
     {
@@ -13823,8 +14691,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
      */
     public function findMaps(array $queryParameters)
     {
@@ -13839,8 +14708,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     public function addMaps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters)
     {
@@ -13854,8 +14724,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     public function deleteMapsByIndoorMapId(string $indoorMapId, array $queryParameters)
     {
@@ -13869,8 +14740,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMapsByIndoorMapIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap
      */
     public function findMapsByIndoorMapId(string $indoorMapId, array $queryParameters)
     {
@@ -13886,8 +14758,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateMapsByIndoorMapIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateMapsByIndoorMapIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     public function partialUpdateMapsByIndoorMapId(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters)
     {
@@ -13900,8 +14773,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions
      */
     public function findSessionManagement(array $queryParameters)
     {
@@ -13916,8 +14790,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
      */
     public function findPrecedenceByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -13931,8 +14806,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deletePrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkPrecedenceProfile $body, array $queryParameters)
     {
@@ -13947,8 +14823,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
      */
     public function findPrecedence(array $queryParameters)
     {
@@ -13963,8 +14840,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddPrecedenceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddPrecedenceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddPrecedenceUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addPrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile $body, array $queryParameters)
     {
@@ -13978,8 +14856,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeletePrecedenceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deletePrecedenceById(string $id, array $queryParameters)
     {
@@ -13993,8 +14872,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile
      */
     public function findPrecedenceById(string $id, array $queryParameters)
     {
@@ -14010,8 +14890,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePrecedenceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePrecedenceByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePrecedenceByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdatePrecedenceById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdatePrecedenceProfile $body, array $queryParameters)
     {
@@ -14026,8 +14907,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
      */
     public function findMeshTopologyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14040,8 +14922,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshZeroTouchBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshZeroTouchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshZeroTouchInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
      */
     public function findMeshZeroTouch(array $queryParameters)
     {
@@ -14056,6 +14939,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMeshZeroTouchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMeshZeroTouchInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateMeshZeroTouchUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14073,8 +14957,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]
      */
     public function findMeshTopologyByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14090,8 +14975,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshNeighborByApMacByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshNeighborByApMacByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshNeighborByApMacByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNeighborInfoMeshNeighborInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNeighborInfoMeshNeighborInfoList
      */
     public function findMeshNeighborByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14105,8 +14991,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileList
      */
     public function findRkszonesSplitTunnelProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -14122,8 +15009,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSplitTunnelProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSplitTunnelProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesSplitTunnelProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesSplitTunnelProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters)
     {
@@ -14138,8 +15026,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -14154,8 +15043,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile
      */
     public function findRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -14172,8 +15062,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesSplitTunnelProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelModifySplitTunnelProfile $body, array $queryParameters)
     {
@@ -14190,8 +15081,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSplitTunnelProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters)
     {
@@ -14206,8 +15098,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSplitTunnelProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileQuery
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileQuery
      */
     public function findRkszonesSplitTunnelProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14221,8 +15114,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesSplitTunnelProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesSplitTunnelProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -14237,8 +15131,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -14253,8 +15148,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicy
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicy
      */
     public function findRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -14271,8 +15167,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesRogueApPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesRogueApPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesRogueApPoliciesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesRogueApPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRogueApPolicy $body, array $queryParameters)
     {
@@ -14287,8 +15184,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -14302,8 +15200,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicyList
      */
     public function findRkszonesRogueApPoliciesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -14319,8 +15218,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRogueApPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRogueApPoliciesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRogueApPolicy $body, array $queryParameters)
     {
@@ -14335,8 +15235,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueclientsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueclientsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRogueclientsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfoList
      */
     public function findRogueclientsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14352,8 +15253,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
     public function findRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -14369,8 +15271,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRestrictedApAccessProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRestrictedApAccessProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesRestrictedApAccessProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRestrictedApAccessProfile $body, array $queryParameters)
     {
@@ -14385,8 +15288,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfileArray
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfileArray
      */
     public function findRkszonesRestrictedApAccessProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14400,8 +15304,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesRestrictedApAccessProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -14416,6 +15321,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14432,8 +15338,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfile
      */
     public function findRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -14450,8 +15357,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesRestrictedApAccessProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRestrictedApAccessProfile $body, array $queryParameters)
     {
@@ -14466,8 +15374,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addNetworkSegmentation(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile $body, array $queryParameters)
     {
@@ -14481,8 +15390,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteNetworkSegmentationById(string $id, array $queryParameters)
     {
@@ -14496,8 +15406,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileSummary
      */
     public function findNetworkSegmentationById(string $id, array $queryParameters)
     {
@@ -14513,6 +15424,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14529,8 +15441,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileQuery
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileQuery
      */
     public function findNetworkSegmentationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -14544,6 +15457,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14558,8 +15472,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileProfileContentList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileProfileContentList
      */
     public function findNetworkSegmentationEthernetPortProfile(array $queryParameters)
     {
@@ -14574,6 +15489,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationEthernetPortProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddNetworkSegmentationEthernetPortProfileUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14589,8 +15505,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters)
     {
@@ -14604,8 +15521,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile
      */
     public function findNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters)
     {
@@ -14621,6 +15539,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14636,8 +15555,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServerList
      */
     public function findAdminaaa(array $queryParameters)
     {
@@ -14652,8 +15572,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAdminaaaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAdminaaaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAdminaaaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addAdminaaa(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationCreateAdminAAAServer $body, array $queryParameters)
     {
@@ -14667,8 +15588,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAdminaaaByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAdminaaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAdminaaaByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteAdminaaaById(string $id, array $queryParameters)
     {
@@ -14682,8 +15604,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAdminaaaByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServer
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServer
      */
     public function findAdminaaaById(string $id, array $queryParameters)
     {
@@ -14699,8 +15622,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAdminaaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAdminaaaByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAdminaaaByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateAdminaaaById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAdminAAAServer $body, array $queryParameters)
     {
@@ -14713,8 +15637,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsAutoExportBackupBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsAutoExportBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsAutoExportBackupInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationAutoExportBackup
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationAutoExportBackup
      */
     public function findConfigurationSettingsAutoExportBackup(array $queryParameters)
     {
@@ -14729,8 +15654,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsAutoExportBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsAutoExportBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsAutoExportBackupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateConfigurationSettingsAutoExportBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAutoExportBackup $body, array $queryParameters)
     {
@@ -14743,8 +15669,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsScheduleBackupBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsScheduleBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationSettingsScheduleBackupInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationScheduleBackup
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationScheduleBackup
      */
     public function findConfigurationSettingsScheduleBackup(array $queryParameters)
     {
@@ -14759,8 +15686,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsScheduleBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsScheduleBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateConfigurationSettingsScheduleBackupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateConfigurationSettingsScheduleBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyScheduleBackup $body, array $queryParameters)
     {
@@ -14775,6 +15703,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterRestoreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterRestoreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterRestoreByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14792,8 +15721,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApplicationLogAndStatusList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApplicationLogAndStatusList
      */
     public function findApplicationsByBladeUUID(string $bladeUUID, array $queryParameters)
     {
@@ -14808,6 +15738,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14825,6 +15756,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14840,6 +15772,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14858,8 +15791,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
     public function addUpgradeUpload(array $queryParameters, array $formParameters)
     {
@@ -14876,6 +15810,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14890,8 +15825,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchInfo
      */
     public function findApPatch(array $queryParameters)
     {
@@ -14905,8 +15841,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
      */
     public function addApPatch(array $queryParameters)
     {
@@ -14919,8 +15856,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchStatusBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchStatusInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
      */
     public function findApPatchStatus(array $queryParameters)
     {
@@ -14936,8 +15874,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchHistoryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApPatchHistoryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchHistoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchHistoryList
      */
     public function findApPatchHistory(array $queryParameters)
     {
@@ -14951,6 +15890,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRestartUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14966,6 +15906,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddShutdownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddShutdownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddShutdownUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -14980,8 +15921,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicenseServerBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicenseServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicenseServerInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicenseServer
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicenseServer
      */
     public function findLicenseServer(array $queryParameters)
     {
@@ -14996,6 +15938,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15011,6 +15954,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicensesSyncForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicensesSyncInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicensesSyncUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15025,8 +15969,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradePatchBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradePatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradePatchInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo
      */
     public function findUpgradePatch(array $queryParameters)
     {
@@ -15040,6 +15985,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddClusterBackupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15055,6 +16001,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteClusterByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteClusterByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteClusterByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15072,8 +16019,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindClusterInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationClusterBackupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationClusterBackupList
      */
     public function findCluster(array $queryParameters)
     {
@@ -15090,6 +16038,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15105,8 +16054,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationBackupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addConfigurationBackup(array $queryParameters)
     {
@@ -15119,8 +16069,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSummaryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSummaryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSummaryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSummaryList
      */
     public function findLicensesSummary(array $queryParameters)
     {
@@ -15133,8 +16084,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesSyncLogsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList
      */
     public function findLicensesSyncLogs(array $queryParameters)
     {
@@ -15149,8 +16101,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConfigurationBackupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConfigurationBackupList
      */
     public function findConfiguration(array $queryParameters)
     {
@@ -15165,6 +16118,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationDownloadBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationDownloadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindConfigurationDownloadInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15179,8 +16133,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeStatusBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeStatusInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
     public function findUpgradeStatus(array $queryParameters)
     {
@@ -15196,8 +16151,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeHistoryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindUpgradeHistoryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeHistoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeHistoryList
      */
     public function findUpgradeHistory(array $queryParameters)
     {
@@ -15211,6 +16167,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteConfigurationByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteConfigurationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteConfigurationByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15228,6 +16185,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationRestoreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationRestoreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationRestoreByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15242,8 +16200,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLicensesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesList
      */
     public function findLicenses(array $queryParameters)
     {
@@ -15257,8 +16216,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
     public function addUpgrade(array $queryParameters)
     {
@@ -15272,6 +16232,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15287,8 +16248,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcUserDefinedByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcUserDefinedByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfile
      */
     public function findAvcUserDefinedById(string $id, array $queryParameters)
     {
@@ -15304,6 +16266,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15319,8 +16282,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcUserDefinedInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters)
     {
@@ -15335,8 +16299,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcUserDefinedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcUserDefinedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcUserDefinedUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile $body, array $queryParameters)
     {
@@ -15350,6 +16315,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15366,8 +16332,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters)
     {
@@ -15381,8 +16348,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteAvcApplicationPolicyById(string $id, array $queryParameters)
     {
@@ -15396,8 +16364,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
      */
     public function findAvcApplicationPolicyById(string $id, array $queryParameters)
     {
@@ -15413,8 +16382,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateAvcApplicationPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters)
     {
@@ -15428,8 +16398,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteAvcApplicationPolicyV2ById(string $id, array $queryParameters)
     {
@@ -15443,8 +16414,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyV2ByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyV2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcApplicationPolicyV2ByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
      */
     public function findAvcApplicationPolicyV2ById(string $id, array $queryParameters)
     {
@@ -15460,8 +16432,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyV2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyV2ByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcApplicationPolicyV2ByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateAvcApplicationPolicyV2ById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters)
     {
@@ -15475,6 +16448,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2BadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15491,8 +16465,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyV2InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcApplicationPolicyV2UnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters)
     {
@@ -15505,8 +16480,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2BadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2InternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
     public function findAvcSignaturePackageV2(array $queryParameters)
     {
@@ -15521,6 +16497,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcSignaturePackageV2UnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15536,8 +16513,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage
      */
     public function addAvcSignaturePackageV2CheckLatest(array $queryParameters)
     {
@@ -15550,8 +16528,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
     public function findAvcSignaturePackage(array $queryParameters)
     {
@@ -15564,8 +16543,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
      */
     public function findAvcSignaturePackageApplications(array $queryParameters)
     {
@@ -15582,8 +16562,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2UploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2UploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2UploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
     public function addAvcSignaturePackageV2Upload(array $queryParameters, array $formParameters)
     {
@@ -15597,8 +16578,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2CategoriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2CategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2CategoriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
      */
     public function findAvcSignaturePackageV2Categories(array $queryParameters)
     {
@@ -15612,8 +16594,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2ApplicationsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2ApplicationsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2ApplicationsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
      */
     public function findAvcSignaturePackageV2Applications(array $queryParameters)
     {
@@ -15627,8 +16610,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategory
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategory
      */
     public function findAvcSignaturePackageCategoryByCategoryName(string $categoryName, array $queryParameters)
     {
@@ -15642,8 +16626,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationByApplicationNameBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationByApplicationNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageApplicationByApplicationNameInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplication
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplication
      */
     public function findAvcSignaturePackageApplicationByApplicationName(string $applicationName, array $queryParameters)
     {
@@ -15657,8 +16642,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2DownloadAndInstallLastCheckedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2DownloadAndInstallLastCheckedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2DownloadAndInstallLastCheckedUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
      */
     public function addAvcSignaturePackageV2DownloadAndInstallLastChecked(array $queryParameters)
     {
@@ -15675,8 +16661,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageUploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
     public function addAvcSignaturePackageUpload(array $queryParameters, array $formParameters)
     {
@@ -15689,8 +16676,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
      */
     public function findAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress(array $queryParameters)
     {
@@ -15703,8 +16691,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
      */
     public function findAvcSignaturePackageCategories(array $queryParameters)
     {
@@ -15717,8 +16706,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciEventCodeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciEventCodeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciEventCodeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciEventCode
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciEventCode
      */
     public function findSciSciEventCode(array $queryParameters)
     {
@@ -15733,6 +16723,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciEventCodeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciEventCodeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciEventCodeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15748,8 +16739,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteSciSciProfileById(string $id, array $queryParameters)
     {
@@ -15763,8 +16755,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfile
      */
     public function findSciSciProfileById(string $id, array $queryParameters)
     {
@@ -15780,6 +16773,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15795,6 +16789,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSciSciProfileInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15809,8 +16804,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSciSciProfileInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfileList
      */
     public function findSciSciProfile(array $queryParameters)
     {
@@ -15825,8 +16821,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSciSciProfileUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciCreateSciProfile $body, array $queryParameters)
     {
@@ -15841,6 +16838,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciEnabledForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciEnabledInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciEnabledUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15860,8 +16858,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
     public function findDomains(array $queryParameters)
     {
@@ -15877,8 +16876,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDomainsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDomainsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDomainsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addDomains(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain $body, array $queryParameters)
     {
@@ -15892,6 +16892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDomainsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15908,8 +16909,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainConfiguration
      */
     public function findDomainsById(string $id, array $queryParameters)
     {
@@ -15925,6 +16927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -15945,8 +16948,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsSubdomainByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsSubdomainByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsSubdomainByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
     public function findDomainsSubdomainById(string $id, array $queryParameters)
     {
@@ -15960,8 +16964,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByNameByDomainNameBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByNameByDomainNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsByNameByDomainNameInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
     public function findDomainsByNameByDomainName(string $domainName, array $queryParameters)
     {
@@ -15976,8 +16981,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
     public function findRkszonesWlansDpskById(string $zoneId, string $id, array $queryParameters)
     {
@@ -15994,8 +17000,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDpskResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDpskResult
      */
     public function addRkszonesWlansDpskById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDPSKs $body, array $queryParameters)
     {
@@ -16009,6 +17016,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDownloadDpskCsvSampleBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDownloadDpskCsvSampleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDownloadDpskCsvSampleInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16024,8 +17032,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskEnabledWlansByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskEnabledWlansByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskEnabledWlansByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskEnabledWlans
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskEnabledWlans
      */
     public function findRkszonesDpskEnabledWlansByZoneId(string $zoneId, array $queryParameters)
     {
@@ -16039,8 +17048,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDeleteExpiredDpskByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDeleteExpiredDpskByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDeleteExpiredDpskByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteExpiredDpskConfig
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteExpiredDpskConfig
      */
     public function findRkszonesDeleteExpiredDpskByZoneId(string $zoneId, array $queryParameters)
     {
@@ -16056,8 +17066,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDeleteExpiredDpskByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDeleteExpiredDpskByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDeleteExpiredDpskByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesDeleteExpiredDpskByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskModifyDeleteExpiredDpsk $body, array $queryParameters)
     {
@@ -16076,8 +17087,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskUploadByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskUploadByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskUploadByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
      */
     public function addRkszonesWlansDpskUploadById(string $zoneId, string $id, array $queryParameters, array $formParameters)
     {
@@ -16094,8 +17106,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskBatchGenUnboundByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskBatchGenUnboundByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskBatchGenUnboundByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
      */
     public function addRkszonesWlansDpskBatchGenUnboundById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskBatchGenUnbound $body, array $queryParameters)
     {
@@ -16111,8 +17124,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByDpskIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByDpskIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesWlansDpskByDpskIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
     public function findRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, array $queryParameters)
     {
@@ -16130,8 +17144,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansDpskByDpskIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansDpskByDpskIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateRkszonesWlansDpskByDpskIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskUpdateDpsk $body, array $queryParameters)
     {
@@ -16145,8 +17160,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDpskByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
     public function findRkszonesDpskByZoneId(string $zoneId, array $queryParameters)
     {
@@ -16160,6 +17176,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16175,8 +17192,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfile
      */
     public function findFirewallProfilesById(string $id, array $queryParameters)
     {
@@ -16192,8 +17210,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateFirewallProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateFirewallProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateFirewallProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyFirewallProfile $body, array $queryParameters)
     {
@@ -16208,8 +17227,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileArray
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileArray
      */
     public function findFirewallProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileQueryCriteria $body, array $queryParameters)
     {
@@ -16223,8 +17243,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteFirewallProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -16240,8 +17261,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
     public function findFirewallProfiles(array $queryParameters)
     {
@@ -16256,8 +17278,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFirewallProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFirewallProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFirewallProfilesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateFirewallProfile $body, array $queryParameters)
     {
@@ -16271,8 +17294,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesEthernetPortProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesEthernetPortProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesEthernetPortProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
      */
     public function findFirewallProfilesEthernetPortProfilesById(string $id, array $queryParameters)
     {
@@ -16286,8 +17310,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesWlansByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFirewallProfilesWlansByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
      */
     public function findFirewallProfilesWlansById(string $id, array $queryParameters)
     {
@@ -16301,8 +17326,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileGetDnsSpoofingProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileGetDnsSpoofingProfileList
      */
     public function findRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, array $queryParameters)
     {
@@ -16318,8 +17344,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDnsSpoofingProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDnsSpoofingProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesDnsSpoofingProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters)
     {
@@ -16333,8 +17360,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesDnsSpoofingProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
@@ -16349,8 +17377,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -16365,8 +17394,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail
      */
     public function findRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters)
     {
@@ -16383,8 +17413,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesDnsSpoofingProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters)
     {
@@ -16400,8 +17431,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolTraceRouteBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolTraceRouteForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolTraceRouteInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function findToolTraceRoute(array $queryParameters)
     {
@@ -16416,8 +17448,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddToolSpeedflexForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddToolSpeedflexInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddToolSpeedflexUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
      */
     public function addToolSpeedflex(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolSpeedFlex $body, array $queryParameters)
     {
@@ -16431,8 +17464,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolSpeedflexByWcidBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolSpeedflexByWcidForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolSpeedflexByWcidInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
      */
     public function findToolSpeedflexByWcid(string $wcid, array $queryParameters)
     {
@@ -16447,8 +17481,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolPingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolPingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindToolPingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function findToolPing(array $queryParameters)
     {
@@ -16462,8 +17497,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportGetZDAPsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportGetZDAPsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportGetZDAPsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdAPList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdAPList
      */
     public function findZdImportGetZDAPs(array $queryParameters)
     {
@@ -16477,8 +17513,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportStatusBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZdImportStatusInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImportStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImportStatus
      */
     public function findZdImportStatus(array $queryParameters)
     {
@@ -16493,8 +17530,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportConnectZDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportConnectZDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportConnectZDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addZdImportConnectZD(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConnectZD $body, array $queryParameters)
     {
@@ -16509,8 +17547,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportMigrateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportMigrateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddZdImportMigrateUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addZdImportMigrate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImport $body, array $queryParameters)
     {
@@ -16525,6 +17564,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16541,8 +17581,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingServiceCertificatesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingServiceCertificatesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingServiceCertificatesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateCertstoreSettingServiceCertificates(array $body, array $queryParameters)
     {
@@ -16555,8 +17596,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApMacOUIsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApMacOUIsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApMacOUIsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemApMacOUIList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemApMacOUIList
      */
     public function findSystemApMacOUIs(array $queryParameters)
     {
@@ -16571,6 +17613,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16587,8 +17630,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCsrList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCsrList
      */
     public function findCertstoreCsr(array $queryParameters)
     {
@@ -16603,8 +17647,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCsrForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCsrInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCsrUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addCertstoreCsr(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR $body, array $queryParameters)
     {
@@ -16618,8 +17663,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCsrByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCsrByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCsrByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteCertstoreCsrById(string $id, array $queryParameters)
     {
@@ -16633,8 +17679,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCsrByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificatesSigningRequest
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificatesSigningRequest
      */
     public function findCertstoreCsrById(string $id, array $queryParameters)
     {
@@ -16649,6 +17696,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16665,6 +17713,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogSecondaryServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogSecondaryServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogSecondaryServerUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16680,8 +17729,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateDeleteBulk $body, array $queryParameters)
     {
@@ -16696,8 +17746,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChainCertList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChainCertList
      */
     public function findCertstoreTrustedCAChainCert(array $queryParameters)
     {
@@ -16712,8 +17763,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreTrustedCAChainCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreTrustedCAChainCertInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreTrustedCAChainCertUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateTrustedCAChain $body, array $queryParameters)
     {
@@ -16727,8 +17779,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreTrustedCAChainCertByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteCertstoreTrustedCAChainCertById(string $id, array $queryParameters)
     {
@@ -16742,8 +17795,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain
      */
     public function findCertstoreTrustedCAChainCertById(string $id, array $queryParameters)
     {
@@ -16759,8 +17813,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreTrustedCAChainCertByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreTrustedCAChainCertByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateCertstoreTrustedCAChainCertById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateModifyTrustedCAChain $body, array $queryParameters)
     {
@@ -16774,6 +17829,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16789,6 +17845,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16803,8 +17860,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSystemTimeBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSystemTimeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSystemTimeInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting
      */
     public function findSystemSystemTime(array $queryParameters)
     {
@@ -16819,8 +17877,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSystemTimeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSystemTimeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSystemTimeUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateSystemSystemTime(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySystemTimeSetting $body, array $queryParameters)
     {
@@ -16835,8 +17894,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting
      */
     public function findSystemSyslog(array $queryParameters)
     {
@@ -16851,6 +17911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16867,6 +17928,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPriorityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPriorityInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPriorityUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16882,6 +17944,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApBalanceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApBalanceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApBalanceUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -16898,8 +17961,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificateList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificateList
      */
     public function findCertstoreCertificate(array $queryParameters)
     {
@@ -16914,8 +17978,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCertificateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCertificateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreCertificateUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addCertstoreCertificate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCert $body, array $queryParameters)
     {
@@ -16929,8 +17994,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCertificateByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreCertificateByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteCertstoreCertificateById(string $id, array $queryParameters)
     {
@@ -16944,8 +18010,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreCertificateByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate
      */
     public function findCertstoreCertificateById(string $id, array $queryParameters)
     {
@@ -16958,8 +18025,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreSettingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreSettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting
      */
     public function findCertstoreSetting(array $queryParameters)
     {
@@ -16974,8 +18042,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateCertstoreSettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateCertstoreSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting $body, array $queryParameters)
     {
@@ -16989,8 +18058,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreClientCertByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreClientCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteCertstoreClientCertByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteCertstoreClientCertById(string $id, array $queryParameters)
     {
@@ -17004,8 +18074,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCert
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCert
      */
     public function findCertstoreClientCertById(string $id, array $queryParameters)
     {
@@ -17018,8 +18089,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSnmpAgentBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSnmpAgentForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSnmpAgentInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSnmpAgentConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSnmpAgentConfiguration
      */
     public function findSystemSnmpAgent(array $queryParameters)
     {
@@ -17034,8 +18106,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSnmpAgentForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSnmpAgentInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSnmpAgentUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function updateSystemSnmpAgent(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySnmpAgent $body, array $queryParameters)
     {
@@ -17049,8 +18122,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemNbiBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemNbiInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteSystemNbi(array $queryParameters)
     {
@@ -17064,8 +18138,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface
      */
     public function findSystemNbi(array $queryParameters)
     {
@@ -17081,6 +18156,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemNbiInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemNbiUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17095,8 +18171,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacListBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteSystemCaleaMacList(array $queryParameters)
     {
@@ -17109,8 +18186,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRsp
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRsp
      */
     public function findSystemCaleaMacList(array $queryParameters)
     {
@@ -17127,6 +18205,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17142,8 +18221,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemCaleaMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function deleteSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters)
     {
@@ -17158,8 +18238,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters)
     {
@@ -17172,8 +18253,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaCommonSettingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaCommonSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaCommonSettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRsp
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRsp
      */
     public function findSystemCaleaCommonSetting(array $queryParameters)
     {
@@ -17188,8 +18270,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaCommonSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaCommonSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaCommonSettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function addSystemCaleaCommonSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRq $body, array $queryParameters)
     {
@@ -17202,8 +18285,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemGatewayAdvancedInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced
      */
     public function findSystemGatewayAdvanced(array $queryParameters)
     {
@@ -17218,6 +18302,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemGatewayAdvancedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemGatewayAdvancedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemGatewayAdvancedUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17232,8 +18317,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControllerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControllerList
      */
     public function findController(array $queryParameters)
     {
@@ -17248,8 +18334,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemInventoryBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemInventoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemInventoryInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemInventoryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemInventoryList
      */
     public function findSystemInventory(array $queryParameters)
     {
@@ -17262,8 +18349,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSecuritySettingBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSecuritySettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSecuritySettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting
      */
     public function findSystemSecuritySetting(array $queryParameters)
     {
@@ -17278,6 +18366,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17292,8 +18381,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCloudOptionsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCloudOptionsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCloudOptionsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCloudOptions
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCloudOptions
      */
     public function findSystemCloudOptions(array $queryParameters)
     {
@@ -17308,6 +18398,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCloudOptionsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCloudOptionsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCloudOptionsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17324,8 +18415,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
      */
     public function findSystemByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
@@ -17338,8 +18430,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
      */
     public function findSystem(array $queryParameters)
     {
@@ -17354,6 +18447,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17369,6 +18463,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemApMacOUIsByOUIBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemApMacOUIsByOUIForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteSystemApMacOUIsByOUIInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17386,6 +18481,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17401,6 +18497,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17418,8 +18515,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerStatisticsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerStatisticsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerStatisticsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStatisticListItem[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStatisticListItem[]
      */
     public function findControllerStatisticsById(string $id, array $queryParameters)
     {
@@ -17434,8 +18532,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreClientCertInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCertList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCertList
      */
     public function findCertstoreClientCert(array $queryParameters)
     {
@@ -17450,8 +18549,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreClientCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreClientCertInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddCertstoreClientCertUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     public function addCertstoreClientCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateClientCert $body, array $queryParameters)
     {
@@ -17466,8 +18566,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemAaaTestForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemAaaTestInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemAaaTestUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAAAServerSingleResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAAAServerSingleResult
      */
     public function addSystemAaaTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer $body, array $queryParameters)
     {
@@ -17480,8 +18581,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp
      */
     public function findSystemApRoutineConfigInterval(array $queryParameters)
     {
@@ -17496,6 +18598,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineConfigIntervalForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineConfigIntervalInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineConfigIntervalUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17510,6 +18613,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17524,8 +18628,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLwapp2scgBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLwapp2scgForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLwapp2scgInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemLwapp2scgConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemLwapp2scgConfiguration
      */
     public function findLwapp2scg(array $queryParameters)
     {
@@ -17540,8 +18645,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateLwapp2scg(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters)
     {
@@ -17556,8 +18662,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgApListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgApListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateLwapp2scgApListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     public function partialUpdateLwapp2scgApList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters)
     {
@@ -17570,8 +18677,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineStatusIntervalBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineStatusIntervalForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineStatusIntervalInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineStatusIntervalApRoutineStatusIntervalRsp
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineStatusIntervalApRoutineStatusIntervalRsp
      */
     public function findSystemApRoutineStatusInterval(array $queryParameters)
     {
@@ -17584,8 +18692,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings
      */
     public function findSystemCommonAccessCardSettings(array $queryParameters)
     {
@@ -17600,6 +18709,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCommonAccessCardSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCommonAccessCardSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemCommonAccessCardSettingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -17614,8 +18724,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemIpsecBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemIpsecInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecGetResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecGetResult
      */
     public function findSystemIpsec(array $queryParameters)
     {
@@ -17630,6 +18741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */

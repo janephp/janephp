@@ -12,8 +12,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "testHeader"?: string,
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testGetWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [])
     {
@@ -27,8 +28,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "testHeader"?: string,
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testPostWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [])
     {
@@ -43,6 +45,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -59,6 +62,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -75,6 +79,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $formParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -86,6 +91,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "testFile"?: string|resource,
      * } $formParameters
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -95,6 +101,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param string|resource $testBinary
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -106,6 +113,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      * @param string $testString
      * @param int $testInteger
      * @param int $testFloat
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -115,6 +123,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param int $testInteger
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */

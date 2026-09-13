@@ -161,6 +161,7 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      * @throws \Docker\Api\Exception\ContainerAttachBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachNotFoundException
      * @throws \Docker\Api\Exception\ContainerAttachInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -183,6 +184,7 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerAttachInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

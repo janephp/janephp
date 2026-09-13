@@ -36,6 +36,7 @@ class PluginDisable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *
      * @throws \Docker\Api\Exception\PluginDisableNotFoundException
      * @throws \Docker\Api\Exception\PluginDisableInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -52,6 +53,7 @@ class PluginDisable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginDisableInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

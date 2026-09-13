@@ -60,8 +60,9 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
+     * @return \PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -91,6 +92,7 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForCompletionInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

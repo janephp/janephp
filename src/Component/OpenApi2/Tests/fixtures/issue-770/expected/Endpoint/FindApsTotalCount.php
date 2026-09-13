@@ -49,6 +49,7 @@ class FindApsTotalCount extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsTotalCountInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class FindApsTotalCount extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -24,8 +24,9 @@ class GetProposal extends \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runt
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue940\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetProposal extends \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runt
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Issue940\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

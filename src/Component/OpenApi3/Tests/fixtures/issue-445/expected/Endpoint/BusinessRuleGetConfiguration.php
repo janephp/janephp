@@ -31,8 +31,9 @@ class BusinessRuleGetConfiguration extends \PicturePark\API\Runtime\Client\BaseE
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationConflictException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessRuleConfiguration
+     * @return \PicturePark\API\Model\BusinessRuleConfiguration
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class BusinessRuleGetConfiguration extends \PicturePark\API\Runtime\Client\BaseE
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessRuleGetConfigurationInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Issue680\Runtime\Client\Clie
 {
     /**
      * @param \Jane\Component\OpenApi3\Tests\Issue680\Model\TestBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Issue680\Exception\BadResponseException
      *
      * @return null
      */

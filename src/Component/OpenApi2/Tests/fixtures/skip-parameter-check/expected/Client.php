@@ -15,6 +15,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Cl
      *    "testHeader"?: string,
      *    "testHeaderSkipped"?: string,
      * } $headerParameters
+     * @throws \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Exception\BadResponseException
      *
      * @return null
      */

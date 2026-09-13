@@ -34,4 +34,35 @@ PHP
         unlink($configPath . '.php');
         rmdir($configDir);
     }
+
+    public function testUndeclaredStatusesThrowByDefault(): void
+    {
+        self::assertTrue($this->loadConfiguration([])['throw-unexpected-status-code']);
+        self::assertFalse($this->loadConfiguration(['throw-unexpected-status-code' => false])['throw-unexpected-status-code']);
+    }
+
+    /**
+     * @param array<string, mixed> $extra
+     *
+     * @return array<string, mixed>
+     */
+    private function loadConfiguration(array $extra): array
+    {
+        $configDir = sys_get_temp_dir() . '/jane-openapi-config-loader-' . uniqid('', true);
+        self::assertTrue(mkdir($configDir, recursive: true));
+
+        $configPath = $configDir . '/.jane-openapi';
+        file_put_contents($configPath, '<?php return ' . var_export($extra + [
+            'openapi-file' => 'https://example.com/openapi.json',
+            'namespace' => 'Jane\\Generated',
+            'directory' => '/tmp/generated',
+        ], true) . ';');
+
+        try {
+            return (new ConfigLoader())->load($configPath);
+        } finally {
+            unlink($configPath);
+            rmdir($configDir);
+        }
+    }
 }

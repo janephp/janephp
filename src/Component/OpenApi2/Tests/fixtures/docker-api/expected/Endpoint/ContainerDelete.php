@@ -53,6 +53,7 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      * @throws \Docker\Api\Exception\ContainerDeleteNotFoundException
      * @throws \Docker\Api\Exception\ContainerDeleteConflictException
      * @throws \Docker\Api\Exception\ContainerDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -75,6 +76,7 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerDeleteInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -41,8 +41,9 @@ class BusinessRuleSearchTraces extends \PicturePark\API\Runtime\Client\BaseEndpo
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesConflictException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessRuleTraceLogSearchResult
+     * @return \PicturePark\API\Model\BusinessRuleTraceLogSearchResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -72,6 +73,7 @@ class BusinessRuleSearchTraces extends \PicturePark\API\Runtime\Client\BaseEndpo
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessRuleSearchTracesInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

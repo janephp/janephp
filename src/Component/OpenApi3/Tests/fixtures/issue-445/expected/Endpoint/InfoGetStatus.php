@@ -24,8 +24,9 @@ class InfoGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     /**
      * {@inheritdoc}
      *
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SystemStatus
+     * @return \PicturePark\API\Model\SystemStatus
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class InfoGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\SystemStatus', 'json');
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -53,8 +53,9 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\ServiceCreateConflictException
      * @throws \Docker\Api\Exception\ServiceCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ServicesCreatePostResponse201
+     * @return \Docker\Api\Model\ServicesCreatePostResponse201
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -78,6 +79,7 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (503 === $status) {
             throw new \Docker\Api\Exception\ServiceCreateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

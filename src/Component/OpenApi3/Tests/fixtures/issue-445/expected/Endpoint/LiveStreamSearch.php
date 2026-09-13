@@ -42,8 +42,9 @@ class LiveStreamSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
      * @throws \PicturePark\API\Exception\LiveStreamSearchConflictException
      * @throws \PicturePark\API\Exception\LiveStreamSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\LiveStreamSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\LiveStreamSearchResult
+     * @return \PicturePark\API\Model\LiveStreamSearchResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class LiveStreamSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\LiveStreamSearchInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

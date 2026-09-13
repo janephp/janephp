@@ -45,6 +45,7 @@ class BusinessProcessUpdateNotification extends \PicturePark\API\Runtime\Client\
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class BusinessProcessUpdateNotification extends \PicturePark\API\Runtime\Client\
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

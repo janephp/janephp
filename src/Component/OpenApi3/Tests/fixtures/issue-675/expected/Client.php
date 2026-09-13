@@ -10,8 +10,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue675\Runtime\Cl
      *    "bar"?: string,
      *    "baz"?: string,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue675\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testSimple(array $queryParameters = [])
     {

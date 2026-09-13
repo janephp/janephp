@@ -45,6 +45,7 @@ class DeleteServiceTicket extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteServiceTicketInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -64,6 +65,7 @@ class DeleteServiceTicket extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

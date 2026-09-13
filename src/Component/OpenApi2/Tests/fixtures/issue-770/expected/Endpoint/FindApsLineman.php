@@ -55,8 +55,9 @@ class FindApsLineman extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsLinemanInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class FindApsLineman extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

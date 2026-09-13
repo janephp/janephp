@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Issue832;
 class Client extends \Jane\Component\OpenApi2\Tests\Issue832\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Issue832\Exception\BadResponseException
      *
      * @return null
      */
@@ -13,6 +14,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Issue832\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Issue832\Endpoint\Ping());
     }
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Issue832\Exception\BadResponseException
      *
      * @return null
      */

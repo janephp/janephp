@@ -43,6 +43,7 @@ class DatabasesUpdateFirewallRules extends \Jane\Generated\DigitalOcean\Runtime\
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -68,6 +69,7 @@ class DatabasesUpdateFirewallRules extends \Jane\Generated\DigitalOcean\Runtime\
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

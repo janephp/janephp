@@ -35,6 +35,7 @@ class ConfigDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\ConfigDeleteNotFoundException
      * @throws \Docker\Api\Exception\ConfigDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -54,6 +55,7 @@ class ConfigDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\ConfigDeleteServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

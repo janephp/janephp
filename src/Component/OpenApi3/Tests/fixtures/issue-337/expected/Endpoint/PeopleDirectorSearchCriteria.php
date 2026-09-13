@@ -59,6 +59,7 @@ class PeopleDirectorSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEn
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -98,6 +99,7 @@ class PeopleDirectorSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEn
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

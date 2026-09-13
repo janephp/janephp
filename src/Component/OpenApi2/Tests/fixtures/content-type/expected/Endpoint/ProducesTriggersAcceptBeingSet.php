@@ -24,6 +24,7 @@ class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi2\Tests\Expe
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ContentType\Exception\BadResponseException
      *
      * @return null
      */
@@ -34,6 +35,7 @@ class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi2\Tests\Expe
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\ContentType\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

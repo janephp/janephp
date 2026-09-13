@@ -48,6 +48,7 @@ class AddSystemApMacOUIs extends \Jane\Component\OpenApi3\Tests\Expected\Issue77
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApMacOUIsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddSystemApMacOUIs extends \Jane\Component\OpenApi3\Tests\Expected\Issue77
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

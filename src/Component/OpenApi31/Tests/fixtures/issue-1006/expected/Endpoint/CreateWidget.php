@@ -34,8 +34,9 @@ class CreateWidget extends \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Cli
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Issue1006\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget
+     * @return \Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -44,6 +45,7 @@ class CreateWidget extends \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Cli
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Issue1006\Model\Widget', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Issue1006\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

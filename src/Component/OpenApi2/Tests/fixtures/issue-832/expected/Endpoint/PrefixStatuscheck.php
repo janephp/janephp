@@ -24,6 +24,7 @@ class PrefixStatuscheck extends \Jane\Component\OpenApi2\Tests\Issue832\Runtime\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Issue832\Exception\BadResponseException
      *
      * @return null
      */
@@ -34,6 +35,7 @@ class PrefixStatuscheck extends \Jane\Component\OpenApi2\Tests\Issue832\Runtime\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Issue832\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

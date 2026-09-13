@@ -42,8 +42,9 @@ class ContentSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @throws \PicturePark\API\Exception\ContentSearchConflictException
      * @throws \PicturePark\API\Exception\ContentSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentSearchResult
+     * @return \PicturePark\API\Model\ContentSearchResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class ContentSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\ContentSearchResult', 'json');
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

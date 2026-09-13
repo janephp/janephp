@@ -30,8 +30,9 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespons
      *
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdBadRequestException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -46,6 +47,7 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespons
         if (404 === $status) {
             throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

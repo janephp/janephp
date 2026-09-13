@@ -48,6 +48,7 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

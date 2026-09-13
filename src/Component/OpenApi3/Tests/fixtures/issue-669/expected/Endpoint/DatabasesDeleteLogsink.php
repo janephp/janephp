@@ -42,6 +42,7 @@ class DatabasesDeleteLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -67,6 +68,7 @@ class DatabasesDeleteLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

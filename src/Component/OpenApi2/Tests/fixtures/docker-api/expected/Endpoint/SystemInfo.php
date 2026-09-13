@@ -25,8 +25,9 @@ class SystemInfo extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\SystemInfoInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SystemInfo
+     * @return \Docker\Api\Model\SystemInfo
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class SystemInfo extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (500 === $status) {
             throw new \Docker\Api\Exception\SystemInfoInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

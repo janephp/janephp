@@ -45,8 +45,9 @@ class FindIdentityUsersCountries extends \Jane\Component\OpenApi3\Tests\Expected
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersCountriesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindIdentityUsersCountries extends \Jane\Component\OpenApi3\Tests\Expected
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

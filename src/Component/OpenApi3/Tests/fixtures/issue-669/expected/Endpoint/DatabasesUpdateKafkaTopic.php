@@ -49,8 +49,9 @@ class DatabasesUpdateKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class DatabasesUpdateKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

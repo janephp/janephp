@@ -30,6 +30,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ContentType\Exception\BadResponseException
      *
      * @return null
      */
@@ -40,6 +41,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ContentType\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

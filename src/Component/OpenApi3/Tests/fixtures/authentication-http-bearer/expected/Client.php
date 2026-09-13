@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Model\Foo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Model\Foo
      */
     public function getFoo()
     {

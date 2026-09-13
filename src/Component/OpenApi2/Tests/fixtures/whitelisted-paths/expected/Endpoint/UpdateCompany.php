@@ -29,7 +29,7 @@ class UpdateCompany extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runti
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

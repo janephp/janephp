@@ -8,6 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AllBooleanQueryReso
      * @param array{
      *    "testBoolean"?: bool,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AllBooleanQueryResolver\Exception\BadResponseException
      *
      * @return null
      */

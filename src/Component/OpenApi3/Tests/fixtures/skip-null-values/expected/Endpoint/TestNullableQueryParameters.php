@@ -38,6 +38,7 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\SkipNullValues\Exception\BadResponseException
      *
      * @return null
      */
@@ -48,6 +49,7 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\SkipNullValues\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,6 +48,7 @@ class DeleteApRulesById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApRulesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class DeleteApRulesById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -54,8 +54,9 @@ class ContentPermissionSetGetMany extends \PicturePark\API\Runtime\Client\BaseEn
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail[]
+     * @return \PicturePark\API\Model\ContentPermissionSetDetail[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -85,6 +86,7 @@ class ContentPermissionSetGetMany extends \PicturePark\API\Runtime\Client\BaseEn
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -50,8 +50,9 @@ class PluginList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\PluginListInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin[]
+     * @return \Docker\Api\Model\Plugin[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -63,6 +64,7 @@ class PluginList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginListInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

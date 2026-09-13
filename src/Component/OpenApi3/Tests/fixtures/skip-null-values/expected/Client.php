@@ -8,6 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\SkipNullValues\Runt
      * @param array{
      *    "testNullableInteger"?: int,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\SkipNullValues\Exception\BadResponseException
      *
      * @return null
      */

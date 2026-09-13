@@ -20,6 +20,7 @@ class OptionsTest extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Run
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class OptionsTest extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Run
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

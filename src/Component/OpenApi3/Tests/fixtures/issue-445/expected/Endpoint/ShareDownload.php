@@ -74,8 +74,9 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @throws \PicturePark\API\Exception\ShareDownloadTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ShareDownloadPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -109,6 +110,7 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ShareDownloadPreconditionFailedException($response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

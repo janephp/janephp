@@ -31,6 +31,7 @@ class ProfileRequestDeletion extends \PicturePark\API\Runtime\Client\BaseEndpoin
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionConflictException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -62,6 +63,7 @@ class ProfileRequestDeletion extends \PicturePark\API\Runtime\Client\BaseEndpoin
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ProfileRequestDeletionInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

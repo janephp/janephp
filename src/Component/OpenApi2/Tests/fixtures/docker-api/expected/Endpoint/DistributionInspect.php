@@ -36,8 +36,9 @@ class DistributionInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implem
      *
      * @throws \Docker\Api\Exception\DistributionInspectUnauthorizedException
      * @throws \Docker\Api\Exception\DistributionInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\DistributionInspect
+     * @return \Docker\Api\Model\DistributionInspect
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -52,6 +53,7 @@ class DistributionInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implem
         if (500 === $status) {
             throw new \Docker\Api\Exception\DistributionInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\MultiResources;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Exception\BadResponseException
      *
      * @return null
      */
@@ -13,6 +14,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Runt
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Endpoint\BodyParameterTriggersContentTypeBeingSet());
     }
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Exception\BadResponseException
      *
      * @return null
      */

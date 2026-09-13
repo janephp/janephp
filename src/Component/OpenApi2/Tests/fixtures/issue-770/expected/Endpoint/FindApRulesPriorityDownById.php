@@ -48,6 +48,7 @@ class FindApRulesPriorityDownById extends \Jane\Component\OpenApi3\Tests\Expecte
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApRulesPriorityDownByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class FindApRulesPriorityDownById extends \Jane\Component\OpenApi3\Tests\Expecte
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

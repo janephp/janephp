@@ -274,8 +274,9 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  `throw-unexpected-status-code`. By default, it's enabled.
 - `throw-unexpected-status-code`: Will throw a `BadResponseException` if nothing has been matched during
  the transformation of the Endpoint body (including described exceptions). This exception extends
- `UnexpectedStatusCodeException` and exposes the original PSR-7 response through its `getResponse()` method.
- By default, it's disabled.
+ `UnexpectedStatusCodeException` and exposes the original response through its `getResponse()` method.
+ By default, it's enabled (since 8.0; it was disabled before). When disabled, an unmatched response makes the
+ endpoint return `null` explicitly.
 - `custom-string-format-mapping`: This option allows you to specify in which class a string property will be
  deserialized according to it's format option. It can be used to customize a date-time field, or to add non supported
 formats. More details in the dedicated section.

@@ -58,6 +58,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi2\Tests\Expected\SkipParame
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi2\Tests\Expected\SkipParame
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

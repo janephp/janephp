@@ -48,6 +48,7 @@ class KubernetesRecycleNodePool extends \Jane\Generated\DigitalOcean\Runtime\Cli
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -73,6 +74,7 @@ class KubernetesRecycleNodePool extends \Jane\Generated\DigitalOcean\Runtime\Cli
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

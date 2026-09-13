@@ -48,8 +48,9 @@ class FindServicesAaaServerAcctByQueryCriteria extends \Jane\Component\OpenApi3\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAaaServerAcctByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindServicesAaaServerAcctByQueryCriteria extends \Jane\Component\OpenApi3\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -40,6 +40,7 @@ class SchemaPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEndp
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class SchemaPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEndp
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaPermissionSetDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

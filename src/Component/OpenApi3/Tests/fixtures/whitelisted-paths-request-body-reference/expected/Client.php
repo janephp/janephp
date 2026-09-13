@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReq
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRequestBodyReference\Model\FooPayload $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRequestBodyReference\Exception\BadResponseException
      *
      * @return null
      */

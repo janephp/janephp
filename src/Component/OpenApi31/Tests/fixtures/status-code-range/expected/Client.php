@@ -9,7 +9,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\StatusCodeRange\Runtime\Cli
      * @throws \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooClientErrorException
      * @throws \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message
+     * @return \Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message|null
      */
     public function getFoo()
     {

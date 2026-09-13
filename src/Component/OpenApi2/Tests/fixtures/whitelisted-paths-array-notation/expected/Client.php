@@ -6,7 +6,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation
 {
     /**
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     public function retrieveCompany()
     {
@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
      * @param \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompanyPatchBody $payload json payload
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     public function updateCompany(\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompanyPatchBody $payload)
     {
@@ -34,7 +34,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation
      *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 100.  (Default: 100)
      * } $queryParameters
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     public function listProjects(array $queryParameters = [])
     {

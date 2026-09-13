@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo
+     * @return \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo
      */
     public function getFoo()
     {

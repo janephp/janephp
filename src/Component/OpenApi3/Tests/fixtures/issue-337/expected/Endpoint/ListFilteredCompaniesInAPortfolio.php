@@ -71,6 +71,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -118,6 +119,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

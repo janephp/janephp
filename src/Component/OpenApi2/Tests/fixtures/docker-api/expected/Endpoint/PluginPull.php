@@ -71,6 +71,7 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\PluginPullInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -84,6 +85,7 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginPullInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

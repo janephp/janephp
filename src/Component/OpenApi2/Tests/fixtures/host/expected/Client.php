@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Host;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\Host\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Host\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testHost()
     {

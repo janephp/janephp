@@ -17,7 +17,7 @@ class Registry extends BaseRegistry implements RegistryInterface
     /** @var array<string> */
     private array $whitelistedPaths = [];
     private array $customQueryResolver = [];
-    private bool $throwUnexpectedStatusCode = false;
+    private bool $throwUnexpectedStatusCode = true;
     private bool $generateErrorExceptions = true;
 
     public function setOpenApiClass(string $openApiClass): void

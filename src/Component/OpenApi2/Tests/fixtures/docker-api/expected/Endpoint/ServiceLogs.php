@@ -67,8 +67,9 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\ServiceLogsNotFoundException
      * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceLogsServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -91,6 +92,7 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (503 === $status) {
             throw new \Docker\Api\Exception\ServiceLogsServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

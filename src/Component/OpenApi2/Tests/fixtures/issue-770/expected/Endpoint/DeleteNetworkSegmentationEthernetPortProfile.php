@@ -47,6 +47,7 @@ class DeleteNetworkSegmentationEthernetPortProfile extends \Jane\Component\OpenA
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteNetworkSegmentationEthernetPortProfileInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteNetworkSegmentationEthernetPortProfile extends \Jane\Component\OpenA
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

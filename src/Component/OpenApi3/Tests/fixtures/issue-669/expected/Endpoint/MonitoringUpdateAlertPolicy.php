@@ -42,8 +42,9 @@ class MonitoringUpdateAlertPolicy extends \Jane\Generated\DigitalOcean\Runtime\C
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class MonitoringUpdateAlertPolicy extends \Jane\Generated\DigitalOcean\Runtime\C
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

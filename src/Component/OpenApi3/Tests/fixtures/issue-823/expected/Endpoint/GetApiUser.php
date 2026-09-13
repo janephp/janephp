@@ -24,6 +24,7 @@ class GetApiUser extends \Jane\Component\OpenApi3\Tests\Issue823\Runtime\Client\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Issue823\Exception\BadResponseException
      *
      * @return null
      */
@@ -39,6 +40,7 @@ class GetApiUser extends \Jane\Component\OpenApi3\Tests\Issue823\Runtime\Client\
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Issue823\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -49,6 +49,7 @@ class VolumeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\VolumeDeleteNotFoundException
      * @throws \Docker\Api\Exception\VolumeDeleteConflictException
      * @throws \Docker\Api\Exception\VolumeDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class VolumeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\VolumeDeleteInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -40,6 +40,7 @@ class JsonSchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @throws \PicturePark\API\Exception\JsonSchemaGetConflictException
      * @throws \PicturePark\API\Exception\JsonSchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\JsonSchemaGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class JsonSchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

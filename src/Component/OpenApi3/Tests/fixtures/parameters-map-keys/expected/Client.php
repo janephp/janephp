@@ -12,6 +12,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\R
      *    "site": string, //Order or cart ID
      *    "explicit_name"?: string, //Explicit name takes precedence over the key
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\Exception\BadResponseException
      *
      * @return null
      */

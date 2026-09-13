@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\FetchModeDefault;
 class Client extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsGetResponse200
      */
     public function getPets()
     {
@@ -14,6 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     }
     /**
      * @param \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
      * @return null
      */
@@ -23,8 +25,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     }
     /**
      * @param string $petId
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200
      */
     public function getPet(string $petId)
     {

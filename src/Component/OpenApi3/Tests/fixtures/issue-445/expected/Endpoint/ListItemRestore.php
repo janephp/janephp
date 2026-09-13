@@ -59,6 +59,7 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @throws \PicturePark\API\Exception\ListItemRestoreConflictException
      * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -90,6 +91,7 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

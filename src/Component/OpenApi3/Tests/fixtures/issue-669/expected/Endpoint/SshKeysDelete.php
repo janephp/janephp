@@ -38,6 +38,7 @@ class SshKeysDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -63,6 +64,7 @@ class SshKeysDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -24,8 +24,9 @@ class InfoGetInfo extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\CustomerInfo
+     * @return \PicturePark\API\Model\CustomerInfo
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class InfoGetInfo extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\CustomerInfo', 'json');
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

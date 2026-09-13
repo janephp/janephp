@@ -42,6 +42,7 @@ class CdnDeleteEndpoint extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -67,6 +68,7 @@ class CdnDeleteEndpoint extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

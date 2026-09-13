@@ -57,8 +57,9 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
      * @throws \PicturePark\API\Exception\ShareGetConflictException
      * @throws \PicturePark\API\Exception\ShareGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ShareDetail
+     * @return \PicturePark\API\Model\ShareDetail
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +89,7 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareGetInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

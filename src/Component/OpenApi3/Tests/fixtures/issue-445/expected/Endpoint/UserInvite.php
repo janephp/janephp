@@ -40,6 +40,7 @@ class UserInvite extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
      * @throws \PicturePark\API\Exception\UserInviteConflictException
      * @throws \PicturePark\API\Exception\UserInviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class UserInvite extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserInviteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

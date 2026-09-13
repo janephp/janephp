@@ -59,6 +59,7 @@ class AddApPatchFile extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchFileUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -81,6 +82,7 @@ class AddApPatchFile extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

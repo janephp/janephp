@@ -65,8 +65,9 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -98,6 +99,7 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException($response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

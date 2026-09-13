@@ -54,8 +54,9 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document
+     * @return \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

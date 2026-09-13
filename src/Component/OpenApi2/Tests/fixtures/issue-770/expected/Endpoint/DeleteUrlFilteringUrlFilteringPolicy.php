@@ -47,6 +47,7 @@ class DeleteUrlFilteringUrlFilteringPolicy extends \Jane\Component\OpenApi3\Test
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteUrlFilteringUrlFilteringPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteUrlFilteringUrlFilteringPolicy extends \Jane\Component\OpenApi3\Test
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

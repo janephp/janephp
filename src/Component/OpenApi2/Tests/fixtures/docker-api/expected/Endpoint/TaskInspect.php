@@ -35,8 +35,9 @@ class TaskInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\TaskInspectNotFoundException
      * @throws \Docker\Api\Exception\TaskInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Task
+     * @return \Docker\Api\Model\Task
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -54,6 +55,7 @@ class TaskInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (503 === $status) {
             throw new \Docker\Api\Exception\TaskInspectServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

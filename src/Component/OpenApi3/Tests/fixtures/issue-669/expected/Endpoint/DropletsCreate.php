@@ -63,6 +63,7 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -90,6 +91,7 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

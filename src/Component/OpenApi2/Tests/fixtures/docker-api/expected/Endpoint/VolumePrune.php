@@ -46,8 +46,9 @@ class VolumePrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\VolumePruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\VolumesPrunePostResponse200
+     * @return \Docker\Api\Model\VolumesPrunePostResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -59,6 +60,7 @@ class VolumePrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (500 === $status) {
             throw new \Docker\Api\Exception\VolumePruneInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -24,8 +24,9 @@ class GetTaggedItems extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem
+     * @return \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetTaggedItems extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

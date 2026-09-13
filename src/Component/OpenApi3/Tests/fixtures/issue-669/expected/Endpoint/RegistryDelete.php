@@ -29,6 +29,7 @@ class RegistryDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeletePreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -57,6 +58,7 @@ class RegistryDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

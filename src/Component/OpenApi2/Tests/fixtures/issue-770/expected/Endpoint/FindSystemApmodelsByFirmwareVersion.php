@@ -48,6 +48,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -67,6 +68,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

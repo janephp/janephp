@@ -76,6 +76,7 @@ class ListCompanySpecificNotificationEvents extends \CreditSafe\API\Runtime\Clie
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsForbiddenException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -123,6 +124,7 @@ class ListCompanySpecificNotificationEvents extends \CreditSafe\API\Runtime\Clie
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

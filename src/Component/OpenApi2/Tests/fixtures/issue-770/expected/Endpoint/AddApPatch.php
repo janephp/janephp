@@ -46,8 +46,9 @@ class AddApPatch extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApPatchUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -68,6 +69,7 @@ class AddApPatch extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

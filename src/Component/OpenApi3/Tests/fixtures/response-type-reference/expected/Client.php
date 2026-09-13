@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Model\FooGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Model\FooGetResponse200
      */
     public function foo()
     {

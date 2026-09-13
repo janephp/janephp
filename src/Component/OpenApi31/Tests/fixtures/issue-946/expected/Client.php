@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Issue946;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue946\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue946\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item[]
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item[]
      */
     public function listEntities()
     {
@@ -14,8 +15,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue946\Runtime\C
     }
     /**
      * @param string $id
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue946\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointIdGetResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointIdGetResponse200
      */
     public function getEntity(string $id)
     {

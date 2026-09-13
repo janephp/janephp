@@ -49,6 +49,7 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
      * @throws \Docker\Api\Exception\ContainerArchiveBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveNotFoundException
      * @throws \Docker\Api\Exception\ContainerArchiveInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerArchiveInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -50,6 +50,7 @@ class DatabasesUpdateRegion extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -75,6 +76,7 @@ class DatabasesUpdateRegion extends \Jane\Generated\DigitalOcean\Runtime\Client\
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

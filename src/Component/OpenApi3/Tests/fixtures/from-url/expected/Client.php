@@ -8,8 +8,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Cli
      * @param array{
      *    "limit"?: int, //How many items to return at one time (max 100)
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
+     * @return \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
      */
     public function listPets(array $queryParameters = [])
     {
@@ -17,6 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Cli
     }
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Exception\BadResponseException
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
      */
@@ -26,8 +28,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Cli
     }
     /**
      * @param string $petId The id of the pet to retrieve
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
+     * @return \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
      */
     public function showPetById(string $petId)
     {

@@ -46,6 +46,7 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\PluginCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -59,6 +60,7 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

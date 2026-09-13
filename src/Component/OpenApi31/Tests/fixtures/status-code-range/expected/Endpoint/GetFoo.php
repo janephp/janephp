@@ -28,7 +28,7 @@ class GetFoo extends \Jane\Component\OpenApi31\Tests\StatusCodeRange\Runtime\Cli
      * @throws \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooClientErrorException
      * @throws \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message
+     * @return \Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message|null
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

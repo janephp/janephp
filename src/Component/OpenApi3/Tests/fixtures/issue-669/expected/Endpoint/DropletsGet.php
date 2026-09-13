@@ -39,8 +39,9 @@ class DropletsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class DropletsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

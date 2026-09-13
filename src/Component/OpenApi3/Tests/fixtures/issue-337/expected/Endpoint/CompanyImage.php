@@ -49,6 +49,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
      * @throws \CreditSafe\API\Exception\CompanyImageBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -83,6 +84,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

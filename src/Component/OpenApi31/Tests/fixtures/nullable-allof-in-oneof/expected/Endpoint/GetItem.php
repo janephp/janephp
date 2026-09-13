@@ -24,8 +24,9 @@ class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOn
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container
+     * @return \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOn
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

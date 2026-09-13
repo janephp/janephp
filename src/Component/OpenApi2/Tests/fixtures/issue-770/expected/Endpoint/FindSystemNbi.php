@@ -47,8 +47,9 @@ class FindSystemNbi extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Run
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemNbiInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -66,6 +67,7 @@ class FindSystemNbi extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Run
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

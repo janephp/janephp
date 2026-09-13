@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\Model\TestPostResponse201
+     * @return \Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\Model\TestPostResponse201
      */
     public function test()
     {

@@ -25,8 +25,9 @@ class GetBar extends \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableRefere
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\GetBarNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Model\Root
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Model\Root
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class GetBar extends \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableRefere
         if (404 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\GetBarNotFoundException($response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

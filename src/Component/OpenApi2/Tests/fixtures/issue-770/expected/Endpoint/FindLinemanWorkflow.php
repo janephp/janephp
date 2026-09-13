@@ -45,6 +45,7 @@ class FindLinemanWorkflow extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindLinemanWorkflowInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -69,6 +70,7 @@ class FindLinemanWorkflow extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

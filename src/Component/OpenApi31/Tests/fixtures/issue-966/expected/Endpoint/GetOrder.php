@@ -24,8 +24,9 @@ class GetOrder extends \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue966\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetOrder extends \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

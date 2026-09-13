@@ -54,8 +54,9 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *
      * @throws \Docker\Api\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Service[]
+     * @return \Docker\Api\Model\Service[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (503 === $status) {
             throw new \Docker\Api\Exception\ServiceListServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

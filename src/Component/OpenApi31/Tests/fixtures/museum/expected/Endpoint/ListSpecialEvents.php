@@ -57,8 +57,9 @@ class ListSpecialEvents extends \Jane\Component\OpenApi31\Tests\Expected\Museum\
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class ListSpecialEvents extends \Jane\Component\OpenApi31\Tests\Expected\Museum\
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

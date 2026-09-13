@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runti
 {
     /**
      * @param string|resource $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Exception\BadResponseException
      *
      * @return null
      */
@@ -15,6 +16,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runti
     }
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Model\Schema $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Exception\BadResponseException
      *
      * @return null
      */
@@ -24,6 +26,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runti
     }
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Model\Schema[] $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Exception\BadResponseException
      *
      * @return null
      */

@@ -43,8 +43,9 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentConflictException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistory
+     * @return \PicturePark\API\Model\DocumentHistory
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DocumentHistoryGetCurrentInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {
