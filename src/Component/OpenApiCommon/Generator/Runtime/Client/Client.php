@@ -10,7 +10,12 @@ use Symfony\Contracts\HttpClient\ResponseStreamInterface;
 
 abstract class Client
 {
-    public function __construct(
+    /**
+     * Final: the generated Client::create() instantiates `new static(...)`
+     * with exactly these two arguments, which is only safe when no subclass
+     * can change the signature.
+     */
+    final public function __construct(
         protected readonly HttpClientInterface $httpClient,
         protected readonly SerializerInterface $serializer,
     ) {
