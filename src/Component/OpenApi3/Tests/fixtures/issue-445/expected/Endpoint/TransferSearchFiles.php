@@ -83,4 +83,8 @@ class TransferSearchFiles extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

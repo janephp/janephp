@@ -107,4 +107,8 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \CreditSafe\API\Model\CompletedFreshInvestigation::class;
+    }
 }

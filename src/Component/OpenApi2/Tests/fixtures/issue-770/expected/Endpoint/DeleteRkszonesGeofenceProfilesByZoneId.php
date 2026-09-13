@@ -80,4 +80,8 @@ class DeleteRkszonesGeofenceProfilesByZoneId extends \Jane\Component\OpenApi3\Te
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

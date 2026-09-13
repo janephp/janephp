@@ -87,4 +87,8 @@ class UserRoleUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

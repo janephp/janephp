@@ -45,4 +45,8 @@ class GetAnotherThingById extends \Jane\Component\OpenApi3\Tests\Expected\Operat
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing::class;
+    }
 }

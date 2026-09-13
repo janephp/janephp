@@ -80,4 +80,8 @@ class UpdatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

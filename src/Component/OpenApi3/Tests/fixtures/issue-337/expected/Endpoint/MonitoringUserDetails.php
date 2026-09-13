@@ -64,4 +64,8 @@ class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \CreditSafe\API\Model\UserDetails::class;
+    }
 }

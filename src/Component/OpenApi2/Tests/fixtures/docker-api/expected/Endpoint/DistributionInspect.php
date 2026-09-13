@@ -63,4 +63,8 @@ class DistributionInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Docker\Api\Model\DistributionInspect::class;
+    }
 }

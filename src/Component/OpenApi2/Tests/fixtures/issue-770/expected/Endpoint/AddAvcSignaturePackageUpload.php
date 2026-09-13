@@ -92,4 +92,8 @@ class AddAvcSignaturePackageUpload extends \Jane\Component\OpenApi3\Tests\Expect
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

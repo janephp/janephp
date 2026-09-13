@@ -79,4 +79,8 @@ class AddAvcSignaturePackageV2CheckLatest extends \Jane\Component\OpenApi3\Tests
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

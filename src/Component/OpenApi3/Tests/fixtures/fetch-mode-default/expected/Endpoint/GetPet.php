@@ -32,6 +32,7 @@ class GetPet extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\GetPetNotFoundException
      * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
      * @return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200
@@ -43,6 +44,9 @@ class GetPet extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200', 'json');
         }
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\GetPetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse404', 'json'), $response);
+        }
         throw new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
@@ -52,5 +56,9 @@ class GetPet extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     public function getFetchMode(): string
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
+    }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200::class;
     }
 }

@@ -73,4 +73,8 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\DisplayValueStatus::class;
+    }
 }

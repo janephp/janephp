@@ -40,4 +40,8 @@ class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Run
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

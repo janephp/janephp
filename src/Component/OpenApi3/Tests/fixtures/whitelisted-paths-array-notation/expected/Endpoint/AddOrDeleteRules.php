@@ -91,4 +91,8 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArr
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

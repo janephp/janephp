@@ -83,4 +83,8 @@ class MonitoringGetLbDropletsHttpSessionDuration95p extends \Jane\Generated\Digi
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

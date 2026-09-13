@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\FetchModePreload;
 class Client extends \Jane\Component\OpenApi3\Tests\FetchModePreload\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModePreload\Exception\GetPetsNotFoundException
      * @throws \Jane\Component\OpenApi3\Tests\FetchModePreload\Exception\BadResponseException
      *
      * @return \Jane\Component\OpenApi3\Tests\FetchModePreload\Model\PetsGetResponse200

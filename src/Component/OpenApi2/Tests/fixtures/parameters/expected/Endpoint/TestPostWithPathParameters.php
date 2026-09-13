@@ -71,4 +71,8 @@ class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

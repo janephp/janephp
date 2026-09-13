@@ -467,9 +467,9 @@ complete error listing every violation and its JSON pointer.
 
 | Mode | Behavior |
 |---|---|
-| `lazy` (default) | Nothing is sent when the method is called: it returns a `Result` holding a **deferred send**. The request (including body serialization and authentication) happens on first access of the `Result`. |
+| `lazy` (default) | Nothing is sent when the method is called: it returns a **lazy ghost proxy** of the endpoint's model class. The request (including body serialization and authentication) and its parsing happen on the first access of the proxy. |
 | `eager` | The historical behavior: a blocking request is sent and parsed at call time, returning the parsed model directly. Documented exceptions are thrown at call time. |
-| `preload` | The request is registered immediately and the method returns a `Result` holding the in-flight response. All in-flight requests of a client progress **concurrently** as soon as any of them is consumed (`stream()`, `await()`, first parse). Parsing happens on access. |
+| `preload` | The request is registered immediately and the method returns a lazy ghost proxy of the endpoint's model class. All in-flight requests of a client progress **concurrently** as soon as any of them is consumed; parsing happens on the first access of the proxy. |
 
 ```yaml
 paths:
@@ -492,36 +492,55 @@ return [
 ];
 ```
 
-### The Result object
+### Ghost proxies
 
-`lazy` and `preload` methods return a `Jane\Component\OpenApiRuntime\Client\Result`:
+`lazy` and `preload` methods return a **lazy ghost proxy** — an actual instance of the endpoint's generated model
+class whose properties are uninitialized until first access. Reading any property (method, `foreach`, `instanceof`,
+cloning, serializing: everything works as on a plain model) performs the request + parse and copies the parsed
+model's properties onto the proxy:
 
 ```php
-$result = $apiClient->listPets(); // x-fetch-mode: lazy
+$pet = $apiClient->getPet('pet-1'); // x-fetch-mode: lazy
 
 // nothing has been sent yet:
-$result->isInitialized(); // false
-
-// any of these sends the request and parses through the endpoint's own
-// status-code mapping (models / exceptions):
-$pets = $result->toObject();       // object|null (generated model)
-$rows  = $result->toArray();       // array (JSON arrays)
-$code  = $result->getStatusCode(); // never throws on 3xx/4xx/5xx
-
-// lifecycle helpers:
-$result->await();   // wait for the transfer to complete without parsing
-$result->cancel();  // abort the transfer (or prevent the deferred send)
-
-// dropping an unconsumed Result aborts its transfer too (GC = drop-to-cancel)
+$pet->name; // sends the request, parses the response — then returns "Rex"
 ```
 
-Batching with `preload` (or awaiting several lazy results):
+Status-code mapping is fully preserved: on a 4xx/5xx response, the documented exception is thrown when the proxy
+is first accessed instead of at call time. Dropping an unconsumed lazy proxy aborts its transfer too
+(GC = drop-to-cancel), and an unconsumed proxy registers nothing (lazy) or an abortable transfer (preload).
+
+Ghosting relies on PHP native lazy objects, available since **PHP 8.3**: on older PHP versions deferred methods
+fall back to the eager behavior at runtime. State introspection:
 
 ```php
-$results = [$apiClient->listPets(), $apiClient->listOwners()];
+$reflector = new \ReflectionClass($pet::class);
+$reflector->isUninitializedLazyObject($pet);  // has the request been parsed yet?
+$reflector->initializeLazyObject($pet);       // force send + parse now
+```
+
+### When modes cannot apply (non-ghost responses)
+
+Endpoints whose success response denormalizes to anything else than a single generated model have no target class
+(they emit `getTargetClass() = null`): their configured mode — even `lazy` or `preload` — **degrades to the eager
+behavior**: a blocking request is sent and parsed at call time, and documented exceptions are thrown at call time.
+The non-ghostable shapes are:
+
+- JSON **arrays** (`list<...>` and homogeneous `items` arrays): `$pets = $apiClient->listPets(); // list<Pet>, parsed eagerly`;
+- JSON **maps** and additional-properties objects (the runtime `JsonObject` / map value objects);
+- scalar bodies (`type: string`, `integer`, `number`, `boolean`, enums...);
+- no-content responses (`204`, `HEAD`...);
+- endpoints returning **several distinct model classes** across statuses, or several content types per status.
+
+The runtime `Client::stream()` batching keeps working on raw responses only: batch them with
+`executeRawEndpoint()` and parse each response yourself afterwards. Or use `preload` with `eager`-like non-ghostable
+endpoints, which gives you the same call-time semantics.
+
+```php
+$raw = [$apiClient->executeRawEndpoint(new ListPets()), $apiClient->executeRawEndpoint(new ListOwners())];
 
 // drive every in-flight response concurrently:
-foreach ($apiClient->stream($results) as $response => $chunk) {
+foreach ($apiClient->stream($raw) as $response => $chunk) {
     if ($chunk->isLast()) {
         // $response->getStatusCode() ...
     }
@@ -538,8 +557,9 @@ foreach ($apiClient->stream($results) as $response => $chunk) {
 | Mode | When the request is sent | When status exceptions are thrown |
 |---|---|---|
 | `eager` | At call time | At call time |
-| `preload` | At call time (registered; sent on the first tick) | On first access (`toObject()`, `toArray()`, `getStatusCode()` never throws; parse does) |
+| `preload` | At call time (registered; sent on the first tick) | On first access of the ghost proxy |
 | `lazy` | On first access | On first access, through the same mapping as eager |
+| non-ghost endpoint | At call time | At call time |
 
 `default-fetch-mode: eager` is the migration escape hatch if you rely on call-time exceptions from GET/HEAD endpoints
 (see the [compatibility guide](../guides/compatibility.md)).
@@ -588,8 +608,8 @@ $apiClient = Vendor\Library\Generated\Client::create(null, [
 ```
 
 Decorators are applied left-to-right around the client, after the server URL decorator: they observe already rewritten
-URLs. An exception thrown inside a decorator surfaces at call time for eager operations, and when the deferred request
-is sent for lazy ones.
+URLs. An exception thrown inside a decorator surfaces at call time for eager operations, and at the first access of
+the ghost proxy for lazy ones.
 
 ### Authentication
 

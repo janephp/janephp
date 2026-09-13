@@ -78,4 +78,8 @@ class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

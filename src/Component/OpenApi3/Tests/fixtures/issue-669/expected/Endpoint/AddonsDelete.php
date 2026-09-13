@@ -76,4 +76,8 @@ class AddonsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

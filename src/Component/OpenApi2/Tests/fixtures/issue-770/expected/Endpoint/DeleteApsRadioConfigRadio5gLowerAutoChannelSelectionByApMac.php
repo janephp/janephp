@@ -78,4 +78,8 @@ class DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac extends \Jane\
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

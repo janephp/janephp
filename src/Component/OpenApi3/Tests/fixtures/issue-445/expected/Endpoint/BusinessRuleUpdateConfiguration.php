@@ -83,4 +83,8 @@ class BusinessRuleUpdateConfiguration extends \PicturePark\API\Runtime\Client\Ba
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

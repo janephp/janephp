@@ -99,4 +99,8 @@ class ListItemGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\ListItemDetail::class;
+    }
 }

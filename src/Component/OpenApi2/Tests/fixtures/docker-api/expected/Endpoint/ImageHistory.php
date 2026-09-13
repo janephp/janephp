@@ -62,4 +62,8 @@ class ImageHistory extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

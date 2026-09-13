@@ -76,4 +76,8 @@ class DropletsGetDestroyAssociatedResourcesStatus extends \Jane\Generated\Digita
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

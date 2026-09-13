@@ -3,8 +3,8 @@
 namespace Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\FetchMode;
+use Jane\Component\OpenApiRuntime\Client\GhostFactory;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
-use Jane\Component\OpenApiRuntime\Client\Result;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -19,39 +19,59 @@ abstract class Client
      *
      * - eager: blocking request + parse, returns the parsed value (historical
      *   behavior, also used by every mutating verb);
-     * - preload: the request is registered immediately, a Result holding the
-     *   in-flight response is returned (parse on first access);
-     * - lazy: nothing is sent until the Result is first accessed, a Result
-     *   holding a deferred send is returned.
+     * - preload: the request is registered immediately and travels via the
+     *   first access of the returned proxy;
+     * - lazy: nothing is sent until the proxy is first accessed, where the
+     *   request is sent and parsed through the endpoint's own status-code
+     *   mapping.
+     *
+     * The returned value is a lazy ghost proxy of the endpoint's target model
+     * class: reading any property triggers the request + parse and copies the
+     * parsed model's properties onto the proxy. Endpoints whose success
+     * response is not a single generated model (JSON arrays and maps, scalar
+     * bodies, multi-content-type responses...) are not ghostable: their mode
+     * degrades to the eager behavior.
      */
     public function executeEndpoint(Endpoint $endpoint): mixed
     {
         return match ($endpoint->getFetchMode()) {
             FetchMode::Eager->value => $endpoint->parseResponse($this->processEndpoint($endpoint), $this->serializer),
-            FetchMode::Preload->value => new Result($this->processEndpoint($endpoint), fn(ResponseInterface $response): mixed => $endpoint->parseResponse($response, $this->serializer)),
-            default => new Result(fn(): ResponseInterface => $this->processEndpoint($endpoint), fn(ResponseInterface $response): mixed => $endpoint->parseResponse($response, $this->serializer)),
+            FetchMode::Preload->value, FetchMode::Lazy->value => $this->executeDeferredEndpoint($endpoint),
+            default => $endpoint->parseResponse($this->processEndpoint($endpoint), $this->serializer),
         };
+    }
+    private function executeDeferredEndpoint(Endpoint $endpoint): mixed
+    {
+        $targetClass = GhostFactory::canCreate() ? $endpoint->getTargetClass() : null;
+        if (null === $targetClass) {
+            return $endpoint->parseResponse($this->processEndpoint($endpoint), $this->serializer);
+        }
+        // preload registers the request immediately (the transfer still
+        // progresses at the first tick); for lazy this closure runs on first
+        // access of the proxy only.
+        $response = FetchMode::Preload->value === $endpoint->getFetchMode() ? $this->processEndpoint($endpoint) : null;
+        $proxy = GhostFactory::create($targetClass, fn(): mixed => $endpoint->parseResponse($response ?? $this->processEndpoint($endpoint), $this->serializer));
+        return $proxy;
     }
     public function executeRawEndpoint(Endpoint $endpoint): ResponseInterface
     {
         return $this->processEndpoint($endpoint);
     }
     /**
-     * Drive a batch of in-flight responses (or Results) concurrently: every
-     * request of the client progresses on each tick of the returned stream.
+     * Drive a batch of in-flight responses concurrently: every request of the
+     * client progresses on each tick of the returned stream.
      *
-     * @param iterable<ResponseInterface|Result>|ResponseInterface $responses
+     * Ghost proxies are not streamable: build responses with
+     * executeRawEndpoint() to batch them.
+     *
+     * @param iterable<ResponseInterface>|ResponseInterface $responses
      */
     public function stream(iterable|ResponseInterface $responses, ?float $timeout = null): ResponseStreamInterface
     {
         if ($responses instanceof ResponseInterface) {
             $responses = [$responses];
         }
-        $mapped = [];
-        foreach ($responses as $response) {
-            $mapped[] = $response instanceof Result ? $response->getResponse() : $response;
-        }
-        return $this->httpClient->stream($mapped, $timeout);
+        return $this->httpClient->stream($responses, $timeout);
     }
     private function processEndpoint(Endpoint $endpoint): ResponseInterface
     {

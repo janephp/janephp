@@ -75,4 +75,8 @@ class MonitoringCreateDestination extends \Jane\Generated\DigitalOcean\Runtime\C
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

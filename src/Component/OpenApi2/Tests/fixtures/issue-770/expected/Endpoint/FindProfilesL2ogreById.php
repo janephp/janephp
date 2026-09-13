@@ -78,4 +78,8 @@ class FindProfilesL2ogreById extends \Jane\Component\OpenApi3\Tests\Expected\Iss
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile::class;
+    }
 }

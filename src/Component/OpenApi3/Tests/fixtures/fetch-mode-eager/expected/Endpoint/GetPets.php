@@ -49,4 +49,8 @@ class GetPets extends \Jane\Component\OpenApi3\Tests\FetchModeEager\Runtime\Clie
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\FetchModeEager\Model\PetsGetResponse200::class;
+    }
 }

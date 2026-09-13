@@ -45,4 +45,8 @@ class ListEntities extends \Jane\Component\OpenApi31\Tests\Expected\Issue946\Run
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

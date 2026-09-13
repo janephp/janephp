@@ -62,4 +62,8 @@ class ListPets extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\C
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

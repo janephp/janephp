@@ -139,4 +139,8 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \CreditSafe\API\Model\ListFreshInvestigationResponse::class;
+    }
 }

@@ -41,4 +41,8 @@ class GetTestOperationUrlWithExtension extends \Jane\Component\OpenApi2\Tests\Ex
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

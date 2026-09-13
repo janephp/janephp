@@ -76,4 +76,8 @@ class GenaiDetachAgent extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

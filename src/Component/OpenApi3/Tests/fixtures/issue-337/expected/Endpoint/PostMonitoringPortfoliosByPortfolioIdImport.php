@@ -113,4 +113,8 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \CreditSafe\API\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

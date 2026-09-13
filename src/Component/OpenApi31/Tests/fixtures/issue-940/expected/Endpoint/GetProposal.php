@@ -45,4 +45,8 @@ class GetProposal extends \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runt
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal::class;
+    }
 }

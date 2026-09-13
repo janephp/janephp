@@ -85,4 +85,8 @@ class AddRkszonesWlansQosMapsById extends \Jane\Component\OpenApi3\Tests\Expecte
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

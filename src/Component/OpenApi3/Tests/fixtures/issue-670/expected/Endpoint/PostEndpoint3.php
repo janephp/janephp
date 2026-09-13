@@ -51,4 +51,8 @@ class PostEndpoint3 extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Run
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

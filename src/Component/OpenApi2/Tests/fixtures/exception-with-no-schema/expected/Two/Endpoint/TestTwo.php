@@ -49,4 +49,8 @@ class TestTwo extends \Jane\Component\OpenApi2\Tests\Expected\Two\Runtime\Client
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\Expected\Two\Model\TestTwoGetResponse200::class;
+    }
 }

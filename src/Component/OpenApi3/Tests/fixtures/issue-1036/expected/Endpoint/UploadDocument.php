@@ -76,4 +76,8 @@ class UploadDocument extends \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Ru
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -47,4 +47,8 @@ class PostMessageM70047 extends \Jane\Component\OpenApi3\Tests\Expected\NoOperat
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

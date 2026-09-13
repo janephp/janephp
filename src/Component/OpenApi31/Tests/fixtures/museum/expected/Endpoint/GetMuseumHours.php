@@ -82,4 +82,8 @@ class GetMuseumHours extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Run
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

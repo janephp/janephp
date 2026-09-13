@@ -82,4 +82,8 @@ class UserRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

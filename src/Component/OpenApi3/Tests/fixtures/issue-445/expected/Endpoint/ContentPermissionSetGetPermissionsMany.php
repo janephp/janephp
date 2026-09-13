@@ -96,4 +96,8 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

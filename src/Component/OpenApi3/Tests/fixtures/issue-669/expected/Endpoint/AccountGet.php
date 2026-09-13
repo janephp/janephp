@@ -60,4 +60,8 @@ class AccountGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -81,4 +81,8 @@ class FindProfilesHs20IdentityprovidersByQueryCriteria extends \Jane\Component\O
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

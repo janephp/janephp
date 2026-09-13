@@ -41,4 +41,8 @@ class HeadPets extends \Jane\Component\OpenApi3\Tests\FetchModeHead\Runtime\Clie
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

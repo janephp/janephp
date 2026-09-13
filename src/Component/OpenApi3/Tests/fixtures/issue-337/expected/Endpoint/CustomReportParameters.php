@@ -121,4 +121,8 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

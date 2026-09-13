@@ -51,4 +51,8 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\C
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }
