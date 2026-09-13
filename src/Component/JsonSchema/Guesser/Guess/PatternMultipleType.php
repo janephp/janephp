@@ -24,6 +24,14 @@ class PatternMultipleType extends Type
     }
 
     /**
+     * @return array<string, Type> Types indexed by their property-name pattern
+     */
+    public function getTypes(): array
+    {
+        return $this->types;
+    }
+
+    /**
      * Add a type.
      */
     public function addType(string $pattern, Type $type): self

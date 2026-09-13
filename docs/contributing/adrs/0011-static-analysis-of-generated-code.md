@@ -110,8 +110,8 @@ covariance codes, generics-annotation requests, and dynamic
 - `ConstraintReferencesTest`, which hand-rolls a regex hunting for referenced
   but ungenerated `*Constraint` classes, is subsumed by the
   `non-existent-class-like` family — Mago reports that for *every* dangling
-  reference, not only constraints. It can be retired now that every fixture is
-  analysed.
+  reference, not only constraints. Retired with the `non-existent-class-like`
+  cluster of #1066, once every fixture was analysed.
 - A new fixture whose config reuses an existing namespace is rejected by
   `ExpectedNamespaceUniquenessTest` before it can poison the analysis.
 - Mago is a young tool (1.x, actively developed): minor releases may change
