@@ -2,6 +2,7 @@ name: gitsplit
 on:
   push:
     branches:
+      - 7.x
       - next
   release:
     types: [published]
