@@ -39,6 +39,7 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\BooleanQueryResolve
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\BooleanQueryResolver\Exception\BadResponseException
      *
      * @return null
      */
@@ -49,6 +50,7 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\BooleanQueryResolve
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\BooleanQueryResolver\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

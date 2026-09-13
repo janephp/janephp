@@ -25,8 +25,9 @@ class SystemPingHead extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\SystemPingHeadInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -43,6 +44,7 @@ class SystemPingHead extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         if (500 === $status) {
             throw new \Docker\Api\Exception\SystemPingHeadInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

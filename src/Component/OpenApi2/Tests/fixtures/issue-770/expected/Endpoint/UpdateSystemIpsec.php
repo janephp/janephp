@@ -48,6 +48,7 @@ class UpdateSystemIpsec extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemIpsecUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class UpdateSystemIpsec extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

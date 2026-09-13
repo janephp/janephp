@@ -48,8 +48,9 @@ class FindRkszonesGeofenceProfilesByZoneId extends \Jane\Component\OpenApi3\Test
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindRkszonesGeofenceProfilesByZoneId extends \Jane\Component\OpenApi3\Test
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

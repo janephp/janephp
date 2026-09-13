@@ -54,6 +54,7 @@ class UpdateRkszonesSocialMediaLoginProfilesById extends \Jane\Component\OpenApi
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class UpdateRkszonesSocialMediaLoginProfilesById extends \Jane\Component\OpenApi
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,8 +48,9 @@ class FindZoneScheduleUpgradeById extends \Jane\Component\OpenApi3\Tests\Expecte
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneScheduleUpgradeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindZoneScheduleUpgradeById extends \Jane\Component\OpenApi3\Tests\Expecte
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

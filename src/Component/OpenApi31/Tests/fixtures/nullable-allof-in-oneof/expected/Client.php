@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container
+     * @return \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container
      */
     public function getItem()
     {

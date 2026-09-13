@@ -27,8 +27,9 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Runti
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagNotFoundException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -43,6 +44,7 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Runti
         if (500 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException($response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

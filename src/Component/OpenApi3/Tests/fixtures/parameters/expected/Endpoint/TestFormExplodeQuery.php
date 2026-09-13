@@ -44,6 +44,7 @@ class TestFormExplodeQuery extends \Jane\Component\OpenApi3\Tests\Expected\Param
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -54,6 +55,7 @@ class TestFormExplodeQuery extends \Jane\Component\OpenApi3\Tests\Expected\Param
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -68,6 +68,7 @@ class BankMatch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \
      * @throws \CreditSafe\API\Exception\BankMatchBadRequestException
      * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
      * @throws \CreditSafe\API\Exception\BankMatchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -107,6 +108,7 @@ class BankMatch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

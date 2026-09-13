@@ -55,8 +55,9 @@ class FindZoneSwitchGroupLinks extends \Jane\Component\OpenApi3\Tests\Expected\I
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindZoneSwitchGroupLinksInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class FindZoneSwitchGroupLinks extends \Jane\Component\OpenApi3\Tests\Expected\I
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

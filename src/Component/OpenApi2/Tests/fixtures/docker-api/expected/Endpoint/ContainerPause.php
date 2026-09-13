@@ -41,6 +41,7 @@ class ContainerPause extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      *
      * @throws \Docker\Api\Exception\ContainerPauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerPauseInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -57,6 +58,7 @@ class ContainerPause extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerPauseInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

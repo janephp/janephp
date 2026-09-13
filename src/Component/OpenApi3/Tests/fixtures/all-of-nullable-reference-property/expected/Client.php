@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableRefere
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\GetBarNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Model\Root
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Model\Root
      */
     public function getBar()
     {

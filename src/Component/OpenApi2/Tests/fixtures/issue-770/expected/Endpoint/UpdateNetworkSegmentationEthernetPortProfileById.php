@@ -51,6 +51,7 @@ class UpdateNetworkSegmentationEthernetPortProfileById extends \Jane\Component\O
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class UpdateNetworkSegmentationEthernetPortProfileById extends \Jane\Component\O
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

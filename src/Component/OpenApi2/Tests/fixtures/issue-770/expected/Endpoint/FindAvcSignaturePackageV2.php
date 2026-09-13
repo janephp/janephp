@@ -45,8 +45,9 @@ class FindAvcSignaturePackageV2 extends \Jane\Component\OpenApi3\Tests\Expected\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2BadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2InternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindAvcSignaturePackageV2 extends \Jane\Component\OpenApi3\Tests\Expected\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

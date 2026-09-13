@@ -7,8 +7,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue810\Runtime\Cl
     /**
      * @param string $requestBody
      * @param array $accept Accept content header *\/*|application/json
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue810\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function mimeTypeGeneratedValidDocBlock(string $requestBody, array $accept = [])
     {

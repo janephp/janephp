@@ -48,8 +48,9 @@ class FindVlanpoolingsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindVlanpoolingsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindVlanpoolingsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

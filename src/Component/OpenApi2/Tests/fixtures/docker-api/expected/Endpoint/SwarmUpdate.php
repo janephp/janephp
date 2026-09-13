@@ -54,6 +54,7 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\SwarmUpdateBadRequestException
      * @throws \Docker\Api\Exception\SwarmUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (503 === $status) {
             throw new \Docker\Api\Exception\SwarmUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

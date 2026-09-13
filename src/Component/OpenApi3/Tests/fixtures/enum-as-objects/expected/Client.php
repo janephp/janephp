@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\EnumAsObjects;
 class Client extends \Jane\Component\OpenApi3\Tests\EnumAsObjects\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\EnumAsObjects\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\EnumAsObjects\Model\Item
+     * @return \Jane\Component\OpenApi3\Tests\EnumAsObjects\Model\Item
      */
     public function getItems()
     {

@@ -31,8 +31,9 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusConflictException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DisplayValueStatus
+     * @return \PicturePark\API\Model\DisplayValueStatus
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DisplayValueGetStatusInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

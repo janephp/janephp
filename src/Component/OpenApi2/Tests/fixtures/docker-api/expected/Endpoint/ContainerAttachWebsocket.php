@@ -60,6 +60,7 @@ class ContainerAttachWebsocket extends \Docker\Api\Runtime\Client\BaseEndpoint i
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketNotFoundException
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -82,6 +83,7 @@ class ContainerAttachWebsocket extends \Docker\Api\Runtime\Client\BaseEndpoint i
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerAttachWebsocketInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

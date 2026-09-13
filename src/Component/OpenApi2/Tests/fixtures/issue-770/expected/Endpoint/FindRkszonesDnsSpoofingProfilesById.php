@@ -51,8 +51,9 @@ class FindRkszonesDnsSpoofingProfilesById extends \Jane\Component\OpenApi3\Tests
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindRkszonesDnsSpoofingProfilesById extends \Jane\Component\OpenApi3\Tests
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

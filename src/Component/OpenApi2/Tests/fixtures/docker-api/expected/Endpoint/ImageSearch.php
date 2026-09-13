@@ -52,8 +52,9 @@ class ImageSearch extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\ImageSearchInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImagesSearchGetResponse200Item[]
+     * @return \Docker\Api\Model\ImagesSearchGetResponse200Item[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class ImageSearch extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageSearchInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

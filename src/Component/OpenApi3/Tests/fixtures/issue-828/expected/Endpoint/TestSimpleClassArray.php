@@ -30,13 +30,15 @@ class TestSimpleClassArray extends \Jane\Component\OpenApi3\Tests\Expected\Issue
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue828\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue828\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

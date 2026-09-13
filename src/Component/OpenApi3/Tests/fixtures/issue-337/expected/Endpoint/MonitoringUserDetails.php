@@ -43,8 +43,9 @@ class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     /**
      * {@inheritdoc}
      *
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\UserDetails
+     * @return \CreditSafe\API\Model\UserDetails
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\UserDetails', 'json');
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -43,6 +43,7 @@ class LoadBalancersDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -68,6 +69,7 @@ class LoadBalancersDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

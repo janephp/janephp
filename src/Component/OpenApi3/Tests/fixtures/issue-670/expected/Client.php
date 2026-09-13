@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue670;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1GetResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1GetResponse
      */
     public function getEndpoint1()
     {
@@ -14,6 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Cl
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1PostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
      * @return null
      */
@@ -22,8 +24,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Cl
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\PostEndpoint1($requestBody));
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2GetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2GetResponse200
      */
     public function getEndpoint2()
     {
@@ -31,6 +34,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Cl
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2PostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
      * @return null
      */
@@ -39,8 +43,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Cl
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\PostEndpoint2($requestBody));
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200
      */
     public function getEndpoint3()
     {
@@ -48,6 +53,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Cl
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3PostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue670\Exception\BadResponseException
      *
      * @return null
      */

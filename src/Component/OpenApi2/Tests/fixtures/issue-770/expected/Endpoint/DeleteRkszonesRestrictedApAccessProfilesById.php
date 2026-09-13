@@ -51,6 +51,7 @@ class DeleteRkszonesRestrictedApAccessProfilesById extends \Jane\Component\OpenA
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class DeleteRkszonesRestrictedApAccessProfilesById extends \Jane\Component\OpenA
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

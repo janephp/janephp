@@ -24,8 +24,9 @@ class TestSimple extends \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class TestSimple extends \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]', 'json');
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

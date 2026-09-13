@@ -46,8 +46,9 @@ class ListOfCompanyPreDefinedSearches extends \CreditSafe\API\Runtime\Client\Bas
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesBadRequestException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches
+     * @return \CreditSafe\API\Model\CompliancePreDefinedSearches
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +81,7 @@ class ListOfCompanyPreDefinedSearches extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

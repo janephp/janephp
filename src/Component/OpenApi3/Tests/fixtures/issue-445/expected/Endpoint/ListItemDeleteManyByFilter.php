@@ -44,8 +44,9 @@ class ListItemDeleteManyByFilter extends \PicturePark\API\Runtime\Client\BaseEnd
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterConflictException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -75,6 +76,7 @@ class ListItemDeleteManyByFilter extends \PicturePark\API\Runtime\Client\BaseEnd
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemDeleteManyByFilterInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

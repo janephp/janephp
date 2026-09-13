@@ -47,6 +47,7 @@ class DeleteRkszonesVlanNameProfiles extends \Jane\Component\OpenApi3\Tests\Expe
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesVlanNameProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteRkszonesVlanNameProfiles extends \Jane\Component\OpenApi3\Tests\Expe
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

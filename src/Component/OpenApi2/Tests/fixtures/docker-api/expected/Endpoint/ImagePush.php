@@ -71,6 +71,7 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      *
      * @throws \Docker\Api\Exception\ImagePushNotFoundException
      * @throws \Docker\Api\Exception\ImagePushInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -87,6 +88,7 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImagePushInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

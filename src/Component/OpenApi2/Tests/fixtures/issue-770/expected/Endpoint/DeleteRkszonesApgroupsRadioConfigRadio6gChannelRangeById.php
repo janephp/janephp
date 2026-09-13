@@ -51,8 +51,9 @@ class DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById extends \Jane\Com
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById extends \Jane\Com
         if (204 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

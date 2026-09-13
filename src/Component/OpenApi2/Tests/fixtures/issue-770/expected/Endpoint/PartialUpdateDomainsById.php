@@ -51,6 +51,7 @@ class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\I
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\I
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

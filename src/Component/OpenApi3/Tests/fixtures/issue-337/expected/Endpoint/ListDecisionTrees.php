@@ -65,8 +65,9 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
      * @throws \CreditSafe\API\Exception\ListDecisionTreesBadRequestException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\GuidSuccessResponse
+     * @return \CreditSafe\API\Model\GuidSuccessResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -99,6 +100,7 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

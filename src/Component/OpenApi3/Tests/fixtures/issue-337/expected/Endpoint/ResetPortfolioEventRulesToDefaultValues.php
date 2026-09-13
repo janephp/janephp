@@ -50,8 +50,9 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -91,6 +92,7 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

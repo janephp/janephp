@@ -48,6 +48,7 @@ class FindServicesDevicePolicyByQueryCriteria extends \Jane\Component\OpenApi3\T
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesDevicePolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class FindServicesDevicePolicyByQueryCriteria extends \Jane\Component\OpenApi3\T
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

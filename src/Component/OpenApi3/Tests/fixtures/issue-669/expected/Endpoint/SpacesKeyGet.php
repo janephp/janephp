@@ -40,8 +40,9 @@ class SpacesKeyGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class SpacesKeyGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

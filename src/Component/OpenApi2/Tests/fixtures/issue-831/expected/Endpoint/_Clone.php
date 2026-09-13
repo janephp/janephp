@@ -32,6 +32,7 @@ class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Cl
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Issue831\Exception\BadResponseException
      *
      * @return null
      */
@@ -42,6 +43,7 @@ class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Cl
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

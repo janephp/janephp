@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Issue940;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue940\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue940\Model\ProjectProposal
      */
     public function getProposal()
     {

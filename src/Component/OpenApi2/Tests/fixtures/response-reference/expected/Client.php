@@ -5,16 +5,18 @@ namespace Jane\Component\OpenApi2\Tests\Expected\ResponseReference;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Model\ResponseCommon
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Model\ResponseCommon
      */
     public function testReferenceResponse()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Endpoint\TestReferenceResponse());
     }
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function testRefArray()
     {

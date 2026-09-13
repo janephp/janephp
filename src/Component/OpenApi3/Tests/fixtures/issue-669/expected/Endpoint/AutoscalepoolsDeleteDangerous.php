@@ -52,6 +52,7 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -77,6 +78,7 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

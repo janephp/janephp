@@ -51,8 +51,9 @@ class FindRkszonesVendorSpecificAttributeProfilesById extends \Jane\Component\Op
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindRkszonesVendorSpecificAttributeProfilesById extends \Jane\Component\Op
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

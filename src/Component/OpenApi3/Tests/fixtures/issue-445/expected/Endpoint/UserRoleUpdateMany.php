@@ -42,8 +42,9 @@ class UserRoleUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class UserRoleUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserRoleUpdateManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

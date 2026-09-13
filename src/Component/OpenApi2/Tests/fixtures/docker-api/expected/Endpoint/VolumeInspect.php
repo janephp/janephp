@@ -34,8 +34,9 @@ class VolumeInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *
      * @throws \Docker\Api\Exception\VolumeInspectNotFoundException
      * @throws \Docker\Api\Exception\VolumeInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Volume
+     * @return \Docker\Api\Model\Volume
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -50,6 +51,7 @@ class VolumeInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\VolumeInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

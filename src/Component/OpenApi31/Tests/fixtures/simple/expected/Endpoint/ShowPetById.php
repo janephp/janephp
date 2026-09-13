@@ -32,8 +32,9 @@ class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtim
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Simple\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -42,6 +43,7 @@ class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtim
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Simple\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

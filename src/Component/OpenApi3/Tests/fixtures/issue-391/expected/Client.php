@@ -9,6 +9,7 @@ class Client extends \Gounlaf\JanephpBug\Runtime\Client\Client
      * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException
+     * @throws \Gounlaf\JanephpBug\Exception\BadResponseException
      *
      * @return null
      */

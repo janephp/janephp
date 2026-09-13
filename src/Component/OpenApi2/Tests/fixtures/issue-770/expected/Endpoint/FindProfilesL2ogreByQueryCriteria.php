@@ -48,8 +48,9 @@ class FindProfilesL2ogreByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindProfilesL2ogreByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

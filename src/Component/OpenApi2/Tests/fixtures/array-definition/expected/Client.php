@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]
+     * @return \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]
      */
     public function testSimple()
     {

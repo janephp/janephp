@@ -48,8 +48,9 @@ class FindProfilesTunnelIpsecByQueryCriteria extends \Jane\Component\OpenApi3\Te
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindProfilesTunnelIpsecByQueryCriteria extends \Jane\Component\OpenApi3\Te
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

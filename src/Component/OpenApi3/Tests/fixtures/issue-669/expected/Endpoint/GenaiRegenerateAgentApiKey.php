@@ -40,8 +40,9 @@ class GenaiRegenerateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Cl
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class GenaiRegenerateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Cl
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

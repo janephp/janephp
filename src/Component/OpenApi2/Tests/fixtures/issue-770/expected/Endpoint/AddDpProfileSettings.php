@@ -48,6 +48,7 @@ class AddDpProfileSettings extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpProfileSettingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddDpProfileSettings extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

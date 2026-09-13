@@ -45,8 +45,9 @@ class FindIdentityPackages extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityPackagesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindIdentityPackages extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

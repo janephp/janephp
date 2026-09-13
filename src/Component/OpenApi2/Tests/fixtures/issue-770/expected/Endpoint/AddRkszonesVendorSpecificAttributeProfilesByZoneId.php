@@ -51,8 +51,9 @@ class AddRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Component
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class AddRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Component
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -24,8 +24,9 @@ class GetThings extends \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runti
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\ThingCollection
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\ThingCollection
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetThings extends \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runti
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\ThingCollection', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

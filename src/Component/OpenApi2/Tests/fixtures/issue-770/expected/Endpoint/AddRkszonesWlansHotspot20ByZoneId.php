@@ -51,8 +51,9 @@ class AddRkszonesWlansHotspot20ByZoneId extends \Jane\Component\OpenApi3\Tests\E
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansHotspot20ByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class AddRkszonesWlansHotspot20ByZoneId extends \Jane\Component\OpenApi3\Tests\E
         if (201 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

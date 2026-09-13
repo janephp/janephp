@@ -43,6 +43,7 @@ class ReservedIPv6Delete extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -71,6 +72,7 @@ class ReservedIPv6Delete extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

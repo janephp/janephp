@@ -59,6 +59,7 @@ class AddConfigurationUpload extends \Jane\Component\OpenApi3\Tests\Expected\Iss
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddConfigurationUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -81,6 +82,7 @@ class AddConfigurationUpload extends \Jane\Component\OpenApi3\Tests\Expected\Iss
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

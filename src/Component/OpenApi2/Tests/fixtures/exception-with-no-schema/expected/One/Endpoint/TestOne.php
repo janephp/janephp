@@ -25,8 +25,9 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi2\Tests\Expected\One\Exception\TestOneNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\One\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200
+     * @return \Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
         if (404 === $status) {
             throw new \Jane\Component\OpenApi2\Tests\Expected\One\Exception\TestOneNotFoundException($response);
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\One\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

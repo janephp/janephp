@@ -51,8 +51,9 @@ class FindMeshTopologyByApMacByQueryCriteria extends \Jane\Component\OpenApi3\Te
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class FindMeshTopologyByApMacByQueryCriteria extends \Jane\Component\OpenApi3\Te
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

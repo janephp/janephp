@@ -54,8 +54,9 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      *
      * @throws \Docker\Api\Exception\TaskListInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Task[]
+     * @return \Docker\Api\Model\Task[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         if (503 === $status) {
             throw new \Docker\Api\Exception\TaskListServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

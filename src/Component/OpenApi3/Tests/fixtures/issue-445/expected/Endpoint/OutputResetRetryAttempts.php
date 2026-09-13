@@ -44,8 +44,9 @@ class OutputResetRetryAttempts extends \PicturePark\API\Runtime\Client\BaseEndpo
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsConflictException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -75,6 +76,7 @@ class OutputResetRetryAttempts extends \PicturePark\API\Runtime\Client\BaseEndpo
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputResetRetryAttemptsInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

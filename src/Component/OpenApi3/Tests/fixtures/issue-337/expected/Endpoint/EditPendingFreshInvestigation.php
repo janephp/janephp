@@ -50,6 +50,7 @@ class EditPendingFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseE
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -97,6 +98,7 @@ class EditPendingFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseE
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

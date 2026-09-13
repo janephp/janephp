@@ -48,6 +48,7 @@ class FindServicesVenueProfileByQueryCriteria extends \Jane\Component\OpenApi3\T
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVenueProfileByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class FindServicesVenueProfileByQueryCriteria extends \Jane\Component\OpenApi3\T
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

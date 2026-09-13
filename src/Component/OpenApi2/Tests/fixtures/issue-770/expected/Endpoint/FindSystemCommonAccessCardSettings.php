@@ -45,8 +45,9 @@ class FindSystemCommonAccessCardSettings extends \Jane\Component\OpenApi3\Tests\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCommonAccessCardSettingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindSystemCommonAccessCardSettings extends \Jane\Component\OpenApi3\Tests\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

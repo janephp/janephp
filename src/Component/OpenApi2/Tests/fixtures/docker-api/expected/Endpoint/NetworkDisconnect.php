@@ -37,6 +37,7 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
      * @throws \Docker\Api\Exception\NetworkDisconnectForbiddenException
      * @throws \Docker\Api\Exception\NetworkDisconnectNotFoundException
      * @throws \Docker\Api\Exception\NetworkDisconnectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -56,6 +57,7 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
         if (500 === $status) {
             throw new \Docker\Api\Exception\NetworkDisconnectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime\Cli
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostResponse200
+     * @return \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostResponse200
      */
     public function uploadFile(?\Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostBody $requestBody = null)
     {

@@ -52,6 +52,7 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      * @throws \Docker\Api\Exception\ImageTagNotFoundException
      * @throws \Docker\Api\Exception\ImageTagConflictException
      * @throws \Docker\Api\Exception\ImageTagInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -74,6 +75,7 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageTagInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

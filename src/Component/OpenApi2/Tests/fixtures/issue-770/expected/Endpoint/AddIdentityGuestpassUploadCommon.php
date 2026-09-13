@@ -48,6 +48,7 @@ class AddIdentityGuestpassUploadCommon extends \Jane\Component\OpenApi3\Tests\Ex
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityGuestpassUploadCommonUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddIdentityGuestpassUploadCommon extends \Jane\Component\OpenApi3\Tests\Ex
         if (201 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -63,8 +63,9 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArray
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Exception\BadResponseException
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error|null
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +85,7 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArray
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

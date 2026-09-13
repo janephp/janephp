@@ -55,8 +55,9 @@ class FindDomains extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDomainsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class FindDomains extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,8 +48,9 @@ class FindRkszonesSocialMediaLoginProfilesByZoneId extends \Jane\Component\OpenA
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindRkszonesSocialMediaLoginProfilesByZoneId extends \Jane\Component\OpenA
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

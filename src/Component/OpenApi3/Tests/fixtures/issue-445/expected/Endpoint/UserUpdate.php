@@ -44,8 +44,9 @@ class UserUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
      * @throws \PicturePark\API\Exception\UserUpdateConflictException
      * @throws \PicturePark\API\Exception\UserUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail
+     * @return \PicturePark\API\Model\UserDetail
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -75,6 +76,7 @@ class UserUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserUpdateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

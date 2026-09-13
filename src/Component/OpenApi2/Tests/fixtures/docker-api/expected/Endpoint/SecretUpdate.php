@@ -54,6 +54,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\SecretUpdateNotFoundException
      * @throws \Docker\Api\Exception\SecretUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\SecretUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

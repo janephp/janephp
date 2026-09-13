@@ -40,6 +40,7 @@ class UserRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
      * @throws \PicturePark\API\Exception\UserRestoreConflictException
      * @throws \PicturePark\API\Exception\UserRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class UserRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserRestoreInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

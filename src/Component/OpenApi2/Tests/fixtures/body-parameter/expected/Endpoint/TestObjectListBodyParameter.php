@@ -27,6 +27,7 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Exception\BadResponseException
      *
      * @return null
      */
@@ -37,6 +38,7 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

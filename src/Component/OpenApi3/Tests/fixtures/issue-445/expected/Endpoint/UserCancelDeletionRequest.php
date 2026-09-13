@@ -39,6 +39,7 @@ class UserCancelDeletionRequest extends \PicturePark\API\Runtime\Client\BaseEndp
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestConflictException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class UserCancelDeletionRequest extends \PicturePark\API\Runtime\Client\BaseEndp
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserCancelDeletionRequestInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

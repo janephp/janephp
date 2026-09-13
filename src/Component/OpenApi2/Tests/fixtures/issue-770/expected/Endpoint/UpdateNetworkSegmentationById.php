@@ -51,6 +51,7 @@ class UpdateNetworkSegmentationById extends \Jane\Component\OpenApi3\Tests\Expec
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNetworkSegmentationByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class UpdateNetworkSegmentationById extends \Jane\Component\OpenApi3\Tests\Expec
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

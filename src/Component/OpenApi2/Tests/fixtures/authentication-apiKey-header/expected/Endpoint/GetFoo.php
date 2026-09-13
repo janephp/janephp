@@ -20,8 +20,9 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKe
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo
+     * @return \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -30,6 +31,7 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKe
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo', 'json');
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

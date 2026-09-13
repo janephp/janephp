@@ -51,6 +51,7 @@ class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

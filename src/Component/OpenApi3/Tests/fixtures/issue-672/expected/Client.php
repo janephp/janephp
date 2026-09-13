@@ -5,16 +5,18 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue672;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue672\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint2GetResponse
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint2GetResponse
      */
     public function getEndpoint2()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Endpoint\GetEndpoint2());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue672\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200
      */
     public function getEndpoint3()
     {

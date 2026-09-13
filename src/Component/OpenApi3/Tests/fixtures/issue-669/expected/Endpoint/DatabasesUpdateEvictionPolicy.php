@@ -42,6 +42,7 @@ class DatabasesUpdateEvictionPolicy extends \Jane\Generated\DigitalOcean\Runtime
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -67,6 +68,7 @@ class DatabasesUpdateEvictionPolicy extends \Jane\Generated\DigitalOcean\Runtime
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -25,8 +25,9 @@ class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\TestAnyOfWithDiscriminatorBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\TestAnyOfWithDiscriminatorBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBarWithMapping', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -18,8 +18,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksAll|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseOneClicksAll|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function oneClicksList(array $queryParameters = [])
     {
@@ -35,8 +36,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseOneClicksCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function oneClicksInstallKubernetes(\Jane\Generated\DigitalOcean\Model\OneClicksCreate $requestBody)
     {
@@ -46,8 +48,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AccountGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AccountGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AccountGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAccount|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAccount|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function accountGet()
     {
@@ -62,8 +65,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysAll|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSshKeysAll|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function sshKeysList(array $queryParameters = [])
     {
@@ -75,8 +79,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysNew|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSshKeysNew|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function sshKeysCreate(\Jane\Generated\DigitalOcean\Model\SshKeys $requestBody)
     {
@@ -90,6 +95,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -105,8 +111,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function sshKeysGet($sshKeyIdentifier)
     {
@@ -120,8 +127,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function sshKeysUpdate($sshKeyIdentifier, \Jane\Generated\DigitalOcean\Model\V2AccountKeysSshKeyIdentifierPutBody $requestBody)
     {
@@ -136,8 +144,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseActions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function actionsList(array $queryParameters = [])
     {
@@ -150,8 +159,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function actionsGet(int $actionId)
     {
@@ -161,8 +171,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsGetApp()
     {
@@ -177,8 +188,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsGetAppMetadata(string $appSlug)
     {
@@ -188,8 +200,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsList()
     {
@@ -204,8 +217,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsCreate(\Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody)
     {
@@ -221,6 +235,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -237,8 +252,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsGet|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsGet(string $resourceUuid)
     {
@@ -254,8 +270,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsPatch(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody)
     {
@@ -271,8 +288,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function addonsPatchPlan(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody)
     {
@@ -288,8 +306,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsList(array $queryParameters = [])
     {
@@ -305,8 +324,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsCreate(\Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest $requestBody, array $headerParameters = [])
     {
@@ -319,8 +339,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeleteAppResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeleteAppResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsDelete(string $id)
     {
@@ -336,8 +357,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGet(string $id, array $queryParameters = [])
     {
@@ -351,8 +373,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsUpdate(string $id, \Jane\Generated\DigitalOcean\Model\AppsUpdateAppRequest $requestBody)
     {
@@ -366,8 +389,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRestartNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRestartTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRestartInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsRestart(string $appId, ?\Jane\Generated\DigitalOcean\Model\AppsRestartRequest $requestBody = null)
     {
@@ -390,8 +414,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetLogsActiveDeployment(string $appId, string $componentName, array $queryParameters = [])
     {
@@ -408,8 +433,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetExecActiveDeployment(string $appId, string $componentName, array $queryParameters = [])
     {
@@ -422,8 +448,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstancesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstancesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppInstances|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppInstances|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetInstances(string $appId)
     {
@@ -448,8 +475,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListDeployments(string $appId, array $queryParameters = [])
     {
@@ -463,8 +491,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsCreateDeployment(string $appId, \Jane\Generated\DigitalOcean\Model\AppsCreateDeploymentRequest $requestBody)
     {
@@ -478,8 +507,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetDeployment(string $appId, string $deploymentId)
     {
@@ -493,8 +523,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsCancelDeployment(string $appId, string $deploymentId)
     {
@@ -518,8 +549,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetLogs(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {
@@ -542,8 +574,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetLogsAggregate(string $appId, string $deploymentId, array $queryParameters = [])
     {
@@ -561,8 +594,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetExec(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {
@@ -584,8 +618,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetLogsActiveDeploymentAggregate(string $appId, array $queryParameters = [])
     {
@@ -604,8 +639,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppJobInvocations|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppJobInvocations|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListJobInvocations(string $appId, array $queryParameters = [])
     {
@@ -622,8 +658,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppJobInvocation|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppJobInvocation|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetJobInvocation(string $appId, string $jobInvocationId, array $queryParameters = [])
     {
@@ -645,8 +682,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetJobInvocationLogs(string $appId, string $jobName, string $jobInvocationId, array $queryParameters)
     {
@@ -656,8 +694,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInstanceSizesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInstanceSizesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInstanceSizesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListInstanceSizesResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsListInstanceSizesResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListInstanceSizes()
     {
@@ -670,8 +709,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstanceSizeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstanceSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstanceSizeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetInstanceSizeResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsGetInstanceSizeResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetInstanceSize(string $slug)
     {
@@ -681,8 +721,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListRegions()
     {
@@ -694,8 +735,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateAppSpecUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateAppSpecTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateAppSpecInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppProposeResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppProposeResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsValidateAppSpec(\Jane\Generated\DigitalOcean\Model\AppPropose $requestBody)
     {
@@ -708,8 +750,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListAlertsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListAlertsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListAlertsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListAlertsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsListAlertsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListAlerts(string $appId)
     {
@@ -724,8 +767,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsAssignAlertDestinationsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsAssignAlertDestinationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsAssignAlertDestinationsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsAlertResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsAlertResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsAssignAlertDestinations(string $appId, string $alertId, \Jane\Generated\DigitalOcean\Model\AppsAssignAppAlertDestinationsRequest $requestBody)
     {
@@ -746,8 +790,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsCreateRollback(string $appId, \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody)
     {
@@ -765,8 +810,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsValidateRollback(string $appId, \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody)
     {
@@ -780,6 +826,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -796,8 +843,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsRevertRollback(string $appId)
     {
@@ -813,8 +861,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetMetricsBandwidthDaily(string $appId, array $queryParameters = [])
     {
@@ -827,8 +876,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListMetricsBandwidthDailyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListMetricsBandwidthDailyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListMetricsBandwidthDailyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsListMetricsBandwidthDaily(\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsageRequest $requestBody)
     {
@@ -841,8 +891,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetHealthNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetHealthTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetHealthInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppHealthResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AppHealthResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function appsGetHealth(string $appId)
     {
@@ -857,8 +908,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllCdnEndpoints|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllCdnEndpoints|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function cdnListEndpoints(array $queryParameters = [])
     {
@@ -877,8 +929,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function cdnCreateEndpoint(\Jane\Generated\DigitalOcean\Model\CdnEndpoint $requestBody)
     {
@@ -896,6 +949,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -910,8 +964,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnGetEndpointNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnGetEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnGetEndpointInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function cdnGetEndpoint(string $cdnId)
     {
@@ -928,8 +983,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function cdnUpdateEndpoints(string $cdnId, \Jane\Generated\DigitalOcean\Model\UpdateEndpoint $requestBody)
     {
@@ -952,6 +1008,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -969,8 +1026,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllCertificates|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllCertificates|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function certificatesList(array $queryParameters = [])
     {
@@ -991,8 +1049,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNewCertificate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNewCertificate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function certificatesCreate($requestBody)
     {
@@ -1007,6 +1066,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1021,8 +1081,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCertificate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCertificate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function certificatesGet(string $certificateId)
     {
@@ -1033,8 +1094,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\BalanceGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\BalanceGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\BalanceGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Balance|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Balance|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function balanceGet()
     {
@@ -1045,8 +1107,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingHistoryListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingHistoryListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingHistoryListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseBillingHistory|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseBillingHistory|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function billingHistoryList()
     {
@@ -1061,8 +1124,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseInvoices|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseInvoices|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesList(array $queryParameters = [])
     {
@@ -1079,8 +1143,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseInvoice|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseInvoice|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetByUUID(string $invoiceUuid, array $queryParameters = [])
     {
@@ -1094,8 +1159,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetCsvByUUID(string $invoiceUuid, array $accept = [])
     {
@@ -1109,8 +1175,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetPdfByUUID(string $invoiceUuid, array $accept = [])
     {
@@ -1123,8 +1190,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetSummaryByUUIDNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetSummaryByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetSummaryByUUIDInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\InvoiceSummary|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\InvoiceSummary|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetSummaryByUUID(string $invoiceUuid)
     {
@@ -1144,8 +1212,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseBillingInsights|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function billingInsightsList(string $accountUrn, string $startDate, string $endDate, array $queryParameters = [])
     {
@@ -1156,8 +1225,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Options|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Options|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListOptions()
     {
@@ -1178,8 +1248,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListClusters(array $queryParameters = [])
     {
@@ -1199,8 +1270,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesCreateCluster(\Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody $requestBody)
     {
@@ -1214,6 +1286,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1234,8 +1307,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetCluster(string $databaseClusterUuid)
     {
@@ -1252,8 +1326,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetConfig(string $databaseClusterUuid)
     {
@@ -1269,6 +1344,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1288,8 +1364,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCa|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseCa|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetCa(string $databaseClusterUuid)
     {
@@ -1302,8 +1379,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetMigrationStatusNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetMigrationStatusTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetMigrationStatusInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetMigrationStatus(string $databaseClusterUuid)
     {
@@ -1318,8 +1396,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateOnlineMigrationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateOnlineMigrationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateOnlineMigrationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesUpdateOnlineMigration(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\SourceDatabase $requestBody)
     {
@@ -1336,6 +1415,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1359,6 +1439,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1375,6 +1456,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterSizeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterSizeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1390,8 +1472,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListFirewallRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListFirewallRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListFirewallRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFirewallRules|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFirewallRules|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListFirewallRules(string $databaseClusterUuid)
     {
@@ -1406,6 +1489,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1422,6 +1506,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMaintenanceWindowNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMaintenanceWindowTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMaintenanceWindowInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1437,6 +1522,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1453,8 +1539,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListBackupsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListBackupsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListBackupsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackups|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackups|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListBackups(string $databaseClusterUuid)
     {
@@ -1471,8 +1558,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplicas|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplicas|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListReplicas(string $databaseClusterUuid)
     {
@@ -1490,8 +1578,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesCreateReplica(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidReplicasPostBody $requestBody = null)
     {
@@ -1508,8 +1597,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEventsLogs|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseEventsLogs|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListEventsLogs(string $databaseClusterUuid)
     {
@@ -1527,6 +1617,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1546,8 +1637,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetReplica(string $databaseClusterUuid, string $replicaName)
     {
@@ -1565,6 +1657,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1591,8 +1684,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUsers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUsers|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListUsers(string $databaseClusterUuid)
     {
@@ -1623,8 +1717,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesAddUser(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersPostBody $requestBody)
     {
@@ -1645,6 +1740,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1675,8 +1771,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetUser(string $databaseClusterUuid, string $username)
     {
@@ -1700,8 +1797,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateUserNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateUserInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesUpdateUser(string $databaseClusterUuid, string $username, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernamePutBody $requestBody)
     {
@@ -1725,8 +1823,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesResetAuthNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesResetAuthTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesResetAuthInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesResetAuth(string $databaseClusterUuid, string $username, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody $requestBody)
     {
@@ -1746,8 +1845,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabases|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabases|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesList(string $databaseClusterUuid)
     {
@@ -1768,8 +1868,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesAdd(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\Database $requestBody)
     {
@@ -1790,6 +1891,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1812,8 +1914,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGet(string $databaseClusterUuid, string $databaseName)
     {
@@ -1827,8 +1930,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListConnectionPoolsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListConnectionPoolsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListConnectionPoolsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ConnectionPools|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ConnectionPools|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListConnectionPools(string $databaseClusterUuid)
     {
@@ -1852,8 +1956,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesAddConnectionPool(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\ConnectionPool $requestBody)
     {
@@ -1872,6 +1977,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1888,8 +1994,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConnectionPoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConnectionPoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetConnectionPool(string $databaseClusterUuid, string $poolName)
     {
@@ -1904,6 +2011,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateConnectionPoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateConnectionPoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1919,8 +2027,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetEvictionPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetEvictionPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetEvictionPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEvictionPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseEvictionPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetEvictionPolicy(string $databaseClusterUuid)
     {
@@ -1934,6 +2043,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1949,8 +2059,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetSqlModeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetSqlModeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetSqlModeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\SqlMode|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\SqlMode|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetSqlMode(string $databaseClusterUuid)
     {
@@ -1965,6 +2076,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1981,6 +2093,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -1996,8 +2109,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetAutoscaleNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetAutoscaleTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetAutoscaleInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscale|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAutoscale|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetAutoscale(string $databaseClusterUuid)
     {
@@ -2013,6 +2127,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateAutoscaleUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateAutoscaleTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateAutoscaleInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2031,8 +2146,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaTopics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListKafkaTopics(string $databaseClusterUuid)
     {
@@ -2050,8 +2166,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesCreateKafkaTopic(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsPostBody $requestBody = null)
     {
@@ -2070,6 +2187,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2089,8 +2207,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetKafkaTopic(string $databaseClusterUuid, string $topicName)
     {
@@ -2109,8 +2228,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesUpdateKafkaTopic(string $databaseClusterUuid, string $topicName, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsTopicNamePutBody $requestBody = null)
     {
@@ -2125,8 +2245,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLogsinks|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseLogsinks|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListLogsink(string $databaseClusterUuid)
     {
@@ -2142,8 +2263,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLogsink|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseLogsink|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesCreateLogsink(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidLogsinkPostBody $requestBody)
     {
@@ -2159,6 +2281,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2176,8 +2299,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\LogsinkSchema|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\LogsinkSchema|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetLogsink(string $databaseClusterUuid, string $logsinkId)
     {
@@ -2194,6 +2318,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateLogsinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateLogsinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2210,8 +2335,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemas|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemas|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListKafkaSchemas(string $databaseClusterUuid)
     {
@@ -2227,8 +2353,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchema|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchema|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesCreateKafkaSchema(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryPostBody $requestBody)
     {
@@ -2244,6 +2371,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null
      */
@@ -2261,8 +2389,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
      */
     public function databasesGetKafkaSchema(string $databaseClusterUuid, string $subjectName)
     {
@@ -2279,8 +2408,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaVersionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaVersionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
      */
     public function databasesGetKafkaSchemaVersion(string $databaseClusterUuid, string $subjectName, string $version)
     {
@@ -2297,8 +2427,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetKafkaSchemaConfig(string $databaseClusterUuid)
     {
@@ -2316,8 +2447,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesUpdateKafkaSchemaConfig(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigPutBody $requestBody = null)
     {
@@ -2335,8 +2467,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetKafkaSchemaSubjectConfig(string $databaseClusterUuid, string $subjectName)
     {
@@ -2355,8 +2488,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaSubjectConfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaSubjectConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaSubjectConfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesUpdateKafkaSchemaSubjectConfig(string $databaseClusterUuid, string $subjectName, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigSubjectNamePutBody $requestBody = null)
     {
@@ -2367,8 +2501,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterMetricsCredentialsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterMetricsCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterMetricsCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseMetricsAuth|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDatabaseMetricsAuth|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesGetClusterMetricsCredentials()
     {
@@ -2380,6 +2515,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2398,8 +2534,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOpensearchIndexes|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseOpensearchIndexes|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function databasesListOpeasearchIndexes(string $databaseClusterUuid)
     {
@@ -2418,6 +2555,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2434,8 +2572,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDomainsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsList(array $queryParameters = [])
     {
@@ -2451,8 +2590,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreateDomainResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseCreateDomainResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsCreate(?\Jane\Generated\DigitalOcean\Model\Domain $requestBody = null)
     {
@@ -2466,6 +2606,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2480,8 +2621,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDomain|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingDomain|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsGet(string $domainName)
     {
@@ -2503,8 +2645,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainRecordsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDomainRecordsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsListRecords(string $domainName, array $queryParameters = [])
     {
@@ -2526,8 +2669,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsCreateRecord(string $domainName, $requestBody = null)
     {
@@ -2546,6 +2690,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2561,8 +2706,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetRecordNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetRecordInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsGetRecord(string $domainName, int $domainRecordId)
     {
@@ -2583,8 +2729,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsPatchRecordNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsPatchRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsPatchRecordInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsPatchRecord(string $domainName, int $domainRecordId, ?\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody = null)
     {
@@ -2605,8 +2752,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsUpdateRecordNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsUpdateRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsUpdateRecordInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function domainsUpdateRecord(string $domainName, int $domainRecordId, ?\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody = null)
     {
@@ -2629,6 +2777,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2665,8 +2814,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDroplets|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDroplets|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsList(array $queryParameters = [])
     {
@@ -2703,6 +2853,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2721,6 +2872,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -2737,8 +2889,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsGet(int $dropletId)
     {
@@ -2761,8 +2914,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackups|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackups|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListBackups(int $dropletId, array $queryParameters = [])
     {
@@ -2777,8 +2931,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletBackupPolicy|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDropletBackupPolicy|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsGetBackupPolicy(int $dropletId)
     {
@@ -2796,8 +2951,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListBackupPolicies(array $queryParameters = [])
     {
@@ -2808,8 +2964,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListSupportedBackupPolicies()
     {
@@ -2832,8 +2989,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletSnapshots|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDropletSnapshots|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListSnapshots(int $dropletId, array $queryParameters = [])
     {
@@ -2856,8 +3014,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletActions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllDropletActions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletActionsList(int $dropletId, array $queryParameters = [])
     {
@@ -2893,8 +3052,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDropletAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletActionsPost(int $dropletId, $requestBody = null)
     {
@@ -2923,8 +3083,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDropletActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletActionsPostByTag($requestBody = null, array $queryParameters = [])
     {
@@ -2943,8 +3104,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletActionsGet(int $dropletId, int $actionId)
     {
@@ -2967,8 +3129,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllKernels|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllKernels|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListKernels(int $dropletId, array $queryParameters = [])
     {
@@ -2991,8 +3154,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllFirewalls|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllFirewalls|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListFirewalls(int $dropletId, array $queryParameters = [])
     {
@@ -3013,8 +3177,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNeighborDroplets|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNeighborDroplets|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListNeighbors(int $dropletId)
     {
@@ -3037,8 +3202,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListAssociatedResources(int $dropletId)
     {
@@ -3063,6 +3229,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3090,6 +3257,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3107,8 +3275,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsGetDestroyAssociatedResourcesStatus(int $dropletId)
     {
@@ -3130,6 +3299,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesConflictException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3150,8 +3320,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsList(array $queryParameters = [])
     {
@@ -3166,8 +3337,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsCreate(?\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody = null)
     {
@@ -3183,6 +3355,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3199,8 +3372,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAutoscalePool|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingAutoscalePool|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsGet(string $autoscalePoolId)
     {
@@ -3217,8 +3391,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsUpdate(string $autoscalePoolId, ?\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody = null)
     {
@@ -3236,6 +3411,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3258,8 +3434,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllMembers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllMembers|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsListMembers(string $autoscalePoolId, array $queryParameters = [])
     {
@@ -3280,8 +3457,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseHistoryEvents|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseHistoryEvents|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function autoscalepoolsListHistory(string $autoscalePoolId, array $queryParameters = [])
     {
@@ -3296,8 +3474,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListFirewallsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseListFirewallsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function firewallsList(array $queryParameters = [])
     {
@@ -3312,8 +3491,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreateFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseCreateFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function firewallsCreate(?\Jane\Generated\DigitalOcean\Model\V2FirewallsPostBody $requestBody = null)
     {
@@ -3331,6 +3511,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3345,8 +3526,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGetFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGetFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function firewallsGet(string $firewallId)
     {
@@ -3367,8 +3549,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponsePutFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponsePutFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function firewallsUpdate(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdPutBody $requestBody = null)
     {
@@ -3390,6 +3573,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3413,6 +3597,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3436,6 +3621,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3459,6 +3645,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3483,6 +3670,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3507,6 +3695,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3523,8 +3712,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsList(array $queryParameters = [])
     {
@@ -3540,8 +3730,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreated|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreated|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsCreate($requestBody)
     {
@@ -3559,6 +3750,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3573,8 +3765,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIp|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIp|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsGet(string $floatingIp)
     {
@@ -3587,8 +3780,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpActions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpActions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsActionList(string $floatingIp)
     {
@@ -3610,8 +3804,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsActionPost(string $floatingIp, $requestBody = null)
     {
@@ -3625,8 +3820,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function floatingIPsActionGet(string $floatingIp, int $actionId)
     {
@@ -3636,8 +3832,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListNamespacesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListNamespacesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListNamespacesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListNamespaces|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseListNamespaces|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsListNamespaces()
     {
@@ -3651,8 +3848,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateNamespaceUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateNamespaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsCreateNamespace(\Jane\Generated\DigitalOcean\Model\CreateNamespace $requestBody)
     {
@@ -3667,6 +3865,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteNamespaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteNamespaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3682,8 +3881,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetNamespaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetNamespaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsGetNamespace(string $namespaceId)
     {
@@ -3696,8 +3896,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListTriggersNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListTriggersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListTriggersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListTriggers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseListTriggers|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsListTriggers(string $namespaceId)
     {
@@ -3713,8 +3914,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateTriggerUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateTriggerInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsCreateTrigger(string $namespaceId, \Jane\Generated\DigitalOcean\Model\CreateTrigger $requestBody)
     {
@@ -3730,6 +3932,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteTriggerNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteTriggerInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3745,8 +3948,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetTriggerNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetTriggerInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsGetTrigger(string $namespaceId, string $triggerName)
     {
@@ -3762,8 +3966,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsUpdateTriggerNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsUpdateTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsUpdateTriggerInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function functionsUpdateTrigger(string $namespaceId, string $triggerName, \Jane\Generated\DigitalOcean\Model\UpdateTrigger $requestBody)
     {
@@ -3805,8 +4010,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllImages|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllImages|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imagesList(array $queryParameters = [])
     {
@@ -3824,8 +4030,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNewCustomImage|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNewCustomImage|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imagesCreateCustom(\Jane\Generated\DigitalOcean\Model\ImageNewCustom $requestBody)
     {
@@ -3839,6 +4046,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -3861,8 +4069,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetNotFoundException
     * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetInternalServerErrorException
+    * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error
+    * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error
     */
     public function imagesGet($imageId)
     {
@@ -3879,8 +4088,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedImage|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUpdatedImage|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imagesUpdate(int $imageId, \Jane\Generated\DigitalOcean\Model\ImageUpdate $requestBody)
     {
@@ -3893,8 +4103,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGetImageActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGetImageActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imageActionsList(int $imageId)
     {
@@ -3921,8 +4132,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imageActionsPost(int $imageId, $requestBody = null)
     {
@@ -3936,8 +4148,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function imageActionsGet(int $imageId, int $actionId)
     {
@@ -3954,8 +4167,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllClusters|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllClusters|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesListClusters(array $queryParameters = [])
     {
@@ -3976,8 +4190,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseClusterCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseClusterCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesCreateCluster(\Jane\Generated\DigitalOcean\Model\Cluster $requestBody)
     {
@@ -3995,6 +4210,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4011,8 +4227,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCluster|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCluster|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetCluster(string $clusterId)
     {
@@ -4029,8 +4246,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedCluster|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUpdatedCluster|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesUpdateCluster(string $clusterId, \Jane\Generated\DigitalOcean\Model\ClusterUpdate $requestBody)
     {
@@ -4043,8 +4261,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListAssociatedResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListAssociatedResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AssociatedKubernetesResources|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\AssociatedKubernetesResources|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesListAssociatedResources(string $clusterId)
     {
@@ -4068,6 +4287,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4085,6 +4305,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4126,8 +4347,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetKubeconfig(string $clusterId, array $queryParameters = [], array $accept = [])
     {
@@ -4159,8 +4381,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Credentials|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Credentials|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetCredentials(string $clusterId, array $queryParameters = [])
     {
@@ -4176,8 +4399,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAvailableUpgrades|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAvailableUpgrades|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetAvailableUpgrades(string $clusterId)
     {
@@ -4197,6 +4421,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4213,8 +4438,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllNodePools|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllNodePools|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesListNodePools(string $clusterId)
     {
@@ -4231,8 +4457,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNodePoolCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesAddNodePool(string $clusterId, \Jane\Generated\DigitalOcean\Model\KubernetesNodePool $requestBody)
     {
@@ -4251,6 +4478,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4268,8 +4496,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingNodePool|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingNodePool|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetNodePool(string $clusterId, string $nodePoolId)
     {
@@ -4288,8 +4517,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesUpdateNodePool(string $clusterId, string $nodePoolId, \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolUpdate $requestBody)
     {
@@ -4318,6 +4548,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4337,6 +4568,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4353,8 +4585,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\User|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\User|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetClusterUser(string $clusterId)
     {
@@ -4365,8 +4598,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListOptionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListOptionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\KubernetesOptions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\KubernetesOptions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesListOptions()
     {
@@ -4389,8 +4623,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ClusterlintResults|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ClusterlintResults|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetClusterLintResults(string $clusterId, array $queryParameters = [])
     {
@@ -4415,8 +4650,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseClusterlintRun|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseClusterlintRun|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesRunClusterLint(string $clusterId, ?\Jane\Generated\DigitalOcean\Model\ClusterlintRequest $requestBody = null)
     {
@@ -4428,6 +4664,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistryUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistryInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4441,6 +4678,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistryUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistryInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4454,6 +4692,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4467,6 +4706,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistriesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistriesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4486,8 +4726,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseStatusMessages|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseStatusMessages|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetStatusMessages(string $clusterId, array $queryParameters = [])
     {
@@ -4504,8 +4745,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function loadBalancersList(array $queryParameters = [])
     {
@@ -4528,8 +4770,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLoadBalancerCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseLoadBalancerCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function loadBalancersCreate($requestBody)
     {
@@ -4548,6 +4791,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4564,8 +4808,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function loadBalancersGet(string $lbId)
     {
@@ -4585,8 +4830,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function loadBalancersUpdate(string $lbId, $requestBody)
     {
@@ -4604,6 +4850,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4626,6 +4873,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4651,6 +4899,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4674,6 +4923,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4697,6 +4947,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4713,8 +4964,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseListAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringListAlertPolicy(array $queryParameters = [])
     {
@@ -4726,8 +4978,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateAlertPolicyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringCreateAlertPolicy(\Jane\Generated\DigitalOcean\Model\AlertPolicyRequest $requestBody)
     {
@@ -4740,6 +4993,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteAlertPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -4754,8 +5008,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAlertPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetAlertPolicy(string $alertUuid)
     {
@@ -4769,8 +5024,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringUpdateAlertPolicy(string $alertUuid, \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest $requestBody)
     {
@@ -4789,8 +5045,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletBandwidthMetrics(array $queryParameters)
     {
@@ -4806,8 +5063,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletCpuMetrics(array $queryParameters)
     {
@@ -4823,8 +5081,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletFilesystemFreeMetrics(array $queryParameters)
     {
@@ -4840,8 +5099,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletFilesystemSizeMetrics(array $queryParameters)
     {
@@ -4857,8 +5117,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletLoad1Metrics(array $queryParameters)
     {
@@ -4874,8 +5135,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletLoad5Metrics(array $queryParameters)
     {
@@ -4891,8 +5153,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletLoad15Metrics(array $queryParameters)
     {
@@ -4908,8 +5171,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletMemoryCachedMetrics(array $queryParameters)
     {
@@ -4925,8 +5189,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletMemoryFreeMetrics(array $queryParameters)
     {
@@ -4942,8 +5207,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletMemoryTotalMetrics(array $queryParameters)
     {
@@ -4959,8 +5225,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletMemoryAvailableMetrics(array $queryParameters)
     {
@@ -4977,8 +5244,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetAppMemoryPercentageMetrics(array $queryParameters)
     {
@@ -4995,8 +5263,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetAppCPUPercentageMetrics(array $queryParameters)
     {
@@ -5013,8 +5282,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetAppRestartCountMetricsYml(array $queryParameters)
     {
@@ -5030,8 +5300,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendConnectionsCurrent(array $queryParameters)
     {
@@ -5047,8 +5318,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendConnectionsLimit(array $queryParameters)
     {
@@ -5064,8 +5336,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendCpuUtilization(array $queryParameters)
     {
@@ -5081,8 +5354,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendFirewallDroppedBytes(array $queryParameters)
     {
@@ -5098,8 +5372,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendFirewallDroppedPackets(array $queryParameters)
     {
@@ -5115,8 +5390,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendHttpResponses(array $queryParameters)
     {
@@ -5132,8 +5408,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendHttpRequestsPerSecond(array $queryParameters)
     {
@@ -5149,8 +5426,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendNetworkThroughputHttp(array $queryParameters)
     {
@@ -5166,8 +5444,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendNetworkThroughputUdp(array $queryParameters)
     {
@@ -5183,8 +5462,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendNetworkThroughputTcp(array $queryParameters)
     {
@@ -5200,8 +5480,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendNlbTcpNetworkThroughput(array $queryParameters)
     {
@@ -5217,8 +5498,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendNlbUdpNetworkThroughput(array $queryParameters)
     {
@@ -5234,8 +5516,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendTlsConnectionsCurrent(array $queryParameters)
     {
@@ -5251,8 +5534,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendTlsConnectionsLimit(array $queryParameters)
     {
@@ -5268,8 +5552,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbFrontendTlsConnectionsExceedingRateLimit(array $queryParameters)
     {
@@ -5285,8 +5570,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpSessionDurationAvg(array $queryParameters)
     {
@@ -5302,8 +5588,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpSessionDuration50p(array $queryParameters)
     {
@@ -5319,8 +5606,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpSessionDuration95p(array $queryParameters)
     {
@@ -5336,8 +5624,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpResponseTimeAvg(array $queryParameters)
     {
@@ -5353,8 +5642,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpResponseTime50p(array $queryParameters)
     {
@@ -5370,8 +5660,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpResponseTime95p(array $queryParameters)
     {
@@ -5387,8 +5678,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpResponseTime99p(array $queryParameters)
     {
@@ -5404,8 +5696,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsQueueSize(array $queryParameters)
     {
@@ -5421,8 +5714,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHttpResponses(array $queryParameters)
     {
@@ -5438,8 +5732,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsConnections(array $queryParameters)
     {
@@ -5455,8 +5750,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsHealthChecks(array $queryParameters)
     {
@@ -5472,8 +5768,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetLbDropletsDowntime(array $queryParameters)
     {
@@ -5489,8 +5786,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleCurrentInstances(array $queryParameters)
     {
@@ -5506,8 +5804,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleTargetInstances(array $queryParameters)
     {
@@ -5523,8 +5822,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleCurrentCpuUtilizationYml(array $queryParameters)
     {
@@ -5540,8 +5840,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleTargetCpuUtilization(array $queryParameters)
     {
@@ -5557,8 +5858,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleCurrentMemoryUtilization(array $queryParameters)
     {
@@ -5574,8 +5876,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDropletAutoscaleTargetMemoryUtilization(array $queryParameters)
     {
@@ -5586,8 +5889,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListDestinationsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListDestinationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListDestinationsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMonitoringListDestinations|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseMonitoringListDestinations|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringListDestinations()
     {
@@ -5600,8 +5904,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateDestinationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateDestinationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringCreateDestination(\Jane\Generated\DigitalOcean\Model\DestinationRequest $requestBody)
     {
@@ -5614,6 +5919,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteDestinationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteDestinationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5628,8 +5934,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDestinationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDestinationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetDestination(string $destinationUuid)
     {
@@ -5643,6 +5950,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateDestinationNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateDestinationInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5659,8 +5967,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListSinks|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseListSinks|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringListSinks(array $queryParameters = [])
     {
@@ -5675,6 +5984,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5689,6 +5999,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5703,8 +6014,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetSinkNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetSinkInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinks|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinks|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function monitoringGetSink(string $sinkUuid)
     {
@@ -5722,8 +6034,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsListResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsListResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsList(array $queryParameters)
     {
@@ -5737,8 +6050,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsCreateResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsCreateResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsCreate(\Jane\Generated\DigitalOcean\Model\NfsRequest $requestBody)
     {
@@ -5757,6 +6071,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5777,8 +6092,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsGetResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsGetResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsGet(string $nfsId, array $queryParameters)
     {
@@ -5802,8 +6118,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsActionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsCreateAction(string $nfsId, $requestBody)
     {
@@ -5824,8 +6141,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotListResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsSnapshotListResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsListSnapshot(array $queryParameters)
     {
@@ -5844,6 +6162,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -5864,8 +6183,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotGetResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NfsSnapshotGetResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function nfsGetSnapshot(string $nfsSnapshotId, array $queryParameters)
     {
@@ -5881,8 +6201,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachments|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachments|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsList(array $queryParameters = [])
     {
@@ -5899,8 +6220,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsCreate(?\Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable $requestBody = null)
     {
@@ -5915,8 +6237,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentDeleting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentDeleting|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsDelete(string $paId)
     {
@@ -5931,8 +6254,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsGet(string $paId)
     {
@@ -5949,8 +6273,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsPatch(string $paId, $requestBody = null)
     {
@@ -5965,8 +6290,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentBgpAuthKey|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentBgpAuthKey|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsGetBgpAuthKey(string $paId)
     {
@@ -5985,8 +6311,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachmentRemoteRoutes|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachmentRemoteRoutes|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsListRemoteRoutes(string $paId, array $queryParameters = [])
     {
@@ -6001,8 +6328,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentServiceKey|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentServiceKey|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsGetServiceKey(string $paId)
     {
@@ -6016,8 +6344,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEmptyJsonObject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseEmptyJsonObject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function partnerAttachmentsCreateServiceKey(string $paId)
     {
@@ -6032,8 +6361,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseProjectsList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseProjectsList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsList(array $queryParameters = [])
     {
@@ -6045,8 +6375,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsCreate(\Jane\Generated\DigitalOcean\Model\V2ProjectsPostBody $requestBody)
     {
@@ -6057,8 +6388,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsGetDefault()
     {
@@ -6071,8 +6403,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsPatchDefault(\Jane\Generated\DigitalOcean\Model\Project $requestBody)
     {
@@ -6085,8 +6418,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsUpdateDefault($requestBody)
     {
@@ -6106,6 +6440,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeletePreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6120,8 +6455,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsGet(string $projectId)
     {
@@ -6135,8 +6471,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsPatch(string $projectId, \Jane\Generated\DigitalOcean\Model\Project $requestBody)
     {
@@ -6150,8 +6487,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsUpdate(string $projectId, $requestBody)
     {
@@ -6171,8 +6509,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsListResources(string $projectId, array $queryParameters = [])
     {
@@ -6189,8 +6528,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsAssignResources(string $projectId, \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody)
     {
@@ -6201,8 +6541,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsListResourcesDefault()
     {
@@ -6218,8 +6559,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function projectsAssignResourcesDefault(\Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody)
     {
@@ -6235,8 +6577,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllRegions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function regionsList(array $queryParameters = [])
     {
@@ -6246,8 +6589,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegistriesInfo|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllRegistriesInfo|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesList()
     {
@@ -6265,8 +6609,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesCreate(\Jane\Generated\DigitalOcean\Model\MultiregistryCreate $requestBody)
     {
@@ -6279,6 +6624,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6293,8 +6639,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesGet(string $registryName)
     {
@@ -6328,8 +6675,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesGetDockerCredentials(string $registryName)
     {
@@ -6339,8 +6687,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetSubscriptionUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetSubscriptionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesGetSubscription()
     {
@@ -6352,8 +6701,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateSubscriptionUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateSubscriptionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesUpdateSubscription(?\Jane\Generated\DigitalOcean\Model\V2RegistriesSubscriptionPostBody $requestBody = null)
     {
@@ -6363,8 +6713,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetOptionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetOptionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesGetOptions()
     {
@@ -6377,8 +6728,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesGetGarbageCollection(string $registryName)
     {
@@ -6412,8 +6764,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesRunGarbageCollection(string $registryName)
     {
@@ -6430,8 +6783,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesListGarbageCollections(string $registryName, array $queryParameters = [])
     {
@@ -6446,8 +6800,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesUpdateGarbageCollection(string $registryName, string $garbageCollectionUuid, \Jane\Generated\DigitalOcean\Model\UpdateRegistry $requestBody)
     {
@@ -6466,8 +6821,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2NotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2TooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2InternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesListRepositoriesV2(string $registryName, array $queryParameters = [])
     {
@@ -6486,6 +6842,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6514,8 +6871,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesListRepositoryTags(string $registryName, string $repositoryName, array $queryParameters = [])
     {
@@ -6540,6 +6898,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6568,8 +6927,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registriesListRepositoryManifests(string $registryName, string $repositoryName, array $queryParameters = [])
     {
@@ -6596,6 +6956,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryManifestNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryManifestTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryManifestInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6618,6 +6979,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameConflictException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6631,6 +6993,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeletePreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6643,8 +7006,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetPreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryGet()
     {
@@ -6661,8 +7025,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryCreate(\Jane\Generated\DigitalOcean\Model\RegistryCreate $requestBody)
     {
@@ -6672,8 +7037,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetSubscriptionUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetSubscriptionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryGetSubscription()
     {
@@ -6686,8 +7052,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateSubscriptionPreconditionFailedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateSubscriptionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryUpdateSubscription(?\Jane\Generated\DigitalOcean\Model\V2RegistrySubscriptionPostBody $requestBody = null)
     {
@@ -6723,8 +7090,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryGetDockerCredentials(array $queryParameters = [])
     {
@@ -6743,6 +7111,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameConflictException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6765,8 +7134,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositories|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllRepositories|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryListRepositories(string $registryName, array $queryParameters = [])
     {
@@ -6785,8 +7155,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2NotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2TooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2InternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryListRepositoriesV2(string $registryName, array $queryParameters = [])
     {
@@ -6811,8 +7182,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryListRepositoryTags(string $registryName, string $repositoryName, array $queryParameters = [])
     {
@@ -6837,6 +7209,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryTagNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryTagInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6863,8 +7236,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryListRepositoryManifests(string $registryName, string $repositoryName, array $queryParameters = [])
     {
@@ -6889,6 +7263,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -6903,8 +7278,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryGetGarbageCollection(string $registryName)
     {
@@ -6939,8 +7315,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryRunGarbageCollection(string $registryName, ?\Jane\Generated\DigitalOcean\Model\RegistryRunGc $requestBody = null)
     {
@@ -6957,8 +7334,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryListGarbageCollections(string $registryName, array $queryParameters = [])
     {
@@ -6973,8 +7351,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateGarbageCollectionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateGarbageCollectionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryUpdateGarbageCollection(string $registryName, string $garbageCollectionUuid, \Jane\Generated\DigitalOcean\Model\UpdateRegistry $requestBody)
     {
@@ -6984,8 +7363,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetOptionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetOptionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function registryGetOptions()
     {
@@ -6996,8 +7376,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsIdsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsIdsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsIdsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NeighborIds|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\NeighborIds|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function dropletsListNeighborsIds()
     {
@@ -7012,8 +7393,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsList(array $queryParameters = [])
     {
@@ -7029,8 +7411,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpCreated|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpCreated|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsCreate($requestBody)
     {
@@ -7048,6 +7431,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7062,8 +7446,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIp|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIp|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsGet(string $reservedIp)
     {
@@ -7076,8 +7461,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpActions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpActions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsActionsList(string $reservedIp)
     {
@@ -7099,8 +7485,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsActionsPost(string $reservedIp, $requestBody = null)
     {
@@ -7114,8 +7501,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPsActionsGet(string $reservedIp, int $actionId)
     {
@@ -7130,8 +7518,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6List|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6List|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPv6List(array $queryParameters = [])
     {
@@ -7145,8 +7534,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6CreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6CreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6CreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Create|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Create|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPv6Create(\Jane\Generated\DigitalOcean\Model\ReservedIpv6Create $requestBody)
     {
@@ -7165,6 +7555,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7179,8 +7570,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6GetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6GetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6GetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPv6Get(string $reservedIpv6)
     {
@@ -7202,8 +7594,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Action|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Action|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function reservedIPv6ActionsPost(string $reservedIpv6, $requestBody = null)
     {
@@ -7220,8 +7613,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function byoipPrefixesList(array $queryParameters = [])
     {
@@ -7238,8 +7632,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function byoipPrefixesCreate(\Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate $requestBody)
     {
@@ -7258,6 +7653,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7276,8 +7672,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixGet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixGet|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function byoipPrefixesGet(string $byoipPrefixUuid)
     {
@@ -7296,8 +7693,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchUnprocessableEntityException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function byoipPrefixesPatch(string $byoipPrefixUuid, \Jane\Generated\DigitalOcean\Model\ByoipPrefixUpdate $requestBody)
     {
@@ -7317,8 +7715,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixListResources|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixListResources|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function byoipPrefixesListResources(string $byoipPrefixUuid, array $queryParameters = [])
     {
@@ -7334,8 +7733,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllSizes|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllSizes|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function sizesList(array $queryParameters = [])
     {
@@ -7371,8 +7771,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshots|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSnapshots|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function snapshotsList(array $queryParameters = [])
     {
@@ -7392,6 +7793,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7412,8 +7814,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshotsExisting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseSnapshotsExisting|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function snapshotsGet($snapshotId)
     {
@@ -7434,8 +7837,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyList|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyList|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function spacesKeyList(array $queryParameters = [])
     {
@@ -7451,8 +7855,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function spacesKeyCreate(\Jane\Generated\DigitalOcean\Model\Key $requestBody)
     {
@@ -7468,6 +7873,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7485,8 +7891,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function spacesKeyGet(string $accessKey)
     {
@@ -7503,8 +7910,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function spacesKeyPatch(string $accessKey, \Jane\Generated\DigitalOcean\Model\Key $requestBody)
     {
@@ -7521,8 +7929,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function spacesKeyUpdate(string $accessKey, \Jane\Generated\DigitalOcean\Model\Key $requestBody)
     {
@@ -7541,8 +7950,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsAll|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTagsAll|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function tagsList(array $queryParameters = [])
     {
@@ -7555,8 +7965,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsNew|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTagsNew|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function tagsCreate(\Jane\Generated\DigitalOcean\Model\Tags $requestBody)
     {
@@ -7569,6 +7980,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7588,8 +8000,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function tagsGet(string $tagId)
     {
@@ -7614,6 +8027,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7640,6 +8054,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7660,6 +8075,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7689,8 +8105,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumes|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumes|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumesList(array $queryParameters = [])
     {
@@ -7704,8 +8121,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesCreateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumesCreate($requestBody)
     {
@@ -7750,8 +8168,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeActionsPost($requestBody, array $queryParameters = [])
     {
@@ -7769,6 +8188,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7785,8 +8205,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeSnapshotsGetById(string $snapshotId)
     {
@@ -7802,6 +8223,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -7818,8 +8240,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumesGet(string $volumeId)
     {
@@ -7838,8 +8261,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeActions|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeActions|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeActionsList(string $volumeId, array $queryParameters = [])
     {
@@ -7893,8 +8317,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeActionsPostById(string $volumeId, $requestBody, array $queryParameters = [])
     {
@@ -7914,8 +8339,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeActionsGet(string $volumeId, int $actionId, array $queryParameters = [])
     {
@@ -7934,8 +8360,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshots|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshots|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeSnapshotsList(string $volumeId, array $queryParameters = [])
     {
@@ -7950,8 +8377,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsCreateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function volumeSnapshotsCreate(string $volumeId, \Jane\Generated\DigitalOcean\Model\V2VolumesVolumeIdSnapshotsPostBody $requestBody)
     {
@@ -7967,8 +8395,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcs|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllVpcs|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsList(array $queryParameters = [])
     {
@@ -7986,8 +8415,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsCreate(\Jane\Generated\DigitalOcean\Model\V2VpcsPostBody $requestBody)
     {
@@ -8007,6 +8437,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -8021,8 +8452,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsGet(string $vpcId)
     {
@@ -8038,8 +8470,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsPatch(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPatchBody $requestBody)
     {
@@ -8054,8 +8487,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsUpdate(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPutBody $requestBody)
     {
@@ -8082,8 +8516,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcMembers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcMembers|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsListMembers(string $vpcId, array $queryParameters = [])
     {
@@ -8102,8 +8537,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsListPeerings(string $vpcId, array $queryParameters = [])
     {
@@ -8119,8 +8555,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsCreatePeerings(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody $requestBody)
     {
@@ -8138,8 +8575,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchPeeringsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchPeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchPeeringsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcsPatchPeerings(string $vpcId, string $vpcPeeringId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsVpcPeeringIdPatchBody $requestBody)
     {
@@ -8156,8 +8594,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcPeeringsList(array $queryParameters = [])
     {
@@ -8173,8 +8612,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseProvisioningVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseProvisioningVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcPeeringsCreate(\Jane\Generated\DigitalOcean\Model\V2VpcPeeringsPostBody $requestBody)
     {
@@ -8188,8 +8628,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDeletingVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDeletingVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcPeeringsDelete(string $vpcPeeringId)
     {
@@ -8203,8 +8644,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcPeeringsGet(string $vpcPeeringId)
     {
@@ -8219,8 +8661,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcPeeringsPatch(string $vpcPeeringId, \Jane\Generated\DigitalOcean\Model\V2VpcPeeringsVpcPeeringIdPatchBody $requestBody)
     {
@@ -8242,8 +8685,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcnatgatewaysList(array $queryParameters = [])
     {
@@ -8258,8 +8702,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcnatgatewaysCreate(?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody = null)
     {
@@ -8275,6 +8720,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -8291,8 +8737,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcnatgatewaysGet(string $id)
     {
@@ -8309,8 +8756,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function vpcnatgatewaysUpdate(string $id, ?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate $requestBody = null)
     {
@@ -8326,8 +8774,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllChecks|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllChecks|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeListChecks(array $queryParameters = [])
     {
@@ -8341,8 +8790,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeCreateCheck(\Jane\Generated\DigitalOcean\Model\V2UptimeChecksPostBody $requestBody)
     {
@@ -8360,6 +8810,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -8374,8 +8825,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeGetCheck(string $checkId)
     {
@@ -8390,8 +8842,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeUpdateCheck(string $checkId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdPutBody $requestBody)
     {
@@ -8404,8 +8857,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckStateNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckStateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckStateInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheckState|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingCheckState|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeGetCheckState(string $checkId)
     {
@@ -8422,8 +8876,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllAlerts|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllAlerts|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeListAlerts(string $checkId, array $queryParameters = [])
     {
@@ -8439,8 +8894,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeCreateAlert(string $checkId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsPostBody $requestBody)
     {
@@ -8456,6 +8912,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -8471,8 +8928,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeGetAlert(string $checkId, string $alertId)
     {
@@ -8488,8 +8946,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function uptimeUpdateAlert(string $checkId, string $alertId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsAlertIdPutBody $requestBody)
     {
@@ -8506,8 +8965,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgents(array $queryParameters = [])
     {
@@ -8520,8 +8980,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateAgent(?\Jane\Generated\DigitalOcean\Model\ApiCreateAgentInputPublic $requestBody = null)
     {
@@ -8538,8 +8999,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgentApiKeys(string $agentUuid, array $queryParameters = [])
     {
@@ -8553,8 +9015,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateAgentApiKey(string $agentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyInputPublic $requestBody = null)
     {
@@ -8568,8 +9031,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteAgentApiKey(string $agentUuid, string $apiKeyUuid)
     {
@@ -8584,8 +9048,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAgentApiKey(string $agentUuid, string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyInputPublic $requestBody = null)
     {
@@ -8599,8 +9064,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiRegenerateAgentApiKey(string $agentUuid, string $apiKeyUuid)
     {
@@ -8614,8 +9080,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentFunctionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentFunctionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiAttachAgentFunction(string $agentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionInputPublic $requestBody = null)
     {
@@ -8629,8 +9096,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentFunctionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentFunctionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDetachAgentFunction(string $agentUuid, string $functionUuid)
     {
@@ -8645,8 +9113,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentFunctionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentFunctionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAgentFunction(string $agentUuid, string $functionUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionInputPublic $requestBody = null)
     {
@@ -8659,8 +9128,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBasesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBasesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiAttachKnowledgeBases(string $agentUuid)
     {
@@ -8674,8 +9144,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUnlinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDetachKnowledgeBase(string $agentUuid, string $knowledgeBaseUuid)
     {
@@ -8689,8 +9160,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiAttachKnowledgeBase(string $agentUuid, string $knowledgeBaseUuid)
     {
@@ -8704,8 +9176,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDetachAgent(string $parentAgentUuid, string $childAgentUuid)
     {
@@ -8720,8 +9193,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiLinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiAttachAgent(string $parentAgentUuid, string $childAgentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiLinkAgentInputPublic $requestBody = null)
     {
@@ -8736,8 +9210,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAttachedAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAttachedAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAttachedAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAttachedAgent(string $parentAgentUuid, string $childAgentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentInputPublic $requestBody = null)
     {
@@ -8750,8 +9225,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteAgent(string $uuid)
     {
@@ -8764,8 +9240,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetAgent(string $uuid)
     {
@@ -8779,8 +9256,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAgent(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentInputPublic $requestBody = null)
     {
@@ -8793,8 +9271,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentChildrenNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentChildrenTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentChildrenInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetChildrenOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetChildrenOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetAgentChildren(string $uuid)
     {
@@ -8808,8 +9287,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentDeploymentVisibilityNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentDeploymentVisibilityTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentDeploymentVisibilityInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisbilityOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisbilityOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAgentDeploymentVisibility(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisibilityInputPublic $requestBody = null)
     {
@@ -8826,8 +9306,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentUsageOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetAgentUsageOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetAgentUsage(string $uuid, array $queryParameters = [])
     {
@@ -8844,8 +9325,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentVersionsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentVersionsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgentVersions(string $uuid, array $queryParameters = [])
     {
@@ -8859,8 +9341,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRollbackToAgentVersionNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRollbackToAgentVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRollbackToAgentVersionInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiRollbackToAgentVersion(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionInputPublic $requestBody = null)
     {
@@ -8876,8 +9359,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAnthropicAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAnthropicAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAnthropicApiKeys(array $queryParameters = [])
     {
@@ -8890,8 +9374,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAnthropicApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAnthropicApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateAnthropicApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyInputPublic $requestBody = null)
     {
@@ -8904,8 +9389,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAnthropicApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAnthropicApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteAnthropicApiKey(string $apiKeyUuid)
     {
@@ -8918,8 +9404,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAnthropicApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAnthropicApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetAnthropicApiKey(string $apiKeyUuid)
     {
@@ -8933,8 +9420,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAnthropicApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAnthropicApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAnthropicApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyInputPublic $requestBody = null)
     {
@@ -8951,8 +9439,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByAnthropicKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentsByAnthropicKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgentsByAnthropicKey(string $uuid, array $queryParameters = [])
     {
@@ -8965,8 +9454,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateEvaluationDataset(?\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetInputPublic $requestBody = null)
     {
@@ -8979,8 +9469,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetFileUploadPresignedUrlsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetFileUploadPresignedUrlsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetFileUploadPresignedUrlsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateEvaluationDatasetFileUploadPresignedUrls(?\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsInputPublic $requestBody = null)
     {
@@ -8991,8 +9482,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationMetricsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationMetricsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationMetricsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListEvaluationMetricsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListEvaluationMetrics()
     {
@@ -9005,8 +9497,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRunEvaluationTestCaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRunEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRunEvaluationTestCaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiRunEvaluationTestCase(?\Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseInputPublic $requestBody = null)
     {
@@ -9019,8 +9512,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetEvaluationRun(string $evaluationRunUuid)
     {
@@ -9037,8 +9531,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetEvaluationRunResults(string $evaluationRunUuid, array $queryParameters = [])
     {
@@ -9052,8 +9547,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunPromptResultsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunPromptResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunPromptResultsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunPromptResultsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunPromptResultsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetEvaluationRunPromptResults(string $evaluationRunUuid, int $promptId)
     {
@@ -9064,8 +9560,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListEvaluationTestCases()
     {
@@ -9078,8 +9575,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationTestCaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationTestCaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateEvaluationTestCase(?\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseInputPublic $requestBody = null)
     {
@@ -9095,8 +9593,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationRunsByTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListEvaluationRunsByTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListEvaluationRunsByTestCase(string $evaluationTestCaseUuid, array $queryParameters = [])
     {
@@ -9112,8 +9611,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetEvaluationTestCase(string $testCaseUuid, array $queryParameters = [])
     {
@@ -9127,8 +9627,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateEvaluationTestCaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateEvaluationTestCaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateEvaluationTestCase(string $testCaseUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseInputPublic $requestBody = null)
     {
@@ -9144,8 +9645,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListIndexingJobs(array $queryParameters = [])
     {
@@ -9158,8 +9660,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateIndexingJobNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateIndexingJobInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateIndexingJob(?\Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobInputPublic $requestBody = null)
     {
@@ -9172,8 +9675,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobDataSourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobDataSourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobDataSourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListIndexingJobDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListIndexingJobDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListIndexingJobDataSources(string $indexingJobUuid)
     {
@@ -9186,8 +9690,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobDetailsSignedUrlNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobDetailsSignedUrlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobDetailsSignedUrlInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetIndexingJobDetailsSignedURLOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetIndexingJobDetailsSignedURLOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetIndexingJobDetailsSignedUrl(string $indexingJobUuid)
     {
@@ -9200,8 +9705,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetIndexingJob(string $uuid)
     {
@@ -9215,8 +9721,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCancelIndexingJobNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCancelIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCancelIndexingJobInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCancelIndexingJob(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobInputPublic $requestBody = null)
     {
@@ -9232,8 +9739,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListKnowledgeBases(array $queryParameters = [])
     {
@@ -9246,8 +9754,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateKnowledgeBase(?\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseInputPublic $requestBody = null)
     {
@@ -9260,8 +9769,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateDataSourceFileUploadPresignedUrlsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateDataSourceFileUploadPresignedUrlsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateDataSourceFileUploadPresignedUrlsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateDataSourceFileUploadPresignedUrls(?\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsInputPublic $requestBody = null)
     {
@@ -9278,8 +9788,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListKnowledgeBaseDataSources(string $knowledgeBaseUuid, array $queryParameters = [])
     {
@@ -9293,8 +9804,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseDataSourceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseDataSourceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseDataSourceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateKnowledgeBaseDataSource(string $knowledgeBaseUuid, ?\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceInputPublic $requestBody = null)
     {
@@ -9308,8 +9820,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseDataSourceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseDataSourceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseDataSourceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteKnowledgeBaseDataSource(string $knowledgeBaseUuid, string $dataSourceUuid)
     {
@@ -9322,8 +9835,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsByKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsByKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsByKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListIndexingJobsByKnowledgeBase(string $knowledgeBaseUuid)
     {
@@ -9336,8 +9850,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteKnowledgeBase(string $uuid)
     {
@@ -9350,8 +9865,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetKnowledgeBase(string $uuid)
     {
@@ -9365,8 +9881,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateKnowledgeBaseNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateKnowledgeBaseInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateKnowledgeBase(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseInputPublic $requestBody = null)
     {
@@ -9392,8 +9909,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListModels(array $queryParameters = [])
     {
@@ -9409,8 +9927,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListModelAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListModelApiKeys(array $queryParameters = [])
     {
@@ -9423,8 +9942,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateModelApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateModelApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateModelApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyInputPublic $requestBody = null)
     {
@@ -9437,8 +9957,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteModelApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteModelApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteModelApiKey(string $apiKeyUuid)
     {
@@ -9452,8 +9973,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateModelApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateModelApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateModelApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyInputPublic $requestBody = null)
     {
@@ -9466,8 +9988,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateModelApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateModelApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiRegenerateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiRegenerateModelApiKey(string $apiKeyUuid)
     {
@@ -9480,8 +10003,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOauth2DropboxTokensNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOauth2DropboxTokensTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOauth2DropboxTokensInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateOauth2DropboxTokens(?\Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensInput $requestBody = null)
     {
@@ -9497,8 +10021,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGenerateOauth2URLOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGenerateOauth2URLOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetOauth2Url(array $queryParameters = [])
     {
@@ -9514,8 +10039,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListOpenAIAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListOpenAIAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListOpenaiApiKeys(array $queryParameters = [])
     {
@@ -9528,8 +10054,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOpenaiApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOpenaiApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateOpenaiApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyInputPublic $requestBody = null)
     {
@@ -9542,8 +10069,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteOpenaiApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteOpenaiApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteOpenaiApiKey(string $apiKeyUuid)
     {
@@ -9556,8 +10084,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOpenaiApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOpenaiApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetOpenaiApiKey(string $apiKeyUuid)
     {
@@ -9571,8 +10100,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateOpenaiApiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateOpenaiApiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateOpenaiApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyInputPublic $requestBody = null)
     {
@@ -9589,8 +10119,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByOpenAIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentsByOpenAIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgentsByOpenaiKey(string $uuid, array $queryParameters = [])
     {
@@ -9606,8 +10137,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListRegionsOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListRegionsOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListDatacenterRegions(array $queryParameters = [])
     {
@@ -9620,8 +10152,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateScheduledIndexingNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateScheduledIndexingInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateScheduledIndexing(?\Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingInputPublic $requestBody = null)
     {
@@ -9634,8 +10167,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetScheduledIndexingNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetScheduledIndexingInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetScheduledIndexing(string $knowledgeBaseUuid)
     {
@@ -9648,8 +10182,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteScheduledIndexingNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteScheduledIndexingInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteScheduledIndexing(string $uuid)
     {
@@ -9660,8 +10195,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListWorkspaces()
     {
@@ -9674,8 +10210,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiCreateWorkspace(?\Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceInputPublic $requestBody = null)
     {
@@ -9688,8 +10225,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiDeleteWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiDeleteWorkspace(string $workspaceUuid)
     {
@@ -9702,8 +10240,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiGetWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiGetWorkspace(string $workspaceUuid)
     {
@@ -9717,8 +10256,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateWorkspace(string $workspaceUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceInputPublic $requestBody = null)
     {
@@ -9736,8 +10276,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListAgentsByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListAgentsByWorkspace(string $workspaceUuid, array $queryParameters = [])
     {
@@ -9751,8 +10292,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentsWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentsWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentsWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiUpdateAgentsWorkspace(string $workspaceUuid, ?\Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceInputPublic $requestBody = null)
     {
@@ -9765,8 +10307,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesByWorkspaceNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesByWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesByWorkspaceInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function genaiListEvaluationTestCasesByWorkspace(string $workspaceUuid)
     {

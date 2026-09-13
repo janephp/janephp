@@ -8,8 +8,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Cli
      * @param array{
      *    "limit"?: int,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Simple\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet[]
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet[]
      */
     public function listPets(array $queryParameters = [])
     {
@@ -17,8 +18,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Cli
     }
     /**
      * @param \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet $requestBody
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Simple\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
      */
     public function createPet(\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet $requestBody)
     {
@@ -26,8 +28,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Cli
     }
     /**
      * @param string $petId
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Simple\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
      */
     public function showPetById(string $petId)
     {

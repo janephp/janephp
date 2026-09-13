@@ -21,7 +21,7 @@ class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArra
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
+     * @return \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

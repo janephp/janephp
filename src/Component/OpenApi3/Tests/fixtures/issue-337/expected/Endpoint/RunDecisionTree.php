@@ -72,6 +72,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
      * @throws \CreditSafe\API\Exception\RunDecisionTreeUnauthorizedException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeForbiddenException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -119,6 +120,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

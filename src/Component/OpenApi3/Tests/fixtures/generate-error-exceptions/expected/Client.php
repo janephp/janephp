@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\User|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\Error
+     * @return \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\User|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\Error
      */
     public function getUser()
     {

@@ -42,6 +42,7 @@ class VolumeSnapshotsDeleteById extends \Jane\Generated\DigitalOcean\Runtime\Cli
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -67,6 +68,7 @@ class VolumeSnapshotsDeleteById extends \Jane\Generated\DigitalOcean\Runtime\Cli
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

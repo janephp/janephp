@@ -9,7 +9,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Cli
      *    "limit"?: int, //How many items to return at one time (max 100)
      * } $queryParameters
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
+     * @return \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
      */
     public function listPets(array $queryParameters = [])
     {
@@ -26,7 +26,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Cli
     /**
      * @param string $petId The id of the pet to retrieve
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
+     * @return \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
      */
     public function showPetById(string $petId)
     {

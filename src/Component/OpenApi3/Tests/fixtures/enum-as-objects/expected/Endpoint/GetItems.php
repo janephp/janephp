@@ -24,8 +24,9 @@ class GetItems extends \Jane\Component\OpenApi3\Tests\EnumAsObjects\Runtime\Clie
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\EnumAsObjects\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\EnumAsObjects\Model\Item
+     * @return \Jane\Component\OpenApi3\Tests\EnumAsObjects\Model\Item
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetItems extends \Jane\Component\OpenApi3\Tests\EnumAsObjects\Runtime\Clie
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\EnumAsObjects\Model\Item', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\EnumAsObjects\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

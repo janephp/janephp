@@ -34,8 +34,9 @@ class SecretCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\SecretCreateConflictException
      * @throws \Docker\Api\Exception\SecretCreateInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretCreateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\IdResponse
+     * @return \Docker\Api\Model\IdResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class SecretCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\SecretCreateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

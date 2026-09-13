@@ -40,6 +40,7 @@ class ExecStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      *
      * @throws \Docker\Api\Exception\ExecStartNotFoundException
      * @throws \Docker\Api\Exception\ExecStartConflictException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -56,6 +57,7 @@ class ExecStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         if (409 === $status) {
             throw new \Docker\Api\Exception\ExecStartConflictException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

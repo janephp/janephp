@@ -103,6 +103,7 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
      * @throws \CreditSafe\API\Exception\CompanySearchBadRequestException
      * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanySearchForbiddenException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -142,6 +143,7 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

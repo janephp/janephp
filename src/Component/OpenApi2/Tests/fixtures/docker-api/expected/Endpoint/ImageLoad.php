@@ -49,6 +49,7 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\ImageLoadInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -62,6 +63,7 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageLoadInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

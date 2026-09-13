@@ -48,8 +48,9 @@ class FindCertstoreTrustedCAChainCertById extends \Jane\Component\OpenApi3\Tests
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindCertstoreTrustedCAChainCertByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindCertstoreTrustedCAChainCertById extends \Jane\Component\OpenApi3\Tests
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

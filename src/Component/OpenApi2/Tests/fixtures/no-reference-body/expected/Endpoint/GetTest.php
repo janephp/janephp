@@ -27,13 +27,15 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Ru
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
+        throw new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

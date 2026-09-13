@@ -48,6 +48,7 @@ class AddGdprReport extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Run
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddGdprReportUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddGdprReport extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Run
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -34,8 +34,9 @@ class NetworkCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\NetworkCreateForbiddenException
      * @throws \Docker\Api\Exception\NetworkCreateNotFoundException
      * @throws \Docker\Api\Exception\NetworkCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\NetworksCreatePostResponse201
+     * @return \Docker\Api\Model\NetworksCreatePostResponse201
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class NetworkCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\NetworkCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

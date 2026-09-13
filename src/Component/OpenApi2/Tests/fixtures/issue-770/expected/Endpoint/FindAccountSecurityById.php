@@ -50,8 +50,9 @@ class FindAccountSecurityById extends \Jane\Component\OpenApi3\Tests\Expected\Is
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAccountSecurityByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +70,7 @@ class FindAccountSecurityById extends \Jane\Component\OpenApi3\Tests\Expected\Is
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

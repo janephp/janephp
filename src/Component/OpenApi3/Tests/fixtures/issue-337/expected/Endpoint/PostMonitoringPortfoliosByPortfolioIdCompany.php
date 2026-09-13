@@ -55,6 +55,7 @@ class PostMonitoringPortfoliosByPortfolioIdCompany extends \CreditSafe\API\Runti
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyUnauthorizedException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -102,6 +103,7 @@ class PostMonitoringPortfoliosByPortfolioIdCompany extends \CreditSafe\API\Runti
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -28,8 +28,9 @@ class DropletsListSupportedBackupPolicies extends \Jane\Generated\DigitalOcean\R
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -53,6 +54,7 @@ class DropletsListSupportedBackupPolicies extends \Jane\Generated\DigitalOcean\R
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

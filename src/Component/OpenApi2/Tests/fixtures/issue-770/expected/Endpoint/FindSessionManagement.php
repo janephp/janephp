@@ -45,8 +45,9 @@ class FindSessionManagement extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSessionManagementInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindSessionManagement extends \Jane\Component\OpenApi3\Tests\Expected\Issu
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -52,8 +52,9 @@ class FindRkszonesApgroupsByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApgroupsByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -71,6 +72,7 @@ class FindRkszonesApgroupsByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

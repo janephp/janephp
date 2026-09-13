@@ -40,6 +40,7 @@ class BusinessProcessCancel extends \PicturePark\API\Runtime\Client\BaseEndpoint
      * @throws \PicturePark\API\Exception\BusinessProcessCancelConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class BusinessProcessCancel extends \PicturePark\API\Runtime\Client\BaseEndpoint
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessCancelInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

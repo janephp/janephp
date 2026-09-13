@@ -50,8 +50,9 @@ class LoadBalancersList extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -72,6 +73,7 @@ class LoadBalancersList extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

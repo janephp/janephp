@@ -21,6 +21,7 @@ class TestTwo extends \Jane\Component\OpenApi3\Tests\Expected\Two\Runtime\Client
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\TestTwoNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\BadResponseException
      *
      * @return null
      */
@@ -34,6 +35,7 @@ class TestTwo extends \Jane\Component\OpenApi3\Tests\Expected\Two\Runtime\Client
         if (404 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\TestTwoNotFoundException($response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -47,6 +47,7 @@ class DatabasesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -72,6 +73,7 @@ class DatabasesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

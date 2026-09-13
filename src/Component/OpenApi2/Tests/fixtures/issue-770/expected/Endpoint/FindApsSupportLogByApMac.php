@@ -48,6 +48,7 @@ class FindApsSupportLogByApMac extends \Jane\Component\OpenApi3\Tests\Expected\I
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsSupportLogByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -72,6 +73,7 @@ class FindApsSupportLogByApMac extends \Jane\Component\OpenApi3\Tests\Expected\I
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

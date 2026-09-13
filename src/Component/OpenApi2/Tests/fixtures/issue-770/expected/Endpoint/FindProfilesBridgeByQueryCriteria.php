@@ -48,8 +48,9 @@ class FindProfilesBridgeByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesBridgeByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindProfilesBridgeByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

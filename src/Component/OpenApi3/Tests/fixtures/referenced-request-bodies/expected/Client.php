@@ -7,8 +7,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBo
     /**
      * @param string $parentId
      * @param string $childId
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
+     * @return \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
      */
     public function getParentsByParentIdChildChildId(string $parentId, string $childId)
     {
@@ -18,8 +19,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBo
      * @param string $parentId
      * @param string $childId
      * @param \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\ParentsParentIdChildChildIdPatchBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
+     * @return \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
      */
     public function patchParentsByParentIdChildChildId(string $parentId, string $childId, \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\ParentsParentIdChildChildIdPatchBody $requestBody)
     {

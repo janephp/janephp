@@ -47,8 +47,9 @@ class FindProfilesAuthAuthorizationList extends \Jane\Component\OpenApi3\Tests\E
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthorizationListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -66,6 +67,7 @@ class FindProfilesAuthAuthorizationList extends \Jane\Component\OpenApi3\Tests\E
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

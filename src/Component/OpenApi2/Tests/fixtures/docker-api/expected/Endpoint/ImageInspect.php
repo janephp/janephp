@@ -35,8 +35,9 @@ class ImageInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      *
      * @throws \Docker\Api\Exception\ImageInspectNotFoundException
      * @throws \Docker\Api\Exception\ImageInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Image
+     * @return \Docker\Api\Model\Image
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -51,6 +52,7 @@ class ImageInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

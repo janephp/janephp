@@ -48,6 +48,7 @@ class PartialUpdateSystemSyslogPrimaryServer extends \Jane\Component\OpenApi3\Te
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSystemSyslogPrimaryServerUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class PartialUpdateSystemSyslogPrimaryServer extends \Jane\Component\OpenApi3\Te
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

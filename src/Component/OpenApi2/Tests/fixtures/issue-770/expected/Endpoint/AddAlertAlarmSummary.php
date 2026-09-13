@@ -48,8 +48,9 @@ class AddAlertAlarmSummary extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAlertAlarmSummaryUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class AddAlertAlarmSummary extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

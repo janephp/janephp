@@ -47,8 +47,9 @@ class ContainerPrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\ContainerPruneInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ContainersPrunePostResponse200
+     * @return \Docker\Api\Model\ContainersPrunePostResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -60,6 +61,7 @@ class ContainerPrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerPruneInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

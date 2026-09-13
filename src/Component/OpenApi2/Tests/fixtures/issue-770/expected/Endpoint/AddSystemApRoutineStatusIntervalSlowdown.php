@@ -46,6 +46,7 @@ class AddSystemApRoutineStatusIntervalSlowdown extends \Jane\Component\OpenApi3\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSlowdownUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +69,7 @@ class AddSystemApRoutineStatusIntervalSlowdown extends \Jane\Component\OpenApi3\
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

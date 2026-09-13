@@ -48,8 +48,9 @@ class FindServicesBonjourFencingPolicyByQueryCriteria extends \Jane\Component\Op
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindServicesBonjourFencingPolicyByQueryCriteria extends \Jane\Component\Op
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

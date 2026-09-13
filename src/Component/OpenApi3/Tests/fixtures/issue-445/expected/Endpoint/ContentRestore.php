@@ -59,6 +59,7 @@ class ContentRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
      * @throws \PicturePark\API\Exception\ContentRestoreConflictException
      * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -90,6 +91,7 @@ class ContentRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentRestoreInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

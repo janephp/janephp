@@ -49,6 +49,7 @@ class AddApsApPacketCaptureDownloadByApMac extends \Jane\Component\OpenApi3\Test
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureDownloadByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class AddApsApPacketCaptureDownloadByApMac extends \Jane\Component\OpenApi3\Test
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

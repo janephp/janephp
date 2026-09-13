@@ -31,8 +31,9 @@ class MetadataGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
      * @throws \PicturePark\API\Exception\MetadataGetStatusConflictException
      * @throws \PicturePark\API\Exception\MetadataGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\MetadataGetStatusInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\MetadataStatus
+     * @return \PicturePark\API\Model\MetadataStatus
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class MetadataGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\MetadataGetStatusInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

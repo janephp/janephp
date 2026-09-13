@@ -53,6 +53,7 @@ class GetFilteredPortfolioEventRules extends \CreditSafe\API\Runtime\Client\Base
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesUnauthorizedException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -100,6 +101,7 @@ class GetFilteredPortfolioEventRules extends \CreditSafe\API\Runtime\Client\Base
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

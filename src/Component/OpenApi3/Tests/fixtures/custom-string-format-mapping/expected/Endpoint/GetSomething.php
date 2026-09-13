@@ -24,8 +24,9 @@ class GetSomething extends \Jane\Component\OpenApi3\Tests\Expected\CustomStringF
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Model\Something
+     * @return \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Model\Something
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetSomething extends \Jane\Component\OpenApi3\Tests\Expected\CustomStringF
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Model\Something', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Model\Something
+     * @return \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Model\Something
      */
     public function getSomething()
     {

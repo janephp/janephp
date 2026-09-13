@@ -50,6 +50,7 @@ class PortoflioRiskSummary extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryUnauthorizedException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryForbiddenException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -97,6 +98,7 @@ class PortoflioRiskSummary extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

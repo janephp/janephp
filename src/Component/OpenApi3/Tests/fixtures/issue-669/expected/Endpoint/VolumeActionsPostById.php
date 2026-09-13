@@ -93,8 +93,9 @@ class VolumeActionsPostById extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -118,6 +119,7 @@ class VolumeActionsPostById extends \Jane\Generated\DigitalOcean\Runtime\Client\
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

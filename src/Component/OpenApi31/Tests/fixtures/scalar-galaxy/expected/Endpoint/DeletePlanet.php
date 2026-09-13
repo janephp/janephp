@@ -40,6 +40,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\DeletePlanetNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
      * @return null
      */
@@ -53,6 +54,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\DeletePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -44,8 +44,9 @@ class SchemaFieldExists extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
      * @throws \PicturePark\API\Exception\SchemaFieldExistsConflictException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\FieldExistsResponse
+     * @return \PicturePark\API\Model\FieldExistsResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -75,6 +76,7 @@ class SchemaFieldExists extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaFieldExistsInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

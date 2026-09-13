@@ -40,8 +40,9 @@ class UptimeGetAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class UptimeGetAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

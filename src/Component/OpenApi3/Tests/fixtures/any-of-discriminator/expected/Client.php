@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\TestAnyOfWithDiscriminatorBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar
      */
     public function testAnyOfWithDiscriminator()
     {

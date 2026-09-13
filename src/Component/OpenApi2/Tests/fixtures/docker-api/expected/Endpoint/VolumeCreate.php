@@ -32,8 +32,9 @@ class VolumeCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\VolumeCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Volume
+     * @return \Docker\Api\Model\Volume
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -45,6 +46,7 @@ class VolumeCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\VolumeCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

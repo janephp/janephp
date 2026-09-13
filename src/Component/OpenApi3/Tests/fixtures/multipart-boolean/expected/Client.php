@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Run
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function postFileDeposit(?\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody = null)
     {

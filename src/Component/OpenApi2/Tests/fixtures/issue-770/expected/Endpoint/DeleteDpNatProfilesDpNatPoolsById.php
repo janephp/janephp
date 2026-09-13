@@ -50,6 +50,7 @@ class DeleteDpNatProfilesDpNatPoolsById extends \Jane\Component\OpenApi3\Tests\E
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -69,6 +70,7 @@ class DeleteDpNatProfilesDpNatPoolsById extends \Jane\Component\OpenApi3\Tests\E
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

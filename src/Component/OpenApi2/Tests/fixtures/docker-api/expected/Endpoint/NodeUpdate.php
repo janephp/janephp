@@ -52,6 +52,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      * @throws \Docker\Api\Exception\NodeUpdateNotFoundException
      * @throws \Docker\Api\Exception\NodeUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -74,6 +75,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (503 === $status) {
             throw new \Docker\Api\Exception\NodeUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

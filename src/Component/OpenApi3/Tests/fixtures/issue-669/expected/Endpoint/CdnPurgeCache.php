@@ -51,6 +51,7 @@ class CdnPurgeCache extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -76,6 +77,7 @@ class CdnPurgeCache extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

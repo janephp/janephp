@@ -35,6 +35,7 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
      *
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException
+     * @throws \Gounlaf\JanephpBug\Exception\BadResponseException
      *
      * @return null
      */
@@ -51,6 +52,7 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
         if (404 === $status) {
             throw new \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException($response);
         }
+        throw new \Gounlaf\JanephpBug\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

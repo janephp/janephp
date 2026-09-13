@@ -25,8 +25,9 @@ class SystemVersion extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\SystemVersionInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SystemVersion
+     * @return \Docker\Api\Model\SystemVersion
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class SystemVersion extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\SystemVersionInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

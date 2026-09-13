@@ -50,8 +50,9 @@ class FindRkszonesAaaHttp2ByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaHttp2ByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +70,7 @@ class FindRkszonesAaaHttp2ByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

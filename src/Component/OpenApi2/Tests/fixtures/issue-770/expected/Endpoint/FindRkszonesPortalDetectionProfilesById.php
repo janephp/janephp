@@ -51,8 +51,9 @@ class FindRkszonesPortalDetectionProfilesById extends \Jane\Component\OpenApi3\T
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesPortalDetectionProfilesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindRkszonesPortalDetectionProfilesById extends \Jane\Component\OpenApi3\T
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

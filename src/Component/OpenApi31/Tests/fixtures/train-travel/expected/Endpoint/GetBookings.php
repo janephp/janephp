@@ -56,8 +56,9 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\R
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsForbiddenException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -81,6 +82,7 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\R
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

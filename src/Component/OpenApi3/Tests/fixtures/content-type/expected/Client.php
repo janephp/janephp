@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime
 {
     /**
      * @param string $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ContentType\Exception\BadResponseException
      *
      * @return null
      */
@@ -14,6 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ContentType\Endpoint\BodyParameterTriggersContentTypeBeingSet($requestBody));
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ContentType\Exception\BadResponseException
      *
      * @return null
      */

@@ -50,6 +50,7 @@ class LoadBalancersRemoveForwardingRules extends \Jane\Generated\DigitalOcean\Ru
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -75,6 +76,7 @@ class LoadBalancersRemoveForwardingRules extends \Jane\Generated\DigitalOcean\Ru
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

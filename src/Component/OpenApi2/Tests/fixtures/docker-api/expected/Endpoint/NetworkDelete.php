@@ -35,6 +35,7 @@ class NetworkDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\NetworkDeleteForbiddenException
      * @throws \Docker\Api\Exception\NetworkDeleteNotFoundException
      * @throws \Docker\Api\Exception\NetworkDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -54,6 +55,7 @@ class NetworkDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\NetworkDeleteInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

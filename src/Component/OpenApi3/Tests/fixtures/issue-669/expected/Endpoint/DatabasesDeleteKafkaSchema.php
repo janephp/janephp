@@ -42,6 +42,7 @@ class DatabasesDeleteKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Cl
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null
      */
@@ -64,6 +65,7 @@ class DatabasesDeleteKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Cl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

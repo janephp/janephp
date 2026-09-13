@@ -24,8 +24,9 @@ class GetMessage extends \Jane\Component\OpenApi31\Tests\Expected\Issue869\Runti
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue869\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue869\Model\Message
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue869\Model\Message
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetMessage extends \Jane\Component\OpenApi31\Tests\Expected\Issue869\Runti
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue869\Model\Message', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\Issue869\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -67,8 +67,9 @@ class ContentCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @throws \PicturePark\API\Exception\ContentCreateConflictException
      * @throws \PicturePark\API\Exception\ContentCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail
+     * @return \PicturePark\API\Model\ContentDetail
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -98,6 +99,7 @@ class ContentCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentCreateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

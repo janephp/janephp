@@ -8,6 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\Cl
      * @param array{
      *    "testBoolean"?: bool,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue787\Exception\BadResponseException
      *
      * @return null
      */
@@ -17,6 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\Cl
     }
     /**
      * @param mixed $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue787\Exception\BadResponseException
      *
      * @return null
      */

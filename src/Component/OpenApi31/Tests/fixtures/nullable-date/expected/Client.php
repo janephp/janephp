@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event
+     * @return \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event
      */
     public function getEvents()
     {

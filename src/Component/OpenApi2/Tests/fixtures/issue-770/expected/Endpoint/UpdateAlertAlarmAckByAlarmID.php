@@ -49,6 +49,7 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

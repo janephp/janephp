@@ -35,8 +35,9 @@ class ImageHistory extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      *
      * @throws \Docker\Api\Exception\ImageHistoryNotFoundException
      * @throws \Docker\Api\Exception\ImageHistoryInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\ImagesNameHistoryGetResponse200Item[]
+     * @return \Docker\Api\Model\ImagesNameHistoryGetResponse200Item[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -51,6 +52,7 @@ class ImageHistory extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageHistoryInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

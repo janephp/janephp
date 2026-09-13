@@ -52,6 +52,7 @@ class ContainerArchiveInfo extends \Docker\Api\Runtime\Client\BaseEndpoint imple
      * @throws \Docker\Api\Exception\ContainerArchiveInfoBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveInfoNotFoundException
      * @throws \Docker\Api\Exception\ContainerArchiveInfoInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class ContainerArchiveInfo extends \Docker\Api\Runtime\Client\BaseEndpoint imple
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerArchiveInfoInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

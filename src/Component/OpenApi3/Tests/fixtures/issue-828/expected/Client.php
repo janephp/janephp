@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue828\Runtime\Cl
 {
     /**
      * @param array[] $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue828\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testSimple(array $requestBody)
     {
@@ -15,8 +16,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue828\Runtime\Cl
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue828\Model\Bar[] $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue828\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testSimpleClassArray(?array $requestBody = null)
     {

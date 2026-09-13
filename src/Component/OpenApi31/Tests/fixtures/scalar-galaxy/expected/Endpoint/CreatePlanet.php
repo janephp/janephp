@@ -46,8 +46,9 @@ class CreatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreatePlanetBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreatePlanetForbiddenException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class CreatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
         if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreatePlanetForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

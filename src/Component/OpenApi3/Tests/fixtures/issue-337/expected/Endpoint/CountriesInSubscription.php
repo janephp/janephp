@@ -45,8 +45,9 @@ class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoin
      *
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\AccessCountriesResponse
+     * @return \CreditSafe\API\Model\AccessCountriesResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -71,6 +72,7 @@ class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoin
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

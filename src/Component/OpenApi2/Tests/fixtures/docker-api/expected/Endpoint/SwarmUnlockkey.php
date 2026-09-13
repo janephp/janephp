@@ -26,8 +26,9 @@ class SwarmUnlockkey extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      *
      * @throws \Docker\Api\Exception\SwarmUnlockkeyInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockkeyServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\SwarmUnlockkeyGetResponse200
+     * @return \Docker\Api\Model\SwarmUnlockkeyGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -42,6 +43,7 @@ class SwarmUnlockkey extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         if (503 === $status) {
             throw new \Docker\Api\Exception\SwarmUnlockkeyServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

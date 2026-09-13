@@ -13,8 +13,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessGetConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function businessProcessGet(string $id)
     {
@@ -29,8 +30,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessCreateConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function businessProcessCreate(\PicturePark\API\Model\BusinessProcessCreateRequest $requestBody)
     {
@@ -47,8 +49,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function businessProcessChangeState(string $id, \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody)
     {
@@ -65,6 +68,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -82,6 +86,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessCancelConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -103,8 +108,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessWaitForStateResult
+     * @return \PicturePark\API\Model\BusinessProcessWaitForStateResult
      */
     public function businessProcessWaitForStates(string $id, array $queryParameters = [])
     {
@@ -124,8 +130,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
+     * @return \PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
      */
     public function businessProcessWaitForLifeCycles(string $id, array $queryParameters = [])
     {
@@ -150,8 +157,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
+     * @return \PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
      */
     public function businessProcessWaitForCompletion(string $id, array $queryParameters = [])
     {
@@ -167,8 +175,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessDetails
+     * @return \PicturePark\API\Model\BusinessProcessDetails
      */
     public function businessProcessGetDetails(string $id)
     {
@@ -184,8 +193,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessSearchConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessSearchResult
+     * @return \PicturePark\API\Model\BusinessProcessSearchResult
      */
     public function businessProcessSearch(\PicturePark\API\Model\BusinessProcessSearchRequest $requestBody)
     {
@@ -199,8 +209,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationConflictException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessRuleConfiguration
+     * @return \PicturePark\API\Model\BusinessRuleConfiguration
      */
     public function businessRuleGetConfiguration()
     {
@@ -215,8 +226,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationConflictException
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function businessRuleUpdateConfiguration(\PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest $requestBody)
     {
@@ -231,8 +243,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesConflictException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessRuleTraceLogSearchResult
+     * @return \PicturePark\API\Model\BusinessRuleTraceLogSearchResult
      */
     public function businessRuleSearchTraces(\PicturePark\API\Model\BusinessRuleTraceLogSearchRequest $requestBody)
     {
@@ -246,8 +259,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelGetAllConflictException
      * @throws \PicturePark\API\Exception\ChannelGetAllTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelGetAllInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Channel[]
+     * @return \PicturePark\API\Model\Channel[]
      */
     public function channelGetAll()
     {
@@ -263,8 +277,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelCreateConflictException
      * @throws \PicturePark\API\Exception\ChannelCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Channel
+     * @return \PicturePark\API\Model\Channel
      */
     public function channelCreate(\PicturePark\API\Model\ChannelCreateRequest $requestBody)
     {
@@ -280,6 +295,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelDeleteConflictException
      * @throws \PicturePark\API\Exception\ChannelDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -297,8 +313,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelGetConflictException
      * @throws \PicturePark\API\Exception\ChannelGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Channel
+     * @return \PicturePark\API\Model\Channel
      */
     public function channelGet(string $id)
     {
@@ -315,8 +332,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelUpdateConflictException
      * @throws \PicturePark\API\Exception\ChannelUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Channel
+     * @return \PicturePark\API\Model\Channel
      */
     public function channelUpdate(string $id, \PicturePark\API\Model\ChannelUpdateRequest $requestBody)
     {
@@ -332,6 +350,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -349,8 +368,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
+     * @return \PicturePark\API\Model\ContentPermissionSetDetail
      */
     public function contentPermissionSetGet(string $id)
     {
@@ -367,8 +387,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
+     * @return \PicturePark\API\Model\ContentPermissionSetDetail
      */
     public function contentPermissionSetUpdate(string $id, \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody)
     {
@@ -386,8 +407,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail[]
+     * @return \PicturePark\API\Model\ContentPermissionSetDetail[]
      */
     public function contentPermissionSetGetMany(array $queryParameters = [])
     {
@@ -403,8 +425,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
+     * @return \PicturePark\API\Model\ContentPermissionSetDetail
      */
     public function contentPermissionSetCreate(\PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody)
     {
@@ -421,6 +444,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -438,8 +462,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function contentPermissionSetGetPermissions(string $id)
     {
@@ -455,8 +480,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function contentPermissionSetCreateMany(\PicturePark\API\Model\ContentPermissionSetCreateManyRequest $requestBody)
     {
@@ -472,8 +498,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function contentPermissionSetUpdateMany(\PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody)
     {
@@ -489,8 +516,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function contentPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {
@@ -506,6 +534,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -525,8 +554,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]
+     * @return \PicturePark\API\Model\PermissionSetUserPermissionRights[]
      */
     public function contentPermissionSetGetPermissionsMany(array $queryParameters = [])
     {
@@ -542,8 +572,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\PermissionSetSearchResult
+     * @return \PicturePark\API\Model\PermissionSetSearchResult
      */
     public function contentPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {
@@ -566,6 +597,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDeleteConflictException
      * @throws \PicturePark\API\Exception\ContentDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -586,8 +618,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetConflictException
      * @throws \PicturePark\API\Exception\ContentGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail
+     * @return \PicturePark\API\Model\ContentDetail
      */
     public function contentGet(string $id, array $queryParameters = [])
     {
@@ -613,8 +646,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
@@ -637,8 +671,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = [], array $accept = [])
     {
@@ -658,8 +693,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetManyConflictException
      * @throws \PicturePark\API\Exception\ContentGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail[]
+     * @return \PicturePark\API\Model\ContentDetail[]
      */
     public function contentGetMany(array $queryParameters)
     {
@@ -683,8 +719,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentCreateConflictException
      * @throws \PicturePark\API\Exception\ContentCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail
+     * @return \PicturePark\API\Model\ContentDetail
      */
     public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = [])
     {
@@ -712,8 +749,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataConflictException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail
+     * @return \PicturePark\API\Model\ContentDetail
      */
     public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [])
     {
@@ -737,8 +775,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsConflictException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentDetail
+     * @return \PicturePark\API\Model\ContentDetail
      */
     public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [])
     {
@@ -761,6 +800,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentRestoreConflictException
      * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -785,6 +825,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipConflictException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -804,8 +845,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdateFileConflictException
      * @throws \PicturePark\API\Exception\ContentUpdateFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdateFileInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentUpdateFile(string $id, \PicturePark\API\Model\ContentFileUpdateRequest $requestBody)
     {
@@ -822,8 +864,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetReferencesConflictException
      * @throws \PicturePark\API\Exception\ContentGetReferencesTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetReferencesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentReferencesResult
+     * @return \PicturePark\API\Model\ContentReferencesResult
      */
     public function contentGetReferences(string $id, \PicturePark\API\Model\ContentReferencesRequest $requestBody)
     {
@@ -839,8 +882,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetOutputsConflictException
      * @throws \PicturePark\API\Exception\ContentGetOutputsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetOutputsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputResolveResult[]
+     * @return \PicturePark\API\Model\OutputResolveResult[]
      */
     public function contentGetOutputs(string $id)
     {
@@ -856,8 +900,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkConflictException
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentCreateDownloadLink(\PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody)
     {
@@ -872,8 +917,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkConflictException
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DownloadLink
+     * @return \PicturePark\API\Model\DownloadLink
      */
     public function contentGetDownloadLink(string $token)
     {
@@ -890,8 +936,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentCreateManyConflictException
      * @throws \PicturePark\API\Exception\ContentCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentCreateMany(\PicturePark\API\Model\ContentCreateManyRequest $requestBody)
     {
@@ -909,8 +956,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyConflictException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentUpdateMetadataMany(\PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody)
     {
@@ -927,8 +975,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyConflictException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentUpdatePermissionsMany(\PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody)
     {
@@ -945,8 +994,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyConflictException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentTransferOwnershipMany(\PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody)
     {
@@ -963,8 +1013,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDeleteManyConflictException
      * @throws \PicturePark\API\Exception\ContentDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentDeleteMany(\PicturePark\API\Model\ContentDeleteManyRequest $requestBody)
     {
@@ -982,8 +1033,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterConflictException
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentDeleteManyByFilter(\PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody)
     {
@@ -1000,8 +1052,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentRestoreManyConflictException
      * @throws \PicturePark\API\Exception\ContentRestoreManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentRestoreManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentRestoreMany(\PicturePark\API\Model\ContentRestoreManyRequest $requestBody)
     {
@@ -1017,8 +1070,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyConflictException
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentReferencesResult
+     * @return \PicturePark\API\Model\ContentReferencesResult
      */
     public function contentGetReferencesMany(\PicturePark\API\Model\ContentManyReferencesRequest $requestBody)
     {
@@ -1035,8 +1089,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyConflictException
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputResolveResult[]
+     * @return \PicturePark\API\Model\OutputResolveResult[]
      */
     public function contentGetOutputsMany(\PicturePark\API\Model\OutputResolveManyRequest $requestBody)
     {
@@ -1055,8 +1110,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsConflictException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentBatchUpdateFieldsByIds(\PicturePark\API\Model\ContentFieldsBatchUpdateRequest $requestBody)
     {
@@ -1074,8 +1130,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterConflictException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function contentBatchUpdateFieldsByFilter(\PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody)
     {
@@ -1091,8 +1148,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentSearchConflictException
      * @throws \PicturePark\API\Exception\ContentSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ContentSearchResult
+     * @return \PicturePark\API\Model\ContentSearchResult
      */
     public function contentSearch(\PicturePark\API\Model\ContentSearchRequest $requestBody)
     {
@@ -1108,8 +1166,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelConflictException
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     public function contentAggregateOnChannel(\PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody)
     {
@@ -1125,8 +1184,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentAggregateConflictException
      * @throws \PicturePark\API\Exception\ContentAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentAggregateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     public function contentAggregate(\PicturePark\API\Model\ContentAggregationRequest $requestBody)
     {
@@ -1140,8 +1200,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusConflictException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DisplayValueStatus
+     * @return \PicturePark\API\Model\DisplayValueStatus
      */
     public function displayValueGetStatus()
     {
@@ -1155,8 +1216,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DisplayValueRerenderConflictException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function displayValueRerender()
     {
@@ -1173,8 +1235,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentConflictException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistory
+     * @return \PicturePark\API\Model\DocumentHistory
      */
     public function documentHistoryGetCurrent(string $documentType, string $documentId)
     {
@@ -1192,8 +1255,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionConflictException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistory
+     * @return \PicturePark\API\Model\DocumentHistory
      */
     public function documentHistoryGetVersion(string $documentType, string $documentId, int $documentVersion)
     {
@@ -1213,8 +1277,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentConflictException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistoryDifference
+     * @return \PicturePark\API\Model\DocumentHistoryDifference
      */
     public function documentHistoryCompareWithCurrent(string $documentType, string $documentId, array $queryParameters = [])
     {
@@ -1235,8 +1300,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionConflictException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistoryDifference
+     * @return \PicturePark\API\Model\DocumentHistoryDifference
      */
     public function documentHistoryCompareWithVersion(string $documentType, string $documentId, int $documentVersion, array $queryParameters = [])
     {
@@ -1252,8 +1318,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistorySearchConflictException
      * @throws \PicturePark\API\Exception\DocumentHistorySearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistorySearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\DocumentHistorySearchResult
+     * @return \PicturePark\API\Model\DocumentHistorySearchResult
      */
     public function documentHistorySearch(\PicturePark\API\Model\DocumentHistorySearchRequest $requestBody)
     {
@@ -1267,8 +1334,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IdentityProvider[]
+     * @return \PicturePark\API\Model\IdentityProvider[]
      */
     public function identityProviderGetAll()
     {
@@ -1282,8 +1350,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IdentityProviderBasicInfo[]
+     * @return \PicturePark\API\Model\IdentityProviderBasicInfo[]
      */
     public function identityProviderGetAllBasicInfos()
     {
@@ -1298,8 +1367,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IdentityProvider
+     * @return \PicturePark\API\Model\IdentityProvider
      */
     public function identityProviderGet(string $id)
     {
@@ -1316,8 +1386,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IdentityProvider
+     * @return \PicturePark\API\Model\IdentityProvider
      */
     public function identityProviderUpdate(string $id, \PicturePark\API\Model\IdentityProviderEditable $requestBody)
     {
@@ -1331,32 +1402,36 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function identityProviderGetSynchronizableAttributes()
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetSynchronizableAttributes());
     }
     /**
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\VersionInfo
+     * @return \PicturePark\API\Model\VersionInfo
      */
     public function infoGetVersion()
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetVersion());
     }
     /**
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\CustomerInfo
+     * @return \PicturePark\API\Model\CustomerInfo
      */
     public function infoGetInfo()
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetInfo());
     }
     /**
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SystemStatus
+     * @return \PicturePark\API\Model\SystemStatus
      */
     public function infoGetStatus()
     {
@@ -1372,6 +1447,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\JsonSchemaGetConflictException
      * @throws \PicturePark\API\Exception\JsonSchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\JsonSchemaGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1396,6 +1472,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemDeleteConflictException
      * @throws \PicturePark\API\Exception\ListItemDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1416,8 +1493,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetConflictException
      * @throws \PicturePark\API\Exception\ListItemGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemDetail
+     * @return \PicturePark\API\Model\ListItemDetail
      */
     public function listItemGet(string $id, array $queryParameters = [])
     {
@@ -1442,8 +1520,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemUpdateConflictException
      * @throws \PicturePark\API\Exception\ListItemUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemDetail
+     * @return \PicturePark\API\Model\ListItemDetail
      */
     public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [])
     {
@@ -1466,6 +1545,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemRestoreConflictException
      * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -1484,8 +1564,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetReferencesConflictException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemReferencesResult
+     * @return \PicturePark\API\Model\ListItemReferencesResult
      */
     public function listItemGetReferences(string $id, \PicturePark\API\Model\ListItemReferencesRequest $requestBody)
     {
@@ -1505,8 +1586,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetManyConflictException
      * @throws \PicturePark\API\Exception\ListItemGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemDetail[]
+     * @return \PicturePark\API\Model\ListItemDetail[]
      */
     public function listItemGetMany(array $queryParameters = [])
     {
@@ -1530,8 +1612,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemCreateConflictException
      * @throws \PicturePark\API\Exception\ListItemCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemDetail
+     * @return \PicturePark\API\Model\ListItemDetail
      */
     public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [])
     {
@@ -1547,8 +1630,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemCreateManyConflictException
      * @throws \PicturePark\API\Exception\ListItemCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemCreateMany(\PicturePark\API\Model\ListItemCreateManyRequest $requestBody)
     {
@@ -1564,8 +1648,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemUpdateManyConflictException
      * @throws \PicturePark\API\Exception\ListItemUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemUpdateMany(\PicturePark\API\Model\ListItemUpdateManyRequest $requestBody)
     {
@@ -1582,8 +1667,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemDeleteManyConflictException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemDeleteMany(\PicturePark\API\Model\ListItemDeleteManyRequest $requestBody)
     {
@@ -1601,8 +1687,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterConflictException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemDeleteManyByFilter(\PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody)
     {
@@ -1619,8 +1706,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemRestoreManyConflictException
      * @throws \PicturePark\API\Exception\ListItemRestoreManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemRestoreManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemRestoreMany(\PicturePark\API\Model\ListItemRestoreManyRequest $requestBody)
     {
@@ -1636,8 +1724,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyConflictException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemReferencesResult
+     * @return \PicturePark\API\Model\ListItemReferencesResult
      */
     public function listItemGetReferencesMany(\PicturePark\API\Model\ListItemManyReferencesRequest $requestBody)
     {
@@ -1655,8 +1744,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsConflictException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemBatchUpdateFieldsByIds(\PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody)
     {
@@ -1674,8 +1764,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterConflictException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function listItemBatchUpdateFieldsByFilter(\PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest $requestBody)
     {
@@ -1691,8 +1782,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemSearchConflictException
      * @throws \PicturePark\API\Exception\ListItemSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ListItemSearchResult
+     * @return \PicturePark\API\Model\ListItemSearchResult
      */
     public function listItemSearch(\PicturePark\API\Model\ListItemSearchRequest $requestBody)
     {
@@ -1708,8 +1800,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemAggregateConflictException
      * @throws \PicturePark\API\Exception\ListItemAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemAggregateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     public function listItemAggregate(\PicturePark\API\Model\ListItemAggregationRequest $requestBody)
     {
@@ -1725,8 +1818,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\LiveStreamSearchConflictException
      * @throws \PicturePark\API\Exception\LiveStreamSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\LiveStreamSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\LiveStreamSearchResult
+     * @return \PicturePark\API\Model\LiveStreamSearchResult
      */
     public function liveStreamSearch(\PicturePark\API\Model\LiveStreamSearchRequest $requestBody)
     {
@@ -1740,8 +1834,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\MetadataGetStatusConflictException
      * @throws \PicturePark\API\Exception\MetadataGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\MetadataGetStatusInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\MetadataStatus
+     * @return \PicturePark\API\Model\MetadataStatus
      */
     public function metadataGetStatus()
     {
@@ -1755,8 +1850,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedConflictException
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedTooManyRequestsException
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function metadataUpdateOutdated()
     {
@@ -1773,8 +1869,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsConflictException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatSetDownloadFileNamePatterns(string $id, \stdClass $requestBody)
     {
@@ -1790,8 +1887,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatSetDownloadFileNamePatternsMany(\PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody)
     {
@@ -1809,8 +1907,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateConflictException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatSetXmpWritebackState(string $id, \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody)
     {
@@ -1827,8 +1926,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2ConflictException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2TooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2InternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatSetXmpWritebackState2(\PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody)
     {
@@ -1846,8 +1946,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewInternalServerErrorException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = [])
     {
@@ -1865,8 +1966,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatGetManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputFormatDetail[]
+     * @return \PicturePark\API\Model\OutputFormatDetail[]
      */
     public function outputFormatGetMany(array $queryParameters = [])
     {
@@ -1882,8 +1984,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatCreateConflictException
      * @throws \PicturePark\API\Exception\OutputFormatCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatCreate(\PicturePark\API\Model\OutputFormat $requestBody)
     {
@@ -1899,8 +2002,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatDeleteConflictException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatDelete(string $id)
     {
@@ -1916,8 +2020,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatGetConflictException
      * @throws \PicturePark\API\Exception\OutputFormatGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputFormatDetail
+     * @return \PicturePark\API\Model\OutputFormatDetail
      */
     public function outputFormatGet(string $id)
     {
@@ -1934,8 +2039,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatUpdateConflictException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatUpdate(string $id, \PicturePark\API\Model\OutputFormatEditable $requestBody)
     {
@@ -1951,8 +2057,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatCreateMany(\PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody)
     {
@@ -1968,8 +2075,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatUpdateMany(\PicturePark\API\Model\OutputFormatUpdateManyRequest $requestBody)
     {
@@ -1985,8 +2093,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyConflictException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputFormatDeleteMany(\PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody)
     {
@@ -2002,8 +2111,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputGetConflictException
      * @throws \PicturePark\API\Exception\OutputGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputDetail
+     * @return \PicturePark\API\Model\OutputDetail
      */
     public function outputGet(string $id)
     {
@@ -2019,8 +2129,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputSearchConflictException
      * @throws \PicturePark\API\Exception\OutputSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputSearchResult
+     * @return \PicturePark\API\Model\OutputSearchResult
      */
     public function outputSearch(\PicturePark\API\Model\OutputSearchRequest $requestBody)
     {
@@ -2038,8 +2149,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsConflictException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function outputResetRetryAttempts(\PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody)
     {
@@ -2053,8 +2165,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileGetConflictException
      * @throws \PicturePark\API\Exception\ProfileGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserProfile
+     * @return \PicturePark\API\Model\UserProfile
      */
     public function profileGet()
     {
@@ -2070,8 +2183,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileUpdateConflictException
      * @throws \PicturePark\API\Exception\ProfileUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserProfile
+     * @return \PicturePark\API\Model\UserProfile
      */
     public function profileUpdate(\PicturePark\API\Model\UserProfileUpdateRequest $requestBody)
     {
@@ -2085,6 +2199,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionConflictException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2102,6 +2217,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2119,8 +2235,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
+     * @return \PicturePark\API\Model\SchemaPermissionSetDetail
      */
     public function schemaPermissionSetGet(string $id)
     {
@@ -2137,8 +2254,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
+     * @return \PicturePark\API\Model\SchemaPermissionSetDetail
      */
     public function schemaPermissionSetUpdate(string $id, \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody)
     {
@@ -2156,8 +2274,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail[]
+     * @return \PicturePark\API\Model\SchemaPermissionSetDetail[]
      */
     public function schemaPermissionSetGetMany(array $queryParameters = [])
     {
@@ -2173,8 +2292,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
+     * @return \PicturePark\API\Model\SchemaPermissionSetDetail
      */
     public function schemaPermissionSetCreate(\PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody)
     {
@@ -2191,6 +2311,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2208,8 +2329,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function schemaPermissionSetGetPermissions(string $id)
     {
@@ -2225,8 +2347,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function schemaPermissionSetCreateMany(\PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody)
     {
@@ -2242,8 +2365,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function schemaPermissionSetUpdateMany(\PicturePark\API\Model\SchemaPermissionSetUpdateManyRequest $requestBody)
     {
@@ -2259,8 +2383,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function schemaPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {
@@ -2276,6 +2401,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2295,8 +2421,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]
+     * @return \PicturePark\API\Model\PermissionSetUserPermissionRights[]
      */
     public function schemaPermissionSetGetPermissionsMany(array $queryParameters = [])
     {
@@ -2312,8 +2439,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\PermissionSetSearchResult
+     * @return \PicturePark\API\Model\PermissionSetSearchResult
      */
     public function schemaPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {
@@ -2334,6 +2462,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaDeleteConflictException
      * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2351,8 +2480,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetConflictException
      * @throws \PicturePark\API\Exception\SchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaDetail
+     * @return \PicturePark\API\Model\SchemaDetail
      */
     public function schemaGet(string $id)
     {
@@ -2374,8 +2504,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaUpdateConflictException
      * @throws \PicturePark\API\Exception\SchemaUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaUpdateResult
+     * @return \PicturePark\API\Model\SchemaUpdateResult
      */
     public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [])
     {
@@ -2391,8 +2522,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaExistsConflictException
      * @throws \PicturePark\API\Exception\SchemaExistsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaExistsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaExistsResponse
+     * @return \PicturePark\API\Model\SchemaExistsResponse
      */
     public function schemaExists(string $id)
     {
@@ -2410,8 +2542,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaFieldExistsConflictException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\FieldExistsResponse
+     * @return \PicturePark\API\Model\FieldExistsResponse
      */
     public function schemaFieldExists(string $schemaId, string $fieldId)
     {
@@ -2427,8 +2560,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetReferencedConflictException
      * @throws \PicturePark\API\Exception\SchemaGetReferencedTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetReferencedInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaDetail[]
+     * @return \PicturePark\API\Model\SchemaDetail[]
      */
     public function schemaGetReferenced(string $id)
     {
@@ -2449,6 +2583,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipConflictException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2469,8 +2604,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetManyConflictException
      * @throws \PicturePark\API\Exception\SchemaGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaDetail[]
+     * @return \PicturePark\API\Model\SchemaDetail[]
      */
     public function schemaGetMany(array $queryParameters = [])
     {
@@ -2490,8 +2626,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaCreateConflictException
      * @throws \PicturePark\API\Exception\SchemaCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaCreateResult
+     * @return \PicturePark\API\Model\SchemaCreateResult
      */
     public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [])
     {
@@ -2507,8 +2644,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaCreateManyConflictException
      * @throws \PicturePark\API\Exception\SchemaCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function schemaCreateMany(\PicturePark\API\Model\SchemaCreateManyRequest $requestBody)
     {
@@ -2525,8 +2663,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaUpdateManyConflictException
      * @throws \PicturePark\API\Exception\SchemaUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function schemaUpdateMany(\PicturePark\API\Model\SchemaUpdateManyRequest $requestBody)
     {
@@ -2543,8 +2682,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedConflictException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaDetail[]
+     * @return \PicturePark\API\Model\SchemaDetail[]
      */
     public function schemaGetManyReferenced(array $queryParameters = [])
     {
@@ -2561,8 +2701,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyConflictException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function schemaTransferOwnershipMany(\PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody)
     {
@@ -2578,8 +2719,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaSearchConflictException
      * @throws \PicturePark\API\Exception\SchemaSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\SchemaSearchResult
+     * @return \PicturePark\API\Model\SchemaSearchResult
      */
     public function schemaSearch(\PicturePark\API\Model\SchemaSearchRequest $requestBody)
     {
@@ -2598,8 +2740,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsConflictException
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IndexField[]
+     * @return \PicturePark\API\Model\IndexField[]
      */
     public function schemaGetIndexFields(\PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody)
     {
@@ -2616,8 +2759,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaTransferImportConflictException
      * @throws \PicturePark\API\Exception\SchemaTransferImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaTransferImportInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Transfer
+     * @return \PicturePark\API\Model\Transfer
      */
     public function schemaTransferImport(\PicturePark\API\Model\SchemaImportRequest $requestBody)
     {
@@ -2636,8 +2780,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareGetShareJsonConflictException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ShareDetail
+     * @return \PicturePark\API\Model\ShareDetail
      */
     public function shareGetShareJson(string $token, array $queryParameters = [])
     {
@@ -2661,8 +2806,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ShareDownloadPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function shareDownload(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
@@ -2689,8 +2835,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentInternalServerErrorException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
@@ -2709,8 +2856,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareGetConflictException
      * @throws \PicturePark\API\Exception\ShareGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ShareDetail
+     * @return \PicturePark\API\Model\ShareDetail
      */
     public function shareGet(string $id, array $queryParameters = [])
     {
@@ -2727,8 +2875,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareUpdateConflictException
      * @throws \PicturePark\API\Exception\ShareUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function shareUpdate(string $id, \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody)
     {
@@ -2744,8 +2893,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareCreateConflictException
      * @throws \PicturePark\API\Exception\ShareCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function shareCreate(\PicturePark\API\Model\ShareBaseCreateRequest $requestBody)
     {
@@ -2761,8 +2911,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDeleteManyConflictException
      * @throws \PicturePark\API\Exception\ShareDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function shareDeleteMany(\PicturePark\API\Model\ShareDeleteManyRequest $requestBody)
     {
@@ -2777,8 +2928,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareRevokeConflictException
      * @throws \PicturePark\API\Exception\ShareRevokeTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareRevokeInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function shareRevoke(\PicturePark\API\Model\ShareRevokeManyRequest $requestBody)
     {
@@ -2794,8 +2946,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareAggregateConflictException
      * @throws \PicturePark\API\Exception\ShareAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareAggregateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     public function shareAggregate(\PicturePark\API\Model\ShareAggregationRequest $requestBody)
     {
@@ -2811,8 +2964,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareSearchConflictException
      * @throws \PicturePark\API\Exception\ShareSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ShareSearchResult
+     * @return \PicturePark\API\Model\ShareSearchResult
      */
     public function shareSearch(\PicturePark\API\Model\ShareSearchRequest $requestBody)
     {
@@ -2828,8 +2982,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferCreateConflictException
      * @throws \PicturePark\API\Exception\TransferCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Transfer
+     * @return \PicturePark\API\Model\Transfer
      */
     public function transferCreate(\PicturePark\API\Model\CreateTransferRequest $requestBody)
     {
@@ -2845,6 +3000,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteConflictException
      * @throws \PicturePark\API\Exception\TransferDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2861,8 +3017,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetConflictException
      * @throws \PicturePark\API\Exception\TransferGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\TransferDetail
+     * @return \PicturePark\API\Model\TransferDetail
      */
     public function transferGet(string $id)
     {
@@ -2882,8 +3039,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferImportConflictException
      * @throws \PicturePark\API\Exception\TransferImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferImportInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Transfer
+     * @return \PicturePark\API\Model\Transfer
      */
     public function transferImport(string $id, \PicturePark\API\Model\ImportTransferRequest $requestBody)
     {
@@ -2905,8 +3063,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferPartialImportConflictException
      * @throws \PicturePark\API\Exception\TransferPartialImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferPartialImportInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Transfer
+     * @return \PicturePark\API\Model\Transfer
      */
     public function transferPartialImport(string $id, \PicturePark\API\Model\ImportTransferPartialRequest $requestBody)
     {
@@ -2923,6 +3082,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferCancelConflictException
      * @throws \PicturePark\API\Exception\TransferCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferCancelInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -2939,8 +3099,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferSearchConflictException
      * @throws \PicturePark\API\Exception\TransferSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\TransferSearchResult
+     * @return \PicturePark\API\Model\TransferSearchResult
      */
     public function transferSearch(\PicturePark\API\Model\TransferSearchRequest $requestBody)
     {
@@ -2955,8 +3116,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetFileConflictException
      * @throws \PicturePark\API\Exception\TransferGetFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetFileInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\FileTransferDetail
+     * @return \PicturePark\API\Model\FileTransferDetail
      */
     public function transferGetFile(string $id)
     {
@@ -2971,8 +3133,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferSearchFilesConflictException
      * @throws \PicturePark\API\Exception\TransferSearchFilesTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferSearchFilesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\FileTransferSearchResult
+     * @return \PicturePark\API\Model\FileTransferSearchResult
      */
     public function transferSearchFiles(\PicturePark\API\Model\FileTransferSearchRequest $requestBody)
     {
@@ -2987,6 +3150,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteFilesConflictException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3002,8 +3166,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetBlacklistConflictException
      * @throws \PicturePark\API\Exception\TransferGetBlacklistTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetBlacklistInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Blacklist
+     * @return \PicturePark\API\Model\Blacklist
      */
     public function transferGetBlacklist()
     {
@@ -3032,6 +3197,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferUploadFileConflictException
      * @throws \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3048,8 +3214,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleSearchConflictException
      * @throws \PicturePark\API\Exception\UserRoleSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleSearchResult
+     * @return \PicturePark\API\Model\UserRoleSearchResult
      */
     public function userRoleSearch(\PicturePark\API\Model\UserRoleSearchRequest $requestBody)
     {
@@ -3067,8 +3234,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleGetManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleDetail[]
+     * @return \PicturePark\API\Model\UserRoleDetail[]
      */
     public function userRoleGetMany(array $queryParameters = [])
     {
@@ -3084,8 +3252,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleCreateConflictException
      * @throws \PicturePark\API\Exception\UserRoleCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleDetail
+     * @return \PicturePark\API\Model\UserRoleDetail
      */
     public function userRoleCreate(\PicturePark\API\Model\UserRoleCreateRequest $requestBody)
     {
@@ -3101,8 +3270,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleCreateManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function userRoleCreateMany(\PicturePark\API\Model\UserRoleCreateManyRequest $requestBody)
     {
@@ -3118,8 +3288,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function userRoleUpdateMany(\PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody)
     {
@@ -3135,8 +3306,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     public function userRoleDeleteMany(\PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody)
     {
@@ -3152,6 +3324,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleDeleteConflictException
      * @throws \PicturePark\API\Exception\UserRoleDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3169,8 +3342,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleGetConflictException
      * @throws \PicturePark\API\Exception\UserRoleGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleDetail
+     * @return \PicturePark\API\Model\UserRoleDetail
      */
     public function userRoleGet(string $id)
     {
@@ -3187,8 +3361,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleUpdateConflictException
      * @throws \PicturePark\API\Exception\UserRoleUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleDetail
+     * @return \PicturePark\API\Model\UserRoleDetail
      */
     public function userRoleUpdate(string $id, \PicturePark\API\Model\UserRoleEditable $requestBody)
     {
@@ -3203,8 +3378,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetConflictException
      * @throws \PicturePark\API\Exception\UserGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail
+     * @return \PicturePark\API\Model\UserDetail
      */
     public function userGet(string $id)
     {
@@ -3220,8 +3396,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserUpdateConflictException
      * @throws \PicturePark\API\Exception\UserUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail
+     * @return \PicturePark\API\Model\UserDetail
      */
     public function userUpdate(string $id, \PicturePark\API\Model\UserUpdateRequest $requestBody)
     {
@@ -3239,6 +3416,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserLockConflictException
      * @throws \PicturePark\API\Exception\UserLockTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserLockInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3257,8 +3435,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserLockManyConflictException
      * @throws \PicturePark\API\Exception\UserLockManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserLockManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userLockMany(\PicturePark\API\Model\UserLockManyRequest $requestBody)
     {
@@ -3275,6 +3454,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReviewConflictException
      * @throws \PicturePark\API\Exception\UserReviewTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReviewInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3292,8 +3472,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReviewManyConflictException
      * @throws \PicturePark\API\Exception\UserReviewManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReviewManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userReviewMany(\PicturePark\API\Model\UserReviewManyRequest $requestBody)
     {
@@ -3309,6 +3490,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserInviteConflictException
      * @throws \PicturePark\API\Exception\UserInviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3326,8 +3508,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserInviteManyConflictException
      * @throws \PicturePark\API\Exception\UserInviteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userInviteMany(\PicturePark\API\Model\UserInviteManyRequest $requestBody)
     {
@@ -3343,6 +3526,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReinviteConflictException
      * @throws \PicturePark\API\Exception\UserReinviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReinviteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3360,8 +3544,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReInviteManyConflictException
      * @throws \PicturePark\API\Exception\UserReInviteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReInviteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userReInviteMany(\PicturePark\API\Model\UserReinviteManyRequest $requestBody)
     {
@@ -3376,8 +3561,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserAssignUserRolesConflictException
      * @throws \PicturePark\API\Exception\UserAssignUserRolesTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserAssignUserRolesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userAssignUserRoles(\PicturePark\API\Model\UserRoleAssignManyRequest $requestBody)
     {
@@ -3393,6 +3579,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserDeleteConflictException
      * @throws \PicturePark\API\Exception\UserDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3410,6 +3597,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRestoreConflictException
      * @throws \PicturePark\API\Exception\UserRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRestoreInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3426,6 +3614,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestConflictException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -3442,8 +3631,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenConflictException
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail
+     * @return \PicturePark\API\Model\UserDetail
      */
     public function userGetByOwnerToken(string $tokenId)
     {
@@ -3459,8 +3649,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserCreateConflictException
      * @throws \PicturePark\API\Exception\UserCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail
+     * @return \PicturePark\API\Model\UserDetail
      */
     public function userCreate(\PicturePark\API\Model\UserCreateRequest $requestBody)
     {
@@ -3478,8 +3669,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetManyConflictException
      * @throws \PicturePark\API\Exception\UserGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserDetail[]
+     * @return \PicturePark\API\Model\UserDetail[]
      */
     public function userGetMany(array $queryParameters = [])
     {
@@ -3494,8 +3686,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserSearchConflictException
      * @throws \PicturePark\API\Exception\UserSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserSearchResult
+     * @return \PicturePark\API\Model\UserSearchResult
      */
     public function userSearch(\PicturePark\API\Model\UserSearchRequest $requestBody)
     {
@@ -3510,8 +3703,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserAggregateConflictException
      * @throws \PicturePark\API\Exception\UserAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserAggregateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\ObjectAggregationResult
+     * @return \PicturePark\API\Model\ObjectAggregationResult
      */
     public function userAggregate(\PicturePark\API\Model\UserAggregationRequest $requestBody)
     {
@@ -3526,8 +3720,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyConflictException
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function userUpdateIdentityProviderMany(\PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody)
     {
@@ -3541,8 +3736,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsConflictException
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\XmpMappingTargets
+     * @return \PicturePark\API\Model\XmpMappingTargets
      */
     public function xmpMappingGetAvailableTargets()
     {
@@ -3557,8 +3753,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingSearchConflictException
      * @throws \PicturePark\API\Exception\XmpMappingSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\XmpMappingEntrySearchResult
+     * @return \PicturePark\API\Model\XmpMappingEntrySearchResult
      */
     public function xmpMappingSearch(\PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody)
     {
@@ -3574,8 +3771,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingDeleteConflictException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingDelete(string $id)
     {
@@ -3591,8 +3789,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetConflictException
      * @throws \PicturePark\API\Exception\XmpMappingGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\XmpMappingEntry
+     * @return \PicturePark\API\Model\XmpMappingEntry
      */
     public function xmpMappingGet(string $id)
     {
@@ -3609,8 +3808,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingUpdateConflictException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingUpdate(string $id, \PicturePark\API\Model\XmpMappingEntry $requestBody)
     {
@@ -3628,8 +3828,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetManyConflictException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\XmpMappingEntry[]
+     * @return \PicturePark\API\Model\XmpMappingEntry[]
      */
     public function xmpMappingGetMany(array $queryParameters = [])
     {
@@ -3645,8 +3846,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingCreateConflictException
      * @throws \PicturePark\API\Exception\XmpMappingCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingCreateInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingCreate(\PicturePark\API\Model\XmpMappingEntryCreateRequest $requestBody)
     {
@@ -3662,8 +3864,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyConflictException
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingCreateMany(\PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody)
     {
@@ -3679,8 +3882,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyConflictException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingUpdateMany(\PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody)
     {
@@ -3696,8 +3900,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyConflictException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     public function xmpMappingDeleteMany(\PicturePark\API\Model\XmpMappingEntryDeleteManyRequest $requestBody)
     {

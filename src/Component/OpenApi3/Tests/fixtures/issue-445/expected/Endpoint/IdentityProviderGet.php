@@ -39,8 +39,9 @@ class IdentityProviderGet extends \PicturePark\API\Runtime\Client\BaseEndpoint i
      * @throws \PicturePark\API\Exception\IdentityProviderGetConflictException
      * @throws \PicturePark\API\Exception\IdentityProviderGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\IdentityProvider
+     * @return \PicturePark\API\Model\IdentityProvider
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class IdentityProviderGet extends \PicturePark\API\Runtime\Client\BaseEndpoint i
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

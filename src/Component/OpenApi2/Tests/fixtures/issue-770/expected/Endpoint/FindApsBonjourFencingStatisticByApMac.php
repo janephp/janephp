@@ -48,8 +48,9 @@ class FindApsBonjourFencingStatisticByApMac extends \Jane\Component\OpenApi3\Tes
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsBonjourFencingStatisticByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindApsBonjourFencingStatisticByApMac extends \Jane\Component\OpenApi3\Tes
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

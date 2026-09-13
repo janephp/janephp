@@ -48,8 +48,9 @@ class FindProfilesAuthAuthServiceListByQueryCriteria extends \Jane\Component\Ope
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindProfilesAuthAuthServiceListByQueryCriteria extends \Jane\Component\Ope
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

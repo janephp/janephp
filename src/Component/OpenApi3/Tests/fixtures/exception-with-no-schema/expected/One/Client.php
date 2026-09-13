@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\One\Runtime\Client\
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\One\Exception\TestOneNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\One\Exception\BadResponseException
      *
      * @return null
      */

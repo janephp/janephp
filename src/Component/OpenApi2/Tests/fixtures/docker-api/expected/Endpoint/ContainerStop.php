@@ -47,6 +47,7 @@ class ContainerStop extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *
      * @throws \Docker\Api\Exception\ContainerStopNotFoundException
      * @throws \Docker\Api\Exception\ContainerStopInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class ContainerStop extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerStopInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

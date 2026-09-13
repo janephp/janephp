@@ -24,8 +24,9 @@ class GetString extends \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\R
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -39,6 +40,7 @@ class GetString extends \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\R
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

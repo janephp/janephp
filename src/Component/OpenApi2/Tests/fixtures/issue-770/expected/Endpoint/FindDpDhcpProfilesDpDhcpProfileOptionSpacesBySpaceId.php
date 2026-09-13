@@ -51,8 +51,9 @@ class FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compone
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compone
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -55,8 +55,9 @@ class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedOb
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedOb
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

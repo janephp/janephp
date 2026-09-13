@@ -40,8 +40,9 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
+     * @return \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -50,6 +51,7 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

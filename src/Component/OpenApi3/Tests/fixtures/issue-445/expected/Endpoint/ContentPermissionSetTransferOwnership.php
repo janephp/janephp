@@ -45,6 +45,7 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipConflictException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

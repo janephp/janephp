@@ -48,8 +48,9 @@ class AddRkszones extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class AddRkszones extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
         if (201 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

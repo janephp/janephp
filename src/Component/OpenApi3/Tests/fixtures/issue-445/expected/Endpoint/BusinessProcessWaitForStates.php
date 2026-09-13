@@ -59,8 +59,9 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesConflictException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcessWaitForStateResult
+     * @return \PicturePark\API\Model\BusinessProcessWaitForStateResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -90,6 +91,7 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForStatesInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

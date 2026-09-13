@@ -31,8 +31,9 @@ class DisplayValueRerender extends \PicturePark\API\Runtime\Client\BaseEndpoint 
      * @throws \PicturePark\API\Exception\DisplayValueRerenderConflictException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class DisplayValueRerender extends \PicturePark\API\Runtime\Client\BaseEndpoint 
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DisplayValueRerenderInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

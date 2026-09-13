@@ -48,8 +48,9 @@ class FindWifiCallingByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expe
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWifiCallingByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindWifiCallingByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expe
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

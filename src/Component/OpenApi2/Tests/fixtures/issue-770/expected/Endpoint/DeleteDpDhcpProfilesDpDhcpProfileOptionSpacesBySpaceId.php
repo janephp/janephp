@@ -51,6 +51,7 @@ class DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,8 +48,9 @@ class FindProfilesHs20IdentityprovidersByQueryCriteria extends \Jane\Component\O
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindProfilesHs20IdentityprovidersByQueryCriteria extends \Jane\Component\O
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

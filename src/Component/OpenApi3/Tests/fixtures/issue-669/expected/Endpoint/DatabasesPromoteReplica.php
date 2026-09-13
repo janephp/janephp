@@ -44,6 +44,7 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -69,6 +70,7 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

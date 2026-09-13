@@ -53,6 +53,7 @@ class RegistryDeleteRepositoryManifest extends \Jane\Generated\DigitalOcean\Runt
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -78,6 +79,7 @@ class RegistryDeleteRepositoryManifest extends \Jane\Generated\DigitalOcean\Runt
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

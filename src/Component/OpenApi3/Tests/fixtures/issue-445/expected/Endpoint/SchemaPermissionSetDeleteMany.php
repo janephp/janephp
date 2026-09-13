@@ -42,8 +42,9 @@ class SchemaPermissionSetDeleteMany extends \PicturePark\API\Runtime\Client\Base
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyConflictException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BulkResponse
+     * @return \PicturePark\API\Model\BulkResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class SchemaPermissionSetDeleteMany extends \PicturePark\API\Runtime\Client\Base
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaPermissionSetDeleteManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

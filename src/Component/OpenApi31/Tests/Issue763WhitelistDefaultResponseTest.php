@@ -30,7 +30,7 @@ class Issue763WhitelistDefaultResponseTest extends TestCase
                 $endpointContent
             );
             self::assertStringContainsString(
-                '@return null|\Jane\Component\OpenApi31\Tests\Issue763Expected\Model\PostDataPostResponse200|\Jane\Component\OpenApi31\Tests\Issue763Expected\Model\Error',
+                '@return \Jane\Component\OpenApi31\Tests\Issue763Expected\Model\PostDataPostResponse200|\Jane\Component\OpenApi31\Tests\Issue763Expected\Model\Error',
                 $endpointContent
             );
             self::assertStringNotContainsString('return json_decode($body);', $endpointContent);

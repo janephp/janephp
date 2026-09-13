@@ -51,6 +51,7 @@ class AddServicesAcctTestById extends \Jane\Component\OpenApi3\Tests\Expected\Is
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddServicesAcctTestByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class AddServicesAcctTestById extends \Jane\Component\OpenApi3\Tests\Expected\Is
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

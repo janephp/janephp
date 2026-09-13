@@ -45,8 +45,9 @@ class FindNorthboundDataStreamingEventCodes extends \Jane\Component\OpenApi3\Tes
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNorthboundDataStreamingEventCodesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindNorthboundDataStreamingEventCodes extends \Jane\Component\OpenApi3\Tes
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

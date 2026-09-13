@@ -86,8 +86,9 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse
+     * @return \CreditSafe\API\Model\ListFreshInvestigationResponse
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -128,6 +129,7 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

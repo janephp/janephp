@@ -20,6 +20,7 @@ class GetTestOperationUrlById extends \Jane\Component\OpenApi2\Tests\Expected\Op
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class GetTestOperationUrlById extends \Jane\Component\OpenApi2\Tests\Expected\Op
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Operations\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

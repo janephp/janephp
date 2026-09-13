@@ -46,6 +46,7 @@ class UserLock extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
      * @throws \PicturePark\API\Exception\UserLockConflictException
      * @throws \PicturePark\API\Exception\UserLockTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserLockInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -77,6 +78,7 @@ class UserLock extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserLockInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

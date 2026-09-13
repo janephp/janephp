@@ -48,6 +48,7 @@ class AddSwapAps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSwapApsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddSwapAps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

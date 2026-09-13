@@ -67,8 +67,9 @@ class TaskLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      * @throws \Docker\Api\Exception\TaskLogsNotFoundException
      * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskLogsServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -91,6 +92,7 @@ class TaskLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         if (503 === $status) {
             throw new \Docker\Api\Exception\TaskLogsServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

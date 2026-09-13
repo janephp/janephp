@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\TestNullableArray;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Exception\BadResponseException
      *
      * @return null
      */

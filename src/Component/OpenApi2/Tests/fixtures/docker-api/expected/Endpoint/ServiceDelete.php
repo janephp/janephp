@@ -35,6 +35,7 @@ class ServiceDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\ServiceDeleteNotFoundException
      * @throws \Docker\Api\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceDeleteServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -54,6 +55,7 @@ class ServiceDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (503 === $status) {
             throw new \Docker\Api\Exception\ServiceDeleteServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

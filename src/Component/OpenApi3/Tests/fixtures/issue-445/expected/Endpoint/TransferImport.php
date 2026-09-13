@@ -48,8 +48,9 @@ class TransferImport extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
      * @throws \PicturePark\API\Exception\TransferImportConflictException
      * @throws \PicturePark\API\Exception\TransferImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferImportInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\Transfer
+     * @return \PicturePark\API\Model\Transfer
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -79,6 +80,7 @@ class TransferImport extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferImportInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

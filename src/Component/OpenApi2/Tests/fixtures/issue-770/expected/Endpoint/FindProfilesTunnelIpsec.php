@@ -49,8 +49,9 @@ class FindProfilesTunnelIpsec extends \Jane\Component\OpenApi3\Tests\Expected\Is
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesTunnelIpsecInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -68,6 +69,7 @@ class FindProfilesTunnelIpsec extends \Jane\Component\OpenApi3\Tests\Expected\Is
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

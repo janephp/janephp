@@ -53,7 +53,7 @@ final class Options
         public readonly array $operationNamings = [],
         /** @var array<string, array<string, array<string, string>>> */
         public readonly array $customQueryResolver = [],
-        public readonly bool $throwUnexpectedStatusCode = false,
+        public readonly bool $throwUnexpectedStatusCode = true,
         public readonly bool $generateErrorExceptions = true,
     ) {
     }
@@ -99,7 +99,7 @@ final class Options
             endpointGenerator: $options['endpoint-generator'] ?? null,
             operationNamings: $options['operation-namings'] ?? [],
             customQueryResolver: $options['custom-query-resolver'] ?? [],
-            throwUnexpectedStatusCode: $options['throw-unexpected-status-code'] ?? false,
+            throwUnexpectedStatusCode: $options['throw-unexpected-status-code'] ?? true,
             generateErrorExceptions: $options['generate-error-exceptions'] ?? true,
         );
     }

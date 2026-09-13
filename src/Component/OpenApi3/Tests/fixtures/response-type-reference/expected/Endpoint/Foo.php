@@ -24,8 +24,9 @@ class Foo extends \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Model\FooGetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Model\FooGetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class Foo extends \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Model\FooGetResponse200', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -49,8 +49,9 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewInternalServerErrorException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +85,7 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
         if (412 === $status) {
             throw new \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException($response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

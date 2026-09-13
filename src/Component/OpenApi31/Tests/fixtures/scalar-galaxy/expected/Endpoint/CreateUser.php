@@ -49,8 +49,9 @@ class CreateUser extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\R
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreateUserForbiddenException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreateUserConflictException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreateUserUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class CreateUser extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\R
         if ($contentType !== null && (422 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreateUserUnprocessableEntityException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnprocessableEntity', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -49,6 +49,7 @@ class AddApsApPacketCaptureStopByApMac extends \Jane\Component\OpenApi3\Tests\Ex
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStopByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -71,6 +72,7 @@ class AddApsApPacketCaptureStopByApMac extends \Jane\Component\OpenApi3\Tests\Ex
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

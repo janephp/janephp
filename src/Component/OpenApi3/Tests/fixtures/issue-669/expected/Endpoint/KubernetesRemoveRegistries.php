@@ -38,6 +38,7 @@ class KubernetesRemoveRegistries extends \Jane\Generated\DigitalOcean\Runtime\Cl
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -60,6 +61,7 @@ class KubernetesRemoveRegistries extends \Jane\Generated\DigitalOcean\Runtime\Cl
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

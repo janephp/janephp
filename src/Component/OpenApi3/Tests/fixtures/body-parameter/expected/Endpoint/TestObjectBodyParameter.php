@@ -30,6 +30,7 @@ class TestObjectBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Bo
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Exception\BadResponseException
      *
      * @return null
      */
@@ -40,6 +41,7 @@ class TestObjectBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Bo
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

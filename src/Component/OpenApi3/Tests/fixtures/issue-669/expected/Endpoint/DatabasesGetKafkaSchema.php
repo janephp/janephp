@@ -42,8 +42,9 @@ class DatabasesGetKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class DatabasesGetKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Clien
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

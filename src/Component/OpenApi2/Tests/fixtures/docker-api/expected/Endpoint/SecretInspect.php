@@ -35,8 +35,9 @@ class SecretInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\SecretInspectNotFoundException
      * @throws \Docker\Api\Exception\SecretInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Secret
+     * @return \Docker\Api\Model\Secret
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -54,6 +55,7 @@ class SecretInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (503 === $status) {
             throw new \Docker\Api\Exception\SecretInspectServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

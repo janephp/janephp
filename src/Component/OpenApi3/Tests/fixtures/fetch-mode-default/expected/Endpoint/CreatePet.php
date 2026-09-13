@@ -30,6 +30,7 @@ class CreatePet extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
      * @return null
      */
@@ -40,6 +41,7 @@ class CreatePet extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

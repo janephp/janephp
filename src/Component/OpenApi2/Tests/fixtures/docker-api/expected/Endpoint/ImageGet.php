@@ -57,8 +57,9 @@ class ImageGet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -75,6 +76,7 @@ class ImageGet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageGetInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

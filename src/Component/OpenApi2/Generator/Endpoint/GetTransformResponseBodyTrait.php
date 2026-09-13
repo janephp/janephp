@@ -8,6 +8,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApi2\JsonSchema\Model\Response;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\UnmatchedResponseStatementTrait;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
@@ -26,6 +27,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 trait GetTransformResponseBodyTrait
 {
     use OpenApiNumberTypeResolverTrait;
+    use UnmatchedResponseStatementTrait;
 
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
@@ -75,29 +77,32 @@ trait GetTransformResponseBodyTrait
             $exceptionGenerator->createBaseExceptions($context);
 
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\BadResponseException';
-            $throwTypes[] = $throwType;
-            $outputStatements = array_merge(
-                $outputStatements,
-                [
-                    new Stmt\Expression(new Expr\Throw_(
-                        new Expr\New_(
-                            new Name($throwType),
-                            [
-                                new Arg(new Expr\Variable('status')),
-                                new Arg(new Expr\Variable('body')),
-                                new Arg(new Expr\Variable('response')),
-                            ]
-                        )
-                    )),
-                ]
-            );
+            $closedStatements = $this->appendUnmatchedResponseStatement($outputStatements, new Stmt\Expression(new Expr\Throw_(
+                new Expr\New_(
+                    new Name($throwType),
+                    [
+                        new Arg(new Expr\Variable('status')),
+                        new Arg(new Expr\Variable('body')),
+                        new Arg(new Expr\Variable('response')),
+                    ]
+                )
+            )));
+            if (\count($closedStatements) > \count($outputStatements)) {
+                $throwTypes[] = $throwType;
+            }
+            $outputStatements = $closedStatements;
+        } else {
+            $outputStatements = $this->appendUnmatchedResponseStatement($outputStatements, new Stmt\Return_(new Expr\ConstFetch(new Name('null'))));
         }
 
         $returnDoc = implode('', array_map(function ($value) {
             return ' * @throws ' . $value . "\n";
         }, $throwTypes))
             . " *\n"
-            . ' * @return ' . implode('|', $outputTypes);
+            // No declared response yields a value (every one throws): fall
+            // back to the `mixed` of the abstract method, like the client
+            // method does.
+            . ' * @return ' . ([] === $outputTypes ? 'mixed' : implode('|', $outputTypes));
 
         return [new Stmt\ClassMethod('transformResponseBody', [
             'flags' => Modifiers::PROTECTED,

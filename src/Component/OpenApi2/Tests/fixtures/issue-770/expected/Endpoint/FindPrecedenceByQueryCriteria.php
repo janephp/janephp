@@ -48,8 +48,9 @@ class FindPrecedenceByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expec
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindPrecedenceByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindPrecedenceByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expec
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

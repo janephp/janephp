@@ -43,8 +43,9 @@ class OutputFormatSetXmpWritebackState2 extends \PicturePark\API\Runtime\Client\
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2ConflictException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2TooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2InternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\BusinessProcess
+     * @return \PicturePark\API\Model\BusinessProcess
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -74,6 +75,7 @@ class OutputFormatSetXmpWritebackState2 extends \PicturePark\API\Runtime\Client\
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2InternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

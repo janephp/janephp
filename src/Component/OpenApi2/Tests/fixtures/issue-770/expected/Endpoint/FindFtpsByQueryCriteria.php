@@ -48,8 +48,9 @@ class FindFtpsByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expected\Is
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindFtpsByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindFtpsByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expected\Is
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

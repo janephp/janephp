@@ -6,6 +6,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfMixedRequestBo
 {
     /**
      * @param mixed $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfMixedRequestBodyParameterType\Exception\BadResponseException
      *
      * @return null
      */

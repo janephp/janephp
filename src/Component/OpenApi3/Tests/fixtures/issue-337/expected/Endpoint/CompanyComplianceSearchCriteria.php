@@ -47,6 +47,7 @@ class CompanyComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\Bas
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -94,6 +95,7 @@ class CompanyComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

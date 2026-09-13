@@ -51,8 +51,9 @@ class AddApsApPacketCaptureStartStreamingByApMac extends \Jane\Component\OpenApi
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsApPacketCaptureStartStreamingByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,7 @@ class AddApsApPacketCaptureStartStreamingByApMac extends \Jane\Component\OpenApi
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,8 +48,9 @@ class FindProfilesDnsserverById extends \Jane\Component\OpenApi3\Tests\Expected\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesDnsserverByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindProfilesDnsserverById extends \Jane\Component\OpenApi3\Tests\Expected\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

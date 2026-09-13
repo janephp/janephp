@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\
 {
     /**
      * @param mixed $testParameter
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testGetWithUppercasePathParameters($testParameter)
     {

@@ -5,64 +5,72 @@ namespace Jane\Component\OpenApi3\Tests\Expected\ScalarResponse;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|int
+     * @return int
      */
     public function getInteger()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetInteger());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function getString()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetString());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|bool
+     * @return bool
      */
     public function getBoolean()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetBoolean());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|float
+     * @return float
      */
     public function getNumberFloat()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetNumberFloat());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|int
+     * @return int
      */
     public function getNumberPlain()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetNumberPlain());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|string
+     * @return string
      */
     public function getEnumWithoutType()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetEnumWithoutType());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|array
+     * @return array
      */
     public function getArrayOfIntegers()
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetArrayOfIntegers());
     }
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Exception\BadResponseException
      *
-     * @return null|int
+     * @return int
      */
     public function getNullableInteger()
     {

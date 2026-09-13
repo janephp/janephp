@@ -49,8 +49,9 @@ class FindSystemSyslog extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemSyslogInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -68,6 +69,7 @@ class FindSystemSyslog extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

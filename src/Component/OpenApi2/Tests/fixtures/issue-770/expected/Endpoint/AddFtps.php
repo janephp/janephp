@@ -48,6 +48,7 @@ class AddFtps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\C
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddFtpsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class AddFtps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\C
         if (201 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

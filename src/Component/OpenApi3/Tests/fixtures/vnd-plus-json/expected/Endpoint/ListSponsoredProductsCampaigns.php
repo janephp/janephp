@@ -54,8 +54,9 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent
+     * @return \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/vnd.spcampaign.v3+json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -24,8 +24,9 @@ class GetEndpoint3 extends \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runt
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue672\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetEndpoint3 extends \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runt
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

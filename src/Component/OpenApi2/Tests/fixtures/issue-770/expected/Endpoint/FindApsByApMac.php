@@ -48,8 +48,9 @@ class FindApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

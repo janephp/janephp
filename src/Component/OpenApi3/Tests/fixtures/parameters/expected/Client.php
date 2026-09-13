@@ -43,6 +43,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -59,6 +60,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $headerParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -68,6 +70,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -77,6 +80,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -86,6 +90,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param string|resource $requestBody
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -97,6 +102,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param string $testString
      * @param int $testInteger
      * @param int $testFloat
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -106,6 +112,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param int $testInteger
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -117,8 +124,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "input": array,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testDictionary(array $queryParameters)
     {
@@ -128,6 +136,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "filter"?: array,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -139,6 +148,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "search": array,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */
@@ -151,6 +161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *    "columns"?: array,
      *    "properties[]"?: array,
      * } $queryParameters
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Parameters\Exception\BadResponseException
      *
      * @return null
      */

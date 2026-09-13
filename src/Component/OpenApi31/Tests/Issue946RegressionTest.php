@@ -112,7 +112,7 @@ class Issue946RegressionTest extends TestCase
                 $listEndpointContent
             );
             self::assertStringContainsString(
-                '@return null|\Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointGetResponse200Item[]',
+                '@return \Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointGetResponse200Item[]',
                 $listEndpointContent
             );
 
@@ -124,7 +124,7 @@ class Issue946RegressionTest extends TestCase
                 $getEndpointContent
             );
             self::assertStringContainsString(
-                '@return null|\Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointIdGetResponse200',
+                '@return \Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointIdGetResponse200',
                 $getEndpointContent
             );
         } finally {

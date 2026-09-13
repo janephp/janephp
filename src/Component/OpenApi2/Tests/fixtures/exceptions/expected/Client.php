@@ -9,8 +9,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runtime\
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagNotFoundException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagCustom600Exception
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function testNoTag()
     {

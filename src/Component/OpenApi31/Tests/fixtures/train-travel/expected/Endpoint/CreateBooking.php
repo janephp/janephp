@@ -50,8 +50,9 @@ class CreateBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\CreateBookingConflictException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\CreateBookingTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\CreateBookingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostJsonResponse201
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostJsonResponse201
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -78,6 +79,7 @@ class CreateBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\CreateBookingInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

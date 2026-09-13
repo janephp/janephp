@@ -51,6 +51,7 @@ class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

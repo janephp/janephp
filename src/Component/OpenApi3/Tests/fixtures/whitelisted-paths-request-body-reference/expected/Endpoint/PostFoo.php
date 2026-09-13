@@ -30,6 +30,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRe
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRequestBodyReference\Exception\BadResponseException
      *
      * @return null
      */
@@ -40,6 +41,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRe
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRequestBodyReference\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

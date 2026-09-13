@@ -48,8 +48,9 @@ class AddIdentityPackageList extends \Jane\Component\OpenApi3\Tests\Expected\Iss
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddIdentityPackageListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class AddIdentityPackageList extends \Jane\Component\OpenApi3\Tests\Expected\Iss
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

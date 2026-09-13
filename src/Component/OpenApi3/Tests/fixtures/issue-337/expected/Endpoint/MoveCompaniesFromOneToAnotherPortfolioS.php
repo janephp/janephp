@@ -68,6 +68,7 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -115,6 +116,7 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

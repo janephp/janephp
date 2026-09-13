@@ -38,6 +38,7 @@ class ImagesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -63,6 +64,7 @@ class ImagesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

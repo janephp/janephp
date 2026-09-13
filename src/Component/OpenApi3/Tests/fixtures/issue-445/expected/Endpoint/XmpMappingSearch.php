@@ -41,8 +41,9 @@ class XmpMappingSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
      * @throws \PicturePark\API\Exception\XmpMappingSearchConflictException
      * @throws \PicturePark\API\Exception\XmpMappingSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingSearchInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\XmpMappingEntrySearchResult
+     * @return \PicturePark\API\Model\XmpMappingEntrySearchResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -72,6 +73,7 @@ class XmpMappingSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\XmpMappingSearchInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

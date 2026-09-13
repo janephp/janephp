@@ -46,6 +46,7 @@ class GetOrder extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\Exception\BadResponseException
      *
      * @return null
      */
@@ -56,6 +57,7 @@ class GetOrder extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

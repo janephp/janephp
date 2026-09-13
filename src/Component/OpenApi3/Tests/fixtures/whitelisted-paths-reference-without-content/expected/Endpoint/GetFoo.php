@@ -25,8 +25,9 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRef
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\GetFooUnauthorizedException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRef
         if (401 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\GetFooUnauthorizedException($response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

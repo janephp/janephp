@@ -35,8 +35,9 @@ class NodeInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\NodeInspectNotFoundException
      * @throws \Docker\Api\Exception\NodeInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Node
+     * @return \Docker\Api\Model\Node
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -54,6 +55,7 @@ class NodeInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (503 === $status) {
             throw new \Docker\Api\Exception\NodeInspectServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

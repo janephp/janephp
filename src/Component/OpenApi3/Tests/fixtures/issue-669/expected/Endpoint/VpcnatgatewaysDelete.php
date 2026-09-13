@@ -40,6 +40,7 @@ class VpcnatgatewaysDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -65,6 +66,7 @@ class VpcnatgatewaysDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\B
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

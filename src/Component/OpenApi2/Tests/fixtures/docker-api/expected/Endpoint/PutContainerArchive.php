@@ -61,6 +61,7 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
      * @throws \Docker\Api\Exception\PutContainerArchiveForbiddenException
      * @throws \Docker\Api\Exception\PutContainerArchiveNotFoundException
      * @throws \Docker\Api\Exception\PutContainerArchiveInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -83,6 +84,7 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
         if (500 === $status) {
             throw new \Docker\Api\Exception\PutContainerArchiveInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

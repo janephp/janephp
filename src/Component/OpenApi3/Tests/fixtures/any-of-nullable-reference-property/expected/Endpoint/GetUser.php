@@ -25,8 +25,9 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableRefer
      * {@inheritdoc}
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\GetUserNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account
+     * @return \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -38,6 +39,7 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableRefer
         if (404 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\GetUserNotFoundException($response);
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

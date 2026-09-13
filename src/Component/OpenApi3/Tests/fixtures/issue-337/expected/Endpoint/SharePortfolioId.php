@@ -55,6 +55,7 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
      * @throws \CreditSafe\API\Exception\SharePortfolioIdUnauthorizedException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdForbiddenException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -102,6 +103,7 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

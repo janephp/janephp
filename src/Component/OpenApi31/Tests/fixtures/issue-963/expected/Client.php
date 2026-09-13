@@ -7,8 +7,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\C
     /**
      * @param string $selector
      * @param array $accept Accept content header application/json|application/json;schema=member-details
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Issue963\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError
+     * @return \Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError
      */
     public function getMemberBySelector(string $selector, array $accept = [])
     {

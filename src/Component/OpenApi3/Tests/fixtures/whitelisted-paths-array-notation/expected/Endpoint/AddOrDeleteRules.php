@@ -54,6 +54,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArr
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Exception\BadResponseException
      *
      * @return null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
@@ -80,6 +81,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArr
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

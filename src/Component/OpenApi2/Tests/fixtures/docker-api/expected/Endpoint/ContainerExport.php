@@ -35,6 +35,7 @@ class ContainerExport extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      *
      * @throws \Docker\Api\Exception\ContainerExportNotFoundException
      * @throws \Docker\Api\Exception\ContainerExportInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -51,6 +52,7 @@ class ContainerExport extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         if (500 === $status) {
             throw new \Docker\Api\Exception\ContainerExportInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

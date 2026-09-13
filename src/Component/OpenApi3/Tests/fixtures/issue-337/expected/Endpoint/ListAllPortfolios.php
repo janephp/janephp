@@ -64,6 +64,7 @@ class ListAllPortfolios extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosForbiddenException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -111,6 +112,7 @@ class ListAllPortfolios extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

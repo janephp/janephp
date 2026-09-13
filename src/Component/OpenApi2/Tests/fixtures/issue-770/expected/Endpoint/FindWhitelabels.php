@@ -45,8 +45,9 @@ class FindWhitelabels extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\R
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindWhitelabelsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -64,6 +65,7 @@ class FindWhitelabels extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\R
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

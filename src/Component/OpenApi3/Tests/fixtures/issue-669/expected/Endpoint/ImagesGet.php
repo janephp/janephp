@@ -44,8 +44,9 @@ class ImagesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error
+     * @return \Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +70,7 @@ class ImagesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

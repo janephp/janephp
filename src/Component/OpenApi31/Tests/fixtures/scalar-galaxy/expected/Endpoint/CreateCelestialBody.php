@@ -34,6 +34,7 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
      * @return null
      */
@@ -49,6 +50,7 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

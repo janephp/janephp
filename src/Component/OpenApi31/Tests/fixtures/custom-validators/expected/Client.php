@@ -5,8 +5,9 @@ namespace Jane\Component\OpenApi31\Tests\Expected\CustomValidators;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price
+     * @return \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price
      */
     public function getPrice()
     {

@@ -40,6 +40,7 @@ class SpacesKeyDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -65,6 +66,7 @@ class SpacesKeyDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

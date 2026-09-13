@@ -42,6 +42,7 @@ class UptimeDeleteAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -67,6 +68,7 @@ class UptimeDeleteAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

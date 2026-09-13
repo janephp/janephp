@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRef
 {
     /**
      * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\GetFooUnauthorizedException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo
      */
     public function getFoo()
     {

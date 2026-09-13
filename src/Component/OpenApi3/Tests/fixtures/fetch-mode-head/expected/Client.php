@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\FetchModeHead;
 class Client extends \Jane\Component\OpenApi3\Tests\FetchModeHead\Runtime\Client\Client
 {
     /**
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeHead\Exception\BadResponseException
      *
      * @return null
      */

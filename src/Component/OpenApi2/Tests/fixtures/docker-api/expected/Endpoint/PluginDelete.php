@@ -50,8 +50,9 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      *
      * @throws \Docker\Api\Exception\PluginDeleteNotFoundException
      * @throws \Docker\Api\Exception\PluginDeleteInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Plugin
+     * @return \Docker\Api\Model\Plugin
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -66,6 +67,7 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (500 === $status) {
             throw new \Docker\Api\Exception\PluginDeleteInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

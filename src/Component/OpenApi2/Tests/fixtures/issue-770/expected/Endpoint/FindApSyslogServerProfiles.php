@@ -51,8 +51,9 @@ class FindApSyslogServerProfiles extends \Jane\Component\OpenApi3\Tests\Expected
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApSyslogServerProfilesInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,6 +71,7 @@ class FindApSyslogServerProfiles extends \Jane\Component\OpenApi3\Tests\Expected
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

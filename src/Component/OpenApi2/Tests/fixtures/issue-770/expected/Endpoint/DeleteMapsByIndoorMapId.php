@@ -48,8 +48,9 @@ class DeleteMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Is
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteMapsByIndoorMapIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class DeleteMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Is
         if (204 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

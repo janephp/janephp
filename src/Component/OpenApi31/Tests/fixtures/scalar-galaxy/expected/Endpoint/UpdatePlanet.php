@@ -50,8 +50,9 @@ class UpdatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UpdatePlanetBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UpdatePlanetForbiddenException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UpdatePlanetNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +70,7 @@ class UpdatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UpdatePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

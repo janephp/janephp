@@ -51,6 +51,7 @@ class UpdateNorthboundDataStreamingProfileById extends \Jane\Component\OpenApi3\
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class UpdateNorthboundDataStreamingProfileById extends \Jane\Component\OpenApi3\
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

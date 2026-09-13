@@ -40,8 +40,9 @@ class OutputGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
      * @throws \PicturePark\API\Exception\OutputGetConflictException
      * @throws \PicturePark\API\Exception\OutputGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\OutputDetail
+     * @return \PicturePark\API\Model\OutputDetail
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -71,6 +72,7 @@ class OutputGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputGetInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

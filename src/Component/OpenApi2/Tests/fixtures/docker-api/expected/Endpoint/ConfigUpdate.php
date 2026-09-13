@@ -54,6 +54,7 @@ class ConfigUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\ConfigUpdateNotFoundException
      * @throws \Docker\Api\Exception\ConfigUpdateInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigUpdateServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -76,6 +77,7 @@ class ConfigUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\ConfigUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

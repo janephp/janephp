@@ -54,8 +54,9 @@ class UserRoleGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @throws \PicturePark\API\Exception\UserRoleGetManyConflictException
      * @throws \PicturePark\API\Exception\UserRoleGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleGetManyInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserRoleDetail[]
+     * @return \PicturePark\API\Model\UserRoleDetail[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -85,6 +86,7 @@ class UserRoleGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserRoleGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -48,6 +48,7 @@ class PartialUpdatePlanesMulticastForwardingSetting extends \Jane\Component\Open
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdatePlanesMulticastForwardingSettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -70,6 +71,7 @@ class PartialUpdatePlanesMulticastForwardingSetting extends \Jane\Component\Open
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

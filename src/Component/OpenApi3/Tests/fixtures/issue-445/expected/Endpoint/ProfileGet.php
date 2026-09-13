@@ -31,8 +31,9 @@ class ProfileGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
      * @throws \PicturePark\API\Exception\ProfileGetConflictException
      * @throws \PicturePark\API\Exception\ProfileGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileGetInternalServerErrorException
+     * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return null|\PicturePark\API\Model\UserProfile
+     * @return \PicturePark\API\Model\UserProfile
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -62,6 +63,7 @@ class ProfileGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ProfileGetInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
+        throw new \PicturePark\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

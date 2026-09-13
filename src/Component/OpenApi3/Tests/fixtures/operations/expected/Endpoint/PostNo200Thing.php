@@ -20,6 +20,7 @@ class PostNo200Thing extends \Jane\Component\OpenApi3\Tests\Expected\Operations\
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException
      *
      * @return null
      */
@@ -30,6 +31,7 @@ class PostNo200Thing extends \Jane\Component\OpenApi3\Tests\Expected\Operations\
         if (204 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Operations\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

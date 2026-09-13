@@ -52,8 +52,9 @@ class SecretList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @throws \Docker\Api\Exception\SecretListInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretListServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Secret[]
+     * @return \Docker\Api\Model\Secret[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -68,6 +69,7 @@ class SecretList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         if (503 === $status) {
             throw new \Docker\Api\Exception\SecretListServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

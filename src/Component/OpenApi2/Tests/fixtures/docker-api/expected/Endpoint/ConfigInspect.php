@@ -35,8 +35,9 @@ class ConfigInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\Api\Exception\ConfigInspectNotFoundException
      * @throws \Docker\Api\Exception\ConfigInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Config
+     * @return \Docker\Api\Model\Config
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -54,6 +55,7 @@ class ConfigInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         if (503 === $status) {
             throw new \Docker\Api\Exception\ConfigInspectServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

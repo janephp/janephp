@@ -38,6 +38,7 @@ class AppsCommitRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -63,6 +64,7 @@ class AppsCommitRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

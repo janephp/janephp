@@ -24,8 +24,9 @@ class GetEvents extends \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Ru
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event
+     * @return \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,6 +35,7 @@ class GetEvents extends \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Ru
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event', 'json');
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

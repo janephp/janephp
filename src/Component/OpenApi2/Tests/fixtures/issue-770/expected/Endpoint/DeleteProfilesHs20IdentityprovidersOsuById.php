@@ -48,8 +48,9 @@ class DeleteProfilesHs20IdentityprovidersOsuById extends \Jane\Component\OpenApi
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class DeleteProfilesHs20IdentityprovidersOsuById extends \Jane\Component\OpenApi
         if (204 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

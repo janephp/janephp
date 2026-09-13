@@ -53,6 +53,7 @@ class DropletsDestroyWithAssociatedResourcesSelective extends \Jane\Generated\Di
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -78,6 +79,7 @@ class DropletsDestroyWithAssociatedResourcesSelective extends \Jane\Generated\Di
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

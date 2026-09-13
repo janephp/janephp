@@ -27,8 +27,9 @@ class SwarmInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * @throws \Docker\Api\Exception\SwarmInspectNotFoundException
      * @throws \Docker\Api\Exception\SwarmInspectInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInspectServiceUnavailableException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Swarm
+     * @return \Docker\Api\Model\Swarm
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -46,6 +47,7 @@ class SwarmInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         if (503 === $status) {
             throw new \Docker\Api\Exception\SwarmInspectServiceUnavailableException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

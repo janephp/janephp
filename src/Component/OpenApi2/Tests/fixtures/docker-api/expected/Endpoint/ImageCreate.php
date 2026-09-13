@@ -80,6 +80,7 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *
      * @throws \Docker\Api\Exception\ImageCreateNotFoundException
      * @throws \Docker\Api\Exception\ImageCreateInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
      * @return null
      */
@@ -96,6 +97,7 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

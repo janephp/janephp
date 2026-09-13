@@ -24,8 +24,9 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExcep
     /**
      * {@inheritdoc}
      *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\User|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\Error
+     * @return \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\User|\Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -43,6 +44,7 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExcep
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Model\User', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

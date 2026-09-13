@@ -68,6 +68,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioUnauthorizedException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
      * @return null
      */
@@ -115,6 +116,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

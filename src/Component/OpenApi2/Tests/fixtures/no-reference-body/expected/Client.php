@@ -6,8 +6,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Run
 {
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function getTest(\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body)
     {
@@ -15,8 +16,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Run
     }
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestPostBody $body
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     public function test(\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestPostBody $body)
     {

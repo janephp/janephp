@@ -54,8 +54,9 @@ class UpdatePortfolioDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException
+     * @throws \CreditSafe\API\Exception\BadResponseException
      *
-     * @return null
+     * @return mixed
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -87,6 +88,7 @@ class UpdatePortfolioDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
+        throw new \CreditSafe\API\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

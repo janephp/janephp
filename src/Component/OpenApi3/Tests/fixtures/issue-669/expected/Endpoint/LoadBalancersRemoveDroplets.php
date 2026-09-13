@@ -49,6 +49,7 @@ class LoadBalancersRemoveDroplets extends \Jane\Generated\DigitalOcean\Runtime\C
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsNotFoundException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsInternalServerErrorException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
@@ -74,6 +75,7 @@ class LoadBalancersRemoveDroplets extends \Jane\Generated\DigitalOcean\Runtime\C
         if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
+        throw new \Jane\Generated\DigitalOcean\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

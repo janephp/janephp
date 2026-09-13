@@ -48,8 +48,9 @@ class FindProfilesHs20OperatorsById extends \Jane\Component\OpenApi3\Tests\Expec
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesHs20OperatorsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindProfilesHs20OperatorsById extends \Jane\Component\OpenApi3\Tests\Expec
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

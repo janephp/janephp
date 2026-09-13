@@ -47,6 +47,7 @@ class DeleteAccountSecurity extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAccountSecurityInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
      * @return null
      */
@@ -66,6 +67,7 @@ class DeleteAccountSecurity extends \Jane\Component\OpenApi3\Tests\Expected\Issu
         if (200 === $status) {
             return null;
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

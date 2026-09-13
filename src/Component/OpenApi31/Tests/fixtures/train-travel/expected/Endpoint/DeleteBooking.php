@@ -45,6 +45,7 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\DeleteBookingNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\DeleteBookingTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\DeleteBookingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
      * @return null
      */
@@ -73,6 +74,7 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\DeleteBookingInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
+        throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

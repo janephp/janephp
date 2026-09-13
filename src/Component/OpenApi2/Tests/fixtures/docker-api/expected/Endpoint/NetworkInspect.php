@@ -49,8 +49,9 @@ class NetworkInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      *
      * @throws \Docker\Api\Exception\NetworkInspectNotFoundException
      * @throws \Docker\Api\Exception\NetworkInspectInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\Network
+     * @return \Docker\Api\Model\Network
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -65,6 +66,7 @@ class NetworkInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         if (500 === $status) {
             throw new \Docker\Api\Exception\NetworkInspectInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

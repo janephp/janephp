@@ -44,8 +44,9 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
      * {@inheritdoc}
      *
      * @throws \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException
+     * @throws \Docker\Api\Exception\BadResponseException
      *
-     * @return null|\Docker\Api\Model\PluginPrivilege[]
+     * @return \Docker\Api\Model\PluginPrivilege[]
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -57,6 +58,7 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
         if (500 === $status) {
             throw new \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);
         }
+        throw new \Docker\Api\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

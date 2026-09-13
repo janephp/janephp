@@ -48,8 +48,9 @@ class FindNetworkSegmentationEthernetPortProfileById extends \Jane\Component\Ope
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile
+     * @return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -67,6 +68,7 @@ class FindNetworkSegmentationEthernetPortProfileById extends \Jane\Component\Ope
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile', 'json');
         }
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {
