@@ -16,7 +16,7 @@ namespace Jane\Component\OpenApiRuntime\Client;
  * instance of the target class: instanceof, property reads, cloning and
  * serialization all behave like a regular model.
  *
- * Ghosting relies on PHP native lazy objects (PHP >= 8.3). On older PHP
+ * Ghosting relies on PHP native lazy objects (PHP >= 8.4). On older PHP
  * versions, canCreate() returns false and deferred endpoints fall back to
  * the eager behavior (blocking request + parse at call time).
  */
@@ -24,7 +24,7 @@ final class GhostFactory
 {
     public static function canCreate(): bool
     {
-        return \PHP_VERSION_ID >= 80300;
+        return \PHP_VERSION_ID >= 80400;
     }
 
     /**
@@ -39,7 +39,7 @@ final class GhostFactory
     public static function create(string $class, \Closure $parse): object
     {
         if (!self::canCreate()) {
-            throw new \LogicException(\sprintf('Lazy ghost proxies require PHP >= 8.3, running on %s: %s cannot be proxied.', \PHP_VERSION, $class));
+            throw new \LogicException(\sprintf('Lazy ghost proxies require PHP >= 8.4, running on %s: %s cannot be proxied.', \PHP_VERSION, $class));
         }
 
         $reflector = new \ReflectionClass($class);

@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\OpenApiRuntime\Client\FetchMode;
+use Jane\Component\OpenApiRuntime\Client\GhostFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
@@ -87,6 +88,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testPreloadRegistersTheRequestAndParsesOnFirstAccess(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient();
         $client = FetchModePreload\Client::create($mock);
 
@@ -102,6 +106,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testPreloadErrorsSurfaceOnFirstAccess(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient(404, '{"message":"no pet"}');
         $client = FetchModePreload\Client::create($mock);
 
@@ -114,6 +121,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testLazyDefersTheSendToFirstAccess(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient();
         $client = FetchModeDefault\Client::create($mock);
 
@@ -128,6 +138,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testLazyErrorsSurfaceOnFirstAccess(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient(404, '{"message":"no pet"}');
         $client = FetchModeDefault\Client::create($mock);
 
@@ -140,6 +153,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testLazyAppliesAuthenticationAtSendTime(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient();
         $authSpy = new AuthDecorateCounter();
         $client = FetchModeDefault\Client::create($mock, [new \Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry([$authSpy])]);
@@ -155,6 +171,9 @@ class FetchModeRuntimeTest extends TestCase
 
     public function testNonGhostLazyEndpointDegradesToEager(): void
     {
+        if (!GhostFactory::canCreate()) {
+            self::markTestSkipped('native lazy objects require PHP >= 8.4');
+        }
         $mock = self::mockClient(200, '[{"name":"Anna"}]');
         $client = FetchModeDefault\Client::create($mock);
 

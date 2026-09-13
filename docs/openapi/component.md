@@ -510,7 +510,7 @@ Status-code mapping is fully preserved: on a 4xx/5xx response, the documented ex
 is first accessed instead of at call time. Dropping an unconsumed lazy proxy aborts its transfer too
 (GC = drop-to-cancel), and an unconsumed proxy registers nothing (lazy) or an abortable transfer (preload).
 
-Ghosting relies on PHP native lazy objects, available since **PHP 8.3**: on older PHP versions deferred methods
+Ghosting relies on PHP native lazy objects, available since **PHP 8.4**: on older PHP versions deferred methods
 fall back to the eager behavior at runtime. State introspection:
 
 ```php
