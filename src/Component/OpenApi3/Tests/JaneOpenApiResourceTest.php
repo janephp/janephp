@@ -83,8 +83,8 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 2. Test unauthorized
         $client = Client::create();
-        $result = $client->getEndpoint();
         try {
+            $result = $client->getEndpoint();
             $result->foo;
             self::fail('Expected GetEndpointUnauthorizedException to be thrown.');
         } catch (GetEndpointUnauthorizedException $e) {
