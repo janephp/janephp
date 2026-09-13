@@ -133,8 +133,8 @@ class JaneOpenApiResourceTest extends TestCase
             new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
             static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'code=404']]),
         ]);
-        $result = $preferClient->getThing('thing-1', ['q' => 'search']);
         try {
+            $result = $preferClient->getThing('thing-1', ['q' => 'search']);
             $result->kind;
             self::fail('Expected GetThingNotFoundException to be thrown.');
         } catch (GetThingNotFoundException $e) {

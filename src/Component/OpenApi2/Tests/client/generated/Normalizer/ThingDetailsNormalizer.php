@@ -68,16 +68,16 @@ class ThingDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->id ?? null;
-        $dataArray['name'] = $data->name ?? null;
-        $dataArray['kind'] = $data->kind ?? null;
-        $dataArray['createdAt'] = ($data->createdAt ?? null)->format('Y-m-d');
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['kind'] = $data->kind;
+        $dataArray['createdAt'] = $data->createdAt->format('Y-m-d');
         $values = [];
-        foreach ($data->tags ?? null as $value) {
+        foreach ($data->tags as $value) {
             $values[] = $value;
         }
         $dataArray['tags'] = $values;
-        $dataArray['description'] = $data->description ?? null;
+        $dataArray['description'] = $data->description;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

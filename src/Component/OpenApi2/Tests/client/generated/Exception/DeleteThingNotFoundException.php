@@ -4,25 +4,24 @@ namespace Jane\Component\OpenApi2\Tests\Client\Exception;
 
 class DeleteThingNotFoundException extends NotFoundException
 {
-    /**
-     * @var \Jane\Component\OpenApi2\Tests\Client\Model\Error
-     */
-    private $error;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Jane\Component\OpenApi2\Tests\Client\Model\Error $error, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Jane\Component\OpenApi2\Tests\Client\Model\Error
+         */
+        private readonly \Jane\Component\OpenApi2\Tests\Client\Model\Error $error,
+        /**
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
+         */
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
+    )
     {
         parent::__construct('Thing not found');
-        $this->error = $error;
-        $this->response = $response;
     }
     public function getError(): \Jane\Component\OpenApi2\Tests\Client\Model\Error
     {
         return $this->error;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

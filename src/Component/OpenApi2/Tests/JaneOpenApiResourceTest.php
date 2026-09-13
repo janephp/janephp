@@ -92,10 +92,9 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 2. Test unauthorized
         $client = Client::create();
-        $result = $client->getEndpoint();
         try {
+            $result = $client->getEndpoint();
             $result->foo;
-            self::fail('Expected GetEndpointUnauthorizedException to be thrown.');
             self::fail('Expected GetEndpointUnauthorizedException to be thrown.');
         } catch (GetEndpointUnauthorizedException $e) {
             $this->assertEquals(401, $e->getCode());
@@ -143,10 +142,9 @@ class JaneOpenApiResourceTest extends TestCase
             new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
             static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'code=404']]),
         ]);
-        $result = $preferClient->getThing('thing-1', ['q' => 'search']);
         try {
+            $result = $preferClient->getThing('thing-1', ['q' => 'search']);
             $result->kind;
-            self::fail('Expected GetThingNotFoundException to be thrown.');
             self::fail('Expected GetThingNotFoundException to be thrown.');
         } catch (GetThingNotFoundException $e) {
             $this->assertEquals(404, $e->getCode());
