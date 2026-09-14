@@ -78,4 +78,8 @@ class DatabasesGetLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

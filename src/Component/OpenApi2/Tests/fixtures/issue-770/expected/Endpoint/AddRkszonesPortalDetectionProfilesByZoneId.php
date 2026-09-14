@@ -84,4 +84,8 @@ class AddRkszonesPortalDetectionProfilesByZoneId extends \Jane\Component\OpenApi
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

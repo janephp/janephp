@@ -90,4 +90,8 @@ class FirewallsAddRules extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

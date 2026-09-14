@@ -101,4 +101,8 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

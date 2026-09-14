@@ -76,4 +76,8 @@ class UptimeGetAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

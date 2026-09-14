@@ -78,4 +78,8 @@ class FindRkszonesAvailableTunnelProfilesByZoneId extends \Jane\Component\OpenAp
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList::class;
+    }
 }

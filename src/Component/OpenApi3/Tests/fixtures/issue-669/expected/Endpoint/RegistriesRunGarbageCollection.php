@@ -94,4 +94,8 @@ class RegistriesRunGarbageCollection extends \Jane\Generated\DigitalOcean\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

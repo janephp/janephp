@@ -73,4 +73,8 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\SkipParame
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -81,4 +81,8 @@ class DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerById extends \Jane\Compone
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

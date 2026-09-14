@@ -45,4 +45,8 @@ class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi2\Tests\Expe
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

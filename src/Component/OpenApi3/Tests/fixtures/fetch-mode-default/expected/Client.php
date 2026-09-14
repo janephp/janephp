@@ -25,6 +25,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     }
     /**
      * @param string $petId
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\GetPetNotFoundException
      * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
      *
      * @return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200
@@ -32,6 +33,15 @@ class Client extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Cli
     public function getPet(string $petId)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Endpoint\GetPet($petId));
+    }
+    /**
+     * @throws \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException
+     *
+     * @return \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\OwnersGetResponse200Item[]
+     */
+    public function getOwners()
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Endpoint\GetOwners());
     }
     /**
      * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator

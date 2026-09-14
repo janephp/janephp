@@ -83,4 +83,8 @@ class MonitoringGetLbDropletsQueueSize extends \Jane\Generated\DigitalOcean\Runt
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

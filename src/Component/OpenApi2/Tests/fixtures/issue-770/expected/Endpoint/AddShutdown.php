@@ -79,4 +79,8 @@ class AddShutdown extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

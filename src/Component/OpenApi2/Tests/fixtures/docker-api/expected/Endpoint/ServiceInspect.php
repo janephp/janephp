@@ -78,4 +78,8 @@ class ServiceInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Docker\Api\Model\Service::class;
+    }
 }

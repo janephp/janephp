@@ -62,4 +62,8 @@ class ImageInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Docker\Api\Model\Image::class;
+    }
 }

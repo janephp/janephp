@@ -83,4 +83,8 @@ class XmpMappingSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

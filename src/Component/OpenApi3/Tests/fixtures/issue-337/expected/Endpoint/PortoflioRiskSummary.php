@@ -108,4 +108,8 @@ class PortoflioRiskSummary extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

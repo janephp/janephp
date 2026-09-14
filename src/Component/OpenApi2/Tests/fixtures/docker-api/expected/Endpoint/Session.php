@@ -53,4 +53,8 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

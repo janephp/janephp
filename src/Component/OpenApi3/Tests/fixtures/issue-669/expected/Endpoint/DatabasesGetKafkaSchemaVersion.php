@@ -78,4 +78,8 @@ class DatabasesGetKafkaSchemaVersion extends \Jane\Generated\DigitalOcean\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion::class;
+    }
 }

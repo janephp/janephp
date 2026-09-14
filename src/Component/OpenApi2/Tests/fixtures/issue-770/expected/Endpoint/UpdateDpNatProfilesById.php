@@ -84,4 +84,8 @@ class UpdateDpNatProfilesById extends \Jane\Component\OpenApi3\Tests\Expected\Is
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

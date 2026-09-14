@@ -7,12 +7,12 @@ class GetThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Base
     protected $thingId;
     /**
      * @param string $thingId
-     * @param array $queryParameters {
-     *     @var string $q
-     *     @var int $page
-     * }
+     * @param array{
+     *    "q": string,
+     *    "page"?: int,
+     * } $queryParameters
      */
-    public function __construct(string $thingId, array $queryParameters = [])
+    public function __construct(string $thingId, array $queryParameters)
     {
         $this->thingId = $thingId;
         $this->queryParameters = $queryParameters;
@@ -26,7 +26,7 @@ class GetThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Base
     {
         return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -51,10 +51,10 @@ class GetThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Base
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Client\Model\Thing
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Client\Model\Thing', 'json');
         }
@@ -65,5 +65,13 @@ class GetThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Base
     public function getAuthenticationScopes(): array
     {
         return ['ApiKeyAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
+    }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\Client\Model\Thing::class;
     }
 }

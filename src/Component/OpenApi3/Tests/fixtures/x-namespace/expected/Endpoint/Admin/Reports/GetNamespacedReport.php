@@ -45,4 +45,8 @@ class GetNamespacedReport extends \Jane\Component\OpenApi3\Tests\Expected\XNames
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi3\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200::class;
+    }
 }

@@ -48,4 +48,8 @@ class UpdateCompany extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayN
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

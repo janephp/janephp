@@ -78,4 +78,8 @@ class DeleteRkszonesLoadBalancingClientLoadBalancing24ById extends \Jane\Compone
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -51,4 +51,8 @@ class PostTest extends \Jane\Component\OpenApi3\Tests\Issue680\Runtime\Client\Ba
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

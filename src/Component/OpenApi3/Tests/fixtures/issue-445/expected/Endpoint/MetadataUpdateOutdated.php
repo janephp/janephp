@@ -73,4 +73,8 @@ class MetadataUpdateOutdated extends \PicturePark\API\Runtime\Client\BaseEndpoin
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

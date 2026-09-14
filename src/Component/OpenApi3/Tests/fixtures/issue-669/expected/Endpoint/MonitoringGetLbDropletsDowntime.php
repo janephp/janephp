@@ -83,4 +83,8 @@ class MonitoringGetLbDropletsDowntime extends \Jane\Generated\DigitalOcean\Runti
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

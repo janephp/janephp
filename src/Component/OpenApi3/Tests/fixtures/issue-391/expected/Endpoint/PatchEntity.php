@@ -62,4 +62,8 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

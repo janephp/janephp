@@ -56,4 +56,8 @@ class ShowPetById extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

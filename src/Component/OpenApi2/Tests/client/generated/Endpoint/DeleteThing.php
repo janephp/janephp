@@ -21,7 +21,7 @@ class DeleteThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
     {
         return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -36,10 +36,10 @@ class DeleteThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -50,5 +50,13 @@ class DeleteThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
     public function getAuthenticationScopes(): array
     {
         return ['ApiKeyAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 }

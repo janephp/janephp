@@ -65,4 +65,8 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User::class;
+    }
 }

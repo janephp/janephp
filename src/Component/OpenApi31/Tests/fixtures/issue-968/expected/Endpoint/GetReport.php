@@ -45,4 +45,8 @@ class GetReport extends \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtim
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report::class;
+    }
 }

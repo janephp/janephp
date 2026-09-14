@@ -99,4 +99,8 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\ShareDetail::class;
+    }
 }

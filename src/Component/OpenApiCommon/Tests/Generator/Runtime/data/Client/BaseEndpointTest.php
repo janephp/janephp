@@ -220,6 +220,11 @@ final class BaseEndpointTest extends TestCase
                 return 'lazy';
             }
 
+            public function getTargetClass(): ?string
+            {
+                return null;
+            }
+
             public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
             {
                 return $response;
@@ -287,6 +292,11 @@ final class BaseEndpointTest extends TestCase
                 return 'lazy';
             }
 
+            public function getTargetClass(): ?string
+            {
+                return null;
+            }
+
             public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
             {
                 return $response;
@@ -344,6 +354,11 @@ final class BaseEndpointTest extends TestCase
             public function getFetchMode(): string
             {
                 return 'lazy';
+            }
+
+            public function getTargetClass(): ?string
+            {
+                return null;
             }
 
             public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
@@ -444,6 +459,11 @@ final class BaseEndpointTest extends TestCase
             public function getFetchMode(): string
             {
                 return 'lazy';
+            }
+
+            public function getTargetClass(): ?string
+            {
+                return null;
             }
 
             public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)

@@ -74,4 +74,8 @@ class PluginList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

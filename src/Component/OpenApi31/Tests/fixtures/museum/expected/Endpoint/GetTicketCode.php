@@ -67,4 +67,8 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runt
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

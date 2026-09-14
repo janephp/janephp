@@ -41,4 +41,8 @@ class Test extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\R
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

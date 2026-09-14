@@ -22,6 +22,7 @@ final class FormEncoder implements EncoderInterface, DecoderInterface
     }
     public function decode(string $data, string $format, array $context = []): mixed
     {
+        $result = [];
         \parse_str($data, $result);
         return $result;
     }

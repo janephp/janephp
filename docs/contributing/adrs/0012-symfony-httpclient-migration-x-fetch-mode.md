@@ -61,17 +61,26 @@ extension, silently or otherwise (ADR 0002: clean, complete pre-generation error
      a non-`get`/`head` method; or a value that is not exactly `lazy|eager|preload`)
      with an RFC 6901 JSON pointer and a fix hint, rendered by the existing
      `[ERROR]` block machinery.
-4. **`Result` wrapper and client surface.** `executeEndpoint()` branches on the
-   endpoint's fetch mode: `eager` = request + parse now (today's semantics,
-   call-time exceptions); `preload` = request now, return a `Result` holding the
-   in-flight response; `lazy` = return a `Result` holding a response factory
-   closure. `Result` parses on first access through the endpoint's own
-   `parseResponse()` (never a fixed model class, preserving per-status
-   model/exception mapping) and offers `getStatusCode()`, `toObject()`,
-   `toArray()`, `isInitialized()`, `cancel(): void`, `await(): void`. Garbage
-   collecting an unconsumed `Result` aborts the transfer (Symfony behavior):
-   documented as drop-to-cancel. `Client::stream(iterable<Result>)` drives
-   batches. `executeRawEndpoint()` keeps returning the response.
+4. **Lazy ghost proxies and client surface.** `executeEndpoint()` branches on
+   the endpoint's fetch mode: `eager` = request + parse now (today's semantics,
+   call-time exceptions); `lazy` / `preload` = return a PHP native lazy ghost
+   proxy (`ReflectionClass::newLazyGhost`, PHP >= 8.4) of the endpoint's
+   success model class. `lazy` sends nothing until the proxy is first
+   accessed; `preload` registers the request immediately (the response object
+   is created at call time) and parses on first access. An endpoint exposes
+   `getTargetClass(): ?string` — the success model class when every 2xx /
+   default branch denormalizes to a single model class, `null` otherwise (
+   mutating verbs always `null`). The ghost initializer runs the endpoint's
+   own `processEndpoint()` + `parseResponse()` (never a fixed model class,
+   preserving per-status model/exception mapping) and a documented 4xx/5xx
+   throws on first access; non-ghostable responses (arrays, maps, scalars,
+   no-content, several models / content types) degrade deferred modes to
+   eager. `Jane\Component\OpenApiRuntime\Client\GhostFactory` centralizes
+   availability check, creation and forced initialization; state
+   introspection uses the PHP reflection API
+   (`ReflectionClass::isUninitializedLazyObject()` /
+   `initializeLazyObject()`). `Client::stream()` keeps batching raw responses
+   only; `executeRawEndpoint()` keeps returning the response.
    - **No-throw parity with PSR-18** is achieved by consuming with
      `$throw = false` (`getHeaders(false)`, `getContent(false)`,
      `toArray(false)`): the historical `'throw' => false` request option does
@@ -105,9 +114,9 @@ extension, silently or otherwise (ADR 0002: clean, complete pre-generation error
 
 - Generated clients and the runtime lose all `psr/*` / `php-http/*` /
   `nyholm/psr7` dependencies; users on PSR-18 clients must adapt (8.0 BC break).
-- Custom `Endpoint` implementers must add `getFetchMode()` and drop the
-  `parseResponse()` `$fetchMode` argument; custom `AuthenticationPlugin`
-  implementers migrate `authenticate()` to `decorate()`.
+- Custom `Endpoint` implementers must add `getFetchMode()` and `getTargetClass()`
+  and drop the `parseResponse()` `$fetchMode` argument; custom
+  `AuthenticationPlugin` implementers migrate `authenticate()` to `decorate()`.
 - Mutating operations with `x-fetch-mode` now fail generation with clean,
   complete `[ERROR]` blocks instead of being silently ignored.
 - `preload` enables client-side batching (`stream()`/`await()`) with buffered

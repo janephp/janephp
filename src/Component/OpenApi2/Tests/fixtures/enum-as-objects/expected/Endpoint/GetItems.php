@@ -41,4 +41,8 @@ class GetItems extends \Jane\Component\OpenApi2\Tests\EnumAsObjects\Runtime\Clie
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\EnumAsObjects\Model\Item::class;
+    }
 }

@@ -41,4 +41,8 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKe
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo::class;
+    }
 }

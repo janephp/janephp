@@ -81,4 +81,8 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

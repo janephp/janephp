@@ -49,4 +49,8 @@ class GetByTestInteger extends \Jane\Component\OpenApi2\Tests\Expected\Parameter
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -39,6 +39,10 @@ Since Jane 8.0, generated clients are built on [Symfony HttpClient](https://symf
 - `$additionalPlugins` are now **decorator factories** (`callable(HttpClientInterface): HttpClientInterface`), e.g. `AuthenticationRegistry` or your own closures;
 - the `$fetch` parameter (`FETCH_OBJECT` / `FETCH_RESPONSE`) was removed: use `executeRawEndpoint()` for raw responses and
   [`x-fetch-mode`](../openapi/component.md#fetch-modes) for per-operation fetch strategies on GET/HEAD;
+- deferred (`lazy` / `preload`) operations return a [lazy ghost proxy](../openapi/component.md#ghost-proxies)
+  of the generated model class (or the eagerly-parsed value when the response is not a single model), so calls
+  read plain properties / array entries directly; custom `Endpoint` implementations must
+  add `getTargetClass(): ?string` (the generated model class of the success response, or `null` when it is not a single model);
 - generated authentication classes implement `decorate(string $method, string $url, array &$options): void` instead of `authentication(RequestInterface)`;
 - custom `Endpoint` implementations must add `getFetchMode(): string` and drop the `$fetchMode` argument of `parseResponse()`;
 - requests never throw on 3xx/4xx/5xx before parsing: status-to-exception mapping stays in the generated code, and raw

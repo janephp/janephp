@@ -86,4 +86,8 @@ class GenaiGetEvaluationTestCase extends \Jane\Generated\DigitalOcean\Runtime\Cl
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

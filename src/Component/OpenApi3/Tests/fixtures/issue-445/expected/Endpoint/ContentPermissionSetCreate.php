@@ -84,4 +84,8 @@ class ContentPermissionSetCreate extends \PicturePark\API\Runtime\Client\BaseEnd
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

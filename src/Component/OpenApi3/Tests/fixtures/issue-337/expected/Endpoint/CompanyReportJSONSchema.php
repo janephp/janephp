@@ -96,4 +96,8 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

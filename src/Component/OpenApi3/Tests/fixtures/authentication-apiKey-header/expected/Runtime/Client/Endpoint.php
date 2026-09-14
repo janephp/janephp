@@ -31,6 +31,13 @@ interface Endpoint
      */
     public function getFetchMode(): string;
     /**
+     * The generated model class faked by the lazy ghost proxy for the endpoint's
+     * success response, or null when the response is not a single generated
+     * model (JSON arrays and maps, scalar bodies, multi-content-type
+     * responses...): deferred fetch modes degrade to the eager behavior then.
+     */
+    public function getTargetClass(): ?string;
+    /**
      * Get the headers of an endpoint.
      */
     public function getHeaders(array $baseHeaders = []): array;

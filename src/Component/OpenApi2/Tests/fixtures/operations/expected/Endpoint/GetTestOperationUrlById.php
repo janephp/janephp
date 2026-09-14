@@ -41,4 +41,8 @@ class GetTestOperationUrlById extends \Jane\Component\OpenApi2\Tests\Expected\Op
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

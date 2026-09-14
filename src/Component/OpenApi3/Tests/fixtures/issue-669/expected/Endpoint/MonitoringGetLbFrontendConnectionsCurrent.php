@@ -83,4 +83,8 @@ class MonitoringGetLbFrontendConnectionsCurrent extends \Jane\Generated\DigitalO
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

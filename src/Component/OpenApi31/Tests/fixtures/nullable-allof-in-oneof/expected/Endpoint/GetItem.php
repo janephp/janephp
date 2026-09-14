@@ -45,4 +45,8 @@ class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOn
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container::class;
+    }
 }

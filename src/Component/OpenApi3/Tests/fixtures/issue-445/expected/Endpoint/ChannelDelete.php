@@ -82,4 +82,8 @@ class ChannelDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

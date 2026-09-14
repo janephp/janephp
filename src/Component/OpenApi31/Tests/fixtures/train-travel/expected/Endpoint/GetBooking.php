@@ -84,4 +84,8 @@ class GetBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Ru
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdGetJsonResponse200::class;
+    }
 }

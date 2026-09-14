@@ -48,4 +48,8 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

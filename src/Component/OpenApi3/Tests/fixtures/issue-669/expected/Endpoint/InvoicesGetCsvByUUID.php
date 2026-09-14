@@ -78,4 +78,8 @@ class InvoicesGetCsvByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Generated\DigitalOcean\Model\Error::class;
+    }
 }

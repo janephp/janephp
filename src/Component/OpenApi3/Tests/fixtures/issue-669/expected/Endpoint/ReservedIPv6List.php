@@ -81,4 +81,8 @@ class ReservedIPv6List extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

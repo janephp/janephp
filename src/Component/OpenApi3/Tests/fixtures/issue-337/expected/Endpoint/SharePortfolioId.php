@@ -113,4 +113,8 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

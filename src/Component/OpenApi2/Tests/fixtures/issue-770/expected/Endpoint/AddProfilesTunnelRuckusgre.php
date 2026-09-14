@@ -81,4 +81,8 @@ class AddProfilesTunnelRuckusgre extends \Jane\Component\OpenApi3\Tests\Expected
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

@@ -107,6 +107,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $class->stmts[] = $transformBodyMethod;
         $class->stmts[] = $this->getAuthenticationScopesMethod($operation);
         $class->stmts[] = $this->getFetchModeMethod($operation);
+        $class->stmts[] = $this->getTargetClassMethod($operation, $outputTypes);
 
         $subNamespace = $operation->getSubNamespace();
         $endpointPath = $naming->getArtifactPath($schema->getDirectory(), 'Endpoint', $subNamespace);

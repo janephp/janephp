@@ -88,4 +88,8 @@ class MonitoringGetDropletBandwidthMetrics extends \Jane\Generated\DigitalOcean\
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

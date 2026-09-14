@@ -57,4 +57,8 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespons
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200::class;
+    }
 }

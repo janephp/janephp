@@ -45,4 +45,8 @@ class InfoGetVersion extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\VersionInfo::class;
+    }
 }

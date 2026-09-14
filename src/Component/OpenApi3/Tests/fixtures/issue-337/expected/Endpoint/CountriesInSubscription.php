@@ -82,4 +82,8 @@ class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \CreditSafe\API\Model\AccessCountriesResponse::class;
+    }
 }

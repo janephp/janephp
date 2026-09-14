@@ -82,4 +82,8 @@ class SchemaExists extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\SchemaExistsResponse::class;
+    }
 }

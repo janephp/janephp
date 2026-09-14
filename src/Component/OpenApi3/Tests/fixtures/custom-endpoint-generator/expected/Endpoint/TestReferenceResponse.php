@@ -41,4 +41,8 @@ class TestReferenceResponse extends \Jane\Component\OpenApi3\Tests\Expected\Cust
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

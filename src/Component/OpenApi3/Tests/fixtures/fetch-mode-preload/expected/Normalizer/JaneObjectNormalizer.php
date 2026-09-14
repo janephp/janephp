@@ -20,6 +20,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\FetchModePreload\Model\PetsGetResponse200::class => \Jane\Component\OpenApi3\Tests\FetchModePreload\Normalizer\PetsGetResponse200Normalizer::class,
         
+        \Jane\Component\OpenApi3\Tests\FetchModePreload\Model\PetsGetResponse404::class => \Jane\Component\OpenApi3\Tests\FetchModePreload\Normalizer\PetsGetResponse404Normalizer::class,
+        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\FetchModePreload\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool

@@ -84,4 +84,8 @@ class AddRkszonesSocialMediaLoginProfilesByZoneId extends \Jane\Component\OpenAp
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

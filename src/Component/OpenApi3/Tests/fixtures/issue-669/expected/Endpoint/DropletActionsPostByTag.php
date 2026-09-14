@@ -98,4 +98,8 @@ class DropletActionsPostByTag extends \Jane\Generated\DigitalOcean\Runtime\Clien
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

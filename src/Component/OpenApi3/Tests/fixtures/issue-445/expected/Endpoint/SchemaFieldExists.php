@@ -86,4 +86,8 @@ class SchemaFieldExists extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\FieldExistsResponse::class;
+    }
 }

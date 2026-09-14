@@ -1669,6 +1669,12 @@ message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\
 count = 1
 
 [[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-default/expected/Endpoint/GetOwners.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\FetchModeDefault\Endpoint\GetOwners::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\OwnersGetResponse200Item>`, but found `object`.'
+count = 1
+
+[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-default/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."

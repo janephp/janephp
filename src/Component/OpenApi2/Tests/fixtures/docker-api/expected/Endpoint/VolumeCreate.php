@@ -56,4 +56,8 @@ class VolumeCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

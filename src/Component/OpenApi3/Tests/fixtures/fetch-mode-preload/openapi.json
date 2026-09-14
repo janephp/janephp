@@ -17,7 +17,24 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "name": {"type": "string"}
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
                                     }
                                 }
                             }

@@ -59,4 +59,8 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

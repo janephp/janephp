@@ -78,4 +78,8 @@ class DeleteApsRadioConfigRadio6gChannelWidthByApMac extends \Jane\Component\Ope
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
 }

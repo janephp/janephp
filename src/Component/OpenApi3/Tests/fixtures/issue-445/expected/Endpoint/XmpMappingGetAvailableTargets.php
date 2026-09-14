@@ -73,4 +73,8 @@ class XmpMappingGetAvailableTargets extends \PicturePark\API\Runtime\Client\Base
     {
         return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
+    public function getTargetClass(): ?string
+    {
+        return \PicturePark\API\Model\XmpMappingTargets::class;
+    }
 }

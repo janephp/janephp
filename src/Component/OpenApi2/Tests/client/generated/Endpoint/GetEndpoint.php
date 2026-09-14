@@ -13,7 +13,7 @@ class GetEndpoint extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
     {
         return '/endpoint';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -28,10 +28,10 @@ class GetEndpoint extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse', 'json');
         }
@@ -42,5 +42,13 @@ class GetEndpoint extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
     public function getAuthenticationScopes(): array
     {
         return ['ApiKeyAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
+    }
+    public function getTargetClass(): ?string
+    {
+        return \Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse::class;
     }
 }

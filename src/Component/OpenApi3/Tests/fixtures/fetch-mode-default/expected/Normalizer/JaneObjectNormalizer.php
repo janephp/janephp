@@ -24,6 +24,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse200::class => \Jane\Component\OpenApi3\Tests\FetchModeDefault\Normalizer\PetsPetIdGetResponse200Normalizer::class,
         
+        \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\PetsPetIdGetResponse404::class => \Jane\Component\OpenApi3\Tests\FetchModeDefault\Normalizer\PetsPetIdGetResponse404Normalizer::class,
+        
+        \Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\OwnersGetResponse200Item::class => \Jane\Component\OpenApi3\Tests\FetchModeDefault\Normalizer\OwnersGetResponse200ItemNormalizer::class,
+        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
