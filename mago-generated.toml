@@ -27,6 +27,11 @@ excludes = [
     "**/runtime-boilerplate/**",
     # Fixture configuration, not generated output.
     "**/.jane*",
+    # A generator input living next to a fixture's spec: it extends a
+    # generator class outside this analysis and is exercised by the fixture
+    # test itself. (`*` crosses directories in Mago's globs, so the file is
+    # named rather than its location.)
+    "**/CustomEndpointGenerator.php",
 ]
 
 [analyzer]
