@@ -235,33 +235,15 @@ message = 'Invalid argument type for argument #1 of `Symfony\Component\Validator
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/all-boolean-query-resolver/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/all-boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/all-of-merge/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\AllOfMerge\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/all-of-merge/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/array-definition/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -277,33 +259,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-header/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyHeader\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-header/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-query/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyQuery\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-query/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/body-parameter/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -319,21 +283,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/boolean-query-resolver/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/content-type/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\ContentType\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -367,33 +319,15 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi2\Tests\Fixtu
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/custom-endpoint-generator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/custom-endpoint-generator/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/discriminator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Discriminator\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/discriminator/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Docker\Api\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -817,21 +751,9 @@ message = 'Invalid type for property `$labels`: expected `array<string, string>`
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\EnumAsObjects\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/One/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\One\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -841,21 +763,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Two\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exceptions/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Exceptions\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -865,33 +775,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/from-url/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\FromUrl\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/from-url/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/host/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Host\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/host/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-770/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue770\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -997,33 +889,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-831/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Issue831\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/issue-831/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-832/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Issue832\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/issue-832/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/model-in-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1045,21 +919,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-resources/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\MultiResources\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/multi-resources/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-specs/expected/Api1/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Api1\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1069,21 +931,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-specs/expected/Api2/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Api2\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/multi-specs/expected/Api2/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/no-reference-body/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1093,33 +943,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/no-reference-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\NoReferenceResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/no-reference-response/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/nullable-check/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\NullableCheck\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/nullable-check/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/operations/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Operations\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1141,21 +973,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/parameters/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Parameters\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/parameters/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/response-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\ResponseReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1165,21 +985,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/skip-parameter-check/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/skip-parameter-check/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/throw-unexpected-status-code/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1189,21 +997,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/uppercase-parameter/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\UppercaseParameter\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/uppercase-parameter/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/use-cacheable-supports-method/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1219,21 +1015,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/whitelisted-paths-array-notation/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/whitelisted-paths-array-notation/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/whitelisted-paths/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1243,21 +1027,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/x-namespace/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\XNamespace\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/x-namespace/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/yaml/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi2\Tests\Expected\Yaml\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1267,21 +1039,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-boolean-query-resolver/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AllBooleanQueryResolver\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/all-boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-merge/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AllOfMerge\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1291,21 +1051,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-nullable-reference-property/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AllOfNullableReferenceProperty\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/all-of-nullable-reference-property/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-schema-with-one-of-property/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1315,33 +1063,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-discriminator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/any-of-discriminator/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-mixed-request-body-parameter-type/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AnyOfMixedRequestBodyParameterType\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/any-of-mixed-request-body-parameter-type/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-nullable-reference-property/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1357,21 +1087,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/application-problem-json-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/application-problem-json-response/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/array-definition/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ArrayDefinition\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1387,21 +1105,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\ArrayItemsValidation\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-apiKey-header/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1411,21 +1117,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-apiKey-query/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyQuery\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/authentication-apiKey-query/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-http-basic/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBasic\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1435,21 +1129,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-http-bearer/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/authentication-http-bearer/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-multiple-security-layers/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1459,21 +1141,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\BadResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/body-parameter/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1489,21 +1159,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/boolean-query-resolver/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\BooleanQueryResolver\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/content-type/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ContentType\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1537,21 +1195,9 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Fixtu
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/custom-endpoint-generator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\CustomEndpointGenerator\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/custom-endpoint-generator/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/custom-string-format-mapping/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1561,21 +1207,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/deprecated/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Deprecated\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1591,21 +1225,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/discriminator-snake-case/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/discriminator-snake-case/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/discriminator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Discriminator\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1615,21 +1237,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/enum-as-objects/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\EnumAsObjects\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exception-with-no-schema/expected/One/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\One\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1639,33 +1249,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exception-with-no-schema/expected/Two/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Two\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/exception-with-no-schema/expected/Two/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exceptions/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Exceptions\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/exceptions/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-default/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\FetchModeDefault\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1681,21 +1273,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-eager/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\FetchModeEager\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-eager/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-head/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\FetchModeHead\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1705,21 +1285,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-preload/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\FetchModePreload\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-preload/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/from-url/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\FromUrl\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1729,21 +1297,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/generate-error-exceptions/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\GenerateErrorExceptions\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/generate-error-exceptions/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host-with-port-and-base-path/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\HostWithPortAndBasePath\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1753,33 +1309,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host-with-port/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\HostWithPort\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/host-with-port/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Host\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/host/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/include-null-value/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1795,21 +1333,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/inheritance-using-discriminator-with-mapping/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\InheritanceUsingDiscriminatorWithMapping\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/inheritance-using-discriminator-with-mapping/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-1036/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1825,21 +1351,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-299/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue299\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-299/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-337/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `CreditSafe\API\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -1855,21 +1369,9 @@ message = 'Invalid type for property `$companies`: expected `array<string, mixed
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-391/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Gounlaf\JanephpBug\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-391/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `PicturePark\API\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -2719,33 +2221,15 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 2
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-641/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue641\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-641/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-649/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue649\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-649/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Generated\DigitalOcean\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3127,21 +2611,9 @@ message = 'Invalid type for property `$resources`: expected `array<string, mixed
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-670/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue670\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-670/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-672/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue672\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3151,33 +2623,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-675/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue675\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-675/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Issue680\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-737/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue737\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3193,21 +2647,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-787/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue787\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-787/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\ExpectedIssue793\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3223,12 +2665,6 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-803/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue803\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-803/expected/Endpoint/GetFiles.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\Issue803\Endpoint\GetFiles::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File>`, but found `object`.'
@@ -3238,12 +2674,6 @@ count = 1
 file = "src/Component/OpenApi3/Tests/fixtures/issue-803/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-810/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue810\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3259,33 +2689,15 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-823/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Issue823\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-823/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-828/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Issue828\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-828/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/model-in-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3307,21 +2719,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/model-type-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ModelTypeReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/model-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-resources/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\MultiResources\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3331,33 +2731,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api1/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Api1\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api1/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api2/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Api2\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api2/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3373,12 +2755,6 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multipart-nested-object/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/multipart-nested-object/expected/Endpoint/PostFile.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
@@ -3391,21 +2767,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-operation-id-with-dot-path/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/no-operation-id-with-dot-path/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-reference-body/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3415,21 +2779,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-reference-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\NoReferenceResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/no-reference-response/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/operations/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Operations\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3451,33 +2803,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameter-type-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/parameter-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameters-map-keys/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/parameters-map-keys/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameters/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Parameters\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3499,21 +2833,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/read-only-properties/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ReadOnlyProperties\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/read-only-properties/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/referenced-request-bodies/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3523,21 +2845,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-reference-with-schema-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/response-reference-with-schema-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ResponseReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3547,21 +2857,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-type-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ResponseTypeReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/response-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/scalar-response/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3571,21 +2869,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/simple-path-array-parameter/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\SimplePathArrayParameter\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/simple-path-array-parameter/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/skip-null-values/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\SkipNullValues\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3595,21 +2881,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/skip-parameter-check/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/skip-parameter-check/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/status-code-range/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\StatusCodeRange\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3619,21 +2893,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/test-nullable-array/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/test-nullable-array/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/test-nullable/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\TestNullable\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3643,33 +2905,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/throw-unexcepted-status-code/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/throw-unexcepted-status-code/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/uppercase-parameter/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/uppercase-parameter/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/use-cacheable-supports-method/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -3685,21 +2929,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/vnd-plus-json/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/vnd-plus-json/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-array-notation/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4045,21 +3277,9 @@ message = 'Class, interface, enum, or trait `Jane\OpenApi3\Tests\Expected\Whitel
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-circular-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-circular-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-reference-without-content/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4069,21 +3289,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-request-body-reference/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsRequestBodyReference\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-request-body-reference/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4429,21 +3637,9 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/x-namespace/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\XNamespace\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/x-namespace/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/yaml/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\Expected\Yaml\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4453,21 +3649,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/array-items-validation/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\ArrayItemsValidation\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/array-items-validation/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/custom-validators/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4477,21 +3661,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4501,21 +3673,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\EnumAsObjects\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/generate-error-exceptions/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\GenerateErrorExceptions\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4525,33 +3685,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Issue1006\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1007/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue1007\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-1007/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1036/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4567,21 +3709,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-869/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue869\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-869/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-939/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue939\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4591,21 +3721,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-940/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue940\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-940/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-946/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue946\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4621,21 +3739,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-963/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue963\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-963/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-966/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue966\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4645,21 +3751,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-968/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Issue968\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-968/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/museum/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Museum\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4681,21 +3775,9 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/nullable-allof-in-oneof/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/nullable-allof-in-oneof/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/nullable-date/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\NullableDate\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4717,12 +3799,6 @@ message = "Property `$apiKey` is written to but never read."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/scalar-galaxy/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/scalar-galaxy/expected/Endpoint/UploadImage.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
@@ -4732,12 +3808,6 @@ count = 1
 file = "src/Component/OpenApi31/Tests/fixtures/scalar-galaxy/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/simple/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\Simple\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]
@@ -4753,33 +3823,15 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/status-code-range/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\StatusCodeRange\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/status-code-range/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/train-travel/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/train-travel/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/x-namespace/expected/Client.php"
-code = "unsafe-instantiation"
-message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\Expected\XNamespace\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
 count = 1
 
 [[issues]]

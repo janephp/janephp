@@ -47,6 +47,16 @@ final class ClientTest extends TestCase
         self::assertSame([$first, $second], $this->streamedResponses($client->stream([$first, $second])));
     }
 
+    /**
+     * The generated Client::create() ends in `new static($httpClient, $serializer)`:
+     * a subclass changing the constructor signature would break it at runtime,
+     * so the constructor is final (#1066, `unsafe-instantiation`).
+     */
+    public function testTheConstructorIsFinalSoThatCreateCanRelyOnItsSignature(): void
+    {
+        self::assertTrue((new \ReflectionMethod(\Client::class, '__construct'))->isFinal());
+    }
+
     private function client(MockHttpClient $httpClient): \Client
     {
         return new class($httpClient, new Serializer()) extends \Client {

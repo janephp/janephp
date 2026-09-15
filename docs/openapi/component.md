@@ -791,6 +791,11 @@ class Client extends BaseClient
 Then you will need to use your own client instead of the generated one. To extends other parts of the endpoint you can
 look at the generated code.
 
+The constructor of the generated client is `final` (`create()` instantiates `new static(...)` and relies on its
+signature): a subclass adds methods but cannot change how the client is constructed — wire dependencies through
+`create()`'s `$additionalPlugins` / `$additionalNormalizers`, or build the `HttpClientInterface` and the serializer
+yourself and pass them to the constructor.
+
 ## Custom string formats
 
 Jane support some strings format, but it can't support all of them because it's an open keyword.
