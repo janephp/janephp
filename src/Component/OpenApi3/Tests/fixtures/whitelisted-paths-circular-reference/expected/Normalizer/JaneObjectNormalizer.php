@@ -52,9 +52,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\FooNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\FooNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\BazNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\BazNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\SubBazNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer\SubBazNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

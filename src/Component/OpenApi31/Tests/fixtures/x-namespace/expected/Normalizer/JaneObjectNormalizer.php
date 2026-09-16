@@ -52,9 +52,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\FlatItemNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\FlatItemNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Catalog\TaggedItemNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Catalog\TaggedItemNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Admin\Reports\NamespacedReportGetResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Admin\Reports\NamespacedReportGetResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

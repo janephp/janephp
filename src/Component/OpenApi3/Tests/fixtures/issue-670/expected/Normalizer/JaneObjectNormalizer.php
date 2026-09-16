@@ -62,9 +62,24 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint1GetResponseNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint1GetResponseNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint1PostBodyNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint1PostBodyNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint2GetResponse200Normalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint2GetResponse200Normalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint2PostBodyNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint2PostBodyNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3GetResponse200Normalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3GetResponse200Normalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3GetResponse200Field3Normalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3GetResponse200Field3Normalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3PostBodyNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3PostBodyNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3PostBodyPostField3Normalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\Endpoint3PostBodyPostField3Normalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

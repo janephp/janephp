@@ -178,7 +178,7 @@ class NormalizerGenerator implements GeneratorInterface
         $methods[] = $this->createBaseNormalizerNormalizeMethod();
         $methods[] = $this->createBaseNormalizerDenormalizeMethod();
         $methods[] = $this->createBaseNormalizerGetNormalizer();
-        $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
+        $methods[] = $this->createBaseNormalizerInitNormalizerMethod(array_values($normalizers));
         $methods[] = $this->createProxyGetSupportedTypesMethod($propertyName);
 
         if ($this->useCacheableSupportsMethod) {

@@ -58,9 +58,22 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\PetNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\PetNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\CatNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\CatNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\DogNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\DogNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\FooNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\FooNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\BarNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\BarNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\FooBarNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Normalizer\FooBarNormalizer(),
+            \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

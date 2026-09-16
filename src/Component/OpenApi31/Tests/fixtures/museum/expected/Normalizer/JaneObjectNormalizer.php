@@ -60,9 +60,23 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\BuyMuseumTicketsNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\BuyMuseumTicketsNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\TicketNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\TicketNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumTicketsConfirmationNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumTicketsConfirmationNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumDailyHoursNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumDailyHoursNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventFieldsNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventFieldsNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\ErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\ErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

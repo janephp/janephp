@@ -6,8 +6,10 @@ use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
+use PhpParser\Node\MatchArm;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\UnionType;
 
@@ -154,33 +156,77 @@ trait JaneObjectNormalizerGenerator
         ]);
     }
 
-    protected function createBaseNormalizerInitNormalizerMethod(): Stmt\ClassMethod
+    protected function createBaseNormalizerInitNormalizerMethod(array $normalizers): Stmt\ClassMethod
     {
+        $normalizerClasses = array_values(array_unique($normalizers));
+        $statements = [
+            new Stmt\Expression(new Expr\Assign(
+                new Expr\Variable('normalizer'),
+                new Expr\Match_(new Expr\Variable('normalizerClass'), array_merge(
+                    array_map(
+                        function (string $normalizerFqcn): MatchArm {
+                            return new MatchArm(
+                                [new Expr\ClassConstFetch(new Name\FullyQualified($normalizerFqcn), new Identifier('class'))],
+                                new Expr\New_(new Name\FullyQualified($normalizerFqcn))
+                            );
+                        },
+                        $normalizerClasses
+                    ),
+                    [
+                        new MatchArm(
+                            null,
+                            new Expr\Throw_(new Expr\New_(new Name\FullyQualified('InvalidArgumentException'), [
+                                new Arg(new Expr\BinaryOp\Concat(
+                                    new Scalar\String_('Unknown normalizer class: '),
+                                    new Expr\Variable('normalizerClass')
+                                )),
+                            ]))
+                        ),
+                    ]
+                ))
+            )
+            ),
+        ];
+        if ($this->useReference) {
+            $statements[] = new Stmt\If_(new Expr\Instanceof_(
+                new Expr\Variable('normalizer'),
+                new Name\FullyQualified('Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface')
+            ), ['stmts' => [
+                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setNormalizer', [
+                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
+                ])),
+            ]]);
+            $statements[] = new Stmt\If_(new Expr\Instanceof_(
+                new Expr\Variable('normalizer'),
+                new Name\FullyQualified('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface')
+            ), ['stmts' => [
+                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setDenormalizer', [
+                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer')),
+                ])),
+            ]]);
+        } else {
+            $statements[] = new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setNormalizer', [
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
+            ]));
+            $statements[] = new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setDenormalizer', [
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer')),
+            ]));
+        }
+        $statements[] = new Stmt\Expression(new Expr\Assign(
+            new Expr\ArrayDimFetch(
+                new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
+                new Expr\Variable('normalizerClass')
+            ),
+            new Expr\Variable('normalizer')
+        ));
+        $statements[] = new Stmt\Return_(new Expr\Variable('normalizer'));
+
         return new Stmt\ClassMethod('initNormalizer', [
             'flags' => Modifiers::PRIVATE,
             'params' => [
                 new Param(new Expr\Variable('normalizerClass'), null, new Identifier('string')),
             ],
-            'stmts' => [
-                new Stmt\Expression(new Expr\Assign(
-                    new Expr\Variable('normalizer'),
-                    new Expr\New_(new Expr\Variable('normalizerClass'))
-                )),
-                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setNormalizer', [
-                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
-                ])),
-                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setDenormalizer', [
-                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer')),
-                ])),
-                new Stmt\Expression(new Expr\Assign(
-                    new Expr\ArrayDimFetch(
-                        new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
-                        new Expr\Variable('normalizerClass')
-                    ),
-                    new Expr\Variable('normalizer')
-                )),
-                new Stmt\Return_(new Expr\Variable('normalizer')),
-            ],
+            'stmts' => $statements,
         ]);
     }
 }

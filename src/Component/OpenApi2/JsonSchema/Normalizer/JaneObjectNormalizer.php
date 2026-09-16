@@ -115,9 +115,42 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            OpenApiNormalizer::class => new OpenApiNormalizer(),
+            InfoNormalizer::class => new InfoNormalizer(),
+            ContactNormalizer::class => new ContactNormalizer(),
+            LicenseNormalizer::class => new LicenseNormalizer(),
+            ExternalDocsNormalizer::class => new ExternalDocsNormalizer(),
+            OperationNormalizer::class => new OperationNormalizer(),
+            PathItemNormalizer::class => new PathItemNormalizer(),
+            ResponseNormalizer::class => new ResponseNormalizer(),
+            HeaderNormalizer::class => new HeaderNormalizer(),
+            BodyParameterNormalizer::class => new BodyParameterNormalizer(),
+            SchemaNormalizer::class => new SchemaNormalizer(),
+            JsonReferenceNormalizer::class => new JsonReferenceNormalizer(),
+            HeaderParameterSubSchemaNormalizer::class => new HeaderParameterSubSchemaNormalizer(),
+            FormDataParameterSubSchemaNormalizer::class => new FormDataParameterSubSchemaNormalizer(),
+            QueryParameterSubSchemaNormalizer::class => new QueryParameterSubSchemaNormalizer(),
+            PathParameterSubSchemaNormalizer::class => new PathParameterSubSchemaNormalizer(),
+            FileSchemaNormalizer::class => new FileSchemaNormalizer(),
+            PrimitivesItemsNormalizer::class => new PrimitivesItemsNormalizer(),
+            XmlNormalizer::class => new XmlNormalizer(),
+            TagNormalizer::class => new TagNormalizer(),
+            BasicAuthenticationSecurityNormalizer::class => new BasicAuthenticationSecurityNormalizer(),
+            ApiKeySecurityNormalizer::class => new ApiKeySecurityNormalizer(),
+            Oauth2ImplicitSecurityNormalizer::class => new Oauth2ImplicitSecurityNormalizer(),
+            Oauth2PasswordSecurityNormalizer::class => new Oauth2PasswordSecurityNormalizer(),
+            Oauth2ApplicationSecurityNormalizer::class => new Oauth2ApplicationSecurityNormalizer(),
+            Oauth2AccessCodeSecurityNormalizer::class => new Oauth2AccessCodeSecurityNormalizer(),
+            \Jane\Component\OpenApi2\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi2\JsonSchema\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
 
         return $normalizer;

@@ -64,9 +64,25 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\EmptySpaceNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\EmptySpaceNormalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\SchemaNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\SchemaNormalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\SchemaObjectPropertyNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\SchemaObjectPropertyNormalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\ErrorNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\ErrorNormalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestIdGetResponse200Normalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestIdGetResponse200Normalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item0Normalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item0Normalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item1Normalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item1Normalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item2Normalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponse200Item2Normalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponsedefaultNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Normalizer\TestComplexListGetResponsedefaultNormalizer(),
+            \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

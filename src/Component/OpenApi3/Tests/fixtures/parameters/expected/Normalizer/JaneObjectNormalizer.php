@@ -50,9 +50,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormPostBodyNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormPostBodyNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormFilePostBodyNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormFilePostBodyNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
