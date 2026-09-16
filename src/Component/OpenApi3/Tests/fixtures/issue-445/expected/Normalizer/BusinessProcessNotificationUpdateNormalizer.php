@@ -78,7 +78,7 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $value = $data->title;
-        if (is_object($data->title)) {
+        if (is_iterable($data->title)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->title as $key => $value_1) {
                 $values[$key] = $value_1;
@@ -87,7 +87,7 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         }
         $dataArray['title'] = $value;
         $value_2 = $data->message;
-        if (is_object($data->message)) {
+        if (is_iterable($data->message)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->message as $key_1 => $value_3) {
                 $values_1[$key_1] = $value_3;

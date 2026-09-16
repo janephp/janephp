@@ -75,7 +75,7 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         $value = $data->name;
-        if (is_object($data->name)) {
+        if (is_iterable($data->name)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->name as $key => $value_1) {
                 $values[$key] = $value_1;

@@ -127,7 +127,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['isEnabled'] = $data->isEnabled;
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $value_1 = $data->names;
-            if (is_object($data->names)) {
+            if (is_iterable($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->names as $key => $value_2) {
                     $values[$key] = $value_2;
@@ -138,7 +138,7 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
             $value_3 = $data->description;
-            if (is_object($data->description)) {
+            if (is_iterable($data->description)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->description as $key_1 => $value_4) {
                     $values_1[$key_1] = $value_4;

@@ -89,7 +89,7 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
             $value = $data->droplet;
-            if (is_object($data->droplet)) {
+            if (is_iterable($data->droplet)) {
                 $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($data->droplet as $key => $value_1) {
                     $values[$key] = $value_1;

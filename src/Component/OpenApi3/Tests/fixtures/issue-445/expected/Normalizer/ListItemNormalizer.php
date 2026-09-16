@@ -136,7 +136,7 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (array_key_exists('displayValues', get_object_vars($data)) && null !== ($data->displayValues ?? null)) {
             $value_1 = $data->displayValues;
-            if (is_object($data->displayValues)) {
+            if (is_iterable($data->displayValues)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->displayValues as $key => $value_2) {
                     $values[$key] = $value_2;

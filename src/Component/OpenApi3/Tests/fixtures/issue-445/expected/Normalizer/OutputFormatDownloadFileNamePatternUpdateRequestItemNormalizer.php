@@ -62,7 +62,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
         $dataArray['id'] = $data->id;
         if (array_key_exists('patterns', get_object_vars($data)) && null !== ($data->patterns ?? null)) {
             $value = $data->patterns;
-            if (is_object($data->patterns)) {
+            if (is_iterable($data->patterns)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->patterns as $key => $value_1) {
                     $values[$key] = $value_1;
