@@ -10,7 +10,7 @@ class MetricsResult implements AdditionalPropertiesInterface
     /**
      * An object containing the metric's labels. These labels are key/value pairs that vary depending on the metric being queried. For example, load balancer metrics contain a `lb_id` label, while Droplet metrics contain a `host_id` label, and App Platform metrics contain a `app_component` label.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $metric;
     /**

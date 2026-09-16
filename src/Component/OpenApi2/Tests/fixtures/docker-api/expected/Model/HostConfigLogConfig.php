@@ -9,7 +9,7 @@ class HostConfigLogConfig
      */
     public string $type;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $config;
 }

@@ -41,14 +41,14 @@ class ContentDetail
      * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified.
      * by the ContentSchemaId property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**
      * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
      * by the LayerSchemaIds property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $metadata;
     /**
@@ -97,7 +97,7 @@ class ContentDetail
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $displayValues;
     /**

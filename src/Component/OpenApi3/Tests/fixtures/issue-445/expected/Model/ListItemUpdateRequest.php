@@ -7,7 +7,7 @@ class ListItemUpdateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema of the list item.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**

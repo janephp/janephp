@@ -14,7 +14,7 @@ class EventActor
      * Various key/value attributes of the object, depending on its type.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $attributes;
 }

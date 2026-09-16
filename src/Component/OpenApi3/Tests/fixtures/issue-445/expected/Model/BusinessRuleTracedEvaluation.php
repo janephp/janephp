@@ -31,7 +31,7 @@ class BusinessRuleTracedEvaluation
     /**
      * State of variables after all transformation groups were ran.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $variables;
 }

@@ -37,13 +37,13 @@ class Volume
      * does not support this feature.
      * 
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $status;
     /**
      * User-defined key/value metadata.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**
@@ -58,7 +58,7 @@ class Volume
      * The driver specific options used when creating the volume.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
     /**

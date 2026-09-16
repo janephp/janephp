@@ -40,7 +40,7 @@ class ApiAgentFunction implements AdditionalPropertiesInterface
      */
     public string $faasNamespace;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $inputSchema;
     /**
@@ -50,7 +50,7 @@ class ApiAgentFunction implements AdditionalPropertiesInterface
      */
     public string $name;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $outputSchema;
     /**

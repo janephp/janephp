@@ -28,7 +28,7 @@ class DeviceRequest
      * are passed directly to the driver.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
 }

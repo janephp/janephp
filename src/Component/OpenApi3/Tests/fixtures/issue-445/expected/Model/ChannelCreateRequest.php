@@ -31,7 +31,7 @@ class ChannelCreateRequest
     /**
      * Language specific channel names.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
     /**
@@ -67,7 +67,7 @@ class ChannelCreateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $missingResultsDisplayPatterns;
     /**

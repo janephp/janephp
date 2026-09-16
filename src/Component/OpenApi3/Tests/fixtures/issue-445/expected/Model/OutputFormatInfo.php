@@ -13,7 +13,7 @@ class OutputFormatInfo
     /**
      * Output translations.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
 }

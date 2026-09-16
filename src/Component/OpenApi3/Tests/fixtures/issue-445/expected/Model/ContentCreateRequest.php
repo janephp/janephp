@@ -21,7 +21,7 @@ class ContentCreateRequest
     /**
      * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified by the ContentSchemaId property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**
@@ -29,7 +29,7 @@ class ContentCreateRequest
      * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
      * by the LayerSchemaIds property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $metadata;
     /**

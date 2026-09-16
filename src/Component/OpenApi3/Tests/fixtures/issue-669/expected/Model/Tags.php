@@ -28,7 +28,7 @@ class Tags implements AdditionalPropertiesInterface
      * This will only include resources that you are authorized to see. For example, to see tagged Droplets, include the `droplet:read` scope.
      * 
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $resources;
     public function definedProperties(): array

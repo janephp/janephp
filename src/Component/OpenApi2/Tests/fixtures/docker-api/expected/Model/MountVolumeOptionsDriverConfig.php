@@ -13,7 +13,7 @@ class MountVolumeOptionsDriverConfig
     /**
      * key/value map of driver specific options.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
 }

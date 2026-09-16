@@ -8,11 +8,11 @@ class ImageMetadata implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $descriptions;
     /**

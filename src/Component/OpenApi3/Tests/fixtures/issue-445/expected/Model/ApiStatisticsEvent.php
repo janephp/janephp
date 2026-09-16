@@ -8,7 +8,7 @@ class ApiStatisticsEvent extends ApplicationEvent implements AdditionalPropertie
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, int>|null
+     * @var iterable<string, int>|null
      */
     public ?iterable $requestsPerClient;
     public function definedProperties(): array

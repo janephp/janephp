@@ -461,7 +461,7 @@ class SystemInfo
      * runtimes can be configured by the user and will be listed here.
      * 
      *
-     * @var array<string, Runtime>
+     * @var iterable<string, Runtime>
      */
     public iterable $runtimes;
     /**

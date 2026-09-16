@@ -13,12 +13,6 @@ message = 'Default value for property `Jane\Component\JsonSchema\Tests\Expected\
 count = 1
 
 [[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/test-not-strict/expected/Normalizer/TestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$object`: expected `array<string, string>|null`, but got `Jane\Component\JsonSchema\Tests\Expected\TestNotStrict\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/JsonSchema/Tests/fixtures/validator/expected/Validator/ModelFoooooooConstraint.php"
 code = "invalid-argument"
 message = 'Invalid argument type for argument #1 of `Symfony\Component\Validator\Constraints\NotBlank::__construct`: expected `bool|null`, but found `int(1)`.'
@@ -28,18 +22,6 @@ count = 1
 file = "src/Component/OpenApi2/Tests/fixtures/array-definition/expected/Endpoint/TestSimple.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Endpoint\TestSimple::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/body-parameter/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/content-type/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\ContentType\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -145,336 +127,6 @@ message = 'Invalid return type for function `Docker\Api\Endpoint\TaskList::trans
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigsCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$exposedPorts`: expected `array<string, mixed>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$volumes`: expected `array<string, mixed>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerSummaryNetworkSettingsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$networks`: expected `array<string, Docker\Api\Model\EndpointSettings>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerSummaryNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$exposedPorts`: expected `array<string, mixed>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$volumes`: expected `array<string, mixed>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/DeviceRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/DriverNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EndpointSettingsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$driverOpts`: expected `array<string, string>|null`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EngineDescriptionNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EventActorNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$attributes`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/GraphDriverDataNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$data`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigLogConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$config`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$portBindings`: expected `array<string, list<Docker\Api\Model\PortBinding>>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$storageOpt`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$sysctls`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$tmpfs`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/IPAMNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$config`: expected `list<array<string, string>>`, but got `array{}|non-empty-list<Docker\Api\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/IPAMNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ImageSummaryNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsDriverConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkAttachmentConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$driverOpts`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$containers`: expected `array<string, Docker\Api\Model\NetworkContainer>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkSettingsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$networks`: expected `array<string, Docker\Api\Model\EndpointSettings>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkSettingsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$ports`: expected `array<string, list<Docker\Api\Model\PortBinding>>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkingConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$endpointsConfig`: expected `array<string, Docker\Api\Model\EndpointSettings>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NodeSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/RegistryServiceConfigNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$indexConfigs`: expected `array<string, Docker\Api\Model\IndexInfo>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretsCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesIdUpdatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecCAConfigExternalCAsItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecTaskDefaultsLogDriverNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemInfoNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$runtimes`: expected `array<string, Docker\Api\Model\Runtime>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$sysctls`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecLogDriverNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$status`: expected `array<string, mixed>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumesCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$driverOpts`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumesCreatePostBodyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/issue-770/expected/Endpoint/AddBlockClient.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddBlockClient::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult>`, but found `object`.'
@@ -577,12 +229,6 @@ message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/model-in-response/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/operations/expected/Endpoint/GetThings.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetThings::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing>`, but found `object`.'
@@ -595,12 +241,6 @@ message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/any-of-nullable-reference-property/expected/Normalizer/AccountNormalizer.php"
 code = "paradoxical-condition"
 message = "Paradoxical condition"
@@ -610,18 +250,6 @@ count = 1
 file = "src/Component/OpenApi3/Tests/fixtures/array-definition/expected/Endpoint/TestSimple.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\ArrayDefinition\Endpoint\TestSimple::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\ArrayDefinition\Model\BarItem>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/body-parameter/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/content-type/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -655,21 +283,9 @@ message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Fetch
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/include-null-value/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-1036/expected/Endpoint/UploadDocument.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-337/expected/Normalizer/SearchNoResultsErrorNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$companies`: expected `array<string, mixed>`, but got `CreditSafe\API\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -793,18 +409,6 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ApiStatisticsEventNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$requestsPerClient`: expected `array<string, int>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/AssignLayerActionNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$defaultValues`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/AudioMetadataNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
@@ -841,12 +445,6 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 2
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/BusinessRuleTracedEvaluationNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$variables`: expected `array<string, string>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ChannelCreateRequestNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
@@ -865,69 +463,9 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ChannelUpdateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$names`: expected `array<string, string>`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentCreateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentCreateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentDetailNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentDetailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentDetailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentMetadataUpdateItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentMetadataUpdateItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentMetadataUpdateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentMetadataUpdateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ContentNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$displayValues`: expected `array<string, string>`, but got `PicturePark\API\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1123,12 +661,6 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 2
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/FileTransferCreateItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/GeoDistanceAggregatorNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
@@ -1147,93 +679,21 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 2
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ImportTransferRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/IndexFieldNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$indexFields`: expected `array<string, string>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/IndexFieldNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$simpleSearchFields`: expected `array<string, string>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/LanguageNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemCreateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemDetailNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemDetailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemUpdateItemNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ListItemUpdateRequestNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/MetadataStatusNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$fieldIdsToCleanup`: expected `array<string, list<string>>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/MetadataValuesSchemaReplaceCommandNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$value`: expected `array<string, mixed>`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/MetadataValuesSchemaUpdateCommandNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$value`: expected `array<string, mixed>`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/MetadataValuesSchemaUpsertCommandNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$value`: expected `array<string, mixed>`, but got `PicturePark\API\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1369,12 +829,6 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ProblemDetailsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$extensions`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/RelationTypeNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
@@ -1438,18 +892,6 @@ count = 2
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ShareContentDetailNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ShareContentDetailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$content`: expected `array<string, mixed>`, but got `PicturePark\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/ShareContentDetailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>|null`, but got `PicturePark\API\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1519,147 +961,15 @@ message = "Failed to parse property docblock comment."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiAgentFunctionNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$inputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiAgentFunctionNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$outputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiAgentGuardrailNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiEvaluationTraceSpanNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$input`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiEvaluationTraceSpanNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$output`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiLinkAgentFunctionInputPublicNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$inputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiLinkAgentFunctionInputPublicNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$outputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiModelNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metadata`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiUpdateAgentFunctionInputPublicNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$inputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ApiUpdateAgentFunctionInputPublicNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$outputSchema`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/AppsDeploymentProgressStepNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$steps`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/AppsDomainProgressNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$steps`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/AutoscalePoolCreateNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$config`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/AutoscalePoolNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$config`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ClusterNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePools`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ClusterReadNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePools`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/FloatingIpNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/GlbSettingsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$regionPriorities`: expected `array<string, int>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/KernelNormalizer.php"
 code = "deprecated-class"
 message = 'Class `Jane\Generated\DigitalOcean\Model\Kernel` is deprecated and should no longer be used.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/KubernetesNodePoolBaseNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, mixed>|null`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/KubernetesNodePoolNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, mixed>|null`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/KubernetesNodePoolUpdateNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$labels`: expected `array<string, mixed>|null`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/LoadBalancerNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$region`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/MetricsResultNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$metric`: expected `array<string, string>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1681,207 +991,9 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseActiveVpcPeeringNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpcPeering`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllAlertsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$alerts`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllChecksNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$checks`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllDropletBackupPoliciesNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$policies`: expected `array<string, Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecord>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllFirewallsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$firewalls`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllNodePoolsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePools`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllRegistriesInfoNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllVpcPeeringsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpcPeerings`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseAllVpcsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpcs`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseCreateFirewallResponseNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$firewall`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseDeletingVpcPeeringNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpcPeering`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseExistingAlertNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$alert`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseExistingCheckNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$check`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseExistingNodePoolNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePool`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseExistingVpcNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpc`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseGetFirewallResponseNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$firewall`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseKafkaTopicsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$topics`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseListFirewallsResponseNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$firewalls`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseMultiregistryInfoNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$registry`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseNodePoolCreateNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePool`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseNodePoolUpdateNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$nodePool`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseOpensearchIndexesNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$indexes`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseProvisioningVpcPeeringNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$vpcPeering`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponsePutFirewallResponseNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$firewall`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseRegistryInfoNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$registry`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$bgpAuthKey`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseSinglePartnerAttachmentServiceKeyNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$serviceKey`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVolumeActionNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$action`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVolumeActionsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$actions`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVolumeNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$volume`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVolumesNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$volumes`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVpcPeeringNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$peering`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/ResponseVpcPeeringsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$peerings`: expected `list<array<string, mixed>>`, but got `array{}|non-empty-list<Jane\Generated\DigitalOcean\Runtime\JsonObject>`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/TagsNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$resources`: expected `array<string, mixed>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1903,21 +1015,9 @@ message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-810/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\Issue810\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/model-in-response/expected/Endpoint/GetTestList.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Endpoint\GetTestList::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Schema>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/model-in-response/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]
@@ -1954,12 +1054,6 @@ count = 1
 file = "src/Component/OpenApi3/Tests/fixtures/parameters/expected/Endpoint/TestFormParameters.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/SchemaNormalizer.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject`.'
 count = 1
 
 [[issues]]

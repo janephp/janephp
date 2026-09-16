@@ -8,7 +8,7 @@ class ResponseExistingNodePool implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $nodePool;
     public function definedProperties(): array

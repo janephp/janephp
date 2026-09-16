@@ -22,13 +22,13 @@ class VolumesCreatePostBody
      * passed directly to the driver and are driver specific.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $driverOpts;
     /**
      * User-defined key/value metadata.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
 }

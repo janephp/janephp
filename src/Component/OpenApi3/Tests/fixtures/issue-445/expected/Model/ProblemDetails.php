@@ -25,7 +25,7 @@ class ProblemDetails
      */
     public ?string $instance;
     /**
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $extensions;
 }

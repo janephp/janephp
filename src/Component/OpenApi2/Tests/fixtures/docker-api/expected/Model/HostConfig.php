@@ -343,7 +343,7 @@ class HostConfig
      * are added to the mapping table.
      * 
      *
-     * @var array<string, list<PortBinding>>
+     * @var iterable<string, list<PortBinding>>
      */
     public iterable $portBindings;
     /**
@@ -534,7 +534,7 @@ class HostConfig
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $storageOpt;
     /**
@@ -546,7 +546,7 @@ class HostConfig
      * ```
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $tmpfs;
     /**
@@ -579,7 +579,7 @@ class HostConfig
      * ```
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $sysctls;
     /**

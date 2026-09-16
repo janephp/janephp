@@ -19,7 +19,7 @@ class DisplayPattern
     /**
      * Language specific pattern templates.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $templates;
 }

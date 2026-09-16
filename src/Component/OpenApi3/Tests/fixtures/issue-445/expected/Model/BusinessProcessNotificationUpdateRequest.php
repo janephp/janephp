@@ -10,13 +10,13 @@ class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesIn
     /**
      * The title the message that is shown to the user should have.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $title;
     /**
      * The message shown to the user.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $message;
     /**

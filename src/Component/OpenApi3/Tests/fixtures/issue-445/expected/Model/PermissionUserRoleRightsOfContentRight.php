@@ -13,7 +13,7 @@ class PermissionUserRoleRightsOfContentRight
     /**
      * Language specific user role names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**

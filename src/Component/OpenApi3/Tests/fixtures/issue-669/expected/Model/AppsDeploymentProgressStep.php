@@ -41,7 +41,7 @@ class AppsDeploymentProgressStep implements AdditionalPropertiesInterface
      */
     public string $status = 'UNKNOWN';
     /**
-     * @var list<array<string, mixed>>
+     * @var list<iterable<string, mixed>>
      */
     public array $steps;
     public function definedProperties(): array

@@ -87,7 +87,7 @@ class RegistryServiceConfig
      */
     public array $insecureRegistryCIDRs;
     /**
-     * @var array<string, IndexInfo>
+     * @var iterable<string, IndexInfo>
      */
     public iterable $indexConfigs;
     /**

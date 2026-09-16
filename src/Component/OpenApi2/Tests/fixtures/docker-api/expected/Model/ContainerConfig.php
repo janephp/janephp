@@ -46,7 +46,7 @@ class ContainerConfig
      * `{"<port>/<tcp|udp|sctp>": {}}`
      * 
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $exposedPorts;
     /**
@@ -108,7 +108,7 @@ class ContainerConfig
      * objects.
      * 
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $volumes;
     /**
@@ -150,7 +150,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**

@@ -28,7 +28,7 @@ class GlbSettings implements AdditionalPropertiesInterface
     /**
      * A map of region string to an integer priority value indicating preference for which regional target a Global load balancer will forward traffic to. A lower value indicates a higher priority.
      *
-     * @var array<string, int>
+     * @var iterable<string, int>
      */
     public iterable $regionPriorities;
     /**

@@ -87,7 +87,7 @@ class EndpointSettings
      * are passed directly to the driver and are driver specific.
      * 
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $driverOpts;
 }

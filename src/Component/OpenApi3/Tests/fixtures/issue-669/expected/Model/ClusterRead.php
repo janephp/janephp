@@ -70,7 +70,7 @@ class ClusterRead implements AdditionalPropertiesInterface
     /**
      * An object specifying the details of the worker nodes available to the Kubernetes cluster.
      *
-     * @var list<array<string, mixed>>
+     * @var list<iterable<string, mixed>>
      */
     public array $nodePools;
     /**

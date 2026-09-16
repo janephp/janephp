@@ -8,7 +8,7 @@ class ResponseSinglePartnerAttachmentBgpAuthKey implements AdditionalPropertiesI
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $bgpAuthKey;
     public function definedProperties(): array

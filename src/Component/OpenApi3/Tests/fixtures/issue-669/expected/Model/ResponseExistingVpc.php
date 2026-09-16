@@ -8,7 +8,7 @@ class ResponseExistingVpc implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $vpc;
     public function definedProperties(): array

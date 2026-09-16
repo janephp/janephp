@@ -7,7 +7,7 @@ class NumericRange
     /**
      * Language specific range names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**

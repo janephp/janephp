@@ -13,7 +13,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**
@@ -177,7 +177,7 @@ class TaskSpecContainerSpec
      * Service.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $sysctls;
     /**

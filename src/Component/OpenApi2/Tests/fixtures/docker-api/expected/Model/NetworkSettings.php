@@ -44,7 +44,7 @@ class NetworkSettings
      * are added to the mapping table.
      * 
      *
-     * @var array<string, list<PortBinding>>
+     * @var iterable<string, list<PortBinding>>
      */
     public iterable $ports;
     /**
@@ -185,7 +185,7 @@ class NetworkSettings
      * Information about all networks that the container is connected to.
      * 
      *
-     * @var array<string, EndpointSettings>
+     * @var iterable<string, EndpointSettings>
      */
     public iterable $networks;
 }

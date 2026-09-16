@@ -32,7 +32,7 @@ class JsonSchema implements AdditionalPropertiesInterface
      */
     public ?string $dollarDynamicAnchor;
     /**
-     * @var array<string, bool>|null
+     * @var iterable<string, bool>|null
      */
     public ?iterable $dollarVocabulary;
     /**
@@ -40,7 +40,7 @@ class JsonSchema implements AdditionalPropertiesInterface
      */
     public ?string $dollarComment;
     /**
-     * @var array<string, JsonSchema|bool>|null
+     * @var iterable<string, JsonSchema|bool>|null
      */
     public ?iterable $dollarDefs;
     /**
@@ -60,15 +60,15 @@ class JsonSchema implements AdditionalPropertiesInterface
      */
     public $additionalProperties;
     /**
-     * @var array<string, JsonSchema|bool>|null
+     * @var iterable<string, JsonSchema|bool>|null
      */
     public ?iterable $properties;
     /**
-     * @var array<string, JsonSchema|bool>|null
+     * @var iterable<string, JsonSchema|bool>|null
      */
     public ?iterable $patternProperties;
     /**
-     * @var array<string, JsonSchema|bool>|null
+     * @var iterable<string, JsonSchema|bool>|null
      */
     public ?iterable $dependentSchemas;
     /**
@@ -188,7 +188,7 @@ class JsonSchema implements AdditionalPropertiesInterface
      */
     public ?array $required = array();
     /**
-     * @var array<string, list<string>>|null
+     * @var iterable<string, list<string>>|null
      */
     public ?iterable $dependentRequired;
     /**
@@ -238,13 +238,13 @@ class JsonSchema implements AdditionalPropertiesInterface
     /**
      * @deprecated
      *
-     * @var array<string, JsonSchema|bool>|null
+     * @var iterable<string, JsonSchema|bool>|null
      */
     public ?iterable $definitions;
     /**
      * @deprecated
      *
-     * @var array<string, JsonSchema|bool|list<string>>|null
+     * @var iterable<string, JsonSchema|bool|list<string>>|null
      */
     public ?iterable $dependencies;
     /**

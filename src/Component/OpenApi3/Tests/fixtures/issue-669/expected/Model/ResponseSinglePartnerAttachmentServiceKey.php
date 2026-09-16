@@ -8,7 +8,7 @@ class ResponseSinglePartnerAttachmentServiceKey implements AdditionalPropertiesI
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $serviceKey;
     public function definedProperties(): array

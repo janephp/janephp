@@ -8,7 +8,7 @@ class ResponseExistingAlert implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $alert;
     public function definedProperties(): array

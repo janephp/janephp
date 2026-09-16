@@ -36,7 +36,7 @@ class ApiAgentGuardrail implements AdditionalPropertiesInterface
      */
     public bool $isDefault;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $metadata;
     /**

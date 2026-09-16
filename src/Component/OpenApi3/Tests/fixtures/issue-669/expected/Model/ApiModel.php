@@ -58,7 +58,7 @@ class ApiModel implements AdditionalPropertiesInterface
     /**
      * Additional meta data
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $metadata;
     /**

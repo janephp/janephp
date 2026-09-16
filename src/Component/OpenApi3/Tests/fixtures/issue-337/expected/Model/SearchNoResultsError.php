@@ -12,7 +12,7 @@ class SearchNoResultsError implements AdditionalPropertiesInterface
      */
     public float $totalSize;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $companies;
     /**

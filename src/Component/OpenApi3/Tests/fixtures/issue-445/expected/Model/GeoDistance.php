@@ -7,7 +7,7 @@ class GeoDistance
     /**
      * Language specific geo distance names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**

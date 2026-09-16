@@ -18,7 +18,7 @@ class FileTransferCreateItem
      * The metadata to be assigned to the imported content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
      * by the LayerSchemaIds property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $metadata;
     /**

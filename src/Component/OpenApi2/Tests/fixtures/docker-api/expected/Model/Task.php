@@ -43,7 +43,7 @@ class Task
     /**
      * User-defined key/value metadata.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**

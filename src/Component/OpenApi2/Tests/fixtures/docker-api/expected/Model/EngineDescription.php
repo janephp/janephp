@@ -9,7 +9,7 @@ class EngineDescription
      */
     public string $engineVersion;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**

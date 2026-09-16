@@ -26,7 +26,7 @@ class ReservedIpv6ListReservedIpv6sItem implements AdditionalPropertiesInterface
     /**
      * Requires `droplet:read` scope.
      *
-     * @var array<string, mixed>|Droplet
+     * @var iterable<string, mixed>|Droplet
      */
     public $droplet;
     public function definedProperties(): array

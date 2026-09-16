@@ -20,14 +20,14 @@ class ShareContentDetail
      * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
      * by the ContentSchemaId property.
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $content;
     /**
      * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
      * by the LayerSchemaIds property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $metadata;
     /**
@@ -51,7 +51,7 @@ class ShareContentDetail
     /**
      * Contains language specific display values, rendered according to the content schema's display pattern configuration.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $displayValues;
     /**

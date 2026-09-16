@@ -34,7 +34,7 @@ class KubernetesNodePoolBase implements AdditionalPropertiesInterface
     /**
      * An object of key/value mappings specifying labels to apply to all nodes in a pool. Labels will automatically be applied to all existing nodes and any subsequent nodes added to the pool. Note that when a label is removed, it is not deleted from the nodes in the pool.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $labels;
     /**

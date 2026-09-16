@@ -25,13 +25,13 @@ class BusinessRule
     /**
      * Language specific rule names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**
      * Language specific rule description.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $description;
     /**
