@@ -8,7 +8,7 @@ class ResponseVolumeAction implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $action;
     public function definedProperties(): array

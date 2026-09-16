@@ -179,7 +179,7 @@ class LoadBalancer implements AdditionalPropertiesInterface
      */
     public string $tlsCipherPolicy = 'DEFAULT';
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $region;
     /**

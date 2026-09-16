@@ -16,7 +16,7 @@ class ApiEvaluationTraceSpan implements AdditionalPropertiesInterface
     /**
      * Input data for the span (flexible structure - can be messages array, string, etc.)
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $input;
     /**
@@ -28,7 +28,7 @@ class ApiEvaluationTraceSpan implements AdditionalPropertiesInterface
     /**
      * Output data from the span (flexible structure - can be message, string, etc.)
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $output;
     /**

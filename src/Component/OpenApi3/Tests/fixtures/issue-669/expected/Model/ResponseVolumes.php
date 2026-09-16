@@ -10,7 +10,7 @@ class ResponseVolumes implements AdditionalPropertiesInterface
     /**
      * Array of volumes.
      *
-     * @var list<array<string, mixed>>
+     * @var list<iterable<string, mixed>>
      */
     public array $volumes;
     /**

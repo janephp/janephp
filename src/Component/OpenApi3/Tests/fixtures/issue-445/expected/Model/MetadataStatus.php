@@ -25,7 +25,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @var array<string, list<string>>|null
+     * @var iterable<string, list<string>>|null
      */
     public ?iterable $fieldIdsToCleanup;
 }

@@ -14,7 +14,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
      * The patterns to use per metadata language.
      * The customer's default language is required.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $patterns;
 }

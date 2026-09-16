@@ -9,7 +9,7 @@ class TaskSpecLogDriver
      */
     public string $name;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
 }

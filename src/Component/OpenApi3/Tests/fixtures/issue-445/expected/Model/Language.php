@@ -7,7 +7,7 @@ class Language
     /**
      * Language translations.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $name;
     /**

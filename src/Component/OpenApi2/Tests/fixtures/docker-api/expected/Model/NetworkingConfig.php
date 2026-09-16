@@ -8,7 +8,7 @@ class NetworkingConfig
      * A mapping of network name to endpoint configuration for that network.
      * 
      *
-     * @var array<string, EndpointSettings>
+     * @var iterable<string, EndpointSettings>
      */
     public iterable $endpointsConfig;
 }

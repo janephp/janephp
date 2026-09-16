@@ -40,13 +40,13 @@ class ApiLinkAgentFunctionInputPublic implements AdditionalPropertiesInterface
     /**
      * Describe the input schema for the function so the agent may call it
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $inputSchema;
     /**
      * Describe the output schema for the function so the agent handle its response
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $outputSchema;
     public function definedProperties(): array

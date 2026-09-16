@@ -22,7 +22,7 @@ class AutoscalePool implements AdditionalPropertiesInterface
     /**
      * The scaling configuration for an autoscale pool, which is how the pool scales up and down (either by resource utilization or static configuration).
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $config;
     /**

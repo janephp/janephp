@@ -8,7 +8,7 @@ class ResponsePutFirewallResponse implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $firewall;
     public function definedProperties(): array

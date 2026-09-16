@@ -26,7 +26,7 @@ class ReservedIpv6 implements AdditionalPropertiesInterface
      */
     public string $regionSlug;
     /**
-     * @var array<string, mixed>|Droplet
+     * @var iterable<string, mixed>|Droplet
      */
     public $droplet;
     public function definedProperties(): array

@@ -17,7 +17,7 @@ class ContentMetadataUpdateRequest
      * whose ContentType is Virtual).
      * Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**
@@ -26,7 +26,7 @@ class ContentMetadataUpdateRequest
      * by the LayerSchemaIds property.
      * If there are no data for a specified LayerSchemaId, it is treated as empty.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $metadata;
     /**

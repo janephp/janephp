@@ -10,13 +10,13 @@ class SchemaUpdateItem implements AdditionalPropertiesInterface
     /**
      * Language specific schema names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**
      * Language specific schema descriptions.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $descriptions;
     /**

@@ -25,13 +25,13 @@ class ListItem
     /**
      * Contains language specific display values, rendered according to the list schema's display pattern configuration.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $displayValues;
     /**
      * The content data of the list item.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**

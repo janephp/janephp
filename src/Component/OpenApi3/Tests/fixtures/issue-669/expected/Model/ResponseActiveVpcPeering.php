@@ -8,7 +8,7 @@ class ResponseActiveVpcPeering implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $vpcPeering;
     public function definedProperties(): array

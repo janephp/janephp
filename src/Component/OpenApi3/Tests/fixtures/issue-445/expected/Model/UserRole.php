@@ -10,7 +10,7 @@ class UserRole implements AdditionalPropertiesInterface
     /**
      * Language specific user role names.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
     /**

@@ -20,7 +20,7 @@ class FloatingIp implements AdditionalPropertiesInterface
     /**
      * The Droplet that the floating IP has been assigned to. When you query a floating IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null. <br><br>Requires `droplet:read` scope.
      *
-     * @var array<string, mixed>|Droplet
+     * @var iterable<string, mixed>|Droplet
      */
     public $droplet;
     /**

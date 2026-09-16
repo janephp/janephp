@@ -20,7 +20,7 @@ class ReservedIp implements AdditionalPropertiesInterface
     /**
      * The Droplet that the reserved IP has been assigned to. When you query a reserved IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null.<br><br>Requires `droplet:read` scope.
      *
-     * @var array<string, mixed>|Droplet
+     * @var iterable<string, mixed>|Droplet
      */
     public $droplet;
     /**

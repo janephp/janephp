@@ -10,7 +10,7 @@ class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase 
     /**
      * An object containing the metadata values to add / update.
      *
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $value;
     public function definedProperties(): array

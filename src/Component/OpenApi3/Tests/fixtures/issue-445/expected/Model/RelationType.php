@@ -13,7 +13,7 @@ class RelationType
     /**
      * Language specific relation names.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $names;
     /**

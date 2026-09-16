@@ -31,7 +31,7 @@ class Content
     /**
      * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $displayValues;
     /**

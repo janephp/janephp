@@ -8,7 +8,7 @@ class ResponseMultiregistryInfo implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $registry;
     public function definedProperties(): array

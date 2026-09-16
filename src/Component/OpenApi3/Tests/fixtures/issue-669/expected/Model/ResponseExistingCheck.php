@@ -8,7 +8,7 @@ class ResponseExistingCheck implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array<string, mixed>
+     * @var iterable<string, mixed>
      */
     public iterable $check;
     public function definedProperties(): array

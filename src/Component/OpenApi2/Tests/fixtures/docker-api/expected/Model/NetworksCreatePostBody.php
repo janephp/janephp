@@ -64,13 +64,13 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
     /**
      * User-defined key/value metadata.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
 }

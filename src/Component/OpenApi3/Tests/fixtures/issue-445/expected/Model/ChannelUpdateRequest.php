@@ -25,7 +25,7 @@ class ChannelUpdateRequest
     /**
      * A custom dictionary type to distinguish language specific class properties.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
     /**
@@ -61,7 +61,7 @@ class ChannelUpdateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $missingResultsDisplayPatterns;
     /**

@@ -37,7 +37,7 @@ class ImageSummary
      */
     public int $virtualSize;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
     /**

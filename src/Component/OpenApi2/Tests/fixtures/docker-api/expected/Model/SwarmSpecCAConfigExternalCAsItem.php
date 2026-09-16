@@ -24,7 +24,7 @@ class SwarmSpecCAConfigExternalCAsItem
      * protocol-specific options for the external CA driver.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
     /**

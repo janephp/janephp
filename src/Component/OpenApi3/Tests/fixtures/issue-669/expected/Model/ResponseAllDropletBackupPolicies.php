@@ -12,7 +12,7 @@ class ResponseAllDropletBackupPolicies implements AdditionalPropertiesInterface
      * objects containing the backup policy information for each Droplet.
      * 
      *
-     * @var array<string, DropletBackupPolicyRecord>
+     * @var iterable<string, DropletBackupPolicyRecord>
      */
     public iterable $policies;
     /**

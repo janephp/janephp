@@ -9,7 +9,7 @@ class GraphDriverData
      */
     public string $name;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $data;
 }

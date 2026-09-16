@@ -22,7 +22,7 @@ class NetworkAttachmentConfig
      * Driver attachment options for the network target.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $driverOpts;
 }

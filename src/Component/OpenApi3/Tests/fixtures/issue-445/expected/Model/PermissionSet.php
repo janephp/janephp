@@ -20,7 +20,7 @@ class PermissionSet
     /**
      * Language specific permission set names.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
 }

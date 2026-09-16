@@ -13,7 +13,7 @@ class SortField
     /**
      * The translated name of the field to be shown in the UI.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
 }

@@ -45,15 +45,15 @@ class Network
      */
     public bool $ingress;
     /**
-     * @var array<string, NetworkContainer>
+     * @var iterable<string, NetworkContainer>
      */
     public iterable $containers;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $labels;
 }

@@ -16,7 +16,7 @@ class AssignLayerAction extends BusinessRuleAction implements AdditionalProperti
     /**
      * An object containing default values (used for example to populate required fields).
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $defaultValues;
     public function definedProperties(): array

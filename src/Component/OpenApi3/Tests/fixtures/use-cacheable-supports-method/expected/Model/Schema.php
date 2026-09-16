@@ -28,7 +28,7 @@ class Schema implements AdditionalPropertiesInterface
      */
     public array $arrayProperty;
     /**
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $mapProperty;
     /**

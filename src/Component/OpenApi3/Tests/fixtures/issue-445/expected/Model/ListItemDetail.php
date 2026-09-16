@@ -20,13 +20,13 @@ class ListItemDetail
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
      * by the ContentSchemaId property.
      *
-     * @var array<string, mixed>|null
+     * @var iterable<string, mixed>|null
      */
     public ?iterable $content;
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $displayValues;
     /**

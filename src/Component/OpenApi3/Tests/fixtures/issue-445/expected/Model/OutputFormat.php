@@ -22,7 +22,7 @@ class OutputFormat implements AdditionalPropertiesInterface
     /**
      * Language specific names.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $names;
     /**
@@ -35,7 +35,7 @@ class OutputFormat implements AdditionalPropertiesInterface
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $downloadFileNamePatterns;
     /**

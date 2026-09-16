@@ -16,7 +16,7 @@ class SwarmSpecTaskDefaultsLogDriver
      * as key/value pairs.
      * 
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
 }

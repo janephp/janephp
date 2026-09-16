@@ -18,13 +18,13 @@ class IPAM
      * ```
      * 
      *
-     * @var list<array<string, string>>
+     * @var list<iterable<string, string>>
      */
     public array $config;
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var array<string, string>
+     * @var iterable<string, string>
      */
     public iterable $options;
 }

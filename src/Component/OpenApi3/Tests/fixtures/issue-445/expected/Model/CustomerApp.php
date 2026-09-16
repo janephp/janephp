@@ -9,11 +9,11 @@ class CustomerApp
      */
     public ?string $appId;
     /**
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $name;
     /**
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $description;
     /**

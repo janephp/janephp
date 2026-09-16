@@ -17,7 +17,7 @@ class Test
      */
     public ?array $array;
     /**
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $object;
 }

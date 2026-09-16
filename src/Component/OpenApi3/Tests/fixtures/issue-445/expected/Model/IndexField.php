@@ -23,14 +23,14 @@ class IndexField
     /**
      * Contains all index field name variants of the field.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $indexFields;
     /**
      * Contains all simple search field name variants of the field.
      * The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
      *
-     * @var array<string, string>|null
+     * @var iterable<string, string>|null
      */
     public ?iterable $simpleSearchFields;
     /**
