@@ -142,7 +142,7 @@ class OutputFormatUpdateManyRequestItemNormalizer implements DenormalizerInterfa
             $dataArray['format'] = $value_1;
         }
         $value_2 = $data->names;
-        if (is_object($data->names)) {
+        if (is_iterable($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->names as $key => $value_3) {
                 $values[$key] = $value_3;
@@ -155,7 +155,7 @@ class OutputFormatUpdateManyRequestItemNormalizer implements DenormalizerInterfa
         }
         if (array_key_exists('downloadFileNamePatterns', get_object_vars($data)) && null !== ($data->downloadFileNamePatterns ?? null)) {
             $value_4 = $data->downloadFileNamePatterns;
-            if (is_object($data->downloadFileNamePatterns)) {
+            if (is_iterable($data->downloadFileNamePatterns)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->downloadFileNamePatterns as $key_1 => $value_5) {
                     $values_1[$key_1] = $value_5;

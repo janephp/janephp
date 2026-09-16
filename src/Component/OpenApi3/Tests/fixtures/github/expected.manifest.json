@@ -2719,7 +2719,7 @@
         "Normalizer/ScimUserMetaNormalizer.php": "e991558fe761643aef61d7502e1197ab88e8a4b8dcc8f13652cd76045eb2206a",
         "Normalizer/ScimUserNameNormalizer.php": "bd4e6c35d7b6f2c8279ca0915ad1f0809769806e188488a19f7f37ec1dddff77",
         "Normalizer/ScimUserNormalizer.php": "21e3d2094917263fc60713db5eb1a24c552ab9b15fc183d44efbd51f21b83219",
-        "Normalizer/ScimUserOperationsItemNormalizer.php": "32fcc78511492c8c574ec56ab4eeb858227ba0a248d4c0d4ca8446efc435c984",
+        "Normalizer/ScimUserOperationsItemNormalizer.php": "1ddf663830cb6c7ed98bd00e5d42997e0f2c580a38642d83a8258ae4cae367ca",
         "Normalizer/ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer.php": "dacf336dc5c83233c0d488c9c952c1ad2b5dd2aef398f70ebd0c2e60149a0471",
         "Normalizer/ScimV2OrganizationsOrgUsersPostBodyNameNormalizer.php": "38e3644c3e221efbbed0f6b4815148517ef4fe49e7d62377b89b0f8f10292d7f",
         "Normalizer/ScimV2OrganizationsOrgUsersPostBodyNormalizer.php": "3620bf47464f1c3d15f4c105ab8dd87c8c7481f8aa31ab9685d6e0c447d8ca5a",

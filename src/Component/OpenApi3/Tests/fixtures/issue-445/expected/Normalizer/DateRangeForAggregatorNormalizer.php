@@ -70,7 +70,7 @@ class DateRangeForAggregatorNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $value = $data->names;
-            if (is_object($data->names)) {
+            if (is_iterable($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;

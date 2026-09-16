@@ -143,7 +143,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['filter'] = $value;
         }
         $value_1 = $data->names;
-        if (is_object($data->names)) {
+        if (is_iterable($data->names)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->names as $key => $value_2) {
                 $values[$key] = $value_2;
@@ -180,7 +180,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $dataArray['grantedUserRoleIds'] = $values_5;
         $value_8 = $data->missingResultsDisplayPatterns;
-        if (is_object($data->missingResultsDisplayPatterns)) {
+        if (is_iterable($data->missingResultsDisplayPatterns)) {
             $values_6 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->missingResultsDisplayPatterns as $key_1 => $value_9) {
                 $values_6[$key_1] = $value_9;

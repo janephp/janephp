@@ -82,7 +82,7 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['displayPatternType'] = $value_1;
         if (array_key_exists('templates', get_object_vars($data)) && null !== ($data->templates ?? null)) {
             $value_2 = $data->templates;
-            if (is_object($data->templates)) {
+            if (is_iterable($data->templates)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->templates as $key => $value_3) {
                     $values[$key] = $value_3;

@@ -139,7 +139,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         $dataArray['contentType'] = $value_4;
         $value_5 = $data->displayValues;
-        if (is_object($data->displayValues)) {
+        if (is_iterable($data->displayValues)) {
             $values_4 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->displayValues as $key_2 => $value_6) {
                 $values_4[$key_2] = $value_6;

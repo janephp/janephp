@@ -87,7 +87,7 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $value = $data->name;
-            if (is_object($data->name)) {
+            if (is_iterable($data->name)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->name as $key => $value_1) {
                     $values[$key] = $value_1;
@@ -98,7 +98,7 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
             $value_2 = $data->description;
-            if (is_object($data->description)) {
+            if (is_iterable($data->description)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->description as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;

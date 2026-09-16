@@ -164,7 +164,7 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
         }
         $dataArray['sortFields'] = $values_1;
         $value_2 = $data->names;
-        if (is_object($data->names)) {
+        if (is_iterable($data->names)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->names as $key => $value_3) {
                 $values_2[$key] = $value_3;
@@ -207,7 +207,7 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
         }
         if (array_key_exists('missingResultsDisplayPatterns', get_object_vars($data)) && null !== ($data->missingResultsDisplayPatterns ?? null)) {
             $value_8 = $data->missingResultsDisplayPatterns;
-            if (is_object($data->missingResultsDisplayPatterns)) {
+            if (is_iterable($data->missingResultsDisplayPatterns)) {
                 $values_6 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->missingResultsDisplayPatterns as $key_1 => $value_9) {
                     $values_6[$key_1] = $value_9;

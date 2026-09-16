@@ -282,7 +282,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['contentType'] = $value_10;
         if (array_key_exists('displayValues', get_object_vars($data)) && null !== ($data->displayValues ?? null)) {
             $value_11 = $data->displayValues;
-            if (is_object($data->displayValues)) {
+            if (is_iterable($data->displayValues)) {
                 $values_8 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->displayValues as $key_2 => $value_12) {
                     $values_8[$key_2] = $value_12;

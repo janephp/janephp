@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
@@ -15,6 +16,22 @@ class MapType extends ArrayType
         parent::__construct($object, $itemType, 'object');
 
         $this->itemType = $itemType;
+    }
+
+    /**
+     * Narrow map-typed values with is_iterable(): the model properties backing a
+     * map are typed `?iterable`, which is_object() cannot narrow to an iterable
+     * type (it yields a generic object), leaving the emitted foreach loops
+     * flagged as generic-object iteration by static analysis.
+     */
+    public function createNormalizationConditionStatement(Expr $input): Expr
+    {
+        return new Expr\FuncCall(
+            new Name('is_iterable'),
+            [
+                new Arg($input),
+            ]
+        );
     }
 
     public function getTypeHint(string $namespace): Identifier

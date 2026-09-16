@@ -229,7 +229,7 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $value = $data->names;
-            if (is_object($data->names)) {
+            if (is_iterable($data->names)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->names as $key => $value_1) {
                     $values[$key] = $value_1;
@@ -240,7 +240,7 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
             $value_2 = $data->descriptions;
-            if (is_object($data->descriptions)) {
+            if (is_iterable($data->descriptions)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
                 foreach ($data->descriptions as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
