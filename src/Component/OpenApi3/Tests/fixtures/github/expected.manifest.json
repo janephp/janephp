@@ -2378,7 +2378,7 @@
         "Normalizer/IssueSimplePullRequestNormalizer.php": "df9ac716a915729e9d23ed3d1a161a7e5469719d6923f0965444e789b6707556",
         "Normalizer/IssueSimpleUserNormalizer.php": "ea136e4f9ec638650acf1cdbdbd342062f0116ebee52eb0e55e9d731d932cfd6",
         "Normalizer/IssueUserNormalizer.php": "bc728e00cc837ede387b4f11884ebaec47b757657da0288bfa49a0ccd761e656",
-        "Normalizer/JaneObjectNormalizer.php": "0023ad759dd07099b87779b71f4a24307a3856077e1d8f8b11804acbca99eaf7",
+        "Normalizer/JaneObjectNormalizer.php": "749c0e14ab00cd7057e68aef9c96b9875ff342143d93b117f7b366961df13276",
         "Normalizer/JobNormalizer.php": "63dc9fcca9cacd6080ff5021694ab819d55e726b39ec417c73091fc0dac0fda0",
         "Normalizer/JobStepsItemNormalizer.php": "68c40851aec01fe3a583b3c0868f79830077be68f6adbe1a14a6543eba744904",
         "Normalizer/KeyNormalizer.php": "e8a3c09ccfba83c02af69697ef8f17486abd978a1b999c57e52e24e2f5bcf3a3",

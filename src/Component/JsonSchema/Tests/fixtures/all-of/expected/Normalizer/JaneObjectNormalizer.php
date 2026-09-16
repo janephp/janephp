@@ -62,7 +62,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\TestNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\TestNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\OtherchildtypeNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\OtherchildtypeNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ChildtypeNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ChildtypeNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ParenttypeNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ParenttypeNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\FooNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\FooNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BarNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BarNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazBazNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazBazNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazInlinePropertyNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazInlinePropertyNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
         $normalizer->setNormalizer($this->normalizer);
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;

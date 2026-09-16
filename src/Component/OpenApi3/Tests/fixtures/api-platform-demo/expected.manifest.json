@@ -202,7 +202,7 @@
         "Normalizer/BooksGetLdjsonResponse200HydraSearchNormalizer.php": "6078cd0f0f1040fcc08c84eb1042a3cdae87c098ada096997cf3f98718983e0a",
         "Normalizer/BooksGetLdjsonResponse200HydraViewNormalizer.php": "08eef9fc6a2c13b9c468170f2379fc8e27aa740c00920acef12a3d48982f7bfc",
         "Normalizer/BooksGetLdjsonResponse200Normalizer.php": "c98d1adc8213428a36819ca71717f0b2ae29012bfd7c9820ad734ce3fa463f19",
-        "Normalizer/JaneObjectNormalizer.php": "e7c19b3dcc9b43083890868e10de93d94b1468485453a74999e47eeef664ee19",
+        "Normalizer/JaneObjectNormalizer.php": "d87e335a853e6b2b291dcdbc2732fe533ec493b8f2332187a3d2bb063765d7eb",
         "Normalizer/ParchmentJsonhalLinksNormalizer.php": "35b23eca102a3f8c87aba699d3b8bb814ed1e9c1b5da698efe01f316d30e05ac",
         "Normalizer/ParchmentJsonhalLinksSelfNormalizer.php": "483cba728ff8c5782759c49ba4828a4b6da3aaf4795c1cbff992668bbd72ff11",
         "Normalizer/ParchmentJsonhalNormalizer.php": "c8c5b1a4576da72f2bd4c14d241625341fc62a5bc5530cad753d12c41d7154f6",

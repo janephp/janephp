@@ -62,9 +62,24 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectClientNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectClientNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ErrorNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ErrorNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\PaginationLinksNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\PaginationLinksNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyPatchBodyNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyPatchBodyNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsPostBodyNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsPostBodyNormalizer(),
+            \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

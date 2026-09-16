@@ -52,9 +52,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\FooNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\FooNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\BarItemNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\BarItemNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\HelloWorldNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\Definitions\Normalizer\HelloWorldNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\Definitions\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\Definitions\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

@@ -1,189 +1,9 @@
 variant = "loose"
 
 [[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/additional-properties/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/all-of-nullable/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/all-of/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/array-object-nullable/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/custom-validators/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/date-format/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/date/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/datetime-format/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/datetime-interface/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/datetime-no-format/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/datetime/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/deep-object/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/definitions/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/JsonSchema/Tests/fixtures/deprecated/expected/Normalizer/FooNormalizer.php"
 code = "deprecated-class"
 message = 'Class `Jane\Component\JsonSchema\Tests\Expected\Deprecated\Model\Foo` is deprecated and should no longer be used.'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/deprecated/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/disabled-strict-required/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/dollarDefs/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/issue-801/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/issue-867/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/issue-949/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/multi-files/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema1/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema2/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema3/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/name-conflict/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/one-of-nullable/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/one-of/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/read-only/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/reserved-words/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -193,39 +13,9 @@ message = 'Default value for property `Jane\Component\JsonSchema\Tests\Expected\
 count = 1
 
 [[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/test-default/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/test-no-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/test-not-strict/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/JsonSchema/Tests/fixtures/test-not-strict/expected/Normalizer/TestNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$object`: expected `array<string, string>|null`, but got `Jane\Component\JsonSchema\Tests\Expected\TestNotStrict\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/test-null/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/validator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -235,63 +25,15 @@ message = 'Invalid argument type for argument #1 of `Symfony\Component\Validator
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/all-boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/all-of-merge/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/array-definition/expected/Endpoint/TestSimple.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Endpoint\TestSimple::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem>`, but found `object`.'
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/array-definition/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-header/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/authentication-apiKey-query/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/body-parameter/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/body-parameter/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/content-type/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -316,18 +58,6 @@ count = 1
 file = "src/Component/OpenApi2/Tests/fixtures/custom-endpoint-generator/CustomEndpointTrait.php"
 code = "non-existent-class-like"
 message = 'Class, interface, enum, or trait `Jane\Component\OpenApi2\Tests\Fixtures\CustomEndpointGenerator\Client` not found.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/custom-endpoint-generator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/discriminator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -559,12 +289,6 @@ message = 'Invalid type for property `$labels`: expected `array<string, string>`
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsDriverConfigNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$options`: expected `array<string, string>`, but got `Docker\Api\Runtime\JsonObject`.'
@@ -751,42 +475,6 @@ message = 'Invalid type for property `$labels`: expected `array<string, string>`
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/One/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/exceptions/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/from-url/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/host/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/issue-770/expected/Endpoint/AddBlockClient.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddBlockClient::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult>`, but found `object`.'
@@ -883,75 +571,15 @@ message = 'Default value for property `Jane\Component\OpenApi3\Tests\Expected\Is
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-770/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-831/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/issue-832/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/model-in-response/expected/Endpoint/GetTestList.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint\GetTestList::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema>`, but found `object`.'
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/model-in-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/model-in-response/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-resources/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-specs/expected/Api1/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/multi-specs/expected/Api2/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/no-reference-body/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/no-reference-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/nullable-check/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -967,111 +595,9 @@ message = 'Invalid return type for function `Jane\Component\OpenApi2\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/operations/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/parameters/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/response-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/skip-parameter-check/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/throw-unexpected-status-code/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/uppercase-parameter/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi2/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/whitelisted-paths-array-notation/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/whitelisted-paths/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/x-namespace/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi2/Tests/fixtures/yaml/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-merge/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-nullable-reference-property/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/all-of-schema-with-one-of-property/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-discriminator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-mixed-request-body-parameter-type/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -1081,93 +607,15 @@ message = "Paradoxical condition"
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/any-of-nullable-reference-property/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/application-problem-json-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/array-definition/expected/Endpoint/TestSimple.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\ArrayDefinition\Endpoint\TestSimple::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\ArrayDefinition\Model\BarItem>`, but found `object`.'
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/array-definition/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-apiKey-header/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-apiKey-query/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-http-basic/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-http-bearer/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/authentication-multiple-security-layers/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/body-parameter/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/body-parameter/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/boolean-query-resolver/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/content-type/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -1195,69 +643,9 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Fixtu
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/custom-endpoint-generator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/custom-string-format-mapping/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/deprecated/expected/Normalizer/FooNormalizer.php"
 code = "deprecated-class"
 message = 'Class `Jane\Component\OpenApi3\Tests\Expected\Deprecated\Model\Foo` is deprecated and should no longer be used.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/deprecated/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/discriminator-snake-case/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/discriminator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exception-with-no-schema/expected/One/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exception-with-no-schema/expected/Two/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/exceptions/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -1267,75 +655,9 @@ message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Fetch
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-default/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-eager/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-head/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/fetch-mode-preload/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/from-url/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/generate-error-exceptions/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host-with-port-and-base-path/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host-with-port/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/host/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/include-null-value/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/include-null-value/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/inheritance-using-discriminator-with-mapping/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -1345,33 +667,9 @@ message = 'Method `normalize` does not exist on type `Symfony\Component\Serializ
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-1036/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-299/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-337/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-337/expected/Normalizer/SearchNoResultsErrorNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$companies`: expected `array<string, mixed>`, but got `CreditSafe\API\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-391/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -1867,12 +1165,6 @@ message = 'Invalid type for property `$simpleSearchFields`: expected `array<stri
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-445/expected/Normalizer/LanguageNormalizer.php"
 code = "generic-object-iteration"
 message = "Iterating over a generic `object`. This will iterate its public properties."
@@ -2221,18 +1513,6 @@ message = "Iterating over a generic `object`. This will iterate its public prope
 count = 2
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-641/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-649/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Model/PageLinks.php"
 code = "malformed-docblock-comment"
 message = "Failed to parse property docblock comment."
@@ -2344,12 +1624,6 @@ count = 1
 file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/GlbSettingsNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$regionPriorities`: expected `array<string, int>`, but got `Jane\Generated\DigitalOcean\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-669/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -2611,45 +1885,9 @@ message = 'Invalid type for property `$resources`: expected `array<string, mixed
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-670/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-672/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-675/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-737/expected/Endpoint/PostFile.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-737/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-787/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -2659,27 +1897,9 @@ message = 'Method `normalize` does not exist on type `Symfony\Component\Serializ
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/issue-803/expected/Endpoint/GetFiles.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\Issue803\Endpoint\GetFiles::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-803/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-810/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -2689,27 +1909,9 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-823/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/issue-828/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/model-in-response/expected/Endpoint/GetTestList.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Endpoint\GetTestList::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Schema>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/model-in-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -2719,69 +1921,15 @@ message = 'Invalid type for property `$mapProperty`: expected `array<string, str
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/model-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-resources/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api1/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multi-specs/expected/Api2/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Endpoint/PostFileDeposit.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/multipart-nested-object/expected/Endpoint/PostFile.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/multipart-nested-object/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-operation-id-with-dot-path/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-reference-body/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/no-reference-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -2797,24 +1945,6 @@ message = 'Invalid return type for function `Jane\Component\OpenApi3\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/operations/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameter-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameters-map-keys/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/parameters/expected/Endpoint/TestFormFileParameters.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
@@ -2827,111 +1957,9 @@ message = 'Method `normalize` does not exist on type `Symfony\Component\Serializ
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/parameters/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/read-only-properties/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/referenced-request-bodies/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-reference-with-schema-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/response-type-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/scalar-response/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/simple-path-array-parameter/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/skip-null-values/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/skip-parameter-check/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/status-code-range/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/test-nullable-array/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/test-nullable/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/throw-unexcepted-status-code/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/uppercase-parameter/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/use-cacheable-supports-method/expected/Normalizer/SchemaNormalizer.php"
 code = "invalid-property-assignment-value"
 message = 'Invalid type for property `$mapProperty`: expected `array<string, string>`, but got `Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/vnd-plus-json/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -3175,12 +2203,6 @@ message = 'Class, interface, enum, or trait `Jane\OpenApi3\Tests\Expected\Whitel
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-array-notation/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-array-notation/expected/Normalizer/TweetLookupResponseNormalizer.php"
 code = "non-existent-class-like"
 message = 'Class, interface, enum, or trait `Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ClientDisconnectedProblem` not found.'
@@ -3274,24 +2296,6 @@ count = 1
 file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-array-notation/expected/Normalizer/TweetLookupResponseNormalizer.php"
 code = "non-existent-class-like"
 message = 'Class, interface, enum, or trait `Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UsageCapExceededProblem` not found.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-circular-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-reference-without-content/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths-request-body-reference/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -3535,12 +2539,6 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/whitelisted-paths/expected/Normalizer/TweetLookupResponseNormalizer.php"
 code = "non-existent-class-like"
 message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ClientDisconnectedProblem` not found.'
@@ -3637,123 +2635,15 @@ message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\Expec
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/x-namespace/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/yaml/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/array-items-validation/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/custom-validators/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/generate-error-exceptions/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1007/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-1036/expected/Endpoint/UploadDocument.php"
 code = "non-existent-method"
 message = 'Method `normalize` does not exist on type `Symfony\Component\Serializer\SerializerInterface`.'
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-1036/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-869/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-939/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-940/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/issue-946/expected/Endpoint/ListEntities.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi31\Tests\Expected\Issue946\Endpoint\ListEntities::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-946/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-963/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-966/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/issue-968/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -3766,24 +2656,6 @@ count = 1
 file = "src/Component/OpenApi31/Tests/fixtures/museum/expected/Endpoint/ListSpecialEvents.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint\ListSpecialEvents::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/museum/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/nullable-allof-in-oneof/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/nullable-date/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
@@ -3805,37 +2677,7 @@ message = 'Method `normalize` does not exist on type `Symfony\Component\Serializ
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/scalar-galaxy/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/simple/expected/Endpoint/ListPets.php"
 code = "invalid-return-statement"
 message = 'Invalid return type for function `Jane\Component\OpenApi31\Tests\Expected\Simple\Endpoint\ListPets::transformResponseBody`: expected `array<array-key, Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet>`, but found `object`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/simple/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/status-code-range/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/train-travel/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/x-namespace/expected/Normalizer/JaneObjectNormalizer.php"
-code = "unknown-class-instantiation"
-message = "Cannot determine the concrete class for instantiation."
 count = 1

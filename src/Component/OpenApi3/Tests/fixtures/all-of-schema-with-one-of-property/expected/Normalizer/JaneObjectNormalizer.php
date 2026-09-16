@@ -58,9 +58,22 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestFilterNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestFilterNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveSettlementRequestBaseNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveSettlementRequestBaseNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesInvoiceFilterNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesInvoiceFilterNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkInvoiceLinkNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkInvoiceLinkNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkLinkBaseNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkLinkBaseNormalizer(),
+            \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

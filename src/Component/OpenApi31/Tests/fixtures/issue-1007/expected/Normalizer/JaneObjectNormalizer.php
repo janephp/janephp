@@ -58,9 +58,22 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ThingCollectionNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ThingCollectionNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\AbsentAdditionalPropertiesSchemaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\AbsentAdditionalPropertiesSchemaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ExplicitOpenSchemaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ExplicitOpenSchemaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ClosedSchemaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\ClosedSchemaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\TypedMapSchemaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\TypedMapSchemaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\PatternOnlySchemaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer\PatternOnlySchemaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

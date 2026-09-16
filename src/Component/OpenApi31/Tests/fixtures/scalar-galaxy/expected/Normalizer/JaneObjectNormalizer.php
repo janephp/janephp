@@ -92,9 +92,39 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\CredentialsNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\CredentialsNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TokenNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TokenNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesTemperatureNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesTemperatureNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetAtmosphereItemNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetAtmosphereItemNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteOrbitNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteOrbitNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceMetaNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceMetaNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ImageUploadedMessageNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ImageUploadedMessageNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\BadRequestErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\BadRequestErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ForbiddenErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ForbiddenErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\NotFoundErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\NotFoundErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnauthorizedErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnauthorizedErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ConflictNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ConflictNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnprocessableEntityNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnprocessableEntityNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TooManyRequestsErrorNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TooManyRequestsErrorNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetJsonResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetXmlResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserSignupPostBodyNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserSignupPostBodyNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

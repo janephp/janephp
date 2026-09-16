@@ -161,7 +161,7 @@
         "Normalizer/InvalidRequestProblemErrorsItemNormalizer.php": "7a7f0b6e3df8768388beba1223cfca4bef904b999c1c574ddb5f741c33e72fb5",
         "Normalizer/InvalidRequestProblemNormalizer.php": "55f7ba7cff9e44cd17c4c7f82d693d306c6b9a72a95fdfe84595c8e821ebad70",
         "Normalizer/InvalidRuleProblemNormalizer.php": "edb1b8a1691d01e0ecff41cb7087fca93ce1531b090b3d9537a95c4027107498",
-        "Normalizer/JaneObjectNormalizer.php": "18a5ddd0dbc6a8b26e306217a42af9daaa2f26ff0a69bbeb118f56cffdf4ddc8",
+        "Normalizer/JaneObjectNormalizer.php": "9fd7ffc5e064047b774df42f23eecce60f8bdc6a63d5029033a37aa651e96fee",
         "Normalizer/MentionEntityNormalizer.php": "a778a3e6eb2bdf29a2fc022a51003676211c9a1594d09436f9646daba485a0ad",
         "Normalizer/MentionFieldsNormalizer.php": "4f209fcb034626e0815fc25fe227e675018b59e1b111d2f7846d88bd870795b3",
         "Normalizer/OperationalDisconnectProblemNormalizer.php": "55899454eb71e4388aab992b7c37b0a3eb20b98b9a9097ee3f8dfc936716eacf",

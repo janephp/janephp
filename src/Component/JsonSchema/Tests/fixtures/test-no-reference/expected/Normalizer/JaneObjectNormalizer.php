@@ -48,7 +48,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Normalizer\TestNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Normalizer\TestNormalizer(),
+            \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Normalizer\TestSubObjectNormalizer::class => new \Jane\Component\JsonSchema\Tests\Expected\TestNoReference\Normalizer\TestSubObjectNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
         $normalizer->setNormalizer($this->normalizer);
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;

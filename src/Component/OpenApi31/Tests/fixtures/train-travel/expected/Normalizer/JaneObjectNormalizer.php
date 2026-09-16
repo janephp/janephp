@@ -104,9 +104,45 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksSelfNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksSelfNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksDestinationNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksDestinationNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksOriginNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksOriginNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksPaginationNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksPaginationNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\ProblemNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\ProblemNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WrapperCollectionNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WrapperCollectionNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingPaymentNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingPaymentNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksBookingNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksBookingNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200DataItemNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200DataItemNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200LinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200LinksNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostJsonResponse201Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostJsonResponse201Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostXmlResponse201Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostXmlResponse201Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
