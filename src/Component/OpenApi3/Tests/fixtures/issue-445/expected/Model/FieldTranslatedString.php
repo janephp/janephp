@@ -65,7 +65,7 @@ class FieldTranslatedString extends FieldBase implements AdditionalPropertiesInt
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     public function definedProperties(): array
     {
         return ['pattern' => 'pattern', 'minimumLength' => 'minimumLength', 'maximumLength' => 'maximumLength', 'indexAnalyzers' => 'indexAnalyzers', 'simpleSearchAnalyzers' => 'simpleSearchAnalyzers', 'multiLine' => 'multiLine', 'requiredMetadataLanguages' => 'requiredMetadataLanguages', 'template' => 'template', 'boost' => 'boost'];

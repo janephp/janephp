@@ -101,5 +101,5 @@ class PortalserviceHotspot
      *
      * @var bool
      */
-    public bool $httpsRedirect = 'true';
+    public bool $httpsRedirect = true;
 }

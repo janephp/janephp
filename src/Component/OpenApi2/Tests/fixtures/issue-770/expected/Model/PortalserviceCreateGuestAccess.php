@@ -33,7 +33,7 @@ class PortalserviceCreateGuestAccess
      *
      * @var bool
      */
-    public bool $selfRegistration = 'false';
+    public bool $selfRegistration = true;
     /**
      * Enable SMTP server to send SMS
      *

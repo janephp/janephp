@@ -24,7 +24,7 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\DocumentUpload) {
             $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
-            $formParameters = $serializer->normalize($this->body, 'json');
+            $formParameters = $this->normalizeBody($serializer, $this->body);
             $partOptions = ['file' => ['filename' => 'file', 'headers' => ['Content-Type' => 'application/pdf']], 'preview' => ['filename' => 'preview']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;

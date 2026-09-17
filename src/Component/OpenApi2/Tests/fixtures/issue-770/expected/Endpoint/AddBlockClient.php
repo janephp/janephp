@@ -69,7 +69,7 @@ class AddBlockClient extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddBlockClientUnprocessableEntityException($response);
         }
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }

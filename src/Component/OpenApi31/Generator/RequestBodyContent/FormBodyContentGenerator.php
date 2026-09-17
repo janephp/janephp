@@ -33,10 +33,18 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
             ];
             $statements = [
                 new Stmt\Expression(new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class)))),
-                new Stmt\Expression(new Expr\Assign(new Expr\Variable('formParameters'), new Expr\MethodCall(new Expr\Variable('serializer'), 'normalize', [
-                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
-                    new Arg(new Scalar\String_('json')),
-                ]))),
+                // normalize() is only promised by NormalizerInterface (not
+                // SerializerInterface): delegate to the runtime helper so the
+                // capability check and the narrowing live in statically
+                // analysed code.
+                new Stmt\Expression(new Expr\Assign(new Expr\Variable('formParameters'), new Expr\MethodCall(
+                    new Expr\Variable('this'),
+                    'normalizeBody',
+                    [
+                        new Arg(new Expr\Variable('serializer')),
+                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
+                    ]
+                ))),
             ];
 
             $resourceOptionsStatements = [];
@@ -106,14 +114,10 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                 ),
             ]),
             new Expr\FuncCall(new Name('http_build_query'), [
-                new Arg(new Expr\MethodCall(
-                    new Expr\Variable('serializer'),
-                    'normalize',
-                    [
-                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
-                        new Arg(new Scalar\String_('json')),
-                    ]
-                )),
+                new Arg(new Expr\MethodCall(new Expr\Variable('this'), 'normalizeBody', [
+                    new Arg(new Expr\Variable('serializer')),
+                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
+                ])),
             ]),
         ]))];
     }

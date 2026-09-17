@@ -50,7 +50,7 @@ class ListPets extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\C
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]', 'json');
         }
         return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error', 'json');
     }

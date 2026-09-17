@@ -31,7 +31,7 @@ class ApSyslog
      *
      * @var int
      */
-    public int $port = '514';
+    public int $port = 514;
     /**
      * Facility of the syslog server
      *
@@ -65,7 +65,7 @@ class ApSyslog
      *
      * @var int
      */
-    public int $secondaryPort = '514';
+    public int $secondaryPort = 514;
     /**
      * Secondary Server Protocol of the syslog server
      *

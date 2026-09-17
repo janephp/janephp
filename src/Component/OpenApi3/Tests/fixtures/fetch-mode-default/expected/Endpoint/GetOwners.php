@@ -33,7 +33,7 @@ class GetOwners extends \Jane\Component\OpenApi3\Tests\FetchModeDefault\Runtime\
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\OwnersGetResponse200Item[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\FetchModeDefault\Model\OwnersGetResponse200Item[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\FetchModeDefault\Exception\BadResponseException($status, $body, $response);
     }

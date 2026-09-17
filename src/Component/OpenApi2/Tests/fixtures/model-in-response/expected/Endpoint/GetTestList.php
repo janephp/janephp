@@ -29,7 +29,7 @@ class GetTestList extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespons
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema[]', 'json');
         }
         throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\BadResponseException($status, $body, $response);
     }

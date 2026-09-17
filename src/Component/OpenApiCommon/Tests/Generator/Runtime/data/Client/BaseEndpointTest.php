@@ -415,6 +415,126 @@ final class BaseEndpointTest extends TestCase
         $endpoint->getQueryString();
     }
 
+    public function testDeserializeListResponseReturnsTheDeserializedList(): void
+    {
+        $serializer = $this->createMock(SerializerInterface::class);
+        $serializer->expects($this->once())
+            ->method('deserialize')
+            ->with('body', 'Acme\Model\Item[]', 'json')
+            ->willReturn(['first', 'second']);
+
+        $endpoint = new class() extends \BaseEndpoint {
+            public function callDeserializeListResponse(SerializerInterface $serializer, string $body, string $type, string $format = 'json'): array
+            {
+                return $this->deserializeListResponse($serializer, $body, $type, $format);
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function getFetchMode(): string
+            {
+                return 'lazy';
+            }
+
+            public function getTargetClass(): ?string
+            {
+                return null;
+            }
+
+            public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
+            {
+                return $response;
+            }
+        };
+
+        self::assertSame(['first', 'second'], $endpoint->callDeserializeListResponse($serializer, 'body', 'Acme\Model\Item[]'));
+    }
+
+    public function testDeserializeListResponsePreservesTraversableKeys(): void
+    {
+        $deserialized = new \ArrayIterator(['b' => 'two', 'a' => 'one']);
+        $serializer = $this->createMock(SerializerInterface::class);
+        $serializer->method('deserialize')->willReturn($deserialized);
+
+        $endpoint = new class() extends \BaseEndpoint {
+            public function callDeserializeListResponse(SerializerInterface $serializer, string $body, string $type, string $format = 'json'): array
+            {
+                return $this->deserializeListResponse($serializer, $body, $type, $format);
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function getFetchMode(): string
+            {
+                return 'lazy';
+            }
+
+            public function getTargetClass(): ?string
+            {
+                return null;
+            }
+
+            public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
+            {
+                return $response;
+            }
+        };
+
+        self::assertSame(['b' => 'two', 'a' => 'one'], $endpoint->callDeserializeListResponse($serializer, 'body', 'Acme\Model\Item[]'));
+    }
+
     private function getEndpoint(array $queryParams, array $allowReserved = [], array $queryStyles = []): object
     {
         return new class($queryParams, $allowReserved, $queryStyles) extends \BaseEndpoint {

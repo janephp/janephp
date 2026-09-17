@@ -73,7 +73,7 @@ class NetworkList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\Network[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\Network[]', 'json');
         }
         if (500 === $status) {
             throw new \Docker\Api\Exception\NetworkListInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

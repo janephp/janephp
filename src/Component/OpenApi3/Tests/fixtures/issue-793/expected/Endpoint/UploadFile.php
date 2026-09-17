@@ -24,7 +24,7 @@ class UploadFile extends \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostBody) {
             $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
-            $formParameters = $serializer->normalize($this->body, 'json');
+            $formParameters = $this->normalizeBody($serializer, $this->body);
             $partOptions = ['file' => ['filename' => 'file'], 'fileNullable' => ['filename' => 'fileNullable']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;

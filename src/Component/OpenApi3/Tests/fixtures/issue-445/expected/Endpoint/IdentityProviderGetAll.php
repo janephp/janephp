@@ -40,7 +40,7 @@ class IdentityProviderGetAll extends \PicturePark\API\Runtime\Client\BaseEndpoin
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'PicturePark\API\Model\IdentityProvider[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'PicturePark\API\Model\IdentityProvider[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetAllBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);

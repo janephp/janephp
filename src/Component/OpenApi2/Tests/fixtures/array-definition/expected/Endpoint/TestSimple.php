@@ -33,7 +33,7 @@ class TestSimple extends \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[]', 'json');
         }
         throw new \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Exception\BadResponseException($status, $body, $response);
     }

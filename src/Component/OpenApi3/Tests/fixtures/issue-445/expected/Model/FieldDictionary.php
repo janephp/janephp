@@ -12,7 +12,7 @@ class FieldDictionary extends FieldBase implements AdditionalPropertiesInterface
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     public function definedProperties(): array
     {
         return ['boost' => 'boost'];

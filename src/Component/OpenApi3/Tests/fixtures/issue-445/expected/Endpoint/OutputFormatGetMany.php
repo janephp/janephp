@@ -63,7 +63,7 @@ class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint i
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'PicturePark\API\Model\OutputFormatDetail[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'PicturePark\API\Model\OutputFormatDetail[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatGetManyBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\RequestSizeLimitExceededException', 'json'), $response);

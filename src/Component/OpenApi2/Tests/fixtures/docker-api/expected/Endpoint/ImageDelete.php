@@ -65,7 +65,7 @@ class ImageDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\ImageDeleteResponseItem[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\ImageDeleteResponseItem[]', 'json');
         }
         if (404 === $status) {
             throw new \Docker\Api\Exception\ImageDeleteNotFoundException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

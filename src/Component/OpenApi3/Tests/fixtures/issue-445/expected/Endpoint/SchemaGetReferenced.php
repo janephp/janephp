@@ -49,7 +49,7 @@ class SchemaGetReferenced extends \PicturePark\API\Runtime\Client\BaseEndpoint i
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'PicturePark\API\Model\SchemaDetail[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'PicturePark\API\Model\SchemaDetail[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\SchemaGetReferencedBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);

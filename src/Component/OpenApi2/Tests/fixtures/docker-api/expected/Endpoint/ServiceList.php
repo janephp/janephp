@@ -63,7 +63,7 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\Service[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\Service[]', 'json');
         }
         if (500 === $status) {
             throw new \Docker\Api\Exception\ServiceListInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

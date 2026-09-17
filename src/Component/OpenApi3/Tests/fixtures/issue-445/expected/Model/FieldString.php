@@ -62,7 +62,7 @@ class FieldString extends FieldBase implements AdditionalPropertiesInterface
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     public function definedProperties(): array
     {
         return ['template' => 'template', 'pattern' => 'pattern', 'minimumLength' => 'minimumLength', 'maximumLength' => 'maximumLength', 'indexAnalyzers' => 'indexAnalyzers', 'simpleSearchAnalyzers' => 'simpleSearchAnalyzers', 'multiLine' => 'multiLine', 'grantedValues' => 'grantedValues', 'boost' => 'boost'];

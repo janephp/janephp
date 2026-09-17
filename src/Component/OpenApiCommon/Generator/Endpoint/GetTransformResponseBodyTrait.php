@@ -224,13 +224,13 @@ EOD
             $throwTypes = $throwType === null ? [] : [$throwType];
 
             if ('default' === $status) {
-                return [$returnTypes, $throwTypes, [$returnStatement]];
+                return [$returnTypes, $throwTypes, $returnStatement];
             }
 
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 $this->createStatusCondition($status),
                 [
-                    'stmts' => [$returnStatement],
+                    'stmts' => $returnStatement,
                 ]
             )]];
         }
@@ -274,7 +274,7 @@ EOD
                         new Expr\ConstFetch(new Name('false'))
                     ),
                     [
-                        'stmts' => [$returnStatement],
+                        'stmts' => $returnStatement,
                     ]
                 );
             } elseif ('application/x-www-form-urlencoded' === $baseContentType) {
@@ -309,7 +309,7 @@ EOD
                         new Expr\ConstFetch(new Name('false'))
                     ),
                     [
-                        'stmts' => [$returnStatement],
+                        'stmts' => $returnStatement,
                     ]
                 );
             }
@@ -421,7 +421,16 @@ EOD
             }
         }
 
-        $contentStatement = new Stmt\Return_($serializeStmt);
+        // A list response is deserialized through a class-string with an
+        // array suffix (e.g. 'Acme\Item[]') that no static analyser maps
+        // back to the documented array<array-key, Item> shape: route the
+        // call through the runtime helper which validates the value so the
+        // return statement stays statically verifiable.
+        $contentStatement = null !== $classGuess
+            ? ($array
+                ? [new Stmt\Return_($this->createDeserializeListCall($class, $format))]
+                : [new Stmt\Return_($serializeStmt)])
+            : [new Stmt\Return_($serializeStmt)];
 
         $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
         if ($lowerBound >= 400 && $registry->getGenerateErrorExceptions()) {
@@ -437,16 +446,37 @@ EOD
 
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
-            $contentStatement = new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
+            $contentStatement = [new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
                 new Arg($serializeStmt), new Arg(new Expr\Variable('response')),
-            ] : [new Arg(new Expr\Variable('response'))])));
+            ] : [new Arg(new Expr\Variable('response'))])))];
         }
 
         if ($isBareJsonDecode) {
-            $contentStatement = $this->wrapInMalformedJsonHandling($contentStatement);
+            $contentStatement = [$this->wrapInMalformedJsonHandling($contentStatement)];
         }
 
         return [$returnType, $throwType, $contentStatement];
+    }
+
+    /**
+     * Emit `$this->deserializeListResponse($serializer, $body, $type, $format)`:
+     * deserializing a list response goes through a class-string with an array
+     * suffix (e.g. 'Acme\Item[]') that no static analyser maps back to the
+     * documented array<array-key, Item> shape, so the conversion is delegated
+     * to the runtime helper which validates the decoded value.
+     */
+    private function createDeserializeListCall(string $class, string $format): Expr\MethodCall
+    {
+        return new Expr\MethodCall(
+            new Expr\Variable('this'),
+            'deserializeListResponse',
+            [
+                new Arg(new Expr\Variable('serializer')),
+                new Arg(new Expr\Variable('body')),
+                new Arg(new Scalar\String_($class)),
+                new Arg(new Scalar\String_($format)),
+            ]
+        );
     }
 
     /**
@@ -454,22 +484,26 @@ EOD
      * of silently returning null: decode with JSON_THROW_ON_ERROR and convert
      * a JsonException into a RuntimeException (after rethrowing the endpoint
      * error exception when one is being built).
+     *
+     * @param Stmt[] $statements
      */
-    private function wrapInMalformedJsonHandling(Stmt $statement): Stmt\TryCatch
+    private function wrapInMalformedJsonHandling(array $statements): Stmt\TryCatch
     {
         return new Stmt\TryCatch(
-            [
-                new Stmt\Expression(new Expr\Assign(
-                    new Expr\Variable('decodedBody'),
-                    new Expr\FuncCall(new Name('json_decode'), [
-                        new Arg(new Expr\Variable('body')),
-                        new Arg(new Expr\ConstFetch(new Name('false'))),
-                        new Arg(new Scalar\LNumber(512)),
-                        new Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
-                    ])
-                )),
-                $statement,
-            ],
+            array_merge(
+                [
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\Variable('decodedBody'),
+                        new Expr\FuncCall(new Name('json_decode'), [
+                            new Arg(new Expr\Variable('body')),
+                            new Arg(new Expr\ConstFetch(new Name('false'))),
+                            new Arg(new Scalar\LNumber(512)),
+                            new Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
+                        ])
+                    )),
+                ],
+                $statements
+            ),
             [
                 new Stmt\Catch_(
                     [new Name('\\JsonException')],

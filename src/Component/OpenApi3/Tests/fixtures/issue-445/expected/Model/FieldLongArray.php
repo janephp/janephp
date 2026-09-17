@@ -30,7 +30,7 @@ class FieldLongArray extends FieldBase implements AdditionalPropertiesInterface
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     /**
      * The maximum number of items that can be stored.
      *

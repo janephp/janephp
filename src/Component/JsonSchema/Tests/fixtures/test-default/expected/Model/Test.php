@@ -25,7 +25,7 @@ class Test
      */
     public ?array $array = array(0 => 'value');
     /**
-     * @var list<mixed>|null
+     * @var array<array-key, mixed>|null
      */
     public ?array $object = array('key' => 'value');
     /**

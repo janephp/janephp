@@ -23,7 +23,7 @@ class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Paramet
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody) {
-            return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($serializer->normalize($this->body, 'json'))];
+            return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->normalizeBody($serializer, $this->body))];
         }
         return [[], null];
     }

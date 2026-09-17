@@ -66,7 +66,7 @@ class ListSpecialEvents extends \Jane\Component\OpenApi31\Tests\Expected\Museum\
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\ListSpecialEventsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);

@@ -66,7 +66,7 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\Issue803\Exception\BadResponseException($status, $body, $response);
     }

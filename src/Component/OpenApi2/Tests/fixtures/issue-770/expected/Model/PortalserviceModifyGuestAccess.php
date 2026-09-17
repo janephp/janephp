@@ -33,7 +33,7 @@ class PortalserviceModifyGuestAccess
      *
      * @var bool
      */
-    public bool $selfRegistration = 'false';
+    public bool $selfRegistration = true;
     /**
      * Enable SMTP server setting.
      *

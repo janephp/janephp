@@ -64,7 +64,7 @@ class GetMuseumHours extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Run
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetMuseumHoursBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);

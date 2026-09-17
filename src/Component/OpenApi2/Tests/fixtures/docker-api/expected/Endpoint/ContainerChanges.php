@@ -50,7 +50,7 @@ class ContainerChanges extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\ContainersIdChangesGetResponse200Item[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\ContainersIdChangesGetResponse200Item[]', 'json');
         }
         if (404 === $status) {
             throw new \Docker\Api\Exception\ContainerChangesNotFoundException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

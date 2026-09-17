@@ -66,21 +66,33 @@ class MultipleType extends Type
     }
 
     /**
-     * We have to place mixed normalization path at the last.
+     * Emit branches from the most specific condition to the most generic one:
+     * an array branch's condition (is_input && numeric keys) is a strict
+     * subset of the object branches' condition, so it must come first or it
+     * is statically unreachable (Mago paradoxical-condition). We have to
+     * place mixed normalization path at the last.
      *
      * @return array<Type>
      */
     protected function getTypesSorted(): array
     {
         $types = $this->getTypes();
-        uasort($types, static function ($first, $second) {
-            /* @var Type $first */
-            /* @var Type $second */
-            if (($second instanceof ObjectType && 'Reference' === $second->getClassName()) || 'mixed' === $first->getName()) {
-                return 1;
+        $specificity = static function (Type $type): int {
+            /* @var Type $type */
+            if ($type instanceof ArrayType) {
+                return 0;
             }
 
-            return 0;
+            if ('mixed' === $type->getName() || ($type instanceof ObjectType && 'Reference' === $type->getClassName())) {
+                return 2;
+            }
+
+            return 1;
+        };
+        // uasort keeps the original (possibly discriminator) keys attached to
+        // each type, and is stable on ties since PHP 8.0.
+        uasort($types, static function (Type $first, Type $second) use ($specificity): int {
+            return $specificity($first) <=> $specificity($second);
         });
 
         return $types;
@@ -92,7 +104,22 @@ class MultipleType extends Type
             return $type->getDocTypeHint($namespace);
         }, $this->types);
 
-        return implode('|', array_unique($stringTypes));
+        // A branch of the union without any usable type to document (e.g. an
+        // empty `{}` sub-schema guessed as an unnamed Type) would otherwise
+        // emit a malformed `@var ` tag: document it as `mixed` instead.
+        $stringTypes = array_map(
+            static fn (string|Name|null $typeHint): string|Name|null => null === $typeHint || '' === (string) $typeHint ? 'mixed' : $typeHint,
+            $stringTypes
+        );
+
+        $stringTypes = array_map(static fn ($stringType): string => (string) $stringType, $stringTypes);
+
+        // An empty usable-type union (every branch stripped by the guesser...
+        // or resolved to nothing documentable) must not emit a malformed
+        // empty `@var ` tag.
+        $imploded = implode('|', array_unique($stringTypes));
+
+        return '' === $imploded ? 'mixed' : $imploded;
     }
 
     public function getTypeHint(string $namespace): Identifier|Name|null

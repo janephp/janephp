@@ -33,7 +33,7 @@ class FieldIndexingInfo
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     /**
      * Indexing information of schema's fields related to this field (if existing).
      *

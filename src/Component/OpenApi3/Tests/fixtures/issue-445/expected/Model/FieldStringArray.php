@@ -62,7 +62,7 @@ class FieldStringArray extends FieldBase implements AdditionalPropertiesInterfac
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     /**
      * The maximum number of items that can be stored.
      *

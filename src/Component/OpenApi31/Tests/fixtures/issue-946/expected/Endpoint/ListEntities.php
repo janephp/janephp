@@ -33,7 +33,7 @@ class ListEntities extends \Jane\Component\OpenApi31\Tests\Expected\Issue946\Run
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item[]', 'json');
         }
         throw new \Jane\Component\OpenApi31\Tests\Expected\Issue946\Exception\BadResponseException($status, $body, $response);
     }

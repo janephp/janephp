@@ -15,5 +15,5 @@ class CommonApManagementVlan
      *
      * @var int
      */
-    public int $id = '1';
+    public int $id = 1;
 }

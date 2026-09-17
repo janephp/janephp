@@ -27,7 +27,7 @@ class CommonPortalCustomization
      *
      * @var bool
      */
-    public bool $termsAndConditionsRequired = 'false';
+    public bool $termsAndConditionsRequired = true;
     /**
      * Terms and conditions text
      *

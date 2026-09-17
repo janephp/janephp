@@ -42,7 +42,7 @@ class ServiceSpecUpdateConfig
      *
      * @var float
      */
-    public float $maxFailureRatio = 0;
+    public float $maxFailureRatio = 0.0;
     /**
      * The order of operations when rolling out an updated task. Either
      * the old task is shut down before the new task is started, or the

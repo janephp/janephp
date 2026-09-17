@@ -68,7 +68,7 @@ trait GetTransformResponseBodyTrait
                         $throwTypes[] = $throwType;
                     }
 
-                    $outputStatements[] = $ifStatus;
+                    $outputStatements = array_merge($outputStatements, $ifStatus);
                 }
             }
         }
@@ -163,7 +163,16 @@ EOD
             }
         }
 
-        $returnStmt = new Stmt\Return_($serializeStmt);
+        // A list response is deserialized through a class-string with an
+        // array suffix (e.g. 'Acme\Item[]') that no static analyser maps
+        // back to the documented array<array-key, Item> shape: route the
+        // call through the runtime helper which validates the value so the
+        // return statement stays statically verifiable.
+        $returnStmt = null !== $classGuess
+            ? ($array
+                ? [new Stmt\Return_($this->createDeserializeListCall($class))]
+                : [new Stmt\Return_($serializeStmt)])
+            : [new Stmt\Return_($serializeStmt)];
 
         /** @var Registry $registry */
         $registry = $context->getRegistry();
@@ -180,28 +189,49 @@ EOD
 
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
-            $returnStmt = new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
+            $returnStmt = [new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
                 new Arg($serializeStmt), new Arg(new Expr\Variable('response')),
-            ] : [new Arg(new Expr\Variable('response'))])));
+            ] : [new Arg(new Expr\Variable('response'))])))];
         }
 
         if ($isBareJsonDecode) {
-            $returnStmt = $this->wrapInMalformedJsonHandling($returnStmt);
+            $returnStmt = [$this->wrapInMalformedJsonHandling($returnStmt)];
         }
 
         if ('default' === $status) {
             return [$returnType, $throwType, $returnStmt];
         }
 
-        return [$returnType, $throwType, new Stmt\If_(
+        return [$returnType, $throwType, [new Stmt\If_(
             new Expr\BinaryOp\Identical(
                 new Scalar\LNumber((int) $status),
                 new Expr\Variable('status')
             ),
             [
-                'stmts' => [$returnStmt],
+                'stmts' => $returnStmt,
             ]
-        )];
+        )]];
+    }
+
+    /**
+     * Emit `$this->deserializeListResponse($serializer, $body, $type)`:
+     * deserializing a list response goes through a class-string with an array
+     * suffix (e.g. 'Acme\Item[]') that no static analyser maps back to the
+     * documented array<array-key, Item> shape, so the conversion is delegated
+     * to the runtime helper which validates the decoded value.
+     */
+    private function createDeserializeListCall(string $class): Expr\MethodCall
+    {
+        return new Expr\MethodCall(
+            new Expr\Variable('this'),
+            'deserializeListResponse',
+            [
+                new Arg(new Expr\Variable('serializer')),
+                new Arg(new Expr\Variable('body')),
+                new Arg(new Scalar\String_($class)),
+                new Arg(new Scalar\String_('json')),
+            ]
+        );
     }
 
     /**
@@ -209,22 +239,26 @@ EOD
      * of silently returning null: decode with JSON_THROW_ON_ERROR and convert
      * a JsonException into a RuntimeException (after rethrowing the endpoint
      * error exception when one is being built).
+     *
+     * @param Stmt[] $stmts
      */
-    private function wrapInMalformedJsonHandling(Stmt $statement): Stmt\TryCatch
+    private function wrapInMalformedJsonHandling(array $stmts): Stmt\TryCatch
     {
         return new Stmt\TryCatch(
-            [
-                new Stmt\Expression(new Expr\Assign(
-                    new Expr\Variable('decodedBody'),
-                    new Expr\FuncCall(new Name('json_decode'), [
-                        new Arg(new Expr\Variable('body')),
-                        new Arg(new Expr\ConstFetch(new Name('false'))),
-                        new Arg(new Scalar\LNumber(512)),
-                        new Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
-                    ])
-                )),
-                $statement,
-            ],
+            array_merge(
+                [
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\Variable('decodedBody'),
+                        new Expr\FuncCall(new Name('json_decode'), [
+                            new Arg(new Expr\Variable('body')),
+                            new Arg(new Expr\ConstFetch(new Name('false'))),
+                            new Arg(new Scalar\LNumber(512)),
+                            new Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
+                        ])
+                    )),
+                ],
+                $stmts
+            ),
             [
                 new Stmt\Catch_(
                     [new Name('\\JsonException')],

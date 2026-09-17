@@ -29,7 +29,7 @@ class GetThings extends \Jane\Component\OpenApi2\Tests\Expected\Operations\Runti
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing[]', 'json');
         }
         throw new \Jane\Component\OpenApi2\Tests\Expected\Operations\Exception\BadResponseException($status, $body, $response);
     }

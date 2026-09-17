@@ -33,7 +33,7 @@ class GetTestList extends \Jane\Component\OpenApi3\Tests\Expected\ModelInRespons
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Schema[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Schema[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Exception\BadResponseException($status, $body, $response);
     }

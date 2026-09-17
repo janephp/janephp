@@ -24,7 +24,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi3\Tests\Expected\Par
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody) {
             $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
-            $formParameters = $serializer->normalize($this->body, 'json');
+            $formParameters = $this->normalizeBody($serializer, $this->body);
             $partOptions = ['testFile' => ['filename' => 'testFile']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;
