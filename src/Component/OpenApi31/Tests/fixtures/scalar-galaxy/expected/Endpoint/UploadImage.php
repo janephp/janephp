@@ -31,7 +31,7 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody) {
             $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
-            $formParameters = $serializer->normalize($this->body, 'json');
+            $formParameters = $this->normalizeBody($serializer, $this->body);
             $partOptions = ['image' => ['filename' => 'image']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;

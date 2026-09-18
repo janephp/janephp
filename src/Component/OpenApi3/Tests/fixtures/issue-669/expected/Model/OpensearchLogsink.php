@@ -30,7 +30,7 @@ class OpensearchLogsink implements AdditionalPropertiesInterface
      *
      * @var float
      */
-    public float $timeout = 10;
+    public float $timeout = 10.0;
     /**
      * PEM encoded CA certificate
      *

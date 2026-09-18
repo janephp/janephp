@@ -47,5 +47,5 @@ class PortalserviceCreateHotspotInternal
      *
      * @var bool
      */
-    public bool $httpsRedirect = 'true';
+    public bool $httpsRedirect = true;
 }

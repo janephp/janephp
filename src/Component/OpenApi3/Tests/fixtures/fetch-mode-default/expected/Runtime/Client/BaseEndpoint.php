@@ -114,6 +114,38 @@ abstract class BaseEndpoint implements Endpoint
     {
         return new OptionsResolver();
     }
+    /**
+     * Deserialize a list-typed response body.
+     *
+     * Generated endpoints deserialize list responses through a class-string
+     * with an array suffix (e.g. 'Acme\Item[]'): no static analyser maps
+     * that string back to the documented array<array-key, Item> shape, and
+     * the serializer interfaces promise returned values beyond `mixed` at
+     * best. The deserialization is delegated here so the generated return
+     * statement carries a statically verifiable array type; the helper
+     * requires the serializer to yield an iterable or array for list types
+     * (iterator_to_array throws a TypeError otherwise, failing loudly on a
+     * misconfigured serializer instead of leaking an unexpected shape).
+     */
+    protected function deserializeListResponse(SerializerInterface $serializer, string $body, string $type, string $format = 'json'): array
+    {
+        return \iterator_to_array($serializer->deserialize($body, $type, $format));
+    }
+    /**
+     * Normalize a form or multipart body.
+     *
+     * Generated form/multipart bodies normalize their payload through the
+     * serializer, whose normalize() method lives on NormalizerInterface
+     * (SerializerInterface does not promise it): delegating here lets the
+     * runtime check the capability once and statically narrow the call.
+     */
+    protected function normalizeBody(SerializerInterface $serializer, mixed $body)
+    {
+        if (!$serializer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerInterface) {
+            throw new \RuntimeException('The serializer used by this endpoint must support normalization.');
+        }
+        return $serializer->normalize($body, 'json');
+    }
     protected function getSerializedBody(SerializerInterface $serializer): array
     {
         return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];

@@ -24,7 +24,7 @@ class PostFileDeposit extends \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBo
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody) {
             $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
-            $formParameters = $serializer->normalize($this->body, 'json');
+            $formParameters = $this->normalizeBody($serializer, $this->body);
             $partOptions = ['fichier' => ['filename' => 'fichier']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;

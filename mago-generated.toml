@@ -67,7 +67,23 @@ ignore = [
     "less-specific-nested-argument-type",
     # Requests for generics annotations the generator does not emit.
     "missing-template-parameter",
+    # List responses deserialized through the runtime
+    # deserializeListResponse() helper come back as array<array-key, mixed>
+    # (the serializer promises nothing better for class-string list types);
+    # the generated `@return \Item[]` docblock is the advertised precision.
+    "less-specific-nested-return-statement",
     # Dynamic `$object->{$property}` access is how normalizers work.
     "string-member-selector",
     "ambiguous-object-method-access",
+    # Generated clients deliberately instantiate @deprecated entities: the
+    # `deprecated` fixtures test that the generator propagates the
+    # @deprecated annotation of a model onto its consumers, so a normalizer
+    # referencing the deprecated model class is the feature working as
+    # designed, not a defect.
+    "deprecated-class",
+    # Api-key cookie authentication stores the credential but decorate()
+    # cannot act on cookies yet (only header/query schemes are supported):
+    # the stored field is forward-compatibility plumbing kept until that
+    # missing feature gets an API decision of its own.
+    "write-only-property",
 ]

@@ -87,7 +87,7 @@ class ContainerList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\ContainerSummary[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\ContainerSummary[]', 'json');
         }
         if (400 === $status) {
             throw new \Docker\Api\Exception\ContainerListBadRequestException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

@@ -27,5 +27,5 @@ class CommonHealthCheckPolicy
      *
      * @var bool
      */
-    public bool $responseFail = 'false';
+    public bool $responseFail = true;
 }

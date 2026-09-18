@@ -70,7 +70,7 @@ class FindControllerStatisticsById extends \Jane\Component\OpenApi3\Tests\Expect
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControllerStatisticsByIdInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStatisticListItem[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStatisticListItem[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }

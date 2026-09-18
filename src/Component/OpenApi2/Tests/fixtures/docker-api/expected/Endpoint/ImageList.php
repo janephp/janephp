@@ -66,7 +66,7 @@ class ImageList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\ImageSummary[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\ImageSummary[]', 'json');
         }
         if (500 === $status) {
             throw new \Docker\Api\Exception\ImageListInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

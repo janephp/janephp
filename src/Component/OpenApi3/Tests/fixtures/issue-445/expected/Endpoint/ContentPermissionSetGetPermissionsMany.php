@@ -63,7 +63,7 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'PicturePark\API\Model\PermissionSetUserPermissionRights[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'PicturePark\API\Model\PermissionSetUserPermissionRights[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);

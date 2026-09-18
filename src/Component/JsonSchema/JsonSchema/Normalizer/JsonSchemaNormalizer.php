@@ -173,11 +173,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('items', $data) && $data['items'] !== null) {
             $value_5 = $data['items'];
-            if (is_array($data['items'])) {
-                $value_5 = $this->denormalizer->denormalize($data['items'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
-            } elseif (is_bool($data['items'])) {
-                $value_5 = $data['items'];
-            } elseif (is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
+            if (is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                 $values_3 = [];
                 foreach ($data['items'] as $value_6) {
                     $value_7 = $value_6;
@@ -189,6 +185,10 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
                     $values_3[] = $value_7;
                 }
                 $value_5 = $values_3;
+            } elseif (is_array($data['items'])) {
+                $value_5 = $this->denormalizer->denormalize($data['items'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
+            } elseif (is_bool($data['items'])) {
+                $value_5 = $data['items'];
             }
             $object->items = $value_5;
             unset($data['items']);
@@ -737,16 +737,16 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $values_17 = new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject();
             foreach ($data['dependencies'] as $key_7 => $value_39) {
                 $value_40 = $value_39;
-                if (is_array($value_39)) {
-                    $value_40 = $this->denormalizer->denormalize($value_39, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
-                } elseif (is_bool($value_39)) {
-                    $value_40 = $value_39;
-                } elseif (is_array($value_39) && $this->isOnlyNumericKeys($value_39)) {
+                if (is_array($value_39) && $this->isOnlyNumericKeys($value_39)) {
                     $values_18 = [];
                     foreach ($value_39 as $value_41) {
                         $values_18[] = $value_41;
                     }
                     $value_40 = $values_18;
+                } elseif (is_array($value_39)) {
+                    $value_40 = $this->denormalizer->denormalize($value_39, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
+                } elseif (is_bool($value_39)) {
+                    $value_40 = $value_39;
                 }
                 $values_17[$key_7] = $value_40;
             }
@@ -885,24 +885,24 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $value_5 = $data->items;
-            if (is_object($data->items)) {
-                $normalized_2 = $this->normalizer->normalize($data->items, 'json', $context);
-                $value_5 = \is_iterable($normalized_2) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_2) : $normalized_2;
-            } elseif (is_bool($data->items)) {
-                $value_5 = $data->items;
-            } elseif (is_array($data->items)) {
+            if (is_array($data->items)) {
                 $values_3 = [];
                 foreach ($data->items as $value_6) {
                     $value_7 = $value_6;
                     if (is_object($value_6)) {
-                        $normalized_3 = $this->normalizer->normalize($value_6, 'json', $context);
-                        $value_7 = \is_iterable($normalized_3) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_3) : $normalized_3;
+                        $normalized_2 = $this->normalizer->normalize($value_6, 'json', $context);
+                        $value_7 = \is_iterable($normalized_2) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_2) : $normalized_2;
                     } elseif (is_bool($value_6)) {
                         $value_7 = $value_6;
                     }
                     $values_3[] = $value_7;
                 }
                 $value_5 = $values_3;
+            } elseif (is_object($data->items)) {
+                $normalized_3 = $this->normalizer->normalize($data->items, 'json', $context);
+                $value_5 = \is_iterable($normalized_3) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_3) : $normalized_3;
+            } elseif (is_bool($data->items)) {
+                $value_5 = $data->items;
             }
             $dataArray['items'] = $value_5;
         }
@@ -1372,17 +1372,17 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $values_17 = new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject();
             foreach ($data->dependencies as $key_7 => $value_39) {
                 $value_40 = $value_39;
-                if (is_object($value_39)) {
-                    $normalized_21 = $this->normalizer->normalize($value_39, 'json', $context);
-                    $value_40 = \is_iterable($normalized_21) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_21) : $normalized_21;
-                } elseif (is_bool($value_39)) {
-                    $value_40 = $value_39;
-                } elseif (is_array($value_39)) {
+                if (is_array($value_39)) {
                     $values_18 = [];
                     foreach ($value_39 as $value_41) {
                         $values_18[] = $value_41;
                     }
                     $value_40 = $values_18;
+                } elseif (is_object($value_39)) {
+                    $normalized_21 = $this->normalizer->normalize($value_39, 'json', $context);
+                    $value_40 = \is_iterable($normalized_21) ? new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject($normalized_21) : $normalized_21;
+                } elseif (is_bool($value_39)) {
+                    $value_40 = $value_39;
                 }
                 $values_17[$key_7] = $value_40;
             }

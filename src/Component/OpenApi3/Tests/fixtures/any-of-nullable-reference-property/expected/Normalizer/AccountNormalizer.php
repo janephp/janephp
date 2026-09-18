@@ -67,14 +67,14 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('nationality', $data) && $data['nationality'] !== null) {
             $value_1 = $data['nationality'];
-            if (is_array($data['nationality'])) {
-                $value_1 = $this->denormalizer->denormalize($data['nationality'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
-            } elseif (is_array($data['nationality']) && $this->isOnlyNumericKeys($data['nationality'])) {
+            if (is_array($data['nationality']) && $this->isOnlyNumericKeys($data['nationality'])) {
                 $values = [];
                 foreach ($data['nationality'] as $value_2) {
                     $values[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
                 }
                 $value_1 = $values;
+            } elseif (is_array($data['nationality'])) {
+                $value_1 = $this->denormalizer->denormalize($data['nationality'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
             }
             $object->nationality = $value_1;
             unset($data['nationality']);
@@ -113,16 +113,16 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (array_key_exists('nationality', get_object_vars($data)) && null !== ($data->nationality ?? null)) {
             $value_1 = $data->nationality;
-            if (is_object($data->nationality)) {
-                $normalized_2 = $this->normalizer->normalize($data->nationality, 'json', $context);
-                $value_1 = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($normalized_2) : $normalized_2;
-            } elseif (is_array($data->nationality)) {
+            if (is_array($data->nationality)) {
                 $values = [];
                 foreach ($data->nationality as $value_2) {
-                    $normalized_3 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
-                    $values[] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($normalized_3) : $normalized_3;
+                    $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                    $values[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($normalized_2) : $normalized_2;
                 }
                 $value_1 = $values;
+            } elseif (is_object($data->nationality)) {
+                $normalized_3 = $this->normalizer->normalize($data->nationality, 'json', $context);
+                $value_1 = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['nationality'] = $value_1;
         }

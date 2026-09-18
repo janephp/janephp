@@ -63,7 +63,7 @@ class UserRoleGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'PicturePark\API\Model\UserRoleDetail[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'PicturePark\API\Model\UserRoleDetail[]', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\UserRoleGetManyBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\RequestSizeLimitExceededException', 'json'), $response);

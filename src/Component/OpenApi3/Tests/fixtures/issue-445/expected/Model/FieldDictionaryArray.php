@@ -12,7 +12,7 @@ class FieldDictionaryArray extends FieldBase implements AdditionalPropertiesInte
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     /**
      * The maximum number of items that can be stored.
      *

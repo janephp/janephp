@@ -40,4 +40,19 @@ class MultipleTypeTest extends TestCase
 
         self::assertSame('\\Jane\\Test\\Model\\Foo|\\Jane\\Test\\Model\\Bar', $type->getDocTypeHint('Jane\Test'));
     }
+
+    public function testDocTypeHintDocumentsBranchWithEmptyHintAsMixed(): void
+    {
+        $type = new MultipleType(new JsonSchema());
+        $type->addType(new Type(new JsonSchema(), ''));
+
+        self::assertSame('mixed', $type->getDocTypeHint('Jane\Test'));
+    }
+
+    public function testDocTypeHintOfEmptyUnionIsMixed(): void
+    {
+        $type = new MultipleType(new JsonSchema());
+
+        self::assertSame('mixed', $type->getDocTypeHint('Jane\Test'));
+    }
 }

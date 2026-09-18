@@ -61,7 +61,7 @@ class NodeList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\Api\Model\Node[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Docker\Api\Model\Node[]', 'json');
         }
         if (500 === $status) {
             throw new \Docker\Api\Exception\NodeListInternalServerErrorException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

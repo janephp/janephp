@@ -8,7 +8,7 @@ class PageLinks implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var 
+     * @var mixed
      */
     public $pages;
     public function definedProperties(): array

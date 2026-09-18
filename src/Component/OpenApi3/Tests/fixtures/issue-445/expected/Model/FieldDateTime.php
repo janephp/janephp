@@ -18,7 +18,7 @@ class FieldDateTime extends FieldBase implements AdditionalPropertiesInterface
      *
      * @var float
      */
-    public float $boost = 1;
+    public float $boost = 1.0;
     /**
      * If set to true, the date time value is automatically set when a content or list item is created.
      *

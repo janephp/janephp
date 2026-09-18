@@ -108,8 +108,7 @@ class Issue946RegressionTest extends TestCase
             $listEndpointContent = file_get_contents($generatedDirectory . '/Endpoint/ListEntities.php');
             self::assertIsString($listEndpointContent);
             self::assertStringContainsString(
-                '$serializer->deserialize($body, \'Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointGetResponse200Item[]\', \'json\')',
-                $listEndpointContent
+                'deserializeListResponse($serializer, $body, \'Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointGetResponse200Item[]', $listEndpointContent
             );
             self::assertStringContainsString(
                 '@return \Jane\Component\OpenApi31\Tests\Issue946Expected\Model\MyApiEndpointGetResponse200Item[]',

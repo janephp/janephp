@@ -185,6 +185,9 @@ class ValidatorGenerator implements GeneratorInterface
         if (\is_string($argument)) {
             return new Scalar\String_($argument);
         }
+        if (\is_bool($argument)) {
+            return new Expr\ConstFetch(new Node\Name($argument ? 'true' : 'false'));
+        }
         if (\is_int($argument)) {
             return new Scalar\LNumber($argument);
         }

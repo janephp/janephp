@@ -25,5 +25,5 @@ class CommonOverrideClientAdmissionControl
      *
      * @var float
      */
-    public float $minClientThroughputMbps = 0;
+    public float $minClientThroughputMbps = 0.0;
 }

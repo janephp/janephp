@@ -72,7 +72,7 @@ class FindMeshTopologyByApMacByQueryCriteria extends \Jane\Component\OpenApi3\Te
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindMeshTopologyByApMacByQueryCriteriaUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]', 'json');
+            return $this->deserializeListResponse($serializer, $body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]', 'json');
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\BadResponseException($status, $body, $response);
     }
