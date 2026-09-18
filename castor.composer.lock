@@ -4,26 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "479c7801fbcdbd1db912711e9ffb616d",
+    "content-hash": "6c4243c8902c4316f49428df7b19ea75",
     "packages": [
         {
             "name": "castor-php/php-qa",
-            "version": "dev-main",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/castor-php/php-qa.git",
-                "reference": "fe2f69be9071622375ce42e8d7ae718ecf3194db"
+                "reference": "57b89bec04cb0bb792464262cadb1588d294c953"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/castor-php/php-qa/zipball/fe2f69be9071622375ce42e8d7ae718ecf3194db",
-                "reference": "fe2f69be9071622375ce42e8d7ae718ecf3194db",
+                "url": "https://api.github.com/repos/castor-php/php-qa/zipball/57b89bec04cb0bb792464262cadb1588d294c953",
+                "reference": "57b89bec04cb0bb792464262cadb1588d294c953",
                 "shasum": ""
             },
             "require-dev": {
                 "jolicode/castor": "^0.22.1"
             },
-            "default-branch": true,
             "type": "castor-plugin",
             "autoload": {
                 "files": [
@@ -46,17 +45,15 @@
             "description": "PHP Quality tools functions for castor",
             "support": {
                 "issues": "https://github.com/castor-php/php-qa/issues",
-                "source": "https://github.com/castor-php/php-qa/tree/main"
+                "source": "https://github.com/castor-php/php-qa/tree/0.3.4"
             },
-            "time": "2025-11-28T14:04:27+00:00"
+            "time": "2026-09-18T13:08:29+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "castor-php/php-qa": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},

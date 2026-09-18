@@ -5,7 +5,10 @@ namespace Jane\Component\JsonSchema\Registry;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ArrayType;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\ObjectType;
+use Jane\Component\JsonSchema\Guesser\Guess\PatternMultipleType;
+use Jane\Component\JsonSchema\Guesser\Guess\Type;
 
 class Schema implements SchemaInterface
 {
@@ -173,6 +176,13 @@ class Schema implements SchemaInterface
         return \array_key_exists($model, $this->relations);
     }
 
+    /**
+     * Record every generated model this class references — through its
+     * properties and its additional / pattern property types, however deeply
+     * nested in arrays, maps and unions. The whitelist pruning keeps exactly
+     * the transitive closure of these relations: a class referenced but not
+     * recorded here is pruned, and the generated normalizer fatals on it.
+     */
     public function addClassRelations(ClassGuess $classGuess): void
     {
         $baseModel = $classGuess->getName();
@@ -181,17 +191,34 @@ class Schema implements SchemaInterface
         }
 
         foreach ($classGuess->getProperties() as $property) {
-            // second condition is here to avoid mapping PHP classes such as \DateTime
-            /** @var ObjectType $objectType */
-            if (($objectType = $property->getType()) instanceof ObjectType
-                && '\\' !== substr($objectType->getClassName(), 0, 1)) {
-                $this->addRelation($baseModel, $objectType->getClassName());
+            $this->addTypeRelations($baseModel, $property->getType());
+        }
+
+        foreach ($classGuess->getExtensionsType() as $extensionType) {
+            $this->addTypeRelations($baseModel, $extensionType);
+        }
+    }
+
+    private function addTypeRelations(string $baseModel, ?Type $type): void
+    {
+        if ($type instanceof ObjectType) {
+            // PHP classes such as \DateTime are not generated models
+            if (!str_starts_with($type->getClassName(), '\\')) {
+                $this->addRelation($baseModel, $type->getClassName());
             }
 
-            if (($arrayType = $property->getType()) instanceof ArrayType
-                && ($itemType = $arrayType->getItemType()) instanceof ObjectType
-                && '\\' !== substr($itemType->getClassName(), 0, 1)) {
-                $this->addRelation($baseModel, $itemType->getClassName());
+            return;
+        }
+
+        if ($type instanceof ArrayType) {
+            $this->addTypeRelations($baseModel, $type->getItemType());
+
+            return;
+        }
+
+        if ($type instanceof MultipleType || $type instanceof PatternMultipleType) {
+            foreach ($type->getTypes() as $memberType) {
+                $this->addTypeRelations($baseModel, $memberType);
             }
         }
     }

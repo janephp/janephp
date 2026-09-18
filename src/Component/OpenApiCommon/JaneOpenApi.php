@@ -105,13 +105,14 @@ abstract class JaneOpenApi extends ChainGenerator
                     }
 
                     $class->setProperties($properties);
-                    $schema->addClassRelations($class);
 
                     $extensionsTypes = [];
                     foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
                         $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
                     }
                     $class->setExtensionsType($extensionsTypes);
+                    // after the extension types: they are relations the whitelist pruning must follow
+                    $schema->addClassRelations($class);
 
                     $chainValidator->guess($class->getObject(), $class->getName(), $class);
 

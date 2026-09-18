@@ -18,15 +18,109 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ContextAnnotation::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ContextAnnotationDomainFields::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationDomainFieldsNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ContextAnnotationEntityFields::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationEntityFieldsNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UrlEntity::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UrlEntityNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\URLImage::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\URLImageNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\HashtagEntity::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\HashtagEntityNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CashtagEntity::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CashtagEntityNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\MentionEntity::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\MentionEntityNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\FullTextEntities::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\FullTextEntitiesAnnotationsItem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesAnnotationsItemNormalizer::class,
+        
         \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ErrorNormalizer::class,
         
         \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Expansions::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ExpansionsNormalizer::class,
         
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactTweetFieldsReferencedTweetsItem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsReferencedTweetsItemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactTweetFieldsAttachments::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsAttachmentsNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultTweetFieldsGeo::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetFieldsGeoNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweetFieldsStats::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetFieldsStatsNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactTweet::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultTweet::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultUserFieldsEntities::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultUserFieldsEntitiesUrl::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesUrlNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedUserFieldsStats::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserFieldsStatsNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactUser::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactUserNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultUser::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedUser::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserNormalizer::class,
+        
         \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetLookupResponseNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Point::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PointNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Geo::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GeoNormalizer::class,
         
         \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Poll::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollNormalizer::class,
         
         \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\PollOption::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollOptionNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Photo::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PhotoNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Video::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\VideoNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\AnimatedGif::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\AnimatedGifNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetWithheld::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetWithheldNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UserWithheld::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UserWithheldNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactPlace::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactPlaceNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DefaultPlace::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultPlaceNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedPlace::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedPlaceNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\GenericProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GenericProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\InvalidRequestProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\InvalidRequestProblemErrorsItem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemErrorsItemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceNotFoundProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceUnauthorizedProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceUnauthorizedProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ClientForbiddenProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientForbiddenProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DisallowedResourceProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DisallowedResourceProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UnsupportedAuthenticationProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UnsupportedAuthenticationProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UsageCapExceededProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UsageCapExceededProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ConnectionExceptionProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ConnectionExceptionProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ClientDisconnectedProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientDisconnectedProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\OperationalDisconnectProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\OperationalDisconnectProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\RulesCapProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\RulesCapProblemNormalizer::class,
+        
+        \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\InvalidRuleProblem::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRuleProblemNormalizer::class,
         
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
@@ -57,11 +151,58 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     private function initNormalizer(string $normalizerClass)
     {
         $normalizer = match ($normalizerClass) {
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationDomainFieldsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationDomainFieldsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationEntityFieldsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ContextAnnotationEntityFieldsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UrlEntityNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UrlEntityNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\URLImageNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\URLImageNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\HashtagEntityNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\HashtagEntityNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CashtagEntityNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CashtagEntityNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\MentionEntityNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\MentionEntityNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesAnnotationsItemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\FullTextEntitiesAnnotationsItemNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ErrorNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ErrorNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ExpansionsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ExpansionsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsReferencedTweetsItemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsReferencedTweetsItemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsAttachmentsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetFieldsAttachmentsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetFieldsGeoNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetFieldsGeoNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetFieldsStatsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetFieldsStatsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactTweetNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultTweetNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedTweetNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesUrlNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserFieldsEntitiesUrlNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserFieldsStatsNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserFieldsStatsNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactUserNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactUserNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultUserNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedUserNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetLookupResponseNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetLookupResponseNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PointNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PointNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GeoNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GeoNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollOptionNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PollOptionNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PhotoNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\PhotoNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\VideoNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\VideoNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\AnimatedGifNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\AnimatedGifNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetWithheldNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\TweetWithheldNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UserWithheldNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UserWithheldNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactPlaceNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\CompactPlaceNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultPlaceNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DefaultPlaceNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedPlaceNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DetailedPlaceNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GenericProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\GenericProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemErrorsItemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRequestProblemErrorsItemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceNotFoundProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceNotFoundProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceUnauthorizedProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ResourceUnauthorizedProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientForbiddenProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientForbiddenProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DisallowedResourceProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\DisallowedResourceProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UnsupportedAuthenticationProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UnsupportedAuthenticationProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UsageCapExceededProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\UsageCapExceededProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ConnectionExceptionProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ConnectionExceptionProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientDisconnectedProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\ClientDisconnectedProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\OperationalDisconnectProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\OperationalDisconnectProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\RulesCapProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\RulesCapProblemNormalizer(),
+            \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRuleProblemNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\InvalidRuleProblemNormalizer(),
             \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\ReferenceNormalizer(),
             default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
         };
