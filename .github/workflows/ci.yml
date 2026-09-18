@@ -32,6 +32,8 @@ jobs:
         uses: actions/checkout@master
       - name: setup
         uses: castor-php/setup-castor@v0.1.0
+        with:
+          version: 'v1.8.0'
       - name: 'php-cs-fixer check'
         run: 'castor qa:cs:check'
   phpstan:
@@ -53,6 +55,8 @@ jobs:
         run: composer update --prefer-stable
       - name: setup
         uses: castor-php/setup-castor@v0.1.0
+        with:
+          version: 'v1.8.0'
       - name: 'phpstan check'
         run: 'castor qa:phpstan'
   mago-generated:
@@ -74,6 +78,8 @@ jobs:
         run: composer update --prefer-stable
       - name: setup
         uses: castor-php/setup-castor@v0.1.0
+        with:
+          version: 'v1.8.0'
       - name: 'mago analysis of generated code'
         run: 'castor qa:mago:generated'
   tests:

@@ -1,5 +1,5 @@
 {
     "require": {
-        "castor-php/php-qa": "dev-main"
+        "castor-php/php-qa": "^0.3.4"
     }
 }

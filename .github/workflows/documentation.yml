@@ -41,6 +41,8 @@ jobs:
 
       - name: setup
         uses: castor-php/setup-castor@v0.1.0
+        with:
+          version: 'v1.8.0'
 
       - name: Setup Pages
         id: pages
