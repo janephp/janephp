@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi] The runtime `Client::stream()` now streams a single `ResponseInterface` argument instead of iterating over it as an object, which streamed nothing
 - [OpenApi] A specification without operations no longer generates a runtime `Client` referencing an `Endpoint` interface that is never generated: the Client template declares the dependency
 - [OpenApi] Generated clients are cleaner for static analysers: `Client::create()` documents `$additionalPlugins` as `list<callable(HttpClientInterface): HttpClientInterface>` and `$additionalNormalizers` as normalizer instances, and the runtime `FormEncoder` initialises the `parse_str()` output variable (the runtime-template family of the Mago baseline, #1066)
+- [JsonSchema] [OpenApi] Generating with `validation` enabled no longer aborts with `TypeError: PhpParser\Node\ArrayItem::__construct(): Argument #1 ($value) must be of type PhpParser\Node\Expr, null given` when an array-valued constraint argument holds a `null` member, as `enum: [a, b, null]` does: `ValidatorGenerator` now emits that member as an explicit `null` choice, so a value the specification allows stays valid instead of the whole generation crashing. A constraint argument that is itself `null` keeps its meaning of "unset" and is still left out, so the constraint keeps its own default
 
 ## [7.14.0] - 2026-08-31
 ### Added
