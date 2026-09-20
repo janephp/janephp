@@ -25,7 +25,7 @@ class AnyOfReferenceGuesser extends AbstractXOfReferenceGuesser
     protected function hasUnionContent($schema): bool
     {
         return null !== ($schema->type ?? null)
-            || (\is_array($schema->allOf) && [] !== $schema->allOf)
+            || (\is_array($schema->allOf ?? null) && [] !== ($schema->allOf ?? null))
             || (\is_array($schema->anyOf ?? null) && [] !== ($schema->anyOf ?? null));
     }
 

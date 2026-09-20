@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi] The runtime `Client::stream()` now streams a single `ResponseInterface` argument instead of iterating over it as an object, which streamed nothing
 - [OpenApi] A specification without operations no longer generates a runtime `Client` referencing an `Endpoint` interface that is never generated: the Client template declares the dependency
 - [OpenApi] Generated clients are cleaner for static analysers: `Client::create()` documents `$additionalPlugins` as `list<callable(HttpClientInterface): HttpClientInterface>` and `$additionalNormalizers` as normalizer instances, and the runtime `FormEncoder` initialises the `parse_str()` output variable (the runtime-template family of the Mago baseline, #1066)
+- [OpenApi31] Generating from a 3.1 specification whose `anyOf` / `oneOf` union references a schema declaring no `allOf` keyword no longer fatals with `Typed property Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::$allOf must not be accessed before initialization`. The 3.1 union guessers inspect each resolved branch to decide whether it carries denormalizable content, and read its `allOf` through the same `?? null` guard as the neighbouring `type` / `anyOf` checks: the schema model only assigns the keywords the document declares, so every other typed property stays uninitialized (surfaced by the corpus smoke job of [#1080](https://github.com/janephp/janephp/issues/1080) on the public OpenAI 3.1 specification)
 
 ## [7.14.0] - 2026-08-31
 ### Added
