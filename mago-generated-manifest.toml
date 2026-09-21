@@ -1,0 +1,93 @@
+# Static analysis of the code Jane generates that has no committed
+# `expected/` tree: the freshly generated output of the manifest fixtures
+# (`github`, `twitter`, `api-platform-demo` — see ADR 0007), which the
+# committed `expected/` trees cannot cover. `castor qa:mago:generated`
+# generates that output on the fly (generate-manifest-fixtures.php) before
+# running both this configuration and mago-generated.toml.
+#
+# See docs/contributing/tests.md and
+# docs/contributing/adrs/0011-static-analysis-of-generated-code.md.
+
+# Pinned so the committed baseline does not depend on the contributor's PHP.
+php-version = "8.5"
+
+[source]
+paths = [
+    "src/Component/OpenApi3/Tests/fixtures/api-platform-demo/generated",
+    "src/Component/OpenApi3/Tests/fixtures/github/generated",
+    "src/Component/OpenApi3/Tests/fixtures/twitter/generated",
+]
+# Symbols the generated code references without being analysed themselves.
+includes = ["vendor", "src/Component/JsonSchemaRuntime", "src/Component/OpenApiRuntime"]
+excludes = [
+    # Deliberately partial trees which would report their own missing runtime
+    # classes. Those templates live in src/Component/*/Generator/Runtime/data
+    # and are analysed as part of src/.
+    "**/runtime-boilerplate/**",
+    # Fixture configuration, not generated output.
+    "**/.jane*",
+    # A generator input living next to a fixture's spec: it extends a
+    # generator class outside this analysis and is exercised by the fixture
+    # test itself. (`*` crosses directories in Mago's globs, so the file is
+    # named rather than its location.)
+    "**/CustomEndpointGenerator.php",
+]
+
+[analyzer]
+baseline = "mago-generated-manifest-baseline.toml"
+# Fail on new findings of every severity: several kept codes (for example
+# redundant-comparison) report below "error".
+minimum-fail-level = "note"
+
+# Generated code conveys types through `@var` / `@param` docblocks and moves
+# values through `mixed`-typed normalizer plumbing by design. The codes below
+# flag that design itself — every one of their findings asks for differently
+# shaped output (strictness preferences), not for a bug fix, so they are
+# switched off wholesale instead of baselined. Everything NOT listed here is a
+# defect class and belongs in the baseline, where fixing a generator bug makes
+# entries disappear. The measurements behind this split are recorded in ADR
+# 0008. Audit what is being suppressed with `--skip-ignores`.
+ignore = [
+    # `mixed` flowing out of normalizer plumbing (~135 000 findings, 77 % of
+    # the corpus): PHPStan only reports these at levels 8-9.
+    "mixed-argument",
+    "mixed-method-access",
+    "mixed-operand",
+    "mixed-assignment",
+    "mixed-array-access",
+    "mixed-array-assignment",
+    "mixed-property-access",
+    "mixed-property-type-coercion",
+    "mixed-return-statement",
+    # foreach / property access on values inferred only as mixed or nonnull —
+    # the same inference limit, different reporters (every finding in the
+    # corpus resolves to `mixed` or `nonnull`).
+    "invalid-iterator",
+    "invalid-member-selector",
+    # "provided type is less specific than the parameter/return type":
+    # covariance rigor over values the docblocks already describe.
+    "less-specific-argument",
+    "less-specific-return-statement",
+    "less-specific-nested-argument-type",
+    # Requests for generics annotations the generator does not emit.
+    "missing-template-parameter",
+    # List responses deserialized through the runtime
+    # deserializeListResponse() helper come back as array<array-key, mixed>
+    # (the serializer promises nothing better for class-string list types);
+    # the generated `@return \Item[]` docblock is the advertised precision.
+    "less-specific-nested-return-statement",
+    # Dynamic `$object->{$property}` access is how normalizers work.
+    "string-member-selector",
+    "ambiguous-object-method-access",
+    # Generated clients deliberately instantiate @deprecated entities: the
+    # `deprecated` fixtures test that the generator propagates the
+    # @deprecated annotation of a model onto its consumers, so a normalizer
+    # referencing the deprecated model class is the feature working as
+    # designed, not a defect.
+    "deprecated-class",
+    # Api-key cookie authentication stores the credential but decorate()
+    # cannot act on cookies yet (only header/query schemes are supported):
+    # the stored field is forward-compatibility plumbing kept until that
+    # missing feature gets an API decision of its own.
+    "write-only-property",
+]

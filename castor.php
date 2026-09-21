@@ -10,6 +10,7 @@ use function Castor\io;
 use function Castor\PHPQa\php_cs_fixer;
 use function Castor\PHPQa\phpstan;
 use function Castor\run;
+use function Castor\run_php;
 
 #[AsTask('cs:check', namespace: 'qa', description: 'Check for coding standards without fixing them')]
 function qa_cs_check(): void
@@ -38,7 +39,7 @@ function qa_phpstan(bool $generateBaseline = false): void
     phpstan($params, '2.2.2');
 }
 
-#[AsTask('mago:generated', namespace: 'qa', description: 'Run Mago static analysis over the code Jane generates (fixture expected/ trees)')]
+#[AsTask('mago:generated', namespace: 'qa', description: 'Run Mago static analysis over the code Jane generates (fixture expected/ trees and manifest-fixture fresh output)')]
 function qa_mago_generated(bool $generateBaseline = false): void
 {
     // A composer dev dependency (pinned exactly: the committed baseline is
@@ -49,15 +50,27 @@ function qa_mago_generated(bool $generateBaseline = false): void
         throw new RuntimeException('vendor/bin/mago not found: run `composer update` first.');
     }
 
-    $params = [$binary, '--workspace', __DIR__, '--config', __DIR__ . '/mago-generated.toml', 'analyze'];
+    // The manifest fixtures (no committed expected/ tree) are generated
+    // on the fly from their committed specifications, then analysed by a
+    // second configuration: the committed baseline of the gate only covers
+    // a clean checkout state, and this task must too.
+    run_php(__DIR__ . '/generate-manifest-fixtures.php');
+    $configs = [
+        __DIR__ . '/mago-generated.toml',
+        __DIR__ . '/mago-generated-manifest.toml',
+    ];
 
-    if ($generateBaseline) {
-        $params[] = '--generate-baseline';
+    foreach ($configs as $config) {
+        $params = [$binary, '--workspace', __DIR__, '--config', $config, 'analyze'];
+
+        if ($generateBaseline) {
+            $params[] = '--generate-baseline';
+        }
+
+        run($params);
     }
 
-    run($params);
-
-    io()->success($generateBaseline ? 'Baseline regenerated.' : 'No new findings in generated code.');
+    io()->success($generateBaseline ? 'Baselines regenerated.' : 'No new findings in generated code.');
 }
 
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
