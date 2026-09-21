@@ -60,7 +60,11 @@ refreshing the baseline.
 The syntax gate proves generated code *parses*; [Mago](https://mago.carthage.software/) proves more of it is
 *correct*. The root `phpstan.neon` deliberately excludes fixture trees, so `mago-generated.toml` analyses the
 committed `expected/` tree of **every** fixture in one two-second process (`runtime-boilerplate` excepted — its
-deliberately partial trees would report their own missing runtime classes). This only works because every fixture
+deliberately partial trees would report their own missing runtime classes). The task also analyses the freshly
+generated output of the *manifest* fixtures (`github`, `twitter`, `api-platform-demo` — no committed `expected/`
+tree; see [ADR 0007](adrs/0007-tiered-fixture-baselines.md)): it generates them from their committed specifications
+(`generate-manifest-fixtures.php`) and turns a second configuration, `mago-generated-manifest.toml` with its own
+`mago-generated-manifest-baseline.toml`, over them. This only works because every fixture
 generates into its own namespace (`ExpectedNamespaceUniquenessTest` guards this; see
 [ADR 0011](adrs/0011-static-analysis-of-generated-code.md)):
 
@@ -72,8 +76,10 @@ Mago comes in as a composer dev dependency pinned to an exact release (the commi
 against that release), so `composer update` is all the setup the task needs. Issue codes that merely dislike the *shape* of generated output — values moving through `mixed`-typed normalizer
 plumbing, docblock-conveyed types — are switched off in `mago-generated.toml`'s `ignore` list, each with its
 justification; every remaining code marks a defect (see [ADR 0011](adrs/0011-static-analysis-of-generated-code.md)).
-Findings that predate the gate are frozen in `mago-generated-baseline.toml`, so the check is green today and fails
-on anything *new*. Fixing a generator bug shrinks the baseline; regenerate it with:
+Findings that predate the gate are frozen in the baselines (`mago-generated-baseline.toml` for the committed
+`expected/` trees, `mago-generated-manifest-baseline.toml` for the manifest fixtures' freshly generated output), so
+the check is green today and fails on anything *new*. Fixing a generator bug shrinks the baselines; regenerate them
+with:
 
 ```bash
 castor qa:mago:generated --generate-baseline
