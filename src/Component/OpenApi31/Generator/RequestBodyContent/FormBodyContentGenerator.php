@@ -145,7 +145,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                     [, $propertySchema] = $this->guessClass->resolve($propertySchema, Schema::class);
                 }
 
-                if ($propertySchema instanceof Schema && 'string' === ($propertySchema->type ?? null) && 'binary' === ($propertySchema->format ?? null)) {
+                if ($this->isBinaryStringSchema($propertySchema)) {
                     $partOptions[$property]['filename'] = $property;
                 }
             }
@@ -167,6 +167,30 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
         }
 
         return $partOptions;
+    }
+
+    /**
+     * A string property carrying binary content, in either spelling:
+     *
+     * - OpenAPI 3.0 / JSON Schema draft-04: `format: binary`;
+     * - OpenAPI 3.1 / JSON Schema 2020-12: `contentMediaType: <media type>`,
+     *   which replaced `format: binary` when the binary format was dropped
+     *   from the vocabulary.
+     *
+     * `contentMediaType` alone is enough: JSON Schema 2020-12 defines it as
+     * the media type of the string's *own* content, so without a
+     * `contentEncoding` the string already is the raw payload of that media
+     * type. `format: binary` stays supported because 3.1 documents written by
+     * hand (or converted from 3.0) keep using it.
+     */
+    private function isBinaryStringSchema($propertySchema): bool
+    {
+        if (!$propertySchema instanceof Schema || 'string' !== ($propertySchema->type ?? null)) {
+            return false;
+        }
+
+        return 'binary' === ($propertySchema->format ?? null)
+            || null !== ($propertySchema->contentMediaType ?? null);
     }
 
     /**
