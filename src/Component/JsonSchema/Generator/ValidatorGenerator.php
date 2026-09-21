@@ -159,6 +159,12 @@ class ValidatorGenerator implements GeneratorInterface
     {
         $args = [];
         foreach ($guess->getArguments() as $argName => $argument) {
+            // An argument that is itself null means "unset": the option is left
+            // out entirely so the constraint keeps its own default.
+            if (null === $argument) {
+                continue;
+            }
+
             $value = $this->generateConstraintArgument($argument);
 
             if (null !== $value) {
@@ -169,15 +175,36 @@ class ValidatorGenerator implements GeneratorInterface
         return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), $args);
     }
 
+    /**
+     * Expression to emit for a constraint argument, or null when the value has
+     * no representation this generator can build.
+     *
+     * A null *member* of an array argument is a value of its own: `enum: [a, b,
+     * null]` makes null a valid choice, so it is emitted as an explicit `null`
+     * instead of being dropped, which would reject a value the specification
+     * allows.
+     */
     private function generateConstraintArgument($argument): ?Expr
     {
         if ($argument instanceof ValidatorGuess) {
             return $this->generateConstraint($argument);
         }
+        if (null === $argument) {
+            return new Expr\ConstFetch(new Node\Name('null'));
+        }
         if (\is_array($argument)) {
             $values = [];
             foreach ($argument as $item) {
-                $values[] = new Expr\ArrayItem($this->generateConstraintArgument($item));
+                $value = $this->generateConstraintArgument($item);
+
+                // Same fallback as the caller above: a member with no
+                // representation is left out instead of aborting the whole
+                // generation.
+                if (null === $value) {
+                    continue;
+                }
+
+                $values[] = new Expr\ArrayItem($value);
             }
 
             return new Expr\Array_($values);
