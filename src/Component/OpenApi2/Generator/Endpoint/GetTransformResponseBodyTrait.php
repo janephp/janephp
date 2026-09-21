@@ -275,23 +275,29 @@ EOD
         );
     }
 
+    /**
+     * The schema model only assigns the keywords the document declares, so
+     * every keyword it leaves out stays uninitialized: each one is read
+     * through the same `?? null` guard as the OpenAPI 3.x counterpart.
+     */
     private function convertResponseType(Schema $schema): ?string
     {
-        $type = $schema->type;
+        $type = $schema->type ?? null;
+        $enum = $schema->enum ?? null;
 
-        if (null === $type && null !== $schema->enum && \count($schema->enum) > 0) {
+        if (null === $type && null !== $enum && \count($enum) > 0) {
             $type = 'string';
         }
 
         return match ($type) {
             'string' => 'string',
             'number' => $this->isNumberFloat(
-                $schema->format,
-                $schema->default,
-                $schema->minimum,
-                $schema->maximum,
-                $schema->multipleOf,
-                $schema->enum
+                $schema->format ?? null,
+                $schema->default ?? null,
+                $schema->minimum ?? null,
+                $schema->maximum ?? null,
+                $schema->multipleOf ?? null,
+                $enum
             ) ? 'float' : 'int',
             'boolean' => 'bool',
             'integer' => 'int',
