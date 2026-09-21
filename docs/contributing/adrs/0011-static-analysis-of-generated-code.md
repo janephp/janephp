@@ -68,13 +68,14 @@ covariance codes, generics-annotation requests, and dynamic
 5. **Coverage is every fixture, not a sample.** A gate over a curated subset
    lets the rest regress silently. The config points at the components'
    `Tests/fixtures` roots, so a new fixture is analysed the moment its
-   `expected/` tree is committed. The one structural exception: manifest-mode
-   fixtures (`github`, `twitter`, `api-platform-demo` — see
-   [ADR 0007](0007-tiered-fixture-baselines.md)) commit no `expected/` tree,
-   so their output is invisible to this analysis; the per-test php-parser
-   syntax gate is what keeps a validity floor under them. Extending the task
-   to their freshly generated output would close that gap and is left as a
-   follow-up.
+   `expected/` tree is committed. A second configuration
+   (`mago-generated-manifest.toml`) covers the manifest-mode fixtures
+   (`github`, `twitter`, `api-platform-demo` — see
+   [ADR 0007](0007-tiered-fixture-baselines.md)), which commit no `expected/`
+   tree: the Mago task generates their output on the fly from their committed
+   specifications (`generate-manifest-fixtures.php`) and analyses it with its
+   own baseline (`mago-generated-manifest-baseline.toml`), so the one
+   structural exception to committed-tree analysis is covered as well.
 6. **Every fixture generates into its own namespace** (its config appends a
    segment derived from the fixture directory name), guarded by
    `ExpectedNamespaceUniquenessTest`. An analyser resolves duplicate class
@@ -83,10 +84,13 @@ covariance codes, generics-annotation requests, and dynamic
    from the directory layout: before namespaces were made unique, the OpenApi2
    `issue-770` fixture generated into the OpenApi3 test namespace. Unique
    namespaces fix that at the source instead of working around it in tooling.
-7. **Pre-existing findings are frozen** in `mago-generated-baseline.toml`
-   (12 483 entries covering 39 369 findings), so the gate blocks new
-   regressions immediately instead of waiting on a cleanup. The baseline is
-   regenerated (never hand-edited) as generator fixes shrink it:
+7. **Pre-existing findings are frozen** in the gate baselines —
+   `mago-generated-baseline.toml` (12 483 entries covering 39 369 findings at
+   the time of the freeze; the #1066 tracker has since emptied it) and
+   `mago-generated-manifest-baseline.toml` for the manifest fixtures — so the
+   gate blocks new regressions immediately instead of waiting on a cleanup.
+   The baselines are regenerated (never hand-edited) as generator fixes shrink
+   them:
    `castor qa:mago:generated --generate-baseline`. It uses Mago's `loose`
    variant — entries match on file, code and message, not line numbers, so
    unrelated edits do not churn it — and regeneration is byte-deterministic.

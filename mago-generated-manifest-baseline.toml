@@ -1,0 +1,13 @@
+variant = "loose"
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/github/generated/Endpoint/MarkdownRenderRaw.php"
+code = "non-existent-property"
+message = 'Property `$accept` does not exist on class `Github\Endpoint\MarkdownRenderRaw`.'
+count = 1
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/github/generated/Validator/ReactionRollupConstraint.php"
+code = "possibly-invalid-argument"
+message = '''Possible argument type mismatch for argument #1 of `Symfony\Component\Validator\Constraints\Collection::__construct`: expected `array<string, Symfony\Component\Validator\Constraint|list<Symfony\Component\Validator\Constraint>>|null`, but possibly received `array{-1: Symfony\Component\Validator\Constraints\Required, '+1': Symfony\Component\Validator\Constraints\Required, 'confused': Symfony\Component\Validator\Constraints\Required, 'eyes': Symfony\Component\Validator\Constraints\Required, 'heart': Symfony\Component\Validator\Constraints\Required, 'hooray': Symfony\Component\Validator\Constraints\Required, 'laugh': Symfony\Component\Validator\Constraints\Required, 'rocket': Symfony\Component\Validator\Constraints\Required, 'total_count': Symfony\Component\Validator\Constraints\Required, 'url': Symfony\Component\Validator\Constraints\Required}`.'''
+count = 1
