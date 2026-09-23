@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Castor\Attribute\AsTask;
+use Symfony\Component\Process\PhpExecutableFinder;
 
 use function Castor\context;
 use function Castor\http_download;
@@ -71,6 +72,23 @@ function qa_mago_generated(bool $generateBaseline = false): void
     }
 
     io()->success($generateBaseline ? 'Baselines regenerated.' : 'No new findings in generated code.');
+}
+
+#[AsTask('corpus', namespace: 'qa', description: 'Smoke-run the generator over the pinned real-world specs of corpus/specs.json (generation, syntax, Mago report)')]
+function qa_corpus(?string $spec = null, int $timeout = 900): void
+{
+    // Fetching, generating (in a child process per spec), the php-parser
+    // syntax gate and the Mago report live in corpus/run.php, which needs the
+    // project autoloader; this task only gives it the project's conventions.
+    // Not \PHP_BINARY: it is empty inside the static castor binary CI uses.
+    $php = (new PhpExecutableFinder())->find(false) ?: 'php';
+    $params = [$php, __DIR__ . '/corpus/run.php', '--timeout=' . $timeout];
+
+    if (null !== $spec) {
+        $params[] = '--spec=' . $spec;
+    }
+
+    run($params, context: context()->withTimeout(null));
 }
 
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
