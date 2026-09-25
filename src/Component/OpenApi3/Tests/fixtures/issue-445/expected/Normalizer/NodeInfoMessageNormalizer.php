@@ -83,7 +83,15 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('lastResponseTime', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastResponseTime']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastResponseTime']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastResponseTime'])) {
+                    try {
+                        $date = new \DateTime($data['lastResponseTime']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastResponseTime($date);
             unset($data['lastResponseTime']);

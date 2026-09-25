@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [JsonSchema][OpenApi] [GH#1102](https://github.com/janephp/janephp/issues/1102) Generated `date-time` denormalizers no longer reject valid RFC 3339 values. Since [GH#764](https://github.com/janephp/janephp/issues/764), properties with `format: date-time` (and their inline `oneOf` / `anyOf` union branches) parsed strictly with `\DateTime::createFromFormat('Y-m-d\TH:i:sP', ...)`, which cannot parse a `Z` designator or fractional seconds — both valid RFC 3339, e.g. `2026-08-31T15:39:33.601Z` threw `InvalidDateException`. When the input format is the default `date-format` (`\DateTimeInterface::RFC3339`), the generated denormalizer now retries the strict parse with a bare `new \DateTime(...)` guarded by a strict RFC 3339 shape check, and the union condition routes matching values to the date branch, so the fallback can never be reached with relative date strings (`tomorrow`). Values outside that shape keep the same clean `InvalidDateException` as before, and a custom `date-input-format` keeps the fully strict behavior. Note that well-shaped but impossible values (`2026-02-30T25:61:61Z`) are rolled over by PHP's `new \DateTime` without exception — the generated validator uses the same RFC 3339 shape check (`Symfony\Component\Validator\Constraints\Regex`) instead of a strict `DateTime(format)` constraint for the default format, so both sides accept and reject the same values; a follow-up could restore calendar validation if strictness is required.
 
 ## [7.14.3] - 2026-09-08
 ### Fixed

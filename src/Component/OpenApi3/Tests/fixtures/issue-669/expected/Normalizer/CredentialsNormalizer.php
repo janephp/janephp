@@ -68,7 +68,15 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('expires_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expires_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['expires_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['expires_at'])) {
+                    try {
+                        $date = new \DateTime($data['expires_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setExpiresAt($date);
             unset($data['expires_at']);

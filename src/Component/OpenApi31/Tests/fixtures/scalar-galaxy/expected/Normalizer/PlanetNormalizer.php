@@ -80,7 +80,15 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('discoveredAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['discoveredAt']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['discoveredAt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['discoveredAt'])) {
+                    try {
+                        $date = new \DateTime($data['discoveredAt']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setDiscoveredAt($date);
         }
@@ -116,7 +124,15 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('lastUpdated', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastUpdated']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastUpdated']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastUpdated'])) {
+                    try {
+                        $date_1 = new \DateTime($data['lastUpdated']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastUpdated($date_1);
         }

@@ -48,7 +48,15 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('not_after', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['not_after']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['not_after'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['not_after']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['not_after'])) {
+                    try {
+                        $date = new \DateTime($data['not_after']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['not_after'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['not_after'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setNotAfter($date);
             unset($data['not_after']);
@@ -60,7 +68,15 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('created_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['created_at'])) {
+                    try {
+                        $date_1 = new \DateTime($data['created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCreatedAt($date_1);
             unset($data['created_at']);

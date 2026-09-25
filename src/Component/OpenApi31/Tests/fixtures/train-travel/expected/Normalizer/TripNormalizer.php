@@ -64,7 +64,15 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('departure_time', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['departure_time']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['departure_time']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['departure_time'])) {
+                    try {
+                        $date = new \DateTime($data['departure_time']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setDepartureTime($date);
             unset($data['departure_time']);
@@ -72,7 +80,15 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('arrival_time', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['arrival_time']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['arrival_time']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['arrival_time'])) {
+                    try {
+                        $date_1 = new \DateTime($data['arrival_time']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setArrivalTime($date_1);
             unset($data['arrival_time']);

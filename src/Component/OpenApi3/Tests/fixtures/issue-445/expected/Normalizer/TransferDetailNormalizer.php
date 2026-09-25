@@ -116,7 +116,15 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastDataExtractionProgressTimeStamp']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastDataExtractionProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastDataExtractionProgressTimeStamp']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastDataExtractionProgressTimeStamp'])) {
+                    try {
+                        $date = new \DateTime($data['lastDataExtractionProgressTimeStamp']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastDataExtractionProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastDataExtractionProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastDataExtractionProgressTimeStamp($date);
             unset($data['lastDataExtractionProgressTimeStamp']);
@@ -128,7 +136,15 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastFileUploadProgressTimeStamp']);
             if (false === $date_1) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastFileUploadProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastFileUploadProgressTimeStamp']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastFileUploadProgressTimeStamp'])) {
+                    try {
+                        $date_1 = new \DateTime($data['lastFileUploadProgressTimeStamp']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastFileUploadProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastFileUploadProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastFileUploadProgressTimeStamp($date_1);
             unset($data['lastFileUploadProgressTimeStamp']);

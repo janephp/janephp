@@ -43,7 +43,15 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('added_to_agent_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['added_to_agent_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['added_to_agent_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['added_to_agent_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['added_to_agent_at'])) {
+                    try {
+                        $date = new \DateTime($data['added_to_agent_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['added_to_agent_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['added_to_agent_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setAddedToAgentAt($date);
             unset($data['added_to_agent_at']);
@@ -51,7 +59,15 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('created_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['created_at'])) {
+                    try {
+                        $date_1 = new \DateTime($data['created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCreatedAt($date_1);
             unset($data['created_at']);
@@ -95,7 +111,15 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('updated_at', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_2) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['updated_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['updated_at'])) {
+                    try {
+                        $date_2 = new \DateTime($data['updated_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setUpdatedAt($date_2);
             unset($data['updated_at']);

@@ -56,7 +56,15 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('end_datetime', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end_datetime']);
             if (false === $date) {
-                throw new \Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['end_datetime'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['end_datetime']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['end_datetime'])) {
+                    try {
+                        $date = new \DateTime($data['end_datetime']);
+                    } catch (\Exception) {
+                        throw new \Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['end_datetime'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['end_datetime'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setEndDatetime($date);
             unset($data['end_datetime']);

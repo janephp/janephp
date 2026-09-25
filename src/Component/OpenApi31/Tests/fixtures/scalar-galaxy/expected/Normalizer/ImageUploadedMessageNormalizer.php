@@ -51,7 +51,15 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('uploadedAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['uploadedAt']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['uploadedAt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['uploadedAt'])) {
+                    try {
+                        $date = new \DateTime($data['uploadedAt']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setUploadedAt($date);
             unset($data['uploadedAt']);

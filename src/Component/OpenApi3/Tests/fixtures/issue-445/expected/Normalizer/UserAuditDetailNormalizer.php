@@ -40,14 +40,30 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('creationDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['creationDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['creationDate'])) {
+                    try {
+                        $date = new \DateTime($data['creationDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCreationDate($date);
         }
         if (\array_key_exists('modificationDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
             if (false === $date_1) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['modificationDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['modificationDate'])) {
+                    try {
+                        $date_1 = new \DateTime($data['modificationDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setModificationDate($date_1);
         }
