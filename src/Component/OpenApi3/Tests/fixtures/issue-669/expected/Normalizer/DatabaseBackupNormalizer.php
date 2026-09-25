@@ -44,7 +44,15 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('backup_created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backup_created_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['backup_created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['backup_created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['backup_created_at'])) {
+                    try {
+                        $date = new \DateTime($data['backup_created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['backup_created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['backup_created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setBackupCreatedAt($date);
             unset($data['backup_created_at']);

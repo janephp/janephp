@@ -47,7 +47,15 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['created_at'])) {
+                    try {
+                        $date = new \DateTime($data['created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCreatedAt($date);
             unset($data['created_at']);
@@ -71,7 +79,15 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('finished_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['finished_at']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['finished_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['finished_at'])) {
+                    try {
+                        $date_1 = new \DateTime($data['finished_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setFinishedAt($date_1);
             unset($data['finished_at']);
@@ -91,7 +107,15 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('started_at', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
             if (false === $date_2) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['started_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['started_at'])) {
+                    try {
+                        $date_2 = new \DateTime($data['started_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setStartedAt($date_2);
             unset($data['started_at']);
@@ -115,7 +139,15 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('updated_at', $data)) {
             $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_3) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['updated_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['updated_at'])) {
+                    try {
+                        $date_3 = new \DateTime($data['updated_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setUpdatedAt($date_3);
             unset($data['updated_at']);

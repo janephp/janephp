@@ -71,7 +71,15 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('certificate_expires_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['certificate_expires_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['certificate_expires_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['certificate_expires_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['certificate_expires_at'])) {
+                    try {
+                        $date = new \DateTime($data['certificate_expires_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['certificate_expires_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['certificate_expires_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCertificateExpiresAt($date);
             unset($data['certificate_expires_at']);

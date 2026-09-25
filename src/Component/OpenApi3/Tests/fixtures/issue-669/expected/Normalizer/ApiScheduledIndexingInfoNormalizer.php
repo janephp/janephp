@@ -43,7 +43,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['created_at'])) {
+                    try {
+                        $date = new \DateTime($data['created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setCreatedAt($date);
             unset($data['created_at']);
@@ -59,7 +67,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('deleted_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['deleted_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['deleted_at'])) {
+                    try {
+                        $date_1 = new \DateTime($data['deleted_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setDeletedAt($date_1);
             unset($data['deleted_at']);
@@ -75,7 +91,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('last_ran_at', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_ran_at']);
             if (false === $date_2) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['last_ran_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['last_ran_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['last_ran_at'])) {
+                    try {
+                        $date_2 = new \DateTime($data['last_ran_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['last_ran_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['last_ran_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastRanAt($date_2);
             unset($data['last_ran_at']);
@@ -83,7 +107,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('next_run_at', $data)) {
             $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['next_run_at']);
             if (false === $date_3) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['next_run_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['next_run_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['next_run_at'])) {
+                    try {
+                        $date_3 = new \DateTime($data['next_run_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['next_run_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['next_run_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setNextRunAt($date_3);
             unset($data['next_run_at']);
@@ -95,7 +127,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('updated_at', $data)) {
             $date_4 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_4) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['updated_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['updated_at'])) {
+                    try {
+                        $date_4 = new \DateTime($data['updated_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setUpdatedAt($date_4);
             unset($data['updated_at']);

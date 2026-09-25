@@ -90,7 +90,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('startDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['startDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['startDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['startDate'])) {
+                    try {
+                        $date = new \DateTime($data['startDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['startDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['startDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setStartDate($date);
             unset($data['startDate']);
@@ -98,7 +106,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('endDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']);
             if (false === $date_1) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['endDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['endDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['endDate'])) {
+                    try {
+                        $date_1 = new \DateTime($data['endDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['endDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['endDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setEndDate($date_1);
             unset($data['endDate']);
@@ -130,7 +146,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] !== null) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastReportedProgress']);
             if (false === $date_2) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastReportedProgress'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastReportedProgress']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastReportedProgress'])) {
+                    try {
+                        $date_2 = new \DateTime($data['lastReportedProgress']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastReportedProgress'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastReportedProgress'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setLastReportedProgress($date_2);
             unset($data['lastReportedProgress']);

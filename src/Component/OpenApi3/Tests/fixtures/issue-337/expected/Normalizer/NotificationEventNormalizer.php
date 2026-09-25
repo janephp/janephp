@@ -57,7 +57,15 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('eventDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['eventDate']);
             if (false === $date) {
-                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['eventDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['eventDate'])) {
+                    try {
+                        $date = new \DateTime($data['eventDate']);
+                    } catch (\Exception) {
+                        throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setEventDate($date);
             unset($data['eventDate']);

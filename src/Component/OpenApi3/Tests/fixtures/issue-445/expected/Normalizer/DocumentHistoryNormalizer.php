@@ -58,7 +58,15 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('documentDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['documentDate']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['documentDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['documentDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['documentDate'])) {
+                    try {
+                        $date = new \DateTime($data['documentDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['documentDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['documentDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setDocumentDate($date);
         }
@@ -71,7 +79,15 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('timestamp', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date_1) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['timestamp']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['timestamp'])) {
+                    try {
+                        $date_1 = new \DateTime($data['timestamp']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->setTimestamp($date_1);
         }
