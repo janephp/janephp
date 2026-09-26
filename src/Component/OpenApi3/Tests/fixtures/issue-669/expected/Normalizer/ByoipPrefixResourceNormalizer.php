@@ -56,7 +56,15 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('assigned_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['assigned_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['assigned_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['assigned_at'])) {
+                    try {
+                        $date = new \DateTime($data['assigned_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->assignedAt = $date;
             unset($data['assigned_at']);

@@ -71,7 +71,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('dateProperty', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['dateProperty']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateProperty'])) {
+                    try {
+                        $date = new \DateTime($data['dateProperty']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->dateProperty = $date;
             unset($data['dateProperty']);
@@ -79,7 +87,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateNullableProperty']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateNullableProperty'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['dateNullableProperty']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateNullableProperty'])) {
+                    try {
+                        $date_1 = new \DateTime($data['dateNullableProperty']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateNullableProperty'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateNullableProperty'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->dateNullableProperty = $date_1;
             unset($data['dateNullableProperty']);

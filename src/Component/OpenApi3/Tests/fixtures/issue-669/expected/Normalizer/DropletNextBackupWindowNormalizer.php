@@ -40,7 +40,15 @@ class DropletNextBackupWindowNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('start', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['start']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['start'])) {
+                    try {
+                        $date = new \DateTime($data['start']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->start = $date;
             unset($data['start']);
@@ -48,7 +56,15 @@ class DropletNextBackupWindowNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('end', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['end'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['end']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['end'])) {
+                    try {
+                        $date_1 = new \DateTime($data['end']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['end'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['end'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->end = $date_1;
             unset($data['end']);

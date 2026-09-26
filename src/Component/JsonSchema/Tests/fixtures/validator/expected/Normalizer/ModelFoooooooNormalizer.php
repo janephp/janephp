@@ -149,7 +149,15 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('dateTimeFormat', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateTimeFormat']);
             if (false === $date_2) {
-                throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['dateTimeFormat']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateTimeFormat'])) {
+                    try {
+                        $date_2 = new \DateTime($data['dateTimeFormat']);
+                    } catch (\Exception) {
+                        throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->dateTimeFormat = $date_2;
         }

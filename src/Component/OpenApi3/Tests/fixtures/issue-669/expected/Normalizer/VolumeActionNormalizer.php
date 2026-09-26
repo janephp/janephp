@@ -60,7 +60,15 @@ class VolumeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('started_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['started_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['started_at'])) {
+                    try {
+                        $date = new \DateTime($data['started_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->startedAt = $date;
             unset($data['started_at']);
@@ -68,7 +76,15 @@ class VolumeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['completed_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['completed_at'])) {
+                    try {
+                        $date_1 = new \DateTime($data['completed_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->completedAt = $date_1;
             unset($data['completed_at']);

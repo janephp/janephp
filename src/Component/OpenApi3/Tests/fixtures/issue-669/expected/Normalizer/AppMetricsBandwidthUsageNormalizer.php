@@ -48,7 +48,15 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('date', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['date']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['date'])) {
+                    try {
+                        $date = new \DateTime($data['date']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->date = $date;
             unset($data['date']);

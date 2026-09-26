@@ -37,6 +37,9 @@ final class BaseEndpointTest extends TestCase
         yield 'int array' => [['queryParam' => [1, 2, 3]], 'queryParam%5B0%5D=1&queryParam%5B1%5D=2&queryParam%5B2%5D=3'];
         yield 'array with string keys' => [['queryParam' => ['key' => 1]], 'queryParam%5Bkey%5D=1'];
         yield 'nested array' => [['queryParam' => ['key' => ['test' => 'test1']]], 'queryParam%5Bkey%5D%5Btest%5D=test1'];
+        yield 'array with a reserved character in the key' => [['queryParam' => ['unit:mm' => 'width']], 'queryParam%5Bunit%3Amm%5D=width'];
+        yield 'array with a separator character in the key' => [['queryParam' => ['span&low' => 'ten']], 'queryParam%5Bspan%26low%5D=ten'];
+        yield 'nested array with reserved characters in the keys' => [['queryParam' => ['group:one' => ['unit:mm' => 'width']]], 'queryParam%5Bgroup%3Aone%5D%5Bunit%3Amm%5D=width'];
     }
 
     public static function queryParamsProviderWithAllowingReservedCharacters(): iterable
@@ -67,6 +70,11 @@ final class BaseEndpointTest extends TestCase
             ['search' => ['name' => 'john', 'address' => ['city' => 'NY']]],
             ['search' => ['style' => 'form', 'explode' => true]],
             'name=john&address%5Bcity%5D=NY',
+        ];
+        yield 'form exploded object with a reserved character in the nested key' => [
+            ['layout' => ['group:one' => ['unit:mm' => 'width']]],
+            ['layout' => ['style' => 'form', 'explode' => true]],
+            'group%3Aone%5Bunit%3Amm%5D=width',
         ];
         yield 'form exploded array of objects uses bracket notation' => [
             ['points' => [['x' => 1], ['x' => 2]]],
@@ -102,6 +110,21 @@ final class BaseEndpointTest extends TestCase
             ['filter' => ['range' => ['from' => 'a']]],
             ['filter' => ['style' => 'deepObject', 'explode' => true]],
             'filter%5Brange%5D%5Bfrom%5D=a',
+        ];
+        yield 'deep object with a reserved character in the key' => [
+            ['bounds' => ['unit:mm' => 'width']],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bunit%3Amm%5D=width',
+        ];
+        yield 'deep object with a separator character in the key' => [
+            ['bounds' => ['span&low' => 'ten']],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bspan%26low%5D=ten',
+        ];
+        yield 'deep object nested with reserved characters in the keys' => [
+            ['bounds' => ['group:one' => ['unit:mm' => 'width']]],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bgroup%3Aone%5D%5Bunit%3Amm%5D=width',
         ];
         yield 'null value is omitted' => [
             ['search' => null, 'other' => 'kept'],

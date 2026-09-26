@@ -52,7 +52,15 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('started_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['started_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['started_at'])) {
+                    try {
+                        $date = new \DateTime($data['started_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->startedAt = $date;
             unset($data['started_at']);

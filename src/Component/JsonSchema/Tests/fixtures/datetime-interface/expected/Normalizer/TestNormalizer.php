@@ -40,14 +40,30 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('date', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
             if (false === $date) {
-                throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['date']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['date'])) {
+                    try {
+                        $date = new \DateTime($data['date']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->date = $date;
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']);
             if (false === $date_1) {
-                throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['dateOrNull']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateOrNull'])) {
+                    try {
+                        $date_1 = new \DateTime($data['dateOrNull']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->dateOrNull = $date_1;
         }
@@ -56,10 +72,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
             $value = $data['dateOrNullOrInt'];
-            if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt'])) {
+            if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']) or is_string($data['dateOrNullOrInt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateOrNullOrInt'])) {
                 $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
                 if (false === $date_2) {
-                    throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                    if (is_string($data['dateOrNullOrInt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['dateOrNullOrInt'])) {
+                        try {
+                            $date_2 = new \DateTime($data['dateOrNullOrInt']);
+                        } catch (\Exception) {
+                            throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                        }
+                    } else {
+                        throw new \Jane\Component\JsonSchema\Tests\Expected\DatetimeInterface\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                    }
                 }
                 $value = $date_2;
             } elseif (is_null($data['dateOrNullOrInt'])) {

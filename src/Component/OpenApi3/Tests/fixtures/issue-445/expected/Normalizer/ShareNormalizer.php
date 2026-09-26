@@ -66,7 +66,15 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['expirationDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['expirationDate'])) {
+                    try {
+                        $date = new \DateTime($data['expirationDate']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->expirationDate = $date;
         }
