@@ -154,14 +154,30 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('created_at', $data)) {
             $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date_3) {
-                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['created_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['created_at'])) {
+                    try {
+                        $date_3 = new \DateTime($data['created_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->createdAt = $date_3;
         }
         if (\array_key_exists('updated_at', $data)) {
             $date_4 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_4) {
-                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['updated_at']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['updated_at'])) {
+                    try {
+                        $date_4 = new \DateTime($data['updated_at']);
+                    } catch (\Exception) {
+                        throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->updatedAt = $date_4;
         }

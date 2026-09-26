@@ -97,13 +97,13 @@ class Issue1102RegressionTest extends TestCase
             ] as $validValue) {
                 $object = $normalizer->denormalize(['dt' => $validValue], $modelClass, 'json');
 
-                self::assertInstanceOf(\DateTime::class, $object->getDt(), \sprintf('"%s" should denormalize.', $validValue));
+                self::assertInstanceOf(\DateTime::class, $object->dt, \sprintf('"%s" should denormalize.', $validValue));
             }
 
             // A `Z` designator normalizes like any other UTC value when serialized
             // back with the default output format (numeric offset, no GMT coercion).
             $object = $normalizer->denormalize(['dt' => '2026-08-31T15:39:33Z'], $modelClass, 'json');
-            self::assertSame('2026-08-31T15:39:33+00:00', $object->getDt()->format(\DateTimeInterface::RFC3339));
+            self::assertSame('2026-08-31T15:39:33+00:00', $object->dt->format(\DateTimeInterface::RFC3339));
 
             // Leniency must not accept relative date strings.
             try {
