@@ -55,7 +55,15 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['createdAt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['createdAt'])) {
+                    try {
+                        $date_1 = new \DateTime($data['createdAt']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->createdAt = $date_1;
             unset($data['createdAt']);
@@ -67,7 +75,15 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('updatedAt', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updatedAt']);
             if (false === $date_2) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['updatedAt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['updatedAt'])) {
+                    try {
+                        $date_2 = new \DateTime($data['updatedAt']);
+                    } catch (\Exception) {
+                        throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->updatedAt = $date_2;
             unset($data['updatedAt']);

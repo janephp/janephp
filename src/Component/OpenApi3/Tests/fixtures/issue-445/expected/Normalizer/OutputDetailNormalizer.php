@@ -79,7 +79,15 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']);
             if (false === $date) {
-                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['backupTimestamp']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['backupTimestamp'])) {
+                    try {
+                        $date = new \DateTime($data['backupTimestamp']);
+                    } catch (\Exception) {
+                        throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->backupTimestamp = $date;
             unset($data['backupTimestamp']);

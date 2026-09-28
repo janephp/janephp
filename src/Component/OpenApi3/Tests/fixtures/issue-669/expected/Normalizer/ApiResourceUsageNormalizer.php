@@ -52,7 +52,15 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('start', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']);
             if (false === $date) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['start']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['start'])) {
+                    try {
+                        $date = new \DateTime($data['start']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->start = $date;
             unset($data['start']);
@@ -60,7 +68,15 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('stop', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['stop']);
             if (false === $date_1) {
-                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['stop'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['stop']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['stop'])) {
+                    try {
+                        $date_1 = new \DateTime($data['stop']);
+                    } catch (\Exception) {
+                        throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['stop'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['stop'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->stop = $date_1;
             unset($data['stop']);

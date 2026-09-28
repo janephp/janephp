@@ -1,2 +1,25 @@
 variant = "loose"
-issues = []
+
+[[issues]]
+file = "src/Component/JsonSchema/Tests/fixtures/datetime-interface/expected/Normalizer/TestNormalizer.php"
+code = "redundant-logical-operation"
+message = "Redundant `and` operation: left operand is always truthy and right operand is evaluated."
+count = 1
+
+[[issues]]
+file = "src/Component/JsonSchema/Tests/fixtures/datetime-interface/expected/Normalizer/TestNormalizer.php"
+code = "redundant-type-comparison"
+message = "Redundant type assertion: `$data['dateOrNullOrInt']` is already `string`."
+count = 1
+
+[[issues]]
+file = "src/Component/JsonSchema/Tests/fixtures/datetime/expected/Normalizer/TestNormalizer.php"
+code = "redundant-logical-operation"
+message = "Redundant `and` operation: left operand is always truthy and right operand is evaluated."
+count = 1
+
+[[issues]]
+file = "src/Component/JsonSchema/Tests/fixtures/datetime/expected/Normalizer/TestNormalizer.php"
+code = "redundant-type-comparison"
+message = "Redundant type assertion: `$data['dateOrNullOrInt']` is already `string`."
+count = 1

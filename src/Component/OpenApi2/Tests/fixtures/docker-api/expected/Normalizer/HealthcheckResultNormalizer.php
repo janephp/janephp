@@ -43,7 +43,15 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('Start', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['Start']);
             if (false === $date) {
-                throw new \Docker\Api\Runtime\Normalizer\InvalidDateException($data['Start'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['Start']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['Start'])) {
+                    try {
+                        $date = new \DateTime($data['Start']);
+                    } catch (\Exception) {
+                        throw new \Docker\Api\Runtime\Normalizer\InvalidDateException($data['Start'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Docker\Api\Runtime\Normalizer\InvalidDateException($data['Start'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->start = $date;
         }

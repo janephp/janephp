@@ -2,12 +2,14 @@
 
 namespace Jane\Component\JsonSchema\Tests\Guesser\Validator\Format;
 
+use Jane\Component\JsonSchema\Guesser\Guess\DateTimeType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Validator\Format\DateTimeValidator;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class DateTimeValidatorTest extends TestCase
 {
@@ -45,7 +47,7 @@ class DateTimeValidatorTest extends TestCase
         self::assertFalse((new DateTimeValidator())->supports(new \stdClass()));
     }
 
-    public function testGuessUsesOutputFormatByDefault(): void
+    public function testGuessUsesOraPatternForDefaultRfc3339(): void
     {
         $guess = new Property(new JsonSchema(), 'updatedAt', '#/properties/updatedAt');
 
@@ -53,8 +55,24 @@ class DateTimeValidatorTest extends TestCase
 
         $guesses = $guess->getValidatorGuesses();
         self::assertCount(2, $guesses);
+        // The default RFC 3339 format gets the lenient regex check, in sync with the
+        // lenient denormalizer, so `Z` and fractional seconds are not rejected.
+        self::assertSame(Regex::class, $guesses[0]->getConstraintClass());
+        self::assertSame(['pattern' => DateTimeType::RFC3339_LENIENT_PATTERN], $guesses[0]->getArguments());
+        self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
+        self::assertSame([], $guesses[1]->getArguments());
+    }
+
+    public function testGuessUsesStrictDateTimeConstraintForCustomFormat(): void
+    {
+        $guess = new Property(new JsonSchema(), 'updatedAt', '#/properties/updatedAt');
+
+        (new DateTimeValidator(\DateTimeInterface::RFC3339_EXTENDED))->guess(new JsonSchema(), 'updatedAt', $guess);
+
+        $guesses = $guess->getValidatorGuesses();
+        self::assertCount(2, $guesses);
         self::assertSame(DateTime::class, $guesses[0]->getConstraintClass());
-        self::assertSame(['format' => \DateTimeInterface::RFC3339], $guesses[0]->getArguments());
+        self::assertSame(['format' => \DateTimeInterface::RFC3339_EXTENDED], $guesses[0]->getArguments());
         self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
         self::assertSame([], $guesses[1]->getArguments());
     }

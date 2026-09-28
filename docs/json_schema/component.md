@@ -137,6 +137,17 @@ Other options are available to customize the generated code:
 `\DateTime` returns with `\DateTimeInterface`, it's disabled by default.
 - `date-input-format`: During denormalization (from array to object), we may have a different format than the output
  format. This option allows you to specify which format you want. By default it will take `date-format` configuration.
+  > **[!NOTE]**
+  > When the input format is the default `date-format` (`\DateTimeInterface::RFC3339`), the generated
+  > denormalizer is lenient about valid RFC 3339 values that this strict PHP format cannot parse: a `Z`
+  > designator and optional fractional seconds (`2026-08-31T15:39:33.601Z`) are retried with a bare
+  > `new \DateTime(...)` in addition to the strict `\DateTime::createFromFormat(...)` parse (see
+  > [GH#1102](https://github.com/janephp/janephp/issues/1102)). Relative date strings (`tomorrow`) and any
+  > other value outside the strict RFC 3339 shape still throw the same `InvalidDateException` as before, and
+  > impossible-but-well-shaped values (`2026-02-30T25:61:61Z`) are rolled over by PHP exactly as the
+  > validator's own shape check tolerates them, so the denormalizer and validator stay in sync. When a
+  > custom `date-input-format` is set, no such retry happens: the format is applied strictly and any value
+  > that does not match it throws `InvalidDateException`.
 - `strict`: A boolean which indicate strict mode (true by default), not strict mode generate more permissive client
  not respecting some standards (nullable field as an example) client.
 - `use-fixer`: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.

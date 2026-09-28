@@ -56,7 +56,15 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('createdDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdDate']);
             if (false === $date) {
-                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['createdDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['createdDate'])) {
+                    try {
+                        $date = new \DateTime($data['createdDate']);
+                    } catch (\Exception) {
+                        throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->createdDate = $date;
             unset($data['createdDate']);
@@ -80,7 +88,15 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('lastAccessDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastAccessDate']);
             if (false === $date_1) {
-                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['lastAccessDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['lastAccessDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['lastAccessDate'])) {
+                    try {
+                        $date_1 = new \DateTime($data['lastAccessDate']);
+                    } catch (\Exception) {
+                        throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['lastAccessDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['lastAccessDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->lastAccessDate = $date_1;
             unset($data['lastAccessDate']);
@@ -88,7 +104,15 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('modifiedDate', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modifiedDate']);
             if (false === $date_2) {
-                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['modifiedDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['modifiedDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['modifiedDate'])) {
+                    try {
+                        $date_2 = new \DateTime($data['modifiedDate']);
+                    } catch (\Exception) {
+                        throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['modifiedDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['modifiedDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->modifiedDate = $date_2;
             unset($data['modifiedDate']);
@@ -96,7 +120,15 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('contractEndDate', $data)) {
             $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['contractEndDate']);
             if (false === $date_3) {
-                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['contractEndDate'], 'Y-m-d\TH:i:sP');
+                if (is_string($data['contractEndDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['contractEndDate'])) {
+                    try {
+                        $date_3 = new \DateTime($data['contractEndDate']);
+                    } catch (\Exception) {
+                        throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['contractEndDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['contractEndDate'], 'Y-m-d\TH:i:sP');
+                }
             }
             $object->contractEndDate = $date_3;
             unset($data['contractEndDate']);
