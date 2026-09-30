@@ -28,7 +28,7 @@
     "require": {
         "php": "^8.3",
         "doctrine/inflector": "^1.4 || ^2.0",
-        "jane-php/json-schema-runtime": "^7.5",
+        "jane-php/json-schema-runtime": "^8.0",
         "nikic/php-parser": "^4.19 || ^5.1",
         "symfony/console": "^7.0 || ^8.0",
         "symfony/event-dispatcher": "^7.0 || ^8.0",
@@ -48,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "7-dev"
+            "dev-next": "8-dev"
         }
     },
     "bin": [
