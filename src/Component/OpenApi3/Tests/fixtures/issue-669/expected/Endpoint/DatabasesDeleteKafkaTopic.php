@@ -9,10 +9,8 @@ class DatabasesDeleteKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
     /**
      * To delete a single topic within a Kafka cluster, send a DELETE request
      * to `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was
      * processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      */

@@ -8,7 +8,6 @@ class KubernetesGetClusterUser extends \Jane\Generated\DigitalOcean\Runtime\Clie
     /**
      * To show information the user associated with a Kubernetes cluster, send a GET
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/user`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

@@ -8,10 +8,8 @@ class VolumeSnapshotsDeleteById extends \Jane\Generated\DigitalOcean\Runtime\Cli
     /**
      * To delete a volume snapshot, send a DELETE request to
      * `/v2/volumes/snapshots/$VOLUME_SNAPSHOT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $snapshotId The unique identifier for the snapshot.
      */
     public function __construct(string $snapshotId)

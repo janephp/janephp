@@ -8,10 +8,8 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     protected $requestId;
     /**
      * Uploads the specified chunk data.
-     *
      * Use `Content-Type: application/octet-stream` for uploading chunked data.
      * The chunk data should be contained in the body of your request.
-     *
      * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.

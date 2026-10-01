@@ -7,8 +7,6 @@ class VolumesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     protected $volume_id;
     /**
      * To show information about a block storage volume, send a GET request to `/v2/volumes/$VOLUME_ID`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      */
     public function __construct(string $volumeId)

@@ -8,7 +8,6 @@ class PartnerAttachmentsCreate extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * To create a new partner attachment, send a `POST` request to
      * `/v2/partner_network_connect/attachments` with a JSON object containing the
      * required configuration details.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable $requestBody
      */
     public function __construct(?\Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable $requestBody = null)

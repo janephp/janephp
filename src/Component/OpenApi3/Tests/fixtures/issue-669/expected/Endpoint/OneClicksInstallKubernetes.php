@@ -9,7 +9,6 @@ class OneClicksInstallKubernetes extends \Jane\Generated\DigitalOcean\Runtime\Cl
      * `/v2/1-clicks/kubernetes`. The `addon_slugs` and `cluster_uuid` must be provided as body
      * parameter in order to specify which 1-Click application(s) to install. To list all available
      * 1-Click Kubernetes applications, send a request to `/v2/1-clicks?type=kubernetes`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\OneClicksCreate $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\OneClicksCreate $requestBody)

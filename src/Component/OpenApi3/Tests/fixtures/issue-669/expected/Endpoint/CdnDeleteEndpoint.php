@@ -8,10 +8,8 @@ class CdnDeleteEndpoint extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To delete a specific CDN endpoint, send a DELETE request to
      * `/v2/cdn/endpoints/$ENDPOINT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      */
     public function __construct(string $cdnId)

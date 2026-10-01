@@ -9,10 +9,8 @@ class DatabasesDeleteConnectionPool extends \Jane\Generated\DigitalOcean\Runtime
     /**
      * To delete a specific connection pool for a PostgreSQL database cluster, send
      * a DELETE request to `/v2/databases/$DATABASE_ID/pools/$POOL_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $poolName The name used to identify the connection pool.
      */

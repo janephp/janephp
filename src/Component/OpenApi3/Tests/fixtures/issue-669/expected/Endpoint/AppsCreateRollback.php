@@ -10,10 +10,8 @@ class AppsCreateRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * The app will be pinned to the rollback deployment preventing any new deployments from being created,
      * either manually or through Auto Deploy on Push webhooks. To resume deployments, the rollback must be
      * either committed or reverted.
-     *
      * It is recommended to use the Validate App Rollback endpoint to double check if the rollback is
      * valid and if there are any warnings.
-     *
      * @param string $appId The app ID
      * @param \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody
      */

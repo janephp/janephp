@@ -9,7 +9,6 @@ class CdnUpdateEndpoints extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * To update the TTL, certificate ID, or the FQDN of the custom subdomain for
      * an existing CDN endpoint, send a PUT request to
      * `/v2/cdn/endpoints/$ENDPOINT_ID`.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      * @param \Jane\Generated\DigitalOcean\Model\UpdateEndpoint $requestBody
      */

@@ -8,7 +8,6 @@ class AutoscalepoolsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To show information about an individual autoscale pool, send a GET request to
      * `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID`.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      */
     public function __construct(string $autoscalePoolId)

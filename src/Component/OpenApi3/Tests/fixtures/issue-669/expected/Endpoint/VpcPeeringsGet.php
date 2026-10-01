@@ -7,7 +7,6 @@ class VpcPeeringsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     protected $vpc_peering_id;
     /**
      * To show information about an existing VPC Peering, send a GET request to `/v2/vpc_peerings/$VPC_PEERING_ID`.
-     *
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      */
     public function __construct(string $vpcPeeringId)

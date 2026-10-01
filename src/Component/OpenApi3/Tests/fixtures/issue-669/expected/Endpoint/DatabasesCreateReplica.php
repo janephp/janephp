@@ -7,9 +7,7 @@ class DatabasesCreateReplica extends \Jane\Generated\DigitalOcean\Runtime\Client
     protected $database_cluster_uuid;
     /**
      * To create a read-only replica for a PostgreSQL or MySQL database cluster, send a POST request to `/v2/databases/$DATABASE_ID/replicas` specifying the name it should be given, the size of the node to be used, and the region where it will be located.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a key called `replica`. The value of this will be an object that contains the standard attributes associated with a database replica. The initial value of the read-only replica's `status` attribute will be `forking`. When the replica is ready to receive traffic, this will transition to `active`.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidReplicasPostBody $requestBody

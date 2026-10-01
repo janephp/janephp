@@ -9,7 +9,6 @@ class ImagesUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * To update an image, send a `PUT` request to `/v2/images/$IMAGE_ID`.
      * Set the `name` attribute to the new value you would like to use.
      * For custom images, the `description` and `distribution` attributes may also be updated.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      * @param \Jane\Generated\DigitalOcean\Model\ImageUpdate $requestBody
      */

@@ -12,11 +12,9 @@ class LoadBalancersAddDroplets extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * Individual Droplets can not be added to a load balancer configured with a
      * Droplet tag. Attempting to do so will result in a "422 Unprocessable Entity"
      * response from the API.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsPostBody $requestBody
      */

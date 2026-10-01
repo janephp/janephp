@@ -10,10 +10,8 @@ class RegistriesGetDockerCredentials extends \Jane\Generated\DigitalOcean\Runtim
      * Kubernetes cluster, you will need to configure authentication. The necessary
      * JSON configuration can be retrieved by sending a GET request to
      * `/v2/registries/{registry_name}/docker-credentials`.
-     *
      * The response will be in the format of a Docker `config.json` file. To use the
      * config in your Kubernetes cluster, create a Secret with:
-     *
      *     kubectl create secret generic docr \
      *       --from-file=.dockerconfigjson=config.json \
      *       --type=kubernetes.io/dockerconfigjson
@@ -22,12 +20,10 @@ class RegistriesGetDockerCredentials extends \Jane\Generated\DigitalOcean\Runtim
      * clusters. To retrieve read/write credentials, suitable for use with the Docker
      * client or in a CI system, read_write may be provided as query parameter. For
      * example: `/v2/registries/{registry_name}/docker-credentials?read_write=true`
-     *
      * By default, the returned credentials will not expire. To retrieve credentials
      * with an expiry set, expiry_seconds may be provided as a query parameter. For
      * example: `/v2/registries/{registry_name}/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
-     *
      * @param string $registryName The name of a container registry.
      */
     public function __construct(string $registryName)

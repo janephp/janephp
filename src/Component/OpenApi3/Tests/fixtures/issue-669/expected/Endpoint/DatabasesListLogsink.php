@@ -8,7 +8,6 @@ class DatabasesListLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To list logsinks for a database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/logsink`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

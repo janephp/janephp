@@ -8,22 +8,16 @@ class DatabasesAddUser extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     /**
      * To add a new database user, send a POST request to `/v2/databases/$DATABASE_ID/users`
      * with the desired username.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * When adding a user to a MySQL cluster, additional options can be configured in the
      * `mysql_settings` object.
-     *
      * When adding a user to a Kafka cluster, additional options can be configured in
      * the `settings` object.
-     *
      *  When adding a user to a MongoDB cluster, additional options can be configured in
      * the `settings.mongo_user_settings` object.
-     *
      * The response will be a JSON object with a key called `user`. The value of this will be an
      * object that contains the standard attributes associated with a database user including
      * its randomly generated password.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersPostBody $requestBody
      */

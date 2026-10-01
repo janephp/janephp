@@ -7,9 +7,7 @@ class ByoipPrefixesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     protected $byoip_prefix_uuid;
     /**
      * To get a BYOIP prefix, send a GET request to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * A successful response will return the details of the specified BYOIP prefix.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      */
     public function __construct(string $byoipPrefixUuid)

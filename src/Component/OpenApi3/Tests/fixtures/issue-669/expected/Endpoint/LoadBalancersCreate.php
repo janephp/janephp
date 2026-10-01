@@ -7,16 +7,13 @@ class LoadBalancersCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To create a new load balancer instance, send a POST request to
      * `/v2/load_balancers`.
-     *
      * You can specify the Droplets that will sit behind the load balancer using one
      * of two methods:
-     *
      * * Set `droplet_ids` to a list of specific Droplet IDs.
      * * Set `tag` to the name of a tag. All Droplets with this tag applied will be
      *   assigned to the load balancer. Additional Droplets will be automatically
      *   assigned as they are tagged.
      * These methods are mutually exclusive.
-     *
      * @param mixed $requestBody
      */
     public function __construct($requestBody)

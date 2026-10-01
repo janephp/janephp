@@ -7,9 +7,7 @@ class TransferPartialImport extends \PicturePark\API\Runtime\Client\BaseEndpoint
     protected $id;
     /**
      * This triggers the import of selected items in a Transfer, creating contents. All imported items will be enqueued for rendering.
-     *
      * Wait for completion on the Business process ID that is returned to wait for import completion.
-     *
      * Transfer will transition to state ImportDone if no files of the transfer remain for import.
      * Transfer will transition to state TransferReady if any files of the transfer remain for import.
      * @param string $id ID of transfer.

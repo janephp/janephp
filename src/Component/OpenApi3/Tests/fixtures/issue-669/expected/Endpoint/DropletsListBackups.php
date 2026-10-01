@@ -8,11 +8,9 @@ class DropletsListBackups extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To retrieve any backups associated with a Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID/backups`.
-     *
      * You will get back a JSON object that has a `backups` key. This will be set to
      * an array of backup objects, each of which contain the standard
      * Droplet backup attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

@@ -9,10 +9,8 @@ class DomainsDeleteRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To delete a record for a domain, send a DELETE request to
      * `/v2/domains/$DOMAIN_NAME/records/$DOMAIN_RECORD_ID`.
-     *
      * The record will be deleted and the response status will be a 204. This
      * indicates a successful request with no body returned.
-     *
      * @param string $domainName The name of the domain itself.
      * @param int $domainRecordId The unique identifier of the domain record.
      */

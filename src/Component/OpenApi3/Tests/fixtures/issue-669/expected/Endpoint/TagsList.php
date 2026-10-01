@@ -6,10 +6,8 @@ class TagsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint 
 {
     /**
      * To list all of your tags, you can send a GET request to `/v2/tags`.
-     *
      * This endpoint will only return tagged resources that you are authorized to see
      * (e.g. Droplets will only be returned if you have `droplet:read`).
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

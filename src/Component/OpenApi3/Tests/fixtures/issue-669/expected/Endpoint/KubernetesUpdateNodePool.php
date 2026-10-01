@@ -11,7 +11,6 @@ class KubernetesUpdateNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * number of nodes, send a PUT request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID` with the
      * following attributes.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolUpdate $requestBody

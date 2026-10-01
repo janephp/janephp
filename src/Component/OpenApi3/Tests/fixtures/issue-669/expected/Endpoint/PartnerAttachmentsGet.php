@@ -8,7 +8,6 @@ class PartnerAttachmentsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\
     /**
      * To get the details of a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      */
     public function __construct(string $paId)

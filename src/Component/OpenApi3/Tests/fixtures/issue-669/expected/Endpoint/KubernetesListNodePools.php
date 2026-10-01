@@ -8,7 +8,6 @@ class KubernetesListNodePools extends \Jane\Generated\DigitalOcean\Runtime\Clien
     /**
      * To list all of the node pools in a Kubernetes clusters, send a GET request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

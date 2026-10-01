@@ -8,10 +8,8 @@ class ByoipPrefixesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To delete a BYOIP prefix and remove it from your account, send a DELETE request
      * to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * A successful request will receive a 202 status code with no body in response.
      * This indicates that the request was accepted and the prefix is being deleted.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      */
     public function __construct(string $byoipPrefixUuid)

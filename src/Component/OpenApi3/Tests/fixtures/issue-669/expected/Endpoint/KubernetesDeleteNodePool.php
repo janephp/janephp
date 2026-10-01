@@ -9,10 +9,8 @@ class KubernetesDeleteNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
     /**
      * To delete a node pool, send a DELETE request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID`.
-     *
      * A 204 status code with no body will be returned in response to a successful
      * request. Nodes in the pool will subsequently be drained and deleted.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      */

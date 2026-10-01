@@ -10,11 +10,9 @@ class FirewallsAddRules extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * `/v2/firewalls/$FIREWALL_ID/rules`. The body of the request may include an
      * inbound_rules and/or outbound_rules attribute containing an array of rules to
      * be added.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdRulesPostBody $requestBody
      */

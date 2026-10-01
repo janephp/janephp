@@ -8,10 +8,8 @@ class DatabasesGetCa extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     /**
      * To retrieve the public certificate used to secure the connection to the database cluster send a GET request to
      * `/v2/databases/$DATABASE_ID/ca`.
-     *
      * The response will be a JSON object with a `ca` key. This will be set to an object
      * containing the base64 encoding of the public key certificate.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

@@ -8,7 +8,6 @@ class VpcsPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
     /**
      * To update a subset of information about a VPC, send a PATCH request to
      * `/v2/vpcs/$VPC_ID`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPatchBody $requestBody
      */

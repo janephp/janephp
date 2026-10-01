@@ -8,10 +8,8 @@ class FloatingIPsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To delete a floating IP and remove it from your account, send a DELETE request
      * to `/v2/floating_ips/$FLOATING_IP_ADDR`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $floatingIp A floating IP address.
      */
     public function __construct(string $floatingIp)

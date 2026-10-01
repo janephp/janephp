@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "jane-php/json-schema": "^7.5",
+        "jane-php/json-schema": "^8.0",
         "symfony/config": "^7.0 || ^8.0",
         "symfony/console": "^7.0 || ^8.0",
         "symfony/dependency-injection": "^7.0 || ^8.0",
@@ -25,7 +25,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "7-dev"
+            "dev-next": "8-dev"
         }
     },
     "autoload": {

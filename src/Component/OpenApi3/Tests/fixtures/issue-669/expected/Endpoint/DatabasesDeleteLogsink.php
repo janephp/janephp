@@ -9,7 +9,6 @@ class DatabasesDeleteLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To delete a logsink for a database cluster, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/logsink/$LOGSINK_ID`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $logsinkId A unique identifier for a logsink of a database cluster
      */

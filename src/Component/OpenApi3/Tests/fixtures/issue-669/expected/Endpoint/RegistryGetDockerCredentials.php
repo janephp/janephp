@@ -9,10 +9,8 @@ class RegistryGetDockerCredentials extends \Jane\Generated\DigitalOcean\Runtime\
      * Kubernetes cluster, you will need to configure authentication. The necessary
      * JSON configuration can be retrieved by sending a GET request to
      * `/v2/registry/docker-credentials`.
-     *
      * The response will be in the format of a Docker `config.json` file. To use the
      * config in your Kubernetes cluster, create a Secret with:
-     *
      *     kubectl create secret generic docr \
      *       --from-file=.dockerconfigjson=config.json \
      *       --type=kubernetes.io/dockerconfigjson
@@ -21,12 +19,10 @@ class RegistryGetDockerCredentials extends \Jane\Generated\DigitalOcean\Runtime\
      * clusters. To retrieve read/write credentials, suitable for use with the Docker
      * client or in a CI system, read_write may be provided as query parameter. For
      * example: `/v2/registry/docker-credentials?read_write=true`
-     *
      * By default, the returned credentials will not expire. To retrieve credentials
      * with an expiry set, expiry_seconds may be provided as a query parameter. For
      * example: `/v2/registry/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
-     *
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
      *    "read_write"?: bool, //By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.

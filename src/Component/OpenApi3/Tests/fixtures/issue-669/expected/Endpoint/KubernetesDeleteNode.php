@@ -10,15 +10,12 @@ class KubernetesDeleteNode extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To delete a single node in a pool, send a DELETE request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID/nodes/$NODE_ID`.
-     *
      * Appending the `skip_drain=1` query parameter to the request causes node
      * draining to be skipped. Omitting the query parameter or setting its value to
      * `0` carries out draining prior to deletion.
-     *
      * Appending the `replace=1` query parameter to the request causes the node to
      * be replaced by a new one after deletion. Omitting the query parameter or
      * setting its value to `0` deletes without replacement.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param string $nodeId A unique ID that can be used to reference a node in a Kubernetes node pool.

@@ -9,15 +9,12 @@ class KubernetesRunClusterLint extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * Clusterlint helps operators conform to Kubernetes best practices around
      * resources, security and reliability to avoid common problems while operating
      * or upgrading the clusters.
-     *
      * To request a clusterlint run on your cluster, send a POST request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/clusterlint`. This will run all
      * checks present in the `doks` group by default, if a request body is not
      * specified. Optionally specify the below attributes.
-     *
      * For information about the available checks, please refer to
      * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\ClusterlintRequest $requestBody
      */

@@ -33,8 +33,8 @@
     },
     "require": {
         "php": "^8.3",
-        "jane-php/json-schema": "^7.5",
-        "jane-php/open-api-common": "^7.5",
+        "jane-php/json-schema": "^8.0",
+        "jane-php/open-api-common": "^8.0",
         "nikic/php-parser": "^4.19 || ^5.1",
         "symfony/serializer": "^7.0 || ^8.0",
         "symfony/yaml": "^7.0 || ^8.0"
@@ -48,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "7-dev"
+            "dev-next": "8-dev"
         }
     },
     "config": {

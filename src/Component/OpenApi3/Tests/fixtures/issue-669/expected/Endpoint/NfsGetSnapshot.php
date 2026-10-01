@@ -7,9 +7,7 @@ class NfsGetSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     protected $nfs_snapshot_id;
     /**
      * To get an NFS snapshot, send a GET request to `/v2/nfs/snapshots/{nfs_snapshot_id}?region=${region}`.
-     *
      * A successful request will return the NFS snapshot.
-     *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.

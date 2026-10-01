@@ -9,12 +9,9 @@ class DatabasesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     /**
      * To delete a specific database, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/dbs/$DB_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $databaseName The name of the database.
      */

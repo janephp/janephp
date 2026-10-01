@@ -8,9 +8,7 @@ class DatabasesListEventsLogs extends \Jane\Generated\DigitalOcean\Runtime\Clien
     /**
      * To list all of the cluster events, send a GET request to
      * `/v2/databases/$DATABASE_ID/events`.
-     *
      * The result will be a JSON object with a `events` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

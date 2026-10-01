@@ -6,9 +6,7 @@ class NfsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
 {
     /**
      * To list NFS shares, send a GET request to `/v2/nfs?region=${region}`.
-     *
      * A successful request will return all NFS shares belonging to the authenticated user.
-     *
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      * } $queryParameters

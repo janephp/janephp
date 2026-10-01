@@ -6,10 +6,8 @@ class ByoipPrefixesCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
 {
     /**
      * To create a BYOIP prefix, send a POST request to `/v2/byoip_prefixes`.
-     *
      * A successful request will initiate the process of bringing your BYOIP Prefix into your account.
      * The response will include the details of the created prefix, including its UUID and status.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate $requestBody)

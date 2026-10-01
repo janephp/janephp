@@ -8,12 +8,9 @@ class DatabasesAdd extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     /**
      * To add a new database to an existing cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/dbs`.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a key called `db`. The value of this will be
      * an object that contains the standard attributes associated with a database.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\Database $requestBody
      */

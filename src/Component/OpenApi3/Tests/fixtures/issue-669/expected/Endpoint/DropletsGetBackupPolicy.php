@@ -8,7 +8,6 @@ class DropletsGetBackupPolicy extends \Jane\Generated\DigitalOcean\Runtime\Clien
     /**
      * To show information about an individual Droplet's backup policy, send a GET
      * request to `/v2/droplets/$DROPLET_ID/backups/policy`.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

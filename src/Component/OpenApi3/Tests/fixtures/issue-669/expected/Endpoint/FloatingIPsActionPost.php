@@ -9,12 +9,10 @@ class FloatingIPsActionPost extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * To initiate an action on a floating IP send a POST request to
      * `/v2/floating_ips/$FLOATING_IP/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a floating IP to a Droplet
      * | `unassign` | Unassign a floating IP from a Droplet
-     *
      * @param string $floatingIp A floating IP address.
      * @param null|mixed $requestBody
      */

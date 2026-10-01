@@ -7,7 +7,6 @@ class AppsCommitRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     protected $app_id;
     /**
      * Commit an app rollback. This action permanently applies the rollback and unpins the app to resume new deployments.
-     *
      * @param string $appId The app ID
      */
     public function __construct(string $appId)

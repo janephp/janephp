@@ -6,7 +6,6 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\
 {
     /**
      * Foo bar
-     *
      * @param array{
      *    "mode"?: string, //File listing mode
      * } $queryParameters

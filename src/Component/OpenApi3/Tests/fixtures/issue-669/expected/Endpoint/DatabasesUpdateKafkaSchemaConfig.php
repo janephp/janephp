@@ -10,7 +10,6 @@ class DatabasesUpdateKafkaSchemaConfig extends \Jane\Generated\DigitalOcean\Runt
      * `/v2/databases/$DATABASE_ID/schema-registry/config`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigPutBody $requestBody
      */

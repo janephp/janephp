@@ -7,9 +7,7 @@ class SpacesKeyDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     protected $access_key;
     /**
      * To delete a Spaces Access Key, send a DELETE request to `/v2/spaces/keys/$ACCESS_KEY`.
-     *
      * A successful request will return a `204 No Content` status code.
-     *
      * @param string $accessKey The access key's ID.
      */
     public function __construct(string $accessKey)

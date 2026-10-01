@@ -7,9 +7,7 @@ class ProjectsAssignResources extends \Jane\Generated\DigitalOcean\Runtime\Clien
     protected $project_id;
     /**
      * To assign resources to a project, send a POST request to `/v2/projects/$PROJECT_ID/resources`.
-     *
      * You must have both `project:update` and `<resource>:read` scopes to assign new resources. For example, to assign a Droplet to a project, include both the `project:update` and `droplet:read` scopes.
-     *
      * @param string $projectId A unique identifier for a project.
      * @param \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody
      */

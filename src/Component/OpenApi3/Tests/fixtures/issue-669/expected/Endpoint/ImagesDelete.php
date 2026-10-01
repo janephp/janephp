@@ -7,7 +7,6 @@ class ImagesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     protected $image_id;
     /**
      * To delete a snapshot or custom image, send a `DELETE` request to `/v2/images/$IMAGE_ID`.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      */
     public function __construct(int $imageId)

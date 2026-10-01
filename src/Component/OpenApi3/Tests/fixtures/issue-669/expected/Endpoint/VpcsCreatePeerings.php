@@ -8,7 +8,6 @@ class VpcsCreatePeerings extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To create a new VPC peering for a given VPC, send a POST request to
      * `/v2/vpcs/$VPC_ID/peerings`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody $requestBody
      */

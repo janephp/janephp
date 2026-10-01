@@ -8,7 +8,6 @@ class LoadBalancersGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     /**
      * To show information about a load balancer instance, send a GET request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID`.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      */
     public function __construct(string $lbId)

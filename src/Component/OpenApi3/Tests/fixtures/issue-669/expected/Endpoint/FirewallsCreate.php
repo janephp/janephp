@@ -7,7 +7,6 @@ class FirewallsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     /**
      * To create a new firewall, send a POST request to `/v2/firewalls`. The request
      * must contain at least one inbound or outbound access rule.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsPostBody $requestBody
      */
     public function __construct(?\Jane\Generated\DigitalOcean\Model\V2FirewallsPostBody $requestBody = null)

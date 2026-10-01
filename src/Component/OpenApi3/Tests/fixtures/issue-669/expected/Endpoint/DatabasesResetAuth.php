@@ -9,14 +9,11 @@ class DatabasesResetAuth extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To reset the password for a database user, send a POST request to
      * `/v2/databases/$DATABASE_ID/users/$USERNAME/reset_auth`.
-     *
      * For `mysql` databases, the authentication method can be specifying by
      * including a key in the JSON body called `mysql_settings` with the `auth_plugin`
      * value specified.
-     *
      * The response will be a JSON object with a `user` key. This will be set to an
      * object containing the standard database user attributes.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody $requestBody

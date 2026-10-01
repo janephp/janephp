@@ -12,7 +12,6 @@ class LoadBalancersUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * contain _one of_ the `droplets_ids` or `tag` attributes as they are mutually
      * exclusive. **Note that any attribute that is not provided will be reset to its
      * default value.**
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param mixed $requestBody
      */

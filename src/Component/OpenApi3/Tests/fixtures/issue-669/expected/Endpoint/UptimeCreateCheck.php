@@ -7,7 +7,6 @@ class UptimeCreateCheck extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To create an Uptime check, send a POST request to `/v2/uptime/checks` specifying the attributes
      * in the table below in the JSON body.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksPostBody $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\V2UptimeChecksPostBody $requestBody)

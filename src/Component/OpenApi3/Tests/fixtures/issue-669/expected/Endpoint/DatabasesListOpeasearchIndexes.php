@@ -8,9 +8,7 @@ class DatabasesListOpeasearchIndexes extends \Jane\Generated\DigitalOcean\Runtim
     /**
      * To list all of a OpenSearch cluster's indexes, send a GET request to
      * `/v2/databases/$DATABASE_ID/indexes`.
-     *
      * The result will be a JSON object with a `indexes` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

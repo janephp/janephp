@@ -9,12 +9,10 @@ class RegistryListRepositoryTags extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To list all tags in your container registry repository, send a GET
      * request to `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to list tags for
      * `registry.digitalocean.com/example/my/repo`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags`.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param array{

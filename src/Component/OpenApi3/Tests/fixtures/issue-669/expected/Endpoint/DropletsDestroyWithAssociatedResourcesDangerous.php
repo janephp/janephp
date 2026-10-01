@@ -12,11 +12,9 @@ class DropletsDestroyWithAssociatedResourcesDangerous extends \Jane\Generated\Di
      * `true`. To preview which resources will be destroyed, first query the
      * Droplet's associated resources. This operation _can not_ be reverse and should
      * be used with caution.
-     *
      * A successful response will include a 202 response code and no content. Use the
      * status endpoint to check on the success or failure of the destruction of the
      * individual resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.

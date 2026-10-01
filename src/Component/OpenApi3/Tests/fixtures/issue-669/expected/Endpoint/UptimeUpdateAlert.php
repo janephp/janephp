@@ -8,7 +8,6 @@ class UptimeUpdateAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     protected $alert_id;
     /**
      * To update the settings of an Uptime alert, send a PUT request to `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param string $alertId A unique identifier for an alert.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsAlertIdPutBody $requestBody

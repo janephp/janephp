@@ -9,12 +9,10 @@ class DropletsListNeighbors extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * To retrieve a list of any "neighbors" (i.e. Droplets that are co-located on
      * the same physical hardware) for a specific Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID/neighbors`.
-     *
      * The results will be returned as a JSON object with a key of `droplets`. This
      * will be set to an array containing objects representing any other Droplets
      * that share the same physical hardware. An empty array indicates that the
      * Droplet is not co-located any other Droplets associated with your account.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

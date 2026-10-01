@@ -8,7 +8,6 @@ class KubernetesGetCluster extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To show information about an existing Kubernetes cluster, send a GET request
      * to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

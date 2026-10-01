@@ -9,7 +9,6 @@ class PartnerAttachmentsPatch extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * To update an existing partner attachment, send a `PATCH` request to
      * `/v2/partner_network_connect/attachments/{pa_id}` with a JSON object containing the
      * fields to be updated.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @param null|mixed $requestBody
      */

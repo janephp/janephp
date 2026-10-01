@@ -15,7 +15,6 @@ class CdnPurgeCache extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * be purged. CDN endpoints have a rate limit of 5 requests per 10 seconds.
      * Purging files using a wildcard path counts as a single request against the API's
      * rate limit. Two identical purge requests cannot be sent at the same time.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      * @param \Jane\Generated\DigitalOcean\Model\PurgeCache $requestBody
      */

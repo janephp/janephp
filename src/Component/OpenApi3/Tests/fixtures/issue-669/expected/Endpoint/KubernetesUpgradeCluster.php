@@ -9,10 +9,8 @@ class KubernetesUpgradeCluster extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * To immediately upgrade a Kubernetes cluster to a newer patch release of
      * Kubernetes, send a POST request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrade`.
      * The body of the request must specify a version attribute.
-     *
      * Available upgrade versions for a cluster can be fetched from
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrades`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdUpgradePostBody $requestBody
      */

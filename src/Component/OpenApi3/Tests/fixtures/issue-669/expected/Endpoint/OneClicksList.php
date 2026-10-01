@@ -8,10 +8,8 @@ class OneClicksList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * To list all available 1-Click applications, send a GET request to `/v2/1-clicks`. The `type` may
      * be provided as query paramater in order to restrict results to a certain type of 1-Click, for
      * example: `/v2/1-clicks?type=droplet`. Current supported types are `kubernetes` and `droplet`.
-     *
      * The response will be a JSON object with a key called `1_clicks`. This will be set to an array of
      * 1-Click application data, each of which will contain the the slug and type for the 1-Click.
-     *
      * @param array{
      *    "type"?: string, //Restrict results to a certain type of 1-Click.
      * } $queryParameters

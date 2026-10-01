@@ -6,9 +6,7 @@ class VpcnatgatewaysCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
 {
     /**
      * To create a new VPC NAT gateway, send a POST request to `/v2/vpc_nat_gateways` setting the required attributes.
-     *
      * The response body will contain a JSON object with a key called `vpc_nat_gateway` containing the standard attributes for the new VPC NAT gateway.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody
      */
     public function __construct(?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody = null)

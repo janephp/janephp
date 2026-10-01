@@ -8,7 +8,6 @@ class DropletsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     /**
      * To show information about an individual Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID`.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

@@ -8,7 +8,6 @@ class SpacesKeyUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     /**
      * To update Spaces Access Key, send a PUT or PATCH request to `/v2/spaces/keys/$ACCESS_KEY`. At the moment, you cannot convert a
      * fullaccess key to a scoped key or vice versa. You can only update the name of the key.
-     *
      * @param string $accessKey The access key's ID.
      * @param \Jane\Generated\DigitalOcean\Model\Key $requestBody
      */

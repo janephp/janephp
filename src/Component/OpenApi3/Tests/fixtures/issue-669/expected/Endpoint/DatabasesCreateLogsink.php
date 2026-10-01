@@ -8,7 +8,6 @@ class DatabasesCreateLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To create logsink for a database cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/logsink`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidLogsinkPostBody $requestBody
      */

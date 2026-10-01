@@ -14,9 +14,6 @@ class VolumesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
      * **Note:** You can only create one volume per region with the same name.
      * ### By Name and Region
      * It is also possible to retrieve information about a block storage volume by name. To do so, send a GET request with the volume's name and the region slug for the region it is located in as query parameters to `/v2/volumes?name=$VOLUME_NAME&region=nyc1`.
-     *
-     *
-     *
      * @param array{
      *    "name"?: string, //The block storage volume's name.
      *    "region"?: string, //The slug identifier for the region where the resource is available.

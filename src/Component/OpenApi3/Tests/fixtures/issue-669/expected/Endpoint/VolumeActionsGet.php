@@ -8,8 +8,6 @@ class VolumeActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     protected $action_id;
     /**
      * To retrieve the status of a volume action, send a GET request to `/v2/volumes/$VOLUME_ID/actions/$ACTION_ID`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
      * @param array{

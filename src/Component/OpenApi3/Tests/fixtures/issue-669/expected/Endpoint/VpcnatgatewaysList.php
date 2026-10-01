@@ -8,7 +8,6 @@ class VpcnatgatewaysList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * To list all VPC NAT gateways in your team, send a GET request to `/v2/vpc_nat_gateways`.
      * The response body will be a JSON object with a key of `vpc_nat_gateways` containing an array of VPC NAT gateway objects.
      * These each contain the standard VPC NAT gateway attributes.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

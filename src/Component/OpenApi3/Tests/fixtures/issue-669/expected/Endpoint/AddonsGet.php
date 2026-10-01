@@ -8,7 +8,6 @@ class AddonsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
     /**
      * To fetch details of a specific Add-On Resource, send a GET request to `/v2/add-ons/saas/{resource_uuid}`.
      * Replace `{resource_uuid}` with the UUID of the resource you want to retrieve.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to retrieve.
      */
     public function __construct(string $resourceUuid)

@@ -9,12 +9,9 @@ class DatabasesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     /**
      * To show information about an existing database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/dbs/$DB_NAME`.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a `db` key. This will be set to an object
      * containing the standard database attributes.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $databaseName The name of the database.
      */

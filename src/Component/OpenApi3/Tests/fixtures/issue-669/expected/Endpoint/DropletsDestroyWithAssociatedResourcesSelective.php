@@ -13,11 +13,9 @@ class DropletsDestroyWithAssociatedResourcesSelective extends \Jane\Generated\Di
      * resources to be destroyed. The IDs can be found by querying the Droplet's
      * associated resources. Any associated resource not included in the request
      * will remain and continue to accrue changes on your account.
-     *
      * A successful response will include a 202 response code and no content. Use
      * the status endpoint to check on the success or failure of the destruction of
      * the individual resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param null|\Jane\Generated\DigitalOcean\Model\SelectiveDestroyAssociatedResource $requestBody
      */

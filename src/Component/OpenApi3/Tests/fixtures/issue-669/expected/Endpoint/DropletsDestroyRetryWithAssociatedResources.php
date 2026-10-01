@@ -9,12 +9,10 @@ class DropletsDestroyRetryWithAssociatedResources extends \Jane\Generated\Digita
      * If the status of a request to destroy a Droplet with its associated resources
      * reported any errors, it can be retried by sending a POST request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/retry` endpoint.
-     *
      * Only one destroy can be active at a time per Droplet. If a retry is issued
      * while another destroy is in progress for the Droplet a 409 status code will
      * be returned. A successful response will include a 202 response code and no
      * content.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

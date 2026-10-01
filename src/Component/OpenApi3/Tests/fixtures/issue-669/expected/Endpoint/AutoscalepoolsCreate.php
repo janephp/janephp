@@ -6,9 +6,7 @@ class AutoscalepoolsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
 {
     /**
      * To create a new autoscale pool, send a POST request to `/v2/droplets/autoscale` setting the required attributes.
-     *
      * The response body will contain a JSON object with a key called `autoscale_pool` containing the standard attributes for the new autoscale pool.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody
      */
     public function __construct(?\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody = null)

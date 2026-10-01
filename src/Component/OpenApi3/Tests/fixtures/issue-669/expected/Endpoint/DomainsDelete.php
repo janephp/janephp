@@ -7,7 +7,6 @@ class DomainsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     protected $domain_name;
     /**
      * To delete a domain, send a DELETE request to `/v2/domains/$DOMAIN_NAME`.
-     *
      * @param string $domainName The name of the domain itself.
      */
     public function __construct(string $domainName)

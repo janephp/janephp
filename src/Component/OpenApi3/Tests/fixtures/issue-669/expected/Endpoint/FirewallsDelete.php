@@ -7,11 +7,9 @@ class FirewallsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     protected $firewall_id;
     /**
      * To delete a firewall send a DELETE request to `/v2/firewalls/$FIREWALL_ID`.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      */
     public function __construct(string $firewallId)

@@ -8,9 +8,7 @@ class DatabasesDestroyReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
     protected $replica_name;
     /**
      * To destroy a specific read-only replica, send a DELETE request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * A status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $replicaName The name of the database replica.

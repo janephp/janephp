@@ -23,7 +23,7 @@
     },
     "require": {
         "php": "^8.3",
-        "jane-php/json-schema-runtime": "^7.0",
+        "jane-php/json-schema-runtime": "^8.0",
         "symfony/http-client": "^7.0 || ^8.0",
         "symfony/options-resolver": "^7.0 || ^8.0"
     },
@@ -33,7 +33,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "7-dev"
+            "dev-next": "8-dev"
         }
     },
     "config": {

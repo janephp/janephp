@@ -6,11 +6,8 @@ class NfsListSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
 {
     /**
      * To list all NFS snapshots, send a GET request to `/v2/nfs/snapshots?region=${region}&share_id={share_id}`.
-     *
      * A successful request will return all NFS snapshots belonging to the authenticated user in the specified region.
-     *
      * Optionally, you can filter snapshots by a specific NFS share by including the `share_id` query parameter.
-     *
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      *    "share_id"?: string, //The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.

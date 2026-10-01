@@ -8,7 +8,6 @@ class AddonsPatchPlan extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     /**
      * To change the plan associated with an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}/plan`.
      * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the plan.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to update.
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody
      */

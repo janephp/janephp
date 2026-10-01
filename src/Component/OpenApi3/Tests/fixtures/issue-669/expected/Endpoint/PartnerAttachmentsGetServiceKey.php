@@ -8,7 +8,6 @@ class PartnerAttachmentsGetServiceKey extends \Jane\Generated\DigitalOcean\Runti
     /**
      * To get the current service key for a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/service_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      */
     public function __construct(string $paId)

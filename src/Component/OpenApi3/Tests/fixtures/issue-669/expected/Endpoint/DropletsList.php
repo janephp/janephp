@@ -6,23 +6,17 @@ class DropletsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
 {
     /**
      * To list all Droplets in your account, send a GET request to `/v2/droplets`.
-     *
      * The response body will be a JSON object with a key of `droplets`. This will be
      * set to an array containing objects each representing a Droplet. These will
      * contain the standard Droplet attributes.
-     *
      * ### Filtering Results by Tag
-     *
      * It's possible to request filtered results by including certain query parameters.
      * To only list Droplets assigned to a specific tag, include the `tag_name` query
      * parameter set to the name of the tag in your GET request. For example,
      * `/v2/droplets?tag_name=$TAG_NAME`.
-     *
      * ### GPU Droplets
-     *
      * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
      * the `type` query parameter to `gpus`. For example, `/v2/droplets?type=gpus`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
