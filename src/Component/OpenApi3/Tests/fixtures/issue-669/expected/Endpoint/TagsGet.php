@@ -8,10 +8,8 @@ class TagsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
     /**
      * To retrieve an individual tag, you can send a `GET` request to
      * `/v2/tags/$TAG_NAME`.
-     *
      * This endpoint will only return tagged resources that you are authorized to see.
      * For example, to see tagged Droplets, include the `droplet:read` scope.
-     *
      * @param string $tagId The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.
      */
     public function __construct(string $tagId)

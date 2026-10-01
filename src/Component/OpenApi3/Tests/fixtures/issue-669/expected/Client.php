@@ -8,10 +8,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all available 1-Click applications, send a GET request to `/v2/1-clicks`. The `type` may
      * be provided as query paramater in order to restrict results to a certain type of 1-Click, for
      * example: `/v2/1-clicks?type=droplet`. Current supported types are `kubernetes` and `droplet`.
-     *
      * The response will be a JSON object with a key called `1_clicks`. This will be set to an array of
      * 1-Click application data, each of which will contain the the slug and type for the 1-Click.
-     *
      * @param array{
      *    "type"?: string, //Restrict results to a certain type of 1-Click.
      * } $queryParameters
@@ -31,7 +29,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/1-clicks/kubernetes`. The `addon_slugs` and `cluster_uuid` must be provided as body
      * parameter in order to specify which 1-Click application(s) to install. To list all available
      * 1-Click Kubernetes applications, send a request to `/v2/1-clicks?type=kubernetes`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\OneClicksCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesTooManyRequestsException
@@ -182,7 +179,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To find out what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
      * Metadata varies by application.
-     *
      * @param string $appSlug The slug identifier for the application whose metadata is being requested.
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataNotFoundException
@@ -212,7 +208,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To create an add-on resource, send a POST request to `/v2/add-ons/saas` with required parameters.
      * Some add-ons require additional metadata to be provided in the request body. To find out
      * what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateTooManyRequestsException
@@ -229,7 +224,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To delete an add-on resource, send a DELETE request to `/v2/add-ons/saas/{resource_uuid}` with the UUID of the resource to delete.
      * You cannot retrieve the resource after it has been deleted. The response indicates a request was sent to the 3rd party add-on provider to delete the resource.
      * You will no longer be billed for this resource.
-     *
      * @param string $resourceUuid A unique identifier for the add-on resource.
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteNotFoundException
@@ -246,7 +240,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To fetch details of a specific Add-On Resource, send a GET request to `/v2/add-ons/saas/{resource_uuid}`.
      * Replace `{resource_uuid}` with the UUID of the resource you want to retrieve.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to retrieve.
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetNotFoundException
@@ -263,7 +256,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To change the name of an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}`.
      * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the name.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to rename.
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchUnauthorizedException
@@ -281,7 +273,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To change the plan associated with an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}/plan`.
      * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the plan.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to update.
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanUnauthorizedException
@@ -780,10 +771,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The app will be pinned to the rollback deployment preventing any new deployments from being created,
      * either manually or through Auto Deploy on Push webhooks. To resume deployments, the rollback must be
      * either committed or reverted.
-     *
      * It is recommended to use the Validate App Rollback endpoint to double check if the rollback is
      * valid and if there are any warnings.
-     *
      * @param string $appId The app ID
      * @param \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackUnauthorizedException
@@ -803,7 +792,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * to check if there are any warnings or validation conditions that will cause the rollback to proceed
      * under unideal circumstances. For example, if a component must be rebuilt as part of the rollback
      * causing it to take longer than usual.
-     *
      * @param string $appId The app ID
      * @param \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackUnauthorizedException
@@ -820,7 +808,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * Commit an app rollback. This action permanently applies the rollback and unpins the app to resume new deployments.
-     *
      * @param string $appId The app ID
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackNotFoundException
@@ -837,7 +824,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * Revert an app rollback. This action reverts the active rollback by creating a new deployment from the
      * latest app spec prior to the rollback and unpins the app to resume new deployments.
-     *
      * @param string $appId The app ID
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackNotFoundException
@@ -921,10 +907,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * origin attribute must be set to the fully qualified domain name (FQDN) of a
      * DigitalOcean Space. Optionally, the TTL may be configured by setting the `ttl`
      * attribute.
-     *
      * A custom subdomain may be configured by specifying the `custom_domain` and
      * `certificate_id` attributes.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\CdnEndpoint $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointTooManyRequestsException
@@ -940,10 +924,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a specific CDN endpoint, send a DELETE request to
      * `/v2/cdn/endpoints/$ENDPOINT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointNotFoundException
@@ -976,7 +958,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update the TTL, certificate ID, or the FQDN of the custom subdomain for
      * an existing CDN endpoint, send a PUT request to
      * `/v2/cdn/endpoints/$ENDPOINT_ID`.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      * @param \Jane\Generated\DigitalOcean\Model\UpdateEndpoint $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsUnauthorizedException
@@ -1001,7 +982,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * be purged. CDN endpoints have a rate limit of 5 requests per 10 seconds.
      * Purging files using a wildcard path counts as a single request against the API's
      * rate limit. Two identical purge requests cannot be sent at the same time.
-     *
      * @param string $cdnId A unique identifier for a CDN endpoint.
      * @param \Jane\Generated\DigitalOcean\Model\PurgeCache $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheUnauthorizedException
@@ -1037,14 +1017,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To upload new SSL certificate which you have previously generated, send a POST
      * request to `/v2/certificates`.
-     *
      * When uploading a user-generated certificate, the `private_key`,
      * `leaf_certificate`, and optionally the `certificate_chain` attributes should
      * be provided. The type must be set to `custom`.
-     *
      * When using Let's Encrypt to create a certificate, the `dns_names` attribute
      * must be provided, and the type must be set to `lets_encrypt`.
-     *
      * @param mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateTooManyRequestsException
@@ -1060,7 +1037,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a specific certificate, send a DELETE request to
      * `/v2/certificates/$CERTIFICATE_ID`.
-     *
      * @param string $certificateId A unique identifier for a certificate.
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteNotFoundException
@@ -1199,7 +1175,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\InvoicesGetSummaryByUUID($invoiceUuid));
     }
     /**
-     *
      * This endpoint returns day-over-day changes in billing resource usage based on nightly invoice items, including total amount, region, SKU, and description for a specified date range. It is important to note that the daily resource usage may not reflect month-end billing totals when totaled for a given month as nightly invoice item estimates do not necessarily encompass all invoicing factors for the entire month.
      * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
      * @param string $startDate Start date for billing insights in YYYY-MM-DD format
@@ -1235,11 +1210,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the database clusters available on your account, send a GET request to `/v2/databases`. To limit the results to database clusters with a specific tag, include the `tag_name` query parameter set to the name of the tag. For example, `/v2/databases?tag_name=$TAG_NAME`.
-     *
      * The result will be a JSON object with a `databases` key. This will be set to an array of database objects, each of which will contain the standard database attributes.
-     *
      * The embedded `connection` and `private_connection` objects will contain the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects will contain the information needed to connect to the cluster's standby node(s).
-     *
      * The embedded `maintenance_window` object will contain information about any scheduled maintenance for the database cluster.
      * @param array{
      *    "tag_name"?: string, //Limits the results to database clusters with a specific tag.<br><br>Requires `tag:read` scope.
@@ -1258,11 +1230,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a database cluster, send a POST request to `/v2/databases`. To see a list  of options for each engine, such as available regions, size slugs, and versions, send a GET request to the `/v2/databases/options` endpoint. The available sizes for  the `storage_size_mib` field depends on the cluster's size. To see a list of available sizes, see [Managed Database Pricing](https://www.digitalocean.com/pricing/managed-databases).
-     *
      * The create response returns a JSON object with a key called `database`. The value of this is an object that contains the standard attributes associated with a database cluster. The initial value of the database cluster's `status` attribute is `creating`. When the cluster is ready to receive traffic, this changes to `online`.
-     *
      * The embedded `connection` and `private_connection` objects contains the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects contain the information needed to connect to the cluster's standby node(s).
-     *
      * DigitalOcean managed PostgreSQL and MySQL database clusters take automated daily backups. To create a new database cluster based on a backup of an existing cluster, send a POST request to `/v2/databases`. In addition to the standard database cluster attributes, the JSON body must include a key named `backup_restore` with the name of the original database cluster and the timestamp of the backup to be restored. Creating a database from a backup is the same as forking a database in the control panel.
      * Note: Caching cluster creates are no longer supported as of 2025-04-30T00:00:00Z. Backups are also not supported for Caching or Valkey clusters.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody $requestBody
@@ -1296,11 +1265,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To show information about an existing database cluster, send a GET request to `/v2/databases/$DATABASE_ID`.
-     *
      * The response will be a JSON object with a database key. This will be set to an object containing the standard database cluster attributes.
-     *
      * The embedded `connection` and `private_connection` objects will contain the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects contain the information needed to connect to the cluster's standby node(s).
-     *
      * The embedded maintenance_window object will contain information about any scheduled maintenance for the database cluster.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterUnauthorizedException
@@ -1320,7 +1286,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/databases/$DATABASE_ID/config`.
      * The response is a JSON object with a `config` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigNotFoundException
@@ -1337,7 +1302,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update the configuration for an existing database cluster, send a PATCH request to
      * `/v2/databases/$DATABASE_ID/config`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\DatabaseConfig $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigUnauthorizedException
@@ -1355,10 +1319,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve the public certificate used to secure the connection to the database cluster send a GET request to
      * `/v2/databases/$DATABASE_ID/ca`.
-     *
      * The response will be a JSON object with a `ca` key. This will be set to an object
      * containing the base64 encoding of the public key certificate.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaNotFoundException
@@ -1406,9 +1368,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To stop an online migration, send a DELETE request to `/v2/databases/$DATABASE_ID/online-migration/$MIGRATION_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $migrationId A unique identifier assigned to the online migration.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationUnauthorizedException
@@ -1427,12 +1387,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To migrate a database cluster to a new region, send a `PUT` request to
      * `/v2/databases/$DATABASE_ID/migrate`. The body of the request must specify a
      * `region` attribute.
-     *
      * A successful request will receive a 202 Accepted status code with no body in
      * response. Querying the database cluster will show that its `status` attribute
      * will now be set to `migrating`. This will transition back to `online` when the
      * migration has completed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidMigratePutBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionUnauthorizedException
@@ -1549,9 +1507,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the read-only replicas associated with a database cluster, send a GET request to `/v2/databases/$DATABASE_ID/replicas`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The result will be a JSON object with a `replicas` key. This will be set to an array of database replica objects, each of which will contain the standard database replica attributes.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasUnauthorizedException
@@ -1568,9 +1524,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a read-only replica for a PostgreSQL or MySQL database cluster, send a POST request to `/v2/databases/$DATABASE_ID/replicas` specifying the name it should be given, the size of the node to be used, and the region where it will be located.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a key called `replica`. The value of this will be an object that contains the standard attributes associated with a database replica. The initial value of the read-only replica's `status` attribute will be `forking`. When the replica is ready to receive traffic, this will transition to `active`.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidReplicasPostBody $requestBody
@@ -1589,9 +1543,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the cluster events, send a GET request to
      * `/v2/databases/$DATABASE_ID/events`.
-     *
      * The result will be a JSON object with a `events` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsNotFoundException
@@ -1607,9 +1559,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To destroy a specific read-only replica, send a DELETE request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * A status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $replicaName The name of the database replica.
@@ -1627,9 +1577,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To show information about an existing database replica, send a GET request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a `replica key`. This will be set to an object containing the standard database replica attributes.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $replicaName The name of the database replica.
@@ -1647,9 +1595,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To promote a specific read-only replica, send a PUT request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME/promote`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * A status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $replicaName The name of the database replica.
@@ -1668,17 +1614,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the users for your database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/users`.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * The result will be a JSON object with a `users` key. This will be set to an array
      * of database user objects, each of which will contain the standard database user attributes.
      * User passwords will not show without the `database:view_credentials` scope.
-     *
      * For MySQL clusters, additional options will be contained in the mysql_settings object.
-     *
      * For MongoDB clusters, additional information will be contained in the mongo_user_settings object
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersNotFoundException
@@ -1695,22 +1636,16 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To add a new database user, send a POST request to `/v2/databases/$DATABASE_ID/users`
      * with the desired username.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * When adding a user to a MySQL cluster, additional options can be configured in the
      * `mysql_settings` object.
-     *
      * When adding a user to a Kafka cluster, additional options can be configured in
      * the `settings` object.
-     *
      *  When adding a user to a MongoDB cluster, additional options can be configured in
      * the `settings.mongo_user_settings` object.
-     *
      * The response will be a JSON object with a key called `user`. The value of this will be an
      * object that contains the standard attributes associated with a database user including
      * its randomly generated password.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserUnauthorizedException
@@ -1728,12 +1663,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To remove a specific database user, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/users/$USERNAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserUnauthorizedException
@@ -1751,20 +1683,14 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an existing database user, send a GET request to
      * `/v2/databases/$DATABASE_ID/users/$USERNAME`.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a `user` key. This will be set to an object
      * containing the standard database user attributes. The user's password will not show
      * up unless the `database:view_credentials` scope is present.
-     *
      * For MySQL clusters, additional options will be contained in the `mysql_settings`
      * object.
-     *
      * For Kafka clusters, additional options will be contained in the `settings` object.
-     *
      * For MongoDB clusters, additional information will be contained in the mongo_user_settings object
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserUnauthorizedException
@@ -1782,14 +1708,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update an existing database user, send a PUT request to `/v2/databases/$DATABASE_ID/users/$USERNAME`
      * with the desired settings.
-     *
      * **Note**: only `settings` can be updated via this type of request. If you wish to change the name of a user,
      * you must recreate a new user.
-     *
      * The response will be a JSON object with a key called `user`. The value of this will be an
      * object that contains the name of the update database user, along with the `settings` object that
      * has been updated.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernamePutBody $requestBody
@@ -1808,14 +1731,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To reset the password for a database user, send a POST request to
      * `/v2/databases/$DATABASE_ID/users/$USERNAME/reset_auth`.
-     *
      * For `mysql` databases, the authentication method can be specifying by
      * including a key in the JSON body called `mysql_settings` with the `auth_plugin`
      * value specified.
-     *
      * The response will be a JSON object with a `user` key. This will be set to an
      * object containing the standard database user attributes.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody $requestBody
@@ -1834,12 +1754,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the databases in a clusters, send a GET request to
      * `/v2/databases/$DATABASE_ID/dbs`.
-     *
      * The result will be a JSON object with a `dbs` key. This will be set to an array
      * of database objects, each of which will contain the standard database attributes.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListNotFoundException
@@ -1856,12 +1773,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To add a new database to an existing cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/dbs`.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a key called `db`. The value of this will be
      * an object that contains the standard attributes associated with a database.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\Database $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUnauthorizedException
@@ -1879,12 +1793,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a specific database, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/dbs/$DB_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $databaseName The name of the database.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUnauthorizedException
@@ -1902,12 +1813,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an existing database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/dbs/$DB_NAME`.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a `db` key. This will be set to an object
      * containing the standard database attributes.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $databaseName The name of the database.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUnauthorizedException
@@ -1944,12 +1852,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * pooling utility PgBouncer is used to provide this service. [See here for more information](https://docs.digitalocean.com/products/databases/postgresql/how-to/manage-connection-pools/)
      * about how and why to use PgBouncer connection pooling including
      * details about the available transaction modes.
-     *
      * To add a new connection pool to a PostgreSQL database cluster, send a POST
      * request to `/v2/databases/$DATABASE_ID/pools` specifying a name for the pool,
      * the user to connect with, the database to connect to, as well as its desired
      * size and transaction mode.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\ConnectionPool $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolUnauthorizedException
@@ -1967,10 +1873,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a specific connection pool for a PostgreSQL database cluster, send
      * a DELETE request to `/v2/databases/$DATABASE_ID/pools/$POOL_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $poolName The name used to identify the connection pool.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolUnauthorizedException
@@ -2138,9 +2042,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of a Kafka cluster's topics, send a GET request to
      * `/v2/databases/$DATABASE_ID/topics`.
-     *
      * The result will be a JSON object with a `topics` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsNotFoundException
@@ -2157,9 +2059,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a topic attached to a Kafka cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/topics`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicUnauthorizedException
@@ -2177,10 +2077,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a single topic within a Kafka cluster, send a DELETE request
      * to `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was
      * processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicUnauthorizedException
@@ -2198,9 +2096,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a given topic by name from the set of a Kafka cluster's topics,
      * send a GET request to `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicUnauthorizedException
@@ -2218,9 +2114,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update a topic attached to a Kafka cluster, send a PUT request to
      * `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsTopicNamePutBody $requestBody
@@ -2239,7 +2133,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list logsinks for a database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/logsink`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkNotFoundException
@@ -2256,7 +2149,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create logsink for a database cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/logsink`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidLogsinkPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkUnauthorizedException
@@ -2274,7 +2166,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a logsink for a database cluster, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/logsink/$LOGSINK_ID`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $logsinkId A unique identifier for a logsink of a database cluster
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkUnauthorizedException
@@ -2292,7 +2183,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get a logsink for a database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/logsink/$LOGSINK_ID`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $logsinkId A unique identifier for a logsink of a database cluster
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkUnauthorizedException
@@ -2310,7 +2200,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update a logsink for a database cluster, send a PUT request to
      * `/v2/databases/$DATABASE_ID/logsink/$LOGSINK_ID`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $logsinkId A unique identifier for a logsink of a database cluster
      * @param \Jane\Generated\DigitalOcean\Model\LogsinkUpdate $requestBody
@@ -2329,7 +2218,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all schemas for a Kafka cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/schema-registry`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasNotFoundException
@@ -2346,7 +2234,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a Kafka schema for a database cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/schema-registry`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaUnauthorizedException
@@ -2364,7 +2251,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a specific schema by subject name for a Kafka cluster, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/schema-registry/$SUBJECT_NAME`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaUnauthorizedException
@@ -2382,7 +2268,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get a specific schema by subject name for a Kafka cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/schema-registry/$SUBJECT_NAME`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaUnauthorizedException
@@ -2400,7 +2285,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get a specific schema by subject name for a Kafka cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/schema-registry/$SUBJECT_NAME/versions/$VERSION`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @param string $version The version of the Kafka schema subject.
@@ -2421,7 +2305,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/databases/$DATABASE_ID/schema-registry/config`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigNotFoundException
@@ -2440,7 +2323,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/databases/$DATABASE_ID/schema-registry/config`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigPutBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigUnauthorizedException
@@ -2460,7 +2342,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/databases/$DATABASE_ID/schema-registry/config/$SUBJECT_NAME`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigUnauthorizedException
@@ -2480,7 +2361,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/databases/$DATABASE_ID/schema-registry/config/$SUBJECT_NAME`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigSubjectNamePutBody $requestBody
@@ -2526,9 +2406,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of a OpenSearch cluster's indexes, send a GET request to
      * `/v2/databases/$DATABASE_ID/indexes`.
-     *
      * The result will be a JSON object with a `indexes` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesNotFoundException
@@ -2545,10 +2423,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a single index within OpenSearch cluster, send a DELETE request
      * to `/v2/databases/$DATABASE_ID/indexes/$INDEX_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was
      * processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $indexName The name of the OpenSearch index.
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexUnauthorizedException
@@ -2585,7 +2461,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * attribute to the domain name you are adding. Optionally, you may set the
      * "ip_address" attribute, and an A record will be automatically created pointing
      * to the apex domain.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\Domain $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateTooManyRequestsException
@@ -2600,7 +2475,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a domain, send a DELETE request to `/v2/domains/$DOMAIN_NAME`.
-     *
      * @param string $domainName The name of the domain itself.
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteNotFoundException
@@ -2632,8 +2506,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get a listing of all records configured for a domain, send a GET request to `/v2/domains/$DOMAIN_NAME/records`.
      * The list of records returned can be filtered by using the `name` and `type` query parameters. For example, to only include A records for a domain, send a GET request to `/v2/domains/$DOMAIN_NAME/records?type=A`. `name` must be a fully qualified record name. For example, to only include records matching `sub.example.com`, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`. Both name and type may be used together.
-     *
-     *
      * @param string $domainName The name of the domain itself.
      * @param array{
      *    "name"?: string, //A fully qualified record name. For example, to only include records matching sub.example.com, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`.
@@ -2656,13 +2528,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new record to a domain, send a POST request to
      * `/v2/domains/$DOMAIN_NAME/records`.
-     *
      * The request must include all of the required fields for the domain record type
      * being added.
-     *
      * See the [attribute table](#tag/Domain-Records) for details regarding record
      * types and their respective required attributes.
-     *
      * @param string $domainName The name of the domain itself.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordUnauthorizedException
@@ -2680,10 +2549,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a record for a domain, send a DELETE request to
      * `/v2/domains/$DOMAIN_NAME/records/$DOMAIN_RECORD_ID`.
-     *
      * The record will be deleted and the response status will be a 204. This
      * indicates a successful request with no body returned.
-     *
      * @param string $domainName The name of the domain itself.
      * @param int $domainRecordId The unique identifier of the domain record.
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordUnauthorizedException
@@ -2718,10 +2585,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update an existing record, send a PATCH request to
      * `/v2/domains/$DOMAIN_NAME/records/$DOMAIN_RECORD_ID`. Any attribute valid for
      * the record type can be set to a new value for the record.
-     *
      * See the [attribute table](#tag/Domain-Records) for details regarding record
      * types and their respective attributes.
-     *
      * @param string $domainName The name of the domain itself.
      * @param int $domainRecordId The unique identifier of the domain record.
      * @param null|\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody
@@ -2741,10 +2606,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update an existing record, send a PUT request to
      * `/v2/domains/$DOMAIN_NAME/records/$DOMAIN_RECORD_ID`. Any attribute valid for
      * the record type can be set to a new value for the record.
-     *
      * See the [attribute table](#tag/Domain-Records) for details regarding record
      * types and their respective attributes.
-     *
      * @param string $domainName The name of the domain itself.
      * @param int $domainRecordId The unique identifier of the domain record.
      * @param null|\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody
@@ -2764,12 +2627,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To delete **all** Droplets assigned to a specific tag, include the `tag_name`
      * query parameter set to the name of the tag in your DELETE request. For
      * example, `/v2/droplets?tag_name=$TAG_NAME`.
-     *
      * This endpoint requires `tag:read` scope.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param array{
      *    "tag_name": string, //Specifies Droplets to be deleted by tag.
      * } $queryParameters
@@ -2787,23 +2647,17 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all Droplets in your account, send a GET request to `/v2/droplets`.
-     *
      * The response body will be a JSON object with a key of `droplets`. This will be
      * set to an array containing objects each representing a Droplet. These will
      * contain the standard Droplet attributes.
-     *
      * ### Filtering Results by Tag
-     *
      * It's possible to request filtered results by including certain query parameters.
      * To only list Droplets assigned to a specific tag, include the `tag_name` query
      * parameter set to the name of the tag in your GET request. For example,
      * `/v2/droplets?tag_name=$TAG_NAME`.
-     *
      * ### GPU Droplets
-     *
      * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
      * the `type` query parameter to `gpus`. For example, `/v2/droplets?type=gpus`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -2825,7 +2679,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new Droplet, send a POST request to `/v2/droplets` setting the
      * required attributes.
-     *
      * A Droplet will be created using the provided information. The response body
      * will contain a JSON object with a key called `droplet`. The value will be an
      * object containing the standard attributes for your new Droplet. The response
@@ -2833,14 +2686,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * just that the request has been accepted for processing. The `actions` returned
      * as part of the response's `links` object can be used to check the status
      * of the Droplet create event.
-     *
      * ### Create Multiple Droplets
-     *
      * Creating multiple Droplets is very similar to creating a single Droplet.
      * Instead of sending `name` as a string, send `names` as an array of strings. A
      * Droplet will be created for each name you send using the associated
      * information. Up to ten Droplets may be created this way at a time.
-     *
      * Rather than returning a single Droplet, the response body will contain a JSON
      * array with a key called `droplets`. This will be set to an array of JSON
      * objects, each of which will contain the standard Droplet attributes. The
@@ -2848,7 +2698,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * operation, just that the request has been accepted for processing. The array
      * of `actions` returned as part of the response's `links` object can be used to
      * check the status of each individual Droplet create event.
-     *
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateTooManyRequestsException
@@ -2863,10 +2712,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a Droplet, send a DELETE request to `/v2/droplets/$DROPLET_ID`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyNotFoundException
@@ -2883,7 +2730,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an individual Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID`.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetNotFoundException
@@ -2900,11 +2746,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve any backups associated with a Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID/backups`.
-     *
      * You will get back a JSON object that has a `backups` key. This will be set to
      * an array of backup objects, each of which contain the standard
      * Droplet backup attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -2925,7 +2769,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an individual Droplet's backup policy, send a GET
      * request to `/v2/droplets/$DROPLET_ID/backups/policy`.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyNotFoundException
@@ -2942,7 +2785,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list information about the backup policies for all Droplets in the account,
      * send a GET request to `/v2/droplets/backups/policies`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -2975,11 +2817,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve the snapshots that have been created from a Droplet, send a GET
      * request to `/v2/droplets/$DROPLET_ID/snapshots`.
-     *
      * You will get back a JSON object that has a `snapshots` key. This will be set
      * to an array of snapshot objects, each of which contain the standard Droplet
      * snapshot attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3000,11 +2840,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a list of all actions that have been executed for a Droplet, send
      * a GET request to `/v2/droplets/$DROPLET_ID/actions`.
-     *
      * The results will be returned as a JSON object with an `actions` key. This will
      * be set to an array filled with `action` objects containing the standard
      * `action` attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3026,7 +2864,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a Droplet send a POST request to
      * `/v2/droplets/$DROPLET_ID/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action                                   | Details | Additionally Required Permission |
      * | ---------------------------------------- | ----------- | ----------- |
      * | <nobr>`enable_backups`</nobr>            | Enables backups for a Droplet | |
@@ -3045,7 +2882,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * | <nobr>`change_kernel`</nobr>             | Changes a Droplet's kernel. Only applies to Droplets with externally managed kernels. All Droplets created after March 2017 use internal kernels by default. | |
      * | <nobr>`enable_ipv6`</nobr>               | Enables IPv6 for a Droplet. Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets) is required. | |
      * | <nobr>`snapshot`</nobr>                  | Takes a snapshot of a Droplet. | image:create |
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostUnauthorizedException
@@ -3064,9 +2900,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Some actions can be performed in bulk on tagged Droplets. The actions can be
      * initiated by sending a POST to `/v2/droplets/actions?tag_name=$TAG_NAME` with
      * the action arguments.
-     *
      * Only a sub-set of action types are supported:
-     *
      * - `power_cycle`
      * - `power_on`
      * - `power_off`
@@ -3075,7 +2909,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * - `enable_backups`
      * - `disable_backups`
      * - `snapshot` (also requires `image:create` permission)
-     *
      * @param null|mixed $requestBody
      * @param array{
      *    "tag_name"?: string, //Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
@@ -3094,10 +2927,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a Droplet action, send a GET request to
      * `/v2/droplets/$DROPLET_ID/actions/$ACTION_ID`.
-     *
      * The response will be a JSON object with a key called `action`. The value will
      * be a Droplet action object.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetUnauthorizedException
@@ -3115,11 +2946,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a list of all kernels available to a Droplet, send a GET request
      * to `/v2/droplets/$DROPLET_ID/kernels`
-     *
      * The response will be a JSON object that has a key called `kernels`. This will
      * be set to an array of `kernel` objects, each of which contain the standard
      * `kernel` attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3140,11 +2969,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a list of all firewalls available to a Droplet, send a GET request
      * to `/v2/droplets/$DROPLET_ID/firewalls`
-     *
      * The response will be a JSON object that has a key called `firewalls`. This will
      * be set to an array of `firewall` objects, each of which contain the standard
      * `firewall` attributes.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3166,12 +2993,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To retrieve a list of any "neighbors" (i.e. Droplets that are co-located on
      * the same physical hardware) for a specific Droplet, send a GET request to
      * `/v2/droplets/$DROPLET_ID/neighbors`.
-     *
      * The results will be returned as a JSON object with a key of `droplets`. This
      * will be set to an array containing objects representing any other Droplets
      * that share the same physical hardware. An empty array indicates that the
      * Droplet is not co-located any other Droplets associated with your account.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsNotFoundException
@@ -3189,14 +3014,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list the associated billable resources that can be destroyed along with a
      * Droplet, send a GET request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources` endpoint.
-     *
      * This endpoint will only return resources that you are authorized to see. For
      * example, to see associated Reserved IPs, include the `reserved_ip:read` scope.
-     *
      * The response will be a JSON object containing `snapshots`, `volumes`, and
      * `volume_snapshots` keys. Each will be set to an array of objects containing
      * information about the associated resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesNotFoundException
@@ -3218,11 +3040,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * resources to be destroyed. The IDs can be found by querying the Droplet's
      * associated resources. Any associated resource not included in the request
      * will remain and continue to accrue changes on your account.
-     *
      * A successful response will include a 202 response code and no content. Use
      * the status endpoint to check on the success or failure of the destruction of
      * the individual resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param null|\Jane\Generated\DigitalOcean\Model\SelectiveDestroyAssociatedResource $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveUnauthorizedException
@@ -3244,11 +3064,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `true`. To preview which resources will be destroyed, first query the
      * Droplet's associated resources. This operation _can not_ be reverse and should
      * be used with caution.
-     *
      * A successful response will include a 202 response code and no content. Use the
      * status endpoint to check on the success or failure of the destruction of the
      * individual resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param array{
      *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
@@ -3269,7 +3087,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To check on the status of a request to destroy a Droplet with its associated
      * resources, send a GET request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/status` endpoint.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusNotFoundException
@@ -3287,12 +3104,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * If the status of a request to destroy a Droplet with its associated resources
      * reported any errors, it can be retried by sending a POST request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/retry` endpoint.
-     *
      * Only one destroy can be active at a time per Droplet. If a retry is issued
      * while another destroy is in progress for the Droplet a 409 status code will
      * be returned. A successful response will include a 202 response code and no
      * content.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesNotFoundException
@@ -3311,7 +3126,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all autoscale pools in your team, send a GET request to `/v2/droplets/autoscale`.
      * The response body will be a JSON object with a key of `autoscale_pools` containing an array of autoscale pool objects.
      * These each contain the standard autoscale pool attributes.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -3330,9 +3144,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a new autoscale pool, send a POST request to `/v2/droplets/autoscale` setting the required attributes.
-     *
      * The response body will contain a JSON object with a key called `autoscale_pool` containing the standard attributes for the new autoscale pool.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateTooManyRequestsException
@@ -3347,9 +3159,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To destroy an autoscale pool, send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID` endpoint.
-     *
      * A successful response will include a 202 response code and no content.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteNotFoundException
@@ -3366,7 +3176,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an individual autoscale pool, send a GET request to
      * `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID`.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetNotFoundException
@@ -3384,7 +3193,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update the configuration of an existing autoscale pool, send a PUT request to
      * `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID`. The request must contain a full representation
      * of the autoscale pool including existing attributes.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @param null|\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateUnauthorizedException
@@ -3402,7 +3210,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To destroy an autoscale pool and its associated resources (Droplets),
      * send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/dangerous` endpoint.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @param array{
      *    "X-Dangerous": bool, //Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
@@ -3421,10 +3228,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list the Droplets in an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/members`.
-     *
      * The response body will be a JSON object with a key of `droplets`. This will be
      * set to an array containing information about each of the Droplets in the autoscale pool.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3444,10 +3249,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the scaling history events of an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/history`.
-     *
      * The response body will be a JSON object with a key of `history`. This will be
      * set to an array containing objects each representing a history event.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -3485,7 +3288,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new firewall, send a POST request to `/v2/firewalls`. The request
      * must contain at least one inbound or outbound access rule.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateBadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateUnauthorizedException
@@ -3501,11 +3303,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a firewall send a DELETE request to `/v2/firewalls/$FIREWALL_ID`.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteNotFoundException
@@ -3541,7 +3341,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * are not provided will be reset to their default values.**
      * <br><br>You must have read access (e.g. `droplet:read`) to all resources attached
      * to the firewall to successfully update the firewall.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdPutBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateBadRequestException
@@ -3561,11 +3360,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To remove a Droplet from a firewall, send a DELETE request to
      * `/v2/firewalls/$FIREWALL_ID/droplets`. In the body of the request, there should
      * be a `droplet_ids` attribute containing a list of Droplet IDs.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdDropletsDeleteBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsBadRequestException
@@ -3585,11 +3382,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To assign a Droplet to a firewall, send a POST request to
      * `/v2/firewalls/$FIREWALL_ID/droplets`. In the body of the request, there
      * should be a `droplet_ids` attribute containing a list of Droplet IDs.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdDropletsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsBadRequestException
@@ -3609,11 +3404,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To remove a tag representing a group of Droplets from a firewall, send a
      * DELETE request to `/v2/firewalls/$FIREWALL_ID/tags`. In the body of the
      * request, there should be a `tags` attribute containing a list of tag names.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdTagsDeleteBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsBadRequestException
@@ -3633,11 +3426,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To assign a tag representing a group of Droplets to a firewall, send a POST
      * request to `/v2/firewalls/$FIREWALL_ID/tags`. In the body of the request,
      * there should be a `tags` attribute containing a list of tag names.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdTagsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsBadRequestException
@@ -3658,11 +3449,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/firewalls/$FIREWALL_ID/rules`. The body of the request may include an
      * `inbound_rules` and/or `outbound_rules` attribute containing an array of rules
      * to be removed.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdRulesDeleteBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesBadRequestException
@@ -3683,11 +3472,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/firewalls/$FIREWALL_ID/rules`. The body of the request may include an
      * inbound_rules and/or outbound_rules attribute containing an array of rules to
      * be added.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdRulesPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesBadRequestException
@@ -3741,10 +3528,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a floating IP and remove it from your account, send a DELETE request
      * to `/v2/floating_ips/$FLOATING_IP_ADDR`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $floatingIp A floating IP address.
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteNotFoundException
@@ -3792,12 +3577,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a floating IP send a POST request to
      * `/v2/floating_ips/$FLOATING_IP/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a floating IP to a Droplet
      * | `unassign` | Unassign a floating IP from a Droplet
-     *
      * @param string $floatingIp A floating IP address.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostUnauthorizedException
@@ -3976,30 +3759,18 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the images available on your account, send a GET request to /v2/images.
-     *
      * ## Filtering Results
      * -----
-     *
      * It's possible to request filtered results by including certain query parameters.
-     *
      * **Image Type**
-     *
      * Either 1-Click Application or OS Distribution images can be filtered by using the `type` query parameter.
-     *
      * > Important: The `type` query parameter does not directly relate to the `type` attribute.
-     *
      * To retrieve only ***distribution*** images, include the `type` query parameter set to distribution, `/v2/images?type=distribution`.
-     *
      * To retrieve only ***application*** images, include the `type` query parameter set to application, `/v2/images?type=application`.
-     *
      * **User Images**
-     *
      * To retrieve only the private images of a user, include the `private` query parameter set to true, `/v2/images?private=true`.
-     *
      * **Tags**
-     *
      * To list all images assigned to a specific tag, include the `tag_name` query parameter set to the name of the tag in your GET request. For example, `/v2/images?tag_name=$TAG_NAME`.
-     *
      * @param array{
      *    "type"?: string, //Filters results based on image type which can be either `application` or `distribution`.
      *    "private"?: bool, //Used to filter only user images.
@@ -4025,7 +3796,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The image must be in the raw, qcow2, vhdx, vdi, or vmdk format.
      * It may be compressed using gzip or bzip2 and must be smaller than 100 GB after
      *  being decompressed.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ImageNewCustom $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomTooManyRequestsException
@@ -4040,7 +3810,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a snapshot or custom image, send a `DELETE` request to `/v2/images/$IMAGE_ID`.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteNotFoundException
@@ -4057,7 +3826,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
     * To retrieve information about an image, send a `GET` request to
     * `/v2/images/$IDENTIFIER`.
-    *
     * @param mixed $imageId A unique number (id) or string (slug) used to identify and reference a
     specific image.
     
@@ -4081,7 +3849,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update an image, send a `PUT` request to `/v2/images/$IMAGE_ID`.
      * Set the `name` attribute to the new value you would like to use.
      * For custom images, the `description` and `distribution` attributes may also be updated.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      * @param \Jane\Generated\DigitalOcean\Model\ImageUpdate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateUnauthorizedException
@@ -4113,19 +3880,14 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * The following actions are available on an Image.
-     *
      * ## Convert an Image to a Snapshot
-     *
      * To convert an image, for example, a backup to a snapshot, send a POST request
      * to `/v2/images/$IMAGE_ID/actions`. Set the `type` attribute to `convert`.
-     *
      * ## Transfer an Image
-     *
      * To transfer an image to another region, send a POST request to
      * `/v2/images/$IMAGE_ID/actions`. Set the `type` attribute to `transfer` and set
      * `region` attribute to the slug identifier of the region you wish to transfer
      * to.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostUnauthorizedException
@@ -4159,7 +3921,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the Kubernetes clusters on your account, send a GET request
      * to `/v2/kubernetes/clusters`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -4179,13 +3940,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To create a new Kubernetes cluster, send a POST request to
      * `/v2/kubernetes/clusters`. The request must contain at least one node pool
      * with at least one worker.
-     *
      * The request may contain a maintenance window policy describing a time period
      * when disruptive maintenance tasks may be carried out. Omitting the policy
      * implies that a window will be chosen automatically. See
      * [here](https://docs.digitalocean.com/products/kubernetes/how-to/upgrade-cluster/)
      * for details.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\Cluster $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterTooManyRequestsException
@@ -4201,10 +3960,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a Kubernetes cluster and all services deployed to it, send a DELETE
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID`.
-     *
      * A 204 status code with no body will be returned in response to a successful
      * request.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterNotFoundException
@@ -4221,7 +3978,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an existing Kubernetes cluster, send a GET request
      * to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterNotFoundException
@@ -4239,7 +3995,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update a Kubernetes cluster, send a PUT request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID` and specify one or more of the
      * attributes below.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\ClusterUpdate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterUnauthorizedException
@@ -4272,15 +4027,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a Kubernetes cluster along with a subset of its associated resources,
      * send a DELETE request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/destroy_with_associated_resources/selective`.
-     *
      * The JSON body of the request should include `load_balancers`, `volumes`, or
      * `volume_snapshots` keys each set to an array of IDs for the associated
      * resources to be destroyed.
-     *
      * The IDs can be found by querying the cluster's associated resources endpoint.
      * Any associated resource not included in the request will remain and continue
      * to accrue changes on your account.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\DestroyAssociatedKubernetesResources $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveUnauthorizedException
@@ -4299,7 +4051,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To delete a Kubernetes cluster with all of its associated resources, send a
      * DELETE request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/destroy_with_associated_resources/dangerous`.
      * A 204 status code with no body will be returned in response to a successful request.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousNotFoundException
@@ -4317,27 +4068,22 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * This endpoint returns a kubeconfig file in YAML format. It can be used to
      * connect to and administer the cluster using the Kubernetes command line tool,
      * `kubectl`, or other programs supporting kubeconfig files (e.g., client libraries).
-     *
      * The resulting kubeconfig file uses token-based authentication for clusters
      * supporting it, and certificate-based authentication otherwise. For a list of
      * supported versions and more information, see "[How to Connect to a DigitalOcean
      * Kubernetes Cluster](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/)".
-     *
      * To retrieve a kubeconfig file for use with a Kubernetes cluster, send a GET
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/kubeconfig`.
-     *
      * Clusters supporting token-based authentication may define an expiration by
      * passing a duration in seconds as a query parameter to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/kubeconfig?expiry_seconds=$DURATION_IN_SECONDS`.
      * If not set or 0, then the token will have a 7 day expiry. The query parameter
      * has no impact in certificate-based authentication.
-     *
      * Kubernetes Roles granted to a user with a token-based kubeconfig are derived from that user's
      * DigitalOcean role. Predefined roles (Owner, Member, Modifier etc.) have an automatic mapping
      * to Kubernetes roles. Custom roles are not automatically mapped to any Kubernetes roles,
      * and require [additional configuration](https://docs.digitalocean.com/products/kubernetes/how-to/set-up-custom-rolebindings/)
      * by a cluster administrator.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -4358,21 +4104,17 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * This endpoint returns a JSON object . It can be used to programmatically
      * construct Kubernetes clients which cannot parse kubeconfig files.
-     *
      * The resulting JSON object contains token-based authentication for clusters
      * supporting it, and certificate-based authentication otherwise. For a list of
      * supported versions and more information, see "[How to Connect to a DigitalOcean
      * Kubernetes Cluster](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/)".
-     *
      * To retrieve credentials for accessing a Kubernetes cluster, send a GET
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials`.
-     *
      * Clusters supporting token-based authentication may define an expiration by
      * passing a duration in seconds as a query parameter to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials?expiry_seconds=$DURATION_IN_SECONDS`.
      * If not set or 0, then the token will have a 7 day expiry. The query parameter
      * has no impact in certificate-based authentication.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -4393,7 +4135,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To determine whether a cluster can be upgraded, and the versions to which it
      * can be upgraded, send a GET request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrades`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesNotFoundException
@@ -4411,10 +4152,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To immediately upgrade a Kubernetes cluster to a newer patch release of
      * Kubernetes, send a POST request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrade`.
      * The body of the request must specify a version attribute.
-     *
      * Available upgrade versions for a cluster can be fetched from
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrades`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdUpgradePostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterUnauthorizedException
@@ -4432,7 +4171,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the node pools in a Kubernetes clusters, send a GET request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsNotFoundException
@@ -4450,7 +4188,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To add an additional node pool to a Kubernetes clusters, send a POST request
      * to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools` with the following
      * attributes.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\KubernetesNodePool $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolUnauthorizedException
@@ -4468,10 +4205,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a node pool, send a DELETE request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID`.
-     *
      * A 204 status code with no body will be returned in response to a successful
      * request. Nodes in the pool will subsequently be drained and deleted.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolUnauthorizedException
@@ -4489,7 +4224,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about a specific node pool in a Kubernetes cluster, send
      * a GET request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolUnauthorizedException
@@ -4509,7 +4243,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * number of nodes, send a PUT request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID` with the
      * following attributes.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolUpdate $requestBody
@@ -4528,15 +4261,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a single node in a pool, send a DELETE request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID/nodes/$NODE_ID`.
-     *
      * Appending the `skip_drain=1` query parameter to the request causes node
      * draining to be skipped. Omitting the query parameter or setting its value to
      * `0` carries out draining prior to deletion.
-     *
      * Appending the `replace=1` query parameter to the request causes the node to
      * be replaced by a new one after deletion. Omitting the query parameter or
      * setting its value to `0` deletes without replacement.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param string $nodeId A unique ID that can be used to reference a node in a Kubernetes node pool.
@@ -4560,7 +4290,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The endpoint has been deprecated. Please use the DELETE
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID/nodes/$NODE_ID`
      * method instead.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBody $requestBody
@@ -4579,7 +4308,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information the user associated with a Kubernetes cluster, send a GET
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/user`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserNotFoundException
@@ -4611,10 +4339,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/clusterlint`. If the `run_id` query
      * parameter is provided, then the diagnostics for the specific run is fetched.
      * By default, the latest results are shown.
-     *
      * To find out how to address clusterlint feedback, please refer to
      * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param array{
      *    "run_id"?: string, //Specifies the clusterlint run whose results will be retrieved.
@@ -4635,15 +4361,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Clusterlint helps operators conform to Kubernetes best practices around
      * resources, security and reliability to avoid common problems while operating
      * or upgrading the clusters.
-     *
      * To request a clusterlint run on your cluster, send a POST request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/clusterlint`. This will run all
      * checks present in the `doks` group by default, if a request body is not
      * specified. Optionally specify the below attributes.
-     *
      * For information about the available checks, please refer to
      * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\ClusterlintRequest $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintUnauthorizedException
@@ -4717,7 +4440,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve status messages for a Kubernetes cluster, send a GET request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/status_messages`. Status messages inform users of any issues that come up during the cluster lifecycle.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param array{
      *    "since"?: string, //A timestamp used to return status messages emitted since the specified time. The timestamp should be in ISO8601 format.
@@ -4737,7 +4459,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the load balancer instances on your account, send a GET request
      * to `/v2/load_balancers`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -4756,16 +4477,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new load balancer instance, send a POST request to
      * `/v2/load_balancers`.
-     *
      * You can specify the Droplets that will sit behind the load balancer using one
      * of two methods:
-     *
      * * Set `droplet_ids` to a list of specific Droplet IDs.
      * * Set `tag` to the name of a tag. All Droplets with this tag applied will be
      *   assigned to the load balancer. Additional Droplets will be automatically
      *   assigned as they are tagged.
      * These methods are mutually exclusive.
-     *
      * @param mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateTooManyRequestsException
@@ -4782,10 +4500,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To delete a load balancer instance, disassociating any Droplets assigned to it
      * and removing it from your account, send a DELETE request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteNotFoundException
@@ -4802,7 +4518,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about a load balancer instance, send a GET request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID`.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetNotFoundException
@@ -4823,7 +4538,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * contain _one of_ the `droplets_ids` or `tag` attributes as they are mutually
      * exclusive. **Note that any attribute that is not provided will be reset to its
      * default value.**
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateUnauthorizedException
@@ -4841,10 +4555,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a Global load balancer CDN cache, send a DELETE request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID/cache`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheNotFoundException
@@ -4862,11 +4574,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To remove a Droplet from a load balancer instance, send a DELETE request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID/droplets`. In the body of the request,
      * there should be a `droplet_ids` attribute containing a list of Droplet IDs.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsDeleteBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsUnauthorizedException
@@ -4888,11 +4598,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Individual Droplets can not be added to a load balancer configured with a
      * Droplet tag. Attempting to do so will result in a "422 Unprocessable Entity"
      * response from the API.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsUnauthorizedException
@@ -4912,11 +4620,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * request to `/v2/load_balancers/$LOAD_BALANCER_ID/forwarding_rules`. In the
      * body of the request, there should be a `forwarding_rules` attribute containing
      * an array of rules to be removed.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdForwardingRulesDeleteBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesUnauthorizedException
@@ -4936,11 +4642,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * request to `/v2/load_balancers/$LOAD_BALANCER_ID/forwarding_rules`. In the body
      * of the request, there should be a `forwarding_rules` attribute containing an
      * array of rules to be added.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdForwardingRulesPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesUnauthorizedException
@@ -5978,7 +5682,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new sink, send a POST request to `/v2/monitoring/sinks`. Forwards logs from the
      * resources identified in `resources` to the specified pre-existing destination.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2MonitoringSinksPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkNotFoundException
@@ -6024,9 +5727,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list NFS shares, send a GET request to `/v2/nfs?region=${region}`.
-     *
      * A successful request will return all NFS shares belonging to the authenticated user.
-     *
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      * } $queryParameters
@@ -6044,7 +5745,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a new NFS share, send a POST request to `/v2/nfs`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\NfsRequest $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateBadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateUnauthorizedException
@@ -6060,9 +5760,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete an NFS share, send a DELETE request to `/v2/nfs/{nfs_id}?region=${region}`.
-     *
      * A successful request will return a `204 No Content` status code.
-     *
      * @param string $nfsId The unique ID of the NFS share
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
@@ -6081,9 +5779,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To get an NFS share, send a GET request to `/v2/nfs/{nfs_id}?region=${region}`.
-     *
      * A successful request will return the NFS share.
-     *
      * @param string $nfsId The unique ID of the NFS share
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
@@ -6104,14 +5800,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To execute an action (such as resize) on a specified NFS share,
      * send a POST request to `/v2/nfs/{nfs_id}/actions`. In the JSON body
      * to the request, set the `type` attribute to on of the supported action types:
-     *
      * | Action                           | Details |
      * | -------------------------------- | ----------- |
      * | <nobr>`resize`</nobr>            | Resizes an NFS share. Set the size_gib attribute to a desired value in GiB |
      * | <nobr>`snapshot`</nobr>          | Takes a snapshot of an NFS share |
      * | <nobr>`attach`</nobr>            | Attaches an NFS share to a VPC. Set the vpc_id attribute to the desired VPC ID |
      * | <nobr>`detach`</nobr>            | Detaches an NFS share from a VPC. Set the vpc_id attribute to the desired VPC ID |
-     *
      * @param string $nfsId The unique ID of the NFS share
      * @param mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionUnauthorizedException
@@ -6128,11 +5822,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all NFS snapshots, send a GET request to `/v2/nfs/snapshots?region=${region}&share_id={share_id}`.
-     *
      * A successful request will return all NFS snapshots belonging to the authenticated user in the specified region.
-     *
      * Optionally, you can filter snapshots by a specific NFS share by including the `share_id` query parameter.
-     *
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      *    "share_id"?: string, //The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
@@ -6151,9 +5842,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete an NFS snapshot, send a DELETE request to `/v2/nfs/snapshots/{nfs_snapshot_id}?region=${region}`.
-     *
      * A successful request will return a `204 No Content` status code.
-     *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
@@ -6172,9 +5861,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To get an NFS snapshot, send a GET request to `/v2/nfs/snapshots/{nfs_snapshot_id}?region=${region}`.
-     *
      * A successful request will return the NFS snapshot.
-     *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
      * @param array{
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
@@ -6213,7 +5900,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To create a new partner attachment, send a `POST` request to
      * `/v2/partner_network_connect/attachments` with a JSON object containing the
      * required configuration details.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateNotFoundException
@@ -6231,7 +5917,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete an existing partner attachment, send a `DELETE` request to
      * `/v2/partner_network_connect/attachments/{pa_id}`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteNotFoundException
@@ -6248,7 +5933,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get the details of a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetNotFoundException
@@ -6266,7 +5950,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update an existing partner attachment, send a `PATCH` request to
      * `/v2/partner_network_connect/attachments/{pa_id}` with a JSON object containing the
      * fields to be updated.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchUnauthorizedException
@@ -6284,7 +5967,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get the current BGP auth key for a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyNotFoundException
@@ -6301,7 +5983,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all remote routes associated with a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/remote_routes`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -6322,7 +6003,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get the current service key for a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/service_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyNotFoundException
@@ -6338,7 +6018,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * This operation generates a new service key for the specified partner attachment. The operation is asynchronous, and the response is an empty JSON object returned with a 202 status code. To poll for the new service key, send a `GET` request to `/v2/partner_network_connect/attachments/{pa_id}/service_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyNotFoundException
@@ -6430,10 +6109,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To delete a project, send a DELETE request to `/v2/projects/$PROJECT_ID`. To
      * be deleted, a project must not have any resources assigned to it. Any existing
      * resources must first be reassigned or destroyed, or you will receive a 412 error.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $projectId A unique identifier for a project.
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteNotFoundException
@@ -6497,9 +6174,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all your resources in a project, send a GET request to `/v2/projects/$PROJECT_ID/resources`.
-     *
      * This endpoint will only return resources that you are authorized to see. For example, to see Droplets in a project, include the `droplet:read` scope.
-     *
      * @param string $projectId A unique identifier for a project.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -6519,9 +6194,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To assign resources to a project, send a POST request to `/v2/projects/$PROJECT_ID/resources`.
-     *
      * You must have both `project:update` and `<resource>:read` scopes to assign new resources. For example, to assign a Droplet to a project, include both the `project:update` and `droplet:read` scopes.
-     *
      * @param string $projectId A unique identifier for a project.
      * @param \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesUnauthorizedException
@@ -6551,9 +6224,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To assign resources to your default project, send a POST request to `/v2/projects/default/resources`.
-     *
      * You must have both project:update and <resource>:read scopes to assign new resources. For example, to assign a Droplet to the default project, include both the `project:update` and `droplet:read` scopes.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultNotFoundException
@@ -6599,11 +6270,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create your container registry, send a POST request to `/v2/registries`.
-     *
      * The `name` becomes part of the URL for images stored in the registry. For
      * example, if your registry is called `example`, an image in it will have the
      * URL `registry.digitalocean.com/example/image:tag`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\MultiregistryCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateNotFoundException
@@ -6652,10 +6321,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Kubernetes cluster, you will need to configure authentication. The necessary
      * JSON configuration can be retrieved by sending a GET request to
      * `/v2/registries/{registry_name}/docker-credentials`.
-     *
      * The response will be in the format of a Docker `config.json` file. To use the
      * config in your Kubernetes cluster, create a Secret with:
-     *
      *     kubectl create secret generic docr \
      *       --from-file=.dockerconfigjson=config.json \
      *       --type=kubernetes.io/dockerconfigjson
@@ -6664,12 +6331,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * clusters. To retrieve read/write credentials, suitable for use with the Docker
      * client or in a CI system, read_write may be provided as query parameter. For
      * example: `/v2/registries/{registry_name}/docker-credentials?read_write=true`
-     *
      * By default, the returned credentials will not expire. To retrieve credentials
      * with an expiry set, expiry_seconds may be provided as a query parameter. For
      * example: `/v2/registries/{registry_name}/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
-     *
      * @param string $registryName The name of a container registry.
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsNotFoundException
@@ -6743,11 +6408,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * manifests, garbage collection is effectively a noop.
      * [See here for more information](https://docs.digitalocean.com/products/container-registry/how-to/clean-up-container-registry/)
      * about how and why you should clean up your container registry periodically.
-     *
      * To request a garbage collection run on your registry, send a POST request to
      * `/v2/registries/$REGISTRY_NAME/garbage-collection`. This will initiate the
      * following sequence of events on your registry.
-     *
      * * Set the registry to read-only mode, meaning no further write-scoped
      *   JWTs will be issued to registry clients. Existing write-scoped JWTs will
      *   continue to work until they expire which can take up to 15 minutes.
@@ -6758,7 +6421,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *   collection status as `success`.
      * * Remove the read-only mode restriction from the registry, meaning write-scoped
      *   JWTs will once again be issued to registry clients.
-     *
      * @param string $registryName The name of a container registry.
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionNotFoundException
@@ -6832,10 +6494,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a container repository including all of its tags, send a DELETE request to
      * `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryUnauthorizedException
@@ -6853,14 +6513,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all tags in one of your container registry's repository, send a GET
      * request to `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to list tags for
      * `registry.digitalocean.com/example/my/repo`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags`.
-     *
      * It is similar to GET `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags` and exists for backward compatibility.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param array{
@@ -6882,15 +6539,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a container repository tag in on of our container registries, send a DELETE request to
      * `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags/$TAG`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to delete
      * `registry.digitalocean.com/example/my/repo:mytag`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags/mytag`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully. It is similar to DELETE `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags/$TAG` and exists for backward compatibility.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param string $repositoryTag The name of a container registry repository tag.
@@ -6909,14 +6563,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all manifests in your container registry repository, send a GET
      * request to `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to list manifests for
      * `registry.digitalocean.com/example/my/repo`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/digests`.
-     *
      * It is similar to `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests` and exists for backward compatibility.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param array{
@@ -6938,17 +6589,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a container repository manifest by digest in one of your registries, send a DELETE request to
      * `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests/$MANIFEST_DIGEST`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to delete
      * `registry.digitalocean.com/example/my/repo@sha256:abcd`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/digests/sha256:abcd`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * It is similar to DELETE `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests/$MANIFEST_DIGEST` and exists for backward compatibility.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param string $manifestDigest The manifest digest of a container registry repository tag.
@@ -6967,13 +6614,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To validate that a container registry name is available for use, send a POST
      * request to `/v2/registries/validate-name`.
-     *
      * If the name is both formatted correctly and available, the response code will
      * be 204 and contain no body. If the name is already in use, the response will
      * be a 409 Conflict.
-     *
      * It is similar to `/v2/registry/validate-name` and exists for backward compatibility.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameConflictException
@@ -7016,11 +6660,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create your container registry, send a POST request to `/v2/registry`.
-     *
      * The `name` becomes part of the URL for images stored in the registry. For
      * example, if your registry is called `example`, an image in it will have the
      * URL `registry.digitalocean.com/example/image:tag`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\RegistryCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateTooManyRequestsException
@@ -7065,10 +6707,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Kubernetes cluster, you will need to configure authentication. The necessary
      * JSON configuration can be retrieved by sending a GET request to
      * `/v2/registry/docker-credentials`.
-     *
      * The response will be in the format of a Docker `config.json` file. To use the
      * config in your Kubernetes cluster, create a Secret with:
-     *
      *     kubectl create secret generic docr \
      *       --from-file=.dockerconfigjson=config.json \
      *       --type=kubernetes.io/dockerconfigjson
@@ -7077,12 +6717,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * clusters. To retrieve read/write credentials, suitable for use with the Docker
      * client or in a CI system, read_write may be provided as query parameter. For
      * example: `/v2/registry/docker-credentials?read_write=true`
-     *
      * By default, the returned credentials will not expire. To retrieve credentials
      * with an expiry set, expiry_seconds may be provided as a query parameter. For
      * example: `/v2/registry/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
-     *
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
      *    "read_write"?: bool, //By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.
@@ -7101,11 +6739,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To validate that a container registry name is available for use, send a POST
      * request to `/v2/registry/validate-name`.
-     *
      * If the name is both formatted correctly and available, the response code will
      * be 204 and contain no body. If the name is already in use, the response will
      * be a 409 Conflict.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameConflictException
@@ -7121,10 +6757,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * This endpoint has been deprecated in favor of the _List All Container Registry Repositories [V2]_ endpoint.
-     *
      * To list all repositories in your container registry, send a GET
      * request to `/v2/registry/$REGISTRY_NAME/repositories`.
-     *
      * @param string $registryName The name of a container registry.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -7166,12 +6800,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all tags in your container registry repository, send a GET
      * request to `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to list tags for
      * `registry.digitalocean.com/example/my/repo`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags`.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param array{
@@ -7193,15 +6825,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a container repository tag, send a DELETE request to
      * `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags/$TAG`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to delete
      * `registry.digitalocean.com/example/my/repo:mytag`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags/mytag`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param string $repositoryTag The name of a container registry repository tag.
@@ -7220,12 +6849,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all manifests in your container registry repository, send a GET
      * request to `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to list manifests for
      * `registry.digitalocean.com/example/my/repo`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/digests`.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param array{
@@ -7247,15 +6874,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a container repository manifest by digest, send a DELETE request to
      * `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/digests/$MANIFEST_DIGEST`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to delete
      * `registry.digitalocean.com/example/my/repo@sha256:abcd`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/digests/sha256:abcd`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param string $manifestDigest The manifest digest of a container registry repository tag.
@@ -7293,11 +6917,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * manifests, garbage collection is effectively a noop.
      * [See here for more information](https://docs.digitalocean.com/products/container-registry/how-to/clean-up-container-registry/)
      * about how and why you should clean up your container registry periodically.
-     *
      * To request a garbage collection run on your registry, send a POST request to
      * `/v2/registry/$REGISTRY_NAME/garbage-collection`. This will initiate the
      * following sequence of events on your registry.
-     *
      * * Set the registry to read-only mode, meaning no further write-scoped
      *   JWTs will be issued to registry clients. Existing write-scoped JWTs will
      *   continue to work until they expire which can take up to 15 minutes.
@@ -7308,7 +6930,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *   collection status as `success`.
      * * Remove the read-only mode restriction from the registry, meaning write-scoped
      *   JWTs will once again be issued to registry clients.
-     *
      * @param string $registryName The name of a container registry.
      * @param null|\Jane\Generated\DigitalOcean\Model\RegistryRunGc $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionUnauthorizedException
@@ -7422,10 +7043,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a reserved IP and remove it from your account, send a DELETE request
      * to `/v2/reserved_ips/$RESERVED_IP_ADDR`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $reservedIp A reserved IP address.
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteNotFoundException
@@ -7473,12 +7092,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a reserved IP send a POST request to
      * `/v2/reserved_ips/$RESERVED_IP/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a reserved IP to a Droplet
      * | `unassign` | Unassign a reserved IP from a Droplet
-     *
      * @param string $reservedIp A reserved IP address.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostUnauthorizedException
@@ -7545,10 +7162,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a reserved IP and remove it from your account, send a DELETE request
      * to `/v2/reserved_ipv6/$RESERVED_IPV6`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $reservedIpv6 A reserved IPv6 address.
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteNotFoundException
@@ -7582,12 +7197,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a reserved IPv6 send a POST request to
      * `/v2/reserved_ipv6/$RESERVED_IPV6/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a reserved IPv6 to a Droplet
      * | `unassign` | Unassign a reserved IPv6 from a Droplet
-     *
      * @param string $reservedIpv6 A reserved IPv6 address.
      * @param null|mixed $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostUnauthorizedException
@@ -7605,7 +7218,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all BYOIP prefixes, send a GET request to `/v2/byoip_prefixes`.
      * A successful response will return a list of all BYOIP prefixes associated with the account.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -7623,10 +7235,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a BYOIP prefix, send a POST request to `/v2/byoip_prefixes`.
-     *
      * A successful request will initiate the process of bringing your BYOIP Prefix into your account.
      * The response will include the details of the created prefix, including its UUID and status.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateUnprocessableEntityException
@@ -7643,10 +7253,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a BYOIP prefix and remove it from your account, send a DELETE request
      * to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * A successful request will receive a 202 status code with no body in response.
      * This indicates that the request was accepted and the prefix is being deleted.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteNotFoundException
@@ -7663,9 +7271,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To get a BYOIP prefix, send a GET request to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * A successful response will return the details of the specified BYOIP prefix.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetNotFoundException
@@ -7682,10 +7288,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To update a BYOIP prefix, send a PATCH request to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * Currently, you can update the advertisement status of the prefix.
      * The response will include the updated details of the prefix.
-     *
      * @param string $byoipPrefixUuid A unique identifier for a BYOIP prefix.
      * @param \Jane\Generated\DigitalOcean\Model\ByoipPrefixUpdate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchUnauthorizedException
@@ -7703,9 +7307,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list resources associated with BYOIP prefixes, send a GET request to `/v2/byoip_prefixes/{byoip_prefix_uuid}/ips`.
-     *
      * A successful response will return a list of resources associated with the specified BYOIP prefix.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -7744,25 +7346,17 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the snapshots available on your account, send a GET request to
      * `/v2/snapshots`.
-     *
      * The response will be a JSON object with a key called `snapshots`. This will be
      * set to an array of `snapshot` objects, each of which will contain the standard
      * snapshot attributes.
-     *
      * ### Filtering Results by Resource Type
-     *
      * It's possible to request filtered results by including certain query parameters.
-     *
      * #### List Droplet Snapshots
-     *
      * To retrieve only snapshots based on Droplets, include the `resource_type`
      * query parameter set to `droplet`. For example, `/v2/snapshots?resource_type=droplet`.
-     *
      * #### List Volume Snapshots
-     *
      * To retrieve only snapshots based on volumes, include the `resource_type`
      * query parameter set to `volume`. For example, `/v2/snapshots?resource_type=volume`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -7783,10 +7377,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Both Droplet and volume snapshots are managed through the `/v2/snapshots/`
      * endpoint. To delete a snapshot, send a DELETE request to
      * `/v2/snapshots/$SNAPSHOT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param mixed $snapshotId Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteBadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteUnauthorizedException
@@ -7804,10 +7396,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve information about a snapshot, send a GET request to
      * `/v2/snapshots/$SNAPSHOT_ID`.
-     *
      * The response will be a JSON object with a key called `snapshot`. The value of
      * this will be an snapshot object containing the standard snapshot attributes.
-     *
      * @param mixed $snapshotId Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetBadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetUnauthorizedException
@@ -7824,7 +7414,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list Spaces Access Key, send a GET request to `/v2/spaces/keys`. Sort parameter must be used with Sort Direction.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -7849,7 +7438,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To create a new Spaces Access Key, send a POST request to `/v2/spaces/keys`.
      * At the moment, you cannot mix a fullaccess permission with scoped permissions.
      * A fullaccess permission will be prioritized if fullaccess and scoped permissions are both added.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\Key $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateBadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateUnauthorizedException
@@ -7865,9 +7453,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a Spaces Access Key, send a DELETE request to `/v2/spaces/keys/$ACCESS_KEY`.
-     *
      * A successful request will return a `204 No Content` status code.
-     *
      * @param string $accessKey The access key's ID.
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteNotFoundException
@@ -7883,9 +7469,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To get a Spaces Access Key, send a GET request to `/v2/spaces/keys/$ACCESS_KEY`.
-     *
      * A successful request will return the Access Key.
-     *
      * @param string $accessKey The access key's ID.
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetNotFoundException
@@ -7902,7 +7486,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update Spaces Access Key, send a PUT or PATCH request to `/v2/spaces/keys/$ACCESS_KEY`. At the moment, you cannot convert a
      * fullaccess key to a scoped key or vice versa. You can only update the name of the key.
-     *
      * @param string $accessKey The access key's ID.
      * @param \Jane\Generated\DigitalOcean\Model\Key $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchBadRequestException
@@ -7921,7 +7504,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update Spaces Access Key, send a PUT or PATCH request to `/v2/spaces/keys/$ACCESS_KEY`. At the moment, you cannot convert a
      * fullaccess key to a scoped key or vice versa. You can only update the name of the key.
-     *
      * @param string $accessKey The access key's ID.
      * @param \Jane\Generated\DigitalOcean\Model\Key $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateBadRequestException
@@ -7939,10 +7521,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of your tags, you can send a GET request to `/v2/tags`.
-     *
      * This endpoint will only return tagged resources that you are authorized to see
      * (e.g. Droplets will only be returned if you have `droplet:read`).
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -7991,10 +7571,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve an individual tag, you can send a `GET` request to
      * `/v2/tags/$TAG_NAME`.
-     *
      * This endpoint will only return tagged resources that you are authorized to see.
      * For example, to see tagged Droplets, include the `droplet:read` scope.
-     *
      * @param string $tagId The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetNotFoundException
@@ -8012,15 +7590,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Resources can be untagged by sending a DELETE request to
      * `/v2/tags/$TAG_NAME/resources` with an array of json objects containing
      * `resource_id` and `resource_type` attributes.
-     *
      * Currently only untagging of Droplets, Databases, Images, Volumes, and Volume
      * Snapshots is supported. `resource_type` is expected to be the string `droplet`,
      * `database`, `image`, `volume` or `volume_snapshot`. `resource_id` is expected
      * to be the ID of the resource as a string.
-     *
      * In order to untag a resource, you must have both `tag:delete` and `<resource type>:update` scopes. For example,
      * to untag a Droplet, you must have `tag:delete` and `droplet:update`.
-     *
      * @param string $tagId The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.
      * @param \Jane\Generated\DigitalOcean\Model\TagsResource $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesUnauthorizedException
@@ -8039,15 +7614,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Resources can be tagged by sending a POST request to
      * `/v2/tags/$TAG_NAME/resources` with an array of json objects containing
      * `resource_id` and `resource_type` attributes.
-     *
      * Currently only tagging of Droplets, Databases, Images, Volumes, and Volume
      * Snapshots is supported. `resource_type` is expected to be the string `droplet`,
      * `database`, `image`, `volume` or `volume_snapshot`. `resource_id` is expected
      * to be the ID of the resource as a string.
-     *
      * In order to tag a resource, you must have both `tag:create` and `<resource type>:update` scopes. For example,
      * to tag a Droplet, you must have `tag:create` and `droplet:update`.
-     *
      * @param string $tagId The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.
      * @param \Jane\Generated\DigitalOcean\Model\TagsResource $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesUnauthorizedException
@@ -8065,8 +7637,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * Block storage volumes may also be deleted by name by sending a DELETE request with the volume's **name** and the **region slug** for the region it is located in as query parameters to `/v2/volumes?name=$VOLUME_NAME&region=nyc1`.
      * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
-     *
-     *
      * @param array{
      *    "name"?: string, //The block storage volume's name.
      *    "region"?: string, //The slug identifier for the region where the resource is available.
@@ -8093,9 +7663,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * **Note:** You can only create one volume per region with the same name.
      * ### By Name and Region
      * It is also possible to retrieve information about a block storage volume by name. To do so, send a GET request with the volume's name and the region slug for the region it is located in as query parameters to `/v2/volumes?name=$VOLUME_NAME&region=nyc1`.
-     *
-     *
-     *
      * @param array{
      *    "name"?: string, //The block storage volume's name.
      *    "region"?: string, //The slug identifier for the region where the resource is available.
@@ -8133,32 +7700,26 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a block storage volume by Name, send a POST request to
      * `~/v2/volumes/actions`. The body should contain the appropriate
      * attributes for the respective action.
-     *
      * ## Attach a Block Storage Volume to a Droplet
-     *
      * | Attribute   | Details                                                             |
      * | ----------- | ------------------------------------------------------------------- |
      * | type        | This must be `attach`                                               |
      * | volume_name | The name of the block storage volume                                |
      * | droplet_id  | Set to the Droplet's ID                                             |
      * | region      | Set to the slug representing the region where the volume is located |
-     *
      * Each volume may only be attached to a single Droplet. However, up to fifteen
      * volumes may be attached to a Droplet at a time. Pre-formatted volumes will be
      * automatically mounted to Ubuntu, Debian, Fedora, Fedora Atomic, and CentOS
      * Droplets created on or after April 26, 2018 when attached. On older Droplets,
      * [additional configuration](https://docs.digitalocean.com/products/volumes/how-to/mount/)
      * is required.
-     *
      * ## Remove a Block Storage Volume from a Droplet
-     *
      * | Attribute   | Details                                                             |
      * | ----------- | ------------------------------------------------------------------- |
      * | type        | This must be `detach`                                               |
      * | volume_name | The name of the block storage volume                                |
      * | droplet_id  | Set to the Droplet's ID                                             |
      * | region      | Set to the slug representing the region where the volume is located |
-     *
      * @param mixed $requestBody
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -8179,10 +7740,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a volume snapshot, send a DELETE request to
      * `/v2/volumes/snapshots/$VOLUME_SNAPSHOT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param string $snapshotId The unique identifier for the snapshot.
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdNotFoundException
@@ -8198,8 +7757,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the details of a snapshot that has been created from a volume, send a GET request to `/v2/volumes/snapshots/$VOLUME_SNAPSHOT_ID`.
-     *
-     *
      * @param string $snapshotId The unique identifier for the snapshot.
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdNotFoundException
@@ -8216,8 +7773,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a block storage volume, destroying all data and removing it from your account, send a DELETE request to `/v2/volumes/$VOLUME_ID`.
      * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteNotFoundException
@@ -8233,8 +7788,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To show information about a block storage volume, send a GET request to `/v2/volumes/$VOLUME_ID`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetNotFoundException
@@ -8250,8 +7803,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve all actions that have been executed on a volume, send a GET request to `/v2/volumes/$VOLUME_ID/actions`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -8273,40 +7824,31 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To initiate an action on a block storage volume by Id, send a POST request to
      * `~/v2/volumes/$VOLUME_ID/actions`. The body should contain the appropriate
      * attributes for the respective action.
-     *
      * ## Attach a Block Storage Volume to a Droplet
-     *
      * | Attribute  | Details                                                             |
      * | ---------- | ------------------------------------------------------------------- |
      * | type       | This must be `attach`                                               |
      * | droplet_id | Set to the Droplet's ID                                             |
      * | region     | Set to the slug representing the region where the volume is located |
-     *
      * Each volume may only be attached to a single Droplet. However, up to fifteen
      * volumes may be attached to a Droplet at a time. Pre-formatted volumes will be
      * automatically mounted to Ubuntu, Debian, Fedora, Fedora Atomic, and CentOS
      * Droplets created on or after April 26, 2018 when attached. On older Droplets,
      * [additional configuration](https://docs.digitalocean.com/products/volumes/how-to/mount/)
      * is required.
-     *
      * ## Remove a Block Storage Volume from a Droplet
-     *
      * | Attribute  | Details                                                             |
      * | ---------- | ------------------------------------------------------------------- |
      * | type       | This must be `detach`                                               |
      * | droplet_id | Set to the Droplet's ID                                             |
      * | region     | Set to the slug representing the region where the volume is located |
-     *
      * ## Resize a Volume
-     *
      * | Attribute      | Details                                                             |
      * | -------------- | ------------------------------------------------------------------- |
      * | type           | This must be `resize`                                               |
      * | size_gigabytes | The new size of the block storage volume in GiB (1024^3)            |
      * | region         | Set to the slug representing the region where the volume is located |
-     *
      * Volumes may only be resized upwards. The maximum size for a volume is 16TiB.
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param mixed $requestBody
      * @param array{
@@ -8327,8 +7869,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the status of a volume action, send a GET request to `/v2/volumes/$VOLUME_ID/actions/$ACTION_ID`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
      * @param array{
@@ -8349,8 +7889,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the snapshots that have been created from a volume, send a GET request to `/v2/volumes/$VOLUME_ID/snapshots`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -8406,11 +7944,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a VPC, send a POST request to `/v2/vpcs` specifying the attributes
      * in the table below in the JSON body.
-     *
      * **Note:** If you do not currently have a VPC network in a specific datacenter
      * region, the first one that you create will be set as the default for that
      * region. The default VPC for a region cannot be changed or deleted.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateTooManyRequestsException
@@ -8426,12 +7962,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete a VPC, send a DELETE request to `/v2/vpcs/$VPC_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
      * The default VPC for a region can not be deleted. Additionally, a VPC can only
      * be deleted if it does not contain any member resources. Attempting to delete
      * a region's default VPC or a VPC that still has members will result in a
      * 403 Forbidden error response.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteNotFoundException
@@ -8463,7 +7997,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To update a subset of information about a VPC, send a PATCH request to
      * `/v2/vpcs/$VPC_ID`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPatchBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchUnauthorizedException
@@ -8480,7 +8013,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To update information about a VPC, send a PUT request to `/v2/vpcs/$VPC_ID`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPutBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateUnauthorizedException
@@ -8498,14 +8030,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the resources that are members of a VPC, send a GET request to
      * `/v2/vpcs/$VPC_ID/members`.
-     *
      * To only list resources of a specific type that are members of the VPC,
      * included a `resource_type` query parameter. For example, to only list Droplets
      * in the VPC, send a GET request to `/v2/vpcs/$VPC_ID/members?resource_type=droplet`.
-     *
      * Only resources that you are authorized to see will be returned (e.g. to see Droplets,
      * you must have `droplet:read`).
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param array{
      *    "resource_type"?: string, //Used to filter VPC members by a resource type.
@@ -8527,7 +8056,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of a VPC's peerings, send a GET request to
      * `/v2/vpcs/$VPC_ID/peerings`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
@@ -8548,7 +8076,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create a new VPC peering for a given VPC, send a POST request to
      * `/v2/vpcs/$VPC_ID/peerings`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsUnauthorizedException
@@ -8567,7 +8094,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update the name of a VPC peering in a particular VPC, send a PATCH request
      * to `/v2/vpcs/$VPC_ID/peerings/$VPC_PEERING_ID` with the new `name` in the
      * request body.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsVpcPeeringIdPatchBody $requestBody
@@ -8607,7 +8133,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * specifying a name and a list of two VPC IDs to peer. The response code, 202
      * Accepted, does not indicate the success or failure of the operation, just
      * that the request has been accepted for processing.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcPeeringsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateTooManyRequestsException
@@ -8622,7 +8147,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To delete a VPC peering, send a DELETE request to `/v2/vpc_peerings/$VPC_PEERING_ID`.
-     *
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteNotFoundException
@@ -8638,7 +8162,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To show information about an existing VPC Peering, send a GET request to `/v2/vpc_peerings/$VPC_PEERING_ID`.
-     *
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetNotFoundException
@@ -8654,7 +8177,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To update the name of a VPC peering, send a PATCH request to `/v2/vpc_peerings/$VPC_PEERING_ID` with the new `name` in the request body.
-     *
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcPeeringsVpcPeeringIdPatchBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchUnauthorizedException
@@ -8673,7 +8195,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all VPC NAT gateways in your team, send a GET request to `/v2/vpc_nat_gateways`.
      * The response body will be a JSON object with a key of `vpc_nat_gateways` containing an array of VPC NAT gateway objects.
      * These each contain the standard VPC NAT gateway attributes.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.
@@ -8695,9 +8216,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To create a new VPC NAT gateway, send a POST request to `/v2/vpc_nat_gateways` setting the required attributes.
-     *
      * The response body will contain a JSON object with a key called `vpc_nat_gateway` containing the standard attributes for the new VPC NAT gateway.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateTooManyRequestsException
@@ -8712,9 +8231,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To destroy a VPC NAT Gateway, send a DELETE request to the `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID` endpoint.
-     *
      * A successful response will include a 202 response code and no content.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteNotFoundException
@@ -8731,7 +8248,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To show information about an individual VPC NAT gateway, send a GET request to
      * `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID`.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetNotFoundException
@@ -8749,7 +8265,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To update the configuration of an existing VPC NAT Gateway, send a PUT request to
      * `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID`. The request must contain a full representation
      * of the VPC NAT Gateway including existing attributes.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      * @param null|\Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateUnauthorizedException
@@ -8785,7 +8300,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create an Uptime check, send a POST request to `/v2/uptime/checks` specifying the attributes
      * in the table below in the JSON body.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckTooManyRequestsException
@@ -8801,10 +8315,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete an Uptime check, send a DELETE request to `/v2/uptime/checks/$CHECK_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
-     *
      * Deleting a check will also delete alerts associated with the check.
-     *
      * @param string $checkId A unique identifier for a check.
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckNotFoundException
@@ -8835,7 +8346,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To update the settings of an Uptime check, send a PUT request to `/v2/uptime/checks/$CHECK_ID`.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdPutBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckUnauthorizedException
@@ -8887,7 +8397,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To create an Uptime alert, send a POST request to `/v2/uptime/checks/$CHECK_ID/alerts` specifying the attributes
      * in the table below in the JSON body.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsPostBody $requestBody
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertUnauthorizedException
@@ -8905,7 +8414,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To delete an Uptime alert, send a DELETE request to `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param string $alertId A unique identifier for an alert.
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertUnauthorizedException
@@ -8938,7 +8446,6 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To update the settings of an Uptime alert, send a PUT request to `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param string $alertId A unique identifier for an alert.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsAlertIdPutBody $requestBody

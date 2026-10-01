@@ -8,17 +8,12 @@ class DatabasesListUsers extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To list all of the users for your database cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/users`.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * The result will be a JSON object with a `users` key. This will be set to an array
      * of database user objects, each of which will contain the standard database user attributes.
      * User passwords will not show without the `database:view_credentials` scope.
-     *
      * For MySQL clusters, additional options will be contained in the mysql_settings object.
-     *
      * For MongoDB clusters, additional information will be contained in the mongo_user_settings object
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

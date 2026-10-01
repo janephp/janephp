@@ -7,7 +7,6 @@ class VpcPeeringsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     protected $vpc_peering_id;
     /**
      * To delete a VPC peering, send a DELETE request to `/v2/vpc_peerings/$VPC_PEERING_ID`.
-     *
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      */
     public function __construct(string $vpcPeeringId)

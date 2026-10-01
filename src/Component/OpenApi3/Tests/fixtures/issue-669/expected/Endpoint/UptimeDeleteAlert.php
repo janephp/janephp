@@ -9,7 +9,6 @@ class UptimeDeleteAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To delete an Uptime alert, send a DELETE request to `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param string $alertId A unique identifier for an alert.
      */

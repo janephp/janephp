@@ -6,7 +6,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime
 {
     /**
      * List campaigns
-     *
      * **Requires one of these permissions**:
      * ["advertiser_campaign_edit","advertiser_campaign_view"]
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody

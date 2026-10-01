@@ -10,15 +10,12 @@ class RegistryDeleteRepositoryTag extends \Jane\Generated\DigitalOcean\Runtime\C
     /**
      * To delete a container repository tag, send a DELETE request to
      * `/v2/registry/$REGISTRY_NAME/repositories/$REPOSITORY_NAME/tags/$TAG`.
-     *
      * Note that if your repository name contains `/` characters, it must be
      * URL-encoded in the request URL. For example, to delete
      * `registry.digitalocean.com/example/my/repo:mytag`, the path would be
      * `/v2/registry/example/repositories/my%2Frepo/tags/mytag`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      * @param string $repositoryTag The name of a container registry repository tag.

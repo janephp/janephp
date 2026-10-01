@@ -6,7 +6,6 @@ class NfsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
 {
     /**
      * To create a new NFS share, send a POST request to `/v2/nfs`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\NfsRequest $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\NfsRequest $requestBody)

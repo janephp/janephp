@@ -11,7 +11,6 @@ class ImagesCreateCustom extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * The image must be in the raw, qcow2, vhdx, vdi, or vmdk format.
      * It may be compressed using gzip or bzip2 and must be smaller than 100 GB after
      *  being decompressed.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ImageNewCustom $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\ImageNewCustom $requestBody)

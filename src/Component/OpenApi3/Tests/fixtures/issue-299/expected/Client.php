@@ -6,7 +6,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Cl
 {
     /**
      * Foo bar
-     *
      * @param array{
      *    "userState": string, //User state
      * } $queryParameters

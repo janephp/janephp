@@ -8,7 +8,6 @@ class ImagesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
     /**
     * To retrieve information about an image, send a `GET` request to
     * `/v2/images/$IDENTIFIER`.
-    *
     * @param mixed $imageId A unique number (id) or string (slug) used to identify and reference a
     specific image.
     

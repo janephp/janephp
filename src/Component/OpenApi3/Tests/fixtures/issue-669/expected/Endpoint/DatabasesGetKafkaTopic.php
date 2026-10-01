@@ -9,9 +9,7 @@ class DatabasesGetKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To retrieve a given topic by name from the set of a Kafka cluster's topics,
      * send a GET request to `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      */

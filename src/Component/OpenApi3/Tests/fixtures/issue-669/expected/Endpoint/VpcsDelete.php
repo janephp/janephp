@@ -8,12 +8,10 @@ class VpcsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     /**
      * To delete a VPC, send a DELETE request to `/v2/vpcs/$VPC_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
      * The default VPC for a region can not be deleted. Additionally, a VPC can only
      * be deleted if it does not contain any member resources. Attempting to delete
      * a region's default VPC or a VPC that still has members will result in a
      * 403 Forbidden error response.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      */
     public function __construct(string $vpcId)

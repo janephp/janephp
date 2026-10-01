@@ -8,10 +8,8 @@ class KubernetesDeleteCluster extends \Jane\Generated\DigitalOcean\Runtime\Clien
     /**
      * To delete a Kubernetes cluster and all services deployed to it, send a DELETE
      * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID`.
-     *
      * A 204 status code with no body will be returned in response to a successful
      * request.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

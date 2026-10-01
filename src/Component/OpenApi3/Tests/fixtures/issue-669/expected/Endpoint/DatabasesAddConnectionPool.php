@@ -11,12 +11,10 @@ class DatabasesAddConnectionPool extends \Jane\Generated\DigitalOcean\Runtime\Cl
      * pooling utility PgBouncer is used to provide this service. [See here for more information](https://docs.digitalocean.com/products/databases/postgresql/how-to/manage-connection-pools/)
      * about how and why to use PgBouncer connection pooling including
      * details about the available transaction modes.
-     *
      * To add a new connection pool to a PostgreSQL database cluster, send a POST
      * request to `/v2/databases/$DATABASE_ID/pools` specifying a name for the pool,
      * the user to connect with, the database to connect to, as well as its desired
      * size and transaction mode.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\ConnectionPool $requestBody
      */

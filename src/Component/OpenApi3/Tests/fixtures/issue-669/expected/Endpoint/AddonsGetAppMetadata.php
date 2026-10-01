@@ -8,7 +8,6 @@ class AddonsGetAppMetadata extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To find out what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
      * Metadata varies by application.
-     *
      * @param string $appSlug The slug identifier for the application whose metadata is being requested.
      */
     public function __construct(string $appSlug)

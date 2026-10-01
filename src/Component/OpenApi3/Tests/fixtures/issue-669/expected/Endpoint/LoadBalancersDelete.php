@@ -9,10 +9,8 @@ class LoadBalancersDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * To delete a load balancer instance, disassociating any Droplets assigned to it
      * and removing it from your account, send a DELETE request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      */
     public function __construct(string $lbId)

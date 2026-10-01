@@ -8,9 +8,7 @@ class DatabasesListKafkaTopics extends \Jane\Generated\DigitalOcean\Runtime\Clie
     /**
      * To list all of a Kafka cluster's topics, send a GET request to
      * `/v2/databases/$DATABASE_ID/topics`.
-     *
      * The result will be a JSON object with a `topics` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

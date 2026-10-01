@@ -9,10 +9,8 @@ class SnapshotsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * Both Droplet and volume snapshots are managed through the `/v2/snapshots/`
      * endpoint. To delete a snapshot, send a DELETE request to
      * `/v2/snapshots/$SNAPSHOT_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * @param mixed $snapshotId Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.
      */
     public function __construct($snapshotId)

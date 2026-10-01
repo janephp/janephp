@@ -7,9 +7,7 @@ class DatabasesListReplicas extends \Jane\Generated\DigitalOcean\Runtime\Client\
     protected $database_cluster_uuid;
     /**
      * To list all of the read-only replicas associated with a database cluster, send a GET request to `/v2/databases/$DATABASE_ID/replicas`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The result will be a JSON object with a `replicas` key. This will be set to an array of database replica objects, each of which will contain the standard database replica attributes.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */

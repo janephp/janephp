@@ -9,7 +9,6 @@ class KubernetesAddNodePool extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * To add an additional node pool to a Kubernetes clusters, send a POST request
      * to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools` with the following
      * attributes.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\KubernetesNodePool $requestBody
      */

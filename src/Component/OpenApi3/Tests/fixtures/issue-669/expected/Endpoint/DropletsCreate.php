@@ -7,7 +7,6 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     /**
      * To create a new Droplet, send a POST request to `/v2/droplets` setting the
      * required attributes.
-     *
      * A Droplet will be created using the provided information. The response body
      * will contain a JSON object with a key called `droplet`. The value will be an
      * object containing the standard attributes for your new Droplet. The response
@@ -15,14 +14,11 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * just that the request has been accepted for processing. The `actions` returned
      * as part of the response's `links` object can be used to check the status
      * of the Droplet create event.
-     *
      * ### Create Multiple Droplets
-     *
      * Creating multiple Droplets is very similar to creating a single Droplet.
      * Instead of sending `name` as a string, send `names` as an array of strings. A
      * Droplet will be created for each name you send using the associated
      * information. Up to ten Droplets may be created this way at a time.
-     *
      * Rather than returning a single Droplet, the response body will contain a JSON
      * array with a key called `droplets`. This will be set to an array of JSON
      * objects, each of which will contain the standard Droplet attributes. The
@@ -30,7 +26,6 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * operation, just that the request has been accepted for processing. The array
      * of `actions` returned as part of the response's `links` object can be used to
      * check the status of each individual Droplet create event.
-     *
      * @param null|mixed $requestBody
      */
     public function __construct($requestBody = null)

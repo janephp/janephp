@@ -7,7 +7,6 @@ class KubernetesListClusters extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To list all of the Kubernetes clusters on your account, send a GET request
      * to `/v2/kubernetes/clusters`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

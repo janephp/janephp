@@ -9,10 +9,8 @@ class ProjectsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * To delete a project, send a DELETE request to `/v2/projects/$PROJECT_ID`. To
      * be deleted, a project must not have any resources assigned to it. Any existing
      * resources must first be reassigned or destroyed, or you will receive a 412 error.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $projectId A unique identifier for a project.
      */
     public function __construct(string $projectId)

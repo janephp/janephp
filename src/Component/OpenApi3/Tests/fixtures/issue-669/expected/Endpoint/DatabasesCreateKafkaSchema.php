@@ -8,7 +8,6 @@ class DatabasesCreateKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To create a Kafka schema for a database cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/schema-registry`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryPostBody $requestBody
      */

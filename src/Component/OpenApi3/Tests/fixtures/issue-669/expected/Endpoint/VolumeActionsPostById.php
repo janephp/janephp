@@ -9,40 +9,31 @@ class VolumeActionsPostById extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * To initiate an action on a block storage volume by Id, send a POST request to
      * `~/v2/volumes/$VOLUME_ID/actions`. The body should contain the appropriate
      * attributes for the respective action.
-     *
      * ## Attach a Block Storage Volume to a Droplet
-     *
      * | Attribute  | Details                                                             |
      * | ---------- | ------------------------------------------------------------------- |
      * | type       | This must be `attach`                                               |
      * | droplet_id | Set to the Droplet's ID                                             |
      * | region     | Set to the slug representing the region where the volume is located |
-     *
      * Each volume may only be attached to a single Droplet. However, up to fifteen
      * volumes may be attached to a Droplet at a time. Pre-formatted volumes will be
      * automatically mounted to Ubuntu, Debian, Fedora, Fedora Atomic, and CentOS
      * Droplets created on or after April 26, 2018 when attached. On older Droplets,
      * [additional configuration](https://docs.digitalocean.com/products/volumes/how-to/mount/)
      * is required.
-     *
      * ## Remove a Block Storage Volume from a Droplet
-     *
      * | Attribute  | Details                                                             |
      * | ---------- | ------------------------------------------------------------------- |
      * | type       | This must be `detach`                                               |
      * | droplet_id | Set to the Droplet's ID                                             |
      * | region     | Set to the slug representing the region where the volume is located |
-     *
      * ## Resize a Volume
-     *
      * | Attribute      | Details                                                             |
      * | -------------- | ------------------------------------------------------------------- |
      * | type           | This must be `resize`                                               |
      * | size_gigabytes | The new size of the block storage volume in GiB (1024^3)            |
      * | region         | Set to the slug representing the region where the volume is located |
-     *
      * Volumes may only be resized upwards. The maximum size for a volume is 16TiB.
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param mixed $requestBody
      * @param array{

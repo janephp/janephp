@@ -7,9 +7,7 @@ class AutoscalepoolsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     protected $autoscale_pool_id;
     /**
      * To destroy an autoscale pool, send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID` endpoint.
-     *
      * A successful response will include a 202 response code and no content.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      */
     public function __construct(string $autoscalePoolId)

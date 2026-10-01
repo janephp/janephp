@@ -7,7 +7,6 @@ class VpcsUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     protected $vpc_id;
     /**
      * To update information about a VPC, send a PUT request to `/v2/vpcs/$VPC_ID`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPutBody $requestBody
      */

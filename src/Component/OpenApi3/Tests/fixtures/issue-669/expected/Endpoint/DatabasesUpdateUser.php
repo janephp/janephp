@@ -9,14 +9,11 @@ class DatabasesUpdateUser extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To update an existing database user, send a PUT request to `/v2/databases/$DATABASE_ID/users/$USERNAME`
      * with the desired settings.
-     *
      * **Note**: only `settings` can be updated via this type of request. If you wish to change the name of a user,
      * you must recreate a new user.
-     *
      * The response will be a JSON object with a key called `user`. The value of this will be an
      * object that contains the name of the update database user, along with the `settings` object that
      * has been updated.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernamePutBody $requestBody

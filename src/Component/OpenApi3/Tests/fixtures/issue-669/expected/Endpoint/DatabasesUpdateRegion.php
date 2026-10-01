@@ -9,12 +9,10 @@ class DatabasesUpdateRegion extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * To migrate a database cluster to a new region, send a `PUT` request to
      * `/v2/databases/$DATABASE_ID/migrate`. The body of the request must specify a
      * `region` attribute.
-     *
      * A successful request will receive a 202 Accepted status code with no body in
      * response. Querying the database cluster will show that its `status` attribute
      * will now be set to `migrating`. This will transition back to `online` when the
      * migration has completed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidMigratePutBody $requestBody
      */

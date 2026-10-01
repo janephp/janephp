@@ -9,12 +9,9 @@ class DatabasesDeleteUser extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To remove a specific database user, send a DELETE request to
      * `/v2/databases/$DATABASE_ID/users/$USERNAME`.
-     *
      * A status of 204 will be given. This indicates that the request was processed
      * successfully, but that no response body is needed.
-     *
      * Note: User management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $username The name of the database user.
      */

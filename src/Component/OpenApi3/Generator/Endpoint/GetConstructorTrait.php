@@ -116,7 +116,15 @@ trait GetConstructorTrait
 
         $methodParamsDoc = ['/**'];
         if ($operation->getOperation()->description ?? null) {
-            foreach (explode("\n", $operation->getOperation()->description ?? null) as $line) {
+            // Skip empty lines: YAML folded scalars can yield consecutive breaks
+            // (blank paragraphs, or a break next to a more-indented line whose
+            // folding differs across symfony/yaml versions). Keeping output
+            // canonical makes it independent of the installed YAML parser.
+            $descriptionLines = explode("\n", $operation->getOperation()->description ?? null);
+            foreach ($descriptionLines as $line) {
+                if ('' === trim($line)) {
+                    continue;
+                }
                 $methodParamsDoc[] = rtrim(' * ' . str_replace('*/', '*\\/', $line));
             }
         }

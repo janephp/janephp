@@ -6,7 +6,6 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\
 {
     /**
      * Foo bar
-     *
      * @param array{
      *    "userState": string, //User state
      * } $queryParameters

@@ -7,8 +7,6 @@ class VolumeActionsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     protected $volume_id;
     /**
      * To retrieve all actions that have been executed on a volume, send a GET request to `/v2/volumes/$VOLUME_ID/actions`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

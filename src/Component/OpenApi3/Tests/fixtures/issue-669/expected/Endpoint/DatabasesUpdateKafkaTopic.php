@@ -9,9 +9,7 @@ class DatabasesUpdateKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
     /**
      * To update a topic attached to a Kafka cluster, send a PUT request to
      * `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $topicName The name used to identify the Kafka topic.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsTopicNamePutBody $requestBody

@@ -7,7 +7,6 @@ class PartnerAttachmentsCreateServiceKey extends \Jane\Generated\DigitalOcean\Ru
     protected $pa_id;
     /**
      * This operation generates a new service key for the specified partner attachment. The operation is asynchronous, and the response is an empty JSON object returned with a 202 status code. To poll for the new service key, send a `GET` request to `/v2/partner_network_connect/attachments/{pa_id}/service_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      */
     public function __construct(string $paId)

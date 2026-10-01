@@ -8,10 +8,7 @@ class UptimeDeleteCheck extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To delete an Uptime check, send a DELETE request to `/v2/uptime/checks/$CHECK_ID`. A 204 status
      * code with no body will be returned in response to a successful request.
-     *
-     *
      * Deleting a check will also delete alerts associated with the check.
-     *
      * @param string $checkId A unique identifier for a check.
      */
     public function __construct(string $checkId)

@@ -9,10 +9,8 @@ class CdnCreateEndpoint extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * origin attribute must be set to the fully qualified domain name (FQDN) of a
      * DigitalOcean Space. Optionally, the TTL may be configured by setting the `ttl`
      * attribute.
-     *
      * A custom subdomain may be configured by specifying the `custom_domain` and
      * `certificate_id` attributes.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\CdnEndpoint $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\CdnEndpoint $requestBody)

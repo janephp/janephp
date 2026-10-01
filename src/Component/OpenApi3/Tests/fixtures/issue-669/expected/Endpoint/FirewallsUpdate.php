@@ -12,7 +12,6 @@ class FirewallsUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * are not provided will be reset to their default values.**
      * <br><br>You must have read access (e.g. `droplet:read`) to all resources attached
      * to the firewall to successfully update the firewall.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdPutBody $requestBody
      */

@@ -10,7 +10,6 @@ class DatabasesGetKafkaSchemaConfig extends \Jane\Generated\DigitalOcean\Runtime
      * `/v2/databases/$DATABASE_ID/schema-registry/config`.
      * The response is a JSON object with a `compatibility_level` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

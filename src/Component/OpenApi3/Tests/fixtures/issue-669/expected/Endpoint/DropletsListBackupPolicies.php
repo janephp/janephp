@@ -7,7 +7,6 @@ class DropletsListBackupPolicies extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To list information about the backup policies for all Droplets in the account,
      * send a GET request to `/v2/droplets/backups/policies`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

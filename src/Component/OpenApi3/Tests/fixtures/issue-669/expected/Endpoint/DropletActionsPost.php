@@ -9,7 +9,6 @@ class DropletActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * To initiate an action on a Droplet send a POST request to
      * `/v2/droplets/$DROPLET_ID/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action                                   | Details | Additionally Required Permission |
      * | ---------------------------------------- | ----------- | ----------- |
      * | <nobr>`enable_backups`</nobr>            | Enables backups for a Droplet | |
@@ -28,7 +27,6 @@ class DropletActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * | <nobr>`change_kernel`</nobr>             | Changes a Droplet's kernel. Only applies to Droplets with externally managed kernels. All Droplets created after March 2017 use internal kernels by default. | |
      * | <nobr>`enable_ipv6`</nobr>               | Enables IPv6 for a Droplet. Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets) is required. | |
      * | <nobr>`snapshot`</nobr>                  | Takes a snapshot of a Droplet. | image:create |
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param null|mixed $requestBody
      */

@@ -7,10 +7,8 @@ class ByoipPrefixesPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     protected $byoip_prefix_uuid;
     /**
      * To update a BYOIP prefix, send a PATCH request to `/v2/byoip_prefixes/$byoip_prefix_uuid`.
-     *
      * Currently, you can update the advertisement status of the prefix.
      * The response will include the updated details of the prefix.
-     *
      * @param string $byoipPrefixUuid A unique identifier for a BYOIP prefix.
      * @param \Jane\Generated\DigitalOcean\Model\ByoipPrefixUpdate $requestBody
      */

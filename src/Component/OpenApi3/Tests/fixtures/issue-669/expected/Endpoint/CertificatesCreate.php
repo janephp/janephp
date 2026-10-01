@@ -7,14 +7,11 @@ class CertificatesCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To upload new SSL certificate which you have previously generated, send a POST
      * request to `/v2/certificates`.
-     *
      * When uploading a user-generated certificate, the `private_key`,
      * `leaf_certificate`, and optionally the `certificate_chain` attributes should
      * be provided. The type must be set to `custom`.
-     *
      * When using Let's Encrypt to create a certificate, the `dns_names` attribute
      * must be provided, and the type must be set to `lets_encrypt`.
-     *
      * @param mixed $requestBody
      */
     public function __construct($requestBody)

@@ -9,10 +9,8 @@ class DatabasesDeleteOpensearchIndex extends \Jane\Generated\DigitalOcean\Runtim
     /**
      * To delete a single index within OpenSearch cluster, send a DELETE request
      * to `/v2/databases/$DATABASE_ID/indexes/$INDEX_NAME`.
-     *
      * A status of 204 will be given. This indicates that the request was
      * processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $indexName The name of the OpenSearch index.
      */

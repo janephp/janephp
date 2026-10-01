@@ -9,7 +9,6 @@ class AddonsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * To delete an add-on resource, send a DELETE request to `/v2/add-ons/saas/{resource_uuid}` with the UUID of the resource to delete.
      * You cannot retrieve the resource after it has been deleted. The response indicates a request was sent to the 3rd party add-on provider to delete the resource.
      * You will no longer be billed for this resource.
-     *
      * @param string $resourceUuid A unique identifier for the add-on resource.
      */
     public function __construct(string $resourceUuid)

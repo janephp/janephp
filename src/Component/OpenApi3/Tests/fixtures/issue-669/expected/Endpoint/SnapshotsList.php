@@ -7,25 +7,17 @@ class SnapshotsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     /**
      * To list all of the snapshots available on your account, send a GET request to
      * `/v2/snapshots`.
-     *
      * The response will be a JSON object with a key called `snapshots`. This will be
      * set to an array of `snapshot` objects, each of which will contain the standard
      * snapshot attributes.
-     *
      * ### Filtering Results by Resource Type
-     *
      * It's possible to request filtered results by including certain query parameters.
-     *
      * #### List Droplet Snapshots
-     *
      * To retrieve only snapshots based on Droplets, include the `resource_type`
      * query parameter set to `droplet`. For example, `/v2/snapshots?resource_type=droplet`.
-     *
      * #### List Volume Snapshots
-     *
      * To retrieve only snapshots based on volumes, include the `resource_type`
      * query parameter set to `volume`. For example, `/v2/snapshots?resource_type=volume`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

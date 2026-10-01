@@ -9,10 +9,8 @@ class RegistriesDeleteRepository extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To delete a container repository including all of its tags, send a DELETE request to
      * `/v2/registries/$REGISTRY_NAME/repositories/$REPOSITORY_NAME`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
      */

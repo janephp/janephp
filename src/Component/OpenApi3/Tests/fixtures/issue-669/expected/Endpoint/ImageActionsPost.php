@@ -7,19 +7,14 @@ class ImageActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     protected $image_id;
     /**
      * The following actions are available on an Image.
-     *
      * ## Convert an Image to a Snapshot
-     *
      * To convert an image, for example, a backup to a snapshot, send a POST request
      * to `/v2/images/$IMAGE_ID/actions`. Set the `type` attribute to `convert`.
-     *
      * ## Transfer an Image
-     *
      * To transfer an image to another region, send a POST request to
      * `/v2/images/$IMAGE_ID/actions`. Set the `type` attribute to `transfer` and set
      * `region` attribute to the slug identifier of the region you wish to transfer
      * to.
-     *
      * @param int $imageId A unique number that can be used to identify and reference a specific image.
      * @param null|mixed $requestBody
      */

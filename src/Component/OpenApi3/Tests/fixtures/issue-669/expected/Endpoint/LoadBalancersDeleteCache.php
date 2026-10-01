@@ -8,10 +8,8 @@ class LoadBalancersDeleteCache extends \Jane\Generated\DigitalOcean\Runtime\Clie
     /**
      * To delete a Global load balancer CDN cache, send a DELETE request to
      * `/v2/load_balancers/$LOAD_BALANCER_ID/cache`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      */
     public function __construct(string $lbId)

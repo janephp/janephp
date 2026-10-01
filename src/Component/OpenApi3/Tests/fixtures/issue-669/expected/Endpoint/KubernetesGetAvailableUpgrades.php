@@ -9,7 +9,6 @@ class KubernetesGetAvailableUpgrades extends \Jane\Generated\DigitalOcean\Runtim
      * To determine whether a cluster can be upgraded, and the versions to which it
      * can be upgraded, send a GET request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/upgrades`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

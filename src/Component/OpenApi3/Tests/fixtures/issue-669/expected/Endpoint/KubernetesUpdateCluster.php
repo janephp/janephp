@@ -9,7 +9,6 @@ class KubernetesUpdateCluster extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * To update a Kubernetes cluster, send a PUT request to
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID` and specify one or more of the
      * attributes below.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\ClusterUpdate $requestBody
      */

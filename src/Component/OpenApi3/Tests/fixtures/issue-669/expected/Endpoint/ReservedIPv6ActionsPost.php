@@ -9,12 +9,10 @@ class ReservedIPv6ActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * To initiate an action on a reserved IPv6 send a POST request to
      * `/v2/reserved_ipv6/$RESERVED_IPV6/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a reserved IPv6 to a Droplet
      * | `unassign` | Unassign a reserved IPv6 from a Droplet
-     *
      * @param string $reservedIpv6 A reserved IPv6 address.
      * @param null|mixed $requestBody
      */

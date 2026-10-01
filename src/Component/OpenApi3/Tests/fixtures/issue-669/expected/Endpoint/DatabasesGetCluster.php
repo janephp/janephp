@@ -7,11 +7,8 @@ class DatabasesGetCluster extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     protected $database_cluster_uuid;
     /**
      * To show information about an existing database cluster, send a GET request to `/v2/databases/$DATABASE_ID`.
-     *
      * The response will be a JSON object with a database key. This will be set to an object containing the standard database cluster attributes.
-     *
      * The embedded `connection` and `private_connection` objects will contain the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects contain the information needed to connect to the cluster's standby node(s).
-     *
      * The embedded maintenance_window object will contain information about any scheduled maintenance for the database cluster.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */

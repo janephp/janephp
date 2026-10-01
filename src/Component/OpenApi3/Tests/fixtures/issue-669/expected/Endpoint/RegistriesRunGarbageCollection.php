@@ -12,11 +12,9 @@ class RegistriesRunGarbageCollection extends \Jane\Generated\DigitalOcean\Runtim
      * manifests, garbage collection is effectively a noop.
      * [See here for more information](https://docs.digitalocean.com/products/container-registry/how-to/clean-up-container-registry/)
      * about how and why you should clean up your container registry periodically.
-     *
      * To request a garbage collection run on your registry, send a POST request to
      * `/v2/registries/$REGISTRY_NAME/garbage-collection`. This will initiate the
      * following sequence of events on your registry.
-     *
      * * Set the registry to read-only mode, meaning no further write-scoped
      *   JWTs will be issued to registry clients. Existing write-scoped JWTs will
      *   continue to work until they expire which can take up to 15 minutes.
@@ -27,7 +25,6 @@ class RegistriesRunGarbageCollection extends \Jane\Generated\DigitalOcean\Runtim
      *   collection status as `success`.
      * * Remove the read-only mode restriction from the registry, meaning write-scoped
      *   JWTs will once again be issued to registry clients.
-     *
      * @param string $registryName The name of a container registry.
      */
     public function __construct(string $registryName)

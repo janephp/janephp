@@ -8,13 +8,11 @@ class KubernetesCreateCluster extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * To create a new Kubernetes cluster, send a POST request to
      * `/v2/kubernetes/clusters`. The request must contain at least one node pool
      * with at least one worker.
-     *
      * The request may contain a maintenance window policy describing a time period
      * when disruptive maintenance tasks may be carried out. Omitting the policy
      * implies that a window will be chosen automatically. See
      * [here](https://docs.digitalocean.com/products/kubernetes/how-to/upgrade-cluster/)
      * for details.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\Cluster $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\Cluster $requestBody)

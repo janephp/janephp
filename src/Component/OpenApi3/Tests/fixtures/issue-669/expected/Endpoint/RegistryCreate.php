@@ -6,11 +6,9 @@ class RegistryCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
 {
     /**
      * To create your container registry, send a POST request to `/v2/registry`.
-     *
      * The `name` becomes part of the URL for images stored in the registry. For
      * example, if your registry is called `example`, an image in it will have the
      * URL `registry.digitalocean.com/example/image:tag`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\RegistryCreate $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\RegistryCreate $requestBody)

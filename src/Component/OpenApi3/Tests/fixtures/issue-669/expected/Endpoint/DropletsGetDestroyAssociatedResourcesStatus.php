@@ -9,7 +9,6 @@ class DropletsGetDestroyAssociatedResourcesStatus extends \Jane\Generated\Digita
      * To check on the status of a request to destroy a Droplet with its associated
      * resources, send a GET request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/status` endpoint.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

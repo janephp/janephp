@@ -10,11 +10,9 @@ class LoadBalancersRemoveForwardingRules extends \Jane\Generated\DigitalOcean\Ru
      * request to `/v2/load_balancers/$LOAD_BALANCER_ID/forwarding_rules`. In the
      * body of the request, there should be a `forwarding_rules` attribute containing
      * an array of rules to be removed.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $lbId A unique identifier for a load balancer.
      * @param \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdForwardingRulesDeleteBody $requestBody
      */

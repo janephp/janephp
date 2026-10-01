@@ -7,9 +7,7 @@ class SpacesKeyGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     protected $access_key;
     /**
      * To get a Spaces Access Key, send a GET request to `/v2/spaces/keys/$ACCESS_KEY`.
-     *
      * A successful request will return the Access Key.
-     *
      * @param string $accessKey The access key's ID.
      */
     public function __construct(string $accessKey)

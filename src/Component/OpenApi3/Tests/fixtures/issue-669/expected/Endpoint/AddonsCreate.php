@@ -8,7 +8,6 @@ class AddonsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * To create an add-on resource, send a POST request to `/v2/add-ons/saas` with required parameters.
      * Some add-ons require additional metadata to be provided in the request body. To find out
      * what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody)

@@ -10,7 +10,6 @@ class AppsValidateRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * to check if there are any warnings or validation conditions that will cause the rollback to proceed
      * under unideal circumstances. For example, if a component must be rebuilt as part of the rollback
      * causing it to take longer than usual.
-     *
      * @param string $appId The app ID
      * @param \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody
      */

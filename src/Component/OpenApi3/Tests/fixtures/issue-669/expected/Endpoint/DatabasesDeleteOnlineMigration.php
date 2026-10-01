@@ -8,9 +8,7 @@ class DatabasesDeleteOnlineMigration extends \Jane\Generated\DigitalOcean\Runtim
     protected $migration_id;
     /**
      * To stop an online migration, send a DELETE request to `/v2/databases/$DATABASE_ID/online-migration/$MIGRATION_ID`.
-     *
      * A status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $migrationId A unique identifier assigned to the online migration.
      */

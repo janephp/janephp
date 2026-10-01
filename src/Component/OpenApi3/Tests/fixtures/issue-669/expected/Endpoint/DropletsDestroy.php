@@ -7,10 +7,8 @@ class DropletsDestroy extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     protected $droplet_id;
     /**
      * To delete a Droplet, send a DELETE request to `/v2/droplets/$DROPLET_ID`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)

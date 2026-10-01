@@ -7,8 +7,6 @@ class VolumeSnapshotsGetById extends \Jane\Generated\DigitalOcean\Runtime\Client
     protected $snapshot_id;
     /**
      * To retrieve the details of a snapshot that has been created from a volume, send a GET request to `/v2/volumes/snapshots/$VOLUME_SNAPSHOT_ID`.
-     *
-     *
      * @param string $snapshotId The unique identifier for the snapshot.
      */
     public function __construct(string $snapshotId)

@@ -8,7 +8,6 @@ class PartnerAttachmentsDelete extends \Jane\Generated\DigitalOcean\Runtime\Clie
     /**
      * To delete an existing partner attachment, send a `DELETE` request to
      * `/v2/partner_network_connect/attachments/{pa_id}`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      */
     public function __construct(string $paId)

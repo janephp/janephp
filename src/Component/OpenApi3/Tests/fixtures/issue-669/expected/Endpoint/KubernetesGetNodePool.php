@@ -9,7 +9,6 @@ class KubernetesGetNodePool extends \Jane\Generated\DigitalOcean\Runtime\Client\
     /**
      * To show information about a specific node pool in a Kubernetes cluster, send
      * a GET request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID`.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      */

@@ -10,7 +10,6 @@ class KubernetesRecycleNodePool extends \Jane\Generated\DigitalOcean\Runtime\Cli
      * The endpoint has been deprecated. Please use the DELETE
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/node_pools/$NODE_POOL_ID/nodes/$NODE_ID`
      * method instead.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBody $requestBody

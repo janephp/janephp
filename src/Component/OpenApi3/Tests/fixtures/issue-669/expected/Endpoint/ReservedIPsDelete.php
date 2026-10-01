@@ -8,10 +8,8 @@ class ReservedIPsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To delete a reserved IP and remove it from your account, send a DELETE request
      * to `/v2/reserved_ips/$RESERVED_IP_ADDR`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $reservedIp A reserved IP address.
      */
     public function __construct(string $reservedIp)

@@ -8,10 +8,8 @@ class ReservedIPv6Delete extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To delete a reserved IP and remove it from your account, send a DELETE request
      * to `/v2/reserved_ipv6/$RESERVED_IPV6`.
-     *
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
-     *
      * @param string $reservedIpv6 A reserved IPv6 address.
      */
     public function __construct(string $reservedIpv6)

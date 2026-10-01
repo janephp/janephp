@@ -8,7 +8,6 @@ class AddonsPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     /**
      * To change the name of an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}`.
      * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the name.
-     *
      * @param string $resourceUuid The UUID of the add-on resource to rename.
      * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody
      */

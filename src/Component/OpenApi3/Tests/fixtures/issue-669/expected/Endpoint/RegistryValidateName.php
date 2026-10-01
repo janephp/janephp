@@ -7,11 +7,9 @@ class RegistryValidateName extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To validate that a container registry name is available for use, send a POST
      * request to `/v2/registry/validate-name`.
-     *
      * If the name is both formatted correctly and available, the response code will
      * be 204 and contain no body. If the name is already in use, the response will
      * be a 409 Conflict.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody)

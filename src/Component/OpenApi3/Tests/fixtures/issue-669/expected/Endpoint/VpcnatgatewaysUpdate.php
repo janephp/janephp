@@ -9,7 +9,6 @@ class VpcnatgatewaysUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * To update the configuration of an existing VPC NAT Gateway, send a PUT request to
      * `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID`. The request must contain a full representation
      * of the VPC NAT Gateway including existing attributes.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      * @param null|\Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate $requestBody
      */

@@ -9,7 +9,6 @@ class KubernetesDestroyAssociatedResourcesDangerous extends \Jane\Generated\Digi
      * To delete a Kubernetes cluster with all of its associated resources, send a
      * DELETE request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/destroy_with_associated_resources/dangerous`.
      * A 204 status code with no body will be returned in response to a successful request.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      */
     public function __construct(string $clusterId)

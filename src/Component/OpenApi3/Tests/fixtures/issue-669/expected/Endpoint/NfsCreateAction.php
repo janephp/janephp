@@ -9,14 +9,12 @@ class NfsCreateAction extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * To execute an action (such as resize) on a specified NFS share,
      * send a POST request to `/v2/nfs/{nfs_id}/actions`. In the JSON body
      * to the request, set the `type` attribute to on of the supported action types:
-     *
      * | Action                           | Details |
      * | -------------------------------- | ----------- |
      * | <nobr>`resize`</nobr>            | Resizes an NFS share. Set the size_gib attribute to a desired value in GiB |
      * | <nobr>`snapshot`</nobr>          | Takes a snapshot of an NFS share |
      * | <nobr>`attach`</nobr>            | Attaches an NFS share to a VPC. Set the vpc_id attribute to the desired VPC ID |
      * | <nobr>`detach`</nobr>            | Detaches an NFS share from a VPC. Set the vpc_id attribute to the desired VPC ID |
-     *
      * @param string $nfsId The unique ID of the NFS share
      * @param mixed $requestBody
      */

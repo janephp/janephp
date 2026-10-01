@@ -8,7 +8,6 @@ class SpacesKeyCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * To create a new Spaces Access Key, send a POST request to `/v2/spaces/keys`.
      * At the moment, you cannot mix a fullaccess permission with scoped permissions.
      * A fullaccess permission will be prioritized if fullaccess and scoped permissions are both added.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\Key $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\Key $requestBody)

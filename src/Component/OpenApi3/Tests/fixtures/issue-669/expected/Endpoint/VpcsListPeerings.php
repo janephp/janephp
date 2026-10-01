@@ -8,7 +8,6 @@ class VpcsListPeerings extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     /**
      * To list all of a VPC's peerings, send a GET request to
      * `/v2/vpcs/$VPC_ID/peerings`.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

@@ -6,9 +6,7 @@ class ProjectsAssignResourcesDefault extends \Jane\Generated\DigitalOcean\Runtim
 {
     /**
      * To assign resources to your default project, send a POST request to `/v2/projects/default/resources`.
-     *
      * You must have both project:update and <resource>:read scopes to assign new resources. For example, to assign a Droplet to the default project, include both the `project:update` and `droplet:read` scopes.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody)

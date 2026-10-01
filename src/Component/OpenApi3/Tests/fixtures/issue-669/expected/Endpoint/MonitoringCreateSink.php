@@ -7,7 +7,6 @@ class MonitoringCreateSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To create a new sink, send a POST request to `/v2/monitoring/sinks`. Forwards logs from the
      * resources identified in `resources` to the specified pre-existing destination.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2MonitoringSinksPostBody $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\V2MonitoringSinksPostBody $requestBody)

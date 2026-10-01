@@ -7,7 +7,6 @@ class UptimeUpdateCheck extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     protected $check_id;
     /**
      * To update the settings of an Uptime check, send a PUT request to `/v2/uptime/checks/$CHECK_ID`.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdPutBody $requestBody
      */

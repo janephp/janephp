@@ -7,11 +7,9 @@ class VpcsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     /**
      * To create a VPC, send a POST request to `/v2/vpcs` specifying the attributes
      * in the table below in the JSON body.
-     *
      * **Note:** If you do not currently have a VPC network in a specific datacenter
      * region, the first one that you create will be set as the default for that
      * region. The default VPC for a region cannot be changed or deleted.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsPostBody $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\V2VpcsPostBody $requestBody)

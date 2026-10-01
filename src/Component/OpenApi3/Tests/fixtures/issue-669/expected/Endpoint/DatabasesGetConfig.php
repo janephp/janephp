@@ -10,7 +10,6 @@ class DatabasesGetConfig extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * `/v2/databases/$DATABASE_ID/config`.
      * The response is a JSON object with a `config` key, which is set to an object
      * containing any database configuration parameters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

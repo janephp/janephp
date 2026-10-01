@@ -8,7 +8,6 @@ class UptimeCreateAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To create an Uptime alert, send a POST request to `/v2/uptime/checks/$CHECK_ID/alerts` specifying the attributes
      * in the table below in the JSON body.
-     *
      * @param string $checkId A unique identifier for a check.
      * @param \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsPostBody $requestBody
      */

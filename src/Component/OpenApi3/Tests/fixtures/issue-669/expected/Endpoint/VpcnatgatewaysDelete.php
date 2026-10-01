@@ -7,9 +7,7 @@ class VpcnatgatewaysDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     protected $id;
     /**
      * To destroy a VPC NAT Gateway, send a DELETE request to the `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID` endpoint.
-     *
      * A successful response will include a 202 response code and no content.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      */
     public function __construct(string $id)

@@ -9,7 +9,6 @@ class VpcPeeringsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * specifying a name and a list of two VPC IDs to peer. The response code, 202
      * Accepted, does not indicate the success or failure of the operation, just
      * that the request has been accepted for processing.
-     *
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcPeeringsPostBody $requestBody
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\V2VpcPeeringsPostBody $requestBody)

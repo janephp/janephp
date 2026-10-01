@@ -10,7 +10,6 @@ class VpcsPatchPeerings extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      * To update the name of a VPC peering in a particular VPC, send a PATCH request
      * to `/v2/vpcs/$VPC_ID/peerings/$VPC_PEERING_ID` with the new `name` in the
      * request body.
-     *
      * @param string $vpcId A unique identifier for a VPC.
      * @param string $vpcPeeringId A unique identifier for a VPC peering.
      * @param \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsVpcPeeringIdPatchBody $requestBody

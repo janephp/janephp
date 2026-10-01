@@ -8,13 +8,10 @@ class DomainsCreateRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
      * To create a new record to a domain, send a POST request to
      * `/v2/domains/$DOMAIN_NAME/records`.
-     *
      * The request must include all of the required fields for the domain record type
      * being added.
-     *
      * See the [attribute table](#tag/Domain-Records) for details regarding record
      * types and their respective required attributes.
-     *
      * @param string $domainName The name of the domain itself.
      * @param null|mixed $requestBody
      */

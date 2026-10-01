@@ -8,7 +8,6 @@ class DatabasesListKafkaSchemas extends \Jane\Generated\DigitalOcean\Runtime\Cli
     /**
      * To list all schemas for a Kafka cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/schema-registry`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

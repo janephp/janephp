@@ -10,7 +10,6 @@ class DatabasesGetKafkaSchemaVersion extends \Jane\Generated\DigitalOcean\Runtim
     /**
      * To get a specific schema by subject name for a Kafka cluster, send a GET request to
      * `/v2/databases/$DATABASE_ID/schema-registry/$SUBJECT_NAME/versions/$VERSION`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $subjectName The name of the Kafka schema subject.
      * @param string $version The version of the Kafka schema subject.

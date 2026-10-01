@@ -8,7 +8,6 @@ class PartnerAttachmentsListRemoteRoutes extends \Jane\Generated\DigitalOcean\Ru
     /**
      * To list all remote routes associated with a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/remote_routes`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

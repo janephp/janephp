@@ -8,15 +8,12 @@ class KubernetesDestroyAssociatedResourcesSelective extends \Jane\Generated\Digi
     /**
      * To delete a Kubernetes cluster along with a subset of its associated resources,
      * send a DELETE request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/destroy_with_associated_resources/selective`.
-     *
      * The JSON body of the request should include `load_balancers`, `volumes`, or
      * `volume_snapshots` keys each set to an array of IDs for the associated
      * resources to be destroyed.
-     *
      * The IDs can be found by querying the cluster's associated resources endpoint.
      * Any associated resource not included in the request will remain and continue
      * to accrue changes on your account.
-     *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param \Jane\Generated\DigitalOcean\Model\DestroyAssociatedKubernetesResources $requestBody
      */

@@ -9,10 +9,8 @@ class DropletActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To retrieve a Droplet action, send a GET request to
      * `/v2/droplets/$DROPLET_ID/actions/$ACTION_ID`.
-     *
      * The response will be a JSON object with a key called `action`. The value will
      * be a Droplet action object.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
      */

@@ -7,8 +7,6 @@ class VolumeSnapshotsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     protected $volume_id;
     /**
      * To retrieve the snapshots that have been created from a volume, send a GET request to `/v2/volumes/$VOLUME_ID/snapshots`.
-     *
-     *
      * @param string $volumeId The ID of the block storage volume.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

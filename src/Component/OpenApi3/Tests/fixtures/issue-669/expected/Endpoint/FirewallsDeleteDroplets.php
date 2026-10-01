@@ -9,11 +9,9 @@ class FirewallsDeleteDroplets extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * To remove a Droplet from a firewall, send a DELETE request to
      * `/v2/firewalls/$FIREWALL_ID/droplets`. In the body of the request, there should
      * be a `droplet_ids` attribute containing a list of Droplet IDs.
-     *
      * No response body will be sent back, but the response code will indicate
      * success. Specifically, the response code will be a 204, which means that the
      * action was successful with no returned body data.
-     *
      * @param string $firewallId A unique ID that can be used to identify and reference a firewall.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdDropletsDeleteBody $requestBody
      */

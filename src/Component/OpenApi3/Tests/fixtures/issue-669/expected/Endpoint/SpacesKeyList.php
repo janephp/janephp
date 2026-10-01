@@ -6,7 +6,6 @@ class SpacesKeyList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
 {
     /**
      * To list Spaces Access Key, send a GET request to `/v2/spaces/keys`. Sort parameter must be used with Sort Direction.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

@@ -8,9 +8,7 @@ class DatabasesGetReplica extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     protected $replica_name;
     /**
      * To show information about an existing database replica, send a GET request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
-     *
      * **Note**: Read-only replicas are not supported for Caching or Valkey clusters.
-     *
      * The response will be a JSON object with a `replica key`. This will be set to an object containing the standard database replica attributes.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $replicaName The name of the database replica.

@@ -8,7 +8,6 @@ class DatabasesPatchConfig extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To update the configuration for an existing database cluster, send a PATCH request to
      * `/v2/databases/$DATABASE_ID/config`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\DatabaseConfig $requestBody
      */

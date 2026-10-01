@@ -3027,7 +3027,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * This triggers the import of a Transfer, creating Contents. All items in the Transfer will be enqueued for rendering.
-     *
      * Wait for completion on the Business process ID that is returned to wait for import completion.
      * Note: Before attempting to import a Transfer, the transfer has to be in the TransferReady state.
      * @param string $id ID of transfer.
@@ -3049,9 +3048,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * This triggers the import of selected items in a Transfer, creating contents. All imported items will be enqueued for rendering.
-     *
      * Wait for completion on the Business process ID that is returned to wait for import completion.
-     *
      * Transfer will transition to state ImportDone if no files of the transfer remain for import.
      * Transfer will transition to state TransferReady if any files of the transfer remain for import.
      * @param string $id ID of transfer.
@@ -3176,10 +3173,8 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Uploads the specified chunk data.
-     *
      * Use `Content-Type: application/octet-stream` for uploading chunked data.
      * The chunk data should be contained in the body of your request.
-     *
      * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.

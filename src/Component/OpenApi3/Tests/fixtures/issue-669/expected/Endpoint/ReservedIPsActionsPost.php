@@ -9,12 +9,10 @@ class ReservedIPsActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client
      * To initiate an action on a reserved IP send a POST request to
      * `/v2/reserved_ips/$RESERVED_IP/actions`. In the JSON body to the request,
      * set the `type` attribute to on of the supported action types:
-     *
      * | Action     | Details
      * |------------|--------
      * | `assign`   | Assigns a reserved IP to a Droplet
      * | `unassign` | Unassign a reserved IP from a Droplet
-     *
      * @param string $reservedIp A reserved IP address.
      * @param null|mixed $requestBody
      */

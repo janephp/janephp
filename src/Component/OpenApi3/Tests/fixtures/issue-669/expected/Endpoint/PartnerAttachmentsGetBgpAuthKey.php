@@ -8,7 +8,6 @@ class PartnerAttachmentsGetBgpAuthKey extends \Jane\Generated\DigitalOcean\Runti
     /**
      * To get the current BGP auth key for a partner attachment, send a `GET` request to
      * `/v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key`.
-     *
      * @param string $paId A unique identifier for a partner attachment.
      */
     public function __construct(string $paId)

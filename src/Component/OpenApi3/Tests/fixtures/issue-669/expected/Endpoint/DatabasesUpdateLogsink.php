@@ -9,7 +9,6 @@ class DatabasesUpdateLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To update a logsink for a database cluster, send a PUT request to
      * `/v2/databases/$DATABASE_ID/logsink/$LOGSINK_ID`.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param string $logsinkId A unique identifier for a logsink of a database cluster
      * @param \Jane\Generated\DigitalOcean\Model\LogsinkUpdate $requestBody

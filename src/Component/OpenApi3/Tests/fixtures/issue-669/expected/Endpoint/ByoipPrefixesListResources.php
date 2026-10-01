@@ -7,9 +7,7 @@ class ByoipPrefixesListResources extends \Jane\Generated\DigitalOcean\Runtime\Cl
     protected $byoip_prefix_uuid;
     /**
      * To list resources associated with BYOIP prefixes, send a GET request to `/v2/byoip_prefixes/{byoip_prefix_uuid}/ips`.
-     *
      * A successful response will return a list of resources associated with the specified BYOIP prefix.
-     *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
      * @param array{
      *    "per_page"?: int, //Number of items returned per page

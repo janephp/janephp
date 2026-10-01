@@ -8,7 +8,6 @@ class VpcnatgatewaysGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To show information about an individual VPC NAT gateway, send a GET request to
      * `/v2/vpc_nat_gateways/$VPC_NAT_GATEWAY_ID`.
-     *
      * @param string $id The unique identifier of the VPC NAT gateway.
      */
     public function __construct(string $id)

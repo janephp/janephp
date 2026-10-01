@@ -9,7 +9,6 @@ class DomainsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * attribute to the domain name you are adding. Optionally, you may set the
      * "ip_address" attribute, and an A record will be automatically created pointing
      * to the apex domain.
-     *
      * @param null|\Jane\Generated\DigitalOcean\Model\Domain $requestBody
      */
     public function __construct(?\Jane\Generated\DigitalOcean\Model\Domain $requestBody = null)

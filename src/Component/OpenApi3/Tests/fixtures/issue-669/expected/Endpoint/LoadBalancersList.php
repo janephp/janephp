@@ -7,7 +7,6 @@ class LoadBalancersList extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To list all of the load balancer instances on your account, send a GET request
      * to `/v2/load_balancers`.
-     *
      * @param array{
      *    "per_page"?: int, //Number of items returned per page
      *    "page"?: int, //Which 'page' of paginated results to return.

@@ -9,7 +9,6 @@ class AutoscalepoolsUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * To update the configuration of an existing autoscale pool, send a PUT request to
      * `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID`. The request must contain a full representation
      * of the autoscale pool including existing attributes.
-     *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
      * @param null|\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody
      */

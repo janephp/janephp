@@ -8,7 +8,6 @@ class CertificatesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To delete a specific certificate, send a DELETE request to
      * `/v2/certificates/$CERTIFICATE_ID`.
-     *
      * @param string $certificateId A unique identifier for a certificate.
      */
     public function __construct(string $certificateId)

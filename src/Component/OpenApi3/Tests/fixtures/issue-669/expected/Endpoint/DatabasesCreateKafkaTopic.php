@@ -8,9 +8,7 @@ class DatabasesCreateKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
     /**
      * To create a topic attached to a Kafka cluster, send a POST request to
      * `/v2/databases/$DATABASE_ID/topics`.
-     *
      * The result will be a JSON object with a `topic` key.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param null|\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsPostBody $requestBody
      */

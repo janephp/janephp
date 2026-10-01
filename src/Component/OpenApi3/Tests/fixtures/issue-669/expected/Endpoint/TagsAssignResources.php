@@ -9,15 +9,12 @@ class TagsAssignResources extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * Resources can be tagged by sending a POST request to
      * `/v2/tags/$TAG_NAME/resources` with an array of json objects containing
      * `resource_id` and `resource_type` attributes.
-     *
      * Currently only tagging of Droplets, Databases, Images, Volumes, and Volume
      * Snapshots is supported. `resource_type` is expected to be the string `droplet`,
      * `database`, `image`, `volume` or `volume_snapshot`. `resource_id` is expected
      * to be the ID of the resource as a string.
-     *
      * In order to tag a resource, you must have both `tag:create` and `<resource type>:update` scopes. For example,
      * to tag a Droplet, you must have `tag:create` and `droplet:update`.
-     *
      * @param string $tagId The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.
      * @param \Jane\Generated\DigitalOcean\Model\TagsResource $requestBody
      */

@@ -8,7 +8,6 @@ class AppsRevertRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * Revert an app rollback. This action reverts the active rollback by creating a new deployment from the
      * latest app spec prior to the rollback and unpins the app to resume new deployments.
-     *
      * @param string $appId The app ID
      */
     public function __construct(string $appId)

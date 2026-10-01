@@ -8,12 +8,9 @@ class DatabasesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     /**
      * To list all of the databases in a clusters, send a GET request to
      * `/v2/databases/$DATABASE_ID/dbs`.
-     *
      * The result will be a JSON object with a `dbs` key. This will be set to an array
      * of database objects, each of which will contain the standard database attributes.
-     *
      * Note: Database management is not supported for Caching or Valkey clusters.
-     *
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      */
     public function __construct(string $databaseClusterUuid)

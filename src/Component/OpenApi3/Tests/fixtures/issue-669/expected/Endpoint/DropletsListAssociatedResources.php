@@ -9,14 +9,11 @@ class DropletsListAssociatedResources extends \Jane\Generated\DigitalOcean\Runti
      * To list the associated billable resources that can be destroyed along with a
      * Droplet, send a GET request to the
      * `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources` endpoint.
-     *
      * This endpoint will only return resources that you are authorized to see. For
      * example, to see associated Reserved IPs, include the `reserved_ip:read` scope.
-     *
      * The response will be a JSON object containing `snapshots`, `volumes`, and
      * `volume_snapshots` keys. Each will be set to an array of objects containing
      * information about the associated resources.
-     *
      * @param int $dropletId A unique identifier for a Droplet instance.
      */
     public function __construct(int $dropletId)
