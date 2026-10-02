@@ -49,7 +49,12 @@ trait PathParameterNameTrait
 
             $propertyFetch = new Expr\PropertyFetch(new Expr\Variable('this'), $name);
 
-            if (\in_array($type, ['integer', 'number', 'boolean'], true)) {
+            if ('boolean' === $type) {
+                // rawurlencode() requires a string and (string) false would silently yield
+                // an empty path segment: coerce to the "1"/"0" wire representation instead,
+                // as the runtime does for query values (BaseEndpoint::stringifyScalar()).
+                $propertyFetch = new Expr\Cast\String_(new Expr\Cast\Int_($propertyFetch));
+            } elseif (\in_array($type, ['integer', 'number'], true)) {
                 $propertyFetch = new Expr\Cast\String_($propertyFetch);
             }
 

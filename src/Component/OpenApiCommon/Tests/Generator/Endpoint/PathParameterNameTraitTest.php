@@ -77,7 +77,10 @@ final class PathParameterNameTraitTest extends TestCase
         yield 'string is not cast' => ['string', 'rawurlencode($this->id)'];
         yield 'integer is cast' => ['integer', 'rawurlencode((string) $this->id)'];
         yield 'number is cast' => ['number', 'rawurlencode((string) $this->id)'];
-        yield 'boolean is cast' => ['boolean', 'rawurlencode((string) $this->id)'];
+        // booleans go through (string) (int) so false yields "0" — the same
+        // "1"/"0" wire representation the runtime uses for query values —
+        // instead of an empty path segment.
+        yield 'boolean is cast to 1/0' => ['boolean', 'rawurlencode((string) (int) $this->id)'];
         yield 'array is imploded' => ['array', "rawurlencode(implode(',', \$this->id))"];
         yield 'unknown type is left as-is' => [null, 'rawurlencode($this->id)'];
     }

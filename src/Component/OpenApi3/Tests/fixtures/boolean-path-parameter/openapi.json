@@ -1,0 +1,38 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Boolean path parameter"
+    },
+    "paths": {
+        "/flags/{active}": {
+            "get": {
+                "summary": "Get flags by active state",
+                "operationId": "getFlagByActive",
+                "parameters": [
+                    {
+                        "name": "active",
+                        "in": "path",
+                        "required": true,
+                        "description": "Filter by active state",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Flag found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
