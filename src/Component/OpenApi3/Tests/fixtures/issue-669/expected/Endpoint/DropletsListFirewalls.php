@@ -29,7 +29,7 @@ class DropletsListFirewalls extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}'], [rawurlencode($this->droplet_id)], '/v2/droplets/{droplet_id}/firewalls');
+        return str_replace(['{droplet_id}'], [rawurlencode((string) $this->droplet_id)], '/v2/droplets/{droplet_id}/firewalls');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

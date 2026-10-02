@@ -23,7 +23,7 @@ class ImageActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     }
     public function getUri(): string
     {
-        return str_replace(['{image_id}', '{action_id}'], [rawurlencode($this->image_id), rawurlencode($this->action_id)], '/v2/images/{image_id}/actions/{action_id}');
+        return str_replace(['{image_id}', '{action_id}'], [rawurlencode((string) $this->image_id), rawurlencode((string) $this->action_id)], '/v2/images/{image_id}/actions/{action_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

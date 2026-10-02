@@ -22,7 +22,7 @@ class DropletsDestroy extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}'], [rawurlencode($this->droplet_id)], '/v2/droplets/{droplet_id}');
+        return str_replace(['{droplet_id}'], [rawurlencode((string) $this->droplet_id)], '/v2/droplets/{droplet_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

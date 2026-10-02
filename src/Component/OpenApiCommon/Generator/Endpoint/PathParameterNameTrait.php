@@ -47,7 +47,13 @@ trait PathParameterNameTrait
                 return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))]));
             }
 
-            return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]));
+            $propertyFetch = new Expr\PropertyFetch(new Expr\Variable('this'), $name);
+
+            if (\in_array($type, ['integer', 'number', 'boolean'], true)) {
+                $propertyFetch = new Expr\Cast\String_($propertyFetch);
+            }
+
+            return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg($propertyFetch)]));
         }, array_keys($propertyNames), $propertyNames);
     }
 }

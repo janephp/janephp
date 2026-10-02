@@ -26,7 +26,7 @@ class DropletActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}', '{action_id}'], [rawurlencode($this->droplet_id), rawurlencode($this->action_id)], '/v2/droplets/{droplet_id}/actions/{action_id}');
+        return str_replace(['{droplet_id}', '{action_id}'], [rawurlencode((string) $this->droplet_id), rawurlencode((string) $this->action_id)], '/v2/droplets/{droplet_id}/actions/{action_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

@@ -26,7 +26,7 @@ class GetOrder extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys
     }
     public function getUri(): string
     {
-        return str_replace(['{order_id}'], [rawurlencode($this->order_id)], '/orders/{order_id}');
+        return str_replace(['{order_id}'], [rawurlencode((string) $this->order_id)], '/orders/{order_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

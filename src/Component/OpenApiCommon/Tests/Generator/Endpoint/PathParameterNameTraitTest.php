@@ -6,6 +6,8 @@ namespace Jane\Component\OpenApiCommon\Tests\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
+use PhpParser\Node\ArrayItem;
+use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
 
 final class PathParameterNameTraitTest extends TestCase
@@ -39,5 +41,44 @@ final class PathParameterNameTraitTest extends TestCase
         };
 
         self::assertSame($expected, $subject->variableName($parameterName));
+    }
+
+    /**
+     * @dataProvider providePathPropertyTypes
+     */
+    public function testBuildPathPropertyFetchArrayItemsCastsNonStringScalars(?string $type, string $expected): void
+    {
+        $subject = new class() {
+            use InflectorTrait;
+            use PathParameterNameTrait;
+
+            /**
+             * @param string[] $propertyNames
+             *
+             * @return ArrayItem[]
+             */
+            public function items(array $propertyNames, array $types): array
+            {
+                return $this->buildPathPropertyFetchArrayItems($propertyNames, $types);
+            }
+        };
+
+        $items = $subject->items(['id'], [$type]);
+
+        self::assertCount(1, $items);
+        self::assertSame($expected, (new Standard())->prettyPrint($items));
+    }
+
+    public static function providePathPropertyTypes(): iterable
+    {
+        // rawurlencode() requires a string: non-string scalar path parameters
+        // (typed int/float/bool in the endpoint) must be cast, otherwise
+        // getUri() fails with a TypeError at runtime.
+        yield 'string is not cast' => ['string', 'rawurlencode($this->id)'];
+        yield 'integer is cast' => ['integer', 'rawurlencode((string) $this->id)'];
+        yield 'number is cast' => ['number', 'rawurlencode((string) $this->id)'];
+        yield 'boolean is cast' => ['boolean', 'rawurlencode((string) $this->id)'];
+        yield 'array is imploded' => ['array', "rawurlencode(implode(',', \$this->id))"];
+        yield 'unknown type is left as-is' => [null, 'rawurlencode($this->id)'];
     }
 }

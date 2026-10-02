@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi] `integer`, `number` and `boolean` path parameters no longer make the generated `getUri()` throw `rawurlencode(): Argument #1 ($string) must be of type string` at runtime: the typed `int` / `float` / `bool` endpoint property is now cast (`rawurlencode((string) $this->id)`), consistently for OpenAPI 2 / 3 / 3.1 (OpenAPI 2 path parameters now also reuse the array `implode` handling and the scalar cast previously reserved to OpenAPI 3 / 3.1)
 
 ## [8.0.0] - 2026-10-01
 ### Added
