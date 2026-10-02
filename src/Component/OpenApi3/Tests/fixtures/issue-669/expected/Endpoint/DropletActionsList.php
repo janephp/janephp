@@ -29,7 +29,7 @@ class DropletActionsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}'], [rawurlencode($this->droplet_id)], '/v2/droplets/{droplet_id}/actions');
+        return str_replace(['{droplet_id}'], [rawurlencode((string) $this->droplet_id)], '/v2/droplets/{droplet_id}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

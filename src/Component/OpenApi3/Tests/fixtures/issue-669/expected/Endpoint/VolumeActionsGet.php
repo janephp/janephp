@@ -28,7 +28,7 @@ class VolumeActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{volume_id}', '{action_id}'], [rawurlencode($this->volume_id), rawurlencode($this->action_id)], '/v2/volumes/{volume_id}/actions/{action_id}');
+        return str_replace(['{volume_id}', '{action_id}'], [rawurlencode($this->volume_id), rawurlencode((string) $this->action_id)], '/v2/volumes/{volume_id}/actions/{action_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

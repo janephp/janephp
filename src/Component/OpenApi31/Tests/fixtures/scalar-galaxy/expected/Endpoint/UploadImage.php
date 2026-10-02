@@ -25,7 +25,7 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\
     }
     public function getUri(): string
     {
-        return str_replace(['{planetId}'], [rawurlencode($this->planetId)], '/planets/{planetId}/image');
+        return str_replace(['{planetId}'], [rawurlencode((string) $this->planetId)], '/planets/{planetId}/image');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

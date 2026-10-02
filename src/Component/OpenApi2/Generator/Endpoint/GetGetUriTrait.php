@@ -25,6 +25,7 @@ trait GetGetUriTrait
     {
         $placeholders = [];
         $propertyNames = [];
+        $types = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -35,6 +36,7 @@ trait GetGetUriTrait
                 // $url = str_replace('{param}', $param, $url)
                 $placeholders[] = $parameter->name;
                 $propertyNames[] = $this->normalizePathPropertyName($parameter->name);
+                $types[] = $parameter->type ?? null;
             }
         }
 
@@ -55,7 +57,7 @@ trait GetGetUriTrait
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Scalar\String_('{' . $name . '}'));
                     }, $placeholders))),
-                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames))),
+                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames, $types))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],
