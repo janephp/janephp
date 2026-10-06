@@ -50,7 +50,7 @@ class BadResponseExceptionTest extends TestCase
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
+            $endpoint->parseResponse($response, $this->createStub(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (BadResponseException $e) {
             self::assertSame(409, $e->getCode());
@@ -65,7 +65,7 @@ class BadResponseExceptionTest extends TestCase
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
+            $endpoint->parseResponse($response, $this->createStub(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (UnexpectedStatusCodeException $e) {
             self::assertInstanceOf(BadResponseException::class, $e);
@@ -83,7 +83,7 @@ class BadResponseExceptionTest extends TestCase
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
+            $endpoint->parseResponse($response, $this->createStub(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (UnexpectedStatusCodeException $e) {
             self::assertInstanceOf(WithResponseInterface::class, $e);
@@ -96,6 +96,6 @@ class BadResponseExceptionTest extends TestCase
         $response = self::response(200);
         $endpoint = new GetFoo();
 
-        self::assertNull($endpoint->parseResponse($response, $this->createMock(SerializerInterface::class)));
+        self::assertNull($endpoint->parseResponse($response, $this->createStub(SerializerInterface::class)));
     }
 }

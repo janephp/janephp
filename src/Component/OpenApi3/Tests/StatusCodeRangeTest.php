@@ -54,7 +54,7 @@ class StatusCodeRangeTest extends TestCase
     {
         $endpoint = new GetFoo();
 
-        return $endpoint->parseResponse($response, $serializer ?? $this->createMock(SerializerInterface::class));
+        return $endpoint->parseResponse($response, $serializer ?? $this->createStub(SerializerInterface::class));
     }
 
     private static function response(int $statusCode, string $body = '', array $headers = []): ResponseInterface
@@ -97,7 +97,7 @@ class StatusCodeRangeTest extends TestCase
     {
         $payload = new Message();
         $payload->message = 'error';
-        $serializer = $this->createMock(SerializerInterface::class);
+        $serializer = $this->createStub(SerializerInterface::class);
         $serializer->method('deserialize')->willReturn($payload);
 
         foreach ([500, 503, 599] as $statusCode) {

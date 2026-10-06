@@ -11,6 +11,7 @@ use Jane\Component\OpenApi31\Guesser\OpenApiSchema\AnyOfReferenceGuesser;
 use Jane\Component\OpenApi31\Guesser\OpenApiSchema\OneOfReferenceGuesser;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AbstractXOfReferenceGuesser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -55,9 +56,7 @@ class XOfReferenceGuesserTest extends TestCase
         }
     }
 
-    /**
-     * @dataProvider guesserProvider
-     */
+    #[DataProvider('guesserProvider')]
     public function testUnionBranchWithoutAllOfKeywordIsSkippedInsteadOfFataling(string $guesserClass, string $unionKeyword): void
     {
         $guesser = $this->createGuesser($guesserClass);
@@ -73,9 +72,7 @@ class XOfReferenceGuesserTest extends TestCase
         self::assertSame([], $type->getTypes());
     }
 
-    /**
-     * @dataProvider guesserProvider
-     */
+    #[DataProvider('guesserProvider')]
     public function testUnionBranchWithAnAllOfKeywordStillCounts(string $guesserClass, string $unionKeyword): void
     {
         $guesser = $this->createGuesser($guesserClass);
@@ -100,7 +97,7 @@ class XOfReferenceGuesserTest extends TestCase
 
     private function createGuesser(string $guesserClass): AbstractXOfReferenceGuesser
     {
-        $denormalizer = $this->createMock(DenormalizerInterface::class);
+        $denormalizer = $this->createStub(DenormalizerInterface::class);
         $denormalizer
             ->method('denormalize')
             ->willReturnCallback(static function ($data): Schema {

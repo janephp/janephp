@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Tests;
 use Jane\Component\JsonSchema\Console\Command\GenerateCommand;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoader;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -16,9 +17,7 @@ class JaneBaseTest extends TestCase
     use CodeStyleFixerTrait;
     use FixtureComparisonTrait;
 
-    /**
-     * @dataProvider schemaProvider
-     */
+    #[DataProvider('schemaProvider')]
     public function testResources(SplFileInfo $testDirectory): void
     {
         // 1. Generate
@@ -35,7 +34,7 @@ class JaneBaseTest extends TestCase
         $this->assertFixtureMatchesGenerated($testDirectory->getRealPath());
     }
 
-    public function schemaProvider(): array
+    public static function schemaProvider(): array
     {
         $finder = new Finder();
         $finder->directories()->in(__DIR__ . '/fixtures');

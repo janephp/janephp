@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jane\Component\JsonSchema\Tests;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class NamingTest extends TestCase
@@ -17,9 +18,7 @@ final class NamingTest extends TestCase
         yield 'static' => ['static', '_Static'];
     }
 
-    /**
-     * @dataProvider provideReservedClassNames
-     */
+    #[DataProvider('provideReservedClassNames')]
     public function testReservedClassNamesArePrefixed(string $name, string $expected): void
     {
         $naming = new Naming();
@@ -34,9 +33,7 @@ final class NamingTest extends TestCase
         yield 'keyword' => ['class', '_Class'];
     }
 
-    /**
-     * @dataProvider provideRegularClassNames
-     */
+    #[DataProvider('provideRegularClassNames')]
     public function testRegularClassNames(string $name, string $expected): void
     {
         $naming = new Naming();

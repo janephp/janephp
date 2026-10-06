@@ -3,16 +3,16 @@
 namespace Jane\Component\OpenApi2\Tests;
 
 use Jane\Component\OpenApi2\SchemaParser\SecuritySchemeValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SecuritySchemeValidatorTest extends TestCase
 {
     /**
-     * @dataProvider provideDocumentsWithSecurityDefinitions
-     *
      * @param array<mixed>  $document
      * @param array<string> $expectedPointers
      */
+    #[DataProvider('provideDocumentsWithSecurityDefinitions')]
     public function testCollectsEveryInvalidSecurityDefinitionEntry(array $document, array $expectedPointers): void
     {
         $errors = SecuritySchemeValidator::validate($document);
@@ -31,7 +31,7 @@ class SecuritySchemeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>, 1: array<string>}>
      */
-    public function provideDocumentsWithSecurityDefinitions(): \Generator
+    public static function provideDocumentsWithSecurityDefinitions(): \Generator
     {
         yield 'bare scheme definition instead of named map' => [
             [
@@ -135,10 +135,9 @@ class SecuritySchemeValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider provideDocumentsWithValidSecurityDefinitions
-     *
      * @param array<mixed> $document
      */
+    #[DataProvider('provideDocumentsWithValidSecurityDefinitions')]
     public function testValidSecurityDefinitionsProduceNoError(array $document): void
     {
         $this->assertSame([], SecuritySchemeValidator::validate($document));
@@ -147,7 +146,7 @@ class SecuritySchemeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>}>
      */
-    public function provideDocumentsWithValidSecurityDefinitions(): \Generator
+    public static function provideDocumentsWithValidSecurityDefinitions(): \Generator
     {
         yield 'basic' => [['securityDefinitions' => ['auth' => ['type' => 'basic']]]];
         yield 'apiKey header' => [['securityDefinitions' => ['auth' => ['type' => 'apiKey', 'name' => 'api_key', 'in' => 'header']]]];

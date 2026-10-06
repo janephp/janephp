@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\CheckNullableTrait;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema as OpenApi2Schema;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema as OpenApi3Schema;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CheckNullableTraitTest extends TestCase
@@ -19,9 +20,7 @@ class CheckNullableTraitTest extends TestCase
         };
     }
 
-    /**
-     * @dataProvider jsonSchemaTypeProvider
-     */
+    #[DataProvider('jsonSchemaTypeProvider')]
     public function testJsonSchemaNullable(mixed $type, bool $expectedNullable): void
     {
         $schema = new JsonSchema();

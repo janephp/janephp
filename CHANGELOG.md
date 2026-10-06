@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+### Changed
+- [Tests] The dev dependency `phpunit/phpunit` is upgraded from `^9.0` to `^12.5`, the newest release line still compatible with the PHP `^8.3` floor (PHPUnit 13 requires PHP >= 8.4 and would break the 8.3 CI jobs). The doc-comment test metadata removed in PHPUnit 12 is migrated to attributes: the 46 `@dataProvider` docblocks of 29 test files become `#[DataProvider]` attributes, the 19 data providers they reference become `public static`, and the three `@group prism` annotations become `#[Group('prism')]` in `JaneOpenApiResourceTest` of OpenApi 2 / 3 / 3.1. `phpunit.xml` is rewritten for the PHPUnit 12 schema (12.5 XSD, top-level `<source>` element beside `<coverage>`, `.phpunit.cache` replacing `.phpunit.result.cache`); the umbrella `Jane Unit Test Suite` entry is dropped because PHPUnit 12 warns when a test file is collected twice, and the nine per-component suites already cover the whole tree, so both the CI's suite-less run and `vendor/bin/phpunit --testsuite <Component>` behave exactly as before.
 ## [8.0.1] - 2026-10-06
 ### Fixed
 - [OpenApi] `integer`, `number` and `boolean` path parameters no longer make the generated `getUri()` throw `rawurlencode(): Argument #1 ($string) must be of type string` at runtime: the typed `int` / `float` / `bool` endpoint property is now cast (`rawurlencode((string) $this->id)`), consistently for OpenAPI 2 / 3 / 3.1 (OpenAPI 2 path parameters now also reuse the array `implode` handling and the scalar cast previously reserved to OpenAPI 3 / 3.1). Booleans are coerced through `(string) (int)` to the `"1"` / `"0"` wire representation.

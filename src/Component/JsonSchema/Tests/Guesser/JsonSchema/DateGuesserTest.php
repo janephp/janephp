@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Tests\Guesser\JsonSchema;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\DateGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\DateTimeGuesser;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DateGuesserTest extends TestCase
@@ -19,9 +20,7 @@ class DateGuesserTest extends TestCase
         $this->dateTimeGuesser = new DateTimeGuesser();
     }
 
-    /**
-     * @dataProvider dateSupportProvider
-     */
+    #[DataProvider('dateSupportProvider')]
     public function testDateSupportObject(mixed $type, ?string $format, bool $expected): void
     {
         $schema = new JsonSchema();
@@ -48,9 +47,7 @@ class DateGuesserTest extends TestCase
         yield 'missing format' => [['string', 'null'], null, false];
     }
 
-    /**
-     * @dataProvider dateTimeSupportProvider
-     */
+    #[DataProvider('dateTimeSupportProvider')]
     public function testDateTimeSupportObject(mixed $type, ?string $format, bool $expected): void
     {
         $schema = new JsonSchema();
