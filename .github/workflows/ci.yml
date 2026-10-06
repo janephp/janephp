@@ -43,6 +43,9 @@ jobs:
               - '.editorconfig'
               - '.gitattributes'
               - '.github/ISSUE_TEMPLATE/**'
+          # `docs_only` must match only when every changed file is a docs file:
+          # v3 defaults to `some`, so a single CHANGELOG.md touch would skip all QA.
+          predicate-quantifier: every
   cs-check:
     needs: changes
     if: needs.changes.outputs.docs_only == 'false'
