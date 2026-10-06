@@ -14,18 +14,38 @@ on:
       - '.gitattributes'
       - '.github/ISSUE_TEMPLATE/**'
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
-      - 'mkdocs.yaml'
-      - 'pyproject.toml'
-      - 'poetry.lock'
-      - 'LICENSE'
-      - '.editorconfig'
-      - '.gitattributes'
-      - '.github/ISSUE_TEMPLATE/**'
+    # No paths-ignore here on purpose: GitHub evaluates paths filters when the PR
+    # event arrives, so a CHANGELOG-only PR (like release-prep ones) would produce
+    # no workflow run at all and thus no check results. Instead, every workflow
+    # starts and the QA jobs below are skipped when the PR is docs-only.
+  workflow_dispatch:
 jobs:
+  changes:
+    name: detect docs-only changes
+    runs-on: ubuntu-latest
+    outputs:
+      docs_only: ${{ steps.filter.outputs.docs_only }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: changed files
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            docs_only:
+              - '**.md'
+              - 'docs/**'
+              - 'mkdocs.yaml'
+              - 'pyproject.toml'
+              - 'poetry.lock'
+              - 'LICENSE'
+              - '.editorconfig'
+              - '.gitattributes'
+              - '.github/ISSUE_TEMPLATE/**'
   cs-check:
+    needs: changes
+    if: needs.changes.outputs.docs_only == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -37,6 +57,8 @@ jobs:
       - name: 'php-cs-fixer check'
         run: 'castor qa:cs:check'
   phpstan:
+    needs: changes
+    if: needs.changes.outputs.docs_only == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -60,6 +82,8 @@ jobs:
       - name: 'phpstan check'
         run: 'castor qa:phpstan'
   mago-generated:
+    needs: changes
+    if: needs.changes.outputs.docs_only == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -83,6 +107,8 @@ jobs:
       - name: 'mago analysis of generated code'
         run: 'castor qa:mago:generated'
   tests:
+    needs: changes
+    if: needs.changes.outputs.docs_only == 'false'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 15
@@ -145,6 +171,8 @@ jobs:
       - name: tests
         run: vendor/bin/phpunit --exclude-group none
   tests-lowest:
+    needs: changes
+    if: needs.changes.outputs.docs_only == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: checkout
