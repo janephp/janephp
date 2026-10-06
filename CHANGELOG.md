@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [8.0.1] - 2026-10-06
 ### Fixed
 - [OpenApi] `integer`, `number` and `boolean` path parameters no longer make the generated `getUri()` throw `rawurlencode(): Argument #1 ($string) must be of type string` at runtime: the typed `int` / `float` / `bool` endpoint property is now cast (`rawurlencode((string) $this->id)`), consistently for OpenAPI 2 / 3 / 3.1 (OpenAPI 2 path parameters now also reuse the array `implode` handling and the scalar cast previously reserved to OpenAPI 3 / 3.1). Booleans are coerced through `(string) (int)` to the `"1"` / `"0"` wire representation.
 
@@ -1032,7 +1034,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.0.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v8.0.1...HEAD
+[8.0.1]: https://github.com/janephp/janephp/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/janephp/janephp/compare/v7.14.0...v8.0.0
 [7.14.4]: https://github.com/janephp/janephp/compare/v7.14.3...v7.14.4
 [7.14.3]: https://github.com/janephp/janephp/compare/v7.14.2...v7.14.3
