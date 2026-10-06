@@ -1,0 +1,327 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\BooleanPathParameter\Runtime\Client;
+
+use Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+abstract class BaseEndpoint implements Endpoint
+{
+    protected array $formParameters = [];
+    protected array $queryParameters = [];
+    protected array $headerParameters = [];
+    protected mixed $body;
+    abstract public function getMethod(): string;
+    abstract public function getBody(SerializerInterface $serializer): array;
+    abstract public function getUri(): string;
+    abstract public function getAuthenticationScopes(): array;
+    /**
+     * Transform the response body into a value.
+     *
+     * @return mixed
+     */
+    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
+    protected function getExtraHeaders(): array
+    {
+        return [];
+    }
+    public function getQueryString(): string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $styles = $this->getQueryStyles();
+        $allowReserved = $this->getQueryAllowReserved();
+        $queryParameters = [];
+        foreach ($optionsResolved as $key => $value) {
+            if (\array_key_exists($key, $styles)) {
+                if (null === $value) {
+                    continue;
+                }
+                foreach ($this->encodeStyledValue($key, $value, $styles[$key], \in_array($key, $allowReserved, true)) as $encodedValue) {
+                    $queryParameters[] = $encodedValue;
+                }
+                continue;
+            }
+            // Unset optional parameters resolve to null, which is sent as an
+            // empty value ("?foo=") rather than being dropped: this keeps the
+            // emitted query string stable regardless of whether an optional
+            // parameter was provided. Parameters declaring an OpenAPI query
+            // style skip this mapping (see the $styles branch above).
+            $value = $value ?? '';
+            $allowReservedKey = \in_array($key, $allowReserved, true);
+            $queryParameters[] = $this->encodeValue($key, $value, $allowReservedKey);
+        }
+        return implode('&', $queryParameters);
+    }
+    public function getHeaders(array $baseHeaders = []): array
+    {
+        $headersResolver = $this->getHeadersOptionsResolver();
+        $definedOptions = $headersResolver->getDefinedOptions();
+        $headerParameters = [];
+        foreach ($this->headerParameters as $name => $value) {
+            foreach ($definedOptions as $definedOption) {
+                if (strcasecmp((string) $name, $definedOption) === 0) {
+                    $name = $definedOption;
+                    break;
+                }
+            }
+            $headerParameters[$name] = $value;
+        }
+        return array_merge($this->getExtraHeaders(), $baseHeaders, $headersResolver->resolve($headerParameters));
+    }
+    protected function getQueryOptionsResolver(): OptionsResolver
+    {
+        return new OptionsResolver();
+    }
+    protected function getQueryAllowReserved(): array
+    {
+        return [];
+    }
+    /**
+     * Declares the OpenAPI serialization style of query parameters.
+     *
+     * Keys are query parameter names, values follow the shape
+     * ['style' => string, 'explode' => bool]. Parameters with an
+     * explicit `content` must not be declared here: content based
+     * serialization takes precedence over styles.
+     *
+     * @return array<string, array{style?: string, explode?: bool}>
+     */
+    protected function getQueryStyles(): array
+    {
+        return [];
+    }
+    protected function getHeadersOptionsResolver(): OptionsResolver
+    {
+        return new OptionsResolver();
+    }
+    // ----------------------------------------------------------------------------------------------------
+    // Used for OpenApi2 compatibility
+    protected function getFormBody(): array
+    {
+        return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
+    }
+    protected function getMultipartBody(): array
+    {
+        $bodyBuilder = new MultipartStreamBuilder();
+        $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
+        foreach ($formParameters as $key => $value) {
+            $bodyBuilder->addResource($key, $value);
+        }
+        return [['Content-Type' => ['multipart/form-data; boundary="' . $bodyBuilder->getBoundary() . '"']], $bodyBuilder->build()];
+    }
+    protected function getFormOptionsResolver(): OptionsResolver
+    {
+        return new OptionsResolver();
+    }
+    /**
+     * Deserialize a list-typed response body.
+     *
+     * Generated endpoints deserialize list responses through a class-string
+     * with an array suffix (e.g. 'Acme\Item[]'): no static analyser maps
+     * that string back to the documented array<array-key, Item> shape, and
+     * the serializer interfaces promise returned values beyond `mixed` at
+     * best. The deserialization is delegated here so the generated return
+     * statement carries a statically verifiable array type; the helper
+     * requires the serializer to yield an iterable or array for list types
+     * (iterator_to_array throws a TypeError otherwise, failing loudly on a
+     * misconfigured serializer instead of leaking an unexpected shape).
+     */
+    protected function deserializeListResponse(SerializerInterface $serializer, string $body, string $type, string $format = 'json'): array
+    {
+        return \iterator_to_array($serializer->deserialize($body, $type, $format));
+    }
+    /**
+     * Normalize a form or multipart body.
+     *
+     * Generated form/multipart bodies normalize their payload through the
+     * serializer, whose normalize() method lives on NormalizerInterface
+     * (SerializerInterface does not promise it): delegating here lets the
+     * runtime check the capability once and statically narrow the call.
+     */
+    protected function normalizeBody(SerializerInterface $serializer, mixed $body)
+    {
+        if (!$serializer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerInterface) {
+            throw new \RuntimeException('The serializer used by this endpoint must support normalization.');
+        }
+        return $serializer->normalize($body, 'json');
+    }
+    protected function getSerializedBody(SerializerInterface $serializer): array
+    {
+        return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+    }
+    protected function getSerializedObjectBody(SerializerInterface $serializer): array
+    {
+        return [['Content-Type' => ['application/json']], JsonPayload::encode($serializer, $this->body)];
+    }
+    private function encodeValue(string $key, mixed $value, bool $allowReserved): string
+    {
+        return match (true) {
+            is_int($value) => $this->encodeIntValue($key, $value, $allowReserved),
+            is_bool($value) => $this->encodeIntValue($key, (int) $value, $allowReserved),
+            is_string($value) => $this->encodeStringValue($key, $value, $allowReserved),
+            is_float($value) => $this->encodeStringValue($key, (string) $value, $allowReserved),
+            is_array($value) => $this->encodeArrayValue($key, $value, $allowReserved),
+            default => throw new \InvalidArgumentException(sprintf('Query value for key %s must be either int|string|float|array|bool, %s given', $key, gettype($value))),
+        };
+    }
+    private function encodeIntValue(string $queryParamName, int $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode((string) $value));
+    }
+    private function encodeStringValue(string $queryParamName, string $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode($value));
+    }
+    private function encodeArrayValue(string $queryParamName, array $value, bool $allowReserved): string
+    {
+        $params = [];
+        foreach ($value as $subKey => $subValue) {
+            $arrayKey = $queryParamName . '[' . $subKey . ']';
+            $params[] = $this->encodeValue($arrayKey, $subValue, $allowReserved);
+        }
+        return implode('&', $params);
+    }
+    /**
+     * @param array{style?: string, explode?: bool} $styleConfig
+     *
+     * @return string[]
+     */
+    private function encodeStyledValue(string $name, mixed $value, array $styleConfig, bool $allowReserved): array
+    {
+        $style = $styleConfig['style'] ?? 'form';
+        $explode = $styleConfig['explode'] ?? false;
+        return match ($style) {
+            'form' => $this->encodeFormStyle($name, $value, $explode, $allowReserved),
+            'spaceDelimited' => $this->encodeDelimitedStyle($name, $value, 'spaceDelimited', $allowReserved),
+            'pipeDelimited' => $this->encodeDelimitedStyle($name, $value, 'pipeDelimited', $allowReserved),
+            'deepObject' => $this->encodeDeepObjectStyle($name, $value, $allowReserved),
+            default => throw new \InvalidArgumentException(sprintf('Unsupported query parameter style "%s" for parameter "%s".', $style, $name)),
+        };
+    }
+    /**
+     * @return string[]
+     */
+    private function encodeFormStyle(string $name, mixed $value, bool $explode, bool $allowReserved): array
+    {
+        if (!\is_array($value)) {
+            return [$this->encodeValue($name, $value, $allowReserved)];
+        }
+        if ([] === $value) {
+            return [];
+        }
+        if (!$explode) {
+            return [$this->implodeStyledValues($name, $value, 'form', $allowReserved)];
+        }
+        $pairs = [];
+        if (\array_is_list($value)) {
+            // Exploded arrays repeat the parameter name for each item.
+            foreach ($value as $index => $item) {
+                if (\is_array($item)) {
+                    // Nested levels use bracket notation.
+                    $pairs = array_merge($pairs, $this->flattenBracketPairs($name . '[' . $index . ']', $item, $allowReserved));
+                    continue;
+                }
+                if (null === $item) {
+                    continue;
+                }
+                $pairs[] = $this->encodeValue($name, $item, $allowReserved);
+            }
+            return $pairs;
+        }
+        // Exploded objects drop the parent key: each property becomes a top level pair.
+        foreach ($value as $subKey => $subValue) {
+            if (\is_array($subValue)) {
+                $pairs = array_merge($pairs, $this->flattenBracketPairs((string) $subKey, $subValue, $allowReserved));
+                continue;
+            }
+            if (null === $subValue) {
+                continue;
+            }
+            $pairs[] = $this->encodeValue((string) $subKey, $subValue, $allowReserved);
+        }
+        return $pairs;
+    }
+    /**
+     * @return string[]
+     */
+    private function encodeDelimitedStyle(string $name, mixed $value, string $style, bool $allowReserved): array
+    {
+        if (!\is_array($value)) {
+            return [$this->encodeValue($name, $value, $allowReserved)];
+        }
+        if ([] === $value) {
+            return [];
+        }
+        return [$this->implodeStyledValues($name, $value, $style, $allowReserved)];
+    }
+    /**
+     * @return string[]
+     */
+    private function encodeDeepObjectStyle(string $name, mixed $value, bool $allowReserved): array
+    {
+        if (!\is_array($value)) {
+            return [$this->encodeValue($name, $value, $allowReserved)];
+        }
+        if ([] === $value) {
+            return [];
+        }
+        // deepObject uses bracket notation at every level, including the first one.
+        return $this->flattenBracketPairs($name, $value, $allowReserved);
+    }
+    /**
+     * Flattens nested values using PHP bracket notation with explicit indices
+     * (e.g. `filter[from]=a` or `tags[0]=b`).
+     *
+     * @return string[]
+     */
+    private function flattenBracketPairs(string $prefix, mixed $value, bool $allowReserved): array
+    {
+        if (!\is_array($value)) {
+            if (null === $value) {
+                return [];
+            }
+            return [$this->encodeValue($prefix, $value, $allowReserved)];
+        }
+        $pairs = [];
+        foreach ($value as $subKey => $subValue) {
+            $pairs = array_merge($pairs, $this->flattenBracketPairs($prefix . '[' . $subKey . ']', $subValue, $allowReserved));
+        }
+        return $pairs;
+    }
+    private function implodeStyledValues(string $name, array $value, string $style, bool $allowReserved): string
+    {
+        // Delimiters stay literal (except spaces), values are percent encoded: this matches the OpenAPI examples.
+        $separator = match ($style) {
+            'spaceDelimited' => '%20',
+            'pipeDelimited' => '|',
+            default => ',',
+        };
+        $isList = \array_is_list($value);
+        $parts = [];
+        foreach ($value as $subKey => $subValue) {
+            if (\is_array($subValue)) {
+                throw new \InvalidArgumentException(sprintf('Query parameter "%s" only supports flat values with style "%s", nested arrays or objects are not supported.', $name, $style));
+            }
+            if (null === $subValue) {
+                continue;
+            }
+            if (!$isList) {
+                // Non exploded objects interleave keys and values.
+                $parts[] = rawurlencode((string) $subKey);
+            }
+            $parts[] = $allowReserved ? $this->stringifyScalar($subValue) : rawurlencode($this->stringifyScalar($subValue));
+        }
+        return sprintf('%s=%s', rawurlencode($name), implode($separator, $parts));
+    }
+    private function stringifyScalar(mixed $value): string
+    {
+        return match (true) {
+            \is_bool($value) => (string) (int) $value,
+            \is_int($value), \is_float($value), \is_string($value) => (string) $value,
+            default => throw new \InvalidArgumentException(sprintf('Query value must be either int|string|float|bool|array|null, %s given', gettype($value))),
+        };
+    }
+}

@@ -23,7 +23,7 @@ class GetPlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{planetId}'], [rawurlencode($this->planetId)], '/planets/{planetId}');
+        return str_replace(['{planetId}'], [rawurlencode((string) $this->planetId)], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {

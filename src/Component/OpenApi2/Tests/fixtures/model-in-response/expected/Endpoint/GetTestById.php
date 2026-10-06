@@ -19,7 +19,7 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\ModelInRespons
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [rawurlencode($this->id)], '/test/{id}');
+        return str_replace(['{id}'], [rawurlencode((string) $this->id)], '/test/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
