@@ -3,16 +3,16 @@
 namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\OpenApi3\SchemaParser\ParameterNameResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ParameterNameResolverTest extends TestCase
 {
     /**
-     * @dataProvider provideDocumentsWithMapParameters
-     *
      * @param array<mixed> $document
      * @param array<mixed> $expectedDocument
      */
+    #[DataProvider('provideDocumentsWithMapParameters')]
     public function testResolvesParameterNamesFromKeys(array $document, array $expectedDocument): void
     {
         $this->assertEquals($expectedDocument, ParameterNameResolver::resolve($document));

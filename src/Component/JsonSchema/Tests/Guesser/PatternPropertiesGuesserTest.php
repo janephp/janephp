@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Guesser\JsonSchema\PatternPropertiesGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\SimpleTypeGuesser;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class PatternPropertiesGuesserTest extends TestCase
@@ -29,9 +30,7 @@ class PatternPropertiesGuesserTest extends TestCase
         self::assertTrue($this->guesser->supportObject($this->createObjectSchema()));
     }
 
-    /**
-     * @dataProvider unsupportedProvider
-     */
+    #[DataProvider('unsupportedProvider')]
     public function testSupportObjectRejects(JsonSchema $schema): void
     {
         self::assertFalse($this->guesser->supportObject($schema));

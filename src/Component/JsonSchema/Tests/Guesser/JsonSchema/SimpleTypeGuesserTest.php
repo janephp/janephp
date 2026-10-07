@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Tests\Guesser\JsonSchema;
 
 use Jane\Component\JsonSchema\Guesser\JsonSchema\SimpleTypeGuesser;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SimpleTypeGuesserTest extends TestCase
@@ -15,9 +16,7 @@ class SimpleTypeGuesserTest extends TestCase
         $this->guesser = new SimpleTypeGuesser();
     }
 
-    /**
-     * @dataProvider supportProvider
-     */
+    #[DataProvider('supportProvider')]
     public function testSupportObject(mixed $type, ?string $format, bool $expected): void
     {
         $schema = new JsonSchema();

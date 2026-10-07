@@ -6,6 +6,7 @@ use Jane\Component\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\Component\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -23,9 +24,8 @@ class UninitializedResponseSchemaKeywordsTest extends TestCase
 {
     /**
      * @param array<string, mixed> $responseSchema
-     *
-     * @dataProvider responseSchemaProvider
      */
+    #[DataProvider('responseSchemaProvider')]
     public function testAResponseSchemaOmittingKeywordsStillGeneratesAnEndpoint(array $responseSchema, string $expectedReturnType): void
     {
         [$fixtureDirectory, $generatedDirectory] = $this->generateClient($responseSchema);

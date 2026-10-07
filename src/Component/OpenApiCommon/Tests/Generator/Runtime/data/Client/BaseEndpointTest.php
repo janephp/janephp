@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jane\Component\OpenApiCommon\Tests\Generator\Runtime\data\Client;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -175,9 +176,7 @@ final class BaseEndpointTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider queryParamsProvider
-     */
+    #[DataProvider('queryParamsProvider')]
     public function testQueryParamsWillBeProperlyEncoded(array $queryParams, string $expectedQueryString): void
     {
         $endpoint = $this->getEndpoint($queryParams);
@@ -186,9 +185,7 @@ final class BaseEndpointTest extends TestCase
         self::assertEquals(http_build_query($queryParams, encoding_type: \PHP_QUERY_RFC3986), $endpoint->getQueryString());
     }
 
-    /**
-     * @dataProvider queryParamsProviderWithAllowingReservedCharacters
-     */
+    #[DataProvider('queryParamsProviderWithAllowingReservedCharacters')]
     public function testQueryParamsWillBeProperlyEncodedWithReservedCharacters(
         array $queryParams,
         array $allowedQueryParams,
@@ -199,9 +196,7 @@ final class BaseEndpointTest extends TestCase
         self::assertEquals($expectedQueryString, $endpoint->getQueryString());
     }
 
-    /**
-     * @dataProvider headerParamsProvider
-     */
+    #[DataProvider('headerParamsProvider')]
     public function testHeaderParamsWillBeResolvedCaseInsensitively(array $headerParams, array $expectedHeaders): void
     {
         $endpoint = new class($headerParams) extends \BaseEndpoint {
@@ -403,9 +398,7 @@ final class BaseEndpointTest extends TestCase
         $endpoint->getHeaders();
     }
 
-    /**
-     * @dataProvider styledQueryParamsProvider
-     */
+    #[DataProvider('styledQueryParamsProvider')]
     public function testStyledQueryParamsWillBeProperlyEncoded(array $queryParams, array $styles, string $expectedQueryString): void
     {
         $endpoint = $this->getEndpoint($queryParams, [], $styles);
@@ -413,9 +406,7 @@ final class BaseEndpointTest extends TestCase
         self::assertEquals($expectedQueryString, $endpoint->getQueryString());
     }
 
-    /**
-     * @dataProvider styledQueryParamsWithAllowingReservedCharactersProvider
-     */
+    #[DataProvider('styledQueryParamsWithAllowingReservedCharactersProvider')]
     public function testStyledQueryParamsWillBeProperlyEncodedWithReservedCharacters(
         array $queryParams,
         array $allowedQueryParams,
@@ -427,9 +418,7 @@ final class BaseEndpointTest extends TestCase
         self::assertEquals($expectedQueryString, $endpoint->getQueryString());
     }
 
-    /**
-     * @dataProvider invalidStyledQueryParamsProvider
-     */
+    #[DataProvider('invalidStyledQueryParamsProvider')]
     public function testInvalidStyledQueryParamsThrowException(array $queryParams, array $styles): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -502,7 +491,7 @@ final class BaseEndpointTest extends TestCase
     public function testDeserializeListResponsePreservesTraversableKeys(): void
     {
         $deserialized = new \ArrayIterator(['b' => 'two', 'a' => 'one']);
-        $serializer = $this->createMock(SerializerInterface::class);
+        $serializer = $this->createStub(SerializerInterface::class);
         $serializer->method('deserialize')->willReturn($deserialized);
 
         $endpoint = new class() extends \BaseEndpoint {

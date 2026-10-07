@@ -7,6 +7,7 @@ namespace Jane\Component\OpenApiCommon\Tests\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class XNamespaceResolverTest extends TestCase
@@ -23,9 +24,7 @@ final class XNamespaceResolverTest extends TestCase
         yield 'multiple leading digits are prefixed' => ['42', ['_42']];
     }
 
-    /**
-     * @dataProvider provideValues
-     */
+    #[DataProvider('provideValues')]
     public function testResolveSplitsAndSanitizesSegments(string $value, array $expected): void
     {
         self::assertSame($expected, (new XNamespaceResolver())->resolve($value));
@@ -38,9 +37,7 @@ final class XNamespaceResolverTest extends TestCase
         yield 'blank segments only' => [' \\ // '];
     }
 
-    /**
-     * @dataProvider provideInvalidValues
-     */
+    #[DataProvider('provideInvalidValues')]
     public function testResolveReturnsEmptyArrayForUnusableValues(string $value): void
     {
         self::assertSame([], (new XNamespaceResolver())->resolve($value));

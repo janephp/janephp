@@ -11,6 +11,7 @@ use Jane\Component\JsonSchemaRuntime\Exception\ReferencePointerException;
 use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ReferenceTest extends TestCase
@@ -20,9 +21,7 @@ class ReferenceTest extends TestCase
         ReferenceResolver::default()->resetConfiguration();
     }
 
-    /**
-     * @dataProvider resolveProvider
-     */
+    #[DataProvider('resolveProvider')]
     public function testResolve($reference, $origin, $expected, $denormalizerCallback): void
     {
         $reference = new Reference($reference, $origin);
@@ -30,7 +29,7 @@ class ReferenceTest extends TestCase
         self::assertEquals($expected, $reference->resolve($denormalizerCallback));
     }
 
-    public function resolveProvider(): array
+    public static function resolveProvider(): array
     {
         return [
             ['#', __DIR__ . '/schema.json', json_decode(file_get_contents(__DIR__ . '/schema.json'), true), null],

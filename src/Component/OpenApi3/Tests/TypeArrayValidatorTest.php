@@ -3,16 +3,16 @@
 namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\OpenApi3\SchemaParser\TypeArrayValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class TypeArrayValidatorTest extends TestCase
 {
     /**
-     * @dataProvider provideDocumentsWithTypeArray
-     *
      * @param array<mixed>  $document
      * @param array<string> $expectedPointers
      */
+    #[DataProvider('provideDocumentsWithTypeArray')]
     public function testCollectsEveryTypeArrayOccurrence(array $document, array $expectedPointers): void
     {
         $errors = TypeArrayValidator::validate($document);
@@ -32,7 +32,7 @@ class TypeArrayValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>, 1: array<string>}>
      */
-    public function provideDocumentsWithTypeArray(): \Generator
+    public static function provideDocumentsWithTypeArray(): \Generator
     {
         yield 'root level schema' => [
             [
@@ -146,10 +146,9 @@ class TypeArrayValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider provideDocumentsWithoutTypeArray
-     *
      * @param array<mixed> $document
      */
+    #[DataProvider('provideDocumentsWithoutTypeArray')]
     public function testValidDocumentsReportNoError(array $document): void
     {
         $this->assertSame([], TypeArrayValidator::validate($document));
@@ -158,7 +157,7 @@ class TypeArrayValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>}>
      */
-    public function provideDocumentsWithoutTypeArray(): \Generator
+    public static function provideDocumentsWithoutTypeArray(): \Generator
     {
         yield 'property named type holding a schema object is not a violation' => [
             [
