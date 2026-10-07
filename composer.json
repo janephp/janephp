@@ -49,7 +49,7 @@
         "moneyphp/money": "^3.3",
         "phpbench/phpbench": "^1.3",
         "phpdocumentor/reflection-docblock": "^5.3",
-        "phpunit/phpunit": "^12.5",
+        "phpunit/phpunit": "^11.5.50",
         "symfony/framework-bundle": "^7.0 || ^8.0",
         "symfony/http-client": "^7.0 || ^8.0",
         "symfony/uid": "^7.0 || ^8.0"
