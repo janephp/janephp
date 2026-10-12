@@ -194,10 +194,15 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             return;
         }
 
+        // An operation-level `security` replaces the global one, and an empty list removes it.
+        $operationSecurity = $operation->security ?? null;
         $securityScopes = $globalSecurityScopes;
-        foreach (($operation->security ?? null) ?? [] as $securityItem) {
-            foreach ($securityItem as $scope => $_) {
-                $securityScopes[] = $scope;
+        if (null !== $operationSecurity) {
+            $securityScopes = [];
+            foreach ($operationSecurity as $securityItem) {
+                foreach ($securityItem as $scope => $_) {
+                    $securityScopes[] = $scope;
+                }
             }
         }
         $securityScopes = array_unique($securityScopes);

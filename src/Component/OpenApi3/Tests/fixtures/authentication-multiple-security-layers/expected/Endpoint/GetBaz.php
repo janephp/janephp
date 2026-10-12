@@ -32,7 +32,7 @@ class GetBaz extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMulti
     }
     public function getAuthenticationScopes(): array
     {
-        return ['apikey', 'bearer', 'x-header'];
+        return ['bearer', 'x-header'];
     }
     public function getFetchMode(): string
     {

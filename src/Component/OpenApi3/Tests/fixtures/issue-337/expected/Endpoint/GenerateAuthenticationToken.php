@@ -68,7 +68,7 @@ class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEnd
     }
     public function getAuthenticationScopes(): array
     {
-        return ['bearerAuth'];
+        return [];
     }
     public function getFetchMode(): string
     {

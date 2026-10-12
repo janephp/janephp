@@ -32,7 +32,7 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMulti
     }
     public function getAuthenticationScopes(): array
     {
-        return ['apikey', 'bearer'];
+        return ['bearer'];
     }
     public function getFetchMode(): string
     {

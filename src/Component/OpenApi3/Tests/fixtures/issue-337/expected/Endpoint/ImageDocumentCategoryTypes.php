@@ -89,7 +89,7 @@ class ImageDocumentCategoryTypes extends \CreditSafe\API\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes(): array
     {
-        return ['bearerAuth'];
+        return [];
     }
     public function getFetchMode(): string
     {

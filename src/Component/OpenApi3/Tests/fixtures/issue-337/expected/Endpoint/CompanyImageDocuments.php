@@ -93,7 +93,7 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes(): array
     {
-        return ['bearerAuth'];
+        return [];
     }
     public function getFetchMode(): string
     {
