@@ -19,6 +19,8 @@ use Jane\Component\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -33,9 +35,7 @@ class JaneOpenApiResourceTest extends TestCase
     use CodeStyleFixerTrait;
     use FixtureComparisonTrait;
 
-    /**
-     * @dataProvider resourceProvider
-     */
+    #[DataProvider('resourceProvider')]
     public function testResources($name, SplFileInfo $testDirectory): void
     {
         if ($this->shouldSkipPathForCurrentPhpParserVersion($testDirectory->getRealPath())) {
@@ -56,7 +56,7 @@ class JaneOpenApiResourceTest extends TestCase
         $this->assertFixtureMatchesGenerated($testDirectory->getRealPath());
     }
 
-    public function resourceProvider(): array
+    public static function resourceProvider(): array
     {
         $finder = new Finder();
         $finder->directories()->in(__DIR__ . '/fixtures');
@@ -71,9 +71,7 @@ class JaneOpenApiResourceTest extends TestCase
         return $data;
     }
 
-    /**
-     * @group prism
-     */
+    #[Group('prism')]
     public function testClient(): void
     {
         // 1. Generate

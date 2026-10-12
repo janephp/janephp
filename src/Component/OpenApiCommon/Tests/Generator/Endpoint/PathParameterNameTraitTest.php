@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use PhpParser\Node\ArrayItem;
 use PhpParser\PrettyPrinter\Standard;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class PathParameterNameTraitTest extends TestCase
@@ -25,9 +26,7 @@ final class PathParameterNameTraitTest extends TestCase
         yield 'camelCase' => ['petId', 'petId'];
     }
 
-    /**
-     * @dataProvider provideParameterNames
-     */
+    #[DataProvider('provideParameterNames')]
     public function testNormalizePathVariableName(string $parameterName, string $expected): void
     {
         $subject = new class() {
@@ -43,9 +42,7 @@ final class PathParameterNameTraitTest extends TestCase
         self::assertSame($expected, $subject->variableName($parameterName));
     }
 
-    /**
-     * @dataProvider providePathPropertyTypes
-     */
+    #[DataProvider('providePathPropertyTypes')]
     public function testBuildPathPropertyFetchArrayItemsCastsNonStringScalars(?string $type, string $expected): void
     {
         $subject = new class() {

@@ -10,6 +10,7 @@ use Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class OperationNamingTest extends TestCase
@@ -22,9 +23,7 @@ final class OperationNamingTest extends TestCase
         yield 'empty' => ['empty'];
     }
 
-    /**
-     * @dataProvider provideReservedWordOperationIds
-     */
+    #[DataProvider('provideReservedWordOperationIds')]
     public function testReservedWordOperationIdsArePrefixedForEndpointName(string $operationId): void
     {
         $naming = new OperationIdNaming();

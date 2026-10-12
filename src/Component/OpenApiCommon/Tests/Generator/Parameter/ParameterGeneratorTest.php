@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApiCommon\Tests\Generator\Parameter;
 
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -66,9 +67,7 @@ final class ParameterGeneratorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideOptionDocEntries
-     */
+    #[DataProvider('provideOptionDocEntries')]
     public function testFormatOptionDocEntry(string $name, bool $required, string $type, ?string $description, string $expected): void
     {
         $subject = new class((new ParserFactory())->createForHostVersion()) extends ParameterGenerator {

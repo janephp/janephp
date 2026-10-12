@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Tests\Guesser\Validator\Format;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Validator\Format\DateValidator;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -12,9 +13,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DateValidatorTest extends TestCase
 {
-    /**
-     * @dataProvider supportProvider
-     */
+    #[DataProvider('supportProvider')]
     public function testSupport(mixed $type, ?string $format, bool $expected): void
     {
         $schema = new JsonSchema();

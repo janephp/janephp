@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\DateTimeType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Validator\Format\DateTimeValidator;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -13,9 +14,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 
 class DateTimeValidatorTest extends TestCase
 {
-    /**
-     * @dataProvider supportProvider
-     */
+    #[DataProvider('supportProvider')]
     public function testSupport(mixed $type, ?string $format, bool $expected): void
     {
         $schema = new JsonSchema();

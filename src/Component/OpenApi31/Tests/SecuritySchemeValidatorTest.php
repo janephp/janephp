@@ -3,16 +3,16 @@
 namespace Jane\Component\OpenApi31\Tests;
 
 use Jane\Component\OpenApi31\SchemaParser\SecuritySchemeValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SecuritySchemeValidatorTest extends TestCase
 {
     /**
-     * @dataProvider provideDocumentsWithSecuritySchemes
-     *
      * @param array<mixed>  $document
      * @param array<string> $expectedPointers
      */
+    #[DataProvider('provideDocumentsWithSecuritySchemes')]
     public function testCollectsEveryInvalidSecuritySchemeEntry(array $document, array $expectedPointers): void
     {
         $errors = SecuritySchemeValidator::validate($document);
@@ -31,7 +31,7 @@ class SecuritySchemeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>, 1: array<string>}>
      */
-    public function provideDocumentsWithSecuritySchemes(): \Generator
+    public static function provideDocumentsWithSecuritySchemes(): \Generator
     {
         yield 'issue 565: bare scheme definition instead of named map' => [
             [
@@ -108,10 +108,9 @@ class SecuritySchemeValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider provideDocumentsWithValidSecuritySchemes
-     *
      * @param array<mixed> $document
      */
+    #[DataProvider('provideDocumentsWithValidSecuritySchemes')]
     public function testValidSecuritySchemesProduceNoError(array $document): void
     {
         $this->assertSame([], SecuritySchemeValidator::validate($document));
@@ -120,7 +119,7 @@ class SecuritySchemeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>}>
      */
-    public function provideDocumentsWithValidSecuritySchemes(): \Generator
+    public static function provideDocumentsWithValidSecuritySchemes(): \Generator
     {
         // in OpenAPI 3.1 `scheme` is optional for http schemes (RFC 7235 defaults)
         yield 'http without scheme' => [['components' => ['securitySchemes' => ['auth' => ['type' => 'http']]]]];

@@ -3,16 +3,16 @@
 namespace Jane\Component\OpenApi31\Tests;
 
 use Jane\Component\OpenApi31\SchemaParser\FetchModeValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class FetchModeValidatorTest extends TestCase
 {
     /**
-     * @dataProvider provideDocumentsWithInvalidFetchModes
-     *
      * @param array<mixed>  $document
      * @param array<string> $expectedPointers
      */
+    #[DataProvider('provideDocumentsWithInvalidFetchModes')]
     public function testCollectsEveryInvalidFetchModeUsage(array $document, array $expectedPointers): void
     {
         $errors = FetchModeValidator::validate($document);
@@ -31,7 +31,7 @@ class FetchModeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>, 1: array<string>}>
      */
-    public function provideDocumentsWithInvalidFetchModes(): \Generator
+    public static function provideDocumentsWithInvalidFetchModes(): \Generator
     {
         yield 'x-fetch-mode on a POST operation' => [
             [
@@ -125,10 +125,9 @@ class FetchModeValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider provideDocumentsWithValidFetchModes
-     *
      * @param array<mixed> $document
      */
+    #[DataProvider('provideDocumentsWithValidFetchModes')]
     public function testValidFetchModesProduceNoError(array $document): void
     {
         $this->assertSame([], FetchModeValidator::validate($document));
@@ -137,7 +136,7 @@ class FetchModeValidatorTest extends TestCase
     /**
      * @return \Generator<string, array{0: array<mixed>}>
      */
-    public function provideDocumentsWithValidFetchModes(): \Generator
+    public static function provideDocumentsWithValidFetchModes(): \Generator
     {
         yield 'lazy on GET' => [self::document('get', 'lazy')];
         yield 'eager on GET' => [self::document('get', 'eager')];

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" colors="true" bootstrap="bootstrap.php">
-  <coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd" colors="true" bootstrap="bootstrap.php" cacheDirectory=".phpunit.cache">
+  <source>
     <include>
       <directory suffix=".php">./src</directory>
     </include>
@@ -15,19 +15,11 @@
       <directory>./src/Component/OpenApi3/JsonSchema</directory>
       <directory>./src/Component/OpenApi31/JsonSchema</directory>
     </exclude>
-  </coverage>
+  </source>
   <php>
     <ini name="memory_limit" value="1024M"/>
   </php>
   <testsuites>
-    <testsuite name="Jane Unit Test Suite">
-      <directory>./src/Component/*/Tests</directory>
-      <directory>./src/Bundle/*/Tests</directory>
-      <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
-      <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
-      <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
-      <exclude>./src/Component/OpenApi31/Tests/fixtures</exclude>
-    </testsuite>
     <testsuite name="JsonSchema">
       <directory>./src/Component/JsonSchema/Tests</directory>
       <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>

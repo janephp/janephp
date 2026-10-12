@@ -14,6 +14,7 @@ use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\PrettyPrinter\Standard;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Validator\Constraints\Choice;
@@ -40,9 +41,7 @@ class ValidatorGeneratorTest extends TestCase
         self::assertStringContainsString("choices: ['alpha', 'beta', null]", $code);
     }
 
-    /**
-     * @dataProvider arrayArgumentProvider
-     */
+    #[DataProvider('arrayArgumentProvider')]
     public function testArrayArgumentsAreEmittedVerbatim(array $choices, string $expected): void
     {
         $property = new Property(new JsonSchema(), 'label', '#/properties/label');
