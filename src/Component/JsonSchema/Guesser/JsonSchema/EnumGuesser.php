@@ -14,6 +14,8 @@ use Jane\Component\JsonSchema\Registry\Registry;
 
 class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesserInterface
 {
+    public const VAR_NAMES_EXTENSION = 'x-enum-varnames';
+
     public function __construct(
         protected readonly Naming $naming = new Naming(),
     ) {
@@ -55,7 +57,8 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             $this->naming->getClassName($name),
             $this->getBackingType($object->type ?? null),
             $object->enum ?? null,
-            property_exists($object, 'deprecated') && (($object->deprecated ?? null) ?? false)
+            property_exists($object, 'deprecated') && (($object->deprecated ?? null) ?? false),
+            $this->getVarNames($object)
         ));
     }
 
@@ -85,6 +88,29 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
     protected function getSchemaClass(): string
     {
         return JsonSchema::class;
+    }
+
+    /**
+     * Read the "x-enum-varnames" vendor extension: the case name of each enum value, by position.
+     *
+     * @return list<string|null> the trimmed names, null for an entry that is not a non-empty string; empty when the extension is absent or not a list
+     */
+    private function getVarNames(object $object): array
+    {
+        if (!$object instanceof \ArrayAccess || !isset($object[self::VAR_NAMES_EXTENSION])) {
+            return [];
+        }
+
+        $varNames = $object[self::VAR_NAMES_EXTENSION];
+
+        if (!\is_array($varNames) || !array_is_list($varNames)) {
+            return [];
+        }
+
+        return array_map(
+            static fn ($varName): ?string => \is_string($varName) && '' !== trim($varName) ? trim($varName) : null,
+            $varNames
+        );
     }
 
     private function getBackingType(string $type): string
