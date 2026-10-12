@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Generator\Model;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
@@ -80,13 +81,21 @@ trait PropertyGenerator
 
     private function getNativeType(Property $property, string $namespace, bool $strict): Node\ComplexType|Node\Identifier|Node\Name|null
     {
-        $type = $property->getType()->getTypeHint($namespace);
+        return $property->getType()->getNativeTypeHint($namespace, $property->acceptsNull($strict));
+    }
 
-        if (null !== $type && (!$strict || $property->isNullable())) {
-            $type = new Node\NullableType($type);
+    /**
+     * Tell whether the documented type already lists null at its top level.
+     */
+    private function documentsNull(Type $type): bool
+    {
+        foreach ($type instanceof MultipleType ? $type->getTypes() : [$type] as $branch) {
+            if (Type::TYPE_NULL === $branch->getName()) {
+                return true;
+            }
         }
 
-        return $type;
+        return false;
     }
 
     protected function createPropertyDoc(Property $property, $namespace, bool $strict, mixed $default = null): Doc
@@ -99,7 +108,7 @@ trait PropertyGenerator
             $docTypeHint = 'array<array-key, ' . substr((string) $docTypeHint, 5);
         }
 
-        if ((!$strict || $property->isNullable()) && !str_contains($docTypeHint, 'null')) {
+        if ($property->acceptsNull($strict) && !$this->documentsNull($property->getType())) {
             $docTypeHint .= '|null';
         }
 

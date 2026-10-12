@@ -10,7 +10,6 @@ use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
@@ -24,11 +23,7 @@ trait GetterSetterGenerator
 
     protected function createGetter(Property $property, string $namespace, bool $strict): Stmt\ClassMethod
     {
-        $returnType = $property->getType()->getTypeHint($namespace);
-
-        if ($returnType && (!$strict || $property->isNullable())) {
-            $returnType = new NullableType($returnType);
-        }
+        $returnType = $property->getType()->getNativeTypeHint($namespace, $property->acceptsNull($strict));
 
         return new Stmt\ClassMethod(
             // getProperty
@@ -51,11 +46,7 @@ trait GetterSetterGenerator
 
     protected function createSetter(Property $property, string $namespace, bool $strict, bool $fluent = true): Stmt\ClassMethod
     {
-        $setType = $property->getType()->getTypeHint($namespace);
-
-        if ($setType && (!$strict || $property->isNullable())) {
-            $setType = new NullableType($setType);
-        }
+        $setType = $property->getType()->getNativeTypeHint($namespace, $property->acceptsNull($strict));
 
         $stmts = [
             new Stmt\Expression(new Expr\Assign(
@@ -152,7 +143,7 @@ trait GetterSetterGenerator
     {
         $returnType = $property->getType();
         $returnTypeHint = $returnType->getDocTypeHint($namespace);
-        if ($strict && !$property->isNullable()) {
+        if (!$property->acceptsNull($strict)) {
             return $returnTypeHint;
         }
         $returnTypes = [$returnType];

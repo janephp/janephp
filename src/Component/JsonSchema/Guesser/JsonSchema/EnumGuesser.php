@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\EnumType;
@@ -18,6 +19,7 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
 
     public function __construct(
         protected readonly Naming $naming = new Naming(),
+        protected readonly string $unknownValue = Options::ENUMS_UNKNOWN_VALUE_THROW,
     ) {
     }
 
@@ -78,7 +80,8 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
                 $backingType,
                 $classGuess->getName(),
                 $schema->getNamespace(),
-                $classGuess->getSubNamespace()
+                $classGuess->getSubNamespace(),
+                $this->unknownValue
             );
         }
 

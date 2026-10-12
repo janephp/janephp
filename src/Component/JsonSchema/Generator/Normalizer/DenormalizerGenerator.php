@@ -224,7 +224,7 @@ trait DenormalizerGenerator
                 )),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
-            if (!$context->isStrict() || $property->isNullable()) {
+            if ($property->acceptsNull($context->isStrict())) {
                 $fullCondition = new Expr\BinaryOp\BooleanAnd(
                     $baseCondition,
                     new Expr\BinaryOp\NotIdentical(
@@ -238,7 +238,7 @@ trait DenormalizerGenerator
                 'stmts' => $mutatorStmt,
             ]);
 
-            if (!$context->isStrict() || $property->isNullable()) {
+            if ($property->acceptsNull($context->isStrict())) {
                 // Reached only when the "if" above did not match, i.e. the key
                 // is absent or the value is null: "null === $data[$property]"
                 // is implied by the guard combination and re-checking the key

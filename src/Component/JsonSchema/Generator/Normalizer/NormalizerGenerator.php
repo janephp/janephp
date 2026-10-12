@@ -213,7 +213,7 @@ trait NormalizerGenerator
 
         $statements = [$statement];
 
-        if ((!$context->isStrict() || $property->isNullable()
+        if (($property->acceptsNull($context->isStrict())
                 || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1)
                 || ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
             $statements[] = new Stmt\Else_(

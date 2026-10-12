@@ -37,7 +37,7 @@ class GuesserFactory
 
         $chainGuesser = new ChainGuesser();
         if ($options->enumsAsObjects) {
-            $chainGuesser->addGuesser(new EnumGuesser(Schema::class, $naming));
+            $chainGuesser->addGuesser(new EnumGuesser(Schema::class, $naming, $options->enumsUnknownValue));
         }
         $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new DateGuesser(Schema::class, $dateFormat, $datePreferInterface));

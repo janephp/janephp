@@ -25,7 +25,7 @@ class JsonSchemaGuesserFactory
         $defaultAdditionalProperties = $options->defaultAdditionalProperties;
 
         if ($options->enumsAsObjects) {
-            $chainGuesser->addGuesser(new EnumGuesser($naming));
+            $chainGuesser->addGuesser(new EnumGuesser($naming, $options->enumsUnknownValue));
         }
 
         $chainGuesser->addGuesser(new DateGuesser($dateFormat, $datePreferInterface));

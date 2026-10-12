@@ -67,6 +67,14 @@ class Property
         return $this->nullable;
     }
 
+    /**
+     * Tell whether the generated property, getter, setter and (de)normalizer must accept null.
+     */
+    public function acceptsNull(bool $strict): bool
+    {
+        return !$strict || $this->nullable || $this->getType()->canBeNull();
+    }
+
     public function isRequired(): bool
     {
         return $this->required;

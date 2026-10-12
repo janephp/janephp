@@ -42,6 +42,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'custom-string-format-mapping',
             'include-null-value',
             'enums-as-objects',
+            'enums-unknown-value',
             'default-additional-properties',
             'default-fetch-mode',
             'allow-external-refs',

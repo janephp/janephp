@@ -130,6 +130,24 @@ class Type
         ;
     }
 
+    /**
+     * Tell whether denormalizing this type can produce null, whatever the nullability of the property holding it.
+     */
+    public function canBeNull(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Build the native type of a property, parameter or return value holding this type.
+     */
+    public function getNativeTypeHint(string $namespace, bool $nullable): Node\ComplexType|Node\Identifier|Name|null
+    {
+        $type = $this->getTypeHint($namespace);
+
+        return null !== $type && $nullable ? new Node\NullableType($type) : $type;
+    }
+
     public function getDocTypeHint(string $namespace): string|Name|null
     {
         return (string) $this;
