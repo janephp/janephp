@@ -37,7 +37,7 @@ function qa_phpstan(bool $generateBaseline = false): void
         $params[] = '--generate-baseline';
     }
 
-    phpstan($params, '2.2.2');
+    phpstan($params, '2.3.0');
 }
 
 #[AsTask('mago:generated', namespace: 'qa', description: 'Run Mago static analysis over the code Jane generates (fixture expected/ trees and manifest-fixture fresh output)')]

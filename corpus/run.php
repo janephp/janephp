@@ -343,4 +343,4 @@ function main(array $argv): int
     return [] === $unexpectedFailures ? 0 : 1;
 }
 
-exit(main($argv));
+exit(main($argv ?? []));
