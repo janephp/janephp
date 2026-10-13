@@ -31,13 +31,23 @@ class ArrayType extends Type
             $typesString = [];
 
             foreach ($this->itemType->getTypes() as $type) {
-                $typesString[] = \sprintf('list<%1$s>', $type->getDocTypeHint($namespace));
+                $typesString[] = \sprintf('list<%1$s>', $this->getItemDocTypeHint($type, $namespace));
             }
 
             return implode('|', $typesString);
         }
 
-        return \sprintf('list<%1$s>', $this->itemType->getDocTypeHint($namespace));
+        return \sprintf('list<%1$s>', $this->getItemDocTypeHint($this->itemType, $namespace));
+    }
+
+    /**
+     * Documented type of an item, including null when denormalizing the item can produce it.
+     */
+    protected function getItemDocTypeHint(Type $itemType, string $namespace): string
+    {
+        $docTypeHint = (string) $itemType->getDocTypeHint($namespace);
+
+        return $itemType->canBeNull() ? $docTypeHint . '|null' : $docTypeHint;
     }
 
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array

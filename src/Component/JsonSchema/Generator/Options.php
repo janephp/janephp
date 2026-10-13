@@ -18,6 +18,18 @@ namespace Jane\Component\JsonSchema\Generator;
  */
 final class Options
 {
+    /** Keep the historical behavior: an unknown enum value throws a \ValueError on denormalization. */
+    public const ENUMS_UNKNOWN_VALUE_THROW = 'throw';
+    /** Denormalize an unknown enum value to null. */
+    public const ENUMS_UNKNOWN_VALUE_NULL = 'null';
+    /** Keep an unknown enum value as its raw scalar. */
+    public const ENUMS_UNKNOWN_VALUE_SCALAR = 'scalar';
+    public const ENUMS_UNKNOWN_VALUES = [
+        self::ENUMS_UNKNOWN_VALUE_THROW,
+        self::ENUMS_UNKNOWN_VALUE_NULL,
+        self::ENUMS_UNKNOWN_VALUE_SCALAR,
+    ];
+
     public function __construct(
         public readonly bool $reference = false,
         public readonly bool $strict = true,
@@ -38,6 +50,8 @@ final class Options
         public readonly array $validators = [],
         public readonly bool $includeNullValue = true,
         public readonly bool $enumsAsObjects = false,
+        /** How generated enums denormalize a value outside the enum; one of throw, null or scalar */
+        public readonly string $enumsUnknownValue = self::ENUMS_UNKNOWN_VALUE_THROW,
         public readonly ?bool $defaultAdditionalProperties = null,
         /** Default fetch mode applied to GET/HEAD operations without an explicit `x-fetch-mode`; one of lazy, eager or preload */
         public readonly ?string $defaultFetchMode = null,
@@ -56,6 +70,9 @@ final class Options
         public readonly bool $throwUnexpectedStatusCode = true,
         public readonly bool $generateErrorExceptions = true,
     ) {
+        if (!\in_array($this->enumsUnknownValue, self::ENUMS_UNKNOWN_VALUES, true)) {
+            throw new \InvalidArgumentException(\sprintf('The "enums-unknown-value" option must be one of "%s"; "%s" given.', implode('", "', self::ENUMS_UNKNOWN_VALUES), $this->enumsUnknownValue));
+        }
     }
 
     public static function defaults(): self
@@ -89,6 +106,7 @@ final class Options
             validators: $options['validators'] ?? [],
             includeNullValue: $options['include-null-value'] ?? true,
             enumsAsObjects: $options['enums-as-objects'] ?? false,
+            enumsUnknownValue: $options['enums-unknown-value'] ?? self::ENUMS_UNKNOWN_VALUE_THROW,
             defaultAdditionalProperties: $options['default-additional-properties'] ?? null,
             defaultFetchMode: $options['default-fetch-mode'] ?? null,
             allowExternalRefs: $options['allow-external-refs'] ?? false,
@@ -130,6 +148,7 @@ final class Options
             'validators' => $this->validators,
             'include-null-value' => $this->includeNullValue,
             'enums-as-objects' => $this->enumsAsObjects,
+            'enums-unknown-value' => $this->enumsUnknownValue,
             'default-additional-properties' => $this->defaultAdditionalProperties,
             'default-fetch-mode' => $this->defaultFetchMode,
             'allow-external-refs' => $this->allowExternalRefs,

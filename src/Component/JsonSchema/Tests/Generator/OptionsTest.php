@@ -18,4 +18,24 @@ final class OptionsTest extends TestCase
     {
         self::assertFalse(Options::fromArray(['throw-unexpected-status-code' => false])->throwUnexpectedStatusCode);
     }
+
+    public function testUnknownEnumValuesThrowByDefault(): void
+    {
+        self::assertSame(Options::ENUMS_UNKNOWN_VALUE_THROW, Options::defaults()->enumsUnknownValue);
+        self::assertSame(Options::ENUMS_UNKNOWN_VALUE_THROW, Options::fromArray([])->toArray()['enums-unknown-value']);
+    }
+
+    public function testUnknownEnumValueHandlingCanBeConfigured(): void
+    {
+        self::assertSame(Options::ENUMS_UNKNOWN_VALUE_NULL, Options::fromArray(['enums-unknown-value' => 'null'])->enumsUnknownValue);
+        self::assertSame(Options::ENUMS_UNKNOWN_VALUE_SCALAR, Options::fromArray(['enums-unknown-value' => 'scalar'])->enumsUnknownValue);
+    }
+
+    public function testAnUnsupportedUnknownEnumValueHandlingIsRejected(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The "enums-unknown-value" option must be one of "throw", "null", "scalar"; "ignore" given.');
+
+        Options::fromArray(['enums-unknown-value' => 'ignore']);
+    }
 }

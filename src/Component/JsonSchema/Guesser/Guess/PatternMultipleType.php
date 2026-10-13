@@ -43,8 +43,11 @@ class PatternMultipleType extends Type
 
     public function getDocTypeHint(string $namespace): string|Name|null
     {
-        $stringTypes = array_map(function ($type) use ($namespace) {
-            return $type->getDocTypeHint($namespace) . '[]';
+        $stringTypes = array_map(static function (Type $type) use ($namespace): string {
+            // An item read as null with enums-unknown-value "null" is documented as (Type|null)[].
+            return $type->canBeNull()
+                ? '(' . $type->getDocTypeHint($namespace) . '|null)[]'
+                : $type->getDocTypeHint($namespace) . '[]';
         }, $this->types);
 
         return implode('|', $stringTypes);

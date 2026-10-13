@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -100,7 +101,15 @@ class MultipleType extends Type
 
     public function getDocTypeHint(string $namespace): string|Name|null
     {
-        $stringTypes = array_map(static function ($type) use ($namespace) {
+        // An enum keeping unknown values documents its backing type once, after all branches.
+        $unknownValueTypes = [];
+        $stringTypes = array_map(static function ($type) use ($namespace, &$unknownValueTypes) {
+            if ($type instanceof EnumType && null !== $type->getUnknownValueType()) {
+                $unknownValueTypes[] = $type->getUnknownValueType();
+
+                return $type->getTypeHint($namespace);
+            }
+
             return $type->getDocTypeHint($namespace);
         }, $this->types);
 
@@ -117,17 +126,47 @@ class MultipleType extends Type
         // An empty usable-type union (every branch stripped by the guesser...
         // or resolved to nothing documentable) must not emit a malformed
         // empty `@var ` tag.
-        $imploded = implode('|', array_unique($stringTypes));
+        $stringTypes = array_unique([...$stringTypes, ...$unknownValueTypes]);
+        if ([] !== $unknownValueTypes && \in_array(Type::TYPE_NULL, $stringTypes, true)) {
+            $stringTypes = [...array_diff($stringTypes, [Type::TYPE_NULL]), Type::TYPE_NULL];
+        }
+
+        $imploded = implode('|', $stringTypes);
 
         return '' === $imploded ? 'mixed' : $imploded;
     }
 
     public function getTypeHint(string $namespace): Identifier|Name|null
     {
-        if (1 === \count($this->types)) {
-            $type = current($this->types);
+        return $this->getNonNullType()?->getTypeHint($namespace);
+    }
 
-            return $type->getTypeHint($namespace);
+    public function getNativeTypeHint(string $namespace, bool $nullable): Node\ComplexType|Identifier|Name|null
+    {
+        return $this->getNonNullType()?->getNativeTypeHint($namespace, $nullable);
+    }
+
+    /**
+     * Tell whether denormalizing any branch can produce null.
+     */
+    public function canBeNull(): bool
+    {
+        foreach ($this->types as $type) {
+            if ($type->canBeNull()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Return the only branch of the union, or its only branch besides null.
+     */
+    private function getNonNullType(): ?Type
+    {
+        if (1 === \count($this->types)) {
+            return current($this->types);
         }
 
         // We have exactly two types: one null and an object
@@ -135,15 +174,32 @@ class MultipleType extends Type
             list($type1, $type2) = array_values($this->types);
 
             if ($this->isOptionalType($type1)) {
-                return $type2->getTypeHint($namespace);
+                return $type2;
             }
 
             if ($this->isOptionalType($type2)) {
-                return $type1->getTypeHint($namespace);
+                return $type1;
             }
         }
 
         return null;
+    }
+
+    /**
+     * @param array<array-key, Type> $types
+     */
+    private function hasLaterEnumWithBackingType(array $types, EnumType $enumType): bool
+    {
+        $after = false;
+        foreach ($types as $type) {
+            if ($type === $enumType) {
+                $after = true;
+            } elseif ($after && $type instanceof EnumType && $type->getName() === $enumType->getName()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function isOptionalType(Type $nullType): bool
@@ -177,10 +233,17 @@ class MultipleType extends Type
 
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
-        foreach ($this->getTypesSorted() as $discriminant => $type) {
-            list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $input, $normalizerFromObject);
+        $types = $this->getTypesSorted();
+        foreach ($types as $discriminant => $type) {
+            if ($type instanceof EnumType) {
+                $typeStatements = [];
+                $typeOutput = $type->createUnionBranchValueStatement($input);
+                $condition = $type->createUnionBranchConditionStatement($input, $this->hasLaterEnumWithBackingType($types, $type));
+            } else {
+                list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $input, $normalizerFromObject);
+                $condition = $type->createConditionStatement($input);
+            }
 
-            $condition = $type->createConditionStatement($input);
             if ($this->discriminatorProperty) {
                 $condition = new Expr\BinaryOp\LogicalAnd($condition, $this->createDiscriminatorCondition($input, $discriminant));
             }
