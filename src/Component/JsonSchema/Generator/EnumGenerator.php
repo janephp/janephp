@@ -46,8 +46,11 @@ class EnumGenerator implements GeneratorInterface
         $cases = [];
         $usedCaseNames = [];
 
-        foreach ($enumGuess->getValues() as $value) {
-            $caseName = $this->buildCaseName($value, $enumGuess->getBackingType());
+        $varNames = $enumGuess->getVarNames();
+
+        foreach (array_values($enumGuess->getValues()) as $index => $value) {
+            $caseName = $this->buildCaseNameFromVarName($varNames[$index] ?? null)
+                ?? $this->buildCaseName($value, $enumGuess->getBackingType());
             while (\array_key_exists($caseName, $usedCaseNames)) {
                 $caseName .= '2';
             }
@@ -80,6 +83,20 @@ EOD
             ],
             $attributes
         );
+    }
+
+    /**
+     * Get the "x-enum-varnames" entry as a case name, or null when there is none, or it is not a valid PHP identifier or is `class`.
+     */
+    private function buildCaseNameFromVarName(?string $varName): ?string
+    {
+        // Matches a valid PHP identifier (a letter, `_` or byte \x80-\xff, then also digits); such a name is kept as written.
+        if (null === $varName || 1 !== preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/D', $varName)) {
+            return null;
+        }
+
+        // "class" is reserved for Enum::class
+        return 'class' === strtolower($varName) ? null : $varName;
     }
 
     private function buildCaseName(string|int $value, string $backingType): string
