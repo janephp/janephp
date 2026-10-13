@@ -168,7 +168,7 @@ Other options are available to customize the generated code:
   additional validators during generation. Only meaningful when `validation` is enabled. See the
   [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
-- `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default.
+- `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default. Case names come from the `x-enum-varnames` vendor extension when the schema has one.
 - `default-additional-properties`: Controls how a schema that leaves `additionalProperties` unspecified is treated.
   `null` (default) keeps each component's own behavior: closed models for the JsonSchema component and OpenAPI 2,
   open models (unknown keys captured) for OpenAPI 3 / 3.1. `true` treats unspecified `additionalProperties` as open
