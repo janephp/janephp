@@ -32,7 +32,7 @@ class GetBar extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMulti
     }
     public function getAuthenticationScopes(): array
     {
-        return ['apikey', 'x-header'];
+        return ['x-header'];
     }
     public function getFetchMode(): string
     {

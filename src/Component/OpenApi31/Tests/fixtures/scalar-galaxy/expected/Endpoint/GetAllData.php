@@ -66,7 +66,7 @@ class GetAllData extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\R
     }
     public function getAuthenticationScopes(): array
     {
-        return ['bearerAuth', 'basicAuth', 'apiKeyQuery', 'apiKeyHeader', 'apiKeyCookie', 'oAuth2', 'openIdConnect'];
+        return [];
     }
     public function getFetchMode(): string
     {

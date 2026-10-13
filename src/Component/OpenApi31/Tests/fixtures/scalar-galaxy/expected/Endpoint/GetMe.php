@@ -59,7 +59,7 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
     }
     public function getAuthenticationScopes(): array
     {
-        return ['bearerAuth', 'basicAuth', 'apiKeyQuery', 'apiKeyHeader', 'apiKeyCookie', 'oAuth2', 'openIdConnect'];
+        return ['basicAuth', 'oAuth2', 'bearerAuth', 'apiKeyHeader', 'apiKeyQuery'];
     }
     public function getFetchMode(): string
     {
