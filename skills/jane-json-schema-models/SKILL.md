@@ -3,159 +3,114 @@ name: jane-json-schema-models
 description: >-
   Generate typed PHP DTO model classes and their normalizers from a JSON Schema
   specification (draft 2019-09 or 2020-12) with Jane (jane-php). Use whenever the user
-  wants to build PHP POPOs, DTOs, serializers or validators from a JSON Schema file. For
-  HTTP client generation from an OpenAPI document, use the jane-openapi-sdk skill
-  instead.
+  wants to build PHP POPOs, DTOs, serializers or validators from one or several JSON
+  Schema files. For HTTP client generation from an OpenAPI document, use the
+  jane-openapi-sdk skill instead.
 ---
 
-# Jane: PHP models from a JSON Schema specification
+# Jane: PHP models from a JSON Schema
 
-Follow these steps in order. Trigger check: this skill is for **JSON Schema** documents
-(top-level `type`, `properties`, `$schema: ".../draft-2019-09/schema"` or similar). If the
-input is an OpenAPI/Swagger document (with `info`, `paths`), the task belongs to the
-`jane-openapi-sdk` skill — stop and defer there.
+Docs: https://jane.jolicode.com/latest/json_schema/component/ — fetch the linked sections
+when a step needs more detail. Requires PHP >= 8.3.
 
-In this document, **Jane** refers to the Jane PHP libraries (jane-php). Requires
-**PHP >= 8.3** (check the `php` requirement of the installed `jane-php/*` package for the
-final word).
+If the document has `openapi`/`swagger` and `paths`, stop: use the `jane-openapi-sdk` skill.
+Jane generates from drafts 2019-09 and 2020-12.
 
-## Step 1 — Confirm the schema
-
-Locate the JSON Schema document. Local file or `https://` URL, JSON or YAML. Jane supports:
-
-- Generation: drafts **2019-09** and **2020-12**
-- Validation: draft **2020-12** semantics (opt-in `validation` option, step 5)
-
-If several schema files reference each other via relative `$ref`, note the root document Jane
-should be pointed at; split layouts may need the `allowed-local-ref-roots` option
-(see Troubleshooting).
-
-## Step 2 — Install the packages
-
-The generation library is a **dev** dependency; the runtime package is a normal requirement
-(the generated code depends on its tiny runtime classes):
+## 1. Install
 
 ```bash
 composer require --dev jane-php/json-schema
 composer require jane-php/json-schema-runtime
 ```
 
-Generated code is not formatted by default. Recommended: also require
-`friendsofphp/php-cs-fixer` as a dev dependency (or enable the `use-fixer` option, step 3).
+Symfony app: run `composer config extra.symfony.allow-contrib true` first; the recipe then
+creates `config/jane/json-schema.php` and `bin/json-schema-generate`.
 
-**Symfony applications** — enable contrib recipes *before* installing; the recipe adds
-`bin/json-schema-generate`, `config/jane/json-schema.php` and
-`config/packages/json-schema.yaml` automatically:
+## 2. Configure
 
-```bash
-composer config extra.symfony.allow-contrib true
-```
-
-## Step 3 — Write the configuration
-
-The configuration is a plain PHP script returning an array. Default location: `.jane` in the
-working directory (any name works if passed with `--config-file`).
+Ask the user for the namespace and output directory, then write `.jane`:
 
 ```php
-// .jane
+<?php
+
 return [
-    'json-schema-file' => __DIR__ . '/json-schema.json',
-    'root-class' => 'MyModel',
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Order',
     'namespace' => 'Vendor\Library\Generated',
     'directory' => __DIR__ . '/generated',
 ];
 ```
 
-- `json-schema-file`: path (local or remote URL) of the schema, JSON or YAML.
-- `root-class`: class name for the *root object* of the schema; unused if the root object
-  has no properties.
-- `namespace`: root namespace of all generated code.
-- `directory`: output directory for generated code.
+Several schemas referencing each other: use `mapping` instead, so each schema keeps its own
+namespace and cross-schema `$ref` resolve to the right classes:
 
-**Required companion step**: register the generated directory in composer's PSR-4 autoload:
+```php
+<?php
 
-```json
-"autoload": {
-    "psr-4": {
-        "Vendor\\Library\\Generated\\": "generated/"
-    }
-}
+return [
+    'mapping' => [
+        __DIR__ . '/schema-foo.json' => [
+            'root-class' => 'Foo',
+            'namespace' => 'Vendor\Library\Foo',
+            'directory' => __DIR__ . '/generated/Foo',
+        ],
+        __DIR__ . '/schema-bar.json' => [
+            'root-class' => 'Bar',
+            'namespace' => 'Vendor\Library\Bar',
+            'directory' => __DIR__ . '/generated/Bar',
+        ],
+    ],
+    // use-fixer, fixer-config-file and clean-generated go here, never inside a mapping entry
+];
 ```
 
-Then run `composer dump-autoload`.
+Details: https://jane.jolicode.com/latest/json_schema/component/#multi-schemas-generation
 
-Full option list (dates, strict mode, enums-as-objects, fixer, validation...): see
-`references/options.md`.
+Map every generated namespace in `composer.json`, then `composer dump-autoload`:
 
-## Step 4 — Generate
+```json
+"autoload": { "psr-4": { "Vendor\\Library\\Generated\\": "generated/" } }
+```
+
+Other options: https://jane.jolicode.com/latest/json_schema/component/#options
+
+## 3. Generate
 
 ```bash
 php vendor/bin/jane generate
 ```
 
-With another config file name:
+Ask whether generated code is committed or regenerated in CI. Never edit generated files:
+change the config and regenerate.
 
-```bash
-php vendor/bin/jane generate --config-file=jane-configuration.php
-```
-
-With a Symfony recipe, run `bin/json-schema-generate` instead.
-
-No other CLI options exist: everything lives in the config file so teams share the same
-generation parameters. The console prints a per-type summary (models, normalizers,
-validators, runtime).
-
-**After generation, always verify** the composer autoload mapping matches `namespace` /
-`directory` (step 3).
-
-## Step 5 — Use the generated models
-
-Jane generates plain old PHP objects (POPOs) with setters/getters, plus normalizers and the
-scaffolding for Symfony Serializer:
-
-- `Model\` namespace: model classes
-- `Normalizer\` namespace: one normalizer per model + a `JaneObjectNormalizer`
-  acting as a Symfony normalizer and lazy-loading the others
-
-Building a serializer outside Symfony:
+## 4. Use
 
 ```php
-$normalizers = [
-    new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-    new \Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
-];
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Vendor\Library\Generated\Model\Order;
+use Vendor\Library\Generated\Normalizer\JaneObjectNormalizer;
 
-$serializer = new \Symfony\Component\Serializer\Serializer(
-    $normalizers,
-    [new \Symfony\Component\Serializer\Encoder\JsonEncoder()],
+$serializer = new Serializer(
+    [new ArrayDenormalizer(), new JaneObjectNormalizer()],
+    [new JsonEncoder()],
 );
-$serializer->deserialize('{"...": "..."}', MyModel::class, 'json');
+$order = $serializer->deserialize($json, Order::class, 'json');
 ```
 
-In Symfony, the recipe's `config/packages/json-schema.yaml` wires this; models are
-autowireable as usual.
+With `mapping`, register one `JaneObjectNormalizer` per generated namespace.
 
-Optional **JSON Schema validation** during (de)normalization is enabled with the
-`validation` option (2020-12 semantics) — see `references/options.md`.
+Finish by deserializing a real sample payload to prove the models work.
 
-## Step 6 — Troubleshooting
+Validate payloads against the schema (draft 2020-12 rules) with `'validation' => true`:
+https://jane.jolicode.com/latest/guides/validation/
 
-| Symptom | Cause / fix |
+## Troubleshooting
+
+| Problem | Fix |
 |---|---|
-| "Class not found" right after generation | Composer PSR-4 autoload missing or mismatched (step 3); run `composer dump-autoload` |
-| Generation fails with SSRF / external reference error | Remote `$ref` are disabled by default. Enable `'allow-external-refs' => true` and restrict with `'external-ref-allowed-hosts' => [...]` |
-| Local `$ref` to a sibling directory fails | Allow the common parent: `'allowed-local-ref-roots' => [__DIR__ . '/doc']` |
-| Nullable properties rejected / too strict | `'strict' => false` |
-| Enum values become plain string/int | Enable `'enums-as-objects' => true` to generate native PHP backed enums |
-| Dates decode as strings | Check `date-format` / `full-date-format` / `date-prefer-interface` / `date-input-format` |
-| Generated code style off | `'use-fixer' => true` (+ optional `fixer-config-file`), or run php-cs-fixer manually |
-
-Never edit generated files to fix behavior: adjust the configuration and regenerate.
-
-## References
-
-- Progressively load this file when the task needs generation-option details:
-  - `references/options.md` — generation options catalog
-- For building an HTTP client from an OpenAPI document (not this skill): use the
-  `jane-openapi-sdk` skill.
-- Online docs: https://jane.jolicode.com/
+| Class not found after generation | PSR-4 mapping must match `namespace` / `directory`; `composer dump-autoload` |
+| Remote `$ref` rejected | Off by default: `'allow-external-refs' => true` + `'external-ref-allowed-hosts' => [...]` |
+| Local `$ref` outside the schema directory rejected | `'allowed-local-ref-roots' => [__DIR__ . '/common-parent']` |
+| Referenced schema gets an odd class name / wrong namespace | List that schema in `mapping` too |
