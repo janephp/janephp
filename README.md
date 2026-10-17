@@ -18,6 +18,16 @@
 
 [Documentation is available at https://jane.jolicode.com/](https://jane.jolicode.com/)
 
+## Agent skills
+
+Teach your coding agent (Claude Code, OpenCode, Codex, Cursor, ...) to build PHP clients
+and models with Jane:
+
+```bash
+npx skills add janephp/janephp --skill jane-openapi-sdk       # PHP SDK from an OpenAPI spec
+npx skills add janephp/janephp --skill jane-json-schema-models # PHP models from a JSON Schema
+```
+
 ## Changes
 
 View the [CHANGELOG](CHANGELOG.md) file attached to this project.
