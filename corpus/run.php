@@ -7,13 +7,13 @@ declare(strict_types=1);
  *
  * For every entry of corpus/specs.json: fetch the pinned spec, generate a
  * client for it in a child process (corpus/generate.php), run the php-parser
- * syntax gate over the output and report Mago's findings per code, with no
- * baseline. Nothing is committed but the list; results go to stdout and, on
+ * syntax gate and Mago (no baseline) over the output, reporting the findings
+ * per code. Nothing is committed but the list; results go to stdout and, on
  * GitHub Actions, to the step summary.
  *
  * Exit code 1 when an entry without a `known-failure` marker crashed, timed
- * out or produced PHP that does not parse; a `rejected` spec (refused with a
- * clean Jane error) and Mago findings never fail the run.
+ * out, produced PHP that does not parse or has any Mago finding; a `rejected`
+ * spec (refused with a clean Jane error) never fails the run.
  *
  * Usage: php corpus/run.php [--spec=<name>[,<name>...]] [--timeout=<seconds>]
  */
@@ -128,7 +128,7 @@ function declaredVersion(string $file): string
     }
 
     while (false !== ($line = fgets($handle))) {
-        if (preg_match('/^ {0,2}"?(openapi|swagger)"?\s*:\s*"?(\d[\d.]*)/', $line, $matches)) {
+        if (preg_match('/^\s*["\']?(openapi|swagger)["\']?\s*:\s*["\']?(\d[\d.]*)/', $line, $matches)) {
             $version = ('swagger' === $matches[1] ? 'Swagger ' : 'OpenAPI ') . $matches[2];
             break;
         }
@@ -284,9 +284,8 @@ function main(array $argv): int
             foreach (array_slice($syntaxErrors, 0, 10) as $error) {
                 fwrite(\STDOUT, '     ' . $error . "\n");
             }
-            $failed = [] !== $syntaxErrors;
-
             $mago = magoReport($outputDir);
+            $failed = [] !== $syntaxErrors || null !== $mago['error'] || $mago['total'] > 0;
             $findings = null === $mago['error'] ? sprintf('%d — %s', $mago['total'], formatCodes($mago['codes'])) : $mago['error'];
             fwrite(\STDOUT, '   mago: ' . $findings . "\n");
             foreach ($mago['codes'] as $code => $count) {
@@ -322,7 +321,7 @@ function main(array $argv): int
         $rows[] = [$name, declaredVersion($specFile), $generation['status'], (string) $generation['files'], $syntax, $findings, sprintf('%.0fs', $generation['seconds']), $verdict];
     }
 
-    $summary = "| spec | declared | generation | files | syntax | Mago findings (no baseline, report only) | time | verdict |\n|---|---|---|---:|---|---|---:|---|\n";
+    $summary = "| spec | declared | generation | files | syntax | Mago findings (no baseline) | time | verdict |\n|---|---|---|---:|---|---|---:|---|\n";
     foreach ($rows as $row) {
         $summary .= '| ' . implode(' | ', array_pad($row, 8, '')) . " |\n";
     }

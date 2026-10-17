@@ -50,7 +50,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
             $resourceOptionsStatements = [];
             if (\count($partOptions) > 0) {
                 $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('partOptions'), $this->partOptionsToExpr($partOptions)));
-                $resourceOptionsStatements = $this->resourceOptionsStatements();
+                $resourceOptionsStatements = $this->resourceOptionsStatements([] !== array_filter($partOptions, static fn (array $options): bool => isset($options['filename'])));
                 $addResourceArgs[] = new Arg(new Expr\Variable('resourceOptions'));
             }
 
@@ -213,15 +213,26 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
      *         }
      *     }
      *
+     * The filename guard is only emitted when a part has a default filename:
+     * without one it could never run.
+     *
      * @return Stmt[]
      */
-    private function resourceOptionsStatements(): array
+    private function resourceOptionsStatements(bool $hasDefaultFilename): array
     {
-        return [
+        $statements = [
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('resourceOptions'), new Expr\BinaryOp\Coalesce(
                 new Expr\ArrayDimFetch(new Expr\Variable('partOptions'), new Expr\Variable('key')),
                 new Expr\Array_([])
             ))),
+        ];
+
+        if (!$hasDefaultFilename) {
+            return $statements;
+        }
+
+        return [
+            ...$statements,
             new Stmt\If_(
                 new Expr\Isset_([new Expr\ArrayDimFetch(new Expr\Variable('resourceOptions'), new Scalar\String_('filename'))]),
                 [

@@ -1,0 +1,97 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Issue 1080 - patterns behind the corpus Mago findings",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/invites": {
+            "post": {
+                "operationId": "createInvite",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "anyOf": [
+                                    {"$ref": "#/components/schemas/GroupInvite"},
+                                    {"$ref": "#/components/schemas/GuildInvite"}
+                                ]
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "anyOf": [
+                                    {"$ref": "#/components/schemas/GroupInvite"},
+                                    {"$ref": "#/components/schemas/GuildInvite"}
+                                ]
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {"$ref": "#/components/schemas/InviteUpload"},
+                            "encoding": {
+                                "session": {"contentType": "application/json"}
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/Reactions"}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/authorize": {
+            "get": {
+                "operationId": "authorize",
+                "responses": {
+                    "200": {
+                        "description": "An HTML login page",
+                        "content": {
+                            "text/html": {
+                                "schema": {"type": "string"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GroupInvite": {
+                "type": "object",
+                "properties": {
+                    "max_age": {"type": "integer"}
+                }
+            },
+            "GuildInvite": {
+                "type": "object",
+                "properties": {
+                    "unique": {"type": "boolean"}
+                }
+            },
+            "InviteUpload": {
+                "type": "object",
+                "properties": {
+                    "session": {"type": "string"}
+                }
+            },
+            "Reactions": {
+                "type": "object",
+                "required": ["+1", "-1"],
+                "properties": {
+                    "+1": {"type": "integer"},
+                    "-1": {"type": "integer"},
+                    "labels": {"type": ["object", "null"]}
+                }
+            }
+        }
+    }
+}
