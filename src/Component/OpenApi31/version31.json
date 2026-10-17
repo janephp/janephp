@@ -468,6 +468,24 @@
           "default": false,
           "type": "boolean"
         },
+        "style": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
+          "type": "string"
+        },
+        "explode": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
+          "type": "boolean"
+        },
+        "allowReserved": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
+          "default": false,
+          "type": "boolean"
+        },
+        "allowEmptyValue": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
+          "default": false,
+          "type": "boolean"
+        },
         "schema": {
           "$dynamicRef": "#meta"
         },
@@ -1013,6 +1031,14 @@
         },
         "deprecated": {
           "default": false,
+          "type": "boolean"
+        },
+        "style": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
+          "type": "string"
+        },
+        "explode": {
+          "$comment": "Also declared in dependentSchemas/if-then, copied here so Jane generates the property (#1119)",
           "type": "boolean"
         },
         "schema": {
