@@ -16,9 +16,9 @@ class AutoscalePoolCreate implements AdditionalPropertiesInterface
     /**
      * The scaling configuration for an autoscale pool, which is how the pool scales up and down (either by resource utilization or static configuration).
      *
-     * @var iterable<string, mixed>
+     * @var AutoscalePoolStaticConfig|AutoscalePoolDynamicConfig
      */
-    public iterable $config;
+    public $config;
     /**
      * @var AutoscalePoolDropletTemplate
      */

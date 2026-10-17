@@ -26,9 +26,53 @@ class OneOfGuesser extends BaseOneOfGuesser
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class)
-            && 'object' !== ($object->type ?? null)
+            && ('object' !== ($object->type ?? null) || self::isObjectTypedUnion($object))
             && \is_array($object->oneOf ?? null)
             && \count($object->oneOf ?? null) > 0;
+    }
+
+    /**
+     * Whether a `type: object` schema only carries a `oneOf` (no own properties) whose branches are all
+     * references or inline non-object schemas: such a schema is a union of its branches, not a map.
+     *
+     * Inline object branches are excluded as no class is guessed for them.
+     */
+    public static function isObjectTypedUnion($object): bool
+    {
+        return 'object' === ($object->type ?? null)
+            && [] === (array) ($object->properties ?? [])
+            && self::hasOnlyNonObjectBranches($object);
+    }
+
+    /**
+     * Whether every `oneOf` branch is a reference or an inline schema not describing an object.
+     */
+    public static function hasOnlyNonObjectBranches($object): bool
+    {
+        if (!\is_array($object->oneOf ?? null) || 0 === \count($object->oneOf ?? null)) {
+            return false;
+        }
+
+        foreach (($object->oneOf ?? []) as $oneOf) {
+            if ($oneOf instanceof Reference) {
+                continue;
+            }
+
+            if (!\is_object($oneOf)) {
+                return false;
+            }
+
+            $type = $oneOf->type ?? null;
+            if ((\is_array($type) ? \in_array('object', $type, true) : 'object' === $type)
+                || [] !== (array) ($oneOf->properties ?? [])
+                || [] !== ($oneOf->allOf ?? [])
+                || [] !== ($oneOf->anyOf ?? [])
+                || [] !== ($oneOf->oneOf ?? [])) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type

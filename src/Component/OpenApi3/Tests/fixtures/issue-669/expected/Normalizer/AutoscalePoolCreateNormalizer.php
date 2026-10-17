@@ -42,20 +42,22 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
             unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
-            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data['config'] as $key => $value) {
-                $values[$key] = $value;
+            $value = $data['config'];
+            if (is_array($data['config']) and \array_key_exists('target_number_instances', $data['config'])) {
+                $value = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolStaticConfig::class, 'json', $context);
+            } elseif (is_array($data['config']) and \array_key_exists('min_instances', $data['config']) and \array_key_exists('max_instances', $data['config'])) {
+                $value = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDynamicConfig::class, 'json', $context);
             }
-            $object->config = $values;
+            $object->config = $value;
             unset($data['config']);
         }
         if (\array_key_exists('droplet_template', $data)) {
             $object->dropletTemplate = $this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context);
             unset($data['droplet_template']);
         }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -64,16 +66,20 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['name'] = $data->name;
-        $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->config as $key => $value) {
-            $values[$key] = $value;
+        $value = $data->config;
+        if (is_object($data->config)) {
+            $normalized = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        } elseif (is_object($data->config)) {
+            $normalized_1 = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        $dataArray['config'] = $values;
-        $normalized = $data->dropletTemplate === null ? null : $this->normalizer->normalize($data->dropletTemplate, 'json', $context);
-        $dataArray['droplet_template'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
-        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_1;
+        $dataArray['config'] = $value;
+        $normalized_2 = $data->dropletTemplate === null ? null : $this->normalizer->normalize($data->dropletTemplate, 'json', $context);
+        $dataArray['droplet_template'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;
