@@ -65,7 +65,7 @@ class ConfigLoader implements ConfigLoaderInterface
         $defaults = Options::defaults()->toArray();
 
         // OpenAPI-specific options are not part of the JsonSchema vocabulary.
-        unset($defaults['whitelisted-paths'], $defaults['endpoint-generator'], $defaults['operation-namings'], $defaults['custom-query-resolver'], $defaults['throw-unexpected-status-code'], $defaults['generate-error-exceptions']);
+        unset($defaults['whitelisted-paths'], $defaults['endpoint-generator'], $defaults['operation-namings'], $defaults['custom-query-resolver'], $defaults['throw-unexpected-status-code'], $defaults['generate-error-exceptions'], $defaults['pagination']);
 
         // The console historically treats an unspecified 'reference' as true.
         return array_merge($defaults, [

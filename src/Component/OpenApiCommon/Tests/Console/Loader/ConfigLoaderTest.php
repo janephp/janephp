@@ -41,6 +41,14 @@ PHP
         self::assertFalse($this->loadConfiguration(['throw-unexpected-status-code' => false])['throw-unexpected-status-code']);
     }
 
+    public function testPaginationIsOptIn(): void
+    {
+        $pagination = [['^/items$', 'GET', ['strategy' => 'link-header']]];
+
+        self::assertSame([], $this->loadConfiguration([])['pagination']);
+        self::assertSame($pagination, $this->loadConfiguration(['pagination' => $pagination])['pagination']);
+    }
+
     /**
      * @param array<string, mixed> $extra
      *

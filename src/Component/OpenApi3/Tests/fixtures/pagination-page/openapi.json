@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "Page pagination", "version": "1.0.0"},
+  "paths": {
+    "/repos": {
+      "get": {
+        "operationId": "listRepos",
+        "parameters": [
+          {"name": "page", "in": "query", "schema": {"type": "integer", "default": 1}},
+          {"name": "per_page", "in": "query", "schema": {"type": "integer"}}
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of repositories",
+            "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Repo"}}}}
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "operationId": "search",
+        "parameters": [
+          {"name": "q", "in": "query", "required": true, "schema": {"type": "string"}},
+          {"name": "p", "in": "query", "schema": {"type": "integer"}}
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of results",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SearchPage"}}}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Repo": {
+        "type": "object",
+        "properties": {"name": {"type": "string"}}
+      },
+      "SearchPage": {
+        "type": "object",
+        "properties": {
+          "results": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

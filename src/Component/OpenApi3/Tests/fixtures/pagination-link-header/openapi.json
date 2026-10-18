@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "Link header pagination", "version": "1.0.0"},
+  "paths": {
+    "/repos/{owner}/issues": {
+      "get": {
+        "operationId": "listIssues",
+        "parameters": [
+          {"name": "owner", "in": "path", "required": true, "schema": {"type": "string"}},
+          {"name": "state", "in": "query", "schema": {"type": "string"}},
+          {"name": "page", "in": "query", "schema": {"type": "integer"}},
+          {"name": "per_page", "in": "query", "schema": {"type": "integer"}}
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of issues",
+            "headers": {"Link": {"schema": {"type": "string"}}},
+            "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Issue"}}}}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Issue": {
+        "type": "object",
+        "properties": {"number": {"type": "integer"}, "title": {"type": "string"}}
+      }
+    }
+  }
+}

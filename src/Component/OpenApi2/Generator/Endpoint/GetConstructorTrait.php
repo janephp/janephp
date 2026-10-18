@@ -29,7 +29,7 @@ trait GetConstructorTrait
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, BodyParameterGenerator $bodyParameterGenerator, NonBodyParameterGenerator $nonBodyParameterGenerator): array
     {
-        $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
+        $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = $queryParamsInfo = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
         $queryParamsRequired = $formParamsRequired = $headerParamsRequired = false;
 
@@ -63,6 +63,7 @@ trait GetConstructorTrait
 
             if ($parameter instanceof QueryParameterSubSchema) {
                 $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $queryParamsInfo[$parameter->name] = ['default' => $parameter->default ?? null, 'types' => $nonBodyParameterGenerator->getOptionAllowedTypes($parameter)];
                 $queryParamsRequired = $queryParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
 
@@ -86,7 +87,7 @@ trait GetConstructorTrait
         );
 
         if (\count($methodStatements) === 0) {
-            return [null, [], '/**', []];
+            return [null, [], '/**', [], $queryParamsInfo];
         }
 
         $methodParams = $this->dropDefaultsBeforeRequired(array_merge(
@@ -124,6 +125,6 @@ trait GetConstructorTrait
             'stmts' => $methodStatements,
         ], [
             'comments' => [new Doc($methodParamsDoc),
-            ], ]), $methodParams, $methodParamsDoc, $pathProperties];
+            ], ]), $methodParams, $methodParamsDoc, $pathProperties, $queryParamsInfo];
     }
 }

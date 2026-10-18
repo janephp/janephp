@@ -158,6 +158,20 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
+    /**
+     * The types allowed by the OptionsResolver for an option parameter.
+     *
+     * @return list<string>
+     */
+    public function getOptionAllowedTypes(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): array
+    {
+        if (!($parameter->type ?? null)) {
+            return [];
+        }
+
+        return $this->convertParameterType($parameter);
+    }
+
     private function convertParameterType(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): array
     {
         $type = (($parameter->type ?? null) ?? null);

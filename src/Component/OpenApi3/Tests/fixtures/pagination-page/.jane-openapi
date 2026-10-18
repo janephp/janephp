@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\PaginationPage',
+    'directory' => __DIR__ . '/generated',
+    'pagination' => [
+        ['^/repos$', 'GET', ['strategy' => 'page', 'param' => 'page']],
+        ['^/search$', 'GET', ['strategy' => 'page', 'param' => 'p', 'items' => 'results']],
+    ],
+];

@@ -18,6 +18,17 @@ class RegistryTest extends TestCase
         // Undeclared statuses throw by default since 8.0 (#377, #815).
         self::assertTrue($registry->getThrowUnexpectedStatusCode());
         self::assertTrue($registry->getGenerateErrorExceptions());
+        self::assertSame([], $registry->getPagination());
+    }
+
+    public function testPaginationIsPartOfTheOptionsHash(): void
+    {
+        $registry = new Registry();
+        $hash = $registry->getOptionsHash();
+        $registry->setPagination([['^/items$', 'GET', ['strategy' => 'link-header']]]);
+
+        self::assertSame([['^/items$', 'GET', ['strategy' => 'link-header']]], $registry->getPagination());
+        self::assertNotSame($hash, $registry->getOptionsHash());
     }
 
     public function testOptionsHashIsComputableOnAFreshRegistry(): void
