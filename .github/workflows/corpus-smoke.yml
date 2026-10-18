@@ -1,6 +1,7 @@
 # Nightly, non-blocking smoke run of the generator over real-world specs
-# (corpus/specs.json). Never a required check: it is not triggered by pull
-# requests. See docs/contributing/tests.md, "Corpus smoke job".
+# (corpus/specs.json): generation, syntax and Mago (no baseline) must all pass.
+# Never a required check: it is not triggered by pull requests. See
+# docs/contributing/tests.md, "Corpus smoke job".
 name: Corpus smoke
 
 on:

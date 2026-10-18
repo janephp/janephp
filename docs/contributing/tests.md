@@ -107,9 +107,10 @@ asserts three things:
    generator raises reaches the command wrapped in a `GenerationFailedException`, itself a Jane exception; the job
    classifies it as a crash all the same.
 2. **The output parses**, through the same php-parser syntax gate as the fixture tests (`PhpSyntaxGate`).
-3. **Mago report** — the generated tree is analysed with `mago-generated.toml`'s rules and *no* baseline. The
-   per-code counts are reported only: freshly generated code carries the clusters frozen in the fixture baseline
-   ([#1066](https://github.com/janephp/janephp/issues/1066)), so this becomes a gate once that baseline is empty.
+3. **Mago finds nothing** — the generated tree is analysed with `mago-generated.toml`'s rules and *no* baseline,
+   and the per-code counts are reported. Any finding fails the entry, like the fixture gate does
+   ([ADR 0011](adrs/0011-static-analysis-of-generated-code.md)). A finding nobody can fix yet is held by a
+   `known-failure` marker, not by a baseline.
 
 ```bash
 castor qa:corpus                 # every entry
@@ -119,7 +120,8 @@ castor qa:corpus --spec discord  # one entry
 It runs nightly (`.github/workflows/corpus-smoke.yml`, also on `workflow_dispatch` with an optional `spec` input)
 and is never a required check. An entry carrying `known-failure` (a link to the tracking issue) is expected to fail:
 its failure does not fail the run, and an unexpected pass is reported so the marker gets removed with the fix. The
-run exits non-zero only when an entry without that marker crashes or produces PHP that does not parse; the
+run exits non-zero when an entry without that marker crashes, produces PHP that does not parse or has a Mago
+finding; the
 generation output of failed entries is kept under `.corpus/failures/` (uploaded as a workflow artifact) so a red
 row can become a minimal-repro issue without re-running anything. Downloads are cached under `.corpus/cache/`.
 
