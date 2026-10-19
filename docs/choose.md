@@ -53,3 +53,22 @@ Or you can see our detailed guides with more feature-focused content:
 - [External API Client](guides/external_client.md)
 - [Between two Symfony apps](guides/two_symfony_apps.md)
 - [Nullability](guides/nullable.md)
+
+## Agent skills
+
+Once you know which component you need, you can teach your coding agent (Claude Code, OpenCode, Codex, Cursor, ...)
+to use it. Jane ships installable [agent skills](https://skills.sh/) that install the right packages, write the
+generation config, run the generation and use the generated code:
+
+- **OpenAPI**: `jane-openapi-sdk` builds a PHP SDK from an OpenAPI or Swagger specification.
+- **JSON Schema**: `jane-json-schema-models` builds PHP models and normalizers from a JSON Schema.
+- **Upgrading**: `jane-upgrade` moves a Jane 7.x project to 8.x.
+
+```bash
+npx skills add janephp/janephp --skill jane-openapi-sdk
+npx skills add janephp/janephp --skill jane-json-schema-models
+npx skills add janephp/janephp --skill jane-upgrade
+```
+
+> [!TIP]
+> The skills link to this documentation, so your agent always reads the docs for the latest version.

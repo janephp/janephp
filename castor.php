@@ -12,6 +12,7 @@ use function Castor\PHPQa\php_cs_fixer;
 use function Castor\PHPQa\phpstan;
 use function Castor\run;
 use function Castor\run_php;
+use function Castor\yaml_parse;
 
 #[AsTask('cs:check', namespace: 'qa', description: 'Check for coding standards without fixing them')]
 function qa_cs_check(): void
@@ -89,6 +90,117 @@ function qa_corpus(?string $spec = null, int $timeout = 900): void
     }
 
     run($params, context: context()->withTimeout(null));
+}
+
+#[AsTask('skills', namespace: 'qa', description: 'Check the agent skills of skills/: frontmatter, docs links and anchors, cross-references, README and docs/choose.md entries')]
+function qa_skills(): int
+{
+    $errors = [];
+    $skillFiles = glob(__DIR__ . '/skills/*/SKILL.md') ?: [];
+    $skillNames = array_map(static fn (string $file): string => basename(\dirname($file)), $skillFiles);
+    $installDocs = [
+        'README.md' => file_get_contents(__DIR__ . '/README.md'),
+        'docs/choose.md' => file_get_contents(__DIR__ . '/docs/choose.md'),
+    ];
+
+    foreach ($skillFiles as $file) {
+        $skill = basename(\dirname($file));
+        $content = file_get_contents($file);
+
+        // Agent Skills format: https://agentskills.io/specification
+        if (!preg_match('/\A---\n(.*?)\n---\n/s', $content, $matches)) {
+            $errors[] = \sprintf('%s: missing YAML frontmatter', $skill);
+
+            continue;
+        }
+
+        try {
+            $frontmatter = yaml_parse($matches[1]);
+        } catch (Throwable $e) {
+            $errors[] = \sprintf('%s: invalid YAML frontmatter: %s', $skill, $e->getMessage());
+
+            continue;
+        }
+
+        $name = $frontmatter['name'] ?? null;
+        $description = $frontmatter['description'] ?? null;
+        if ($name !== $skill || !preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $skill) || \strlen($skill) > 64) {
+            $errors[] = \sprintf('%s: `name` must be the directory name, in kebab-case, 64 characters at most', $skill);
+        }
+        if (!\is_string($description) || '' === trim($description) || \strlen($description) > 1024) {
+            $errors[] = \sprintf('%s: `description` must be a non-empty string of 1024 characters at most', $skill);
+        }
+
+        foreach ($installDocs as $path => $installDoc) {
+            if (!preg_match('/--skill ' . preg_quote($skill, '/') . '\s/', $installDoc)) {
+                $errors[] = \sprintf('%s: missing from the "Agent skills" section of %s', $skill, $path);
+            }
+        }
+
+        preg_match_all('/\bjane-[a-z0-9-]+(?= skill)/', $content, $matches);
+        foreach (array_unique($matches[0]) as $reference) {
+            if (!\in_array($reference, $skillNames, true)) {
+                $errors[] = \sprintf('%s: refers to the unknown skill "%s"', $skill, $reference);
+            }
+        }
+
+        preg_match_all('{https://jane\.jolicode\.com/latest/([a-z0-9_/]*?)/?(?:#([\w-]+))?(?=[\s)`]|$)}m', $content, $matches, \PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $page = '' === $match[1] ? 'index' : $match[1];
+            $docFile = __DIR__ . '/docs/' . $page . '.md';
+            if (!is_file($docFile)) {
+                $docFile = __DIR__ . '/docs/' . $page . '/index.md';
+            }
+            if (!is_file($docFile)) {
+                $errors[] = \sprintf('%s: %s matches no page in docs/', $skill, $match[0]);
+
+                continue;
+            }
+
+            if (isset($match[2]) && '' !== $match[2] && !\in_array($match[2], docs_heading_anchors($docFile), true)) {
+                $errors[] = \sprintf('%s: %s matches no heading of docs/%s', $skill, $match[0], substr($docFile, \strlen(__DIR__ . '/docs/')));
+            }
+        }
+    }
+
+    if ([] !== $errors) {
+        io()->error($errors);
+
+        return 1;
+    }
+
+    io()->success(\sprintf('%d skills checked.', \count($skillFiles)));
+
+    return 0;
+}
+
+/**
+ * Anchors MkDocs generates for the headings of a page (Python-Markdown `toc` default slugify).
+ *
+ * @return list<string>
+ */
+function docs_heading_anchors(string $docFile): array
+{
+    $anchors = [];
+    $inFence = false;
+
+    foreach (file($docFile, \FILE_IGNORE_NEW_LINES) as $line) {
+        if (preg_match('/^\s*(```|~~~)/', $line)) {
+            $inFence = !$inFence;
+
+            continue;
+        }
+
+        if ($inFence || !preg_match('/^#{1,6}\s+(.+?)\s*#*\s*$/', $line, $matches)) {
+            continue;
+        }
+
+        $text = preg_replace('/\[([^]]*)]\([^)]*\)/', '$1', $matches[1]);
+        $text = preg_replace('/[^\w\s-]/u', '', str_replace(['`', '*'], '', $text));
+        $anchors[] = preg_replace('/[-\s]+/', '-', strtolower(trim($text)));
+    }
+
+    return $anchors;
 }
 
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
