@@ -39,6 +39,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'custom-query-resolver',
             'throw-unexpected-status-code',
             'generate-error-exceptions',
+            'pagination',
             'custom-string-format-mapping',
             'include-null-value',
             'enums-as-objects',

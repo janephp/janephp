@@ -31,6 +31,20 @@ final class OptionsTest extends TestCase
         self::assertSame(Options::ENUMS_UNKNOWN_VALUE_SCALAR, Options::fromArray(['enums-unknown-value' => 'scalar'])->enumsUnknownValue);
     }
 
+    public function testPaginationIsOptIn(): void
+    {
+        self::assertSame([], Options::defaults()->pagination);
+        self::assertSame([], Options::fromArray([])->toArray()['pagination']);
+    }
+
+    public function testPaginationRoundTrips(): void
+    {
+        $pagination = [['^/items$', 'GET', ['strategy' => 'cursor', 'param' => 'cursor', 'next-cursor' => 'meta.next', 'items' => 'data']]];
+
+        self::assertSame($pagination, Options::fromArray(['pagination' => $pagination])->pagination);
+        self::assertSame($pagination, Options::fromArray(['pagination' => $pagination])->toArray()['pagination']);
+    }
+
     public function testAnUnsupportedUnknownEnumValueHandlingIsRejected(): void
     {
         $this->expectException(\InvalidArgumentException::class);

@@ -286,6 +286,9 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  given type (`bool`, `int`, `string`, ...) and give it your class that contains the custom normalizer by
  extending the generated runtime `CustomQueryResolver` class. You can also filter the usage of your custom
  normalizer by giving the exact path, method and parameter name where you want to apply it.
+- `pagination`: Generates a `<operation>Paginated()` sibling method for the configured GET operations. It returns a
+ `\Generator` that requests the pages one after the other and yields their items. Disabled by default. See the
+ [Paginated operations](#paginated-operations) section for more details.
 - `generate-error-exceptions`: Will generate a dedicated exception class for every declared error response (status >= 400)
  and throw it with the deserialized typed error model. When disabled, declared error responses are denormalized into
  their typed model and returned like any other response. Undeclared statuses remain governed by
@@ -509,6 +512,74 @@ $body = $response->getContent(false);
 
 This allows custom work when the API does not return a standard JSON body. See [Fetch modes](#fetch-modes) below for
 the new, per-operation ways of controlling when requests are sent and parsed.
+
+## Paginated operations
+
+List endpoints usually return one page at a time. The `pagination` option generates a `<operation>Paginated()` method
+next to the client method of each configured GET operation. It takes the same arguments and returns a `\Generator`
+that yields the items of every page:
+
+```php
+$apiClient = Vendor\Library\Generated\Client::create();
+
+foreach ($apiClient->listItemsPaginated(['limit' => 50]) as $item) {
+    // $item is a Vendor\Library\Generated\Model\Item, whatever page it comes from
+}
+```
+
+The generator is lazy: a page is only requested once the previous one has been consumed, so breaking out of the loop
+stops the requests. Pages are requested and parsed eagerly, with `executeRawEndpoint()` and `parseResponse()`:
+[fetch modes](#fetch-modes) do not apply to paginated methods. Documented error responses throw their exceptions while
+iterating.
+
+Each entry of the option is `[path regex, method, config]`. The path regex and the method follow the
+`whitelisted-paths` semantics; only `GET` operations can be paginated, and the method can be omitted
+(`[path regex, config]`). The `strategy` key of the config tells how the next page is requested:
+
+```php
+return [
+  // your usual configuration ...
+  'pagination' => [
+    // ?cursor=… comes from the "meta.nextCursor" property of the body, stops when it is null or empty
+    ['^/items$', 'GET', ['strategy' => 'cursor', 'param' => 'cursor', 'next-cursor' => 'meta.nextCursor', 'items' => 'data']],
+    // ?page=… is incremented from its default in the specification (1 otherwise), stops on the first empty page
+    ['^/repos$', 'GET', ['strategy' => 'page', 'param' => 'page']],
+    // follows the RFC 8288 `Link: <…>; rel="next"` response header, stops when there is none
+    ['^/repos/\{owner\}/issues$', 'GET', ['strategy' => 'link-header']],
+    // follows the full next page URL read from the body, stops when it is missing, null or empty
+    ['^/users$', 'GET', ['strategy' => 'next-link', 'next' => '@odata.nextLink', 'items' => 'value']],
+  ],
+];
+```
+
+| Key | Description |
+|-----|-------------|
+| `strategy` | `cursor`, `page`, `link-header` or `next-link`. Required. |
+| `items` | Path of the items array in the response model, such as `data` or `results.list`. Required by `cursor` and `next-link`. When omitted, the response itself must be a JSON array of items. |
+| `param` | The query parameter sent with the cursor (`cursor`) or the page number (`page`). It must be declared on the operation. |
+| `next-cursor` | `cursor` only: path of the next cursor in the response model. |
+| `next` | `next-link` only: path of the next page URL in the response model. |
+| `yield` | `items` (default) yields every item. `pages` yields every page instead, for example to read an OData `@odata.deltaLink` on the last page. |
+| `max-pages` | Stops after this many pages. |
+
+Paths are JSON property names, separated by dots. A property name containing a dot, such as `@odata.nextLink`, is
+matched as a whole.
+
+The configuration is checked against the specification before anything is written: an unknown strategy, a missing
+key, an undeclared `param`, a path that does not resolve on the response model, or an entry matching no operation make
+the generation fail, with every problem listed.
+
+Some limits apply:
+
+- The `link-header` and `next-link` strategies merge the query string of the next page URL over the query parameters
+  of the call. Every query parameter of that URL must be declared on the operation, otherwise the endpoint throws an
+  `UndefinedOptionsException`. Values of `integer`, `number` and `boolean` parameters are cast back to their type.
+  Like any PHP query string parsing, dots and spaces in parameter names become underscores.
+- A next page URL pointing at another path than the operation throws an `\UnexpectedValueException`: only the query
+  string of the URL is followed, on the same endpoint.
+- To avoid endless loops, the iteration stops when a server sends the same cursor again, or a next page URL that does
+  not change the query. A `page` endpoint that never returns an empty page needs `max-pages`.
+- With `throw-unexpected-status-code` disabled, an undeclared status stops the iteration.
 
 ## Fetch modes
 

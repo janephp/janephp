@@ -79,6 +79,7 @@ class GenerateCommand extends BaseGenerateCommand
         $registry->setWhitelistedPaths($options['whitelisted-paths'] ?? []);
         $registry->setThrowUnexpectedStatusCode($options['throw-unexpected-status-code'] ?? true);
         $registry->setGenerateErrorExceptions($options['generate-error-exceptions'] ?? true);
+        $registry->setPagination($options['pagination'] ?? []);
 
         $customQueryResolver = [];
         foreach ($options['custom-query-resolver'] ?? [] as $path => $methods) {

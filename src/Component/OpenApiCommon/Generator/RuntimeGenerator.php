@@ -20,6 +20,7 @@ class RuntimeGenerator extends BaseRuntimeGenerator
         'CustomQueryResolver' => ['class' => 'CustomQueryResolver', 'namespace' => ['Client'], 'source' => 'Client/CustomQueryResolver.php', 'file' => 'CustomQueryResolver.php'],
         'FormEncoder' => ['class' => 'FormEncoder', 'namespace' => ['Client'], 'source' => 'Client/FormEncoder.php', 'file' => 'FormEncoder.php'],
         'JsonPayload' => ['class' => 'JsonPayload', 'namespace' => ['Client'], 'source' => 'Client/JsonPayload.php', 'file' => 'JsonPayload.php'],
+        'Pagination' => ['class' => 'Pagination', 'namespace' => ['Client'], 'source' => 'Client/Pagination.php', 'file' => 'Pagination.php'],
     ];
 
     protected function getBuilders(): array

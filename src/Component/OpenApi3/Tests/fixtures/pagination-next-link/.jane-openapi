@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\PaginationNextLink',
+    'directory' => __DIR__ . '/generated',
+    'pagination' => [
+        ['^/users$', 'GET', ['strategy' => 'next-link', 'next' => '@odata.nextLink', 'items' => 'value']],
+    ],
+];

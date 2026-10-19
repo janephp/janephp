@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\PaginationCursor',
+    'directory' => __DIR__ . '/generated',
+    'pagination' => [
+        ['^/items$', 'GET', ['strategy' => 'cursor', 'param' => 'cursor', 'next-cursor' => 'meta.nextCursor', 'items' => 'data']],
+        ['^/events$', ['strategy' => 'cursor', 'param' => 'after', 'next-cursor' => 'nextAfter', 'items' => 'events', 'yield' => 'pages', 'max-pages' => 3]],
+    ],
+];

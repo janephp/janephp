@@ -87,7 +87,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Endpoint'));
         $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'EndpointTrait'));
 
-        [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context, $this->guessClass, $this->nonBodyParameterGenerator, $this->requestBodyGenerator);
+        [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties, $queryParamsInfo] = $this->getConstructor($operation, $context, $this->guessClass, $this->nonBodyParameterGenerator, $this->requestBodyGenerator);
         [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $this->guessClass, $this->exceptionGenerator, $context);
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'BaseEndpoint')),
@@ -154,6 +154,6 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $schema->addFile($file);
         $context->dispatch(new FileGeneratedEvent($schema, $file));
 
-        return [$endpointNamespace . '\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
+        return [$endpointNamespace . '\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes, $queryParamsInfo];
     }
 }

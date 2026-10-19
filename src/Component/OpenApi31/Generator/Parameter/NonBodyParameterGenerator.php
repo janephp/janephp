@@ -184,6 +184,26 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
+    /**
+     * The types allowed by the OptionsResolver for an option parameter ("null" excluded).
+     *
+     * @return list<string>
+     */
+    public function getOptionAllowedTypes(Parameter $parameter): array
+    {
+        $schema = ($parameter->schema ?? null);
+
+        if ($schema instanceof Reference) {
+            [, $schema] = $this->guessClass->resolve($schema, JsonSchema::class);
+        }
+
+        if (!$schema instanceof JsonSchema || !($schema->type ?? null)) {
+            return [];
+        }
+
+        return $this->convertParameterType($schema);
+    }
+
     private function convertParameterType(JsonSchema $schema): array
     {
         $type = ($schema->type ?? null);

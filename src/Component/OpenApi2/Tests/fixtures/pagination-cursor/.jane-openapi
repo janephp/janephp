@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.json',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\PaginationCursor',
+    'directory' => __DIR__ . '/generated',
+    'pagination' => [
+        ['^/items$', 'GET', ['strategy' => 'cursor', 'param' => 'cursor', 'next-cursor' => 'meta.nextCursor', 'items' => 'data']],
+    ],
+];

@@ -4,4 +4,7 @@ return [
     'openapi-file' => __DIR__ .  '/openapi.yaml',
     'namespace' => 'Jane\Component\OpenApi31\Tests\Client',
     'directory' => __DIR__ . '/generated',
+    'pagination' => [
+        ['^/items$', 'GET', ['strategy' => 'cursor', 'param' => 'cursor', 'next-cursor' => 'meta.nextCursor', 'items' => 'data']],
+    ],
 ];

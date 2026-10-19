@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "Cursor pagination", "version": "1.0.0"},
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "listItems",
+        "description": "List the items",
+        "parameters": [
+          {"name": "cursor", "in": "query", "schema": {"type": "string"}},
+          {"name": "limit", "in": "query", "schema": {"type": "integer", "default": 20}}
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of items",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ItemPage"}}}
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "operationId": "getItem",
+        "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "string"}}],
+        "responses": {
+          "200": {
+            "description": "An item",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Item"}}}
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "operationId": "listEvents",
+        "parameters": [
+          {"name": "after", "in": "query", "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of events",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/EventPage"}}}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "properties": {"id": {"type": "string"}, "name": {"type": "string"}}
+      },
+      "ItemPage": {
+        "type": "object",
+        "properties": {
+          "data": {"type": "array", "items": {"$ref": "#/components/schemas/Item"}},
+          "meta": {"$ref": "#/components/schemas/PageMeta"}
+        }
+      },
+      "PageMeta": {
+        "type": "object",
+        "properties": {"nextCursor": {"type": "string", "nullable": true}}
+      },
+      "Event": {
+        "type": "object",
+        "properties": {"type": {"type": "string"}}
+      },
+      "EventPage": {
+        "type": "object",
+        "properties": {
+          "events": {"type": "array", "items": {"$ref": "#/components/schemas/Event"}},
+          "nextAfter": {"type": "string", "nullable": true}
+        }
+      }
+    }
+  }
+}

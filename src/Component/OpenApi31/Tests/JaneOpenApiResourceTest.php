@@ -10,6 +10,7 @@ use Jane\Component\OpenApi31\Tests\Client\Endpoint\GetThing;
 use Jane\Component\OpenApi31\Tests\Client\Exception\GetEndpointUnauthorizedException;
 use Jane\Component\OpenApi31\Tests\Client\Exception\GetThingNotFoundException;
 use Jane\Component\OpenApi31\Tests\Client\Model\Error;
+use Jane\Component\OpenApi31\Tests\Client\Model\Item;
 use Jane\Component\OpenApi31\Tests\Client\Model\SimpleResponse;
 use Jane\Component\OpenApi31\Tests\Client\Model\Thing;
 use Jane\Component\OpenApi31\Tests\Client\Model\ThingDetails;
@@ -26,6 +27,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpClient\TraceableHttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -135,5 +137,35 @@ class JaneOpenApiResourceTest extends TestCase
             $this->assertEquals(404, $exception->getCode());
             $this->assertInstanceOf(Error::class, $exception->getError());
         }
+
+        // 11. Cursor pagination: the next cursor is sent back, the mock server then serves the same cursor again,
+        //     which stops the iteration
+        $traceableHttpClient = null;
+        $paginatedClient = Client::create(null, [
+            new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
+            static function (HttpClientInterface $httpClient) use (&$traceableHttpClient): HttpClientInterface {
+                return $traceableHttpClient = new TraceableHttpClient($httpClient);
+            },
+        ]);
+        $items = iterator_to_array($paginatedClient->listItemsPaginated(), false);
+        $this->assertContainsOnlyInstancesOf(Item::class, $items);
+        $this->assertSame(['item-1', 'item-2', 'item-1', 'item-2'], array_map(static fn (Item $item): string => $item->id, $items));
+        $this->assertSame([
+            '/items',
+            '/items?cursor=page-2',
+        ], array_column($traceableHttpClient->getTracedRequests(), 'url'));
+
+        // 12. Cursor pagination stops on a null next cursor, served through the Prefer header
+        $traceableHttpClient = null;
+        $lastPageClient = Client::create(null, [
+            new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
+            static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'example=lastPage']]),
+            static function (HttpClientInterface $httpClient) use (&$traceableHttpClient): HttpClientInterface {
+                return $traceableHttpClient = new TraceableHttpClient($httpClient);
+            },
+        ]);
+        $items = iterator_to_array($lastPageClient->listItemsPaginated(), false);
+        $this->assertSame(['item-3'], array_map(static fn (Item $item): string => $item->id, $items));
+        $this->assertCount(1, $traceableHttpClient->getTracedRequests());
     }
 }

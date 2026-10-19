@@ -19,6 +19,8 @@ class Registry extends BaseRegistry implements RegistryInterface
     private array $customQueryResolver = [];
     private bool $throwUnexpectedStatusCode = true;
     private bool $generateErrorExceptions = true;
+    /** @var list<array<mixed>> */
+    private array $pagination = [];
 
     public function setOpenApiClass(string $openApiClass): void
     {
@@ -70,6 +72,22 @@ class Registry extends BaseRegistry implements RegistryInterface
         return $this->generateErrorExceptions;
     }
 
+    /**
+     * @param list<array<mixed>> $pagination
+     */
+    public function setPagination(array $pagination): void
+    {
+        $this->pagination = $pagination;
+    }
+
+    /**
+     * @return list<array<mixed>>
+     */
+    public function getPagination(): array
+    {
+        return $this->pagination;
+    }
+
     public function hasSecurityScheme($securitySchemeReference): bool
     {
         return null !== $this->getClass($securitySchemeReference);
@@ -94,6 +112,7 @@ class Registry extends BaseRegistry implements RegistryInterface
             'whitelisted-paths' => $this->getWhitelistedPaths(),
             'throw-unexpected-status-code' => $this->getThrowUnexpectedStatusCode(),
             'generate-error-exceptions' => $this->getGenerateErrorExceptions(),
+            'pagination' => $this->getPagination(),
         ]));
     }
 }

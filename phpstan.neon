@@ -21,6 +21,9 @@ parameters:
 			message: '#Jane\\Component\\OpenApi3\\Tests\\FetchMode(Default|Eager|Head|Preload)#'
 			path: src/Component/OpenApi3/Tests/FetchModeRuntimeTest.php
 		-
+			message: '#Jane\\Component\\OpenApi31\\Tests\\Client\\Model\\Item#'
+			path: src/Component/OpenApi31/Tests/JaneOpenApiResourceTest.php
+		-
 			message: '#Jane\\Component\\OpenApi3\\Tests\\Expected\\MultipartNestedObject#'
 			path: src/Component/OpenApi3/Tests/MultipartNestedObjectRuntimeTest.php
 		-

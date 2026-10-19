@@ -69,6 +69,12 @@ final class Options
         public readonly array $customQueryResolver = [],
         public readonly bool $throwUnexpectedStatusCode = true,
         public readonly bool $generateErrorExceptions = true,
+        /**
+         * Opt-in paginated client methods: one [path regex, method, config] entry per paginated operation family.
+         *
+         * @var list<array<mixed>>
+         */
+        public readonly array $pagination = [],
     ) {
         if (!\in_array($this->enumsUnknownValue, self::ENUMS_UNKNOWN_VALUES, true)) {
             throw new \InvalidArgumentException(\sprintf('The "enums-unknown-value" option must be one of "%s"; "%s" given.', implode('", "', self::ENUMS_UNKNOWN_VALUES), $this->enumsUnknownValue));
@@ -119,6 +125,7 @@ final class Options
             customQueryResolver: $options['custom-query-resolver'] ?? [],
             throwUnexpectedStatusCode: $options['throw-unexpected-status-code'] ?? true,
             generateErrorExceptions: $options['generate-error-exceptions'] ?? true,
+            pagination: $options['pagination'] ?? [],
         );
     }
 
@@ -161,6 +168,7 @@ final class Options
             'custom-query-resolver' => $this->customQueryResolver,
             'throw-unexpected-status-code' => $this->throwUnexpectedStatusCode,
             'generate-error-exceptions' => $this->generateErrorExceptions,
+            'pagination' => $this->pagination,
         ];
     }
 }

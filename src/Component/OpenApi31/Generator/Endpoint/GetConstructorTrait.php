@@ -31,7 +31,7 @@ trait GetConstructorTrait
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, RequestBodyGenerator $requestBodyGenerator): array
     {
-        $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
+        $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = $queryParamsInfo = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
         $queryParamsRequired = $headerParamsRequired = false;
         $contentTypes = $this->getContentTypes($operation, $guessClass, $context);
@@ -70,6 +70,7 @@ trait GetConstructorTrait
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === ($parameter->in ?? null)) {
                 $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $queryParamsInfo[$parameter->name ?? ''] = ['default' => $parameter->schema instanceof JsonSchema ? ($parameter->schema->default ?? null) : null, 'types' => $nonBodyParameterGenerator->getOptionAllowedTypes($parameter)];
                 $queryParamsRequired = $queryParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
             if ($parameter instanceof Parameter && EndpointGenerator::IN_HEADER === ($parameter->in ?? null)) {
@@ -97,7 +98,7 @@ trait GetConstructorTrait
         );
 
         if (\count($methodStatements) === 0) {
-            return [null, [], '/**', []];
+            return [null, [], '/**', [], $queryParamsInfo];
         }
 
         $methodParams = $this->dropDefaultsBeforeRequired(array_merge(
@@ -147,6 +148,7 @@ trait GetConstructorTrait
             $methodParams,
             $methodParamsDoc,
             $pathProperties,
+            $queryParamsInfo,
         ];
     }
 }

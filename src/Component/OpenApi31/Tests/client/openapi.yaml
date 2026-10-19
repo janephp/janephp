@@ -134,8 +134,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ThingDetails'
+  /items:
+    get:
+      summary: List items, one page at a time
+      operationId: listItems
+      parameters:
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A page of items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemPage'
+              examples:
+                nextPage:
+                  value:
+                    data:
+                      - id: item-1
+                      - id: item-2
+                    meta:
+                      nextCursor: page-2
+                lastPage:
+                  value:
+                    data:
+                      - id: item-3
+                    meta:
+                      nextCursor: null
 components:
   schemas:
+    Item:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+    ItemPage:
+      type: object
+      required:
+        - data
+        - meta
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        meta:
+          type: object
+          properties:
+            nextCursor:
+              type:
+                - string
+                - 'null'
     SimpleResponse:
       type: object
       properties:
