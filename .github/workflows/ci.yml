@@ -48,6 +48,18 @@ jobs:
               - '!.editorconfig'
               - '!.gitattributes'
               - '!.github/ISSUE_TEMPLATE/**'
+  skills:
+    # Not gated by the docs-only filter: skills are Markdown files linking to docs/.
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: setup
+        uses: castor-php/setup-castor@v0.1.0
+        with:
+          version: 'v1.8.0'
+      - name: 'agent skills check'
+        run: 'castor qa:skills'
   cs-check:
     needs: changes
     if: github.event_name != 'pull_request' || needs.changes.outputs.code == 'true'
