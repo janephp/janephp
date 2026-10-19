@@ -374,6 +374,42 @@ Rules:
 - Renaming or removing an `x-namespace` attribute after generation changes the FQCNs of the affected classes and is
   therefore a BC break for consumers of your generated library.
 
+## `oneOf` and union types
+
+A property whose schema is a `oneOf` becomes a union of its branches: `int|string` for primitive branches,
+`TypeOne|TypeTwo` for `$ref` branches. The normalizer tries the branches in order. The same applies when the `oneOf`
+is declared on a component schema: every property referencing that component gets the union.
+
+```yaml
+components:
+  schemas:
+    Identifier:
+      type: object # optional: a `type: object` schema only carrying a oneOf is a union too
+      oneOf:
+        - type: integer
+        - type: string
+    Holder:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier' # int|string
+        payload:
+          oneOf:
+            - $ref: '#/components/schemas/TypeOne'
+            - $ref: '#/components/schemas/TypeTwo' # TypeOne|TypeTwo
+```
+
+Limits:
+
+- No base class is generated for a `oneOf` schema. Use a `discriminator` with a `mapping` to generate a parent class
+  with its children.
+- Object branches are told apart by the `discriminator` when there is one, otherwise by the required properties of each
+  branch. Without either, the first object branch wins: declare a `discriminator` for unions of objects.
+- A `type: object` schema with its own `properties`, or whose `oneOf` has inline object branches, keeps being
+  generated as before (a model, or a map of values). Move the branches to `components.schemas` and reference them to
+  get a union.
+- A response whose schema is a `oneOf` is returned as the decoded JSON body, it is not deserialized into a model.
+
 ## Using a generated client
 
 Generating a client will produce same classes as the [JSON Schema](../json_schema/component.md) library:

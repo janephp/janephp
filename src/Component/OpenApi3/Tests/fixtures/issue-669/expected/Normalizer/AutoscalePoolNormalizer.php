@@ -46,11 +46,13 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
-            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data['config'] as $key => $value) {
-                $values[$key] = $value;
+            $value = $data['config'];
+            if (is_array($data['config']) and \array_key_exists('target_number_instances', $data['config'])) {
+                $value = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolStaticConfig::class, 'json', $context);
+            } elseif (is_array($data['config']) and \array_key_exists('min_instances', $data['config']) and \array_key_exists('max_instances', $data['config'])) {
+                $value = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDynamicConfig::class, 'json', $context);
             }
-            $object->config = $values;
+            $object->config = $value;
             unset($data['config']);
         }
         if (\array_key_exists('droplet_template', $data)) {
@@ -101,9 +103,9 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->activeResourcesCount = $data['active_resources_count'];
             unset($data['active_resources_count']);
         }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -113,24 +115,28 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $dataArray['id'] = $data->id;
         $dataArray['name'] = $data->name;
-        $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->config as $key => $value) {
-            $values[$key] = $value;
+        $value = $data->config;
+        if (is_object($data->config)) {
+            $normalized = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        } elseif (is_object($data->config)) {
+            $normalized_1 = $this->normalizer->normalize($data->config, 'json', $context);
+            $value = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        $dataArray['config'] = $values;
-        $normalized = $data->dropletTemplate === null ? null : $this->normalizer->normalize($data->dropletTemplate, 'json', $context);
-        $dataArray['droplet_template'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['config'] = $value;
+        $normalized_2 = $data->dropletTemplate === null ? null : $this->normalizer->normalize($data->dropletTemplate, 'json', $context);
+        $dataArray['droplet_template'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         if (array_key_exists('currentUtilization', get_object_vars($data)) && null !== ($data->currentUtilization ?? null)) {
-            $normalized_1 = $this->normalizer->normalize($data->currentUtilization, 'json', $context);
-            $dataArray['current_utilization'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
+            $normalized_3 = $this->normalizer->normalize($data->currentUtilization, 'json', $context);
+            $dataArray['current_utilization'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         $dataArray['status'] = $data->status;
         $dataArray['active_resources_count'] = $data->activeResourcesCount;
-        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_1;
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

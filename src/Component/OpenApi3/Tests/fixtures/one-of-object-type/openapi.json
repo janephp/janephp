@@ -1,0 +1,122 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "oneOf with object type",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/entity": {
+      "get": {
+        "operationId": "getEntity",
+        "responses": {
+          "200": {
+            "description": "An entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Entity"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TypeOne": {
+        "type": "object",
+        "properties": {
+          "one": {
+            "type": "string"
+          }
+        }
+      },
+      "TypeTwo": {
+        "type": "object",
+        "properties": {
+          "two": {
+            "type": "integer"
+          }
+        }
+      },
+      "Entity": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TypeOne"
+          },
+          {
+            "$ref": "#/components/schemas/TypeTwo"
+          }
+        ]
+      },
+      "PrimitiveEntity": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "Holder": {
+        "type": "object",
+        "properties": {
+          "primitive": {
+            "type": "object",
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "entity": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TypeOne"
+              },
+              {
+                "$ref": "#/components/schemas/TypeTwo"
+              }
+            ]
+          },
+          "entityReference": {
+            "$ref": "#/components/schemas/Entity"
+          },
+          "primitiveEntityReference": {
+            "$ref": "#/components/schemas/PrimitiveEntity"
+          },
+          "inlineObjects": {
+            "type": "object",
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "one": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "two": {
+                    "type": "integer"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
