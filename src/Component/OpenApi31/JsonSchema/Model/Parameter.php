@@ -20,6 +20,10 @@ class Parameter
     public ?string $description;
     public ?bool $required = false;
     public ?bool $deprecated = false;
+    public ?string $style;
+    public ?bool $explode;
+    public ?bool $allowReserved = false;
+    public ?bool $allowEmptyValue = false;
     /**
      * @var mixed|null
      */
