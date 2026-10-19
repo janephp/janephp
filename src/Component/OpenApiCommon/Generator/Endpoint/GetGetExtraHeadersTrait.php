@@ -36,7 +36,9 @@ trait GetGetExtraHeadersTrait
             new Scalar\String_('Accept')
         );
 
-        if (\count($items) === 1) {
+        // The constructor only declares an `$accept` property for more than one
+        // content type: a lone text/html one leaves no item but no property either.
+        if (\count($items) === 1 || \count($produces) === 1) {
             return new Stmt\ClassMethod('getExtraHeaders', [
                 'flags' => Modifiers::PUBLIC,
                 'stmts' => [new Stmt\Return_(new Expr\Array_($headers))],

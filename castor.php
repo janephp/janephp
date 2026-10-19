@@ -74,7 +74,7 @@ function qa_mago_generated(bool $generateBaseline = false): void
     io()->success($generateBaseline ? 'Baselines regenerated.' : 'No new findings in generated code.');
 }
 
-#[AsTask('corpus', namespace: 'qa', description: 'Smoke-run the generator over the pinned real-world specs of corpus/specs.json (generation, syntax, Mago report)')]
+#[AsTask('corpus', namespace: 'qa', description: 'Smoke-run the generator over the pinned real-world specs of corpus/specs.json (generation, syntax, Mago)')]
 function qa_corpus(?string $spec = null, int $timeout = 900): void
 {
     // Fetching, generating (in a child process per spec), the php-parser

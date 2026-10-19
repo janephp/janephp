@@ -7,6 +7,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\AbstractBodyContentGenerator;
 use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\RequestBodyContentGeneratorInterface;
+use Jane\Component\OpenApiCommon\Generator\Traits\RequestBodyBranchesTrait;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -14,6 +15,8 @@ use PhpParser\Node\Stmt;
 
 class RequestBodyGenerator
 {
+    use RequestBodyBranchesTrait;
+
     /** @var RequestBodyContentGeneratorInterface[] */
     private array $generators = [];
 
@@ -127,6 +130,7 @@ class RequestBodyGenerator
             );
         }
 
+        $statements = $this->orderRequestBodyBranches($statements);
         $statements[] = new Stmt\Return_(new Expr\Array_([
             new Expr\Array_(),
             new Expr\ConstFetch(new Name('null')),

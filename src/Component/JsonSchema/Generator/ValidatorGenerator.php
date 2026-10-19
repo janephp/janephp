@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Comment;
 use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -57,9 +58,7 @@ class ValidatorGenerator implements GeneratorInterface
                             [
                                 'flags' => Modifiers::PROTECTED,
                                 'params' => [new Node\Param(new Expr\Variable('options'))],
-                                'stmts' => [
-                                    new Node\Stmt\Return_(new Expr\Array_($this->createConstraints($class, $registry, $namespace))),
-                                ],
+                                'stmts' => [$this->createConstraintsReturn($class, $registry, $namespace)],
                                 'returnType' => new Node\Identifier('array'),
                             ]
                         ),
@@ -76,16 +75,30 @@ class ValidatorGenerator implements GeneratorInterface
     }
 
     /**
-     * Build the constraint array emitted by a validator class: the class level
-     * guesses, the sub-property guesses (references to other validators) and
-     * the property collection.
+     * PHP casts an integer-like property name (`-1`, `42`) used as an array
+     * key to an int, so no array literal can match the `array<string, ...>`
+     * fields Symfony's Collection documents; it still validates the decoded
+     * data, whose key is cast the same way. The expected finding is declared
+     * on the statement rather than left to fail the generated-code analysis.
      */
+    private function createConstraintsReturn($class, Registry $registry, string $namespace): Node\Stmt\Return_
+    {
+        $integerFieldNames = false;
+        $return = new Node\Stmt\Return_(new Expr\Array_($this->createConstraints($class, $registry, $namespace, $integerFieldNames)));
+
+        if ($integerFieldNames) {
+            $return->setDocComment(new Comment\Doc('/** @mago-expect analysis:possibly-invalid-argument */'));
+        }
+
+        return $return;
+    }
+
     /**
      * Build the constraint array emitted by a validator class: the class level
      * guesses, the sub-property guesses (references to other validators) and
      * the property collection.
      */
-    private function createConstraints($class, Registry $registry, string $namespace): array
+    private function createConstraints($class, Registry $registry, string $namespace, bool &$integerFieldNames): array
     {
         $collectionItemsConstraints = [];
         $collectionItems = [];
@@ -125,6 +138,7 @@ class ValidatorGenerator implements GeneratorInterface
         }
 
         foreach ($collectionItemsConstraints as $name => $constraints) {
+            $integerFieldNames = $integerFieldNames || \is_int($name);
             $collectionClass = $class->isRequired($name) ? Required::class : Optional::class;
             $collectionItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified($collectionClass), [
                 new Node\Arg(new Expr\Array_($constraints)),

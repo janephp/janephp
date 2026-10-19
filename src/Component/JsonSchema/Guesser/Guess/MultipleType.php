@@ -207,6 +207,11 @@ class MultipleType extends Type
         return 'null' === $nullType->getName();
     }
 
+    private function isIssetCondition(Expr $condition): bool
+    {
+        return $condition instanceof Expr\FuncCall && $condition->name instanceof Name && 'isset' === $condition->name->toString();
+    }
+
     private function createDiscriminatorCondition(Expr $input, $discriminant): Expr
     {
         $issetCondition = new Expr\FuncCall(
@@ -233,6 +238,7 @@ class MultipleType extends Type
 
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
+        $hasNullBranch = false;
         $types = $this->getTypesSorted();
         foreach ($types as $discriminant => $type) {
             if ($type instanceof EnumType) {
@@ -248,6 +254,16 @@ class MultipleType extends Type
                 $condition = new Expr\BinaryOp\LogicalAnd($condition, $this->createDiscriminatorCondition($input, $discriminant));
             }
             $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
+
+            // The mixed branch tests isset(), which is always true once the
+            // null branch has failed (e.g. `type: [object, null]` without
+            // properties): it is the catch-all, so it becomes the else.
+            if (null !== $ifStmt && $hasNullBranch && $this->isIssetCondition($condition)) {
+                $ifStmt->else = new Stmt\Else_($statement);
+
+                break;
+            }
+            $hasNullBranch = $hasNullBranch || 'null' === $type->getName();
 
             if ($ifStmt === null) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
@@ -276,7 +292,8 @@ class MultipleType extends Type
      */
     private function appendDateFallbackStatements(Context $context, Expr $input, Expr $output, Stmt\If_ $ifStmt): void
     {
-        if (null !== $this->discriminatorProperty) {
+        // A catch-all else already takes every value no branch matched.
+        if (null !== $this->discriminatorProperty || null !== $ifStmt->else) {
             return;
         }
 

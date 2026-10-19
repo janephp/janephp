@@ -15,6 +15,8 @@ class Header
     public ?string $description;
     public ?bool $required = false;
     public ?bool $deprecated = false;
+    public ?string $style;
+    public ?bool $explode;
     /**
      * @var mixed|null
      */

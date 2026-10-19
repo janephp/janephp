@@ -55,6 +55,9 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('deprecated', $data) && \is_int($data['deprecated'])) {
             $data['deprecated'] = (bool) $data['deprecated'];
         }
+        if (\array_key_exists('explode', $data) && \is_int($data['explode'])) {
+            $data['explode'] = (bool) $data['explode'];
+        }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->description = $data['description'];
         } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
@@ -69,6 +72,16 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->deprecated = $data['deprecated'];
         } elseif (\array_key_exists('deprecated', $data) && $data['deprecated'] === null) {
             $object->deprecated = null;
+        }
+        if (\array_key_exists('style', $data) && $data['style'] !== null) {
+            $object->style = $data['style'];
+        } elseif (\array_key_exists('style', $data) && $data['style'] === null) {
+            $object->style = null;
+        }
+        if (\array_key_exists('explode', $data) && $data['explode'] !== null) {
+            $object->explode = $data['explode'];
+        } elseif (\array_key_exists('explode', $data) && $data['explode'] === null) {
+            $object->explode = null;
         }
         if (\array_key_exists('schema', $data) && $data['schema'] !== null) {
             $object->schema = $data['schema'];
@@ -99,6 +112,12 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (array_key_exists('deprecated', get_object_vars($data)) && null !== ($data->deprecated ?? null)) {
             $dataArray['deprecated'] = $data->deprecated ?? null;
+        }
+        if (array_key_exists('style', get_object_vars($data)) && null !== ($data->style ?? null)) {
+            $dataArray['style'] = $data->style ?? null;
+        }
+        if (array_key_exists('explode', get_object_vars($data)) && null !== ($data->explode ?? null)) {
+            $dataArray['explode'] = $data->explode ?? null;
         }
         if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
             $dataArray['schema'] = $data->schema ?? null;
