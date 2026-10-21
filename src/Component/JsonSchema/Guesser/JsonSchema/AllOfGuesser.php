@@ -53,9 +53,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 $extensions = $this->resolveAdditionalProperties($object, $reference);
 
                 $classGuess = $this->createClassGuess($object, $reference, $name, $extensions);
-                if (null !== ($object->required ?? null)) {
-                    $classGuess->setRequired($object->required ?? null);
-                }
+                $classGuess->setRequired($this->guessRequired($object));
 
                 if (($schema = $registry->getSchema($reference)) === null) {
                     throw new \RuntimeException("Schema for reference $reference could not be found");
@@ -189,6 +187,35 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         }
 
         return $properties;
+    }
+
+    /**
+     * Required keys of the composed object: its own plus those of every allOf member, recursively,
+     * as the properties are merged the same way (see guessProperties()).
+     *
+     * @param object[] $visited
+     *
+     * @return string[]
+     */
+    private function guessRequired($object, array &$visited = []): array
+    {
+        if (\in_array($object, $visited, true)) {
+            return [];
+        }
+        $visited[] = $object;
+
+        $required = \is_array($object->required ?? null) ? $object->required : [];
+        foreach (($object->allOf ?? null ?? []) as $allOfSchema) {
+            if ($allOfSchema instanceof Reference) {
+                $allOfSchema = $this->resolve($allOfSchema, $this->getSchemaClass());
+            }
+
+            if (is_a($allOfSchema, $this->getSchemaClass())) {
+                $required = array_merge($required, $this->guessRequired($allOfSchema, $visited));
+            }
+        }
+
+        return array_values(array_unique($required));
     }
 
     protected function getSchemaClass(): string
