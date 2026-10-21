@@ -40,6 +40,9 @@ class SalesRetrieveSettlementRequestBaseNormalizer implements DenormalizerInterf
         if (array_key_exists('discriminator', $data) and 'Sales_RetrieveInvoicesRequest' === $data['discriminator']) {
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequest', $format, $context);
         }
+        if (!\array_key_exists('discriminator', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\MissingRequiredPropertyException('discriminator', \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveSettlementRequestBase::class);
+        }
         if (\array_key_exists('discriminator', $data)) {
             $object->discriminator = $data['discriminator'];
         }

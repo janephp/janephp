@@ -43,14 +43,26 @@ class PortalserviceConnectionCapabilityNormalizer implements DenormalizerInterfa
         if (\array_key_exists('portNumber', $data) && \is_int($data['portNumber'])) {
             $data['portNumber'] = (float) $data['portNumber'];
         }
+        if (!\array_key_exists('protocolName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('protocolName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceConnectionCapability::class);
+        }
         if (\array_key_exists('protocolName', $data)) {
             $object->protocolName = $data['protocolName'];
+        }
+        if (!\array_key_exists('protocolNumber', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('protocolNumber', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceConnectionCapability::class);
         }
         if (\array_key_exists('protocolNumber', $data)) {
             $object->protocolNumber = $data['protocolNumber'];
         }
+        if (!\array_key_exists('portNumber', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('portNumber', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceConnectionCapability::class);
+        }
         if (\array_key_exists('portNumber', $data)) {
             $object->portNumber = $data['portNumber'];
+        }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceConnectionCapability::class);
         }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];

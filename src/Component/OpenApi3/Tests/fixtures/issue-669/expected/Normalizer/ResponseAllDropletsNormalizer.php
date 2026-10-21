@@ -49,6 +49,9 @@ class ResponseAllDropletsNormalizer implements DenormalizerInterface, Normalizer
             $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context);
             unset($data['links']);
         }
+        if (!\array_key_exists('meta', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('meta', \Jane\Generated\DigitalOcean\Model\ResponseAllDroplets::class);
+        }
         if (\array_key_exists('meta', $data)) {
             $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context);
             unset($data['meta']);

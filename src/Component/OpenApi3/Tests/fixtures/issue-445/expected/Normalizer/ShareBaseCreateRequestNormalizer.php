@@ -43,6 +43,9 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('kind', $data) and 'ShareEmbedCreateRequest' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareEmbedCreateRequest', $format, $context);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\ShareBaseCreateRequest::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -70,6 +73,9 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
+        if (!\array_key_exists('contents', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contents', \PicturePark\API\Model\ShareBaseCreateRequest::class);
+        }
         if (\array_key_exists('contents', $data)) {
             $values = [];
             foreach ($data['contents'] as $value) {
@@ -87,12 +93,18 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
+        if (!\array_key_exists('outputAccess', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputAccess', \PicturePark\API\Model\ShareBaseCreateRequest::class);
+        }
         if (\array_key_exists('outputAccess', $data)) {
             $value_2 = $data['outputAccess'];
             if (is_string($data['outputAccess'])) {
                 $value_2 = $data['outputAccess'];
             }
             $object->outputAccess = $value_2;
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareBaseCreateRequest::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

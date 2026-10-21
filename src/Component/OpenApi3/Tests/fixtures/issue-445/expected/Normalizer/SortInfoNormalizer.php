@@ -43,6 +43,9 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('field', $data)) {
             $object->field = null;
         }
+        if (!\array_key_exists('direction', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('direction', \PicturePark\API\Model\SortInfo::class);
+        }
         if (\array_key_exists('direction', $data)) {
             $value = $data['direction'];
             if (is_string($data['direction'])) {

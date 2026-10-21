@@ -37,6 +37,9 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('data_points', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('data_points', \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class);
+        }
         if (\array_key_exists('data_points', $data)) {
             $values = [];
             foreach ($data['data_points'] as $value) {
@@ -45,13 +48,22 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
             $object->dataPoints = $values;
             unset($data['data_points']);
         }
+        if (!\array_key_exists('total_items', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('total_items', \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class);
+        }
         if (\array_key_exists('total_items', $data)) {
             $object->totalItems = $data['total_items'];
             unset($data['total_items']);
         }
+        if (!\array_key_exists('total_pages', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('total_pages', \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class);
+        }
         if (\array_key_exists('total_pages', $data)) {
             $object->totalPages = $data['total_pages'];
             unset($data['total_pages']);
+        }
+        if (!\array_key_exists('current_page', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('current_page', \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class);
         }
         if (\array_key_exists('current_page', $data)) {
             $object->currentPage = $data['current_page'];

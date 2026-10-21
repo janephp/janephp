@@ -37,13 +37,22 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('start', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('start', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\MentionEntity::class);
+        }
         if (\array_key_exists('start', $data)) {
             $object->start = $data['start'];
             unset($data['start']);
         }
+        if (!\array_key_exists('end', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('end', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\MentionEntity::class);
+        }
         if (\array_key_exists('end', $data)) {
             $object->end = $data['end'];
             unset($data['end']);
+        }
+        if (!\array_key_exists('username', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('username', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\MentionEntity::class);
         }
         if (\array_key_exists('username', $data)) {
             $object->username = $data['username'];

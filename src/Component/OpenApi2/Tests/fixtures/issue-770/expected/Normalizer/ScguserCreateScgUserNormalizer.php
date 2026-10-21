@@ -49,8 +49,14 @@ class ScguserCreateScgUserNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('newPassphrase', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('newPassphrase', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserCreateScgUser::class);
+        }
         if (\array_key_exists('newPassphrase', $data)) {
             $object->newPassphrase = $data['newPassphrase'];
+        }
+        if (!\array_key_exists('userName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserCreateScgUser::class);
         }
         if (\array_key_exists('userName', $data)) {
             $object->userName = $data['userName'];

@@ -58,8 +58,14 @@ class IndoorMapIndoorMapSummaryNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('apCount', $data)) {
             $object->apCount = $data['apCount'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummary::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('description', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('description', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummary::class);
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
@@ -75,6 +81,9 @@ class IndoorMapIndoorMapSummaryNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('longitude', $data)) {
             $object->longitude = $data['longitude'];
+        }
+        if (!\array_key_exists('groupType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('groupType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummary::class);
         }
         if (\array_key_exists('groupType', $data)) {
             $object->groupType = $data['groupType'];

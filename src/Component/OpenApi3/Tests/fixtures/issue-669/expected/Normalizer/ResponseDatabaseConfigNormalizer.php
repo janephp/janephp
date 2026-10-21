@@ -37,6 +37,9 @@ class ResponseDatabaseConfigNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('config', \Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig::class);
+        }
         if (\array_key_exists('config', $data)) {
             $value = $data['config'];
             if (is_array($data['config'])) {

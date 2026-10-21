@@ -37,13 +37,22 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('retweet_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('retweet_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedTweetFieldsStats::class);
+        }
         if (\array_key_exists('retweet_count', $data)) {
             $object->retweetCount = $data['retweet_count'];
             unset($data['retweet_count']);
         }
+        if (!\array_key_exists('reply_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('reply_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedTweetFieldsStats::class);
+        }
         if (\array_key_exists('reply_count', $data)) {
             $object->replyCount = $data['reply_count'];
             unset($data['reply_count']);
+        }
+        if (!\array_key_exists('like_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('like_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedTweetFieldsStats::class);
         }
         if (\array_key_exists('like_count', $data)) {
             $object->likeCount = $data['like_count'];

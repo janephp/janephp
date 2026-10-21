@@ -37,8 +37,14 @@ class OutputFormatInfoNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\OutputFormatInfo::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\OutputFormatInfo::class);
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];

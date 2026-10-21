@@ -37,6 +37,9 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateRequestItem::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }

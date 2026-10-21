@@ -40,6 +40,9 @@ class AppDomainSpecNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('wildcard', $data) && \is_int($data['wildcard'])) {
             $data['wildcard'] = (bool) $data['wildcard'];
         }
+        if (!\array_key_exists('domain', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('domain', \Jane\Generated\DigitalOcean\Model\AppDomainSpec::class);
+        }
         if (\array_key_exists('domain', $data)) {
             $object->domain = $data['domain'];
             unset($data['domain']);

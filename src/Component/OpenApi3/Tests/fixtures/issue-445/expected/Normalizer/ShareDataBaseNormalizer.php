@@ -43,8 +43,14 @@ class ShareDataBaseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('kind', $data) and 'ShareDataBasic' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareDataBasic', $format, $context);
         }
+        if (!\array_key_exists('url', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('url', \PicturePark\API\Model\ShareDataBase::class);
+        }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareDataBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

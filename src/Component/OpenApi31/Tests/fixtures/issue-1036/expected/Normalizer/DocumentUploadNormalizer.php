@@ -37,6 +37,9 @@ class DocumentUploadNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('file', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Runtime\Normalizer\MissingRequiredPropertyException('file', \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\DocumentUpload::class);
+        }
         if (\array_key_exists('file', $data)) {
             $object->file = $data['file'];
             unset($data['file']);

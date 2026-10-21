@@ -40,8 +40,14 @@ class ProfileRealmAuthServiceMappingNormalizer implements DenormalizerInterface,
         if (\array_key_exists('hostedAaaEnabled', $data) && \is_int($data['hostedAaaEnabled'])) {
             $data['hostedAaaEnabled'] = (bool) $data['hostedAaaEnabled'];
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRealmAuthServiceMapping::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
+        }
+        if (!\array_key_exists('serviceType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serviceType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRealmAuthServiceMapping::class);
         }
         if (\array_key_exists('serviceType', $data)) {
             $object->serviceType = $data['serviceType'];
@@ -51,6 +57,9 @@ class ProfileRealmAuthServiceMappingNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('authorizationMethod', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('authorizationMethod', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRealmAuthServiceMapping::class);
         }
         if (\array_key_exists('authorizationMethod', $data)) {
             $object->authorizationMethod = $data['authorizationMethod'];

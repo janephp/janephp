@@ -40,6 +40,9 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('conditionSatisfied', $data) && \is_int($data['conditionSatisfied'])) {
             $data['conditionSatisfied'] = (bool) $data['conditionSatisfied'];
         }
+        if (!\array_key_exists('conditionSatisfied', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('conditionSatisfied', \PicturePark\API\Model\BusinessRuleTracedEvaluation::class);
+        }
         if (\array_key_exists('conditionSatisfied', $data)) {
             $object->conditionSatisfied = $data['conditionSatisfied'];
         }

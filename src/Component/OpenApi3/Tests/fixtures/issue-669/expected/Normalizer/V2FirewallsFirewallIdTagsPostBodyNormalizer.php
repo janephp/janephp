@@ -37,6 +37,9 @@ class V2FirewallsFirewallIdTagsPostBodyNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('tags', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tags', \Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdTagsPostBody::class);
+        }
         if (\array_key_exists('tags', $data)) {
             $values = [];
             foreach ($data['tags'] as $value) {

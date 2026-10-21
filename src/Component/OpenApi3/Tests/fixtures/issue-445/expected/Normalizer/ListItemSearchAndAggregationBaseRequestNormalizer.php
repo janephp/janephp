@@ -76,8 +76,14 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         elseif (\array_key_exists('aggregationFilters', $data)) {
             $object->aggregationFilters = null;
         }
+        if (!\array_key_exists('includeAllSchemaChildren', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeAllSchemaChildren', \PicturePark\API\Model\ListItemSearchAndAggregationBaseRequest::class);
+        }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
+        }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ListItemSearchAndAggregationBaseRequest::class);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_3 = $data['brokenDependenciesFilter'];
@@ -105,6 +111,9 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         }
         elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
+        }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\ListItemSearchAndAggregationBaseRequest::class);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_6 = $data['lifeCycleFilter'];

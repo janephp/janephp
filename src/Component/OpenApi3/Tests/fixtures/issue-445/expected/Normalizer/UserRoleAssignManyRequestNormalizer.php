@@ -37,6 +37,9 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('userIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userIds', \PicturePark\API\Model\UserRoleAssignManyRequest::class);
+        }
         if (\array_key_exists('userIds', $data)) {
             $values = [];
             foreach ($data['userIds'] as $value) {
@@ -45,6 +48,9 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             $object->userIds = $values;
             unset($data['userIds']);
         }
+        if (!\array_key_exists('userRoleIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userRoleIds', \PicturePark\API\Model\UserRoleAssignManyRequest::class);
+        }
         if (\array_key_exists('userRoleIds', $data)) {
             $values_1 = [];
             foreach ($data['userRoleIds'] as $value_1) {
@@ -52,6 +58,9 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             }
             $object->userRoleIds = $values_1;
             unset($data['userRoleIds']);
+        }
+        if (!\array_key_exists('operation', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('operation', \PicturePark\API\Model\UserRoleAssignManyRequest::class);
         }
         if (\array_key_exists('operation', $data)) {
             $value_2 = $data['operation'];

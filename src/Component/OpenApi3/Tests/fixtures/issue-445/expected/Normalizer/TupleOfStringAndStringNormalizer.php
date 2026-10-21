@@ -37,8 +37,14 @@ class TupleOfStringAndStringNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('item1', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('item1', \PicturePark\API\Model\TupleOfStringAndString::class);
+        }
         if (\array_key_exists('item1', $data)) {
             $object->item1 = $data['item1'];
+        }
+        if (!\array_key_exists('item2', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('item2', \PicturePark\API\Model\TupleOfStringAndString::class);
         }
         if (\array_key_exists('item2', $data)) {
             $object->item2 = $data['item2'];

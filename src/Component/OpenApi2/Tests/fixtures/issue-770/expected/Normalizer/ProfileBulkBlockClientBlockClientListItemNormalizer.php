@@ -37,6 +37,9 @@ class ProfileBulkBlockClientBlockClientListItemNormalizer implements Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('mac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('mac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBulkBlockClientBlockClientListItem::class);
+        }
         if (\array_key_exists('mac', $data)) {
             $object->mac = $data['mac'];
         }
@@ -45,6 +48,9 @@ class ProfileBulkBlockClientBlockClientListItemNormalizer implements Denormalize
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('apMac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('apMac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBulkBlockClientBlockClientListItem::class);
         }
         if (\array_key_exists('apMac', $data)) {
             $object->apMac = $data['apMac'];

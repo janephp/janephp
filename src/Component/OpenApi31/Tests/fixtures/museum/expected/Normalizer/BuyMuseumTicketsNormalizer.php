@@ -48,6 +48,9 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
             $object->ticketId = $data['ticketId'];
             unset($data['ticketId']);
         }
+        if (!\array_key_exists('ticketDate', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('ticketDate', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\BuyMuseumTickets::class);
+        }
         if (\array_key_exists('ticketDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['ticketDate']);
             if (false === $date) {
@@ -55,6 +58,9 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $object->ticketDate = $date->setTime(0, 0, 0);
             unset($data['ticketDate']);
+        }
+        if (!\array_key_exists('ticketType', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('ticketType', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\BuyMuseumTickets::class);
         }
         if (\array_key_exists('ticketType', $data)) {
             $object->ticketType = $data['ticketType'];

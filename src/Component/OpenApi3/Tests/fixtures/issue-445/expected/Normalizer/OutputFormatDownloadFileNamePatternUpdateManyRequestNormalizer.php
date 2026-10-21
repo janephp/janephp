@@ -37,6 +37,9 @@ class OutputFormatDownloadFileNamePatternUpdateManyRequestNormalizer implements 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('items', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('items', \PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest::class);
+        }
         if (\array_key_exists('items', $data)) {
             $values = [];
             foreach ($data['items'] as $value) {

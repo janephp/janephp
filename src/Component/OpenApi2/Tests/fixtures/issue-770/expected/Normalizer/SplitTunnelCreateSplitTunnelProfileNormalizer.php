@@ -37,11 +37,17 @@ class SplitTunnelCreateSplitTunnelProfileNormalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('rules', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('rules', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile::class);
         }
         if (\array_key_exists('rules', $data)) {
             $values = [];
@@ -49,6 +55,9 @@ class SplitTunnelCreateSplitTunnelProfileNormalizer implements DenormalizerInter
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelIpMaskRule::class, 'json', $context);
             }
             $object->rules = $values;
+        }
+        if (!\array_key_exists('defaultAction', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('defaultAction', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile::class);
         }
         if (\array_key_exists('defaultAction', $data)) {
             $object->defaultAction = $data['defaultAction'];

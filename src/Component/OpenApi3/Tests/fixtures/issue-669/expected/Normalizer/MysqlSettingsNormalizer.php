@@ -37,6 +37,9 @@ class MysqlSettingsNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('auth_plugin', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('auth_plugin', \Jane\Generated\DigitalOcean\Model\MysqlSettings::class);
+        }
         if (\array_key_exists('auth_plugin', $data)) {
             $object->authPlugin = $data['auth_plugin'];
             unset($data['auth_plugin']);

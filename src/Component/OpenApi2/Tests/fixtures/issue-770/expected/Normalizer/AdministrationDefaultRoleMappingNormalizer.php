@@ -40,6 +40,9 @@ class AdministrationDefaultRoleMappingNormalizer implements DenormalizerInterfac
         if (\array_key_exists('defaultAdmin', $data)) {
             $object->defaultAdmin = $data['defaultAdmin'];
         }
+        if (!\array_key_exists('defaultUserGroup', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('defaultUserGroup', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationDefaultRoleMapping::class);
+        }
         if (\array_key_exists('defaultUserGroup', $data)) {
             $object->defaultUserGroup = $data['defaultUserGroup'];
         }

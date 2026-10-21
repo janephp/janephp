@@ -43,8 +43,14 @@ class ApmodelLanPortSettingNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('overwriteVlanEnabled', $data) && \is_int($data['overwriteVlanEnabled'])) {
             $data['overwriteVlanEnabled'] = (bool) $data['overwriteVlanEnabled'];
         }
+        if (!\array_key_exists('portName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('portName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortSetting::class);
+        }
         if (\array_key_exists('portName', $data)) {
             $object->portName = $data['portName'];
+        }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortSetting::class);
         }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];

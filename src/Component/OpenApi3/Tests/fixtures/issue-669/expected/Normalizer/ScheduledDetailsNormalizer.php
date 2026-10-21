@@ -37,6 +37,9 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('cron', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('cron', \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class);
+        }
         if (\array_key_exists('cron', $data)) {
             $object->cron = $data['cron'];
             unset($data['cron']);

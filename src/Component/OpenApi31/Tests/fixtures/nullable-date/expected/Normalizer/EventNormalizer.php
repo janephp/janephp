@@ -52,6 +52,9 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->eventDate = null;
             unset($data['eventDate']);
         }
+        if (!\array_key_exists('createdAt', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\MissingRequiredPropertyException('createdAt', \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event::class);
+        }
         if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']);
             if (false === $date_1) {

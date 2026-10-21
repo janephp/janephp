@@ -49,6 +49,9 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('kind', $data) and 'WatermarkAction' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\WatermarkAction', $format, $context);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ImageActionBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

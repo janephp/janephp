@@ -40,8 +40,14 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemConstraint());
         }
+        if (!\array_key_exists('Path', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Path', \Docker\Api\Model\ContainersIdChangesGetResponse200Item::class);
+        }
         if (\array_key_exists('Path', $data)) {
             $object->path = $data['Path'];
+        }
+        if (!\array_key_exists('Kind', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Kind', \Docker\Api\Model\ContainersIdChangesGetResponse200Item::class);
         }
         if (\array_key_exists('Kind', $data)) {
             $object->kind = $data['Kind'];

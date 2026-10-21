@@ -37,9 +37,15 @@ class ReservedIpv6ActionAssignNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\ReservedIpv6ActionAssign::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('droplet_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_id', \Jane\Generated\DigitalOcean\Model\ReservedIpv6ActionAssign::class);
         }
         if (\array_key_exists('droplet_id', $data)) {
             $object->dropletId = $data['droplet_id'];

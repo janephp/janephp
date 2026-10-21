@@ -40,6 +40,9 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
         if (\array_key_exists('debugMode', $data) && \is_int($data['debugMode'])) {
             $data['debugMode'] = (bool) $data['debugMode'];
         }
+        if (!\array_key_exists('debugMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('debugMode', \PicturePark\API\Model\BusinessRuleTraceLogSearchRequest::class);
+        }
         if (\array_key_exists('debugMode', $data)) {
             $object->debugMode = $data['debugMode'];
         }
@@ -72,6 +75,9 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\BusinessRuleTraceLogSearchRequest::class);
         }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];

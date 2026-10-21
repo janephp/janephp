@@ -37,13 +37,22 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessProcessDetailsDataBatchResponse::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('docType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('docType', \PicturePark\API\Model\BusinessProcessDetailsDataBatchResponse::class);
+        }
         if (\array_key_exists('docType', $data)) {
             $object->docType = $data['docType'];
             unset($data['docType']);
+        }
+        if (!\array_key_exists('response', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('response', \PicturePark\API\Model\BusinessProcessDetailsDataBatchResponse::class);
         }
         if (\array_key_exists('response', $data)) {
             $value = $data['response'];

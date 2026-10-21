@@ -37,6 +37,9 @@ class ResponseEvictionPolicyResponseNormalizer implements DenormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('eviction_policy', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('eviction_policy', \Jane\Generated\DigitalOcean\Model\ResponseEvictionPolicyResponse::class);
+        }
         if (\array_key_exists('eviction_policy', $data)) {
             $object->evictionPolicy = $data['eviction_policy'];
             unset($data['eviction_policy']);

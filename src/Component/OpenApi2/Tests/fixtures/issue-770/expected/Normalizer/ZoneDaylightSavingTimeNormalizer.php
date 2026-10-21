@@ -37,14 +37,26 @@ class ZoneDaylightSavingTimeNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('month', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('month', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDaylightSavingTime::class);
+        }
         if (\array_key_exists('month', $data)) {
             $object->month = $data['month'];
+        }
+        if (!\array_key_exists('week', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('week', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDaylightSavingTime::class);
         }
         if (\array_key_exists('week', $data)) {
             $object->week = $data['week'];
         }
+        if (!\array_key_exists('day', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('day', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDaylightSavingTime::class);
+        }
         if (\array_key_exists('day', $data)) {
             $object->day = $data['day'];
+        }
+        if (!\array_key_exists('hour', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('hour', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDaylightSavingTime::class);
         }
         if (\array_key_exists('hour', $data)) {
             $object->hour = $data['hour'];

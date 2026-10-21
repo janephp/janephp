@@ -40,9 +40,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('floatProperty', $data) && \is_int($data['floatProperty'])) {
             $data['floatProperty'] = (float) $data['floatProperty'];
         }
+        if (!\array_key_exists('attribute1', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\MissingRequiredPropertyException('attribute1', \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class);
+        }
         if (\array_key_exists('attribute1', $data)) {
             $object->attribute1 = $data['attribute1'];
             unset($data['attribute1']);
+        }
+        if (!\array_key_exists('attribute2', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\MissingRequiredPropertyException('attribute2', \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class);
         }
         if (\array_key_exists('attribute2', $data) && $data['attribute2'] !== null) {
             $object->attribute2 = $data['attribute2'];

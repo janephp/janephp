@@ -40,12 +40,18 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('contents', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contents', \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class);
+        }
         if (\array_key_exists('contents', $data)) {
             $values = [];
             foreach ($data['contents'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentDownloadRequestItem::class, 'json', $context);
             }
             $object->contents = $values;
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

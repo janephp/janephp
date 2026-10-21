@@ -37,6 +37,9 @@ class SqlModeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('sql_mode', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('sql_mode', \Jane\Generated\DigitalOcean\Model\SqlMode::class);
+        }
         if (\array_key_exists('sql_mode', $data)) {
             $object->sqlMode = $data['sql_mode'];
             unset($data['sql_mode']);

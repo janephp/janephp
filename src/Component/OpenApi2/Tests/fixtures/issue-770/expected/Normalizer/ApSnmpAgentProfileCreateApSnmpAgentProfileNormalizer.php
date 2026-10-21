@@ -37,8 +37,14 @@ class ApSnmpAgentProfileCreateApSnmpAgentProfileNormalizer implements Denormaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domainId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domainId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile::class);
+        }
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];

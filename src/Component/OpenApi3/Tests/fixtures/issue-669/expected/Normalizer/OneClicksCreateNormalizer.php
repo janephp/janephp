@@ -37,6 +37,9 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('addon_slugs', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('addon_slugs', \Jane\Generated\DigitalOcean\Model\OneClicksCreate::class);
+        }
         if (\array_key_exists('addon_slugs', $data)) {
             $values = [];
             foreach ($data['addon_slugs'] as $value) {
@@ -44,6 +47,9 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->addonSlugs = $values;
             unset($data['addon_slugs']);
+        }
+        if (!\array_key_exists('cluster_uuid', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('cluster_uuid', \Jane\Generated\DigitalOcean\Model\OneClicksCreate::class);
         }
         if (\array_key_exists('cluster_uuid', $data)) {
             $object->clusterUuid = $data['cluster_uuid'];

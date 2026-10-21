@@ -43,6 +43,9 @@ class WlangroupWlanGroupNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('zoneId', $data)) {
             $object->zoneId = $data['zoneId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroup::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

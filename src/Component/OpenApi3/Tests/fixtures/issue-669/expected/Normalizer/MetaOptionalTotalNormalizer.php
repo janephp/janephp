@@ -37,6 +37,9 @@ class MetaOptionalTotalNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('meta', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('meta', \Jane\Generated\DigitalOcean\Model\MetaOptionalTotal::class);
+        }
         if (\array_key_exists('meta', $data)) {
             $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaProperties::class, 'json', $context);
             unset($data['meta']);

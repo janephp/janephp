@@ -37,9 +37,15 @@ class GrantNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('bucket', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('bucket', \Jane\Generated\DigitalOcean\Model\Grant::class);
+        }
         if (\array_key_exists('bucket', $data)) {
             $object->bucket = $data['bucket'];
             unset($data['bucket']);
+        }
+        if (!\array_key_exists('permission', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('permission', \Jane\Generated\DigitalOcean\Model\Grant::class);
         }
         if (\array_key_exists('permission', $data)) {
             $object->permission = $data['permission'];

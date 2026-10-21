@@ -40,11 +40,20 @@ class PluginDeviceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginDeviceConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\PluginDevice::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }
+        if (!\array_key_exists('Description', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Description', \Docker\Api\Model\PluginDevice::class);
+        }
         if (\array_key_exists('Description', $data)) {
             $object->description = $data['Description'];
+        }
+        if (!\array_key_exists('Settable', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Settable', \Docker\Api\Model\PluginDevice::class);
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
@@ -52,6 +61,9 @@ class PluginDeviceNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $value;
             }
             $object->settable = $values;
+        }
+        if (!\array_key_exists('Path', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Path', \Docker\Api\Model\PluginDevice::class);
         }
         if (\array_key_exists('Path', $data)) {
             $object->path = $data['Path'];

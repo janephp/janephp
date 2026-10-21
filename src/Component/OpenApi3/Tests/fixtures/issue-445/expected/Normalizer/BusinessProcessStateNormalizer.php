@@ -37,8 +37,14 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\BusinessProcessState::class);
+        }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
+        }
+        if (!\array_key_exists('timestamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timestamp', \PicturePark\API\Model\BusinessProcessState::class);
         }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);

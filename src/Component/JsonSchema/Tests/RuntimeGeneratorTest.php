@@ -47,4 +47,17 @@ class RuntimeGeneratorTest extends TestCase
 
         $this->assertSame(['CheckArray.php'], $files);
     }
+
+    public function testRequiringMissingRequiredPropertyExceptionEmitsItsTemplate(): void
+    {
+        $schema = new Schema('schema.json', 'Vendor\Api', '/tmp/generated', 'Client');
+        $schema->addRequiredRuntimeFile('Vendor\Api\Runtime\Normalizer\MissingRequiredPropertyException');
+
+        $generator = new RuntimeGenerator(new Naming(), (new ParserFactory())->createForHostVersion());
+        $generator->generate($schema, 'Client', new Context(new Registry(), true, new EventDispatcher()));
+
+        $files = array_map(static fn (File $file): string => basename($file->getFilename()), $schema->getFiles());
+
+        $this->assertSame(['MissingRequiredPropertyException.php'], $files);
+    }
 }

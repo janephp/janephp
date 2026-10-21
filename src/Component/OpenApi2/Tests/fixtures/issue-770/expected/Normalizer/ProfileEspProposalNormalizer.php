@@ -37,11 +37,20 @@ class ProfileEspProposalNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('encAlg', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('encAlg', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileEspProposal::class);
+        }
         if (\array_key_exists('encAlg', $data)) {
             $object->encAlg = $data['encAlg'];
         }
+        if (!\array_key_exists('authAlg', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('authAlg', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileEspProposal::class);
+        }
         if (\array_key_exists('authAlg', $data)) {
             $object->authAlg = $data['authAlg'];
+        }
+        if (!\array_key_exists('dhGroup', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('dhGroup', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileEspProposal::class);
         }
         if (\array_key_exists('dhGroup', $data)) {
             $object->dhGroup = $data['dhGroup'];

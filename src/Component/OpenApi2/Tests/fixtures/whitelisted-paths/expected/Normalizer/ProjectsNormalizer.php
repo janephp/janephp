@@ -37,6 +37,9 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('projects', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('projects', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
+        }
         if (\array_key_exists('projects', $data)) {
             $values = [];
             foreach ($data['projects'] as $value) {
@@ -44,23 +47,44 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->projects = $values;
         }
+        if (!\array_key_exists('per_page', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('per_page', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
+        }
         if (\array_key_exists('per_page', $data)) {
             $object->perPage = $data['per_page'];
+        }
+        if (!\array_key_exists('total_pages', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('total_pages', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
         }
         if (\array_key_exists('total_pages', $data)) {
             $object->totalPages = $data['total_pages'];
         }
+        if (!\array_key_exists('total_entries', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('total_entries', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
+        }
         if (\array_key_exists('total_entries', $data)) {
             $object->totalEntries = $data['total_entries'];
+        }
+        if (!\array_key_exists('next_page', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('next_page', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
         }
         if (\array_key_exists('next_page', $data)) {
             $object->nextPage = $data['next_page'];
         }
+        if (!\array_key_exists('previous_page', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('previous_page', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
+        }
         if (\array_key_exists('previous_page', $data)) {
             $object->previousPage = $data['previous_page'];
         }
+        if (!\array_key_exists('page', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('page', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
+        }
         if (\array_key_exists('page', $data)) {
             $object->page = $data['page'];
+        }
+        if (!\array_key_exists('links', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('links', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class);
         }
         if (\array_key_exists('links', $data)) {
             $object->links = $this->denormalizer->denormalize($data['links'], \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\PaginationLinks::class, 'json', $context);

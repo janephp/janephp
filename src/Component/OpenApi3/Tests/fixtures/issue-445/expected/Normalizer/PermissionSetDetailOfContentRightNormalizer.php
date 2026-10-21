@@ -40,8 +40,14 @@ class PermissionSetDetailOfContentRightNormalizer implements DenormalizerInterfa
         if (\array_key_exists('exclusive', $data) && \is_int($data['exclusive'])) {
             $data['exclusive'] = (bool) $data['exclusive'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\PermissionSetDetailOfContentRight::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\PermissionSetDetailOfContentRight::class);
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
@@ -74,8 +80,14 @@ class PermissionSetDetailOfContentRightNormalizer implements DenormalizerInterfa
         elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
         }
+        if (!\array_key_exists('exclusive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('exclusive', \PicturePark\API\Model\PermissionSetDetailOfContentRight::class);
+        }
         if (\array_key_exists('exclusive', $data)) {
             $object->exclusive = $data['exclusive'];
+        }
+        if (!\array_key_exists('ownerTokenId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ownerTokenId', \PicturePark\API\Model\PermissionSetDetailOfContentRight::class);
         }
         if (\array_key_exists('ownerTokenId', $data)) {
             $object->ownerTokenId = $data['ownerTokenId'];

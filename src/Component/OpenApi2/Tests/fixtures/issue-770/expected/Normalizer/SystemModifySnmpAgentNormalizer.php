@@ -40,6 +40,9 @@ class SystemModifySnmpAgentNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('snmpNotificationEnabled', $data) && \is_int($data['snmpNotificationEnabled'])) {
             $data['snmpNotificationEnabled'] = (bool) $data['snmpNotificationEnabled'];
         }
+        if (!\array_key_exists('snmpNotificationEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('snmpNotificationEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySnmpAgent::class);
+        }
         if (\array_key_exists('snmpNotificationEnabled', $data)) {
             $object->snmpNotificationEnabled = $data['snmpNotificationEnabled'];
         }

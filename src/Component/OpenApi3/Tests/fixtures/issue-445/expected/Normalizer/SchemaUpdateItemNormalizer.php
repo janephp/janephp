@@ -132,6 +132,9 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             $object->sort = null;
             unset($data['sort']);
         }
+        if (!\array_key_exists('viewForAll', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('viewForAll', \PicturePark\API\Model\SchemaUpdateItem::class);
+        }
         if (\array_key_exists('viewForAll', $data)) {
             $object->viewForAll = $data['viewForAll'];
             unset($data['viewForAll']);
@@ -171,6 +174,9 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         elseif (\array_key_exists('referencedInContentSchemaIds', $data)) {
             $object->referencedInContentSchemaIds = null;
             unset($data['referencedInContentSchemaIds']);
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\SchemaUpdateItem::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];

@@ -76,9 +76,15 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->lastName = null;
             unset($data['lastName']);
         }
+        if (!\array_key_exists('emailAddress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('emailAddress', \PicturePark\API\Model\UserDetail::class);
+        }
         if (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = $data['emailAddress'];
             unset($data['emailAddress']);
+        }
+        if (!\array_key_exists('isDeleted', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isDeleted', \PicturePark\API\Model\UserDetail::class);
         }
         if (\array_key_exists('isDeleted', $data)) {
             $object->isDeleted = $data['isDeleted'];

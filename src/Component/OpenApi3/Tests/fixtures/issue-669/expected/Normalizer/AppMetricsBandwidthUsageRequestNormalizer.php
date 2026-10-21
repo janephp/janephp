@@ -37,6 +37,9 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('app_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('app_ids', \Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsageRequest::class);
+        }
         if (\array_key_exists('app_ids', $data)) {
             $values = [];
             foreach ($data['app_ids'] as $value) {

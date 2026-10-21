@@ -37,9 +37,15 @@ class V2VpcsVpcIdPeeringsPostBodyNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('vpc_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpc_id', \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody::class);
         }
         if (\array_key_exists('vpc_id', $data)) {
             $object->vpcId = $data['vpc_id'];

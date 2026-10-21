@@ -43,6 +43,9 @@ class ApmodelLldpSettingNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('managementIPTLVEnabled', $data) && \is_int($data['managementIPTLVEnabled'])) {
             $data['managementIPTLVEnabled'] = (bool) $data['managementIPTLVEnabled'];
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLldpSetting::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
         }

@@ -40,6 +40,9 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('disable_ssl', $data) && \is_int($data['disable_ssl'])) {
             $data['disable_ssl'] = (bool) $data['disable_ssl'];
         }
+        if (!\array_key_exists('source', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('source', \Jane\Generated\DigitalOcean\Model\SourceDatabase::class);
+        }
         if (\array_key_exists('source', $data)) {
             $object->source = $this->denormalizer->denormalize($data['source'], \Jane\Generated\DigitalOcean\Model\SourceDatabaseSource::class, 'json', $context);
             unset($data['source']);

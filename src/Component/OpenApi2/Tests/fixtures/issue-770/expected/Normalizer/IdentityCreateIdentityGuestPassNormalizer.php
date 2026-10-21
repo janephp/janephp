@@ -43,17 +43,32 @@ class IdentityCreateIdentityGuestPassNormalizer implements DenormalizerInterface
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('guestName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('guestName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
+        }
         if (\array_key_exists('guestName', $data)) {
             $object->guestName = $data['guestName'];
+        }
+        if (!\array_key_exists('wlan', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('wlan', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
         }
         if (\array_key_exists('wlan', $data)) {
             $object->wlan = $this->denormalizer->denormalize($data['wlan'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
+        if (!\array_key_exists('zone', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('zone', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
+        }
         if (\array_key_exists('zone', $data)) {
             $object->zone = $this->denormalizer->denormalize($data['zone'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
+        if (!\array_key_exists('numberOfPasses', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('numberOfPasses', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
+        }
         if (\array_key_exists('numberOfPasses', $data)) {
             $object->numberOfPasses = $data['numberOfPasses'];
+        }
+        if (!\array_key_exists('passValidFor', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('passValidFor', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
         }
         if (\array_key_exists('passValidFor', $data)) {
             $object->passValidFor = $this->denormalizer->denormalize($data['passValidFor'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityPassValidFor::class, 'json', $context);
@@ -64,11 +79,17 @@ class IdentityCreateIdentityGuestPassNormalizer implements DenormalizerInterface
         if (\array_key_exists('passValue', $data)) {
             $object->passValue = $data['passValue'];
         }
+        if (!\array_key_exists('passEffectSince', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('passEffectSince', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
+        }
         if (\array_key_exists('passEffectSince', $data)) {
             $object->passEffectSince = $data['passEffectSince'];
         }
         if (\array_key_exists('passUseDays', $data)) {
             $object->passUseDays = $data['passUseDays'];
+        }
+        if (!\array_key_exists('maxDevices', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('maxDevices', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass::class);
         }
         if (\array_key_exists('maxDevices', $data)) {
             $object->maxDevices = $this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityMaxDevices::class, 'json', $context);

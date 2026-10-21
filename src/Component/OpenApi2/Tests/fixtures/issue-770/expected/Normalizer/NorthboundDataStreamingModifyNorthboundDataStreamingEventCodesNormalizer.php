@@ -37,6 +37,9 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingEventCodesNormalizer i
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('northboundDataStreamingAcceptedEventCodes', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('northboundDataStreamingAcceptedEventCodes', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingEventCodes::class);
+        }
         if (\array_key_exists('northboundDataStreamingAcceptedEventCodes', $data)) {
             $values = [];
             foreach ($data['northboundDataStreamingAcceptedEventCodes'] as $value) {

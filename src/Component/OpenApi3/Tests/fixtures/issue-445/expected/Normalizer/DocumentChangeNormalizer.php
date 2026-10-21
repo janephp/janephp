@@ -49,6 +49,9 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
+        if (!\array_key_exists('version', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('version', \PicturePark\API\Model\DocumentChange::class);
+        }
         if (\array_key_exists('version', $data)) {
             $object->version = $data['version'];
         }
@@ -57,6 +60,9 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('action', $data)) {
             $object->action = null;
+        }
+        if (!\array_key_exists('timeStamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timeStamp', \PicturePark\API\Model\DocumentChange::class);
         }
         if (\array_key_exists('timeStamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timeStamp']);

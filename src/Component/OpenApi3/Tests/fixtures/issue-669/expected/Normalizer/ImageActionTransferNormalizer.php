@@ -37,9 +37,15 @@ class ImageActionTransferNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\ImageActionTransfer::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\ImageActionTransfer::class);
         }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];

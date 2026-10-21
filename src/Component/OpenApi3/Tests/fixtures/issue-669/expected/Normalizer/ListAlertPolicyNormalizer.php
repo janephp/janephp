@@ -37,6 +37,9 @@ class ListAlertPolicyNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('policies', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('policies', \Jane\Generated\DigitalOcean\Model\ListAlertPolicy::class);
+        }
         if (\array_key_exists('policies', $data)) {
             $values = [];
             foreach ($data['policies'] as $value) {

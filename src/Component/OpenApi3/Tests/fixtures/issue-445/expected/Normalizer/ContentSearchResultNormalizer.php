@@ -40,9 +40,15 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('isSearchStringRewritten', $data) && \is_int($data['isSearchStringRewritten'])) {
             $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
         }
+        if (!\array_key_exists('totalResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalResults', \PicturePark\API\Model\ContentSearchResult::class);
+        }
         if (\array_key_exists('totalResults', $data)) {
             $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
+        }
+        if (!\array_key_exists('results', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('results', \PicturePark\API\Model\ContentSearchResult::class);
         }
         if (\array_key_exists('results', $data)) {
             $values = [];
@@ -51,6 +57,9 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->results = $values;
             unset($data['results']);
+        }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\ContentSearchResult::class);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];

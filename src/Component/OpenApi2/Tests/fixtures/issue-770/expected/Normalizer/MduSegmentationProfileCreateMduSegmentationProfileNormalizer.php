@@ -37,11 +37,20 @@ class MduSegmentationProfileCreateMduSegmentationProfileNormalizer implements De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domainId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domainId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile::class);
+        }
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('dpInfoList', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('dpInfoList', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile::class);
         }
         if (\array_key_exists('dpInfoList', $data)) {
             $values = [];

@@ -40,11 +40,20 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('isWritable', $data) && \is_int($data['isWritable'])) {
             $data['isWritable'] = (bool) $data['isWritable'];
         }
+        if (!\array_key_exists('path', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('path', \PicturePark\API\Model\MetadataField::class);
+        }
         if (\array_key_exists('path', $data)) {
             $object->path = $data['path'];
         }
+        if (!\array_key_exists('isWritable', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isWritable', \PicturePark\API\Model\MetadataField::class);
+        }
         if (\array_key_exists('isWritable', $data)) {
             $object->isWritable = $data['isWritable'];
+        }
+        if (!\array_key_exists('dataType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('dataType', \PicturePark\API\Model\MetadataField::class);
         }
         if (\array_key_exists('dataType', $data)) {
             $value = $data['dataType'];

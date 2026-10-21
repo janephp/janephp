@@ -40,13 +40,22 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('email_verified', $data) && \is_int($data['email_verified'])) {
             $data['email_verified'] = (bool) $data['email_verified'];
         }
+        if (!\array_key_exists('droplet_limit', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_limit', \Jane\Generated\DigitalOcean\Model\Account::class);
+        }
         if (\array_key_exists('droplet_limit', $data)) {
             $object->dropletLimit = $data['droplet_limit'];
             unset($data['droplet_limit']);
         }
+        if (!\array_key_exists('floating_ip_limit', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('floating_ip_limit', \Jane\Generated\DigitalOcean\Model\Account::class);
+        }
         if (\array_key_exists('floating_ip_limit', $data)) {
             $object->floatingIpLimit = $data['floating_ip_limit'];
             unset($data['floating_ip_limit']);
+        }
+        if (!\array_key_exists('email', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('email', \Jane\Generated\DigitalOcean\Model\Account::class);
         }
         if (\array_key_exists('email', $data)) {
             $object->email = $data['email'];
@@ -56,17 +65,29 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('uuid', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('uuid', \Jane\Generated\DigitalOcean\Model\Account::class);
+        }
         if (\array_key_exists('uuid', $data)) {
             $object->uuid = $data['uuid'];
             unset($data['uuid']);
+        }
+        if (!\array_key_exists('email_verified', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('email_verified', \Jane\Generated\DigitalOcean\Model\Account::class);
         }
         if (\array_key_exists('email_verified', $data)) {
             $object->emailVerified = $data['email_verified'];
             unset($data['email_verified']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\Account::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('status_message', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status_message', \Jane\Generated\DigitalOcean\Model\Account::class);
         }
         if (\array_key_exists('status_message', $data)) {
             $object->statusMessage = $data['status_message'];

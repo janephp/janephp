@@ -40,12 +40,18 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigInterfaceConstraint());
         }
+        if (!\array_key_exists('Types', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Types', \Docker\Api\Model\PluginConfigInterface::class);
+        }
         if (\array_key_exists('Types', $data)) {
             $values = [];
             foreach ($data['Types'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PluginInterfaceType::class, 'json', $context);
             }
             $object->types = $values;
+        }
+        if (!\array_key_exists('Socket', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Socket', \Docker\Api\Model\PluginConfigInterface::class);
         }
         if (\array_key_exists('Socket', $data)) {
             $object->socket = $data['Socket'];

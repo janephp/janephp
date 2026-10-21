@@ -121,6 +121,9 @@ class AppNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->region = $this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\AppsRegion::class, 'json', $context);
             unset($data['region']);
         }
+        if (!\array_key_exists('spec', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('spec', \Jane\Generated\DigitalOcean\Model\App::class);
+        }
         if (\array_key_exists('spec', $data)) {
             $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);

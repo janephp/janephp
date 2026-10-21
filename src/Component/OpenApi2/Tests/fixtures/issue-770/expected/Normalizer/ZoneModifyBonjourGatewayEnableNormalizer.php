@@ -40,6 +40,9 @@ class ZoneModifyBonjourGatewayEnableNormalizer implements DenormalizerInterface,
         if (\array_key_exists('enabledBonjourGateway', $data) && \is_int($data['enabledBonjourGateway'])) {
             $data['enabledBonjourGateway'] = (bool) $data['enabledBonjourGateway'];
         }
+        if (!\array_key_exists('enabledBonjourGateway', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enabledBonjourGateway', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayEnable::class);
+        }
         if (\array_key_exists('enabledBonjourGateway', $data)) {
             $object->enabledBonjourGateway = $data['enabledBonjourGateway'];
         }

@@ -41,6 +41,9 @@ class CdnEndpointNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('origin', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('origin', \Jane\Generated\DigitalOcean\Model\CdnEndpoint::class);
+        }
         if (\array_key_exists('origin', $data)) {
             $object->origin = $data['origin'];
             unset($data['origin']);

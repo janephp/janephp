@@ -67,8 +67,14 @@ class WlanCreateWechatWlanNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('apHostNameAdvertisementEnabled', $data) && \is_int($data['apHostNameAdvertisementEnabled'])) {
             $data['apHostNameAdvertisementEnabled'] = (bool) $data['apHostNameAdvertisementEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('ssid', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ssid', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan::class);
         }
         if (\array_key_exists('ssid', $data)) {
             $object->ssid = $data['ssid'];
@@ -114,6 +120,9 @@ class WlanCreateWechatWlanNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('accountingServiceOrProfile', $data)) {
             $object->accountingServiceOrProfile = $this->denormalizer->denormalize($data['accountingServiceOrProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAccounting::class, 'json', $context);
+        }
+        if (!\array_key_exists('portalServiceProfile', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('portalServiceProfile', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan::class);
         }
         if (\array_key_exists('portalServiceProfile', $data)) {
             $object->portalServiceProfile = $this->denormalizer->denormalize($data['portalServiceProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);

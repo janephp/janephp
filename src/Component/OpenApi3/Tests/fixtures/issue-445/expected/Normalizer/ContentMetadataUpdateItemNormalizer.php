@@ -73,6 +73,9 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->metadata = null;
             unset($data['metadata']);
         }
+        if (!\array_key_exists('layerSchemasUpdateOptions', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('layerSchemasUpdateOptions', \PicturePark\API\Model\ContentMetadataUpdateItem::class);
+        }
         if (\array_key_exists('layerSchemasUpdateOptions', $data)) {
             $value_3 = $data['layerSchemasUpdateOptions'];
             if (is_string($data['layerSchemasUpdateOptions'])) {
@@ -80,6 +83,9 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             }
             $object->layerSchemasUpdateOptions = $value_3;
             unset($data['layerSchemasUpdateOptions']);
+        }
+        if (!\array_key_exists('layerFieldsUpdateOptions', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('layerFieldsUpdateOptions', \PicturePark\API\Model\ContentMetadataUpdateItem::class);
         }
         if (\array_key_exists('layerFieldsUpdateOptions', $data)) {
             $value_4 = $data['layerFieldsUpdateOptions'];
@@ -89,6 +95,9 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->layerFieldsUpdateOptions = $value_4;
             unset($data['layerFieldsUpdateOptions']);
         }
+        if (!\array_key_exists('contentFieldsUpdateOptions', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentFieldsUpdateOptions', \PicturePark\API\Model\ContentMetadataUpdateItem::class);
+        }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $value_5 = $data['contentFieldsUpdateOptions'];
             if (is_string($data['contentFieldsUpdateOptions'])) {
@@ -96,6 +105,9 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             }
             $object->contentFieldsUpdateOptions = $value_5;
             unset($data['contentFieldsUpdateOptions']);
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ContentMetadataUpdateItem::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];

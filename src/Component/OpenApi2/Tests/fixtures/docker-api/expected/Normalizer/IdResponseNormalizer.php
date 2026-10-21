@@ -40,6 +40,9 @@ class IdResponseNormalizer implements DenormalizerInterface, NormalizerInterface
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\IdResponseConstraint());
         }
+        if (!\array_key_exists('Id', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Id', \Docker\Api\Model\IdResponse::class);
+        }
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
         }

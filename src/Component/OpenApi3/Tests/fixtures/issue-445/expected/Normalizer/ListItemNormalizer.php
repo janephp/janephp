@@ -47,6 +47,9 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ListItem::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -109,6 +112,9 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('brokenIndirectReferenceIds', $data)) {
             $object->brokenIndirectReferenceIds = null;
+        }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\ListItem::class);
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_7 = $data['lifeCycle'];

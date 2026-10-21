@@ -37,6 +37,9 @@ class ReservedIpv6CreateNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('region_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region_slug', \Jane\Generated\DigitalOcean\Model\ReservedIpv6Create::class);
+        }
         if (\array_key_exists('region_slug', $data)) {
             $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);

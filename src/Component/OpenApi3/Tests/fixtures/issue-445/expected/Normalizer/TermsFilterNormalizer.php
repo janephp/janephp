@@ -37,13 +37,22 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TermsFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\TermsFilter::class);
+        }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
             unset($data['field']);
+        }
+        if (!\array_key_exists('terms', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('terms', \PicturePark\API\Model\TermsFilter::class);
         }
         if (\array_key_exists('terms', $data)) {
             $values = [];

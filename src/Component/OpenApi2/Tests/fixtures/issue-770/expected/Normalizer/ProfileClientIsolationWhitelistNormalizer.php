@@ -43,6 +43,9 @@ class ProfileClientIsolationWhitelistNormalizer implements DenormalizerInterface
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -52,12 +55,18 @@ class ProfileClientIsolationWhitelistNormalizer implements DenormalizerInterface
         if (\array_key_exists('zoneId', $data)) {
             $object->zoneId = $data['zoneId'];
         }
+        if (!\array_key_exists('whitelist', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('whitelist', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist::class);
+        }
         if (\array_key_exists('whitelist', $data)) {
             $values = [];
             foreach ($data['whitelist'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationEntry::class, 'json', $context);
             }
             $object->whitelist = $values;
+        }
+        if (!\array_key_exists('clientIsolationAutoEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('clientIsolationAutoEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist::class);
         }
         if (\array_key_exists('clientIsolationAutoEnabled', $data)) {
             $object->clientIsolationAutoEnabled = $data['clientIsolationAutoEnabled'];

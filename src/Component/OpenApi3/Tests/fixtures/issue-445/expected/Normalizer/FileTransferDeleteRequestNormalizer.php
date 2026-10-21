@@ -37,8 +37,14 @@ class FileTransferDeleteRequestNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('transferId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferId', \PicturePark\API\Model\FileTransferDeleteRequest::class);
+        }
         if (\array_key_exists('transferId', $data)) {
             $object->transferId = $data['transferId'];
+        }
+        if (!\array_key_exists('fileTransferIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferIds', \PicturePark\API\Model\FileTransferDeleteRequest::class);
         }
         if (\array_key_exists('fileTransferIds', $data)) {
             $values = [];

@@ -37,6 +37,9 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('title', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('title', \PicturePark\API\Model\BusinessProcessNotificationUpdate::class);
+        }
         if (\array_key_exists('title', $data)) {
             $value = $data['title'];
             if (is_array($data['title']) && $this->isOnlyNumericKeys($data['title'])) {
@@ -47,6 +50,9 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
                 $value = $values;
             }
             $object->title = $value;
+        }
+        if (!\array_key_exists('message', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('message', \PicturePark\API\Model\BusinessProcessNotificationUpdate::class);
         }
         if (\array_key_exists('message', $data)) {
             $value_2 = $data['message'];
@@ -64,6 +70,9 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('navigationLink', $data)) {
             $object->navigationLink = null;
+        }
+        if (!\array_key_exists('eventType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('eventType', \PicturePark\API\Model\BusinessProcessNotificationUpdate::class);
         }
         if (\array_key_exists('eventType', $data)) {
             $value_4 = $data['eventType'];

@@ -37,8 +37,14 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $value = $data['name'];
@@ -51,6 +57,9 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('name', $data)) {
             $object->name = null;
+        }
+        if (!\array_key_exists('ecoScore', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\MissingRequiredPropertyException('ecoScore', \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class);
         }
         if (\array_key_exists('ecoScore', $data) && $data['ecoScore'] !== null) {
             $value_1 = $data['ecoScore'];

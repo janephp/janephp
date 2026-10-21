@@ -40,6 +40,9 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\AuthPostResponse200Constraint());
         }
+        if (!\array_key_exists('Status', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Status', \Docker\Api\Model\AuthPostResponse200::class);
+        }
         if (\array_key_exists('Status', $data)) {
             $object->status = $data['Status'];
         }

@@ -37,11 +37,20 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('width', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('width', \PicturePark\API\Model\ResizeAction::class);
+        }
         if (\array_key_exists('width', $data)) {
             $object->width = $data['width'];
         }
+        if (!\array_key_exists('height', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('height', \PicturePark\API\Model\ResizeAction::class);
+        }
         if (\array_key_exists('height', $data)) {
             $object->height = $data['height'];
+        }
+        if (!\array_key_exists('resizeMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('resizeMode', \PicturePark\API\Model\ResizeAction::class);
         }
         if (\array_key_exists('resizeMode', $data)) {
             $value = $data['resizeMode'];

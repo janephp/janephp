@@ -37,6 +37,9 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentSchemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSchemaId', \PicturePark\API\Model\ShareContentDetail::class);
+        }
         if (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = $data['contentSchemaId'];
         }
@@ -49,6 +52,9 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
+        }
+        if (!\array_key_exists('content', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('content', \PicturePark\API\Model\ShareContentDetail::class);
         }
         if (\array_key_exists('content', $data)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
@@ -67,8 +73,14 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ShareContentDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('outputs', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputs', \PicturePark\API\Model\ShareContentDetail::class);
         }
         if (\array_key_exists('outputs', $data)) {
             $values_3 = [];
@@ -77,12 +89,18 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->outputs = $values_3;
         }
+        if (!\array_key_exists('contentType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentType', \PicturePark\API\Model\ShareContentDetail::class);
+        }
         if (\array_key_exists('contentType', $data)) {
             $value_4 = $data['contentType'];
             if (is_string($data['contentType'])) {
                 $value_4 = $data['contentType'];
             }
             $object->contentType = $value_4;
+        }
+        if (!\array_key_exists('displayValues', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('displayValues', \PicturePark\API\Model\ShareContentDetail::class);
         }
         if (\array_key_exists('displayValues', $data)) {
             $value_5 = $data['displayValues'];

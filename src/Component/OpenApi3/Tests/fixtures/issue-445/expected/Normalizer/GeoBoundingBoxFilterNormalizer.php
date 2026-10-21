@@ -37,13 +37,22 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\GeoBoundingBoxFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\GeoBoundingBoxFilter::class);
+        }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
             unset($data['field']);
+        }
+        if (!\array_key_exists('topLeft', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('topLeft', \PicturePark\API\Model\GeoBoundingBoxFilter::class);
         }
         if (\array_key_exists('topLeft', $data)) {
             $value = $data['topLeft'];
@@ -52,6 +61,9 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             }
             $object->topLeft = $value;
             unset($data['topLeft']);
+        }
+        if (!\array_key_exists('bottomRight', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('bottomRight', \PicturePark\API\Model\GeoBoundingBoxFilter::class);
         }
         if (\array_key_exists('bottomRight', $data)) {
             $value_1 = $data['bottomRight'];

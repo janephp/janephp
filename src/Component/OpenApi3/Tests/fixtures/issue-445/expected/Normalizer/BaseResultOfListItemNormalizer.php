@@ -37,8 +37,14 @@ class BaseResultOfListItemNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('totalResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalResults', \PicturePark\API\Model\BaseResultOfListItem::class);
+        }
         if (\array_key_exists('totalResults', $data)) {
             $object->totalResults = $data['totalResults'];
+        }
+        if (!\array_key_exists('results', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('results', \PicturePark\API\Model\BaseResultOfListItem::class);
         }
         if (\array_key_exists('results', $data)) {
             $values = [];
@@ -46,6 +52,9 @@ class BaseResultOfListItemNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ListItem::class, 'json', $context);
             }
             $object->results = $values;
+        }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\BaseResultOfListItem::class);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];

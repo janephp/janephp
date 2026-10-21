@@ -37,17 +37,29 @@ class AddonsDimensionVolumeWithPriceNormalizer implements DenormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('low_volume', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('low_volume', \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class);
         }
         if (\array_key_exists('low_volume', $data)) {
             $object->lowVolume = $data['low_volume'];
             unset($data['low_volume']);
         }
+        if (!\array_key_exists('max_volume', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('max_volume', \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class);
+        }
         if (\array_key_exists('max_volume', $data)) {
             $object->maxVolume = $data['max_volume'];
             unset($data['max_volume']);
+        }
+        if (!\array_key_exists('price_per_unit', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('price_per_unit', \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class);
         }
         if (\array_key_exists('price_per_unit', $data)) {
             $object->pricePerUnit = $data['price_per_unit'];

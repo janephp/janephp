@@ -46,6 +46,9 @@ class ServiceCreateRadiusAccountingNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('standbyTlsEnabled', $data) && \is_int($data['standbyTlsEnabled'])) {
             $data['standbyTlsEnabled'] = (bool) $data['standbyTlsEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAccounting::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -60,6 +63,9 @@ class ServiceCreateRadiusAccountingNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('primary', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primary', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAccounting::class);
         }
         if (\array_key_exists('primary', $data)) {
             $object->primary = $this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context);

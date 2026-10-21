@@ -37,6 +37,9 @@ class FileTransferCreateItemNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('fileId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileId', \PicturePark\API\Model\FileTransferCreateItem::class);
+        }
         if (\array_key_exists('fileId', $data)) {
             $object->fileId = $data['fileId'];
         }

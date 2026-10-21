@@ -37,25 +37,43 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('size_gib', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gib', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
+        }
         if (\array_key_exists('size_gib', $data)) {
             $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
+        }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
         }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -72,6 +90,9 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->createdAt = $date;
             unset($data['created_at']);
+        }
+        if (!\array_key_exists('share_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('share_id', \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class);
         }
         if (\array_key_exists('share_id', $data)) {
             $object->shareId = $data['share_id'];

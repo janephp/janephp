@@ -40,6 +40,9 @@ class CommonPortalCustomizationNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('termsAndConditionsRequired', $data) && \is_int($data['termsAndConditionsRequired'])) {
             $data['termsAndConditionsRequired'] = (bool) $data['termsAndConditionsRequired'];
         }
+        if (!\array_key_exists('language', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('language', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonPortalCustomization::class);
+        }
         if (\array_key_exists('language', $data)) {
             $object->language = $data['language'];
         }

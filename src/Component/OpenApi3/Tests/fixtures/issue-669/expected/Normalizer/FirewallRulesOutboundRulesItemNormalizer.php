@@ -37,13 +37,22 @@ class FirewallRulesOutboundRulesItemNormalizer implements DenormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('protocol', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('protocol', \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class);
+        }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
+        if (!\array_key_exists('ports', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('ports', \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class);
+        }
         if (\array_key_exists('ports', $data)) {
             $object->ports = $data['ports'];
             unset($data['ports']);
+        }
+        if (!\array_key_exists('destinations', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('destinations', \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class);
         }
         if (\array_key_exists('destinations', $data)) {
             $object->destinations = $this->denormalizer->denormalize($data['destinations'], \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class, 'json', $context);

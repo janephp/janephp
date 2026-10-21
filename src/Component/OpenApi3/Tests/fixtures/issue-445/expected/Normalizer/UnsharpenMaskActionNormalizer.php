@@ -46,6 +46,9 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('threshold', $data) && \is_int($data['threshold'])) {
             $data['threshold'] = (float) $data['threshold'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\UnsharpenMaskAction::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

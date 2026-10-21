@@ -37,8 +37,14 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ListItemDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('contentSchemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSchemaId', \PicturePark\API\Model\ListItemDetail::class);
         }
         if (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = $data['contentSchemaId'];

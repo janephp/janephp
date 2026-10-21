@@ -37,9 +37,15 @@ class RegistryCreateNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\RegistryCreate::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('subscription_tier_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('subscription_tier_slug', \Jane\Generated\DigitalOcean\Model\RegistryCreate::class);
         }
         if (\array_key_exists('subscription_tier_slug', $data)) {
             $object->subscriptionTierSlug = $data['subscription_tier_slug'];

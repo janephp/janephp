@@ -43,6 +43,9 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigLinuxConstraint());
         }
+        if (!\array_key_exists('Capabilities', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Capabilities', \Docker\Api\Model\PluginConfigLinux::class);
+        }
         if (\array_key_exists('Capabilities', $data)) {
             $values = [];
             foreach ($data['Capabilities'] as $value) {
@@ -50,8 +53,14 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $object->capabilities = $values;
         }
+        if (!\array_key_exists('AllowAllDevices', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('AllowAllDevices', \Docker\Api\Model\PluginConfigLinux::class);
+        }
         if (\array_key_exists('AllowAllDevices', $data)) {
             $object->allowAllDevices = $data['AllowAllDevices'];
+        }
+        if (!\array_key_exists('Devices', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Devices', \Docker\Api\Model\PluginConfigLinux::class);
         }
         if (\array_key_exists('Devices', $data)) {
             $values_1 = [];

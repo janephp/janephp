@@ -69,6 +69,9 @@ class NotSupportedFileExtensionForFormatExceptionNormalizer implements Denormali
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\NotSupportedFileExtensionForFormatException::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

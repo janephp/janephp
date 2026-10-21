@@ -37,6 +37,9 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('executionScope', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('executionScope', \PicturePark\API\Model\BusinessRuleTriggerPoint::class);
+        }
         if (\array_key_exists('executionScope', $data)) {
             $value = $data['executionScope'];
             if (is_string($data['executionScope'])) {
@@ -44,12 +47,18 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
             }
             $object->executionScope = $value;
         }
+        if (!\array_key_exists('documentType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentType', \PicturePark\API\Model\BusinessRuleTriggerPoint::class);
+        }
         if (\array_key_exists('documentType', $data)) {
             $value_1 = $data['documentType'];
             if (is_string($data['documentType'])) {
                 $value_1 = $data['documentType'];
             }
             $object->documentType = $value_1;
+        }
+        if (!\array_key_exists('action', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('action', \PicturePark\API\Model\BusinessRuleTriggerPoint::class);
         }
         if (\array_key_exists('action', $data)) {
             $value_2 = $data['action'];

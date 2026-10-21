@@ -41,9 +41,15 @@ class DefaultTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->format = $data['format'];
             unset($data['format']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultTweet::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultTweet::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -61,9 +67,15 @@ class DefaultTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('text', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('text', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultTweet::class);
+        }
         if (\array_key_exists('text', $data)) {
             $object->text = $data['text'];
             unset($data['text']);
+        }
+        if (!\array_key_exists('author_id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('author_id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultTweet::class);
         }
         if (\array_key_exists('author_id', $data)) {
             $object->authorId = $data['author_id'];

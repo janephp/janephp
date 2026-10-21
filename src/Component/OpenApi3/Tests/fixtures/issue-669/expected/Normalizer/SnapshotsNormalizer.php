@@ -40,13 +40,22 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('size_gigabytes', $data) && \is_int($data['size_gigabytes'])) {
             $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -64,6 +73,9 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('regions', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('regions', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('regions', $data)) {
             $values = [];
             foreach ($data['regions'] as $value) {
@@ -72,21 +84,36 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->regions = $values;
             unset($data['regions']);
         }
+        if (!\array_key_exists('min_disk_size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('min_disk_size', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('min_disk_size', $data)) {
             $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
+        }
+        if (!\array_key_exists('size_gigabytes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gigabytes', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
             $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
+        if (!\array_key_exists('resource_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('resource_id', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('resource_id', $data)) {
             $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
+        if (!\array_key_exists('resource_type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('resource_type', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
+        }
         if (\array_key_exists('resource_type', $data)) {
             $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
+        }
+        if (!\array_key_exists('tags', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tags', \Jane\Generated\DigitalOcean\Model\Snapshots::class);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
             $values_1 = [];

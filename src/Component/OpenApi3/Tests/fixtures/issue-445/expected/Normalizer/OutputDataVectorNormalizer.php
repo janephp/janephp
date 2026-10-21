@@ -77,6 +77,9 @@ class OutputDataVectorNormalizer implements DenormalizerInterface, NormalizerInt
             $object->originalFileName = null;
             unset($data['originalFileName']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\OutputDataVector::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

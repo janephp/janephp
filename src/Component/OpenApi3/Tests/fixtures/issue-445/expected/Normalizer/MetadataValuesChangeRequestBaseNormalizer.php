@@ -49,6 +49,9 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('changeCommands', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('changeCommands', \PicturePark\API\Model\MetadataValuesChangeRequestBase::class);
+        }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];
             foreach ($data['changeCommands'] as $value) {
@@ -56,11 +59,20 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
             }
             $object->changeCommands = $values;
         }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\MetadataValuesChangeRequestBase::class);
+        }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\MetadataValuesChangeRequestBase::class);
+        }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\MetadataValuesChangeRequestBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

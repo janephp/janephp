@@ -40,17 +40,29 @@ class ForwardingRuleNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('tls_passthrough', $data) && \is_int($data['tls_passthrough'])) {
             $data['tls_passthrough'] = (bool) $data['tls_passthrough'];
         }
+        if (!\array_key_exists('entry_protocol', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('entry_protocol', \Jane\Generated\DigitalOcean\Model\ForwardingRule::class);
+        }
         if (\array_key_exists('entry_protocol', $data)) {
             $object->entryProtocol = $data['entry_protocol'];
             unset($data['entry_protocol']);
+        }
+        if (!\array_key_exists('entry_port', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('entry_port', \Jane\Generated\DigitalOcean\Model\ForwardingRule::class);
         }
         if (\array_key_exists('entry_port', $data)) {
             $object->entryPort = $data['entry_port'];
             unset($data['entry_port']);
         }
+        if (!\array_key_exists('target_protocol', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('target_protocol', \Jane\Generated\DigitalOcean\Model\ForwardingRule::class);
+        }
         if (\array_key_exists('target_protocol', $data)) {
             $object->targetProtocol = $data['target_protocol'];
             unset($data['target_protocol']);
+        }
+        if (!\array_key_exists('target_port', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('target_port', \Jane\Generated\DigitalOcean\Model\ForwardingRule::class);
         }
         if (\array_key_exists('target_port', $data)) {
             $object->targetPort = $data['target_port'];

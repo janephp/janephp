@@ -37,13 +37,22 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('personalReference', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('personalReference', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody::class);
+        }
         if (\array_key_exists('personalReference', $data)) {
             $object->personalReference = $data['personalReference'];
             unset($data['personalReference']);
         }
+        if (!\array_key_exists('freeText', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('freeText', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody::class);
+        }
         if (\array_key_exists('freeText', $data)) {
             $object->freeText = $data['freeText'];
             unset($data['freeText']);
+        }
+        if (!\array_key_exists('personalLimit', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('personalLimit', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody::class);
         }
         if (\array_key_exists('personalLimit', $data)) {
             $object->personalLimit = $data['personalLimit'];

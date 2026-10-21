@@ -112,6 +112,9 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
             $object->collectionId = null;
             unset($data['collectionId']);
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\ContentSearchRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_4 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -120,6 +123,9 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
             $object->lifeCycleFilter = $value_4;
             unset($data['lifeCycleFilter']);
         }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ContentSearchRequest::class);
+        }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_5 = $data['brokenDependenciesFilter'];
             if (is_string($data['brokenDependenciesFilter'])) {
@@ -127,6 +133,9 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->brokenDependenciesFilter = $value_5;
             unset($data['brokenDependenciesFilter']);
+        }
+        if (!\array_key_exists('searchType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('searchType', \PicturePark\API\Model\ContentSearchRequest::class);
         }
         if (\array_key_exists('searchType', $data)) {
             $value_6 = $data['searchType'];

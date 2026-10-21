@@ -40,12 +40,18 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginSettingsConstraint());
         }
+        if (!\array_key_exists('Mounts', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Mounts', \Docker\Api\Model\PluginSettings::class);
+        }
         if (\array_key_exists('Mounts', $data)) {
             $values = [];
             foreach ($data['Mounts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PluginMount::class, 'json', $context);
             }
             $object->mounts = $values;
+        }
+        if (!\array_key_exists('Env', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Env', \Docker\Api\Model\PluginSettings::class);
         }
         if (\array_key_exists('Env', $data)) {
             $values_1 = [];
@@ -54,12 +60,18 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->env = $values_1;
         }
+        if (!\array_key_exists('Args', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Args', \Docker\Api\Model\PluginSettings::class);
+        }
         if (\array_key_exists('Args', $data)) {
             $values_2 = [];
             foreach ($data['Args'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->args = $values_2;
+        }
+        if (!\array_key_exists('Devices', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Devices', \Docker\Api\Model\PluginSettings::class);
         }
         if (\array_key_exists('Devices', $data)) {
             $values_3 = [];

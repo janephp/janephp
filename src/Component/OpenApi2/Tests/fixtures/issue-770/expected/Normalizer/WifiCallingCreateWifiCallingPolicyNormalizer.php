@@ -40,14 +40,23 @@ class WifiCallingCreateWifiCallingPolicyNormalizer implements DenormalizerInterf
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('priority', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy::class);
+        }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];
+        }
+        if (!\array_key_exists('epdgs', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('epdgs', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy::class);
         }
         if (\array_key_exists('epdgs', $data)) {
             $values = [];

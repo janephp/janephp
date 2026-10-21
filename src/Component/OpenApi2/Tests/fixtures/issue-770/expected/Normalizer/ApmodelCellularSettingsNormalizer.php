@@ -46,8 +46,14 @@ class ApmodelCellularSettingsNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('simCardUsage', $data)) {
             $object->simCardUsage = $data['simCardUsage'];
         }
+        if (!\array_key_exists('select3g4g', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('select3g4g', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCellularSettings::class);
+        }
         if (\array_key_exists('select3g4g', $data)) {
             $object->select3g4g = $data['select3g4g'];
+        }
+        if (!\array_key_exists('select3g4g2', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('select3g4g2', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCellularSettings::class);
         }
         if (\array_key_exists('select3g4g2', $data)) {
             $object->select3g4g2 = $data['select3g4g2'];
@@ -58,8 +64,14 @@ class ApmodelCellularSettingsNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('dataRoaming2', $data)) {
             $object->dataRoaming2 = $data['dataRoaming2'];
         }
+        if (!\array_key_exists('wanConnection', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('wanConnection', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCellularSettings::class);
+        }
         if (\array_key_exists('wanConnection', $data)) {
             $object->wanConnection = $data['wanConnection'];
+        }
+        if (!\array_key_exists('wanRecoveryTimer', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('wanRecoveryTimer', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCellularSettings::class);
         }
         if (\array_key_exists('wanRecoveryTimer', $data)) {
             $object->wanRecoveryTimer = $data['wanRecoveryTimer'];

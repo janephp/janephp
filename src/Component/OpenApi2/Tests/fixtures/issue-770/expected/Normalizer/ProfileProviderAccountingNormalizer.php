@@ -43,8 +43,14 @@ class ProfileProviderAccountingNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderAccounting::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
+        }
+        if (!\array_key_exists('serviceType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serviceType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderAccounting::class);
         }
         if (\array_key_exists('serviceType', $data)) {
             $object->serviceType = $data['serviceType'];

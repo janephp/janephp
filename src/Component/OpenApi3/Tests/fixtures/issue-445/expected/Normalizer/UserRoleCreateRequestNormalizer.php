@@ -37,6 +37,9 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\UserRoleCreateRequest::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
@@ -48,6 +51,9 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->names = $value;
             unset($data['names']);
+        }
+        if (!\array_key_exists('userRights', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userRights', \PicturePark\API\Model\UserRoleCreateRequest::class);
         }
         if (\array_key_exists('userRights', $data)) {
             $values_1 = [];

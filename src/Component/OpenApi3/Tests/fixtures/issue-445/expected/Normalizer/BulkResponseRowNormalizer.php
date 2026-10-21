@@ -40,8 +40,14 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('succeeded', $data) && \is_int($data['succeeded'])) {
             $data['succeeded'] = (bool) $data['succeeded'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\BulkResponseRow::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('version', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('version', \PicturePark\API\Model\BulkResponseRow::class);
         }
         if (\array_key_exists('version', $data)) {
             $object->version = $data['version'];
@@ -52,8 +58,14 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('error', $data)) {
             $object->error = null;
         }
+        if (!\array_key_exists('succeeded', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('succeeded', \PicturePark\API\Model\BulkResponseRow::class);
+        }
         if (\array_key_exists('succeeded', $data)) {
             $object->succeeded = $data['succeeded'];
+        }
+        if (!\array_key_exists('status', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('status', \PicturePark\API\Model\BulkResponseRow::class);
         }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];

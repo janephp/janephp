@@ -37,6 +37,9 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('recipient', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('recipient', \PicturePark\API\Model\InternalRecipient::class);
+        }
         if (\array_key_exists('recipient', $data)) {
             $value = $data['recipient'];
             if (is_array($data['recipient']) and \array_key_exists('emailAddress', $data['recipient']) and \array_key_exists('isDeleted', $data['recipient'])) {

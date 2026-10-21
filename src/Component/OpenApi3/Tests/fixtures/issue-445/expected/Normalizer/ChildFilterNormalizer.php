@@ -37,13 +37,22 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ChildFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('childType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('childType', \PicturePark\API\Model\ChildFilter::class);
+        }
         if (\array_key_exists('childType', $data)) {
             $object->childType = $data['childType'];
             unset($data['childType']);
+        }
+        if (!\array_key_exists('filter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('filter', \PicturePark\API\Model\ChildFilter::class);
         }
         if (\array_key_exists('filter', $data)) {
             $value = $data['filter'];

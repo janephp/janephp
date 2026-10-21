@@ -37,6 +37,9 @@ class NfsActionsResponseNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('action', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('action', \Jane\Generated\DigitalOcean\Model\NfsActionsResponse::class);
+        }
         if (\array_key_exists('action', $data)) {
             $object->action = $this->denormalizer->denormalize($data['action'], \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class, 'json', $context);
             unset($data['action']);

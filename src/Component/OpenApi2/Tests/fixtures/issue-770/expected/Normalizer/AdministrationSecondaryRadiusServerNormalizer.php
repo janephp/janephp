@@ -40,23 +40,41 @@ class AdministrationSecondaryRadiusServerNormalizer implements DenormalizerInter
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
         }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
         }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];
         }
+        if (!\array_key_exists('sharedSecret', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sharedSecret', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('sharedSecret', $data)) {
             $object->sharedSecret = $data['sharedSecret'];
+        }
+        if (!\array_key_exists('ipFqdn', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipFqdn', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
         }
         if (\array_key_exists('ipFqdn', $data)) {
             $object->ipFqdn = $data['ipFqdn'];
         }
+        if (!\array_key_exists('requestTimeOut', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('requestTimeOut', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('requestTimeOut', $data)) {
             $object->requestTimeOut = $data['requestTimeOut'];
         }
+        if (!\array_key_exists('maxRetries', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('maxRetries', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('maxRetries', $data)) {
             $object->maxRetries = $data['maxRetries'];
+        }
+        if (!\array_key_exists('retryPriInvl', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('retryPriInvl', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationSecondaryRadiusServer::class);
         }
         if (\array_key_exists('retryPriInvl', $data)) {
             $object->retryPriInvl = $data['retryPriInvl'];

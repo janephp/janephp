@@ -37,17 +37,29 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('followers_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('followers_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedUserFieldsStats::class);
+        }
         if (\array_key_exists('followers_count', $data)) {
             $object->followersCount = $data['followers_count'];
             unset($data['followers_count']);
+        }
+        if (!\array_key_exists('following_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('following_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedUserFieldsStats::class);
         }
         if (\array_key_exists('following_count', $data)) {
             $object->followingCount = $data['following_count'];
             unset($data['following_count']);
         }
+        if (!\array_key_exists('tweet_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('tweet_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedUserFieldsStats::class);
+        }
         if (\array_key_exists('tweet_count', $data)) {
             $object->tweetCount = $data['tweet_count'];
             unset($data['tweet_count']);
+        }
+        if (!\array_key_exists('listed_count', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('listed_count', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedUserFieldsStats::class);
         }
         if (\array_key_exists('listed_count', $data)) {
             $object->listedCount = $data['listed_count'];

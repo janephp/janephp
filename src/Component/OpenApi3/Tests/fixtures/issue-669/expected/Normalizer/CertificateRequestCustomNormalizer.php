@@ -37,6 +37,9 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\CertificateRequestCustom::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
@@ -45,9 +48,15 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
             $object->type = $data['type'];
             unset($data['type']);
         }
+        if (!\array_key_exists('private_key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('private_key', \Jane\Generated\DigitalOcean\Model\CertificateRequestCustom::class);
+        }
         if (\array_key_exists('private_key', $data)) {
             $object->privateKey = $data['private_key'];
             unset($data['private_key']);
+        }
+        if (!\array_key_exists('leaf_certificate', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('leaf_certificate', \Jane\Generated\DigitalOcean\Model\CertificateRequestCustom::class);
         }
         if (\array_key_exists('leaf_certificate', $data)) {
             $object->leafCertificate = $data['leaf_certificate'];

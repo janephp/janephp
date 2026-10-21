@@ -40,13 +40,22 @@ class VolumeFullRegionNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('available', $data) && \is_int($data['available'])) {
             $data['available'] = (bool) $data['available'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slug', \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class);
+        }
         if (\array_key_exists('slug', $data)) {
             $object->slug = $data['slug'];
             unset($data['slug']);
+        }
+        if (!\array_key_exists('features', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('features', \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class);
         }
         if (\array_key_exists('features', $data)) {
             $values = [];
@@ -56,9 +65,15 @@ class VolumeFullRegionNormalizer implements DenormalizerInterface, NormalizerInt
             $object->features = $values;
             unset($data['features']);
         }
+        if (!\array_key_exists('available', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('available', \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class);
+        }
         if (\array_key_exists('available', $data)) {
             $object->available = $data['available'];
             unset($data['available']);
+        }
+        if (!\array_key_exists('sizes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('sizes', \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class);
         }
         if (\array_key_exists('sizes', $data)) {
             $values_1 = [];

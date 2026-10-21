@@ -37,8 +37,14 @@ class GdprReportNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('clientMac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('clientMac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprReport::class);
+        }
         if (\array_key_exists('clientMac', $data)) {
             $object->clientMac = $data['clientMac'];
+        }
+        if (!\array_key_exists('action', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('action', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprReport::class);
         }
         if (\array_key_exists('action', $data)) {
             $object->action = $data['action'];

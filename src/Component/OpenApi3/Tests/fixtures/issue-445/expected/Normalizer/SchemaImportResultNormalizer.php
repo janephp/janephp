@@ -37,11 +37,20 @@ class SchemaImportResultNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('importedSchemaCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('importedSchemaCount', \PicturePark\API\Model\SchemaImportResult::class);
+        }
         if (\array_key_exists('importedSchemaCount', $data)) {
             $object->importedSchemaCount = $data['importedSchemaCount'];
         }
+        if (!\array_key_exists('skippedSchemaCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('skippedSchemaCount', \PicturePark\API\Model\SchemaImportResult::class);
+        }
         if (\array_key_exists('skippedSchemaCount', $data)) {
             $object->skippedSchemaCount = $data['skippedSchemaCount'];
+        }
+        if (!\array_key_exists('totalSchemaCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalSchemaCount', \PicturePark\API\Model\SchemaImportResult::class);
         }
         if (\array_key_exists('totalSchemaCount', $data)) {
             $object->totalSchemaCount = $data['totalSchemaCount'];

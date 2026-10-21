@@ -49,6 +49,9 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('chromaSubsamplingEnabled', $data) && \is_int($data['chromaSubsamplingEnabled'])) {
             $data['chromaSubsamplingEnabled'] = (bool) $data['chromaSubsamplingEnabled'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\JpegFormat::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

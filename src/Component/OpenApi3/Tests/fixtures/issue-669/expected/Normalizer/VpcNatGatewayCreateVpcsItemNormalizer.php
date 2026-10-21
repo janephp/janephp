@@ -40,6 +40,9 @@ class VpcNatGatewayCreateVpcsItemNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('default_gateway', $data) && \is_int($data['default_gateway'])) {
             $data['default_gateway'] = (bool) $data['default_gateway'];
         }
+        if (!\array_key_exists('vpc_uuid', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpc_uuid', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreateVpcsItem::class);
+        }
         if (\array_key_exists('vpc_uuid', $data)) {
             $object->vpcUuid = $data['vpc_uuid'];
             unset($data['vpc_uuid']);

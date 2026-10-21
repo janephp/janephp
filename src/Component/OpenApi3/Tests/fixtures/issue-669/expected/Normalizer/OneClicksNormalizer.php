@@ -37,9 +37,15 @@ class OneClicksNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slug', \Jane\Generated\DigitalOcean\Model\OneClicks::class);
+        }
         if (\array_key_exists('slug', $data)) {
             $object->slug = $data['slug'];
             unset($data['slug']);
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\OneClicks::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];

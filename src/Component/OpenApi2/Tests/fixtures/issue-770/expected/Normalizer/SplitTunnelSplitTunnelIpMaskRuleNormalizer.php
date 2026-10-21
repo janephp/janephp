@@ -37,8 +37,14 @@ class SplitTunnelSplitTunnelIpMaskRuleNormalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('destinationIp', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('destinationIp', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelIpMaskRule::class);
+        }
         if (\array_key_exists('destinationIp', $data)) {
             $object->destinationIp = $data['destinationIp'];
+        }
+        if (!\array_key_exists('destinationIpMask', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('destinationIpMask', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelIpMaskRule::class);
         }
         if (\array_key_exists('destinationIpMask', $data)) {
             $object->destinationIpMask = $data['destinationIpMask'];

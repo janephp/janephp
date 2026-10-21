@@ -40,8 +40,14 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\SystemVersionComponentsItem::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
+        }
+        if (!\array_key_exists('Version', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Version', \Docker\Api\Model\SystemVersionComponentsItem::class);
         }
         if (\array_key_exists('Version', $data)) {
             $object->version = $data['Version'];

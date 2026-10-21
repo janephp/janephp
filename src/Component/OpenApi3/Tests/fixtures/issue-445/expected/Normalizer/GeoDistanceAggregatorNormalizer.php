@@ -37,6 +37,9 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\GeoDistanceAggregator::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
@@ -81,13 +84,22 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
             $object->filter = null;
             unset($data['filter']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\GeoDistanceAggregator::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\GeoDistanceAggregator::class);
+        }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
             unset($data['field']);
+        }
+        if (!\array_key_exists('location', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('location', \PicturePark\API\Model\GeoDistanceAggregator::class);
         }
         if (\array_key_exists('location', $data)) {
             $value_4 = $data['location'];
@@ -96,6 +108,9 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->location = $value_4;
             unset($data['location']);
+        }
+        if (!\array_key_exists('ranges', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ranges', \PicturePark\API\Model\GeoDistanceAggregator::class);
         }
         if (\array_key_exists('ranges', $data)) {
             $values_2 = [];

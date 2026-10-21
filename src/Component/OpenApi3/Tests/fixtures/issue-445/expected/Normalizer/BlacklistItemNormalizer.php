@@ -37,8 +37,14 @@ class BlacklistItemNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\BlacklistItem::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('match', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('match', \PicturePark\API\Model\BlacklistItem::class);
         }
         if (\array_key_exists('match', $data)) {
             $object->match = $data['match'];

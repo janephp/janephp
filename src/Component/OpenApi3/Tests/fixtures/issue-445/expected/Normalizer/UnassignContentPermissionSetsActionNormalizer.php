@@ -45,6 +45,9 @@ class UnassignContentPermissionSetsActionNormalizer implements DenormalizerInter
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\UnassignContentPermissionSetsAction::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

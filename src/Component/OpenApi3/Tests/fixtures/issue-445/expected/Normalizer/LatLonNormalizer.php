@@ -43,8 +43,14 @@ class LatLonNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('lon', $data) && \is_int($data['lon'])) {
             $data['lon'] = (float) $data['lon'];
         }
+        if (!\array_key_exists('lat', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lat', \PicturePark\API\Model\LatLon::class);
+        }
         if (\array_key_exists('lat', $data)) {
             $object->lat = $data['lat'];
+        }
+        if (!\array_key_exists('lon', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lon', \PicturePark\API\Model\LatLon::class);
         }
         if (\array_key_exists('lon', $data)) {
             $object->lon = $data['lon'];

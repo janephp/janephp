@@ -37,6 +37,9 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('transferUserId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferUserId', \PicturePark\API\Model\PermissionSetOwnershipTransferItem::class);
+        }
         if (\array_key_exists('transferUserId', $data)) {
             $object->transferUserId = $data['transferUserId'];
             unset($data['transferUserId']);

@@ -37,11 +37,20 @@ class ProfileDataPlaneL3RoamingDataNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('key', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('key', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDataPlaneL3RoamingData::class);
+        }
         if (\array_key_exists('key', $data)) {
             $object->key = $data['key'];
         }
+        if (!\array_key_exists('activated', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('activated', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDataPlaneL3RoamingData::class);
+        }
         if (\array_key_exists('activated', $data)) {
             $object->activated = $data['activated'];
+        }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDataPlaneL3RoamingData::class);
         }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];

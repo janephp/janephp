@@ -40,6 +40,9 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('stopProcessing', $data) && \is_int($data['stopProcessing'])) {
             $data['stopProcessing'] = (bool) $data['stopProcessing'];
         }
+        if (!\array_key_exists('direction', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('direction', \PicturePark\API\Model\XmpMappingEntryCreateRequest::class);
+        }
         if (\array_key_exists('direction', $data)) {
             $value = $data['direction'];
             if (is_string($data['direction'])) {
@@ -48,17 +51,29 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             $object->direction = $value;
             unset($data['direction']);
         }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('priority', \PicturePark\API\Model\XmpMappingEntryCreateRequest::class);
+        }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];
             unset($data['priority']);
+        }
+        if (!\array_key_exists('stopProcessing', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('stopProcessing', \PicturePark\API\Model\XmpMappingEntryCreateRequest::class);
         }
         if (\array_key_exists('stopProcessing', $data)) {
             $object->stopProcessing = $data['stopProcessing'];
             unset($data['stopProcessing']);
         }
+        if (!\array_key_exists('xmpPath', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('xmpPath', \PicturePark\API\Model\XmpMappingEntryCreateRequest::class);
+        }
         if (\array_key_exists('xmpPath', $data)) {
             $object->xmpPath = $data['xmpPath'];
             unset($data['xmpPath']);
+        }
+        if (!\array_key_exists('metadataPath', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('metadataPath', \PicturePark\API\Model\XmpMappingEntryCreateRequest::class);
         }
         if (\array_key_exists('metadataPath', $data)) {
             $object->metadataPath = $data['metadataPath'];

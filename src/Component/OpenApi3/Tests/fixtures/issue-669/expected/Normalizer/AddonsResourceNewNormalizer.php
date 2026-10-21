@@ -37,17 +37,29 @@ class AddonsResourceNewNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('app_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('app_slug', \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class);
+        }
         if (\array_key_exists('app_slug', $data)) {
             $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
+        }
+        if (!\array_key_exists('plan_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('plan_slug', \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class);
         }
         if (\array_key_exists('plan_slug', $data)) {
             $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('metadata', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('metadata', \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class);
         }
         if (\array_key_exists('metadata', $data)) {
             $values = [];

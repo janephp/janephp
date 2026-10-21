@@ -40,6 +40,9 @@ class UserLockRequestNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('lock', $data) && \is_int($data['lock'])) {
             $data['lock'] = (bool) $data['lock'];
         }
+        if (!\array_key_exists('lock', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lock', \PicturePark\API\Model\UserLockRequest::class);
+        }
         if (\array_key_exists('lock', $data)) {
             $object->lock = $data['lock'];
         }

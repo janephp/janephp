@@ -37,6 +37,9 @@ class CaNormalizer implements DenormalizerInterface, NormalizerInterface, Denorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('certificate', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('certificate', \Jane\Generated\DigitalOcean\Model\Ca::class);
+        }
         if (\array_key_exists('certificate', $data)) {
             $object->certificate = $data['certificate'];
             unset($data['certificate']);

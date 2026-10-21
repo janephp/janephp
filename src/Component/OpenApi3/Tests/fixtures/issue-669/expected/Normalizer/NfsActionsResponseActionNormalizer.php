@@ -37,17 +37,29 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('region_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region_slug', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
+        }
         if (\array_key_exists('region_slug', $data)) {
             $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
+        }
+        if (!\array_key_exists('resource_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('resource_id', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
         }
         if (\array_key_exists('resource_id', $data)) {
             $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
+        if (!\array_key_exists('resource_type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('resource_type', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
+        }
         if (\array_key_exists('resource_type', $data)) {
             $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
+        }
+        if (!\array_key_exists('started_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('started_at', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
         }
         if (\array_key_exists('started_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
@@ -65,9 +77,15 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
             $object->startedAt = $date;
             unset($data['started_at']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];

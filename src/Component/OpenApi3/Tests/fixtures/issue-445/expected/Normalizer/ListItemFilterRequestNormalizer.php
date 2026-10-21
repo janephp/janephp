@@ -56,6 +56,9 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
+        if (!\array_key_exists('includeAllSchemaChildren', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeAllSchemaChildren', \PicturePark\API\Model\ListItemFilterRequest::class);
+        }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
         }
@@ -78,6 +81,9 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
+        }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ListItemFilterRequest::class);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_3 = $data['brokenDependenciesFilter'];

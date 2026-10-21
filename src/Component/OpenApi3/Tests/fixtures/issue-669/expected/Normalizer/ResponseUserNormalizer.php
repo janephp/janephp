@@ -37,6 +37,9 @@ class ResponseUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('user', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('user', \Jane\Generated\DigitalOcean\Model\ResponseUser::class);
+        }
         if (\array_key_exists('user', $data)) {
             $object->user = $this->denormalizer->denormalize($data['user'], \Jane\Generated\DigitalOcean\Model\DatabaseUser::class, 'json', $context);
             unset($data['user']);

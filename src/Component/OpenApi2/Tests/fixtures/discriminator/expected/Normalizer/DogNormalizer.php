@@ -37,11 +37,20 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Dog::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
+        if (!\array_key_exists('petType', $data)) {
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\MissingRequiredPropertyException('petType', \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Dog::class);
+        }
         if (\array_key_exists('petType', $data)) {
             $object->petType = $data['petType'];
+        }
+        if (!\array_key_exists('packSize', $data)) {
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\MissingRequiredPropertyException('packSize', \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Dog::class);
         }
         if (\array_key_exists('packSize', $data)) {
             $object->packSize = $data['packSize'];

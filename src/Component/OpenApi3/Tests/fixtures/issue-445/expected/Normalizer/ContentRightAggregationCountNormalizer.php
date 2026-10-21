@@ -37,12 +37,18 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentRight', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentRight', \PicturePark\API\Model\ContentRightAggregationCount::class);
+        }
         if (\array_key_exists('contentRight', $data)) {
             $value = $data['contentRight'];
             if (is_string($data['contentRight'])) {
                 $value = $data['contentRight'];
             }
             $object->contentRight = $value;
+        }
+        if (!\array_key_exists('count', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('count', \PicturePark\API\Model\ContentRightAggregationCount::class);
         }
         if (\array_key_exists('count', $data)) {
             $object->count = $data['count'];

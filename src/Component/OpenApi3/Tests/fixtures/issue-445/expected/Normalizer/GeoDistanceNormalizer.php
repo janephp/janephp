@@ -54,6 +54,9 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
+        if (!\array_key_exists('distance', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('distance', \PicturePark\API\Model\GeoDistance::class);
+        }
         if (\array_key_exists('distance', $data)) {
             $object->distance = $data['distance'];
         }

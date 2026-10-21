@@ -43,6 +43,9 @@ class ProfileCreateRuckusGREProfileNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRuckusGREProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -54,6 +57,9 @@ class ProfileCreateRuckusGREProfileNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('tunnelEncryption', $data)) {
             $object->tunnelEncryption = $data['tunnelEncryption'];
+        }
+        if (!\array_key_exists('tunnelMtuAutoEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('tunnelMtuAutoEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRuckusGREProfile::class);
         }
         if (\array_key_exists('tunnelMtuAutoEnabled', $data)) {
             $object->tunnelMtuAutoEnabled = $data['tunnelMtuAutoEnabled'];

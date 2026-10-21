@@ -43,20 +43,38 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingProfileNormalizer impl
         if (\array_key_exists('streamingByDomainZoneEnabled', $data) && \is_int($data['streamingByDomainZoneEnabled'])) {
             $data['streamingByDomainZoneEnabled'] = (bool) $data['streamingByDomainZoneEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('serverHost', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serverHost', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
         }
         if (\array_key_exists('serverHost', $data)) {
             $object->serverHost = $data['serverHost'];
         }
+        if (!\array_key_exists('serverPort', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serverPort', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
+        }
         if (\array_key_exists('serverPort', $data)) {
             $object->serverPort = $data['serverPort'];
+        }
+        if (!\array_key_exists('user', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('user', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
         }
         if (\array_key_exists('user', $data)) {
             $object->user = $data['user'];
         }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
+        }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];
+        }
+        if (!\array_key_exists('systemId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('systemId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile::class);
         }
         if (\array_key_exists('systemId', $data)) {
             $object->systemId = $data['systemId'];

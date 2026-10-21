@@ -37,6 +37,9 @@ class WhiteLabelCustomizationUpdateWhiteLabelCustomizationNormalizer implements 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('companyName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('companyName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization::class);
+        }
         if (\array_key_exists('companyName', $data)) {
             $object->companyName = $data['companyName'];
         }

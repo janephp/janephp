@@ -37,9 +37,15 @@ class CreateNamespaceNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\CreateNamespace::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('label', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('label', \Jane\Generated\DigitalOcean\Model\CreateNamespace::class);
         }
         if (\array_key_exists('label', $data)) {
             $object->label = $data['label'];

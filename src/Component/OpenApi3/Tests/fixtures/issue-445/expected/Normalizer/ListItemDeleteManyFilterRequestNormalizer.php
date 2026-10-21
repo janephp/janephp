@@ -43,6 +43,9 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('filterRequest', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('filterRequest', \PicturePark\API\Model\ListItemDeleteManyFilterRequest::class);
+        }
         if (\array_key_exists('filterRequest', $data)) {
             $value = $data['filterRequest'];
             if (is_array($data['filterRequest']) and \array_key_exists('includeAllSchemaChildren', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
@@ -50,8 +53,14 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
             }
             $object->filterRequest = $value;
         }
+        if (!\array_key_exists('forceReferenceRemoval', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('forceReferenceRemoval', \PicturePark\API\Model\ListItemDeleteManyFilterRequest::class);
+        }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
             $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ListItemDeleteManyFilterRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

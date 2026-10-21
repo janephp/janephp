@@ -40,8 +40,14 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('expired', $data) && \is_int($data['expired'])) {
             $data['expired'] = (bool) $data['expired'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ShareDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\ShareDetail::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -52,6 +58,9 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
+        if (!\array_key_exists('creator', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('creator', \PicturePark\API\Model\ShareDetail::class);
+        }
         if (\array_key_exists('creator', $data)) {
             $value = $data['creator'];
             if (is_array($data['creator']) and \array_key_exists('displayName', $data['creator']) and \array_key_exists('emailHash', $data['creator'])) {
@@ -59,12 +68,18 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->creator = $value;
         }
+        if (!\array_key_exists('audit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('audit', \PicturePark\API\Model\ShareDetail::class);
+        }
         if (\array_key_exists('audit', $data)) {
             $value_1 = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
             $object->audit = $value_1;
+        }
+        if (!\array_key_exists('contentSelections', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSelections', \PicturePark\API\Model\ShareDetail::class);
         }
         if (\array_key_exists('contentSelections', $data)) {
             $values = [];
@@ -111,8 +126,14 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
+        if (!\array_key_exists('expired', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('expired', \PicturePark\API\Model\ShareDetail::class);
+        }
         if (\array_key_exists('expired', $data)) {
             $object->expired = $data['expired'];
+        }
+        if (!\array_key_exists('outputAccess', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputAccess', \PicturePark\API\Model\ShareDetail::class);
         }
         if (\array_key_exists('outputAccess', $data)) {
             $value_5 = $data['outputAccess'];
@@ -120,6 +141,9 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $value_5 = $data['outputAccess'];
             }
             $object->outputAccess = $value_5;
+        }
+        if (!\array_key_exists('shareType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('shareType', \PicturePark\API\Model\ShareDetail::class);
         }
         if (\array_key_exists('shareType', $data)) {
             $value_6 = $data['shareType'];

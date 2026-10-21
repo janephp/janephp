@@ -40,9 +40,15 @@ class ReactionsNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Validator\ReactionsConstraint());
         }
+        if (!\array_key_exists('+1', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Runtime\Normalizer\MissingRequiredPropertyException('+1', \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Model\Reactions::class);
+        }
         if (\array_key_exists('+1', $data)) {
             $object->n1 = $data['+1'];
             unset($data['+1']);
+        }
+        if (!\array_key_exists('-1', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Runtime\Normalizer\MissingRequiredPropertyException('-1', \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Model\Reactions::class);
         }
         if (\array_key_exists('-1', $data)) {
             $object->n12 = $data['-1'];

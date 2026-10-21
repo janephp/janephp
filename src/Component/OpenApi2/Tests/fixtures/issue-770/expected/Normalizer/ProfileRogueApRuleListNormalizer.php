@@ -37,8 +37,14 @@ class ProfileRogueApRuleListNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApRuleList::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApRuleList::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
@@ -46,8 +52,14 @@ class ProfileRogueApRuleListNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];
         }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('priority', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApRuleList::class);
+        }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];
+        }
+        if (!\array_key_exists('classification', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('classification', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApRuleList::class);
         }
         if (\array_key_exists('classification', $data)) {
             $object->classification = $data['classification'];

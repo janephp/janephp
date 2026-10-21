@@ -40,9 +40,15 @@ class DatabaseClusterReadMaintenanceWindowNormalizer implements DenormalizerInte
         if (\array_key_exists('pending', $data) && \is_int($data['pending'])) {
             $data['pending'] = (bool) $data['pending'];
         }
+        if (!\array_key_exists('day', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('day', \Jane\Generated\DigitalOcean\Model\DatabaseClusterReadMaintenanceWindow::class);
+        }
         if (\array_key_exists('day', $data)) {
             $object->day = $data['day'];
             unset($data['day']);
+        }
+        if (!\array_key_exists('hour', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('hour', \Jane\Generated\DigitalOcean\Model\DatabaseClusterReadMaintenanceWindow::class);
         }
         if (\array_key_exists('hour', $data)) {
             $object->hour = $data['hour'];

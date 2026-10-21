@@ -37,6 +37,9 @@ class V2DatabasesDatabaseClusterUuidSchemaRegistryConfigSubjectNamePutBodyNormal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('compatibility_level', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('compatibility_level', \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigSubjectNamePutBody::class);
+        }
         if (\array_key_exists('compatibility_level', $data)) {
             $object->compatibilityLevel = $data['compatibility_level'];
             unset($data['compatibility_level']);

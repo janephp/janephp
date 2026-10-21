@@ -37,23 +37,41 @@ class ProfileCreateDhcpProfileNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('vlanId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('vlanId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
+        }
         if (\array_key_exists('vlanId', $data)) {
             $object->vlanId = $data['vlanId'];
+        }
+        if (!\array_key_exists('subnetNetworkIp', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('subnetNetworkIp', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
         }
         if (\array_key_exists('subnetNetworkIp', $data)) {
             $object->subnetNetworkIp = $data['subnetNetworkIp'];
         }
+        if (!\array_key_exists('subnetMask', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('subnetMask', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
+        }
         if (\array_key_exists('subnetMask', $data)) {
             $object->subnetMask = $data['subnetMask'];
         }
+        if (!\array_key_exists('poolStartIp', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('poolStartIp', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
+        }
         if (\array_key_exists('poolStartIp', $data)) {
             $object->poolStartIp = $data['poolStartIp'];
+        }
+        if (!\array_key_exists('poolEndIp', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('poolEndIp', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
         }
         if (\array_key_exists('poolEndIp', $data)) {
             $object->poolEndIp = $data['poolEndIp'];
@@ -64,8 +82,14 @@ class ProfileCreateDhcpProfileNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('secondaryDnsIp', $data)) {
             $object->secondaryDnsIp = $data['secondaryDnsIp'];
         }
+        if (!\array_key_exists('leaseTimeHours', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('leaseTimeHours', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
+        }
         if (\array_key_exists('leaseTimeHours', $data)) {
             $object->leaseTimeHours = $data['leaseTimeHours'];
+        }
+        if (!\array_key_exists('leaseTimeMinutes', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('leaseTimeMinutes', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile::class);
         }
         if (\array_key_exists('leaseTimeMinutes', $data)) {
             $object->leaseTimeMinutes = $data['leaseTimeMinutes'];

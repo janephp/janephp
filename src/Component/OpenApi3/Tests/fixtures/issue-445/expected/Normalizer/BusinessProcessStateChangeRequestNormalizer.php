@@ -37,8 +37,14 @@ class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\BusinessProcessStateChangeRequest::class);
+        }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
+        }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\BusinessProcessStateChangeRequest::class);
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $value = $data['lifeCycle'];

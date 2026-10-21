@@ -37,8 +37,14 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('firstName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('firstName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class);
+        }
         if (\array_key_exists('firstName', $data)) {
             $object->firstName = $data['firstName'];
+        }
+        if (!\array_key_exists('lastName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('lastName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class);
         }
         if (\array_key_exists('lastName', $data)) {
             $object->lastName = $data['lastName'];
@@ -67,14 +73,23 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('countryShortName', $data)) {
             $object->countryShortName = $data['countryShortName'];
         }
+        if (!\array_key_exists('isDisabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('isDisabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class);
+        }
         if (\array_key_exists('isDisabled', $data)) {
             $object->isDisabled = $data['isDisabled'];
         }
         if (\array_key_exists('remark', $data)) {
             $object->remark = $data['remark'];
         }
+        if (!\array_key_exists('userName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class);
+        }
         if (\array_key_exists('userName', $data)) {
             $object->userName = $data['userName'];
+        }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class);
         }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];

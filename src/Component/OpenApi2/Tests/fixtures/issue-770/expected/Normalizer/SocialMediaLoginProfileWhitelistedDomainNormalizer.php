@@ -37,6 +37,9 @@ class SocialMediaLoginProfileWhitelistedDomainNormalizer implements Denormalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domain', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domain', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileWhitelistedDomain::class);
+        }
         if (\array_key_exists('domain', $data)) {
             $object->domain = $data['domain'];
         }

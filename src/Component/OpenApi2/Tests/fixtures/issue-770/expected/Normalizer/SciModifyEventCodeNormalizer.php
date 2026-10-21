@@ -37,6 +37,9 @@ class SciModifyEventCodeNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('sciAcceptedEventCodes', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciAcceptedEventCodes', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifyEventCode::class);
+        }
         if (\array_key_exists('sciAcceptedEventCodes', $data)) {
             $values = [];
             foreach ($data['sciAcceptedEventCodes'] as $value) {

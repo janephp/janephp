@@ -37,9 +37,15 @@ class MetricsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('data', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('data', \Jane\Generated\DigitalOcean\Model\Metrics::class);
+        }
         if (\array_key_exists('data', $data)) {
             $object->data = $this->denormalizer->denormalize($data['data'], \Jane\Generated\DigitalOcean\Model\MetricsData::class, 'json', $context);
             unset($data['data']);
+        }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\Metrics::class);
         }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];

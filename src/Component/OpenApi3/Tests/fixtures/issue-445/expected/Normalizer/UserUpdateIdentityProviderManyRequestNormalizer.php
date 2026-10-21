@@ -37,6 +37,9 @@ class UserUpdateIdentityProviderManyRequestNormalizer implements DenormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('userIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userIds', \PicturePark\API\Model\UserUpdateIdentityProviderManyRequest::class);
+        }
         if (\array_key_exists('userIds', $data)) {
             $values = [];
             foreach ($data['userIds'] as $value) {
@@ -44,6 +47,9 @@ class UserUpdateIdentityProviderManyRequestNormalizer implements DenormalizerInt
             }
             $object->userIds = $values;
             unset($data['userIds']);
+        }
+        if (!\array_key_exists('identityProviderId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('identityProviderId', \PicturePark\API\Model\UserUpdateIdentityProviderManyRequest::class);
         }
         if (\array_key_exists('identityProviderId', $data)) {
             $object->identityProviderId = $data['identityProviderId'];

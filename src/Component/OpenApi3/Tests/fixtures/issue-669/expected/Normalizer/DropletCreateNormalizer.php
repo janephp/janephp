@@ -56,9 +56,15 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->region = $data['region'];
             unset($data['region']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\DropletCreate::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('image', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('image', \Jane\Generated\DigitalOcean\Model\DropletCreate::class);
         }
         if (\array_key_exists('image', $data)) {
             $value = $data['image'];

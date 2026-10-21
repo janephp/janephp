@@ -37,8 +37,14 @@ class VlanNameProfileVlanNameRuleNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('vlanName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('vlanName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameRule::class);
+        }
         if (\array_key_exists('vlanName', $data)) {
             $object->vlanName = $data['vlanName'];
+        }
+        if (!\array_key_exists('vlanId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('vlanId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameRule::class);
         }
         if (\array_key_exists('vlanId', $data)) {
             $object->vlanId = $data['vlanId'];

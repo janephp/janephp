@@ -37,6 +37,9 @@ class VlanpoolingCreateVlanPoolingNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -46,8 +49,14 @@ class VlanpoolingCreateVlanPoolingNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('pool', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('pool', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling::class);
+        }
         if (\array_key_exists('pool', $data)) {
             $object->pool = $data['pool'];
+        }
+        if (!\array_key_exists('algo', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('algo', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling::class);
         }
         if (\array_key_exists('algo', $data)) {
             $object->algo = $data['algo'];

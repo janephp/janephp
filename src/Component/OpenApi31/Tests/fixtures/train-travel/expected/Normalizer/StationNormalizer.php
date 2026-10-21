@@ -40,17 +40,29 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\StationConstraint());
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('address', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\MissingRequiredPropertyException('address', \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class);
+        }
         if (\array_key_exists('address', $data)) {
             $object->address = $data['address'];
             unset($data['address']);
+        }
+        if (!\array_key_exists('country_code', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\MissingRequiredPropertyException('country_code', \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class);
         }
         if (\array_key_exists('country_code', $data)) {
             $object->countryCode = $data['country_code'];

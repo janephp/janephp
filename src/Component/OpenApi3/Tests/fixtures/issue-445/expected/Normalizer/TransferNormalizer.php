@@ -37,11 +37,20 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\Transfer::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\Transfer::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\Transfer::class);
         }
         if (\array_key_exists('state', $data)) {
             $value = $data['state'];
@@ -49,6 +58,9 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $value = $data['state'];
             }
             $object->state = $value;
+        }
+        if (!\array_key_exists('transferType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferType', \PicturePark\API\Model\Transfer::class);
         }
         if (\array_key_exists('transferType', $data)) {
             $value_1 = $data['transferType'];
@@ -62,6 +74,9 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
+        }
+        if (!\array_key_exists('fileTransferCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferCount', \PicturePark\API\Model\Transfer::class);
         }
         if (\array_key_exists('fileTransferCount', $data)) {
             $object->fileTransferCount = $data['fileTransferCount'];

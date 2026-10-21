@@ -43,9 +43,15 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
         if (\array_key_exists('includeAllSchemaChildren', $data) && \is_int($data['includeAllSchemaChildren'])) {
             $data['includeAllSchemaChildren'] = (bool) $data['includeAllSchemaChildren'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\XmpMappingEntryConfigurationTagbox::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('keyFieldIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('keyFieldIds', \PicturePark\API\Model\XmpMappingEntryConfigurationTagbox::class);
         }
         if (\array_key_exists('keyFieldIds', $data)) {
             $values = [];
@@ -55,9 +61,15 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
             $object->keyFieldIds = $values;
             unset($data['keyFieldIds']);
         }
+        if (!\array_key_exists('caseSensitive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('caseSensitive', \PicturePark\API\Model\XmpMappingEntryConfigurationTagbox::class);
+        }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->caseSensitive = $data['caseSensitive'];
             unset($data['caseSensitive']);
+        }
+        if (!\array_key_exists('includeAllSchemaChildren', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeAllSchemaChildren', \PicturePark\API\Model\XmpMappingEntryConfigurationTagbox::class);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];

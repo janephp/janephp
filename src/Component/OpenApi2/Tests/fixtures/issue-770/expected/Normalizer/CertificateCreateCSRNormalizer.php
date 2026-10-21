@@ -37,17 +37,29 @@ class CertificateCreateCSRNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('commonName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('commonName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
+        }
         if (\array_key_exists('commonName', $data)) {
             $object->commonName = $data['commonName'];
         }
+        if (!\array_key_exists('email', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('email', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
+        }
         if (\array_key_exists('email', $data)) {
             $object->email = $data['email'];
+        }
+        if (!\array_key_exists('organization', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('organization', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
         }
         if (\array_key_exists('organization', $data)) {
             $object->organization = $data['organization'];
@@ -55,11 +67,20 @@ class CertificateCreateCSRNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('organizationUnit', $data)) {
             $object->organizationUnit = $data['organizationUnit'];
         }
+        if (!\array_key_exists('city', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('city', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
+        }
         if (\array_key_exists('city', $data)) {
             $object->city = $data['city'];
         }
+        if (!\array_key_exists('state', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('state', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
+        }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
+        }
+        if (!\array_key_exists('countryCode', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('countryCode', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR::class);
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->countryCode = $data['countryCode'];

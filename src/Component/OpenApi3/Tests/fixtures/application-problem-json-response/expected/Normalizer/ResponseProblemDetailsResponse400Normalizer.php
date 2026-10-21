@@ -45,6 +45,9 @@ class ResponseProblemDetailsResponse400Normalizer implements DenormalizerInterfa
             $object->title = $data['title'];
             unset($data['title']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);

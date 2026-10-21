@@ -37,6 +37,9 @@ class UserRoleEditableNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\UserRoleEditable::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
@@ -47,6 +50,9 @@ class UserRoleEditableNormalizer implements DenormalizerInterface, NormalizerInt
                 $value = $values;
             }
             $object->names = $value;
+        }
+        if (!\array_key_exists('userRights', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userRights', \PicturePark\API\Model\UserRoleEditable::class);
         }
         if (\array_key_exists('userRights', $data)) {
             $values_1 = [];

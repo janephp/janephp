@@ -142,8 +142,14 @@ class ProfileModifyIpAclRulesNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('customProtocol', $data)) {
             $object->customProtocol = $data['customProtocol'];
         }
+        if (!\array_key_exists('action', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('action', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpAclRules::class);
+        }
         if (\array_key_exists('action', $data)) {
             $object->action = $data['action'];
+        }
+        if (!\array_key_exists('direction', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('direction', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpAclRules::class);
         }
         if (\array_key_exists('direction', $data)) {
             $object->direction = $data['direction'];

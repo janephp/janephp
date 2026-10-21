@@ -37,6 +37,9 @@ class OperationalDisconnectProblemNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\OperationalDisconnectProblem::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
@@ -45,9 +48,15 @@ class OperationalDisconnectProblemNormalizer implements DenormalizerInterface, N
             $object->disconnectType = $data['disconnect_type'];
             unset($data['disconnect_type']);
         }
+        if (!\array_key_exists('title', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('title', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\OperationalDisconnectProblem::class);
+        }
         if (\array_key_exists('title', $data)) {
             $object->title = $data['title'];
             unset($data['title']);
+        }
+        if (!\array_key_exists('detail', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('detail', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\OperationalDisconnectProblem::class);
         }
         if (\array_key_exists('detail', $data)) {
             $object->detail = $data['detail'];

@@ -43,9 +43,15 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('target_memory_utilization', $data) && \is_int($data['target_memory_utilization'])) {
             $data['target_memory_utilization'] = (float) $data['target_memory_utilization'];
         }
+        if (!\array_key_exists('min_instances', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('min_instances', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDynamicConfig::class);
+        }
         if (\array_key_exists('min_instances', $data)) {
             $object->minInstances = $data['min_instances'];
             unset($data['min_instances']);
+        }
+        if (!\array_key_exists('max_instances', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('max_instances', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDynamicConfig::class);
         }
         if (\array_key_exists('max_instances', $data)) {
             $object->maxInstances = $data['max_instances'];

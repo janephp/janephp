@@ -40,8 +40,14 @@ class WlanWlanDSCPSettingNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('enable', $data) && \is_int($data['enable'])) {
             $data['enable'] = (bool) $data['enable'];
         }
+        if (!\array_key_exists('enable', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enable', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanDSCPSetting::class);
+        }
         if (\array_key_exists('enable', $data)) {
             $object->enable = $data['enable'];
+        }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('priority', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanDSCPSetting::class);
         }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];

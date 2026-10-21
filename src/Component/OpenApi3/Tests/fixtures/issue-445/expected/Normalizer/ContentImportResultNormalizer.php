@@ -40,6 +40,9 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('succeeded', $data) && \is_int($data['succeeded'])) {
             $data['succeeded'] = (bool) $data['succeeded'];
         }
+        if (!\array_key_exists('fileTransferId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferId', \PicturePark\API\Model\ContentImportResult::class);
+        }
         if (\array_key_exists('fileTransferId', $data)) {
             $object->fileTransferId = $data['fileTransferId'];
         }
@@ -54,6 +57,9 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('state', $data)) {
             $object->state = null;
+        }
+        if (!\array_key_exists('succeeded', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('succeeded', \PicturePark\API\Model\ContentImportResult::class);
         }
         if (\array_key_exists('succeeded', $data)) {
             $object->succeeded = $data['succeeded'];

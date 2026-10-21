@@ -37,6 +37,9 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('userEmail', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userEmail', \PicturePark\API\Model\MailRecipient::class);
+        }
         if (\array_key_exists('userEmail', $data)) {
             $value = $data['userEmail'];
             if (is_array($data['userEmail']) and \array_key_exists('emailAddress', $data['userEmail'])) {

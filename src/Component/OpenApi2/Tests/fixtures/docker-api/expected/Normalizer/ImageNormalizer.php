@@ -40,6 +40,9 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageConstraint());
         }
+        if (!\array_key_exists('Id', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Id', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
         }
@@ -57,14 +60,26 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $object->repoDigests = $values_1;
         }
+        if (!\array_key_exists('Parent', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Parent', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('Parent', $data)) {
             $object->parent = $data['Parent'];
+        }
+        if (!\array_key_exists('Comment', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Comment', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('Comment', $data)) {
             $object->comment = $data['Comment'];
         }
+        if (!\array_key_exists('Created', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Created', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('Created', $data)) {
             $object->created = $data['Created'];
+        }
+        if (!\array_key_exists('Container', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Container', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('Container', $data)) {
             $object->container = $data['Container'];
@@ -72,8 +87,14 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('ContainerConfig', $data)) {
             $object->containerConfig = $this->denormalizer->denormalize($data['ContainerConfig'], \Docker\Api\Model\ContainerConfig::class, 'json', $context);
         }
+        if (!\array_key_exists('DockerVersion', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('DockerVersion', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('DockerVersion', $data)) {
             $object->dockerVersion = $data['DockerVersion'];
+        }
+        if (!\array_key_exists('Author', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Author', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('Author', $data)) {
             $object->author = $data['Author'];
@@ -81,8 +102,14 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('Config', $data)) {
             $object->config = $this->denormalizer->denormalize($data['Config'], \Docker\Api\Model\ContainerConfig::class, 'json', $context);
         }
+        if (!\array_key_exists('Architecture', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Architecture', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('Architecture', $data)) {
             $object->architecture = $data['Architecture'];
+        }
+        if (!\array_key_exists('Os', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Os', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('Os', $data)) {
             $object->os = $data['Os'];
@@ -90,14 +117,26 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('OsVersion', $data)) {
             $object->osVersion = $data['OsVersion'];
         }
+        if (!\array_key_exists('Size', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Size', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('Size', $data)) {
             $object->size = $data['Size'];
+        }
+        if (!\array_key_exists('VirtualSize', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('VirtualSize', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('VirtualSize', $data)) {
             $object->virtualSize = $data['VirtualSize'];
         }
+        if (!\array_key_exists('GraphDriver', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('GraphDriver', \Docker\Api\Model\Image::class);
+        }
         if (\array_key_exists('GraphDriver', $data)) {
             $object->graphDriver = $this->denormalizer->denormalize($data['GraphDriver'], \Docker\Api\Model\GraphDriverData::class, 'json', $context);
+        }
+        if (!\array_key_exists('RootFS', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('RootFS', \Docker\Api\Model\Image::class);
         }
         if (\array_key_exists('RootFS', $data)) {
             $object->rootFS = $this->denormalizer->denormalize($data['RootFS'], \Docker\Api\Model\ImageRootFS::class, 'json', $context);

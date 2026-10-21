@@ -37,9 +37,15 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Geo::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('bbox', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('bbox', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Geo::class);
         }
         if (\array_key_exists('bbox', $data)) {
             $values = [];
@@ -52,6 +58,9 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (\array_key_exists('geometry', $data)) {
             $object->geometry = $this->denormalizer->denormalize($data['geometry'], \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Point::class, 'json', $context);
             unset($data['geometry']);
+        }
+        if (!\array_key_exists('properties', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('properties', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Geo::class);
         }
         if (\array_key_exists('properties', $data)) {
             $values_1 = new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\JsonObject();

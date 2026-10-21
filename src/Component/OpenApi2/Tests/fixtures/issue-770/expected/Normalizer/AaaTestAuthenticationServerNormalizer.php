@@ -43,6 +43,9 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('aaaType', $data)) {
             $object->aaaType = $data['aaaType'];
         }
+        if (!\array_key_exists('aaaServer', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('aaaServer', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer::class);
+        }
         if (\array_key_exists('aaaServer', $data)) {
             $object->aaaServer = $this->denormalizer->denormalize($data['aaaServer'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }

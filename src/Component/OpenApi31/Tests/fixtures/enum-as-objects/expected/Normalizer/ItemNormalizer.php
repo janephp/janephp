@@ -40,9 +40,15 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\EnumAsObjects\Validator\ItemConstraint());
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\EnumAsObjects\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Item::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']);
             unset($data['status']);
+        }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\EnumAsObjects\Runtime\Normalizer\MissingRequiredPropertyException('priority', \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Item::class);
         }
         if (\array_key_exists('priority', $data)) {
             $object->priority = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Priority::from($data['priority']);

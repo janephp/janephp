@@ -67,11 +67,17 @@ class EthernetPortCreateEthernetPortProfileNormalizer implements DenormalizerInt
         if (\array_key_exists('clientIsolationAutoVrrpEnabled', $data) && \is_int($data['clientIsolationAutoVrrpEnabled'])) {
             $data['clientIsolationAutoVrrpEnabled'] = (bool) $data['clientIsolationAutoVrrpEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
@@ -117,6 +123,9 @@ class EthernetPortCreateEthernetPortProfileNormalizer implements DenormalizerInt
         }
         if (\array_key_exists('userSidePortDownlinkLimit', $data)) {
             $object->userSidePortDownlinkLimit = $data['userSidePortDownlinkLimit'];
+        }
+        if (!\array_key_exists('_8021X', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('_8021X', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile::class);
         }
         if (\array_key_exists('_8021X', $data)) {
             $object->n8021X = $this->denormalizer->denormalize($data['_8021X'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X::class, 'json', $context);

@@ -37,6 +37,9 @@ class ProfileProviderEAPAuthSettingNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('info', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('info', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderEAPAuthSetting::class);
+        }
         if (\array_key_exists('info', $data)) {
             $object->info = $data['info'];
         }

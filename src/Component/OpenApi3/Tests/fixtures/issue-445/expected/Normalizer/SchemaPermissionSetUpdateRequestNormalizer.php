@@ -37,6 +37,9 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\SchemaPermissionSetUpdateRequest::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {

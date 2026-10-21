@@ -109,6 +109,9 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             $object->collectionId = null;
             unset($data['collectionId']);
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\ContentAggregationRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_4 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -116,6 +119,9 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             }
             $object->lifeCycleFilter = $value_4;
             unset($data['lifeCycleFilter']);
+        }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ContentAggregationRequest::class);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_5 = $data['brokenDependenciesFilter'];
@@ -125,6 +131,9 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             $object->brokenDependenciesFilter = $value_5;
             unset($data['brokenDependenciesFilter']);
         }
+        if (!\array_key_exists('searchType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('searchType', \PicturePark\API\Model\ContentAggregationRequest::class);
+        }
         if (\array_key_exists('searchType', $data)) {
             $value_6 = $data['searchType'];
             if (is_string($data['searchType'])) {
@@ -132,6 +141,9 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             }
             $object->searchType = $value_6;
             unset($data['searchType']);
+        }
+        if (!\array_key_exists('aggregators', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregators', \PicturePark\API\Model\ContentAggregationRequest::class);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_3 = [];

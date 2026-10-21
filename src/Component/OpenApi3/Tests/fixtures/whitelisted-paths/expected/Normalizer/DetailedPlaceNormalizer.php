@@ -41,25 +41,43 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->format = $data['format'];
             unset($data['format']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('country_code', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('country_code', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
+        }
         if (\array_key_exists('country_code', $data)) {
             $object->countryCode = $data['country_code'];
             unset($data['country_code']);
+        }
+        if (!\array_key_exists('place_type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('place_type', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
         }
         if (\array_key_exists('place_type', $data)) {
             $object->placeType = $data['place_type'];
             unset($data['place_type']);
         }
+        if (!\array_key_exists('full_name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('full_name', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
+        }
         if (\array_key_exists('full_name', $data)) {
             $object->fullName = $data['full_name'];
             unset($data['full_name']);
+        }
+        if (!\array_key_exists('country', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('country', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class);
         }
         if (\array_key_exists('country', $data)) {
             $object->country = $data['country'];

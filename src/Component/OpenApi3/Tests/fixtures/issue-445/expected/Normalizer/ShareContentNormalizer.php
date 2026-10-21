@@ -37,6 +37,9 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\ShareContent::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
         }

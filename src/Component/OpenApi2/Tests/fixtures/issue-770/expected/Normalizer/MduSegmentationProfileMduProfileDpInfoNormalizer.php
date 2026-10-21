@@ -40,6 +40,9 @@ class MduSegmentationProfileMduProfileDpInfoNormalizer implements DenormalizerIn
         if (\array_key_exists('enabledRedundant', $data) && \is_int($data['enabledRedundant'])) {
             $data['enabledRedundant'] = (bool) $data['enabledRedundant'];
         }
+        if (!\array_key_exists('dpId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('dpId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduProfileDpInfo::class);
+        }
         if (\array_key_exists('dpId', $data)) {
             $object->dpId = $data['dpId'];
         }

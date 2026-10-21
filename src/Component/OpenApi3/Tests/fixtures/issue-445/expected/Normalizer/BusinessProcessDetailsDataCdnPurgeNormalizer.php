@@ -37,13 +37,22 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('serializedCdnConfiguration', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('serializedCdnConfiguration', \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class);
+        }
         if (\array_key_exists('serializedCdnConfiguration', $data)) {
             $object->serializedCdnConfiguration = $data['serializedCdnConfiguration'];
             unset($data['serializedCdnConfiguration']);
+        }
+        if (!\array_key_exists('jobs', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('jobs', \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class);
         }
         if (\array_key_exists('jobs', $data)) {
             $values = [];

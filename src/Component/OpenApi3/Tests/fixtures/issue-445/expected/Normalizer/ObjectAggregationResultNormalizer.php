@@ -40,8 +40,14 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('isSearchStringRewritten', $data) && \is_int($data['isSearchStringRewritten'])) {
             $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
         }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\ObjectAggregationResult::class);
+        }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];
+        }
+        if (!\array_key_exists('aggregationResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregationResults', \PicturePark\API\Model\ObjectAggregationResult::class);
         }
         if (\array_key_exists('aggregationResults', $data)) {
             $values = [];
@@ -55,6 +61,9 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
+        }
+        if (!\array_key_exists('isSearchStringRewritten', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isSearchStringRewritten', \PicturePark\API\Model\ObjectAggregationResult::class);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->isSearchStringRewritten = $data['isSearchStringRewritten'];

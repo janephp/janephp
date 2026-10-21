@@ -45,13 +45,22 @@ class AnimatedGifNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->previewImageUrl = $data['preview_image_url'];
             unset($data['preview_image_url']);
         }
+        if (!\array_key_exists('media_key', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('media_key', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\AnimatedGif::class);
+        }
         if (\array_key_exists('media_key', $data)) {
             $object->mediaKey = $data['media_key'];
             unset($data['media_key']);
         }
+        if (!\array_key_exists('height', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('height', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\AnimatedGif::class);
+        }
         if (\array_key_exists('height', $data)) {
             $object->height = $data['height'];
             unset($data['height']);
+        }
+        if (!\array_key_exists('width', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('width', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\AnimatedGif::class);
         }
         if (\array_key_exists('width', $data)) {
             $object->width = $data['width'];

@@ -44,6 +44,9 @@ class ProfileHs20AdviceOfChargeNaiRealmNormalizer implements DenormalizerInterfa
             }
             $object->names = $values;
         }
+        if (!\array_key_exists('encoding', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('encoding', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfChargeNaiRealm::class);
+        }
         if (\array_key_exists('encoding', $data)) {
             $object->encoding = $data['encoding'];
         }

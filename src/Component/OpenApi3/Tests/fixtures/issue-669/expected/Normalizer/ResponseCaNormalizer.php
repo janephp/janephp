@@ -37,6 +37,9 @@ class ResponseCaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ca', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('ca', \Jane\Generated\DigitalOcean\Model\ResponseCa::class);
+        }
         if (\array_key_exists('ca', $data)) {
             $object->ca = $this->denormalizer->denormalize($data['ca'], \Jane\Generated\DigitalOcean\Model\Ca::class, 'json', $context);
             unset($data['ca']);

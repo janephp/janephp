@@ -40,6 +40,9 @@ class SchemaExistsResponseNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('exists', $data) && \is_int($data['exists'])) {
             $data['exists'] = (bool) $data['exists'];
         }
+        if (!\array_key_exists('exists', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('exists', \PicturePark\API\Model\SchemaExistsResponse::class);
+        }
         if (\array_key_exists('exists', $data)) {
             $object->exists = $data['exists'];
         }

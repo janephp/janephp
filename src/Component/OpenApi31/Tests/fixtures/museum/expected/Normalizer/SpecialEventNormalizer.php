@@ -47,17 +47,29 @@ class SpecialEventNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->eventId = $data['eventId'];
             unset($data['eventId']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('location', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('location', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class);
         }
         if (\array_key_exists('location', $data)) {
             $object->location = $data['location'];
             unset($data['location']);
         }
+        if (!\array_key_exists('eventDescription', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('eventDescription', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class);
+        }
         if (\array_key_exists('eventDescription', $data)) {
             $object->eventDescription = $data['eventDescription'];
             unset($data['eventDescription']);
+        }
+        if (!\array_key_exists('dates', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('dates', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class);
         }
         if (\array_key_exists('dates', $data)) {
             $values = [];
@@ -70,6 +82,9 @@ class SpecialEventNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->dates = $values;
             unset($data['dates']);
+        }
+        if (!\array_key_exists('price', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('price', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class);
         }
         if (\array_key_exists('price', $data)) {
             $object->price = $data['price'];

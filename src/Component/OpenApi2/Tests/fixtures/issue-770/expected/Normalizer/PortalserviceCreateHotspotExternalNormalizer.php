@@ -40,14 +40,23 @@ class PortalserviceCreateHotspotExternalNormalizer implements DenormalizerInterf
         if (\array_key_exists('httpsRedirect', $data) && \is_int($data['httpsRedirect'])) {
             $data['httpsRedirect'] = (bool) $data['httpsRedirect'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('smartClientSupport', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('smartClientSupport', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal::class);
+        }
         if (\array_key_exists('smartClientSupport', $data)) {
             $object->smartClientSupport = $data['smartClientSupport'];
+        }
+        if (!\array_key_exists('portalUrl', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('portalUrl', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal::class);
         }
         if (\array_key_exists('portalUrl', $data)) {
             $object->portalUrl = $data['portalUrl'];
@@ -79,6 +88,9 @@ class PortalserviceCreateHotspotExternalNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('internalNode', $data)) {
             $object->internalNode = $data['internalNode'];
+        }
+        if (!\array_key_exists('macAddressFormat', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('macAddressFormat', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal::class);
         }
         if (\array_key_exists('macAddressFormat', $data)) {
             $object->macAddressFormat = $data['macAddressFormat'];

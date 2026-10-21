@@ -40,6 +40,9 @@ class AppsUpdateAppRequestNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('update_all_source_versions', $data) && \is_int($data['update_all_source_versions'])) {
             $data['update_all_source_versions'] = (bool) $data['update_all_source_versions'];
         }
+        if (!\array_key_exists('spec', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('spec', \Jane\Generated\DigitalOcean\Model\AppsUpdateAppRequest::class);
+        }
         if (\array_key_exists('spec', $data)) {
             $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);

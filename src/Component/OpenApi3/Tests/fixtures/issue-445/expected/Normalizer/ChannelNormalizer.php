@@ -40,11 +40,20 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('viewForAll', $data) && \is_int($data['viewForAll'])) {
             $data['viewForAll'] = (bool) $data['viewForAll'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('sortOrder', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortOrder', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('sortOrder', $data)) {
             $object->sortOrder = $data['sortOrder'];
+        }
+        if (!\array_key_exists('searchIndexId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('searchIndexId', \PicturePark\API\Model\Channel::class);
         }
         if (\array_key_exists('searchIndexId', $data)) {
             $object->searchIndexId = $data['searchIndexId'];
@@ -59,6 +68,9 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value_1 = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
@@ -70,12 +82,18 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->names = $value_1;
         }
+        if (!\array_key_exists('sort', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sort', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('sort', $data)) {
             $values_1 = [];
             foreach ($data['sort'] as $value_3) {
                 $values_1[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
             $object->sort = $values_1;
+        }
+        if (!\array_key_exists('sortFields', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortFields', \PicturePark\API\Model\Channel::class);
         }
         if (\array_key_exists('sortFields', $data)) {
             $values_2 = [];
@@ -84,12 +102,18 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->sortFields = $values_2;
         }
+        if (!\array_key_exists('aggregations', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregations', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('aggregations', $data)) {
             $values_3 = [];
             foreach ($data['aggregations'] as $value_5) {
                 $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
             $object->aggregations = $values_3;
+        }
+        if (!\array_key_exists('extendedSimpleSearchFields', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('extendedSimpleSearchFields', \PicturePark\API\Model\Channel::class);
         }
         if (\array_key_exists('extendedSimpleSearchFields', $data)) {
             $values_4 = [];
@@ -98,12 +122,18 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->extendedSimpleSearchFields = $values_4;
         }
+        if (!\array_key_exists('grantedUserRoleIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('grantedUserRoleIds', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('grantedUserRoleIds', $data)) {
             $values_5 = [];
             foreach ($data['grantedUserRoleIds'] as $value_7) {
                 $values_5[] = $value_7;
             }
             $object->grantedUserRoleIds = $values_5;
+        }
+        if (!\array_key_exists('missingResultsDisplayPatterns', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('missingResultsDisplayPatterns', \PicturePark\API\Model\Channel::class);
         }
         if (\array_key_exists('missingResultsDisplayPatterns', $data)) {
             $value_8 = $data['missingResultsDisplayPatterns'];
@@ -116,12 +146,18 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->missingResultsDisplayPatterns = $value_8;
         }
+        if (!\array_key_exists('audit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('audit', \PicturePark\API\Model\Channel::class);
+        }
         if (\array_key_exists('audit', $data)) {
             $value_10 = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_10 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
             $object->audit = $value_10;
+        }
+        if (!\array_key_exists('viewForAll', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('viewForAll', \PicturePark\API\Model\Channel::class);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->viewForAll = $data['viewForAll'];

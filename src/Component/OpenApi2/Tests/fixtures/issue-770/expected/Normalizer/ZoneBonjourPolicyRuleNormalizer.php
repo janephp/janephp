@@ -37,14 +37,23 @@ class ZoneBonjourPolicyRuleNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('bridgeService', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('bridgeService', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourPolicyRule::class);
+        }
         if (\array_key_exists('bridgeService', $data)) {
             $object->bridgeService = $data['bridgeService'];
         }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];
         }
+        if (!\array_key_exists('fromVlan', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('fromVlan', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourPolicyRule::class);
+        }
         if (\array_key_exists('fromVlan', $data)) {
             $object->fromVlan = $data['fromVlan'];
+        }
+        if (!\array_key_exists('toVlan', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('toVlan', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourPolicyRule::class);
         }
         if (\array_key_exists('toVlan', $data)) {
             $object->toVlan = $data['toVlan'];

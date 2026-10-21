@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Payload',
+    'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Issue1126',
+    'directory' => __DIR__ . '/generated',
+];

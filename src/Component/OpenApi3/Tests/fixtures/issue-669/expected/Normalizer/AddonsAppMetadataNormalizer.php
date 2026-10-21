@@ -37,21 +37,36 @@ class AddonsAppMetadataNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('display_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('display_name', \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class);
+        }
         if (\array_key_exists('display_name', $data)) {
             $object->displayName = $data['display_name'];
             unset($data['display_name']);
         }
+        if (!\array_key_exists('description', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('description', \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class);
+        }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
             unset($data['description']);
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];

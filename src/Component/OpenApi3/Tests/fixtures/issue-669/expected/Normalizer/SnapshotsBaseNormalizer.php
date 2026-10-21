@@ -40,9 +40,15 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('size_gigabytes', $data) && \is_int($data['size_gigabytes'])) {
             $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\SnapshotsBase::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\SnapshotsBase::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -60,6 +66,9 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('regions', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('regions', \Jane\Generated\DigitalOcean\Model\SnapshotsBase::class);
+        }
         if (\array_key_exists('regions', $data)) {
             $values = [];
             foreach ($data['regions'] as $value) {
@@ -68,9 +77,15 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->regions = $values;
             unset($data['regions']);
         }
+        if (!\array_key_exists('min_disk_size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('min_disk_size', \Jane\Generated\DigitalOcean\Model\SnapshotsBase::class);
+        }
         if (\array_key_exists('min_disk_size', $data)) {
             $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
+        }
+        if (!\array_key_exists('size_gigabytes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gigabytes', \Jane\Generated\DigitalOcean\Model\SnapshotsBase::class);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
             $object->sizeGigabytes = $data['size_gigabytes'];

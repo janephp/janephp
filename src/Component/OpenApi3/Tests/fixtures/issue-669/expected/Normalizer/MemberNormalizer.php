@@ -37,9 +37,15 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('droplet_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_id', \Jane\Generated\DigitalOcean\Model\Member::class);
+        }
         if (\array_key_exists('droplet_id', $data)) {
             $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\Member::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -57,6 +63,9 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('updated_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('updated_at', \Jane\Generated\DigitalOcean\Model\Member::class);
+        }
         if (\array_key_exists('updated_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_1) {
@@ -73,13 +82,22 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
+        if (!\array_key_exists('health_status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('health_status', \Jane\Generated\DigitalOcean\Model\Member::class);
+        }
         if (\array_key_exists('health_status', $data)) {
             $object->healthStatus = $data['health_status'];
             unset($data['health_status']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\Member::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('current_utilization', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('current_utilization', \Jane\Generated\DigitalOcean\Model\Member::class);
         }
         if (\array_key_exists('current_utilization', $data)) {
             $object->currentUtilization = $this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\MemberCurrentUtilization::class, 'json', $context);

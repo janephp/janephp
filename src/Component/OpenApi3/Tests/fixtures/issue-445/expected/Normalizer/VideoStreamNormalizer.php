@@ -67,6 +67,9 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('displayAspectRatio', $data)) {
             $object->displayAspectRatio = null;
         }
+        if (!\array_key_exists('durationInSeconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('durationInSeconds', \PicturePark\API\Model\VideoStream::class);
+        }
         if (\array_key_exists('durationInSeconds', $data)) {
             $object->durationInSeconds = $data['durationInSeconds'];
         }

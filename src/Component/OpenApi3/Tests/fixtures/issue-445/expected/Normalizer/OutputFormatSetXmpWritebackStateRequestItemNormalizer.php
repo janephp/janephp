@@ -40,9 +40,15 @@ class OutputFormatSetXmpWritebackStateRequestItemNormalizer implements Denormali
         if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
             $data['enabled'] = (bool) $data['enabled'];
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequestItem::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
             unset($data['enabled']);
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequestItem::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];

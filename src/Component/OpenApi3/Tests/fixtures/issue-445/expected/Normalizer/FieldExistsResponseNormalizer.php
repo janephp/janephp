@@ -43,8 +43,14 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('previouslyUsed', $data) && \is_int($data['previouslyUsed'])) {
             $data['previouslyUsed'] = (bool) $data['previouslyUsed'];
         }
+        if (!\array_key_exists('exists', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('exists', \PicturePark\API\Model\FieldExistsResponse::class);
+        }
         if (\array_key_exists('exists', $data)) {
             $object->exists = $data['exists'];
+        }
+        if (!\array_key_exists('previouslyUsed', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('previouslyUsed', \PicturePark\API\Model\FieldExistsResponse::class);
         }
         if (\array_key_exists('previouslyUsed', $data)) {
             $object->previouslyUsed = $data['previouslyUsed'];

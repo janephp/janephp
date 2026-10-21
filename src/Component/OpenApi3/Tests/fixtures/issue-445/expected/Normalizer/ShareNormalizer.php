@@ -40,6 +40,9 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('isReadOnly', $data) && \is_int($data['isReadOnly'])) {
             $data['isReadOnly'] = (bool) $data['isReadOnly'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\Share::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -49,12 +52,18 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
+        if (!\array_key_exists('contentIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentIds', \PicturePark\API\Model\Share::class);
+        }
         if (\array_key_exists('contentIds', $data)) {
             $values = [];
             foreach ($data['contentIds'] as $value) {
                 $values[] = $value;
             }
             $object->contentIds = $values;
+        }
+        if (!\array_key_exists('audit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('audit', \PicturePark\API\Model\Share::class);
         }
         if (\array_key_exists('audit', $data)) {
             $value_1 = $data['audit'];
@@ -81,12 +90,18 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
+        if (!\array_key_exists('shareType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('shareType', \PicturePark\API\Model\Share::class);
+        }
         if (\array_key_exists('shareType', $data)) {
             $value_2 = $data['shareType'];
             if (is_string($data['shareType'])) {
                 $value_2 = $data['shareType'];
             }
             $object->shareType = $value_2;
+        }
+        if (!\array_key_exists('isReadOnly', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isReadOnly', \PicturePark\API\Model\Share::class);
         }
         if (\array_key_exists('isReadOnly', $data)) {
             $object->isReadOnly = $data['isReadOnly'];

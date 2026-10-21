@@ -40,6 +40,9 @@ class LinkLinkBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('discriminator', $data) and 'Link_InvoiceLink' === $data['discriminator']) {
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink', $format, $context);
         }
+        if (!\array_key_exists('discriminator', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\MissingRequiredPropertyException('discriminator', \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkLinkBase::class);
+        }
         if (\array_key_exists('discriminator', $data)) {
             $object->discriminator = $data['discriminator'];
         }

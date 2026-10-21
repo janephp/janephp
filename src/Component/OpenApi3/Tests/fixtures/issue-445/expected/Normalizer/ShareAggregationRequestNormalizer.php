@@ -81,6 +81,9 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
             $object->aggregationFilters = null;
             unset($data['aggregationFilters']);
         }
+        if (!\array_key_exists('aggregators', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregators', \PicturePark\API\Model\ShareAggregationRequest::class);
+        }
         if (\array_key_exists('aggregators', $data)) {
             $values_2 = [];
             foreach ($data['aggregators'] as $value_3) {

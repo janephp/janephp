@@ -37,6 +37,9 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\Language::class);
+        }
         if (\array_key_exists('name', $data)) {
             $value = $data['name'];
             if (is_array($data['name']) && $this->isOnlyNumericKeys($data['name'])) {
@@ -47,6 +50,9 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $value = $values;
             }
             $object->name = $value;
+        }
+        if (!\array_key_exists('ietf', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ietf', \PicturePark\API\Model\Language::class);
         }
         if (\array_key_exists('ietf', $data)) {
             $object->ietf = $data['ietf'];

@@ -43,6 +43,9 @@ class BondPortModifyBondPortProfileNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('untagId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('untagId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortModifyBondPortProfile::class);
+        }
         if (\array_key_exists('untagId', $data)) {
             $object->untagId = $data['untagId'];
         }

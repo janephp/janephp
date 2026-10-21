@@ -43,6 +43,9 @@ class ScguserModifyScgUserNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('minimumPasswordLifetimeEnabled', $data) && \is_int($data['minimumPasswordLifetimeEnabled'])) {
             $data['minimumPasswordLifetimeEnabled'] = (bool) $data['minimumPasswordLifetimeEnabled'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserModifyScgUser::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }

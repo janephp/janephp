@@ -37,6 +37,9 @@ class L2AccessControlCreateL2AccessControlNormalizer implements DenormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -45,6 +48,9 @@ class L2AccessControlCreateL2AccessControlNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
+        }
+        if (!\array_key_exists('restriction', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('restriction', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl::class);
         }
         if (\array_key_exists('restriction', $data)) {
             $object->restriction = $data['restriction'];
@@ -55,6 +61,9 @@ class L2AccessControlCreateL2AccessControlNormalizer implements DenormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlRuleObject::class, 'json', $context);
             }
             $object->rules = $values;
+        }
+        if (!\array_key_exists('etherTypeRestriction', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('etherTypeRestriction', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl::class);
         }
         if (\array_key_exists('etherTypeRestriction', $data)) {
             $object->etherTypeRestriction = $data['etherTypeRestriction'];

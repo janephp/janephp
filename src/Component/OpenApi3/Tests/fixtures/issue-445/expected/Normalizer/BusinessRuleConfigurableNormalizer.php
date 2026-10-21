@@ -63,6 +63,9 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->triggerPoint = null;
             unset($data['triggerPoint']);
         }
+        if (!\array_key_exists('isEnabled', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isEnabled', \PicturePark\API\Model\BusinessRuleConfigurable::class);
+        }
         if (\array_key_exists('isEnabled', $data)) {
             $object->isEnabled = $data['isEnabled'];
             unset($data['isEnabled']);
@@ -99,9 +102,15 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->description = null;
             unset($data['description']);
         }
+        if (!\array_key_exists('enableTracing', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('enableTracing', \PicturePark\API\Model\BusinessRuleConfigurable::class);
+        }
         if (\array_key_exists('enableTracing', $data)) {
             $object->enableTracing = $data['enableTracing'];
             unset($data['enableTracing']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessRuleConfigurable::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

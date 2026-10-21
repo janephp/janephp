@@ -37,6 +37,9 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('creationDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('creationDate', \PicturePark\API\Model\UserAudit::class);
+        }
         if (\array_key_exists('creationDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']);
             if (false === $date) {
@@ -51,6 +54,9 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
             }
             $object->creationDate = $date;
+        }
+        if (!\array_key_exists('modificationDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('modificationDate', \PicturePark\API\Model\UserAudit::class);
         }
         if (\array_key_exists('modificationDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);

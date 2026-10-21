@@ -37,8 +37,14 @@ class DownloadLinkNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('downloadToken', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('downloadToken', \PicturePark\API\Model\DownloadLink::class);
+        }
         if (\array_key_exists('downloadToken', $data)) {
             $object->downloadToken = $data['downloadToken'];
+        }
+        if (!\array_key_exists('downloadUrl', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('downloadUrl', \PicturePark\API\Model\DownloadLink::class);
         }
         if (\array_key_exists('downloadUrl', $data)) {
             $object->downloadUrl = $data['downloadUrl'];

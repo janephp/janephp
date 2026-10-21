@@ -57,6 +57,9 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('listSchemaIds', $data)) {
             $object->listSchemaIds = null;
         }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\DisplayValueStatus::class);
+        }
         if (\array_key_exists('state', $data)) {
             $value_2 = $data['state'];
             if (is_string($data['state'])) {

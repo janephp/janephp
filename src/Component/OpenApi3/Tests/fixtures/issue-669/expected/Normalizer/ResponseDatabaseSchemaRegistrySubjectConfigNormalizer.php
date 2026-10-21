@@ -37,9 +37,15 @@ class ResponseDatabaseSchemaRegistrySubjectConfigNormalizer implements Denormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('subject_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('subject_name', \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig::class);
+        }
         if (\array_key_exists('subject_name', $data)) {
             $object->subjectName = $data['subject_name'];
             unset($data['subject_name']);
+        }
+        if (!\array_key_exists('compatibility_level', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('compatibility_level', \Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig::class);
         }
         if (\array_key_exists('compatibility_level', $data)) {
             $object->compatibilityLevel = $data['compatibility_level'];

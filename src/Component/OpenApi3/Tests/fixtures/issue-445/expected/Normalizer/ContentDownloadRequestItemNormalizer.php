@@ -37,8 +37,14 @@ class ContentDownloadRequestItemNormalizer implements DenormalizerInterface, Nor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\ContentDownloadRequestItem::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
+        }
+        if (!\array_key_exists('outputFormatId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputFormatId', \PicturePark\API\Model\ContentDownloadRequestItem::class);
         }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = $data['outputFormatId'];

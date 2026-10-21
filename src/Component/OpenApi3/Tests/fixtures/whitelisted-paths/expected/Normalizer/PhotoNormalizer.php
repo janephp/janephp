@@ -45,13 +45,22 @@ class PhotoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->url = $data['url'];
             unset($data['url']);
         }
+        if (!\array_key_exists('media_key', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('media_key', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Photo::class);
+        }
         if (\array_key_exists('media_key', $data)) {
             $object->mediaKey = $data['media_key'];
             unset($data['media_key']);
         }
+        if (!\array_key_exists('height', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('height', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Photo::class);
+        }
         if (\array_key_exists('height', $data)) {
             $object->height = $data['height'];
             unset($data['height']);
+        }
+        if (!\array_key_exists('width', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('width', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Photo::class);
         }
         if (\array_key_exists('width', $data)) {
             $object->width = $data['width'];

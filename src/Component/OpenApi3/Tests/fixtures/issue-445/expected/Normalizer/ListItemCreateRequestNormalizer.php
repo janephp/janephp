@@ -37,6 +37,9 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentSchemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSchemaId', \PicturePark\API\Model\ListItemCreateRequest::class);
+        }
         if (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = $data['contentSchemaId'];
         }

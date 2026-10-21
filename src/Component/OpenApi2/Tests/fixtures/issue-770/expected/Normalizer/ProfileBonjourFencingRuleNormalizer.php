@@ -37,6 +37,9 @@ class ProfileBonjourFencingRuleNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('deviceType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('deviceType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingRule::class);
+        }
         if (\array_key_exists('deviceType', $data)) {
             $object->deviceType = $data['deviceType'];
         }
@@ -50,11 +53,17 @@ class ProfileBonjourFencingRuleNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('closestAp', $data)) {
             $object->closestAp = $data['closestAp'];
         }
+        if (!\array_key_exists('serviceType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serviceType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingRule::class);
+        }
         if (\array_key_exists('serviceType', $data)) {
             $object->serviceType = $data['serviceType'];
         }
         if (\array_key_exists('customServiceName', $data)) {
             $object->customServiceName = $data['customServiceName'];
+        }
+        if (!\array_key_exists('fencingRange', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('fencingRange', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingRule::class);
         }
         if (\array_key_exists('fencingRange', $data)) {
             $object->fencingRange = $data['fencingRange'];

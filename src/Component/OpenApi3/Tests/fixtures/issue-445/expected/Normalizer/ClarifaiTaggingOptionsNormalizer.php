@@ -77,6 +77,9 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->missingKeywordsFieldId = null;
             unset($data['missingKeywordsFieldId']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ClarifaiTaggingOptions::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

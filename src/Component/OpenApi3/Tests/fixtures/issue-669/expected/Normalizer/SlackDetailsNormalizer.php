@@ -37,9 +37,15 @@ class SlackDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('channel', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('channel', \Jane\Generated\DigitalOcean\Model\SlackDetails::class);
+        }
         if (\array_key_exists('channel', $data)) {
             $object->channel = $data['channel'];
             unset($data['channel']);
+        }
+        if (!\array_key_exists('url', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('url', \Jane\Generated\DigitalOcean\Model\SlackDetails::class);
         }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];

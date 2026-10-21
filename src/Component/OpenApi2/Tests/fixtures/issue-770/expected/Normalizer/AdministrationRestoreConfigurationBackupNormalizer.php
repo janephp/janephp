@@ -40,6 +40,9 @@ class AdministrationRestoreConfigurationBackupNormalizer implements Denormalizer
         if (\array_key_exists('executeWarningValidate', $data) && \is_int($data['executeWarningValidate'])) {
             $data['executeWarningValidate'] = (bool) $data['executeWarningValidate'];
         }
+        if (!\array_key_exists('executeWarningValidate', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('executeWarningValidate', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRestoreConfigurationBackup::class);
+        }
         if (\array_key_exists('executeWarningValidate', $data)) {
             $object->executeWarningValidate = $data['executeWarningValidate'];
         }

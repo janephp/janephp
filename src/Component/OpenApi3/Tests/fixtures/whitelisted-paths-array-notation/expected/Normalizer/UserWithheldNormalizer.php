@@ -37,6 +37,9 @@ class UserWithheldNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('country_codes', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('country_codes', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UserWithheld::class);
+        }
         if (\array_key_exists('country_codes', $data)) {
             $values = [];
             foreach ($data['country_codes'] as $value) {

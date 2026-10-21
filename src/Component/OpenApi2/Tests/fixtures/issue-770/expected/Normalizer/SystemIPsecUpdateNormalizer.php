@@ -49,6 +49,9 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('ocspEnabled', $data) && \is_int($data['ocspEnabled'])) {
             $data['ocspEnabled'] = (bool) $data['ocspEnabled'];
         }
+        if (!\array_key_exists('ipSecEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipSecEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecUpdate::class);
+        }
         if (\array_key_exists('ipSecEnabled', $data)) {
             $object->ipSecEnabled = $data['ipSecEnabled'];
         }

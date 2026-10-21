@@ -55,11 +55,20 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
+        if (!\array_key_exists('required', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('required', \PicturePark\API\Model\FieldOverwriteBase::class);
+        }
         if (\array_key_exists('required', $data)) {
             $object->required = $data['required'];
         }
+        if (!\array_key_exists('overwriteRequired', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('overwriteRequired', \PicturePark\API\Model\FieldOverwriteBase::class);
+        }
         if (\array_key_exists('overwriteRequired', $data)) {
             $object->overwriteRequired = $data['overwriteRequired'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\FieldOverwriteBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

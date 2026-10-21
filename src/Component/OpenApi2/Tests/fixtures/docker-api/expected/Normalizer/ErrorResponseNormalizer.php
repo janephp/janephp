@@ -40,6 +40,9 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ErrorResponseConstraint());
         }
+        if (!\array_key_exists('message', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('message', \Docker\Api\Model\ErrorResponse::class);
+        }
         if (\array_key_exists('message', $data)) {
             $object->message = $data['message'];
         }

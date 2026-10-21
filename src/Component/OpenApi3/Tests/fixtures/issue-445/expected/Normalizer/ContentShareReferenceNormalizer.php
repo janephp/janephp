@@ -59,6 +59,9 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
+        if (!\array_key_exists('shareType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('shareType', \PicturePark\API\Model\ContentShareReference::class);
+        }
         if (\array_key_exists('shareType', $data)) {
             $value_1 = $data['shareType'];
             if (is_string($data['shareType'])) {

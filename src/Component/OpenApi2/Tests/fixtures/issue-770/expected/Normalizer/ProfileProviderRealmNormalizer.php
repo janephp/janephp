@@ -37,11 +37,20 @@ class ProfileProviderRealmNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderRealm::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
+        if (!\array_key_exists('encoding', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('encoding', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderRealm::class);
+        }
         if (\array_key_exists('encoding', $data)) {
             $object->encoding = $data['encoding'];
+        }
+        if (!\array_key_exists('eapMethods', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('eapMethods', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderRealm::class);
         }
         if (\array_key_exists('eapMethods', $data)) {
             $values = [];

@@ -40,8 +40,14 @@ class AvcCreateUserDefinedProfileNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
@@ -52,8 +58,14 @@ class AvcCreateUserDefinedProfileNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('netmask', $data)) {
             $object->netmask = $data['netmask'];
         }
+        if (!\array_key_exists('destPort', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('destPort', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile::class);
+        }
         if (\array_key_exists('destPort', $data)) {
             $object->destPort = $data['destPort'];
+        }
+        if (!\array_key_exists('protocol', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('protocol', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile::class);
         }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];

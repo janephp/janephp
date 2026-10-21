@@ -40,6 +40,9 @@ class DatabaseStorageAutoscaleParamsNormalizer implements DenormalizerInterface,
         if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
             $data['enabled'] = (bool) $data['enabled'];
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \Jane\Generated\DigitalOcean\Model\DatabaseStorageAutoscaleParams::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
             unset($data['enabled']);

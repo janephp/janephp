@@ -37,6 +37,9 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('metric', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('metric', \Jane\Generated\DigitalOcean\Model\MetricsResult::class);
+        }
         if (\array_key_exists('metric', $data)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['metric'] as $key => $value) {
@@ -44,6 +47,9 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->metric = $values;
             unset($data['metric']);
+        }
+        if (!\array_key_exists('values', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('values', \Jane\Generated\DigitalOcean\Model\MetricsResult::class);
         }
         if (\array_key_exists('values', $data)) {
             $values_1 = [];

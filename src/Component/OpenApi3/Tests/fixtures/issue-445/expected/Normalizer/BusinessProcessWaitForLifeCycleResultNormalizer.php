@@ -47,6 +47,9 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
         elseif (\array_key_exists('lifeCycleHit', $data)) {
             $object->lifeCycleHit = null;
         }
+        if (!\array_key_exists('businessProcess', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('businessProcess', \PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult::class);
+        }
         if (\array_key_exists('businessProcess', $data)) {
             $value_1 = $data['businessProcess'];
             if (is_array($data['businessProcess']) and \array_key_exists('id', $data['businessProcess']) and \array_key_exists('processDefinitionId', $data['businessProcess']) and \array_key_exists('supportsCancellation', $data['businessProcess']) and \array_key_exists('businessProcessScope', $data['businessProcess']) and \array_key_exists('lifeCycle', $data['businessProcess']) and \array_key_exists('startDate', $data['businessProcess']) and \array_key_exists('endDate', $data['businessProcess']) and \array_key_exists('finished', $data['businessProcess']) and \array_key_exists('kind', $data['businessProcess'])) {

@@ -41,6 +41,9 @@ class AppLogDestinationDatadogSpecNormalizer implements DenormalizerInterface, N
             $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
+        if (!\array_key_exists('api_key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('api_key', \Jane\Generated\DigitalOcean\Model\AppLogDestinationDatadogSpec::class);
+        }
         if (\array_key_exists('api_key', $data)) {
             $object->apiKey = $data['api_key'];
             unset($data['api_key']);

@@ -43,8 +43,14 @@ class NorthboundDataStreamingNorthboundDataStreamingSettingsNormalizer implement
         if (\array_key_exists('streamingByDomainZoneEnabled', $data) && \is_int($data['streamingByDomainZoneEnabled'])) {
             $data['streamingByDomainZoneEnabled'] = (bool) $data['streamingByDomainZoneEnabled'];
         }
+        if (!\array_key_exists('northboundDataStreamingEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('northboundDataStreamingEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings::class);
+        }
         if (\array_key_exists('northboundDataStreamingEnabled', $data)) {
             $object->northboundDataStreamingEnabled = $data['northboundDataStreamingEnabled'];
+        }
+        if (!\array_key_exists('streamingByDomainZoneEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('streamingByDomainZoneEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings::class);
         }
         if (\array_key_exists('streamingByDomainZoneEnabled', $data)) {
             $object->streamingByDomainZoneEnabled = $data['streamingByDomainZoneEnabled'];

@@ -43,11 +43,17 @@ class PortalserviceCreateHotspot20WlanProfileNormalizer implements DenormalizerI
         if (\array_key_exists('singleSsidEnabled', $data) && \is_int($data['singleSsidEnabled'])) {
             $data['singleSsidEnabled'] = (bool) $data['singleSsidEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('operator', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('operator', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
         }
         if (\array_key_exists('operator', $data)) {
             $object->operator = $this->denormalizer->denormalize($data['operator'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
@@ -59,20 +65,35 @@ class PortalserviceCreateHotspot20WlanProfileNormalizer implements DenormalizerI
             }
             $object->identityProviders = $values;
         }
+        if (!\array_key_exists('defaultIdentityProvider', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('defaultIdentityProvider', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
+        }
         if (\array_key_exists('defaultIdentityProvider', $data)) {
             $object->defaultIdentityProvider = $this->denormalizer->denormalize($data['defaultIdentityProvider'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('signupSsid', $data)) {
             $object->signupSsid = $this->denormalizer->denormalize($data['signupSsid'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
+        if (!\array_key_exists('internetOption', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('internetOption', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
+        }
         if (\array_key_exists('internetOption', $data)) {
             $object->internetOption = $data['internetOption'];
+        }
+        if (!\array_key_exists('accessNetworkType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('accessNetworkType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
         }
         if (\array_key_exists('accessNetworkType', $data)) {
             $object->accessNetworkType = $data['accessNetworkType'];
         }
+        if (!\array_key_exists('ipv4AddressType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipv4AddressType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
+        }
         if (\array_key_exists('ipv4AddressType', $data)) {
             $object->ipv4AddressType = $data['ipv4AddressType'];
+        }
+        if (!\array_key_exists('ipv6AddressType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipv6AddressType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile::class);
         }
         if (\array_key_exists('ipv6AddressType', $data)) {
             $object->ipv6AddressType = $data['ipv6AddressType'];

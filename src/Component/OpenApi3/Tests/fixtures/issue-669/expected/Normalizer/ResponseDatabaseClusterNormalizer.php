@@ -37,6 +37,9 @@ class ResponseDatabaseClusterNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('database', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('database', \Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster::class);
+        }
         if (\array_key_exists('database', $data)) {
             $object->database = $this->denormalizer->denormalize($data['database'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterRead::class, 'json', $context);
             unset($data['database']);

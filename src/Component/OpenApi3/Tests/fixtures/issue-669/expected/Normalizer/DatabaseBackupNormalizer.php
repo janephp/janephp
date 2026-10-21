@@ -37,6 +37,9 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('database_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('database_name', \Jane\Generated\DigitalOcean\Model\DatabaseBackup::class);
+        }
         if (\array_key_exists('database_name', $data)) {
             $object->databaseName = $data['database_name'];
             unset($data['database_name']);

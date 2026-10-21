@@ -46,6 +46,9 @@ class BusinessRuleTracedActionNormalizer implements DenormalizerInterface, Norma
         elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
+        if (!\array_key_exists('documentModified', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentModified', \PicturePark\API\Model\BusinessRuleTracedAction::class);
+        }
         if (\array_key_exists('documentModified', $data)) {
             $object->documentModified = $data['documentModified'];
         }

@@ -40,6 +40,9 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Issue641\Validator\ExampleConstraint());
         }
+        if (!\array_key_exists('property1', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue641\Runtime\Normalizer\MissingRequiredPropertyException('property1', \Jane\Component\OpenApi3\Tests\Expected\Issue641\Model\Example::class);
+        }
         if (\array_key_exists('property1', $data) && $data['property1'] !== null) {
             $object->property1 = $data['property1'];
             unset($data['property1']);

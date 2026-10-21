@@ -48,9 +48,15 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
             $object->name = null;
             unset($data['name']);
         }
+        if (!\array_key_exists('caseSensitive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('caseSensitive', \PicturePark\API\Model\SchemaTagboxFilterLookupNamedCacheConfiguration::class);
+        }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->caseSensitive = $data['caseSensitive'];
             unset($data['caseSensitive']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\SchemaTagboxFilterLookupNamedCacheConfiguration::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

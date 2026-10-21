@@ -40,6 +40,9 @@ class CommonWebAuthenticationPortalCustomizationNormalizer implements Denormaliz
         if (\array_key_exists('title', $data)) {
             $object->title = $data['title'];
         }
+        if (!\array_key_exists('logo', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('logo', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonWebAuthenticationPortalCustomization::class);
+        }
         if (\array_key_exists('logo', $data)) {
             $object->logo = $data['logo'];
         }

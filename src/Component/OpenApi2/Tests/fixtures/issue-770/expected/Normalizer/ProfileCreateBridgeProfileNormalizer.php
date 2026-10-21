@@ -40,6 +40,9 @@ class ProfileCreateBridgeProfileNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBridgeProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

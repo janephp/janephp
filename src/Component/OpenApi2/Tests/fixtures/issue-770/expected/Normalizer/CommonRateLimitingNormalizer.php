@@ -37,11 +37,20 @@ class CommonRateLimitingNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('maxOutstandingRequestsPerServer', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('maxOutstandingRequestsPerServer', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class);
+        }
         if (\array_key_exists('maxOutstandingRequestsPerServer', $data)) {
             $object->maxOutstandingRequestsPerServer = $data['maxOutstandingRequestsPerServer'];
         }
+        if (!\array_key_exists('threshold', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('threshold', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class);
+        }
         if (\array_key_exists('threshold', $data)) {
             $object->threshold = $data['threshold'];
+        }
+        if (!\array_key_exists('sanityTimer', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sanityTimer', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class);
         }
         if (\array_key_exists('sanityTimer', $data)) {
             $object->sanityTimer = $data['sanityTimer'];

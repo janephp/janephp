@@ -37,17 +37,29 @@ class PartnerAttachmentWritableBgpNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('local_router_ip', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('local_router_ip', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class);
+        }
         if (\array_key_exists('local_router_ip', $data)) {
             $object->localRouterIp = $data['local_router_ip'];
             unset($data['local_router_ip']);
+        }
+        if (!\array_key_exists('peer_router_ip', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('peer_router_ip', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class);
         }
         if (\array_key_exists('peer_router_ip', $data)) {
             $object->peerRouterIp = $data['peer_router_ip'];
             unset($data['peer_router_ip']);
         }
+        if (!\array_key_exists('peer_router_asn', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('peer_router_asn', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class);
+        }
         if (\array_key_exists('peer_router_asn', $data)) {
             $object->peerRouterAsn = $data['peer_router_asn'];
             unset($data['peer_router_asn']);
+        }
+        if (!\array_key_exists('auth_key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('auth_key', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class);
         }
         if (\array_key_exists('auth_key', $data)) {
             $object->authKey = $data['auth_key'];

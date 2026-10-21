@@ -45,9 +45,15 @@ class FirewallRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->clusterUuid = $data['cluster_uuid'];
             unset($data['cluster_uuid']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\FirewallRule::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\Generated\DigitalOcean\Model\FirewallRule::class);
         }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];

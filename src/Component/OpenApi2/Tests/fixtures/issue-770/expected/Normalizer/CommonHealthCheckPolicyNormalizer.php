@@ -40,11 +40,20 @@ class CommonHealthCheckPolicyNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('responseFail', $data) && \is_int($data['responseFail'])) {
             $data['responseFail'] = (bool) $data['responseFail'];
         }
+        if (!\array_key_exists('responseWindow', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('responseWindow', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class);
+        }
         if (\array_key_exists('responseWindow', $data)) {
             $object->responseWindow = $data['responseWindow'];
         }
+        if (!\array_key_exists('reviveInterval', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('reviveInterval', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class);
+        }
         if (\array_key_exists('reviveInterval', $data)) {
             $object->reviveInterval = $data['reviveInterval'];
+        }
+        if (!\array_key_exists('zombiePeriod', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('zombiePeriod', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class);
         }
         if (\array_key_exists('zombiePeriod', $data)) {
             $object->zombiePeriod = $data['zombiePeriod'];

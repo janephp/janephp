@@ -40,6 +40,9 @@ class ApmodelAuthenticatorAAAServerNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('enableUseSCGasProxy', $data) && \is_int($data['enableUseSCGasProxy'])) {
             $data['enableUseSCGasProxy'] = (bool) $data['enableUseSCGasProxy'];
         }
+        if (!\array_key_exists('enableUseSCGasProxy', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enableUseSCGasProxy', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelAuthenticatorAAAServer::class);
+        }
         if (\array_key_exists('enableUseSCGasProxy', $data)) {
             $object->enableUseSCGasProxy = $data['enableUseSCGasProxy'];
         }

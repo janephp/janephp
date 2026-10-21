@@ -41,6 +41,9 @@ class DomainRecordMxNormalizer implements DenormalizerInterface, NormalizerInter
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\DomainRecordMx::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);

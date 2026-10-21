@@ -40,6 +40,9 @@ class SciModifySciEnabledNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('sciEnabled', $data) && \is_int($data['sciEnabled'])) {
             $data['sciEnabled'] = (bool) $data['sciEnabled'];
         }
+        if (!\array_key_exists('sciEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciEnabled::class);
+        }
         if (\array_key_exists('sciEnabled', $data)) {
             $object->sciEnabled = $data['sciEnabled'];
         }

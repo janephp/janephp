@@ -66,6 +66,9 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\SchemaSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }
@@ -84,6 +87,9 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('debugMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('debugMode', \PicturePark\API\Model\SchemaSearchRequest::class);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->debugMode = $data['debugMode'];

@@ -37,6 +37,9 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\TermsEnumAggregator::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
@@ -81,9 +84,15 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
             $object->filter = null;
             unset($data['filter']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TermsEnumAggregator::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\TermsEnumAggregator::class);
         }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
@@ -140,6 +149,9 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         elseif (\array_key_exists('searchFields', $data)) {
             $object->searchFields = null;
             unset($data['searchFields']);
+        }
+        if (!\array_key_exists('enumType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('enumType', \PicturePark\API\Model\TermsEnumAggregator::class);
         }
         if (\array_key_exists('enumType', $data)) {
             $object->enumType = $data['enumType'];

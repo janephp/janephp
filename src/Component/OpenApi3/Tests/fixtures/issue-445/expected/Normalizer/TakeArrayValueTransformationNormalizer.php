@@ -45,6 +45,9 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TakeArrayValueTransformation::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

@@ -53,6 +53,9 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
             $object->requestId = null;
             unset($data['requestId']);
         }
+        if (!\array_key_exists('fileName', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileName', \PicturePark\API\Model\TransferUploadFile::class);
+        }
         if (\array_key_exists('fileName', $data)) {
             $object->fileName = $data['fileName'];
             unset($data['fileName']);

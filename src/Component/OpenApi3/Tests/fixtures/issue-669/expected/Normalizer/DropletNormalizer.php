@@ -40,21 +40,36 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
             $data['locked'] = (bool) $data['locked'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('memory', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('memory', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('memory', $data)) {
             $object->memory = $data['memory'];
             unset($data['memory']);
         }
+        if (!\array_key_exists('vcpus', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vcpus', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('vcpus', $data)) {
             $object->vcpus = $data['vcpus'];
             unset($data['vcpus']);
+        }
+        if (!\array_key_exists('disk', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('disk', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('disk', $data)) {
             $object->disk = $data['disk'];
@@ -68,9 +83,15 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->diskInfo = $values;
             unset($data['disk_info']);
         }
+        if (!\array_key_exists('locked', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('locked', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('locked', $data)) {
             $object->locked = $data['locked'];
             unset($data['locked']);
+        }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
@@ -83,6 +104,9 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('kernel', $data)) {
             $object->kernel = null;
             unset($data['kernel']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -100,6 +124,9 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('features', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('features', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('features', $data)) {
             $values_1 = [];
             foreach ($data['features'] as $value_1) {
@@ -107,6 +134,9 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->features = $values_1;
             unset($data['features']);
+        }
+        if (!\array_key_exists('backup_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('backup_ids', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('backup_ids', $data)) {
             $values_2 = [];
@@ -116,9 +146,15 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->backupIds = $values_2;
             unset($data['backup_ids']);
         }
+        if (!\array_key_exists('next_backup_window', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('next_backup_window', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('next_backup_window', $data)) {
             $object->nextBackupWindow = $this->denormalizer->denormalize($data['next_backup_window'], \Jane\Generated\DigitalOcean\Model\DropletNextBackupWindow::class, 'json', $context);
             unset($data['next_backup_window']);
+        }
+        if (!\array_key_exists('snapshot_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('snapshot_ids', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('snapshot_ids', $data)) {
             $values_3 = [];
@@ -128,9 +164,15 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->snapshotIds = $values_3;
             unset($data['snapshot_ids']);
         }
+        if (!\array_key_exists('image', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('image', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('image', $data)) {
             $object->image = $this->denormalizer->denormalize($data['image'], \Jane\Generated\DigitalOcean\Model\DropletImage::class, 'json', $context);
             unset($data['image']);
+        }
+        if (!\array_key_exists('volume_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('volume_ids', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('volume_ids', $data)) {
             $values_4 = [];
@@ -140,21 +182,36 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->volumeIds = $values_4;
             unset($data['volume_ids']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $this->denormalizer->denormalize($data['size'], \Jane\Generated\DigitalOcean\Model\Size::class, 'json', $context);
             unset($data['size']);
+        }
+        if (!\array_key_exists('size_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_slug', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('size_slug', $data)) {
             $object->sizeSlug = $data['size_slug'];
             unset($data['size_slug']);
         }
+        if (!\array_key_exists('networks', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('networks', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('networks', $data)) {
             $object->networks = $this->denormalizer->denormalize($data['networks'], \Jane\Generated\DigitalOcean\Model\DropletNetworks::class, 'json', $context);
             unset($data['networks']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\Droplet::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\Region::class, 'json', $context);
             unset($data['region']);
+        }
+        if (!\array_key_exists('tags', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tags', \Jane\Generated\DigitalOcean\Model\Droplet::class);
         }
         if (\array_key_exists('tags', $data)) {
             $values_5 = [];

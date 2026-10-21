@@ -43,12 +43,18 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('listItemIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('listItemIds', \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest::class);
+        }
         if (\array_key_exists('listItemIds', $data)) {
             $values = [];
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
             $object->listItemIds = $values;
+        }
+        if (!\array_key_exists('changeCommands', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('changeCommands', \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest::class);
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values_1 = [];
@@ -57,8 +63,14 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
             }
             $object->changeCommands = $values_1;
         }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest::class);
+        }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

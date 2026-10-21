@@ -37,8 +37,14 @@ class BaseResultOfXmpMappingEntryNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('totalResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalResults', \PicturePark\API\Model\BaseResultOfXmpMappingEntry::class);
+        }
         if (\array_key_exists('totalResults', $data)) {
             $object->totalResults = $data['totalResults'];
+        }
+        if (!\array_key_exists('results', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('results', \PicturePark\API\Model\BaseResultOfXmpMappingEntry::class);
         }
         if (\array_key_exists('results', $data)) {
             $values = [];
@@ -46,6 +52,9 @@ class BaseResultOfXmpMappingEntryNormalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\XmpMappingEntry::class, 'json', $context);
             }
             $object->results = $values;
+        }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\BaseResultOfXmpMappingEntry::class);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];

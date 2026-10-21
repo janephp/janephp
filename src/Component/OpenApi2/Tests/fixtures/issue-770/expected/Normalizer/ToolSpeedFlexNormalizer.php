@@ -37,8 +37,14 @@ class ToolSpeedFlexNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('tool', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('tool', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolSpeedFlex::class);
+        }
         if (\array_key_exists('tool', $data)) {
             $object->tool = $data['tool'];
+        }
+        if (!\array_key_exists('protocol', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('protocol', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolSpeedFlex::class);
         }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];

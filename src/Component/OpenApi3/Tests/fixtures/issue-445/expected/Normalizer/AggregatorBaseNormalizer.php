@@ -58,6 +58,9 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('kind', $data) and 'TermsEnumAggregator' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TermsEnumAggregator', $format, $context);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\AggregatorBase::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -94,6 +97,9 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\AggregatorBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

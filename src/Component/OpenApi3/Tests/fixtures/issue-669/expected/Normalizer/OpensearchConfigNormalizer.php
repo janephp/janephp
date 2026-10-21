@@ -45,6 +45,9 @@ class OpensearchConfigNormalizer implements DenormalizerInterface, NormalizerInt
             $object->credentials = $this->denormalizer->denormalize($data['credentials'], \Jane\Generated\DigitalOcean\Model\OpensearchConfigCredentials::class, 'json', $context);
             unset($data['credentials']);
         }
+        if (!\array_key_exists('endpoint', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('endpoint', \Jane\Generated\DigitalOcean\Model\OpensearchConfig::class);
+        }
         if (\array_key_exists('endpoint', $data)) {
             $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);

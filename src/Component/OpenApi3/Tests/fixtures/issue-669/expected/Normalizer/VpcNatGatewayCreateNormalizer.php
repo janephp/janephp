@@ -37,21 +37,36 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('vpcs', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpcs', \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class);
         }
         if (\array_key_exists('vpcs', $data)) {
             $values = [];

@@ -37,25 +37,43 @@ class ResourceUnauthorizedProblemNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('resource_id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('resource_id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
         }
         if (\array_key_exists('resource_id', $data)) {
             $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
+        if (!\array_key_exists('resource_type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('resource_type', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
+        }
         if (\array_key_exists('resource_type', $data)) {
             $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
+        }
+        if (!\array_key_exists('section', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('section', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
         }
         if (\array_key_exists('section', $data)) {
             $object->section = $data['section'];
             unset($data['section']);
         }
+        if (!\array_key_exists('title', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('title', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
+        }
         if (\array_key_exists('title', $data)) {
             $object->title = $data['title'];
             unset($data['title']);
+        }
+        if (!\array_key_exists('detail', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('detail', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem::class);
         }
         if (\array_key_exists('detail', $data)) {
             $object->detail = $data['detail'];

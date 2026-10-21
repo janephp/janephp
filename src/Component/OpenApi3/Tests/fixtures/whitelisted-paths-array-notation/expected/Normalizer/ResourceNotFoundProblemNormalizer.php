@@ -37,25 +37,43 @@ class ResourceNotFoundProblemNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('parameter', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('parameter', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
         }
         if (\array_key_exists('parameter', $data)) {
             $object->parameter = $data['parameter'];
             unset($data['parameter']);
         }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
+        }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];
             unset($data['value']);
+        }
+        if (!\array_key_exists('resource_type', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('resource_type', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
         }
         if (\array_key_exists('resource_type', $data)) {
             $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
         }
+        if (!\array_key_exists('title', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('title', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
+        }
         if (\array_key_exists('title', $data)) {
             $object->title = $data['title'];
             unset($data['title']);
+        }
+        if (!\array_key_exists('detail', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('detail', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\ResourceNotFoundProblem::class);
         }
         if (\array_key_exists('detail', $data)) {
             $object->detail = $data['detail'];

@@ -49,6 +49,9 @@ class AppFunctionsSpecNormalizer implements DenormalizerInterface, NormalizerInt
             $object->routes = $values;
             unset($data['routes']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AppFunctionsSpec::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

@@ -40,17 +40,29 @@ class RsyslogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('tls', $data) && \is_int($data['tls'])) {
             $data['tls'] = (bool) $data['tls'];
         }
+        if (!\array_key_exists('server', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('server', \Jane\Generated\DigitalOcean\Model\RsyslogLogsink::class);
+        }
         if (\array_key_exists('server', $data)) {
             $object->server = $data['server'];
             unset($data['server']);
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Generated\DigitalOcean\Model\RsyslogLogsink::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
             unset($data['port']);
         }
+        if (!\array_key_exists('tls', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tls', \Jane\Generated\DigitalOcean\Model\RsyslogLogsink::class);
+        }
         if (\array_key_exists('tls', $data)) {
             $object->tls = $data['tls'];
             unset($data['tls']);
+        }
+        if (!\array_key_exists('format', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('format', \Jane\Generated\DigitalOcean\Model\RsyslogLogsink::class);
         }
         if (\array_key_exists('format', $data)) {
             $object->format = $data['format'];

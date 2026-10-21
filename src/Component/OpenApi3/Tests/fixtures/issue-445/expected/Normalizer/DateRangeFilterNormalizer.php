@@ -37,13 +37,22 @@ class DateRangeFilterNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\DateRangeFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\DateRangeFilter::class);
+        }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
             unset($data['field']);
+        }
+        if (!\array_key_exists('range', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('range', \PicturePark\API\Model\DateRangeFilter::class);
         }
         if (\array_key_exists('range', $data)) {
             $value = $data['range'];

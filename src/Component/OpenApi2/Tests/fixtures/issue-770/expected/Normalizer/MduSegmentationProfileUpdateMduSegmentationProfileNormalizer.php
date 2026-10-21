@@ -37,11 +37,20 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domainId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domainId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class);
+        }
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('dpInfoList', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('dpInfoList', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class);
         }
         if (\array_key_exists('dpInfoList', $data)) {
             $values = [];
@@ -49,6 +58,9 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduProfileDpInfo::class, 'json', $context);
             }
             $object->dpInfoList = $values;
+        }
+        if (!\array_key_exists('apGroupInfoList', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('apGroupInfoList', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class);
         }
         if (\array_key_exists('apGroupInfoList', $data)) {
             $values_1 = [];

@@ -49,6 +49,9 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
+        if (!\array_key_exists('documentType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentType', \PicturePark\API\Model\BusinessRuleTraceLog::class);
+        }
         if (\array_key_exists('documentType', $data)) {
             $value = $data['documentType'];
             if (is_string($data['documentType'])) {

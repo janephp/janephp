@@ -46,6 +46,9 @@ class AppSpecNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('enhanced_threat_control_enabled', $data) && \is_int($data['enhanced_threat_control_enabled'])) {
             $data['enhanced_threat_control_enabled'] = (bool) $data['enhanced_threat_control_enabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AppSpec::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

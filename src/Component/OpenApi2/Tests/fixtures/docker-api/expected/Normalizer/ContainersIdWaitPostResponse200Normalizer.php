@@ -40,6 +40,9 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdWaitPostResponse200Constraint());
         }
+        if (!\array_key_exists('StatusCode', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('StatusCode', \Docker\Api\Model\ContainersIdWaitPostResponse200::class);
+        }
         if (\array_key_exists('StatusCode', $data)) {
             $object->statusCode = $data['StatusCode'];
         }

@@ -49,11 +49,20 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
+        if (!\array_key_exists('outputFormatId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputFormatId', \PicturePark\API\Model\Output::class);
+        }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = $data['outputFormatId'];
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\Output::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
+        }
+        if (!\array_key_exists('renderingState', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('renderingState', \PicturePark\API\Model\Output::class);
         }
         if (\array_key_exists('renderingState', $data)) {
             $value = $data['renderingState'];
@@ -90,14 +99,26 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         elseif (\array_key_exists('backupTimestamp', $data)) {
             $object->backupTimestamp = null;
         }
+        if (!\array_key_exists('attemptsLeft', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('attemptsLeft', \PicturePark\API\Model\Output::class);
+        }
         if (\array_key_exists('attemptsLeft', $data)) {
             $object->attemptsLeft = $data['attemptsLeft'];
+        }
+        if (!\array_key_exists('fileVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileVersion', \PicturePark\API\Model\Output::class);
         }
         if (\array_key_exists('fileVersion', $data)) {
             $object->fileVersion = $data['fileVersion'];
         }
+        if (!\array_key_exists('dynamicRendering', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('dynamicRendering', \PicturePark\API\Model\Output::class);
+        }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->dynamicRendering = $data['dynamicRendering'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\Output::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

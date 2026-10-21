@@ -37,6 +37,9 @@ class SciDeleteSciProfileNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciDeleteSciProfile::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }

@@ -37,8 +37,14 @@ class CommonTargetConfigNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('address', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('address', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTargetConfig::class);
+        }
         if (\array_key_exists('address', $data)) {
             $object->address = $data['address'];
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTargetConfig::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];

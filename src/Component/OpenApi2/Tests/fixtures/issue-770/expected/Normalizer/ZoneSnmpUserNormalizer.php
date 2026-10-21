@@ -46,6 +46,9 @@ class ZoneSnmpUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('notificationEnabled', $data) && \is_int($data['notificationEnabled'])) {
             $data['notificationEnabled'] = (bool) $data['notificationEnabled'];
         }
+        if (!\array_key_exists('userName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSnmpUser::class);
+        }
         if (\array_key_exists('userName', $data)) {
             $object->userName = $data['userName'];
         }
@@ -61,11 +64,20 @@ class ZoneSnmpUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('privPassword', $data)) {
             $object->privPassword = $data['privPassword'];
         }
+        if (!\array_key_exists('readEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('readEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSnmpUser::class);
+        }
         if (\array_key_exists('readEnabled', $data)) {
             $object->readEnabled = $data['readEnabled'];
         }
+        if (!\array_key_exists('writeEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('writeEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSnmpUser::class);
+        }
         if (\array_key_exists('writeEnabled', $data)) {
             $object->writeEnabled = $data['writeEnabled'];
+        }
+        if (!\array_key_exists('notificationEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('notificationEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSnmpUser::class);
         }
         if (\array_key_exists('notificationEnabled', $data)) {
             $object->notificationEnabled = $data['notificationEnabled'];

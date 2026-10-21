@@ -52,6 +52,9 @@ class ServiceCreateLDAPAuthenticationNormalizer implements DenormalizerInterface
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -64,29 +67,53 @@ class ServiceCreateLDAPAuthenticationNormalizer implements DenormalizerInterface
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('tlsEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('tlsEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('tlsEnabled', $data)) {
             $object->tlsEnabled = $data['tlsEnabled'];
         }
         if (\array_key_exists('cnIdentity', $data)) {
             $object->cnIdentity = $data['cnIdentity'];
         }
+        if (!\array_key_exists('ip', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ip', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
         }
+        if (!\array_key_exists('baseDomainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('baseDomainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('baseDomainName', $data)) {
             $object->baseDomainName = $data['baseDomainName'];
+        }
+        if (!\array_key_exists('adminDomainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('adminDomainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
         }
         if (\array_key_exists('adminDomainName', $data)) {
             $object->adminDomainName = $data['adminDomainName'];
         }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];
         }
+        if (!\array_key_exists('keyAttribute', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('keyAttribute', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
+        }
         if (\array_key_exists('keyAttribute', $data)) {
             $object->keyAttribute = $data['keyAttribute'];
+        }
+        if (!\array_key_exists('searchFilter', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('searchFilter', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication::class);
         }
         if (\array_key_exists('searchFilter', $data)) {
             $object->searchFilter = $data['searchFilter'];

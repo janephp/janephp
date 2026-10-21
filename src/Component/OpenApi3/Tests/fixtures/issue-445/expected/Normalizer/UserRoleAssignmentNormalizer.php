@@ -50,6 +50,9 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('userRole', $data)) {
             $object->userRole = null;
         }
+        if (!\array_key_exists('isFederated', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isFederated', \PicturePark\API\Model\UserRoleAssignment::class);
+        }
         if (\array_key_exists('isFederated', $data)) {
             $object->isFederated = $data['isFederated'];
         }

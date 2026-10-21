@@ -73,8 +73,14 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
             $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
         }
+        if (!\array_key_exists('client_id', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('client_id', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class);
+        }
         if (\array_key_exists('client_id', $data)) {
             $object->clientId = $data['client_id'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -85,11 +91,17 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('is_active', $data)) {
             $object->isActive = $data['is_active'];
         }
+        if (!\array_key_exists('is_billable', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('is_billable', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class);
+        }
         if (\array_key_exists('is_billable', $data)) {
             $object->isBillable = $data['is_billable'];
         }
         if (\array_key_exists('is_fixed_fee', $data)) {
             $object->isFixedFee = $data['is_fixed_fee'];
+        }
+        if (!\array_key_exists('bill_by', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('bill_by', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class);
         }
         if (\array_key_exists('bill_by', $data)) {
             $object->billBy = $data['bill_by'];
@@ -99,6 +111,9 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('budget', $data)) {
             $object->budget = $data['budget'];
+        }
+        if (!\array_key_exists('budget_by', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('budget_by', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class);
         }
         if (\array_key_exists('budget_by', $data)) {
             $object->budgetBy = $data['budget_by'];

@@ -37,6 +37,9 @@ class AaaModifyHttp2ServerNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyHttp2Server::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -45,6 +48,9 @@ class AaaModifyHttp2ServerNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('partnerName', $data)) {
             $object->partnerName = $data['partnerName'];
+        }
+        if (!\array_key_exists('token', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('token', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyHttp2Server::class);
         }
         if (\array_key_exists('token', $data)) {
             $object->token = $data['token'];

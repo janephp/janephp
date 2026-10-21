@@ -37,14 +37,26 @@ class AdministrationTacacsServerNormalizer implements DenormalizerInterface, Nor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('service', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('service', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationTacacsServer::class);
+        }
         if (\array_key_exists('service', $data)) {
             $object->service = $data['service'];
+        }
+        if (!\array_key_exists('ip', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ip', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationTacacsServer::class);
         }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
         }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationTacacsServer::class);
+        }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
+        }
+        if (!\array_key_exists('sharedSecret', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sharedSecret', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationTacacsServer::class);
         }
         if (\array_key_exists('sharedSecret', $data)) {
             $object->sharedSecret = $data['sharedSecret'];

@@ -37,6 +37,9 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('provisioningProtocals', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('provisioningProtocals', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderExternalOSU::class);
+        }
         if (\array_key_exists('provisioningProtocals', $data)) {
             $values = [];
             foreach ($data['provisioningProtocals'] as $value) {
@@ -44,8 +47,14 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
             }
             $object->provisioningProtocals = $values;
         }
+        if (!\array_key_exists('osuServiceUrl', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('osuServiceUrl', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderExternalOSU::class);
+        }
         if (\array_key_exists('osuServiceUrl', $data)) {
             $object->osuServiceUrl = $data['osuServiceUrl'];
+        }
+        if (!\array_key_exists('osuNaiRealm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('osuNaiRealm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderExternalOSU::class);
         }
         if (\array_key_exists('osuNaiRealm', $data)) {
             $object->osuNaiRealm = $data['osuNaiRealm'];
@@ -53,8 +62,14 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('singleSsidNai', $data)) {
             $object->singleSsidNai = $data['singleSsidNai'];
         }
+        if (!\array_key_exists('commonLanguageIcon', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('commonLanguageIcon', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderExternalOSU::class);
+        }
         if (\array_key_exists('commonLanguageIcon', $data)) {
             $object->commonLanguageIcon = $data['commonLanguageIcon'];
+        }
+        if (!\array_key_exists('subscriptionDescriptions', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('subscriptionDescriptions', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderExternalOSU::class);
         }
         if (\array_key_exists('subscriptionDescriptions', $data)) {
             $values_1 = [];

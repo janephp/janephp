@@ -48,9 +48,15 @@ class UserSignupPostBodyNormalizer implements DenormalizerInterface, NormalizerI
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('email', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('email', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UserSignupPostBody::class);
+        }
         if (\array_key_exists('email', $data)) {
             $object->email = $data['email'];
             unset($data['email']);
+        }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UserSignupPostBody::class);
         }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];

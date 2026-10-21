@@ -40,11 +40,17 @@ class ProfileCreateL2oGREProfileNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL2oGREProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('coreNetworkGateway', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('coreNetworkGateway', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL2oGREProfile::class);
         }
         if (\array_key_exists('coreNetworkGateway', $data)) {
             $object->coreNetworkGateway = $this->denormalizer->denormalize($data['coreNetworkGateway'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCoreNetworkGateway::class, 'json', $context);

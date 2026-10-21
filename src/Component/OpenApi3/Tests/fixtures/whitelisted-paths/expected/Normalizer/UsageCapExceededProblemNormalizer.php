@@ -37,6 +37,9 @@ class UsageCapExceededProblemNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UsageCapExceededProblem::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
@@ -49,9 +52,15 @@ class UsageCapExceededProblemNormalizer implements DenormalizerInterface, Normal
             $object->scope = $data['scope'];
             unset($data['scope']);
         }
+        if (!\array_key_exists('title', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('title', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UsageCapExceededProblem::class);
+        }
         if (\array_key_exists('title', $data)) {
             $object->title = $data['title'];
             unset($data['title']);
+        }
+        if (!\array_key_exists('detail', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('detail', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UsageCapExceededProblem::class);
         }
         if (\array_key_exists('detail', $data)) {
             $object->detail = $data['detail'];

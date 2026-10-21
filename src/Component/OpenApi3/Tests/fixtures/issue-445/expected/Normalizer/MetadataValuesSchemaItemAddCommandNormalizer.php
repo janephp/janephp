@@ -37,21 +37,36 @@ class MetadataValuesSchemaItemAddCommandNormalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('schemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemaId', \PicturePark\API\Model\MetadataValuesSchemaItemAddCommand::class);
+        }
         if (\array_key_exists('schemaId', $data)) {
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\MetadataValuesSchemaItemAddCommand::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('fieldPath', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fieldPath', \PicturePark\API\Model\MetadataValuesSchemaItemAddCommand::class);
+        }
         if (\array_key_exists('fieldPath', $data)) {
             $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
+        if (!\array_key_exists('fieldNamespace', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fieldNamespace', \PicturePark\API\Model\MetadataValuesSchemaItemAddCommand::class);
+        }
         if (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
+        }
+        if (!\array_key_exists('referenceId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('referenceId', \PicturePark\API\Model\MetadataValuesSchemaItemAddCommand::class);
         }
         if (\array_key_exists('referenceId', $data)) {
             $object->referenceId = $data['referenceId'];

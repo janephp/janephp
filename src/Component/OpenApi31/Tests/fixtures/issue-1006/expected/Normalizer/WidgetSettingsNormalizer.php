@@ -40,6 +40,9 @@ class WidgetSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetSettingsConstraint());
         }
+        if (!\array_key_exists('color', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Normalizer\MissingRequiredPropertyException('color', \Jane\Component\OpenApi31\Tests\Issue1006\Model\WidgetSettings::class);
+        }
         if (\array_key_exists('color', $data)) {
             $object->color = $data['color'];
         }

@@ -37,6 +37,9 @@ class SchemaPermissionSetUpdateRequestItemNormalizer implements DenormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\SchemaPermissionSetUpdateRequestItem::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
@@ -72,6 +75,9 @@ class SchemaPermissionSetUpdateRequestItemNormalizer implements DenormalizerInte
         elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
             unset($data['userRolesPermissionSetRights']);
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\SchemaPermissionSetUpdateRequestItem::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];

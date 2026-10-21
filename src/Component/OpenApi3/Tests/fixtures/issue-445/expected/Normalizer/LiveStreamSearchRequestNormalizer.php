@@ -37,6 +37,9 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('from', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('from', \PicturePark\API\Model\LiveStreamSearchRequest::class);
+        }
         if (\array_key_exists('from', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['from']);
             if (false === $date) {
@@ -51,6 +54,9 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
                 }
             }
             $object->from = $date;
+        }
+        if (!\array_key_exists('to', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('to', \PicturePark\API\Model\LiveStreamSearchRequest::class);
         }
         if (\array_key_exists('to', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']);
@@ -82,6 +88,9 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\LiveStreamSearchRequest::class);
         }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];

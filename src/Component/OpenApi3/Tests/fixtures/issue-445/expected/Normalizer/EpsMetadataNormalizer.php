@@ -46,11 +46,20 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('isRasterized', $data) && \is_int($data['isRasterized'])) {
             $data['isRasterized'] = (bool) $data['isRasterized'];
         }
+        if (!\array_key_exists('isRasterized', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isRasterized', \PicturePark\API\Model\EpsMetadata::class);
+        }
         if (\array_key_exists('isRasterized', $data)) {
             $object->isRasterized = $data['isRasterized'];
         }
+        if (!\array_key_exists('widthInPoints', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('widthInPoints', \PicturePark\API\Model\EpsMetadata::class);
+        }
         if (\array_key_exists('widthInPoints', $data)) {
             $object->widthInPoints = $data['widthInPoints'];
+        }
+        if (!\array_key_exists('heightInPoints', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('heightInPoints', \PicturePark\API\Model\EpsMetadata::class);
         }
         if (\array_key_exists('heightInPoints', $data)) {
             $object->heightInPoints = $data['heightInPoints'];

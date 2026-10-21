@@ -37,6 +37,9 @@ class VolumeActionPostResizeNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\VolumeActionPostResize::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
@@ -44,6 +47,9 @@ class VolumeActionPostResizeNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('size_gigabytes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gigabytes', \Jane\Generated\DigitalOcean\Model\VolumeActionPostResize::class);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
             $object->sizeGigabytes = $data['size_gigabytes'];

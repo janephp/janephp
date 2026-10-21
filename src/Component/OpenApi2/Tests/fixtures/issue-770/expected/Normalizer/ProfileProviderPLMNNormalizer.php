@@ -37,8 +37,14 @@ class ProfileProviderPLMNNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('mcc', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('mcc', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderPLMN::class);
+        }
         if (\array_key_exists('mcc', $data)) {
             $object->mcc = $data['mcc'];
+        }
+        if (!\array_key_exists('mnc', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('mnc', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderPLMN::class);
         }
         if (\array_key_exists('mnc', $data)) {
             $object->mnc = $data['mnc'];

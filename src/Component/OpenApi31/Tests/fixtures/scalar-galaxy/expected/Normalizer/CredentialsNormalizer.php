@@ -40,9 +40,15 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\CredentialsConstraint());
         }
+        if (!\array_key_exists('email', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('email', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Credentials::class);
+        }
         if (\array_key_exists('email', $data)) {
             $object->email = $data['email'];
             unset($data['email']);
+        }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Credentials::class);
         }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];

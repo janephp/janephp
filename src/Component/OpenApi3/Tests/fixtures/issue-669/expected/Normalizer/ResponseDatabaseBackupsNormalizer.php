@@ -37,6 +37,9 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('backups', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('backups', \Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackups::class);
+        }
         if (\array_key_exists('backups', $data)) {
             $values = [];
             foreach ($data['backups'] as $value) {

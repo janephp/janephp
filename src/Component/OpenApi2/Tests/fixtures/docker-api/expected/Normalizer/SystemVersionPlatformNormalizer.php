@@ -40,6 +40,9 @@ class SystemVersionPlatformNormalizer implements DenormalizerInterface, Normaliz
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SystemVersionPlatformConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\SystemVersionPlatform::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }

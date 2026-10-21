@@ -37,13 +37,22 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('url', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('url', \PicturePark\API\Model\ShareDataEmbed::class);
+        }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];
             unset($data['url']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareDataEmbed::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('token', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('token', \PicturePark\API\Model\ShareDataEmbed::class);
         }
         if (\array_key_exists('token', $data)) {
             $object->token = $data['token'];

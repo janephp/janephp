@@ -40,6 +40,9 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
             $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
         }
+        if (!\array_key_exists('supportsCancellation', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('supportsCancellation', \PicturePark\API\Model\BusinessProcessCreateRequest::class);
+        }
         if (\array_key_exists('supportsCancellation', $data)) {
             $object->supportsCancellation = $data['supportsCancellation'];
         }
@@ -52,6 +55,9 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('notification', $data)) {
             $object->notification = null;
+        }
+        if (!\array_key_exists('initialState', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('initialState', \PicturePark\API\Model\BusinessProcessCreateRequest::class);
         }
         if (\array_key_exists('initialState', $data)) {
             $object->initialState = $data['initialState'];

@@ -37,6 +37,9 @@ class TagsResourceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('resources', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('resources', \Jane\Generated\DigitalOcean\Model\TagsResource::class);
+        }
         if (\array_key_exists('resources', $data)) {
             $values = [];
             foreach ($data['resources'] as $value) {

@@ -58,8 +58,14 @@ class MetadataValuesChangeCommandBaseNormalizer implements DenormalizerInterface
         if (array_key_exists('kind', $data) and 'MetadataValuesSchemaItemRemoveCommand' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\MetadataValuesSchemaItemRemoveCommand', $format, $context);
         }
+        if (!\array_key_exists('schemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemaId', \PicturePark\API\Model\MetadataValuesChangeCommandBase::class);
+        }
         if (\array_key_exists('schemaId', $data)) {
             $object->schemaId = $data['schemaId'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\MetadataValuesChangeCommandBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

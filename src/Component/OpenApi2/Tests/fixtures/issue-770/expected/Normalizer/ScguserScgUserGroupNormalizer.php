@@ -49,14 +49,23 @@ class ScguserScgUserGroupNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('role', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('role', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup::class);
+        }
         if (\array_key_exists('role', $data)) {
             $object->role = $data['role'];
+        }
+        if (!\array_key_exists('accountSecurityProfileId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('accountSecurityProfileId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup::class);
         }
         if (\array_key_exists('accountSecurityProfileId', $data)) {
             $object->accountSecurityProfileId = $data['accountSecurityProfileId'];
@@ -64,12 +73,18 @@ class ScguserScgUserGroupNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('accountSecurityProfileName', $data)) {
             $object->accountSecurityProfileName = $data['accountSecurityProfileName'];
         }
+        if (!\array_key_exists('permissions', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('permissions', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup::class);
+        }
         if (\array_key_exists('permissions', $data)) {
             $values = [];
             foreach ($data['permissions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionWithoutDetailItems::class, 'json', $context);
             }
             $object->permissions = $values;
+        }
+        if (!\array_key_exists('resourceGroups', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('resourceGroups', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup::class);
         }
         if (\array_key_exists('resourceGroups', $data)) {
             $values_1 = [];

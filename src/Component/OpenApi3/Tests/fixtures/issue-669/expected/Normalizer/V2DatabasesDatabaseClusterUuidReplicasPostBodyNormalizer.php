@@ -41,6 +41,9 @@ class V2DatabasesDatabaseClusterUuidReplicasPostBodyNormalizer implements Denorm
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidReplicasPostBody::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

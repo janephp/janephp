@@ -49,17 +49,32 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('sortable', $data) && \is_int($data['sortable'])) {
             $data['sortable'] = (bool) $data['sortable'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\FieldIndexingInfo::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('index', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('index', \PicturePark\API\Model\FieldIndexingInfo::class);
         }
         if (\array_key_exists('index', $data)) {
             $object->index = $data['index'];
         }
+        if (!\array_key_exists('simpleSearch', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('simpleSearch', \PicturePark\API\Model\FieldIndexingInfo::class);
+        }
         if (\array_key_exists('simpleSearch', $data)) {
             $object->simpleSearch = $data['simpleSearch'];
         }
+        if (!\array_key_exists('sortable', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortable', \PicturePark\API\Model\FieldIndexingInfo::class);
+        }
         if (\array_key_exists('sortable', $data)) {
             $object->sortable = $data['sortable'];
+        }
+        if (!\array_key_exists('boost', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('boost', \PicturePark\API\Model\FieldIndexingInfo::class);
         }
         if (\array_key_exists('boost', $data)) {
             $object->boost = $data['boost'];

@@ -37,8 +37,14 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('path', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('path', \PicturePark\API\Model\SortField::class);
+        }
         if (\array_key_exists('path', $data)) {
             $object->path = $data['path'];
+        }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\SortField::class);
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];

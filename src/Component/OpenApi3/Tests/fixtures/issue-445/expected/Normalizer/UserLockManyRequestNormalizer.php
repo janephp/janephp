@@ -40,6 +40,9 @@ class UserLockManyRequestNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('lock', $data) && \is_int($data['lock'])) {
             $data['lock'] = (bool) $data['lock'];
         }
+        if (!\array_key_exists('userIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userIds', \PicturePark\API\Model\UserLockManyRequest::class);
+        }
         if (\array_key_exists('userIds', $data)) {
             $values = [];
             foreach ($data['userIds'] as $value) {
@@ -47,6 +50,9 @@ class UserLockManyRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->userIds = $values;
             unset($data['userIds']);
+        }
+        if (!\array_key_exists('lock', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lock', \PicturePark\API\Model\UserLockManyRequest::class);
         }
         if (\array_key_exists('lock', $data)) {
             $object->lock = $data['lock'];

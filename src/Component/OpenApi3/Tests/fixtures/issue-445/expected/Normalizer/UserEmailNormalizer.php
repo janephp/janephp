@@ -49,6 +49,9 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
+        if (!\array_key_exists('emailAddress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('emailAddress', \PicturePark\API\Model\UserEmail::class);
+        }
         if (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = $data['emailAddress'];
         }

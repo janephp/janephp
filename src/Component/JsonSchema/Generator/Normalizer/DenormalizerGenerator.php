@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
@@ -85,7 +86,7 @@ trait DenormalizerGenerator
             $statements[] = $this->createValidationStatement($context, $classGuess, $dataVariable);
         }
 
-        $statements = array_merge($statements, $this->createPropertyDenormalizationStatements($classGuess, $context, $objectVariable, $dataVariable));
+        $statements = array_merge($statements, $this->createPropertyDenormalizationStatements($classGuess, $context, $objectVariable, $dataVariable, $modelFqdn));
         $statements = array_merge($statements, $this->createPatternPropertiesDenormalizationStatements($classGuess, $context, $objectVariable, $dataVariable));
         $statements[] = new Stmt\Return_($objectVariable);
 
@@ -202,12 +203,16 @@ trait DenormalizerGenerator
      *
      * @return Stmt[]
      */
-    private function createPropertyDenormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $objectVariable, Expr\Variable $dataVariable): array
+    private function createPropertyDenormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $objectVariable, Expr\Variable $dataVariable, string $modelFqdn): array
     {
         $statements = [];
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
         foreach ($classGuess->getProperties() as $property) {
+            if (!$this->skipRequiredFields && $property->isRequired()) {
+                $statements[] = $this->createMissingRequiredPropertyGuard($property, $context, $dataVariable, $modelFqdn);
+            }
+
             $propertyVar = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
@@ -255,6 +260,31 @@ trait DenormalizerGenerator
         }
 
         return $statements;
+    }
+
+    /**
+     * Throw when the payload is missing a required property, so the generated
+     * model never exposes an uninitialized typed property to its consumer.
+     */
+    private function createMissingRequiredPropertyGuard(Property $property, Context $context, Expr\Variable $dataVariable, string $modelFqdn): Stmt\If_
+    {
+        $exceptionFqcn = $this->getNaming()->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Normalizer'], 'MissingRequiredPropertyException');
+
+        return new Stmt\If_(
+            new Expr\BooleanNot(new Expr\FuncCall(new Name('\array_key_exists'), [
+                new Arg(new Scalar\String_($property->getName())),
+                new Arg($dataVariable),
+            ])),
+            [
+                'stmts' => [new Stmt\Expression(new Expr\Throw_(new Expr\New_(
+                    new Name\FullyQualified($exceptionFqcn),
+                    [
+                        new Arg(new Scalar\String_($property->getName())),
+                        new Arg(new Expr\ClassConstFetch(new Name\FullyQualified($modelFqdn), new Identifier('class'))),
+                    ]
+                )))],
+            ]
+        );
     }
 
     /**

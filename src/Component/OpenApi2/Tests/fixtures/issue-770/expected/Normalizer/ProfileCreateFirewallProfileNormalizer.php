@@ -43,6 +43,9 @@ class ProfileCreateFirewallProfileNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('downlinkRateLimitingMbps', $data) && \is_int($data['downlinkRateLimitingMbps'])) {
             $data['downlinkRateLimitingMbps'] = (float) $data['downlinkRateLimitingMbps'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateFirewallProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

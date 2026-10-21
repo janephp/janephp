@@ -46,6 +46,9 @@ class ProfileCreateRtlsProfileNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('ekahauEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ekahauEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile::class);
+        }
         if (\array_key_exists('ekahauEnabled', $data)) {
             $object->ekahauEnabled = $data['ekahauEnabled'];
         }
@@ -54,6 +57,9 @@ class ProfileCreateRtlsProfileNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('ekahauPort', $data)) {
             $object->ekahauPort = $data['ekahauPort'];
+        }
+        if (!\array_key_exists('stanleyEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('stanleyEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile::class);
         }
         if (\array_key_exists('stanleyEnabled', $data)) {
             $object->stanleyEnabled = $data['stanleyEnabled'];

@@ -101,6 +101,9 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('forwarding_rules', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('forwarding_rules', \Jane\Generated\DigitalOcean\Model\LoadBalancerBase::class);
+        }
         if (\array_key_exists('forwarding_rules', $data)) {
             $values = [];
             foreach ($data['forwarding_rules'] as $value) {

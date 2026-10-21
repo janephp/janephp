@@ -46,11 +46,17 @@ class AvcCreateApplicationPolicyProfileNormalizer implements DenormalizerInterfa
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('applicationRules', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('applicationRules', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile::class);
         }
         if (\array_key_exists('applicationRules', $data)) {
             $values = [];

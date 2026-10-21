@@ -37,6 +37,9 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('listItemIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('listItemIds', \PicturePark\API\Model\ListItemManyReferencesRequest::class);
+        }
         if (\array_key_exists('listItemIds', $data)) {
             $values = [];
             foreach ($data['listItemIds'] as $value) {

@@ -89,6 +89,9 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->filesystemType = $data['filesystem_type'];
             unset($data['filesystem_type']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\VolumesXfs::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);

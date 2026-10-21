@@ -37,13 +37,22 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
         }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
@@ -52,6 +61,9 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('unit', $data)) {
             $object->unit = $data['unit'];
             unset($data['unit']);
+        }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
         }
         if (\array_key_exists('value', $data)) {
             $value = $data['value'];
@@ -64,6 +76,9 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->value = $value;
             unset($data['value']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -80,6 +95,9 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->createdAt = $date;
             unset($data['created_at']);
+        }
+        if (!\array_key_exists('updated_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('updated_at', \Jane\Generated\DigitalOcean\Model\AddonsFeature::class);
         }
         if (\array_key_exists('updated_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);

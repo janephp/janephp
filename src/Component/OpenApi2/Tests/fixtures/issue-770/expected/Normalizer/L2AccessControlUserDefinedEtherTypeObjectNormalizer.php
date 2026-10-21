@@ -37,8 +37,14 @@ class L2AccessControlUserDefinedEtherTypeObjectNormalizer implements Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('etherType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('etherType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlUserDefinedEtherTypeObject::class);
+        }
         if (\array_key_exists('etherType', $data)) {
             $object->etherType = $data['etherType'];
+        }
+        if (!\array_key_exists('protocolName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('protocolName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlUserDefinedEtherTypeObject::class);
         }
         if (\array_key_exists('protocolName', $data)) {
             $object->protocolName = $data['protocolName'];

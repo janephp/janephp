@@ -52,6 +52,9 @@ class FieldMultiFieldsetNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('sortable', $data) && \is_int($data['sortable'])) {
             $data['sortable'] = (bool) $data['sortable'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\FieldMultiFieldset::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
@@ -104,29 +107,50 @@ class FieldMultiFieldsetNormalizer implements DenormalizerInterface, NormalizerI
             $object->descriptions = null;
             unset($data['descriptions']);
         }
+        if (!\array_key_exists('required', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('required', \PicturePark\API\Model\FieldMultiFieldset::class);
+        }
         if (\array_key_exists('required', $data)) {
             $object->required = $data['required'];
             unset($data['required']);
+        }
+        if (!\array_key_exists('fixed', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fixed', \PicturePark\API\Model\FieldMultiFieldset::class);
         }
         if (\array_key_exists('fixed', $data)) {
             $object->fixed = $data['fixed'];
             unset($data['fixed']);
         }
+        if (!\array_key_exists('index', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('index', \PicturePark\API\Model\FieldMultiFieldset::class);
+        }
         if (\array_key_exists('index', $data)) {
             $object->index = $data['index'];
             unset($data['index']);
+        }
+        if (!\array_key_exists('simpleSearch', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('simpleSearch', \PicturePark\API\Model\FieldMultiFieldset::class);
         }
         if (\array_key_exists('simpleSearch', $data)) {
             $object->simpleSearch = $data['simpleSearch'];
             unset($data['simpleSearch']);
         }
+        if (!\array_key_exists('sortable', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortable', \PicturePark\API\Model\FieldMultiFieldset::class);
+        }
         if (\array_key_exists('sortable', $data)) {
             $object->sortable = $data['sortable'];
             unset($data['sortable']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\FieldMultiFieldset::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('schemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemaId', \PicturePark\API\Model\FieldMultiFieldset::class);
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->schemaId = $data['schemaId'];

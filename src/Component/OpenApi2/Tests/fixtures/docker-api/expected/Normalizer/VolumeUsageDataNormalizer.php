@@ -40,8 +40,14 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumeUsageDataConstraint());
         }
+        if (!\array_key_exists('Size', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Size', \Docker\Api\Model\VolumeUsageData::class);
+        }
         if (\array_key_exists('Size', $data)) {
             $object->size = $data['Size'];
+        }
+        if (!\array_key_exists('RefCount', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('RefCount', \Docker\Api\Model\VolumeUsageData::class);
         }
         if (\array_key_exists('RefCount', $data)) {
             $object->refCount = $data['RefCount'];

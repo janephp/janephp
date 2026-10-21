@@ -37,13 +37,22 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('position', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('position', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\PollOption::class);
+        }
         if (\array_key_exists('position', $data)) {
             $object->position = $data['position'];
             unset($data['position']);
         }
+        if (!\array_key_exists('label', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('label', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\PollOption::class);
+        }
         if (\array_key_exists('label', $data)) {
             $object->label = $data['label'];
             unset($data['label']);
+        }
+        if (!\array_key_exists('votes', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('votes', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\PollOption::class);
         }
         if (\array_key_exists('votes', $data)) {
             $object->votes = $data['votes'];

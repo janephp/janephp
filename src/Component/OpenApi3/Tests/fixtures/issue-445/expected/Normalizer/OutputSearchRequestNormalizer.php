@@ -37,6 +37,9 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\OutputSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }

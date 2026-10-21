@@ -37,6 +37,9 @@ class NfsActionResizeParamsNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('size_gib', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gib', \Jane\Generated\DigitalOcean\Model\NfsActionResizeParams::class);
+        }
         if (\array_key_exists('size_gib', $data)) {
             $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);

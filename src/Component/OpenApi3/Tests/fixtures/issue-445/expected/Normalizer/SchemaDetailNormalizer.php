@@ -43,8 +43,14 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('viewForAll', $data) && \is_int($data['viewForAll'])) {
             $data['viewForAll'] = (bool) $data['viewForAll'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\SchemaDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('schemaNamespace', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemaNamespace', \PicturePark\API\Model\SchemaDetail::class);
         }
         if (\array_key_exists('schemaNamespace', $data)) {
             $object->schemaNamespace = $data['schemaNamespace'];
@@ -54,6 +60,9 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('parentSchemaId', $data)) {
             $object->parentSchemaId = null;
+        }
+        if (!\array_key_exists('types', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('types', \PicturePark\API\Model\SchemaDetail::class);
         }
         if (\array_key_exists('types', $data)) {
             $values = [];
@@ -99,6 +108,9 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
+        }
+        if (!\array_key_exists('displayPatterns', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('displayPatterns', \PicturePark\API\Model\SchemaDetail::class);
         }
         if (\array_key_exists('displayPatterns', $data)) {
             $values_4 = [];
@@ -147,11 +159,20 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('aggregations', $data)) {
             $object->aggregations = null;
         }
+        if (!\array_key_exists('system', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('system', \PicturePark\API\Model\SchemaDetail::class);
+        }
         if (\array_key_exists('system', $data)) {
             $object->system = $data['system'];
         }
+        if (!\array_key_exists('ownerTokenId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ownerTokenId', \PicturePark\API\Model\SchemaDetail::class);
+        }
         if (\array_key_exists('ownerTokenId', $data)) {
             $object->ownerTokenId = $data['ownerTokenId'];
+        }
+        if (!\array_key_exists('viewForAll', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('viewForAll', \PicturePark\API\Model\SchemaDetail::class);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->viewForAll = $data['viewForAll'];

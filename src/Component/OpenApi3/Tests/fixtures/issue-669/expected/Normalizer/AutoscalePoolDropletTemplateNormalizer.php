@@ -47,17 +47,29 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class);
         }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
         }
+        if (!\array_key_exists('image', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('image', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class);
+        }
         if (\array_key_exists('image', $data)) {
             $object->image = $data['image'];
             unset($data['image']);
+        }
+        if (!\array_key_exists('ssh_keys', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('ssh_keys', \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class);
         }
         if (\array_key_exists('ssh_keys', $data)) {
             $values = [];

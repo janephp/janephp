@@ -49,8 +49,14 @@ class ApCreateAPNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('bssColoringEnable', $data) && \is_int($data['bssColoringEnable'])) {
             $data['bssColoringEnable'] = (bool) $data['bssColoringEnable'];
         }
+        if (!\array_key_exists('mac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('mac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCreateAP::class);
+        }
         if (\array_key_exists('mac', $data)) {
             $object->mac = $data['mac'];
+        }
+        if (!\array_key_exists('zoneId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('zoneId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCreateAP::class);
         }
         if (\array_key_exists('zoneId', $data)) {
             $object->zoneId = $data['zoneId'];

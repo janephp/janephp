@@ -46,8 +46,14 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
             $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\ShareOutputBase::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
+        }
+        if (!\array_key_exists('outputFormatId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputFormatId', \PicturePark\API\Model\ShareOutputBase::class);
         }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = $data['outputFormatId'];
@@ -74,8 +80,14 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('detail', $data)) {
             $object->detail = null;
         }
+        if (!\array_key_exists('dynamicRendering', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('dynamicRendering', \PicturePark\API\Model\ShareOutputBase::class);
+        }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->dynamicRendering = $data['dynamicRendering'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareOutputBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

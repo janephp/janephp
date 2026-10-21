@@ -37,17 +37,29 @@ class ConnectionPoolNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\ConnectionPool::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('mode', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('mode', \Jane\Generated\DigitalOcean\Model\ConnectionPool::class);
         }
         if (\array_key_exists('mode', $data)) {
             $object->mode = $data['mode'];
             unset($data['mode']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\ConnectionPool::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('db', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('db', \Jane\Generated\DigitalOcean\Model\ConnectionPool::class);
         }
         if (\array_key_exists('db', $data)) {
             $object->db = $data['db'];

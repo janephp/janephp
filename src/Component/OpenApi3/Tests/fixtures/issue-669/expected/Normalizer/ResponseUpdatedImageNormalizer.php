@@ -37,6 +37,9 @@ class ResponseUpdatedImageNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('image', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('image', \Jane\Generated\DigitalOcean\Model\ResponseUpdatedImage::class);
+        }
         if (\array_key_exists('image', $data)) {
             $object->image = $this->denormalizer->denormalize($data['image'], \Jane\Generated\DigitalOcean\Model\Image::class, 'json', $context);
             unset($data['image']);

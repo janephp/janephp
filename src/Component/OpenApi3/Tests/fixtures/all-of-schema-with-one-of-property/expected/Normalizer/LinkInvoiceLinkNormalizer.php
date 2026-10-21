@@ -37,8 +37,14 @@ class LinkInvoiceLinkNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('invoiceId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\MissingRequiredPropertyException('invoiceId', \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink::class);
+        }
         if (\array_key_exists('invoiceId', $data)) {
             $object->invoiceId = $data['invoiceId'];
+        }
+        if (!\array_key_exists('discriminator', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\MissingRequiredPropertyException('discriminator', \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink::class);
         }
         if (\array_key_exists('discriminator', $data)) {
             $object->discriminator = $data['discriminator'];

@@ -43,11 +43,20 @@ class SystemModifyDataPlaneNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('isDataCenter', $data) && \is_int($data['isDataCenter'])) {
             $data['isDataCenter'] = (bool) $data['isDataCenter'];
         }
+        if (!\array_key_exists('interfaceMode', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('interfaceMode', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class);
+        }
         if (\array_key_exists('interfaceMode', $data)) {
             $object->interfaceMode = $data['interfaceMode'];
         }
+        if (!\array_key_exists('primaryInterface', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primaryInterface', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class);
+        }
         if (\array_key_exists('primaryInterface', $data)) {
             $object->primaryInterface = $this->denormalizer->denormalize($data['primaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemPrimaryInterface::class, 'json', $context);
+        }
+        if (!\array_key_exists('ipv6PrimaryInterface', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipv6PrimaryInterface', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class);
         }
         if (\array_key_exists('ipv6PrimaryInterface', $data)) {
             $object->ipv6PrimaryInterface = $this->denormalizer->denormalize($data['ipv6PrimaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6PrimaryInterface::class, 'json', $context);

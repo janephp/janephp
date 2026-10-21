@@ -40,11 +40,20 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginMountConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\PluginMount::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }
+        if (!\array_key_exists('Description', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Description', \Docker\Api\Model\PluginMount::class);
+        }
         if (\array_key_exists('Description', $data)) {
             $object->description = $data['Description'];
+        }
+        if (!\array_key_exists('Settable', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Settable', \Docker\Api\Model\PluginMount::class);
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
@@ -53,14 +62,26 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->settable = $values;
         }
+        if (!\array_key_exists('Source', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Source', \Docker\Api\Model\PluginMount::class);
+        }
         if (\array_key_exists('Source', $data)) {
             $object->source = $data['Source'];
+        }
+        if (!\array_key_exists('Destination', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Destination', \Docker\Api\Model\PluginMount::class);
         }
         if (\array_key_exists('Destination', $data)) {
             $object->destination = $data['Destination'];
         }
+        if (!\array_key_exists('Type', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Type', \Docker\Api\Model\PluginMount::class);
+        }
         if (\array_key_exists('Type', $data)) {
             $object->type = $data['Type'];
+        }
+        if (!\array_key_exists('Options', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Options', \Docker\Api\Model\PluginMount::class);
         }
         if (\array_key_exists('Options', $data)) {
             $values_1 = [];

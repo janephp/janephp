@@ -37,13 +37,22 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('start', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('start', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UrlEntity::class);
+        }
         if (\array_key_exists('start', $data)) {
             $object->start = $data['start'];
             unset($data['start']);
         }
+        if (!\array_key_exists('end', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('end', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UrlEntity::class);
+        }
         if (\array_key_exists('end', $data)) {
             $object->end = $data['end'];
             unset($data['end']);
+        }
+        if (!\array_key_exists('url', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('url', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\UrlEntity::class);
         }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];

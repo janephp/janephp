@@ -47,8 +47,14 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
+        if (!\array_key_exists('contentSchemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSchemaId', \PicturePark\API\Model\Content::class);
+        }
         if (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = $data['contentSchemaId'];
+        }
+        if (!\array_key_exists('contentType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentType', \PicturePark\API\Model\Content::class);
         }
         if (\array_key_exists('contentType', $data)) {
             $value_1 = $data['contentType'];
@@ -67,12 +73,18 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
+        if (!\array_key_exists('displayValues', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('displayValues', \PicturePark\API\Model\Content::class);
+        }
         if (\array_key_exists('displayValues', $data)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['displayValues'] as $key => $value_3) {
                 $values_1[$key] = $value_3;
             }
             $object->displayValues = $values_1;
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\Content::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
@@ -106,6 +118,9 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('brokenRelationTargetIds', $data)) {
             $object->brokenRelationTargetIds = null;
+        }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\Content::class);
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_7 = $data['lifeCycle'];

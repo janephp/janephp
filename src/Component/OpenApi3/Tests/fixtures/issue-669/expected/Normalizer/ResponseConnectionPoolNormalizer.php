@@ -37,6 +37,9 @@ class ResponseConnectionPoolNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('pool', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('pool', \Jane\Generated\DigitalOcean\Model\ResponseConnectionPool::class);
+        }
         if (\array_key_exists('pool', $data)) {
             $object->pool = $this->denormalizer->denormalize($data['pool'], \Jane\Generated\DigitalOcean\Model\ConnectionPool::class, 'json', $context);
             unset($data['pool']);

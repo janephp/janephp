@@ -95,6 +95,9 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
         elseif (\array_key_exists('collectionId', $data)) {
             $object->collectionId = null;
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\ContentAggregationOnChannelRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_4 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -102,12 +105,18 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
             }
             $object->lifeCycleFilter = $value_4;
         }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ContentAggregationOnChannelRequest::class);
+        }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_5 = $data['brokenDependenciesFilter'];
             if (is_string($data['brokenDependenciesFilter'])) {
                 $value_5 = $data['brokenDependenciesFilter'];
             }
             $object->brokenDependenciesFilter = $value_5;
+        }
+        if (!\array_key_exists('searchType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('searchType', \PicturePark\API\Model\ContentAggregationOnChannelRequest::class);
         }
         if (\array_key_exists('searchType', $data)) {
             $value_6 = $data['searchType'];

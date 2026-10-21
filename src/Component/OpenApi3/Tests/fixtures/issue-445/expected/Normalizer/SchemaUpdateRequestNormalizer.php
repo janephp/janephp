@@ -118,6 +118,9 @@ class SchemaUpdateRequestNormalizer implements DenormalizerInterface, Normalizer
         elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
+        if (!\array_key_exists('viewForAll', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('viewForAll', \PicturePark\API\Model\SchemaUpdateRequest::class);
+        }
         if (\array_key_exists('viewForAll', $data)) {
             $object->viewForAll = $data['viewForAll'];
         }

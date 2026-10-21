@@ -37,13 +37,22 @@ class CashtagEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('start', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('start', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CashtagEntity::class);
+        }
         if (\array_key_exists('start', $data)) {
             $object->start = $data['start'];
             unset($data['start']);
         }
+        if (!\array_key_exists('end', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('end', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CashtagEntity::class);
+        }
         if (\array_key_exists('end', $data)) {
             $object->end = $data['end'];
             unset($data['end']);
+        }
+        if (!\array_key_exists('tag', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('tag', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CashtagEntity::class);
         }
         if (\array_key_exists('tag', $data)) {
             $object->tag = $data['tag'];

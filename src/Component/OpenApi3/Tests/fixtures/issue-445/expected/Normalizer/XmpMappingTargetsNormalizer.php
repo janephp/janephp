@@ -37,12 +37,18 @@ class XmpMappingTargetsNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('xmpFields', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('xmpFields', \PicturePark\API\Model\XmpMappingTargets::class);
+        }
         if (\array_key_exists('xmpFields', $data)) {
             $values = [];
             foreach ($data['xmpFields'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\XmpField::class, 'json', $context);
             }
             $object->xmpFields = $values;
+        }
+        if (!\array_key_exists('metadataFields', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('metadataFields', \PicturePark\API\Model\XmpMappingTargets::class);
         }
         if (\array_key_exists('metadataFields', $data)) {
             $values_1 = [];

@@ -37,11 +37,20 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('importedListItemCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('importedListItemCount', \PicturePark\API\Model\ListItemImportResult::class);
+        }
         if (\array_key_exists('importedListItemCount', $data)) {
             $object->importedListItemCount = $data['importedListItemCount'];
         }
+        if (!\array_key_exists('skippedListItemCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('skippedListItemCount', \PicturePark\API\Model\ListItemImportResult::class);
+        }
         if (\array_key_exists('skippedListItemCount', $data)) {
             $object->skippedListItemCount = $data['skippedListItemCount'];
+        }
+        if (!\array_key_exists('totalListItemCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalListItemCount', \PicturePark\API\Model\ListItemImportResult::class);
         }
         if (\array_key_exists('totalListItemCount', $data)) {
             $object->totalListItemCount = $data['totalListItemCount'];

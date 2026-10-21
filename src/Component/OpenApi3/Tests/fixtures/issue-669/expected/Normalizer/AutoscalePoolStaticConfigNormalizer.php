@@ -37,6 +37,9 @@ class AutoscalePoolStaticConfigNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('target_number_instances', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('target_number_instances', \Jane\Generated\DigitalOcean\Model\AutoscalePoolStaticConfig::class);
+        }
         if (\array_key_exists('target_number_instances', $data)) {
             $object->targetNumberInstances = $data['target_number_instances'];
             unset($data['target_number_instances']);

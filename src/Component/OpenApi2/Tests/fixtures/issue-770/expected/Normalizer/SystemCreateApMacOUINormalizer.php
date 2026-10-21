@@ -37,6 +37,9 @@ class SystemCreateApMacOUINormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('oui', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('oui', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCreateApMacOUI::class);
+        }
         if (\array_key_exists('oui', $data)) {
             $object->oui = $data['oui'];
         }

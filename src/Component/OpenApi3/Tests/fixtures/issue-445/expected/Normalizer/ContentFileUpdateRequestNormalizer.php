@@ -37,6 +37,9 @@ class ContentFileUpdateRequestNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('fileTransferId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferId', \PicturePark\API\Model\ContentFileUpdateRequest::class);
+        }
         if (\array_key_exists('fileTransferId', $data)) {
             $object->fileTransferId = $data['fileTransferId'];
         }

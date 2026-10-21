@@ -29,6 +29,7 @@ class RuntimeGenerator implements GeneratorInterface
         'ValidatorTrait' => ['class' => 'ValidatorTrait', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorTrait.php', 'file' => 'ValidatorTrait.php', 'requires' => ['ValidationException']],
         'ReferenceNormalizer' => ['class' => 'ReferenceNormalizer', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ReferenceNormalizer.php', 'file' => 'ReferenceNormalizer.php'],
         'InvalidDateException' => ['class' => 'InvalidDateException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/InvalidDateException.php', 'file' => 'InvalidDateException.php'],
+        'MissingRequiredPropertyException' => ['class' => 'MissingRequiredPropertyException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/MissingRequiredPropertyException.php', 'file' => 'MissingRequiredPropertyException.php'],
         'ValidationException' => ['class' => 'ValidationException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidationException.php', 'file' => 'ValidationException.php'],
     ];
 

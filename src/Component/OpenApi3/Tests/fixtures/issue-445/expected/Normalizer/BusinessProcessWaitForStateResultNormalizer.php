@@ -43,6 +43,9 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
         elseif (\array_key_exists('stateHit', $data)) {
             $object->stateHit = null;
         }
+        if (!\array_key_exists('businessProcess', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('businessProcess', \PicturePark\API\Model\BusinessProcessWaitForStateResult::class);
+        }
         if (\array_key_exists('businessProcess', $data)) {
             $value = $data['businessProcess'];
             if (is_array($data['businessProcess']) and \array_key_exists('id', $data['businessProcess']) and \array_key_exists('processDefinitionId', $data['businessProcess']) and \array_key_exists('supportsCancellation', $data['businessProcess']) and \array_key_exists('businessProcessScope', $data['businessProcess']) and \array_key_exists('lifeCycle', $data['businessProcess']) and \array_key_exists('startDate', $data['businessProcess']) and \array_key_exists('endDate', $data['businessProcess']) and \array_key_exists('finished', $data['businessProcess']) and \array_key_exists('kind', $data['businessProcess'])) {

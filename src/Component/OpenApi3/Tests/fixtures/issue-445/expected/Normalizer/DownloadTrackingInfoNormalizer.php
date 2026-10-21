@@ -61,6 +61,9 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('height', $data)) {
             $object->height = null;
         }
+        if (!\array_key_exists('contentDisposition', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentDisposition', \PicturePark\API\Model\DownloadTrackingInfo::class);
+        }
         if (\array_key_exists('contentDisposition', $data)) {
             $object->contentDisposition = $data['contentDisposition'];
         }

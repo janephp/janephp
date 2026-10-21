@@ -37,6 +37,9 @@ class V2LoadBalancersLbIdDropletsPostBodyNormalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('droplet_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_ids', \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsPostBody::class);
+        }
         if (\array_key_exists('droplet_ids', $data)) {
             $values = [];
             foreach ($data['droplet_ids'] as $value) {

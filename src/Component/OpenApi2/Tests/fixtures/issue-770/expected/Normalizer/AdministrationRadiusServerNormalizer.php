@@ -40,11 +40,17 @@ class AdministrationRadiusServerNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('tlsEnabled', $data) && \is_int($data['tlsEnabled'])) {
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRadiusServer::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
         }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRadiusServer::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
@@ -54,6 +60,9 @@ class AdministrationRadiusServerNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('sharedSecret', $data)) {
             $object->sharedSecret = $data['sharedSecret'];
+        }
+        if (!\array_key_exists('ipFqdn', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipFqdn', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRadiusServer::class);
         }
         if (\array_key_exists('ipFqdn', $data)) {
             $object->ipFqdn = $data['ipFqdn'];

@@ -43,9 +43,15 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (array_key_exists('petType', $data) and 'dog_in_snake_case' === $data['petType']) {
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\DogInSnakeCase', $format, $context);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\Pet::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('petType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\MissingRequiredPropertyException('petType', \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\Pet::class);
         }
         if (\array_key_exists('petType', $data)) {
             $object->petType = $data['petType'];

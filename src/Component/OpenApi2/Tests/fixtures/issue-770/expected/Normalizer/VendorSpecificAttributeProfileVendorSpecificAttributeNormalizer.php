@@ -37,17 +37,32 @@ class VendorSpecificAttributeProfileVendorSpecificAttributeNormalizer implements
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('vendorId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('vendorId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileVendorSpecificAttribute::class);
+        }
         if (\array_key_exists('vendorId', $data)) {
             $object->vendorId = $data['vendorId'];
+        }
+        if (!\array_key_exists('keyId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('keyId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileVendorSpecificAttribute::class);
         }
         if (\array_key_exists('keyId', $data)) {
             $object->keyId = $data['keyId'];
         }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileVendorSpecificAttribute::class);
+        }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileVendorSpecificAttribute::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
+        }
+        if (!\array_key_exists('supportedRadiusProtocol', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('supportedRadiusProtocol', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileVendorSpecificAttribute::class);
         }
         if (\array_key_exists('supportedRadiusProtocol', $data)) {
             $object->supportedRadiusProtocol = $data['supportedRadiusProtocol'];

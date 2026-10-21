@@ -43,6 +43,9 @@ class PortalserviceCreateHotspot20VenueProfileNormalizer implements Denormalizer
         if (\array_key_exists('uplinkSpeedInKbps', $data) && \is_int($data['uplinkSpeedInKbps'])) {
             $data['uplinkSpeedInKbps'] = (float) $data['uplinkSpeedInKbps'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20VenueProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -60,6 +63,9 @@ class PortalserviceCreateHotspot20VenueProfileNormalizer implements Denormalizer
         }
         if (\array_key_exists('uplinkSpeedInKbps', $data)) {
             $object->uplinkSpeedInKbps = $data['uplinkSpeedInKbps'];
+        }
+        if (!\array_key_exists('venueNames', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('venueNames', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20VenueProfile::class);
         }
         if (\array_key_exists('venueNames', $data)) {
             $values = [];

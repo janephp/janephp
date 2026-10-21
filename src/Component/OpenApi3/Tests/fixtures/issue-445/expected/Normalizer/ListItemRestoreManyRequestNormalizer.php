@@ -40,12 +40,18 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('allowMissingDependencies', $data) && \is_int($data['allowMissingDependencies'])) {
             $data['allowMissingDependencies'] = (bool) $data['allowMissingDependencies'];
         }
+        if (!\array_key_exists('listItemIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('listItemIds', \PicturePark\API\Model\ListItemRestoreManyRequest::class);
+        }
         if (\array_key_exists('listItemIds', $data)) {
             $values = [];
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
             $object->listItemIds = $values;
+        }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\ListItemRestoreManyRequest::class);
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];

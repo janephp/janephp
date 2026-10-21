@@ -64,6 +64,9 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
         elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessRuleTransformation::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

@@ -43,6 +43,9 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('incremental', $data) && \is_int($data['incremental'])) {
             $data['incremental'] = (bool) $data['incremental'];
         }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\Backup::class);
+        }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date) {
@@ -58,6 +61,9 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->createdAt = $date;
             unset($data['created_at']);
+        }
+        if (!\array_key_exists('size_gigabytes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gigabytes', \Jane\Generated\DigitalOcean\Model\Backup::class);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
             $object->sizeGigabytes = $data['size_gigabytes'];

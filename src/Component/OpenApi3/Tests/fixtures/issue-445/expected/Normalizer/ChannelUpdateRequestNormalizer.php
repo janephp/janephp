@@ -50,8 +50,14 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
+        if (!\array_key_exists('sortOrder', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortOrder', \PicturePark\API\Model\ChannelUpdateRequest::class);
+        }
         if (\array_key_exists('sortOrder', $data)) {
             $object->sortOrder = $data['sortOrder'];
+        }
+        if (!\array_key_exists('sortFields', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortFields', \PicturePark\API\Model\ChannelUpdateRequest::class);
         }
         if (\array_key_exists('sortFields', $data)) {
             $values_1 = [];
@@ -59,6 +65,9 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\SortField::class, 'json', $context);
             }
             $object->sortFields = $values_1;
+        }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\ChannelUpdateRequest::class);
         }
         if (\array_key_exists('names', $data)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
@@ -126,6 +135,9 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('missingResultsDisplayPatterns', $data)) {
             $object->missingResultsDisplayPatterns = null;
+        }
+        if (!\array_key_exists('viewForAll', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('viewForAll', \PicturePark\API\Model\ChannelUpdateRequest::class);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->viewForAll = $data['viewForAll'];

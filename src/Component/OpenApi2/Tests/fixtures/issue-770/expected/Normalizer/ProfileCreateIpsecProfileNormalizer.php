@@ -46,6 +46,9 @@ class ProfileCreateIpsecProfileNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -70,11 +73,17 @@ class ProfileCreateIpsecProfileNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('espSecurityAssociation', $data)) {
             $object->espSecurityAssociation = $this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileEspSecurityAssociationContent::class, 'json', $context);
         }
+        if (!\array_key_exists('ikeRekeyTime', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ikeRekeyTime', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile::class);
+        }
         if (\array_key_exists('ikeRekeyTime', $data)) {
             $object->ikeRekeyTime = $data['ikeRekeyTime'];
         }
         if (\array_key_exists('ikeRekeyTimeUnit', $data)) {
             $object->ikeRekeyTimeUnit = $data['ikeRekeyTimeUnit'];
+        }
+        if (!\array_key_exists('espRekeyTime', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('espRekeyTime', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile::class);
         }
         if (\array_key_exists('espRekeyTime', $data)) {
             $object->espRekeyTime = $data['espRekeyTime'];
@@ -87,6 +96,9 @@ class ProfileCreateIpsecProfileNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('advancedOption', $data)) {
             $object->advancedOption = $this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAdvancedOptionContent::class, 'json', $context);
+        }
+        if (!\array_key_exists('ipMode', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipMode', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile::class);
         }
         if (\array_key_exists('ipMode', $data)) {
             $object->ipMode = $data['ipMode'];

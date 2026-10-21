@@ -37,8 +37,14 @@ class DnsSpoofingProfileDnsSpoofingRuleNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingRule::class);
+        }
         if (\array_key_exists('domainName', $data)) {
             $object->domainName = $data['domainName'];
+        }
+        if (!\array_key_exists('ipList', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipList', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingRule::class);
         }
         if (\array_key_exists('ipList', $data)) {
             $values = [];

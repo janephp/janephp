@@ -43,8 +43,14 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('errorType', $data)) {
             $object->errorType = null;
         }
+        if (!\array_key_exists('lineNumber', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lineNumber', \PicturePark\API\Model\MetadataError::class);
+        }
         if (\array_key_exists('lineNumber', $data)) {
             $object->lineNumber = $data['lineNumber'];
+        }
+        if (!\array_key_exists('linePosition', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('linePosition', \PicturePark\API\Model\MetadataError::class);
         }
         if (\array_key_exists('linePosition', $data)) {
             $object->linePosition = $data['linePosition'];

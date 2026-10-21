@@ -40,9 +40,15 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
         if (\array_key_exists('probability', $data) && \is_int($data['probability'])) {
             $data['probability'] = (float) $data['probability'];
         }
+        if (!\array_key_exists('start', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('start', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\FullTextEntitiesAnnotationsItem::class);
+        }
         if (\array_key_exists('start', $data)) {
             $object->start = $data['start'];
             unset($data['start']);
+        }
+        if (!\array_key_exists('end', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('end', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\FullTextEntitiesAnnotationsItem::class);
         }
         if (\array_key_exists('end', $data)) {
             $object->end = $data['end'];

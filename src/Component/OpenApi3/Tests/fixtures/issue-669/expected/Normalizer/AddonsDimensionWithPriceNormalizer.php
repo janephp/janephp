@@ -37,25 +37,43 @@ class AddonsDimensionWithPriceNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('sku', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('sku', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
         }
         if (\array_key_exists('sku', $data)) {
             $object->sku = $data['sku'];
             unset($data['sku']);
         }
+        if (!\array_key_exists('slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slug', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
+        }
         if (\array_key_exists('slug', $data)) {
             $object->slug = $data['slug'];
             unset($data['slug']);
+        }
+        if (!\array_key_exists('display_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('display_name', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
         }
         if (\array_key_exists('display_name', $data)) {
             $object->displayName = $data['display_name'];
             unset($data['display_name']);
         }
+        if (!\array_key_exists('feature_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('feature_name', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
+        }
         if (\array_key_exists('feature_name', $data)) {
             $object->featureName = $data['feature_name'];
             unset($data['feature_name']);
+        }
+        if (!\array_key_exists('volumes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('volumes', \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class);
         }
         if (\array_key_exists('volumes', $data)) {
             $values = [];

@@ -49,14 +49,26 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('DockerVersion', $data)) {
             $object->dockerVersion = $data['DockerVersion'];
         }
+        if (!\array_key_exists('Description', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Description', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('Description', $data)) {
             $object->description = $data['Description'];
+        }
+        if (!\array_key_exists('Documentation', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Documentation', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('Documentation', $data)) {
             $object->documentation = $data['Documentation'];
         }
+        if (!\array_key_exists('Interface', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Interface', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('Interface', $data)) {
             $object->interface = $this->denormalizer->denormalize($data['Interface'], \Docker\Api\Model\PluginConfigInterface::class, 'json', $context);
+        }
+        if (!\array_key_exists('Entrypoint', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Entrypoint', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('Entrypoint', $data)) {
             $values = [];
@@ -65,26 +77,47 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->entrypoint = $values;
         }
+        if (!\array_key_exists('WorkDir', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('WorkDir', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('WorkDir', $data)) {
             $object->workDir = $data['WorkDir'];
         }
         if (\array_key_exists('User', $data)) {
             $object->user = $this->denormalizer->denormalize($data['User'], \Docker\Api\Model\PluginConfigUser::class, 'json', $context);
         }
+        if (!\array_key_exists('Network', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Network', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('Network', $data)) {
             $object->network = $this->denormalizer->denormalize($data['Network'], \Docker\Api\Model\PluginConfigNetwork::class, 'json', $context);
+        }
+        if (!\array_key_exists('Linux', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Linux', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('Linux', $data)) {
             $object->linux = $this->denormalizer->denormalize($data['Linux'], \Docker\Api\Model\PluginConfigLinux::class, 'json', $context);
         }
+        if (!\array_key_exists('PropagatedMount', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('PropagatedMount', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('PropagatedMount', $data)) {
             $object->propagatedMount = $data['PropagatedMount'];
+        }
+        if (!\array_key_exists('IpcHost', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('IpcHost', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('IpcHost', $data)) {
             $object->ipcHost = $data['IpcHost'];
         }
+        if (!\array_key_exists('PidHost', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('PidHost', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('PidHost', $data)) {
             $object->pidHost = $data['PidHost'];
+        }
+        if (!\array_key_exists('Mounts', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Mounts', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('Mounts', $data)) {
             $values_1 = [];
@@ -93,12 +126,18 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->mounts = $values_1;
         }
+        if (!\array_key_exists('Env', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Env', \Docker\Api\Model\PluginConfig::class);
+        }
         if (\array_key_exists('Env', $data)) {
             $values_2 = [];
             foreach ($data['Env'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Docker\Api\Model\PluginEnv::class, 'json', $context);
             }
             $object->env = $values_2;
+        }
+        if (!\array_key_exists('Args', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Args', \Docker\Api\Model\PluginConfig::class);
         }
         if (\array_key_exists('Args', $data)) {
             $object->args = $this->denormalizer->denormalize($data['Args'], \Docker\Api\Model\PluginConfigArgs::class, 'json', $context);

@@ -63,13 +63,22 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->id = null;
             unset($data['id']);
         }
+        if (!\array_key_exists('required', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('required', \PicturePark\API\Model\FieldOverwriteMultiTagbox::class);
+        }
         if (\array_key_exists('required', $data)) {
             $object->required = $data['required'];
             unset($data['required']);
         }
+        if (!\array_key_exists('overwriteRequired', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('overwriteRequired', \PicturePark\API\Model\FieldOverwriteMultiTagbox::class);
+        }
         if (\array_key_exists('overwriteRequired', $data)) {
             $object->overwriteRequired = $data['overwriteRequired'];
             unset($data['overwriteRequired']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\FieldOverwriteMultiTagbox::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

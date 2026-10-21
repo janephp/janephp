@@ -94,6 +94,9 @@ class ZoneCreateZoneNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('enforcePriorityDpGroupEnable', $data)) {
             $object->enforcePriorityDpGroupEnable = $data['enforcePriorityDpGroupEnable'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -105,6 +108,9 @@ class ZoneCreateZoneNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->countryCode = $data['countryCode'];
+        }
+        if (!\array_key_exists('login', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('login', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone::class);
         }
         if (\array_key_exists('login', $data)) {
             $object->login = $this->denormalizer->denormalize($data['login'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApLogin::class, 'json', $context);

@@ -40,6 +40,9 @@ class MulticastForwardingSettingNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
             $data['enabled'] = (bool) $data['enabled'];
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
         }

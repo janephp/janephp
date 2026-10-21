@@ -37,6 +37,9 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('error', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('error', \Jane\Generated\DigitalOcean\Model\ErrorWithRootCauses::class);
+        }
         if (\array_key_exists('error', $data)) {
             $object->error = $data['error'];
             unset($data['error']);
@@ -52,6 +55,9 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
         elseif (\array_key_exists('messages', $data)) {
             $object->messages = null;
             unset($data['messages']);
+        }
+        if (!\array_key_exists('root_causes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('root_causes', \Jane\Generated\DigitalOcean\Model\ErrorWithRootCauses::class);
         }
         if (\array_key_exists('root_causes', $data)) {
             $values_1 = [];

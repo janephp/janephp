@@ -37,6 +37,9 @@ class CertificateCreateTrustedCAChainNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateTrustedCAChain::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -49,6 +52,9 @@ class CertificateCreateTrustedCAChainNormalizer implements DenormalizerInterface
                 $values[] = $value;
             }
             $object->interCertData = $values;
+        }
+        if (!\array_key_exists('rootCertData', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('rootCertData', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateTrustedCAChain::class);
         }
         if (\array_key_exists('rootCertData', $data)) {
             $object->rootCertData = $data['rootCertData'];

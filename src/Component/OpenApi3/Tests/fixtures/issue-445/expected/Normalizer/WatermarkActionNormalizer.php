@@ -46,6 +46,9 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('heightRatio', $data) && \is_int($data['heightRatio'])) {
             $data['heightRatio'] = (float) $data['heightRatio'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\WatermarkAction::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

@@ -40,17 +40,29 @@ class IdentityCreateIdentityUserRoleNormalizer implements DenormalizerInterface,
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('userTrafficProfile', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userTrafficProfile', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole::class);
+        }
         if (\array_key_exists('userTrafficProfile', $data)) {
             $object->userTrafficProfile = $this->denormalizer->denormalize($data['userTrafficProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
+        if (!\array_key_exists('firewallProfileId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('firewallProfileId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole::class);
+        }
         if (\array_key_exists('firewallProfileId', $data)) {
             $object->firewallProfileId = $data['firewallProfileId'];
+        }
+        if (!\array_key_exists('maxDevices', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('maxDevices', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole::class);
         }
         if (\array_key_exists('maxDevices', $data)) {
             $object->maxDevices = $this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityMaxDevices::class, 'json', $context);

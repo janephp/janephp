@@ -37,6 +37,9 @@ class AppsCreateAppRequestNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('spec', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('spec', \Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest::class);
+        }
         if (\array_key_exists('spec', $data)) {
             $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);

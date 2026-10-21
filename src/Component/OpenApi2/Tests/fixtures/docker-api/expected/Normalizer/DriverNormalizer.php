@@ -40,6 +40,9 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\DriverConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\Driver::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }

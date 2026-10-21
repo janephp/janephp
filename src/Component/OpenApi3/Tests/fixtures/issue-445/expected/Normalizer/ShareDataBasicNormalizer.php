@@ -37,13 +37,22 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('url', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('url', \PicturePark\API\Model\ShareDataBasic::class);
+        }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];
             unset($data['url']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareDataBasic::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('mailRecipients', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('mailRecipients', \PicturePark\API\Model\ShareDataBasic::class);
         }
         if (\array_key_exists('mailRecipients', $data)) {
             $values = [];
@@ -52,6 +61,9 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->mailRecipients = $values;
             unset($data['mailRecipients']);
+        }
+        if (!\array_key_exists('internalRecipients', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('internalRecipients', \PicturePark\API\Model\ShareDataBasic::class);
         }
         if (\array_key_exists('internalRecipients', $data)) {
             $values_1 = [];

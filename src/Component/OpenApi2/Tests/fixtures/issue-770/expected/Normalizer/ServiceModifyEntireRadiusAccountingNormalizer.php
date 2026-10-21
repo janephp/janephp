@@ -46,6 +46,9 @@ class ServiceModifyEntireRadiusAccountingNormalizer implements DenormalizerInter
         if (\array_key_exists('standbyTlsEnabled', $data) && \is_int($data['standbyTlsEnabled'])) {
             $data['standbyTlsEnabled'] = (bool) $data['standbyTlsEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -55,11 +58,17 @@ class ServiceModifyEntireRadiusAccountingNormalizer implements DenormalizerInter
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('primary', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primary', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting::class);
         }
         if (\array_key_exists('primary', $data)) {
             $object->primary = $this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context);
@@ -69,6 +78,9 @@ class ServiceModifyEntireRadiusAccountingNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('healthCheckPolicy', $data)) {
             $object->healthCheckPolicy = $this->denormalizer->denormalize($data['healthCheckPolicy'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class, 'json', $context);
+        }
+        if (!\array_key_exists('rateLimiting', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('rateLimiting', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting::class);
         }
         if (\array_key_exists('rateLimiting', $data)) {
             $object->rateLimiting = $this->denormalizer->denormalize($data['rateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class, 'json', $context);

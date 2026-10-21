@@ -45,6 +45,9 @@ class TagboxItemUnassignedConditionNormalizer implements DenormalizerInterface, 
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TagboxItemUnassignedCondition::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

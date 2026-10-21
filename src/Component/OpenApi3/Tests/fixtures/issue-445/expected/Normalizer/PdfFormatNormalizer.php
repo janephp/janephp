@@ -46,6 +46,9 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('extractFullText', $data) && \is_int($data['extractFullText'])) {
             $data['extractFullText'] = (bool) $data['extractFullText'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\PdfFormat::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

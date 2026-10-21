@@ -40,13 +40,22 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('has_config', $data) && \is_int($data['has_config'])) {
             $data['has_config'] = (bool) $data['has_config'];
         }
+        if (!\array_key_exists('uuid', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('uuid', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
+        }
         if (\array_key_exists('uuid', $data)) {
             $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('state', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('state', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
         }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
@@ -56,6 +65,9 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
             $object->appName = $data['app_name'];
             unset($data['app_name']);
         }
+        if (!\array_key_exists('app_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('app_slug', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
+        }
         if (\array_key_exists('app_slug', $data)) {
             $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
@@ -64,6 +76,9 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
             $object->planName = $data['plan_name'];
             unset($data['plan_name']);
         }
+        if (!\array_key_exists('plan_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('plan_slug', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
+        }
         if (\array_key_exists('plan_slug', $data)) {
             $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);
@@ -71,6 +86,9 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('plan_price_per_month', $data)) {
             $object->planPricePerMonth = $data['plan_price_per_month'];
             unset($data['plan_price_per_month']);
+        }
+        if (!\array_key_exists('has_config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('has_config', \Jane\Generated\DigitalOcean\Model\AddonsResource::class);
         }
         if (\array_key_exists('has_config', $data)) {
             $object->hasConfig = $data['has_config'];

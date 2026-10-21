@@ -49,13 +49,22 @@ class VideoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->durationMs = $data['duration_ms'];
             unset($data['duration_ms']);
         }
+        if (!\array_key_exists('media_key', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('media_key', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Video::class);
+        }
         if (\array_key_exists('media_key', $data)) {
             $object->mediaKey = $data['media_key'];
             unset($data['media_key']);
         }
+        if (!\array_key_exists('height', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('height', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Video::class);
+        }
         if (\array_key_exists('height', $data)) {
             $object->height = $data['height'];
             unset($data['height']);
+        }
+        if (!\array_key_exists('width', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('width', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Video::class);
         }
         if (\array_key_exists('width', $data)) {
             $object->width = $data['width'];

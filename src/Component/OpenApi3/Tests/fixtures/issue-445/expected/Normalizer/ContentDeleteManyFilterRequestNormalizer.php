@@ -43,6 +43,9 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('filterRequest', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('filterRequest', \PicturePark\API\Model\ContentDeleteManyFilterRequest::class);
+        }
         if (\array_key_exists('filterRequest', $data)) {
             $value = $data['filterRequest'];
             if (is_array($data['filterRequest']) and \array_key_exists('searchType', $data['filterRequest']) and \array_key_exists('lifeCycleFilter', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
@@ -50,8 +53,14 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
             }
             $object->filterRequest = $value;
         }
+        if (!\array_key_exists('forceReferenceRemoval', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('forceReferenceRemoval', \PicturePark\API\Model\ContentDeleteManyFilterRequest::class);
+        }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
             $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ContentDeleteManyFilterRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

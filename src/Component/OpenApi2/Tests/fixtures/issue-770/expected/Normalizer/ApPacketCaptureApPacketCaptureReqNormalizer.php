@@ -37,6 +37,9 @@ class ApPacketCaptureApPacketCaptureReqNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('captureInterface', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('captureInterface', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq::class);
+        }
         if (\array_key_exists('captureInterface', $data)) {
             $object->captureInterface = $data['captureInterface'];
         }

@@ -37,6 +37,9 @@ class GlobalEcoScoreNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('emission_factors', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\MissingRequiredPropertyException('emission_factors', \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\GlobalEcoScore::class);
+        }
         if (\array_key_exists('emission_factors', $data) && $data['emission_factors'] !== null) {
             $value = $data['emission_factors'];
             if (is_array($data['emission_factors']) && $this->isOnlyNumericKeys($data['emission_factors'])) {
@@ -52,6 +55,9 @@ class GlobalEcoScoreNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('emission_factors', $data)) {
             $object->emissionFactors = null;
+        }
+        if (!\array_key_exists('tracingId', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\MissingRequiredPropertyException('tracingId', \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\GlobalEcoScore::class);
         }
         if (\array_key_exists('tracingId', $data)) {
             $object->tracingId = $data['tracingId'];

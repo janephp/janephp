@@ -37,6 +37,9 @@ class WlanWlanScheduleNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanSchedule::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
         }

@@ -40,9 +40,15 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('isDefault', $data) && \is_int($data['isDefault'])) {
             $data['isDefault'] = (bool) $data['isDefault'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \CreditSafe\API\Model\PortfolioRequest::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('isDefault', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('isDefault', \CreditSafe\API\Model\PortfolioRequest::class);
         }
         if (\array_key_exists('isDefault', $data)) {
             $object->isDefault = $data['isDefault'];

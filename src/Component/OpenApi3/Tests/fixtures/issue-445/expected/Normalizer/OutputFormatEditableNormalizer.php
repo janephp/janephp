@@ -67,6 +67,9 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             $object->format = null;
             unset($data['format']);
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\OutputFormatEditable::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value_2 = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {

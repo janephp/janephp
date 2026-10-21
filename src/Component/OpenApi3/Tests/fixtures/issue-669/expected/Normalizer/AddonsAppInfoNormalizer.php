@@ -37,17 +37,29 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('app_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('app_slug', \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class);
+        }
         if (\array_key_exists('app_slug', $data)) {
             $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
+        }
+        if (!\array_key_exists('tos', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tos', \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class);
         }
         if (\array_key_exists('tos', $data)) {
             $object->tos = $data['tos'];
             unset($data['tos']);
         }
+        if (!\array_key_exists('eula', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('eula', \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class);
+        }
         if (\array_key_exists('eula', $data)) {
             $object->eula = $data['eula'];
             unset($data['eula']);
+        }
+        if (!\array_key_exists('plans', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('plans', \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class);
         }
         if (\array_key_exists('plans', $data)) {
             $values = [];

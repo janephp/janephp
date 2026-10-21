@@ -37,6 +37,9 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('from', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('from', \PicturePark\API\Model\DocumentHistorySearchRequest::class);
+        }
         if (\array_key_exists('from', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['from']);
             if (false === $date) {
@@ -51,6 +54,9 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
                 }
             }
             $object->from = $date;
+        }
+        if (!\array_key_exists('to', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('to', \PicturePark\API\Model\DocumentHistorySearchRequest::class);
         }
         if (\array_key_exists('to', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']);
@@ -67,6 +73,9 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
             }
             $object->to = $date_1;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\DocumentHistorySearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }
@@ -81,6 +90,9 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
+        }
+        if (!\array_key_exists('documentVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentVersion', \PicturePark\API\Model\DocumentHistorySearchRequest::class);
         }
         if (\array_key_exists('documentVersion', $data)) {
             $object->documentVersion = $data['documentVersion'];

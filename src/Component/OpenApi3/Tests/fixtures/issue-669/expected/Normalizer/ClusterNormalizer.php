@@ -53,13 +53,22 @@ class ClusterNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\Cluster::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\Cluster::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('version', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('version', \Jane\Generated\DigitalOcean\Model\Cluster::class);
         }
         if (\array_key_exists('version', $data)) {
             $object->version = $data['version'];
@@ -92,6 +101,9 @@ class ClusterNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->tags = $values;
             unset($data['tags']);
+        }
+        if (!\array_key_exists('node_pools', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('node_pools', \Jane\Generated\DigitalOcean\Model\Cluster::class);
         }
         if (\array_key_exists('node_pools', $data)) {
             $values_1 = [];

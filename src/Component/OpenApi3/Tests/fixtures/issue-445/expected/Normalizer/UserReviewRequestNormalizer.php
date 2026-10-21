@@ -40,6 +40,9 @@ class UserReviewRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('reviewed', $data) && \is_int($data['reviewed'])) {
             $data['reviewed'] = (bool) $data['reviewed'];
         }
+        if (!\array_key_exists('reviewed', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('reviewed', \PicturePark\API\Model\UserReviewRequest::class);
+        }
         if (\array_key_exists('reviewed', $data)) {
             $object->reviewed = $data['reviewed'];
         }

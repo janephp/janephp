@@ -53,6 +53,9 @@ class FileTransferSearchRequestNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\FileTransferSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }

@@ -47,9 +47,15 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->format = $data['format'];
             unset($data['format']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -67,17 +73,29 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('username', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('username', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
         }
         if (\array_key_exists('username', $data)) {
             $object->username = $data['username'];
             unset($data['username']);
         }
+        if (!\array_key_exists('protected', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('protected', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
+        }
         if (\array_key_exists('protected', $data)) {
             $object->protected = $data['protected'];
             unset($data['protected']);
+        }
+        if (!\array_key_exists('verified', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('verified', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class);
         }
         if (\array_key_exists('verified', $data)) {
             $object->verified = $data['verified'];

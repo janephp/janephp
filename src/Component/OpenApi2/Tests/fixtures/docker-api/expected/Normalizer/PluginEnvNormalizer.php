@@ -40,11 +40,20 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginEnvConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\PluginEnv::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }
+        if (!\array_key_exists('Description', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Description', \Docker\Api\Model\PluginEnv::class);
+        }
         if (\array_key_exists('Description', $data)) {
             $object->description = $data['Description'];
+        }
+        if (!\array_key_exists('Settable', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Settable', \Docker\Api\Model\PluginEnv::class);
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
@@ -52,6 +61,9 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $value;
             }
             $object->settable = $values;
+        }
+        if (!\array_key_exists('Value', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Value', \Docker\Api\Model\PluginEnv::class);
         }
         if (\array_key_exists('Value', $data)) {
             $object->value = $data['Value'];

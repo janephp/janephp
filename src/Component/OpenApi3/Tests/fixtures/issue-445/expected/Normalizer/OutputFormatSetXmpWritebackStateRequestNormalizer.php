@@ -40,6 +40,9 @@ class OutputFormatSetXmpWritebackStateRequestNormalizer implements DenormalizerI
         if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
             $data['enabled'] = (bool) $data['enabled'];
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
         }

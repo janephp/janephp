@@ -37,6 +37,9 @@ class RadioBackgroundScanningNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('frequencyInSec', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('frequencyInSec', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioBackgroundScanning::class);
+        }
         if (\array_key_exists('frequencyInSec', $data)) {
             $object->frequencyInSec = $data['frequencyInSec'];
         }

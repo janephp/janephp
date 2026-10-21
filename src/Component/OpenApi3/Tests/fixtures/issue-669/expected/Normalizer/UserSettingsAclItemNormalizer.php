@@ -41,9 +41,15 @@ class UserSettingsAclItemNormalizer implements DenormalizerInterface, Normalizer
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('topic', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('topic', \Jane\Generated\DigitalOcean\Model\UserSettingsAclItem::class);
+        }
         if (\array_key_exists('topic', $data)) {
             $object->topic = $data['topic'];
             unset($data['topic']);
+        }
+        if (!\array_key_exists('permission', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('permission', \Jane\Generated\DigitalOcean\Model\UserSettingsAclItem::class);
         }
         if (\array_key_exists('permission', $data)) {
             $object->permission = $data['permission'];

@@ -40,17 +40,29 @@ class ServiceSecondaryRadiusServerNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('autoFallbackDisable', $data) && \is_int($data['autoFallbackDisable'])) {
             $data['autoFallbackDisable'] = (bool) $data['autoFallbackDisable'];
         }
+        if (!\array_key_exists('autoFallbackDisable', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('autoFallbackDisable', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('autoFallbackDisable', $data)) {
             $object->autoFallbackDisable = $data['autoFallbackDisable'];
         }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
         }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
         }
+        if (!\array_key_exists('sharedSecret', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sharedSecret', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceSecondaryRadiusServer::class);
+        }
         if (\array_key_exists('sharedSecret', $data)) {
             $object->sharedSecret = $data['sharedSecret'];
+        }
+        if (!\array_key_exists('ipFqdn', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipFqdn', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceSecondaryRadiusServer::class);
         }
         if (\array_key_exists('ipFqdn', $data)) {
             $object->ipFqdn = $data['ipFqdn'];

@@ -37,8 +37,14 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('first', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('first', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\PaginationLinks::class);
+        }
         if (\array_key_exists('first', $data)) {
             $object->first = $data['first'];
+        }
+        if (!\array_key_exists('last', $data)) {
+            throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('last', \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\PaginationLinks::class);
         }
         if (\array_key_exists('last', $data)) {
             $object->last = $data['last'];

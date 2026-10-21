@@ -70,8 +70,14 @@ class WlanCreateStandardOpenWlanNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('apHostNameAdvertisementEnabled', $data) && \is_int($data['apHostNameAdvertisementEnabled'])) {
             $data['apHostNameAdvertisementEnabled'] = (bool) $data['apHostNameAdvertisementEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandardOpenWlan::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('ssid', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ssid', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandardOpenWlan::class);
         }
         if (\array_key_exists('ssid', $data)) {
             $object->ssid = $data['ssid'];

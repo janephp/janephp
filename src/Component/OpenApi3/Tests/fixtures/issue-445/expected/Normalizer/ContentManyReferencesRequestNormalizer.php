@@ -37,6 +37,9 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentIds', \PicturePark\API\Model\ContentManyReferencesRequest::class);
+        }
         if (\array_key_exists('contentIds', $data)) {
             $values = [];
             foreach ($data['contentIds'] as $value) {

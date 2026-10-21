@@ -69,6 +69,9 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\UserRoleSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }
@@ -88,6 +91,9 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
+        if (!\array_key_exists('debugMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('debugMode', \PicturePark\API\Model\UserRoleSearchRequest::class);
+        }
         if (\array_key_exists('debugMode', $data)) {
             $object->debugMode = $data['debugMode'];
         }
@@ -100,6 +106,9 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
+        }
+        if (!\array_key_exists('includeAdministratorSystemUserRole', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeAdministratorSystemUserRole', \PicturePark\API\Model\UserRoleSearchRequest::class);
         }
         if (\array_key_exists('includeAdministratorSystemUserRole', $data)) {
             $object->includeAdministratorSystemUserRole = $data['includeAdministratorSystemUserRole'];

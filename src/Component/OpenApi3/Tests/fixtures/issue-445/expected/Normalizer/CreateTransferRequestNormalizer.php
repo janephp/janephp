@@ -40,8 +40,14 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('createCollection', $data) && \is_int($data['createCollection'])) {
             $data['createCollection'] = (bool) $data['createCollection'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\CreateTransferRequest::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('transferType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferType', \PicturePark\API\Model\CreateTransferRequest::class);
         }
         if (\array_key_exists('transferType', $data)) {
             $value = $data['transferType'];
@@ -75,6 +81,9 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('collectionName', $data)) {
             $object->collectionName = null;
+        }
+        if (!\array_key_exists('createCollection', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('createCollection', \PicturePark\API\Model\CreateTransferRequest::class);
         }
         if (\array_key_exists('createCollection', $data)) {
             $object->createCollection = $data['createCollection'];

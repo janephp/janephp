@@ -37,11 +37,20 @@ class SearchFieldCountNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('indexedField', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('indexedField', \PicturePark\API\Model\SearchFieldCount::class);
+        }
         if (\array_key_exists('indexedField', $data)) {
             $object->indexedField = $data['indexedField'];
         }
+        if (!\array_key_exists('simpleSearchField', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('simpleSearchField', \PicturePark\API\Model\SearchFieldCount::class);
+        }
         if (\array_key_exists('simpleSearchField', $data)) {
             $object->simpleSearchField = $data['simpleSearchField'];
+        }
+        if (!\array_key_exists('sortableField', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('sortableField', \PicturePark\API\Model\SearchFieldCount::class);
         }
         if (\array_key_exists('sortableField', $data)) {
             $object->sortableField = $data['sortableField'];

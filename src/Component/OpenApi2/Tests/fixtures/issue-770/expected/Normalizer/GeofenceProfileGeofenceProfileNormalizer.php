@@ -37,14 +37,23 @@ class GeofenceProfileGeofenceProfileNormalizer implements DenormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('radiusMeter', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('radiusMeter', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile::class);
+        }
         if (\array_key_exists('radiusMeter', $data)) {
             $object->radiusMeter = $data['radiusMeter'];
+        }
+        if (!\array_key_exists('locationList', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('locationList', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile::class);
         }
         if (\array_key_exists('locationList', $data)) {
             $values = [];

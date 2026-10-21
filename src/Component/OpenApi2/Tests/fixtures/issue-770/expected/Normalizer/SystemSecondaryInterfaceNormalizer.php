@@ -37,8 +37,14 @@ class SystemSecondaryInterfaceNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ipAddress', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ipAddress', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecondaryInterface::class);
+        }
         if (\array_key_exists('ipAddress', $data)) {
             $object->ipAddress = $data['ipAddress'];
+        }
+        if (!\array_key_exists('subnetMask', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('subnetMask', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecondaryInterface::class);
         }
         if (\array_key_exists('subnetMask', $data)) {
             $object->subnetMask = $data['subnetMask'];

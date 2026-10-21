@@ -43,6 +43,9 @@ class StatusOfSearchIndexStateNormalizer implements DenormalizerInterface, Norma
         elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\StatusOfSearchIndexState::class);
+        }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
         }

@@ -37,6 +37,9 @@ class LogsinkUpdateNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('config', \Jane\Generated\DigitalOcean\Model\LogsinkUpdate::class);
+        }
         if (\array_key_exists('config', $data)) {
             $value = $data['config'];
             if (is_array($data['config']) and \array_key_exists('server', $data['config']) and \array_key_exists('port', $data['config']) and \array_key_exists('tls', $data['config']) and (\array_key_exists('format', $data['config']) and ($data['config']['format'] == 'rfc5424' or $data['config']['format'] == 'rfc3164' or $data['config']['format'] == 'custom'))) {

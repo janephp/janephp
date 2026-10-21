@@ -37,9 +37,15 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('config', \Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate::class);
         }
         if (\array_key_exists('config', $data)) {
             $value = $data['config'];
@@ -50,6 +56,9 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->config = $value;
             unset($data['config']);
+        }
+        if (!\array_key_exists('droplet_template', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_template', \Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate::class);
         }
         if (\array_key_exists('droplet_template', $data)) {
             $object->dropletTemplate = $this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context);

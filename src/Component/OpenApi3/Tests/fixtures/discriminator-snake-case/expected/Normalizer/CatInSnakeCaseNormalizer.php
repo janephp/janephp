@@ -37,13 +37,22 @@ class CatInSnakeCaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\CatInSnakeCase::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('petType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\MissingRequiredPropertyException('petType', \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\CatInSnakeCase::class);
+        }
         if (\array_key_exists('petType', $data)) {
             $object->petType = $data['petType'];
             unset($data['petType']);
+        }
+        if (!\array_key_exists('huntingSkill', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\MissingRequiredPropertyException('huntingSkill', \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\CatInSnakeCase::class);
         }
         if (\array_key_exists('huntingSkill', $data)) {
             $object->huntingSkill = $data['huntingSkill'];

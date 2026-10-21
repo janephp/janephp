@@ -40,6 +40,9 @@ class DomainCreateDomainNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('zeroTouchStatus', $data) && \is_int($data['zeroTouchStatus'])) {
             $data['zeroTouchStatus'] = (bool) $data['zeroTouchStatus'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

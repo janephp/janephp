@@ -52,6 +52,9 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('includeUnspecifiedTiffExtraChannels', $data) && \is_int($data['includeUnspecifiedTiffExtraChannels'])) {
             $data['includeUnspecifiedTiffExtraChannels'] = (bool) $data['includeUnspecifiedTiffExtraChannels'];
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TiffFormat::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

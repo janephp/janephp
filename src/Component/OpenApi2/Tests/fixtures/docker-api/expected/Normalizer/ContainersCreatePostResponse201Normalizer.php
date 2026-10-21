@@ -40,8 +40,14 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersCreatePostResponse201Constraint());
         }
+        if (!\array_key_exists('Id', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Id', \Docker\Api\Model\ContainersCreatePostResponse201::class);
+        }
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
+        }
+        if (!\array_key_exists('Warnings', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Warnings', \Docker\Api\Model\ContainersCreatePostResponse201::class);
         }
         if (\array_key_exists('Warnings', $data)) {
             $values = [];

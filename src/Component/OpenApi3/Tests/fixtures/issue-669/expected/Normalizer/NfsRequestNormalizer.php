@@ -37,17 +37,29 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\NfsRequest::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('size_gib', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size_gib', \Jane\Generated\DigitalOcean\Model\NfsRequest::class);
         }
         if (\array_key_exists('size_gib', $data)) {
             $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\NfsRequest::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('vpc_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpc_ids', \Jane\Generated\DigitalOcean\Model\NfsRequest::class);
         }
         if (\array_key_exists('vpc_ids', $data)) {
             $values = [];

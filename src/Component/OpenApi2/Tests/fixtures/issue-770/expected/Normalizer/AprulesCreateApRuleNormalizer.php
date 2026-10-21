@@ -40,6 +40,9 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
         }
@@ -54,6 +57,9 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('provisionTag', $data)) {
             $object->provisionTag = $data['provisionTag'];
+        }
+        if (!\array_key_exists('mobilityZone', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('mobilityZone', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule::class);
         }
         if (\array_key_exists('mobilityZone', $data)) {
             $object->mobilityZone = $this->denormalizer->denormalize($data['mobilityZone'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);

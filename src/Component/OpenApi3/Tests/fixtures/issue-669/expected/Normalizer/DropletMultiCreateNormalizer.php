@@ -52,6 +52,9 @@ class DropletMultiCreateNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('with_droplet_agent', $data) && \is_int($data['with_droplet_agent'])) {
             $data['with_droplet_agent'] = (bool) $data['with_droplet_agent'];
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('names', \Jane\Generated\DigitalOcean\Model\DropletMultiCreate::class);
+        }
         if (\array_key_exists('names', $data)) {
             $values = [];
             foreach ($data['names'] as $value) {
@@ -64,9 +67,15 @@ class DropletMultiCreateNormalizer implements DenormalizerInterface, NormalizerI
             $object->region = $data['region'];
             unset($data['region']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\DropletMultiCreate::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('image', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('image', \Jane\Generated\DigitalOcean\Model\DropletMultiCreate::class);
         }
         if (\array_key_exists('image', $data)) {
             $value_1 = $data['image'];

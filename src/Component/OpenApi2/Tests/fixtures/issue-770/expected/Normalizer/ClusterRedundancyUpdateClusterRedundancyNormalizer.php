@@ -43,6 +43,9 @@ class ClusterRedundancyUpdateClusterRedundancyNormalizer implements Denormalizer
         if (\array_key_exists('scheduleSyncUpEnabled', $data) && \is_int($data['scheduleSyncUpEnabled'])) {
             $data['scheduleSyncUpEnabled'] = (bool) $data['scheduleSyncUpEnabled'];
         }
+        if (!\array_key_exists('clusterRedundancyEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('clusterRedundancyEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyUpdateClusterRedundancy::class);
+        }
         if (\array_key_exists('clusterRedundancyEnabled', $data)) {
             $object->clusterRedundancyEnabled = $data['clusterRedundancyEnabled'];
         }

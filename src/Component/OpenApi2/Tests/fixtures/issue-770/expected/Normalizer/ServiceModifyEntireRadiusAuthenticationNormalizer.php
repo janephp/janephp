@@ -52,6 +52,9 @@ class ServiceModifyEntireRadiusAuthenticationNormalizer implements DenormalizerI
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -64,8 +67,14 @@ class ServiceModifyEntireRadiusAuthenticationNormalizer implements DenormalizerI
         if (\array_key_exists('locationDeliveryEnabled', $data)) {
             $object->locationDeliveryEnabled = $data['locationDeliveryEnabled'];
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
+        }
+        if (!\array_key_exists('primary', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primary', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication::class);
         }
         if (\array_key_exists('primary', $data)) {
             $object->primary = $this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context);
@@ -75,6 +84,9 @@ class ServiceModifyEntireRadiusAuthenticationNormalizer implements DenormalizerI
         }
         if (\array_key_exists('healthCheckPolicy', $data)) {
             $object->healthCheckPolicy = $this->denormalizer->denormalize($data['healthCheckPolicy'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class, 'json', $context);
+        }
+        if (!\array_key_exists('rateLimiting', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('rateLimiting', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication::class);
         }
         if (\array_key_exists('rateLimiting', $data)) {
             $object->rateLimiting = $this->denormalizer->denormalize($data['rateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class, 'json', $context);

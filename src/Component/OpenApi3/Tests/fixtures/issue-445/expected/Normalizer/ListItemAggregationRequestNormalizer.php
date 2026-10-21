@@ -84,9 +84,15 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->aggregationFilters = null;
             unset($data['aggregationFilters']);
         }
+        if (!\array_key_exists('includeAllSchemaChildren', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeAllSchemaChildren', \PicturePark\API\Model\ListItemAggregationRequest::class);
+        }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
             unset($data['includeAllSchemaChildren']);
+        }
+        if (!\array_key_exists('brokenDependenciesFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('brokenDependenciesFilter', \PicturePark\API\Model\ListItemAggregationRequest::class);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_3 = $data['brokenDependenciesFilter'];
@@ -120,6 +126,9 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $object->searchLanguages = null;
             unset($data['searchLanguages']);
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\ListItemAggregationRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_6 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -127,6 +136,9 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             }
             $object->lifeCycleFilter = $value_6;
             unset($data['lifeCycleFilter']);
+        }
+        if (!\array_key_exists('aggregators', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregators', \PicturePark\API\Model\ListItemAggregationRequest::class);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_4 = [];

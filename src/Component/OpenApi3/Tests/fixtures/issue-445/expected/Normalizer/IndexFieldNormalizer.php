@@ -81,8 +81,14 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         elseif (\array_key_exists('simpleSearchFields', $data)) {
             $object->simpleSearchFields = null;
         }
+        if (!\array_key_exists('boost', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('boost', \PicturePark\API\Model\IndexField::class);
+        }
         if (\array_key_exists('boost', $data)) {
             $object->boost = $data['boost'];
+        }
+        if (!\array_key_exists('ignoreForSearch', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ignoreForSearch', \PicturePark\API\Model\IndexField::class);
         }
         if (\array_key_exists('ignoreForSearch', $data)) {
             $object->ignoreForSearch = $data['ignoreForSearch'];

@@ -37,6 +37,9 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('contentSchemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentSchemaId', \PicturePark\API\Model\ContentDetail::class);
+        }
         if (\array_key_exists('contentSchemaId', $data)) {
             $object->contentSchemaId = $data['contentSchemaId'];
         }
@@ -100,6 +103,9 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\ContentDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -133,6 +139,9 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
+        if (!\array_key_exists('ownerTokenId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ownerTokenId', \PicturePark\API\Model\ContentDetail::class);
+        }
         if (\array_key_exists('ownerTokenId', $data)) {
             $object->ownerTokenId = $data['ownerTokenId'];
         }
@@ -145,6 +154,9 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('owner', $data)) {
             $object->owner = null;
+        }
+        if (!\array_key_exists('contentType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentType', \PicturePark\API\Model\ContentDetail::class);
         }
         if (\array_key_exists('contentType', $data)) {
             $value_10 = $data['contentType'];
@@ -166,6 +178,9 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('displayValues', $data)) {
             $object->displayValues = null;
+        }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\ContentDetail::class);
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_13 = $data['lifeCycle'];

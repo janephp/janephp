@@ -82,6 +82,9 @@ class FilterBaseNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('kind', $data) and 'ParentFilter' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ParentFilter', $format, $context);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\FilterBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

@@ -49,6 +49,9 @@ class SocialMediaLoginProfileSocialMediaLoginProfileNormalizer implements Denorm
         if (\array_key_exists('facebookEnabled', $data) && \is_int($data['facebookEnabled'])) {
             $data['facebookEnabled'] = (bool) $data['facebookEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -90,6 +93,9 @@ class SocialMediaLoginProfileSocialMediaLoginProfileNormalizer implements Denorm
         }
         if (\array_key_exists('facebookSecret', $data)) {
             $object->facebookSecret = $data['facebookSecret'];
+        }
+        if (!\array_key_exists('whitelistedDomains', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('whitelistedDomains', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile::class);
         }
         if (\array_key_exists('whitelistedDomains', $data)) {
             $values = [];

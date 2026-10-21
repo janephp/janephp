@@ -37,13 +37,22 @@ class NestedFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\NestedFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('path', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('path', \PicturePark\API\Model\NestedFilter::class);
+        }
         if (\array_key_exists('path', $data)) {
             $object->path = $data['path'];
             unset($data['path']);
+        }
+        if (!\array_key_exists('filter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('filter', \PicturePark\API\Model\NestedFilter::class);
         }
         if (\array_key_exists('filter', $data)) {
             $value = $data['filter'];

@@ -37,12 +37,18 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('templateEngine', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('templateEngine', \PicturePark\API\Model\DisplayPattern::class);
+        }
         if (\array_key_exists('templateEngine', $data)) {
             $value = $data['templateEngine'];
             if (is_string($data['templateEngine'])) {
                 $value = $data['templateEngine'];
             }
             $object->templateEngine = $value;
+        }
+        if (!\array_key_exists('displayPatternType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('displayPatternType', \PicturePark\API\Model\DisplayPattern::class);
         }
         if (\array_key_exists('displayPatternType', $data)) {
             $value_1 = $data['displayPatternType'];

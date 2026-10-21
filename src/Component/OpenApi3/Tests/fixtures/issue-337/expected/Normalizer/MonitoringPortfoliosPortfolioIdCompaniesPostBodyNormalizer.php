@@ -37,6 +37,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);

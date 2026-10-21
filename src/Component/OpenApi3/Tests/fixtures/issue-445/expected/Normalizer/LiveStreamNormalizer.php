@@ -37,6 +37,9 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\LiveStream::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -51,6 +54,9 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('scopeType', $data)) {
             $object->scopeType = null;
+        }
+        if (!\array_key_exists('timestamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timestamp', \PicturePark\API\Model\LiveStream::class);
         }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);

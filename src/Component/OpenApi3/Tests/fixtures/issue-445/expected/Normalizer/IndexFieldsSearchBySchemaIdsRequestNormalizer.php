@@ -47,6 +47,9 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
         elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
         }
+        if (!\array_key_exists('searchMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('searchMode', \PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest::class);
+        }
         if (\array_key_exists('searchMode', $data)) {
             $value_1 = $data['searchMode'];
             if (is_string($data['searchMode'])) {

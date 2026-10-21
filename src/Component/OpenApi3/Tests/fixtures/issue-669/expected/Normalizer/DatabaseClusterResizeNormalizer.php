@@ -37,9 +37,15 @@ class DatabaseClusterResizeNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\DatabaseClusterResize::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('num_nodes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('num_nodes', \Jane\Generated\DigitalOcean\Model\DatabaseClusterResize::class);
         }
         if (\array_key_exists('num_nodes', $data)) {
             $object->numNodes = $data['num_nodes'];

@@ -40,6 +40,9 @@ class DropletActionResizeNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('disk', $data) && \is_int($data['disk'])) {
             $data['disk'] = (bool) $data['disk'];
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\DropletActionResize::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);

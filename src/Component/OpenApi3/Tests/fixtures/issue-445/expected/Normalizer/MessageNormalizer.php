@@ -55,14 +55,26 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
+        if (!\array_key_exists('retries', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('retries', \PicturePark\API\Model\Message::class);
+        }
         if (\array_key_exists('retries', $data)) {
             $object->retries = $data['retries'];
+        }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('priority', \PicturePark\API\Model\Message::class);
         }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];
         }
+        if (!\array_key_exists('deduplicate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('deduplicate', \PicturePark\API\Model\Message::class);
+        }
         if (\array_key_exists('deduplicate', $data)) {
             $object->deduplicate = $data['deduplicate'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\Message::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

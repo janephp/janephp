@@ -37,6 +37,9 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\CertificateRequestLetsEncrypt::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
@@ -44,6 +47,9 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('dns_names', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('dns_names', \Jane\Generated\DigitalOcean\Model\CertificateRequestLetsEncrypt::class);
         }
         if (\array_key_exists('dns_names', $data)) {
             $values = [];

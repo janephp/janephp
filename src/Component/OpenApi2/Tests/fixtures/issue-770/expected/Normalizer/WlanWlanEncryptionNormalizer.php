@@ -46,6 +46,9 @@ class WlanWlanEncryptionNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('reserveSsidEnabled', $data) && \is_int($data['reserveSsidEnabled'])) {
             $data['reserveSsidEnabled'] = (bool) $data['reserveSsidEnabled'];
         }
+        if (!\array_key_exists('method', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('method', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanEncryption::class);
+        }
         if (\array_key_exists('method', $data)) {
             $object->method = $data['method'];
         }

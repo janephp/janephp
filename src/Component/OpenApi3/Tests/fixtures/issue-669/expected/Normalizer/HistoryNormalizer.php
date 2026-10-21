@@ -37,25 +37,43 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('history_event_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('history_event_id', \Jane\Generated\DigitalOcean\Model\History::class);
+        }
         if (\array_key_exists('history_event_id', $data)) {
             $object->historyEventId = $data['history_event_id'];
             unset($data['history_event_id']);
+        }
+        if (!\array_key_exists('current_instance_count', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('current_instance_count', \Jane\Generated\DigitalOcean\Model\History::class);
         }
         if (\array_key_exists('current_instance_count', $data)) {
             $object->currentInstanceCount = $data['current_instance_count'];
             unset($data['current_instance_count']);
         }
+        if (!\array_key_exists('desired_instance_count', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('desired_instance_count', \Jane\Generated\DigitalOcean\Model\History::class);
+        }
         if (\array_key_exists('desired_instance_count', $data)) {
             $object->desiredInstanceCount = $data['desired_instance_count'];
             unset($data['desired_instance_count']);
+        }
+        if (!\array_key_exists('reason', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('reason', \Jane\Generated\DigitalOcean\Model\History::class);
         }
         if (\array_key_exists('reason', $data)) {
             $object->reason = $data['reason'];
             unset($data['reason']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\History::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\History::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -72,6 +90,9 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $object->createdAt = $date;
             unset($data['created_at']);
+        }
+        if (!\array_key_exists('updated_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('updated_at', \Jane\Generated\DigitalOcean\Model\History::class);
         }
         if (\array_key_exists('updated_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);

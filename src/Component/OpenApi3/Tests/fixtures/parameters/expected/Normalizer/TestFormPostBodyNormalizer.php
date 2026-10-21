@@ -60,6 +60,9 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $object->testArray = $values;
             unset($data['testArray']);
         }
+        if (!\array_key_exists('testRequired', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\MissingRequiredPropertyException('testRequired', \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody::class);
+        }
         if (\array_key_exists('testRequired', $data)) {
             $object->testRequired = $data['testRequired'];
             unset($data['testRequired']);

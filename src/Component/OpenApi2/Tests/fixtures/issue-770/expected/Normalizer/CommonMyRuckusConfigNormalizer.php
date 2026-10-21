@@ -40,6 +40,9 @@ class CommonMyRuckusConfigNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('aclForTunnelWlanAndVlanEnable', $data) && \is_int($data['aclForTunnelWlanAndVlanEnable'])) {
             $data['aclForTunnelWlanAndVlanEnable'] = (bool) $data['aclForTunnelWlanAndVlanEnable'];
         }
+        if (!\array_key_exists('aclForTunnelWlanAndVlanEnable', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('aclForTunnelWlanAndVlanEnable', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonMyRuckusConfig::class);
+        }
         if (\array_key_exists('aclForTunnelWlanAndVlanEnable', $data)) {
             $object->aclForTunnelWlanAndVlanEnable = $data['aclForTunnelWlanAndVlanEnable'];
         }

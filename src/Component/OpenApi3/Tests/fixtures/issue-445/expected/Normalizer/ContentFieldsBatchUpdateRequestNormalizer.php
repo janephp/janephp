@@ -43,6 +43,9 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('changeCommands', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('changeCommands', \PicturePark\API\Model\ContentFieldsBatchUpdateRequest::class);
+        }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];
             foreach ($data['changeCommands'] as $value) {
@@ -51,17 +54,29 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
             $object->changeCommands = $values;
             unset($data['changeCommands']);
         }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\ContentFieldsBatchUpdateRequest::class);
+        }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];
             unset($data['allowMissingDependencies']);
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ContentFieldsBatchUpdateRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];
             unset($data['notifyProgress']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ContentFieldsBatchUpdateRequest::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
+        }
+        if (!\array_key_exists('contentIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentIds', \PicturePark\API\Model\ContentFieldsBatchUpdateRequest::class);
         }
         if (\array_key_exists('contentIds', $data)) {
             $values_1 = [];

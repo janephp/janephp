@@ -37,13 +37,22 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Cat::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
         }
+        if (!\array_key_exists('petType', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\Normalizer\MissingRequiredPropertyException('petType', \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Cat::class);
+        }
         if (\array_key_exists('petType', $data)) {
             $object->petType = $data['petType'];
             unset($data['petType']);
+        }
+        if (!\array_key_exists('huntingSkill', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\Normalizer\MissingRequiredPropertyException('huntingSkill', \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Cat::class);
         }
         if (\array_key_exists('huntingSkill', $data)) {
             $object->huntingSkill = $data['huntingSkill'];

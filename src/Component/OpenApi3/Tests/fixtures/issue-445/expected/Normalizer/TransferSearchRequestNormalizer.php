@@ -56,6 +56,9 @@ class TransferSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\TransferSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }
@@ -74,6 +77,9 @@ class TransferSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('debugMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('debugMode', \PicturePark\API\Model\TransferSearchRequest::class);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->debugMode = $data['debugMode'];

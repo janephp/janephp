@@ -37,11 +37,20 @@ class ZoneCustomizedTimeZoneNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('abbreviation', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('abbreviation', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCustomizedTimeZone::class);
+        }
         if (\array_key_exists('abbreviation', $data)) {
             $object->abbreviation = $data['abbreviation'];
         }
+        if (!\array_key_exists('gmtOffset', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('gmtOffset', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCustomizedTimeZone::class);
+        }
         if (\array_key_exists('gmtOffset', $data)) {
             $object->gmtOffset = $data['gmtOffset'];
+        }
+        if (!\array_key_exists('gmtOffsetMinute', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('gmtOffsetMinute', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCustomizedTimeZone::class);
         }
         if (\array_key_exists('gmtOffsetMinute', $data)) {
             $object->gmtOffsetMinute = $data['gmtOffsetMinute'];

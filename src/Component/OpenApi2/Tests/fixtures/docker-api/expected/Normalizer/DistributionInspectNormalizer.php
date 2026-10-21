@@ -40,8 +40,14 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
         }
+        if (!\array_key_exists('Descriptor', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Descriptor', \Docker\Api\Model\DistributionInspect::class);
+        }
         if (\array_key_exists('Descriptor', $data)) {
             $object->descriptor = $this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context);
+        }
+        if (!\array_key_exists('Platforms', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Platforms', \Docker\Api\Model\DistributionInspect::class);
         }
         if (\array_key_exists('Platforms', $data)) {
             $values = [];

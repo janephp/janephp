@@ -47,6 +47,9 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
+        if (!\array_key_exists('contentFieldsUpdateOptions', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentFieldsUpdateOptions', \PicturePark\API\Model\ListItemUpdateRequest::class);
+        }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $value_1 = $data['contentFieldsUpdateOptions'];
             if (is_string($data['contentFieldsUpdateOptions'])) {

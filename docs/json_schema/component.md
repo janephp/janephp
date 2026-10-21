@@ -160,8 +160,11 @@ Other options are available to customize the generated code:
 - `skip-null-values`: When having nullable properties, you can enforce normalization to skip theses
  properties even if they are nullable. This option allows you to not have theses properties when they're not set
  (`null`). By default it is enabled.
-- `skip-required-fields`: If your model has required fields, this option allows you to skip the required behavior
- that forces them to be present during denormalization. By default it is disabled.
+- `skip-required-fields`: If your model has required fields, the generated normalizer forces them to be present
+ during denormalization: a payload missing a required key throws the generated `MissingRequiredPropertyException`,
+ which names the missing property, instead of leaving the model property uninitialized. Enable this option to skip
+ that required behavior and allow partial payloads (their required properties then stay uninitialized until they are
+ read). By default it is disabled.
 - `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
   can read more about it in the dedicated [Validation guide](../guides/validation.md).
 - `validators`: An array of `Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface` instances to register

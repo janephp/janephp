@@ -40,11 +40,17 @@ class PortalserviceCreateHotspotInternalNormalizer implements DenormalizerInterf
         if (\array_key_exists('httpsRedirect', $data) && \is_int($data['httpsRedirect'])) {
             $data['httpsRedirect'] = (bool) $data['httpsRedirect'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('smartClientSupport', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('smartClientSupport', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal::class);
         }
         if (\array_key_exists('smartClientSupport', $data)) {
             $object->smartClientSupport = $data['smartClientSupport'];
@@ -64,6 +70,9 @@ class PortalserviceCreateHotspotInternalNormalizer implements DenormalizerInterf
                 $values[] = $value;
             }
             $object->walledGardens = $values;
+        }
+        if (!\array_key_exists('macAddressFormat', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('macAddressFormat', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal::class);
         }
         if (\array_key_exists('macAddressFormat', $data)) {
             $object->macAddressFormat = $data['macAddressFormat'];

@@ -53,6 +53,9 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
             $object->requestId = null;
             unset($data['requestId']);
         }
+        if (!\array_key_exists('url', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('url', \PicturePark\API\Model\TransferWebLink::class);
+        }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];
             unset($data['url']);

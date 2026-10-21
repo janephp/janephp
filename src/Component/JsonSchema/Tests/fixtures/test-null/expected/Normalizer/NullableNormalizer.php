@@ -55,8 +55,14 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('nullOrString', $data)) {
             $object->nullOrString = null;
         }
+        if (!\array_key_exists('required', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\TestNull\Runtime\Normalizer\MissingRequiredPropertyException('required', \Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable::class);
+        }
         if (\array_key_exists('required', $data)) {
             $object->required = $data['required'];
+        }
+        if (!\array_key_exists('requiredNull', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\TestNull\Runtime\Normalizer\MissingRequiredPropertyException('requiredNull', \Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable::class);
         }
         if (\array_key_exists('requiredNull', $data) && $data['requiredNull'] !== null) {
             $value_1 = $data['requiredNull'];

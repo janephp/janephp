@@ -49,6 +49,9 @@ class FileTransferOutputNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
         }
+        if (!\array_key_exists('outputSource', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputSource', \PicturePark\API\Model\FileTransferOutput::class);
+        }
         if (\array_key_exists('outputSource', $data)) {
             $object->outputSource = $data['outputSource'];
         }

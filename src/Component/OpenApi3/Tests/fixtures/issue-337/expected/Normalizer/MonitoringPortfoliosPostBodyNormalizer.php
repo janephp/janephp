@@ -40,6 +40,9 @@ class MonitoringPortfoliosPostBodyNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('isDefault', $data) && \is_int($data['isDefault'])) {
             $data['isDefault'] = (bool) $data['isDefault'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \CreditSafe\API\Model\MonitoringPortfoliosPostBody::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

@@ -37,8 +37,14 @@ class ApLoginNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('apLoginName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('apLoginName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApLogin::class);
+        }
         if (\array_key_exists('apLoginName', $data)) {
             $object->apLoginName = $data['apLoginName'];
+        }
+        if (!\array_key_exists('apLoginPassword', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('apLoginPassword', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApLogin::class);
         }
         if (\array_key_exists('apLoginPassword', $data)) {
             $object->apLoginPassword = $data['apLoginPassword'];

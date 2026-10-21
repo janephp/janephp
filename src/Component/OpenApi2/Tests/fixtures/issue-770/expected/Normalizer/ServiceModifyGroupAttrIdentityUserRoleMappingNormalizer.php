@@ -37,8 +37,14 @@ class ServiceModifyGroupAttrIdentityUserRoleMappingNormalizer implements Denorma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('groupAttr', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('groupAttr', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyGroupAttrIdentityUserRoleMapping::class);
+        }
         if (\array_key_exists('groupAttr', $data)) {
             $object->groupAttr = $data['groupAttr'];
+        }
+        if (!\array_key_exists('userRole', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userRole', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyGroupAttrIdentityUserRoleMapping::class);
         }
         if (\array_key_exists('userRole', $data)) {
             $object->userRole = $this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context);

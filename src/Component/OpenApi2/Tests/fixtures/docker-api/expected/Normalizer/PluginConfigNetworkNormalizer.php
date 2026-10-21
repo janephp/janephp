@@ -40,6 +40,9 @@ class PluginConfigNetworkNormalizer implements DenormalizerInterface, Normalizer
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigNetworkConstraint());
         }
+        if (!\array_key_exists('Type', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Type', \Docker\Api\Model\PluginConfigNetwork::class);
+        }
         if (\array_key_exists('Type', $data)) {
             $object->type = $data['Type'];
         }

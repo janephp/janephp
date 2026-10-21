@@ -40,8 +40,14 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\AggregationResultItem::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
+        }
+        if (!\array_key_exists('count', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('count', \PicturePark\API\Model\AggregationResultItem::class);
         }
         if (\array_key_exists('count', $data)) {
             $object->count = $data['count'];
@@ -55,6 +61,9 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
+        }
+        if (!\array_key_exists('active', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('active', \PicturePark\API\Model\AggregationResultItem::class);
         }
         if (\array_key_exists('active', $data)) {
             $object->active = $data['active'];

@@ -37,8 +37,14 @@ class ServiceTicketLoginRequestNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('username', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('username', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTicketLoginRequest::class);
+        }
         if (\array_key_exists('username', $data)) {
             $object->username = $data['username'];
+        }
+        if (!\array_key_exists('password', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('password', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTicketLoginRequest::class);
         }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];

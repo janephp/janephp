@@ -37,9 +37,15 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];

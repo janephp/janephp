@@ -40,8 +40,14 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\GraphDriverDataConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\GraphDriverData::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
+        }
+        if (!\array_key_exists('Data', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Data', \Docker\Api\Model\GraphDriverData::class);
         }
         if (\array_key_exists('Data', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();

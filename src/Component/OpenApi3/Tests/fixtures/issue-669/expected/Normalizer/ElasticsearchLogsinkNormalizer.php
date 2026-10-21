@@ -40,9 +40,15 @@ class ElasticsearchLogsinkNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('timeout', $data) && \is_int($data['timeout'])) {
             $data['timeout'] = (float) $data['timeout'];
         }
+        if (!\array_key_exists('url', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('url', \Jane\Generated\DigitalOcean\Model\ElasticsearchLogsink::class);
+        }
         if (\array_key_exists('url', $data)) {
             $object->url = $data['url'];
             unset($data['url']);
+        }
+        if (!\array_key_exists('index_prefix', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('index_prefix', \Jane\Generated\DigitalOcean\Model\ElasticsearchLogsink::class);
         }
         if (\array_key_exists('index_prefix', $data)) {
             $object->indexPrefix = $data['index_prefix'];

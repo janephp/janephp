@@ -40,6 +40,9 @@ class XmpMappingEntryConfigurationBaseNormalizer implements DenormalizerInterfac
         if (array_key_exists('kind', $data) and 'XmpMappingEntryConfigurationTagbox' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\XmpMappingEntryConfigurationTagbox', $format, $context);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\XmpMappingEntryConfigurationBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

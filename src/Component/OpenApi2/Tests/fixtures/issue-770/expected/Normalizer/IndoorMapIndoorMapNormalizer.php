@@ -49,11 +49,20 @@ class IndoorMapIndoorMapNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('zoneId', $data)) {
             $object->zoneId = $data['zoneId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
+        if (!\array_key_exists('description', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('description', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap::class);
+        }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('groupType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('groupType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap::class);
         }
         if (\array_key_exists('groupType', $data)) {
             $object->groupType = $data['groupType'];

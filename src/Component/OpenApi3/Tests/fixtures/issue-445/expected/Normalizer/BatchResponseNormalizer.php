@@ -37,6 +37,9 @@ class BatchResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('rows', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('rows', \PicturePark\API\Model\BatchResponse::class);
+        }
         if (\array_key_exists('rows', $data)) {
             $values = [];
             foreach ($data['rows'] as $value) {

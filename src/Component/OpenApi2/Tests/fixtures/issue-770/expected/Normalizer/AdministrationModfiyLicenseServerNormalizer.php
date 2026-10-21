@@ -40,6 +40,9 @@ class AdministrationModfiyLicenseServerNormalizer implements DenormalizerInterfa
         if (\array_key_exists('useCloud', $data) && \is_int($data['useCloud'])) {
             $data['useCloud'] = (bool) $data['useCloud'];
         }
+        if (!\array_key_exists('useCloud', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('useCloud', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModfiyLicenseServer::class);
+        }
         if (\array_key_exists('useCloud', $data)) {
             $object->useCloud = $data['useCloud'];
         }

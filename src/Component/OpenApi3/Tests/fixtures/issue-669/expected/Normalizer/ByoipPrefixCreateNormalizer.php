@@ -37,13 +37,22 @@ class ByoipPrefixCreateNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('prefix', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('prefix', \Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate::class);
+        }
         if (\array_key_exists('prefix', $data)) {
             $object->prefix = $data['prefix'];
             unset($data['prefix']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
+        }
+        if (!\array_key_exists('signature', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('signature', \Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate::class);
         }
         if (\array_key_exists('signature', $data)) {
             $object->signature = $data['signature'];

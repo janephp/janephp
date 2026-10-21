@@ -37,9 +37,15 @@ class MetadataValuesSchemaRemoveCommandNormalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('schemaId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemaId', \PicturePark\API\Model\MetadataValuesSchemaRemoveCommand::class);
+        }
         if (\array_key_exists('schemaId', $data)) {
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\MetadataValuesSchemaRemoveCommand::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

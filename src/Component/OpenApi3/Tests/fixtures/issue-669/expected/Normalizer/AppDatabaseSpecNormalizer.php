@@ -56,6 +56,9 @@ class AppDatabaseSpecNormalizer implements DenormalizerInterface, NormalizerInte
             $object->engine = $data['engine'];
             unset($data['engine']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AppDatabaseSpec::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

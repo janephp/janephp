@@ -37,6 +37,9 @@ class ResponseDatabaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('db', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('db', \Jane\Generated\DigitalOcean\Model\ResponseDatabase::class);
+        }
         if (\array_key_exists('db', $data)) {
             $object->db = $this->denormalizer->denormalize($data['db'], \Jane\Generated\DigitalOcean\Model\Database::class, 'json', $context);
             unset($data['db']);

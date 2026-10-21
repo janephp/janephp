@@ -40,11 +40,20 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageSummaryConstraint());
         }
+        if (!\array_key_exists('Id', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Id', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
         }
+        if (!\array_key_exists('ParentId', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('ParentId', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('ParentId', $data)) {
             $object->parentId = $data['ParentId'];
+        }
+        if (!\array_key_exists('RepoTags', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('RepoTags', \Docker\Api\Model\ImageSummary::class);
         }
         if (\array_key_exists('RepoTags', $data)) {
             $values = [];
@@ -53,6 +62,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->repoTags = $values;
         }
+        if (!\array_key_exists('RepoDigests', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('RepoDigests', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('RepoDigests', $data)) {
             $values_1 = [];
             foreach ($data['RepoDigests'] as $value_1) {
@@ -60,17 +72,32 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->repoDigests = $values_1;
         }
+        if (!\array_key_exists('Created', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Created', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('Created', $data)) {
             $object->created = $data['Created'];
+        }
+        if (!\array_key_exists('Size', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Size', \Docker\Api\Model\ImageSummary::class);
         }
         if (\array_key_exists('Size', $data)) {
             $object->size = $data['Size'];
         }
+        if (!\array_key_exists('SharedSize', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('SharedSize', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('SharedSize', $data)) {
             $object->sharedSize = $data['SharedSize'];
         }
+        if (!\array_key_exists('VirtualSize', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('VirtualSize', \Docker\Api\Model\ImageSummary::class);
+        }
         if (\array_key_exists('VirtualSize', $data)) {
             $object->virtualSize = $data['VirtualSize'];
+        }
+        if (!\array_key_exists('Labels', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Labels', \Docker\Api\Model\ImageSummary::class);
         }
         if (\array_key_exists('Labels', $data)) {
             $values_2 = new \Docker\Api\Runtime\JsonObject();
@@ -78,6 +105,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_2[$key] = $value_2;
             }
             $object->labels = $values_2;
+        }
+        if (!\array_key_exists('Containers', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Containers', \Docker\Api\Model\ImageSummary::class);
         }
         if (\array_key_exists('Containers', $data)) {
             $object->containers = $data['Containers'];

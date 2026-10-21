@@ -37,8 +37,14 @@ class ApSwapApConfigureNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('swapInMac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('swapInMac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwapApConfigure::class);
+        }
         if (\array_key_exists('swapInMac', $data)) {
             $object->swapInMac = $data['swapInMac'];
+        }
+        if (!\array_key_exists('swapOutMac', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('swapOutMac', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwapApConfigure::class);
         }
         if (\array_key_exists('swapOutMac', $data)) {
             $object->swapOutMac = $data['swapOutMac'];

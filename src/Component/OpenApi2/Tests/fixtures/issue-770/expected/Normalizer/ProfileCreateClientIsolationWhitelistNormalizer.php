@@ -40,11 +40,17 @@ class ProfileCreateClientIsolationWhitelistNormalizer implements DenormalizerInt
         if (\array_key_exists('clientIsolationAutoEnabled', $data) && \is_int($data['clientIsolationAutoEnabled'])) {
             $data['clientIsolationAutoEnabled'] = (bool) $data['clientIsolationAutoEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('whitelist', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('whitelist', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist::class);
         }
         if (\array_key_exists('whitelist', $data)) {
             $values = [];
@@ -52,6 +58,9 @@ class ProfileCreateClientIsolationWhitelistNormalizer implements DenormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationEntry::class, 'json', $context);
             }
             $object->whitelist = $values;
+        }
+        if (!\array_key_exists('clientIsolationAutoEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('clientIsolationAutoEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist::class);
         }
         if (\array_key_exists('clientIsolationAutoEnabled', $data)) {
             $object->clientIsolationAutoEnabled = $data['clientIsolationAutoEnabled'];

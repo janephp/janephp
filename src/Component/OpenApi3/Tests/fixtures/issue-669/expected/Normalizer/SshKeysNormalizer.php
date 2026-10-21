@@ -45,9 +45,15 @@ class SshKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->fingerprint = $data['fingerprint'];
             unset($data['fingerprint']);
         }
+        if (!\array_key_exists('public_key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('public_key', \Jane\Generated\DigitalOcean\Model\SshKeys::class);
+        }
         if (\array_key_exists('public_key', $data)) {
             $object->publicKey = $data['public_key'];
             unset($data['public_key']);
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\SshKeys::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];

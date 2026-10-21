@@ -40,6 +40,9 @@ class PermissionSetCreateRequestOfContentRightNormalizer implements Denormalizer
         if (\array_key_exists('exclusive', $data) && \is_int($data['exclusive'])) {
             $data['exclusive'] = (bool) $data['exclusive'];
         }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\PermissionSetCreateRequestOfContentRight::class);
+        }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
             if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
@@ -70,6 +73,9 @@ class PermissionSetCreateRequestOfContentRightNormalizer implements Denormalizer
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
+        }
+        if (!\array_key_exists('exclusive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('exclusive', \PicturePark\API\Model\PermissionSetCreateRequestOfContentRight::class);
         }
         if (\array_key_exists('exclusive', $data)) {
             $object->exclusive = $data['exclusive'];

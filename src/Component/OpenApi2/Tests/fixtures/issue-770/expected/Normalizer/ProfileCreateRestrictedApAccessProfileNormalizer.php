@@ -40,6 +40,9 @@ class ProfileCreateRestrictedApAccessProfileNormalizer implements DenormalizerIn
         if (\array_key_exists('blockWellKnownPort', $data) && \is_int($data['blockWellKnownPort'])) {
             $data['blockWellKnownPort'] = (bool) $data['blockWellKnownPort'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRestrictedApAccessProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

@@ -37,6 +37,9 @@ class NfsActionDetachParamsNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('vpc_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpc_id', \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class);
+        }
         if (\array_key_exists('vpc_id', $data)) {
             $object->vpcId = $data['vpc_id'];
             unset($data['vpc_id']);

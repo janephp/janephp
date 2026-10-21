@@ -40,6 +40,9 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
         if (\array_key_exists('readonly', $data) && \is_int($data['readonly'])) {
             $data['readonly'] = (bool) $data['readonly'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersPostBody::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

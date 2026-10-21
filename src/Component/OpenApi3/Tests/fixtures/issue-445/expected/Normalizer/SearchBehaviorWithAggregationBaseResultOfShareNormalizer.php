@@ -40,9 +40,15 @@ class SearchBehaviorWithAggregationBaseResultOfShareNormalizer implements Denorm
         if (\array_key_exists('isSearchStringRewritten', $data) && \is_int($data['isSearchStringRewritten'])) {
             $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
         }
+        if (!\array_key_exists('totalResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalResults', \PicturePark\API\Model\SearchBehaviorWithAggregationBaseResultOfShare::class);
+        }
         if (\array_key_exists('totalResults', $data)) {
             $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
+        }
+        if (!\array_key_exists('results', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('results', \PicturePark\API\Model\SearchBehaviorWithAggregationBaseResultOfShare::class);
         }
         if (\array_key_exists('results', $data)) {
             $values = [];
@@ -51,6 +57,9 @@ class SearchBehaviorWithAggregationBaseResultOfShareNormalizer implements Denorm
             }
             $object->results = $values;
             unset($data['results']);
+        }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\SearchBehaviorWithAggregationBaseResultOfShare::class);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];

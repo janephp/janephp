@@ -37,11 +37,17 @@ class ApMultipleMoveApMultipleMoveRequestNormalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('targetZoneId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('targetZoneId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveRequest::class);
+        }
         if (\array_key_exists('targetZoneId', $data)) {
             $object->targetZoneId = $data['targetZoneId'];
         }
         if (\array_key_exists('targetApGroupId', $data)) {
             $object->targetApGroupId = $data['targetApGroupId'];
+        }
+        if (!\array_key_exists('apMacs', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('apMacs', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveRequest::class);
         }
         if (\array_key_exists('apMacs', $data)) {
             $values = [];

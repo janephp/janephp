@@ -43,9 +43,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('finished', $data) && \is_int($data['finished'])) {
             $data['finished'] = (bool) $data['finished'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\BusinessProcessDetails::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('processDefinitionId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('processDefinitionId', \PicturePark\API\Model\BusinessProcessDetails::class);
         }
         if (\array_key_exists('processDefinitionId', $data)) {
             $object->processDefinitionId = $data['processDefinitionId'];
@@ -67,9 +73,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->referenceDocType = null;
             unset($data['referenceDocType']);
         }
+        if (!\array_key_exists('supportsCancellation', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('supportsCancellation', \PicturePark\API\Model\BusinessProcessDetails::class);
+        }
         if (\array_key_exists('supportsCancellation', $data)) {
             $object->supportsCancellation = $data['supportsCancellation'];
             unset($data['supportsCancellation']);
+        }
+        if (!\array_key_exists('businessProcessScope', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('businessProcessScope', \PicturePark\API\Model\BusinessProcessDetails::class);
         }
         if (\array_key_exists('businessProcessScope', $data)) {
             $value = $data['businessProcessScope'];
@@ -79,6 +91,9 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->businessProcessScope = $value;
             unset($data['businessProcessScope']);
         }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\BusinessProcessDetails::class);
+        }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_1 = $data['lifeCycle'];
             if (is_string($data['lifeCycle'])) {
@@ -86,6 +101,9 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             }
             $object->lifeCycle = $value_1;
             unset($data['lifeCycle']);
+        }
+        if (!\array_key_exists('startDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('startDate', \PicturePark\API\Model\BusinessProcessDetails::class);
         }
         if (\array_key_exists('startDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']);
@@ -103,6 +121,9 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $object->startDate = $date;
             unset($data['startDate']);
         }
+        if (!\array_key_exists('endDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('endDate', \PicturePark\API\Model\BusinessProcessDetails::class);
+        }
         if (\array_key_exists('endDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']);
             if (false === $date_1) {
@@ -118,6 +139,9 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             }
             $object->endDate = $date_1;
             unset($data['endDate']);
+        }
+        if (!\array_key_exists('finished', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('finished', \PicturePark\API\Model\BusinessProcessDetails::class);
         }
         if (\array_key_exists('finished', $data)) {
             $object->finished = $data['finished'];
@@ -170,6 +194,9 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         elseif (\array_key_exists('continuationBusinessProcessId', $data)) {
             $object->continuationBusinessProcessId = null;
             unset($data['continuationBusinessProcessId']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessProcessDetails::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

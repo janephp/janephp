@@ -37,6 +37,9 @@ class AppVariableDefinitionNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('key', \Jane\Generated\DigitalOcean\Model\AppVariableDefinition::class);
+        }
         if (\array_key_exists('key', $data)) {
             $object->key = $data['key'];
             unset($data['key']);

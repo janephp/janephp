@@ -48,17 +48,29 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->id = null;
             unset($data['id']);
         }
+        if (!\array_key_exists('retries', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('retries', \PicturePark\API\Model\NodeInfoMessage::class);
+        }
         if (\array_key_exists('retries', $data)) {
             $object->retries = $data['retries'];
             unset($data['retries']);
+        }
+        if (!\array_key_exists('priority', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('priority', \PicturePark\API\Model\NodeInfoMessage::class);
         }
         if (\array_key_exists('priority', $data)) {
             $object->priority = $data['priority'];
             unset($data['priority']);
         }
+        if (!\array_key_exists('deduplicate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('deduplicate', \PicturePark\API\Model\NodeInfoMessage::class);
+        }
         if (\array_key_exists('deduplicate', $data)) {
             $object->deduplicate = $data['deduplicate'];
             unset($data['deduplicate']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\NodeInfoMessage::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

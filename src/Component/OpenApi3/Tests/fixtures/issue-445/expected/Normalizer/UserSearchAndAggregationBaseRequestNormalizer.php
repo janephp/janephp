@@ -69,6 +69,9 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
         elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\UserSearchAndAggregationBaseRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_2 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -96,8 +99,14 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
         elseif (\array_key_exists('aggregationFilters', $data)) {
             $object->aggregationFilters = null;
         }
+        if (!\array_key_exists('includeServiceUser', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeServiceUser', \PicturePark\API\Model\UserSearchAndAggregationBaseRequest::class);
+        }
         if (\array_key_exists('includeServiceUser', $data)) {
             $object->includeServiceUser = $data['includeServiceUser'];
+        }
+        if (!\array_key_exists('editableOnly', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('editableOnly', \PicturePark\API\Model\UserSearchAndAggregationBaseRequest::class);
         }
         if (\array_key_exists('editableOnly', $data)) {
             $object->editableOnly = $data['editableOnly'];

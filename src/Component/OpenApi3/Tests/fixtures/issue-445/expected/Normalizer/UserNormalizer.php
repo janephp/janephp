@@ -58,8 +58,14 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
+        if (!\array_key_exists('emailAddress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('emailAddress', \PicturePark\API\Model\User::class);
+        }
         if (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = $data['emailAddress'];
+        }
+        if (!\array_key_exists('isDeleted', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isDeleted', \PicturePark\API\Model\User::class);
         }
         if (\array_key_exists('isDeleted', $data)) {
             $object->isDeleted = $data['isDeleted'];

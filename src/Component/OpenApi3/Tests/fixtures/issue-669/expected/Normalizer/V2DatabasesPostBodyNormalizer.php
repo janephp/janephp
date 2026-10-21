@@ -41,9 +41,15 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('engine', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('engine', \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class);
         }
         if (\array_key_exists('engine', $data)) {
             $object->engine = $data['engine'];
@@ -57,13 +63,22 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             $object->semanticVersion = $data['semantic_version'];
             unset($data['semantic_version']);
         }
+        if (!\array_key_exists('num_nodes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('num_nodes', \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class);
+        }
         if (\array_key_exists('num_nodes', $data)) {
             $object->numNodes = $data['num_nodes'];
             unset($data['num_nodes']);
         }
+        if (!\array_key_exists('size', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('size', \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class);
+        }
         if (\array_key_exists('size', $data)) {
             $object->size = $data['size'];
             unset($data['size']);
+        }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class);
         }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];

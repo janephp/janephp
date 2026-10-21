@@ -47,6 +47,9 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);

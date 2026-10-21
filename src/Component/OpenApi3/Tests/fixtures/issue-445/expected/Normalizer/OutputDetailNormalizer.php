@@ -48,13 +48,22 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->id = null;
             unset($data['id']);
         }
+        if (!\array_key_exists('outputFormatId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputFormatId', \PicturePark\API\Model\OutputDetail::class);
+        }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = $data['outputFormatId'];
             unset($data['outputFormatId']);
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\OutputDetail::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
             unset($data['contentId']);
+        }
+        if (!\array_key_exists('renderingState', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('renderingState', \PicturePark\API\Model\OutputDetail::class);
         }
         if (\array_key_exists('renderingState', $data)) {
             $value = $data['renderingState'];
@@ -96,17 +105,29 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->backupTimestamp = null;
             unset($data['backupTimestamp']);
         }
+        if (!\array_key_exists('attemptsLeft', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('attemptsLeft', \PicturePark\API\Model\OutputDetail::class);
+        }
         if (\array_key_exists('attemptsLeft', $data)) {
             $object->attemptsLeft = $data['attemptsLeft'];
             unset($data['attemptsLeft']);
+        }
+        if (!\array_key_exists('fileVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileVersion', \PicturePark\API\Model\OutputDetail::class);
         }
         if (\array_key_exists('fileVersion', $data)) {
             $object->fileVersion = $data['fileVersion'];
             unset($data['fileVersion']);
         }
+        if (!\array_key_exists('dynamicRendering', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('dynamicRendering', \PicturePark\API\Model\OutputDetail::class);
+        }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->dynamicRendering = $data['dynamicRendering'];
             unset($data['dynamicRendering']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\OutputDetail::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

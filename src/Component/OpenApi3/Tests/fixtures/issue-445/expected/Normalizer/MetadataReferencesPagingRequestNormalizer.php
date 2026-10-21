@@ -40,6 +40,9 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
         if (\array_key_exists('fetchReferencedByRestrictedItem', $data) && \is_int($data['fetchReferencedByRestrictedItem'])) {
             $data['fetchReferencedByRestrictedItem'] = (bool) $data['fetchReferencedByRestrictedItem'];
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\MetadataReferencesPagingRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
             unset($data['limit']);

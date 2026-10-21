@@ -37,9 +37,15 @@ class CompactTweetFieldsReferencedTweetsItemNormalizer implements DenormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactTweetFieldsReferencedTweetsItem::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
+        }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompactTweetFieldsReferencedTweetsItem::class);
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];

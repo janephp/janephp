@@ -37,8 +37,14 @@ class GdprFtpNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ftpHost', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ftpHost', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprFtp::class);
+        }
         if (\array_key_exists('ftpHost', $data)) {
             $object->ftpHost = $data['ftpHost'];
+        }
+        if (!\array_key_exists('ftpPort', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ftpPort', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprFtp::class);
         }
         if (\array_key_exists('ftpPort', $data)) {
             $object->ftpPort = $data['ftpPort'];

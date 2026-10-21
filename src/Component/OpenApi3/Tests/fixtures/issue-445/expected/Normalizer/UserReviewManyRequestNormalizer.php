@@ -40,6 +40,9 @@ class UserReviewManyRequestNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('reviewed', $data) && \is_int($data['reviewed'])) {
             $data['reviewed'] = (bool) $data['reviewed'];
         }
+        if (!\array_key_exists('userIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userIds', \PicturePark\API\Model\UserReviewManyRequest::class);
+        }
         if (\array_key_exists('userIds', $data)) {
             $values = [];
             foreach ($data['userIds'] as $value) {
@@ -47,6 +50,9 @@ class UserReviewManyRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->userIds = $values;
             unset($data['userIds']);
+        }
+        if (!\array_key_exists('reviewed', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('reviewed', \PicturePark\API\Model\UserReviewManyRequest::class);
         }
         if (\array_key_exists('reviewed', $data)) {
             $object->reviewed = $data['reviewed'];

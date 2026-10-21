@@ -43,6 +43,9 @@ class ProfileCmProtocolOptionContentNormalizer implements DenormalizerInterface,
         if (\array_key_exists('cmpDhcpOpt43SubcodeRecipient', $data) && \is_int($data['cmpDhcpOpt43SubcodeRecipient'])) {
             $data['cmpDhcpOpt43SubcodeRecipient'] = (float) $data['cmpDhcpOpt43SubcodeRecipient'];
         }
+        if (!\array_key_exists('cmpDhcpOpt43Subcode', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('cmpDhcpOpt43Subcode', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCmProtocolOptionContent::class);
+        }
         if (\array_key_exists('cmpDhcpOpt43Subcode', $data)) {
             $object->cmpDhcpOpt43Subcode = $data['cmpDhcpOpt43Subcode'];
         }

@@ -37,6 +37,9 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('email', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('email', \Jane\Generated\DigitalOcean\Model\Alerts::class);
+        }
         if (\array_key_exists('email', $data)) {
             $values = [];
             foreach ($data['email'] as $value) {
@@ -44,6 +47,9 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->email = $values;
             unset($data['email']);
+        }
+        if (!\array_key_exists('slack', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slack', \Jane\Generated\DigitalOcean\Model\Alerts::class);
         }
         if (\array_key_exists('slack', $data)) {
             $values_1 = [];

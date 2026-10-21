@@ -46,13 +46,22 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('by_default', $data) && \is_int($data['by_default'])) {
             $data['by_default'] = (bool) $data['by_default'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('app_id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('app_id', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('app_id', $data)) {
             $object->appId = $data['app_id'];
             unset($data['app_id']);
+        }
+        if (!\array_key_exists('display_name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('display_name', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
         }
         if (\array_key_exists('display_name', $data)) {
             $object->displayName = $data['display_name'];
@@ -62,17 +71,29 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->description = $data['description'];
             unset($data['description']);
         }
+        if (!\array_key_exists('slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slug', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('slug', $data)) {
             $object->slug = $data['slug'];
             unset($data['slug']);
+        }
+        if (!\array_key_exists('price_per_month', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('price_per_month', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
         }
         if (\array_key_exists('price_per_month', $data)) {
             $object->pricePerMonth = $data['price_per_month'];
             unset($data['price_per_month']);
         }
+        if (!\array_key_exists('active', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('active', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('active', $data)) {
             $object->active = $data['active'];
             unset($data['active']);
+        }
+        if (!\array_key_exists('state', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('state', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
         }
         if (\array_key_exists('state', $data)) {
             $object->state = $data['state'];
@@ -85,6 +106,9 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->features = $values;
             unset($data['features']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -102,6 +126,9 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('updated_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('updated_at', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('updated_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_1) {
@@ -118,13 +145,22 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
+        if (!\array_key_exists('available', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('available', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('available', $data)) {
             $object->available = $data['available'];
             unset($data['available']);
         }
+        if (!\array_key_exists('uuid', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('uuid', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
+        }
         if (\array_key_exists('uuid', $data)) {
             $object->uuid = $data['uuid'];
             unset($data['uuid']);
+        }
+        if (!\array_key_exists('by_default', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('by_default', \Jane\Generated\DigitalOcean\Model\AddonsPlan::class);
         }
         if (\array_key_exists('by_default', $data)) {
             $object->byDefault = $data['by_default'];

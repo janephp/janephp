@@ -37,9 +37,15 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('options', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('options', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class);
         }
         if (\array_key_exists('options', $data)) {
             $values = [];
@@ -49,9 +55,15 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->options = $values;
             unset($data['options']);
         }
+        if (!\array_key_exists('voting_status', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('voting_status', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class);
+        }
         if (\array_key_exists('voting_status', $data)) {
             $object->votingStatus = $data['voting_status'];
             unset($data['voting_status']);
+        }
+        if (!\array_key_exists('end_datetime', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('end_datetime', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class);
         }
         if (\array_key_exists('end_datetime', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end_datetime']);

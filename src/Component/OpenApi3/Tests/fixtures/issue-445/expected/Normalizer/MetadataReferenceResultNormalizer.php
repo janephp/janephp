@@ -40,9 +40,15 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('isReferencedByRestrictedItem', $data) && \is_int($data['isReferencedByRestrictedItem'])) {
             $data['isReferencedByRestrictedItem'] = (bool) $data['isReferencedByRestrictedItem'];
         }
+        if (!\array_key_exists('totalResults', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('totalResults', \PicturePark\API\Model\MetadataReferenceResult::class);
+        }
         if (\array_key_exists('totalResults', $data)) {
             $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
+        }
+        if (!\array_key_exists('results', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('results', \PicturePark\API\Model\MetadataReferenceResult::class);
         }
         if (\array_key_exists('results', $data)) {
             $values = [];
@@ -51,6 +57,9 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             }
             $object->results = $values;
             unset($data['results']);
+        }
+        if (!\array_key_exists('elapsedMilliseconds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('elapsedMilliseconds', \PicturePark\API\Model\MetadataReferenceResult::class);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->elapsedMilliseconds = $data['elapsedMilliseconds'];

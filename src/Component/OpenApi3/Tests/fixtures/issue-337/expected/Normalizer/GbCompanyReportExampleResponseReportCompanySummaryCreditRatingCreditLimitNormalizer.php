@@ -37,9 +37,15 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('currency', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('currency', \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit::class);
+        }
         if (\array_key_exists('currency', $data)) {
             $object->currency = $data['currency'];
             unset($data['currency']);
+        }
+        if (!\array_key_exists('value', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('value', \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit::class);
         }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];

@@ -37,6 +37,9 @@ class AppIngressSpecRuleStringMatchPrefixNormalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('prefix', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('prefix', \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchPrefix::class);
+        }
         if (\array_key_exists('prefix', $data)) {
             $object->prefix = $data['prefix'];
             unset($data['prefix']);

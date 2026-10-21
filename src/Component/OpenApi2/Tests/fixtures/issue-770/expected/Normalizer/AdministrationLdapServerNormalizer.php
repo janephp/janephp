@@ -40,6 +40,9 @@ class AdministrationLdapServerNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('tlsEnabled', $data) && \is_int($data['tlsEnabled'])) {
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
         }
@@ -49,23 +52,44 @@ class AdministrationLdapServerNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('cnIdentity', $data)) {
             $object->cnIdentity = $data['cnIdentity'];
         }
+        if (!\array_key_exists('ip', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ip', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
+        }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
         }
+        if (!\array_key_exists('baseDomainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('baseDomainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
+        }
         if (\array_key_exists('baseDomainName', $data)) {
             $object->baseDomainName = $data['baseDomainName'];
+        }
+        if (!\array_key_exists('adminDomainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('adminDomainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
         }
         if (\array_key_exists('adminDomainName', $data)) {
             $object->adminDomainName = $data['adminDomainName'];
         }
+        if (!\array_key_exists('adminPassword', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('adminPassword', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
+        }
         if (\array_key_exists('adminPassword', $data)) {
             $object->adminPassword = $data['adminPassword'];
         }
+        if (!\array_key_exists('keyAttribute', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('keyAttribute', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
+        }
         if (\array_key_exists('keyAttribute', $data)) {
             $object->keyAttribute = $data['keyAttribute'];
+        }
+        if (!\array_key_exists('searchFilter', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('searchFilter', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLdapServer::class);
         }
         if (\array_key_exists('searchFilter', $data)) {
             $object->searchFilter = $data['searchFilter'];

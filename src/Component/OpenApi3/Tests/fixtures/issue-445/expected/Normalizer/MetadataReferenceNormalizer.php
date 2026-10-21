@@ -40,8 +40,14 @@ class MetadataReferenceNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('isRestricted', $data) && \is_int($data['isRestricted'])) {
             $data['isRestricted'] = (bool) $data['isRestricted'];
         }
+        if (!\array_key_exists('targetMetadataItemId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('targetMetadataItemId', \PicturePark\API\Model\MetadataReference::class);
+        }
         if (\array_key_exists('targetMetadataItemId', $data)) {
             $object->targetMetadataItemId = $data['targetMetadataItemId'];
+        }
+        if (!\array_key_exists('isRestricted', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isRestricted', \PicturePark\API\Model\MetadataReference::class);
         }
         if (\array_key_exists('isRestricted', $data)) {
             $object->isRestricted = $data['isRestricted'];

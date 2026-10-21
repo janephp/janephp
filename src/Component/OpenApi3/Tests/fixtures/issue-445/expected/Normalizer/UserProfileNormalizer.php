@@ -89,12 +89,18 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('address', $data)) {
             $object->address = null;
         }
+        if (!\array_key_exists('authorizationState', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('authorizationState', \PicturePark\API\Model\UserProfile::class);
+        }
         if (\array_key_exists('authorizationState', $data)) {
             $value_1 = $data['authorizationState'];
             if (is_string($data['authorizationState'])) {
                 $value_1 = $data['authorizationState'];
             }
             $object->authorizationState = $value_1;
+        }
+        if (!\array_key_exists('isLocked', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isLocked', \PicturePark\API\Model\UserProfile::class);
         }
         if (\array_key_exists('isLocked', $data)) {
             $object->isLocked = $data['isLocked'];
@@ -119,6 +125,9 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('userRoleIds', $data)) {
             $object->userRoleIds = null;
         }
+        if (!\array_key_exists('termsConsentExpired', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('termsConsentExpired', \PicturePark\API\Model\UserProfile::class);
+        }
         if (\array_key_exists('termsConsentExpired', $data)) {
             $object->termsConsentExpired = $data['termsConsentExpired'];
         }
@@ -132,8 +141,14 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('systemUserRoles', $data)) {
             $object->systemUserRoles = null;
         }
+        if (!\array_key_exists('isDeveloper', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isDeveloper', \PicturePark\API\Model\UserProfile::class);
+        }
         if (\array_key_exists('isDeveloper', $data)) {
             $object->isDeveloper = $data['isDeveloper'];
+        }
+        if (!\array_key_exists('isFederated', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isFederated', \PicturePark\API\Model\UserProfile::class);
         }
         if (\array_key_exists('isFederated', $data)) {
             $object->isFederated = $data['isFederated'];

@@ -37,6 +37,9 @@ class CertificateServiceCertificateNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('service', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('service', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateServiceCertificate::class);
+        }
         if (\array_key_exists('service', $data)) {
             $object->service = $data['service'];
         }

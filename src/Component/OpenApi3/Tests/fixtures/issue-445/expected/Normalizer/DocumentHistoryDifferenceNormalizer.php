@@ -43,8 +43,14 @@ class DocumentHistoryDifferenceNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
+        if (!\array_key_exists('oldDocumentVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('oldDocumentVersion', \PicturePark\API\Model\DocumentHistoryDifference::class);
+        }
         if (\array_key_exists('oldDocumentVersion', $data)) {
             $object->oldDocumentVersion = $data['oldDocumentVersion'];
+        }
+        if (!\array_key_exists('newDocumentVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('newDocumentVersion', \PicturePark\API\Model\DocumentHistoryDifference::class);
         }
         if (\array_key_exists('newDocumentVersion', $data)) {
             $object->newDocumentVersion = $data['newDocumentVersion'];

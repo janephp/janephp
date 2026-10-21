@@ -46,14 +46,23 @@ class AaaCreateActiveDirectoryServerNormalizer implements DenormalizerInterface,
         if (\array_key_exists('standbyGlobalCatalogEnabled', $data) && \is_int($data['standbyGlobalCatalogEnabled'])) {
             $data['standbyGlobalCatalogEnabled'] = (bool) $data['standbyGlobalCatalogEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('ip', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ip', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer::class);
+        }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
+        }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer::class);
         }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
@@ -66,6 +75,9 @@ class AaaCreateActiveDirectoryServerNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('password', $data)) {
             $object->password = $data['password'];
+        }
+        if (!\array_key_exists('globalCatalogEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('globalCatalogEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer::class);
         }
         if (\array_key_exists('globalCatalogEnabled', $data)) {
             $object->globalCatalogEnabled = $data['globalCatalogEnabled'];

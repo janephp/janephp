@@ -46,6 +46,9 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
+        if (!\array_key_exists('documentVersion', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentVersion', \PicturePark\API\Model\DocumentHistory::class);
+        }
         if (\array_key_exists('documentVersion', $data)) {
             $object->documentVersion = $data['documentVersion'];
         }
@@ -54,6 +57,9 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('documentType', $data)) {
             $object->documentType = null;
+        }
+        if (!\array_key_exists('documentDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('documentDate', \PicturePark\API\Model\DocumentHistory::class);
         }
         if (\array_key_exists('documentDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['documentDate']);
@@ -75,6 +81,9 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('document', $data)) {
             $object->document = null;
+        }
+        if (!\array_key_exists('timestamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timestamp', \PicturePark\API\Model\DocumentHistory::class);
         }
         if (\array_key_exists('timestamp', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
@@ -101,8 +110,14 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
+        if (!\array_key_exists('deleted', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('deleted', \PicturePark\API\Model\DocumentHistory::class);
+        }
         if (\array_key_exists('deleted', $data)) {
             $object->deleted = $data['deleted'];
+        }
+        if (!\array_key_exists('action', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('action', \PicturePark\API\Model\DocumentHistory::class);
         }
         if (\array_key_exists('action', $data)) {
             $object->action = $data['action'];

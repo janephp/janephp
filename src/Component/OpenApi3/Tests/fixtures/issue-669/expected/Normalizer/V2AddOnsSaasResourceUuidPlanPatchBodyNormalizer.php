@@ -37,6 +37,9 @@ class V2AddOnsSaasResourceUuidPlanPatchBodyNormalizer implements DenormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('plan_slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('plan_slug', \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody::class);
+        }
         if (\array_key_exists('plan_slug', $data)) {
             $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);

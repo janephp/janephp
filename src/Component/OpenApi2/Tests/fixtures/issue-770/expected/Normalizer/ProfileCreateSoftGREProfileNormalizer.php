@@ -43,6 +43,9 @@ class ProfileCreateSoftGREProfileNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
@@ -52,11 +55,17 @@ class ProfileCreateSoftGREProfileNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('ipMode', $data)) {
             $object->ipMode = $data['ipMode'];
         }
+        if (!\array_key_exists('primaryGateway', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primaryGateway', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile::class);
+        }
         if (\array_key_exists('primaryGateway', $data)) {
             $object->primaryGateway = $data['primaryGateway'];
         }
         if (\array_key_exists('secondaryGateway', $data)) {
             $object->secondaryGateway = $data['secondaryGateway'];
+        }
+        if (!\array_key_exists('tunnelMtuAutoEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('tunnelMtuAutoEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile::class);
         }
         if (\array_key_exists('tunnelMtuAutoEnabled', $data)) {
             $object->tunnelMtuAutoEnabled = $data['tunnelMtuAutoEnabled'];
@@ -64,8 +73,14 @@ class ProfileCreateSoftGREProfileNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('tunnelMtuSize', $data)) {
             $object->tunnelMtuSize = $data['tunnelMtuSize'];
         }
+        if (!\array_key_exists('keepAlivePeriod', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('keepAlivePeriod', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile::class);
+        }
         if (\array_key_exists('keepAlivePeriod', $data)) {
             $object->keepAlivePeriod = $data['keepAlivePeriod'];
+        }
+        if (!\array_key_exists('keepAliveRetry', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('keepAliveRetry', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile::class);
         }
         if (\array_key_exists('keepAliveRetry', $data)) {
             $object->keepAliveRetry = $data['keepAliveRetry'];

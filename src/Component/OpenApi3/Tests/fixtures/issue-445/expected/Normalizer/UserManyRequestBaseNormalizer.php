@@ -37,6 +37,9 @@ class UserManyRequestBaseNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('userIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('userIds', \PicturePark\API\Model\UserManyRequestBase::class);
+        }
         if (\array_key_exists('userIds', $data)) {
             $values = [];
             foreach ($data['userIds'] as $value) {

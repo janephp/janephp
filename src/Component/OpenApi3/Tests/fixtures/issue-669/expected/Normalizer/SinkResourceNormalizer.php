@@ -37,6 +37,9 @@ class SinkResourceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('urn', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('urn', \Jane\Generated\DigitalOcean\Model\SinkResource::class);
+        }
         if (\array_key_exists('urn', $data)) {
             $object->urn = $data['urn'];
             unset($data['urn']);

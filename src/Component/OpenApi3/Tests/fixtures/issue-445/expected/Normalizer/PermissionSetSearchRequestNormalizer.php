@@ -66,6 +66,9 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
         elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
+        if (!\array_key_exists('limit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('limit', \PicturePark\API\Model\PermissionSetSearchRequest::class);
+        }
         if (\array_key_exists('limit', $data)) {
             $object->limit = $data['limit'];
         }
@@ -94,6 +97,9 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('rightFilter', $data)) {
             $object->rightFilter = null;
+        }
+        if (!\array_key_exists('debugMode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('debugMode', \PicturePark\API\Model\PermissionSetSearchRequest::class);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->debugMode = $data['debugMode'];

@@ -53,6 +53,9 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('enumNoType', $data)) {
             $object->enumNoType = $data['enumNoType'];
         }
+        if (!\array_key_exists('constString', $data)) {
+            throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\MissingRequiredPropertyException('constString', \Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo::class);
+        }
         if (\array_key_exists('constString', $data)) {
             $object->constString = $data['constString'];
         }
@@ -64,6 +67,9 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('minMaxLengthString', $data)) {
             $object->minMaxLengthString = $data['minMaxLengthString'];
+        }
+        if (!\array_key_exists('patternString', $data)) {
+            throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\MissingRequiredPropertyException('patternString', \Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo::class);
         }
         if (\array_key_exists('patternString', $data)) {
             $object->patternString = $data['patternString'];

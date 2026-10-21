@@ -43,11 +43,20 @@ class SchemaImportRequestNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('importListItems', $data) && \is_int($data['importListItems'])) {
             $data['importListItems'] = (bool) $data['importListItems'];
         }
+        if (!\array_key_exists('fileTransferId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferId', \PicturePark\API\Model\SchemaImportRequest::class);
+        }
         if (\array_key_exists('fileTransferId', $data)) {
             $object->fileTransferId = $data['fileTransferId'];
         }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\SchemaImportRequest::class);
+        }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];
+        }
+        if (!\array_key_exists('importListItems', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('importListItems', \PicturePark\API\Model\SchemaImportRequest::class);
         }
         if (\array_key_exists('importListItems', $data)) {
             $object->importListItems = $data['importListItems'];

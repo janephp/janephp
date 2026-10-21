@@ -40,11 +40,20 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginInterfaceTypeConstraint());
         }
+        if (!\array_key_exists('Prefix', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Prefix', \Docker\Api\Model\PluginInterfaceType::class);
+        }
         if (\array_key_exists('Prefix', $data)) {
             $object->prefix = $data['Prefix'];
         }
+        if (!\array_key_exists('Capability', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Capability', \Docker\Api\Model\PluginInterfaceType::class);
+        }
         if (\array_key_exists('Capability', $data)) {
             $object->capability = $data['Capability'];
+        }
+        if (!\array_key_exists('Version', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Version', \Docker\Api\Model\PluginInterfaceType::class);
         }
         if (\array_key_exists('Version', $data)) {
             $object->version = $data['Version'];

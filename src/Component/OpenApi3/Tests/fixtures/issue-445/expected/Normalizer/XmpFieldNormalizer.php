@@ -46,8 +46,14 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('path', $data)) {
             $object->path = null;
         }
+        if (!\array_key_exists('isWritable', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isWritable', \PicturePark\API\Model\XmpField::class);
+        }
         if (\array_key_exists('isWritable', $data)) {
             $object->isWritable = $data['isWritable'];
+        }
+        if (!\array_key_exists('dataType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('dataType', \PicturePark\API\Model\XmpField::class);
         }
         if (\array_key_exists('dataType', $data)) {
             $value = $data['dataType'];

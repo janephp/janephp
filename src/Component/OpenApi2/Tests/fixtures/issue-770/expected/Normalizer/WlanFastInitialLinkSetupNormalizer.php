@@ -37,8 +37,14 @@ class WlanFastInitialLinkSetupNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('encryptionType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('encryptionType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanFastInitialLinkSetup::class);
+        }
         if (\array_key_exists('encryptionType', $data)) {
             $object->encryptionType = $data['encryptionType'];
+        }
+        if (!\array_key_exists('dhcpServerIp', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('dhcpServerIp', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanFastInitialLinkSetup::class);
         }
         if (\array_key_exists('dhcpServerIp', $data)) {
             $object->dhcpServerIp = $data['dhcpServerIp'];

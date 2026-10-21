@@ -37,6 +37,9 @@ class FailureNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('errors', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Runtime\Normalizer\MissingRequiredPropertyException('errors', \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Model\Failure::class);
+        }
         if (\array_key_exists('errors', $data)) {
             $values = [];
             foreach ($data['errors'] as $value) {

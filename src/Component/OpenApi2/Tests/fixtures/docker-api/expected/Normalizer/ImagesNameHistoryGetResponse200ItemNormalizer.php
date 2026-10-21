@@ -40,14 +40,26 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
         }
+        if (!\array_key_exists('Id', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Id', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
+        }
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
+        }
+        if (!\array_key_exists('Created', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Created', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
         }
         if (\array_key_exists('Created', $data)) {
             $object->created = $data['Created'];
         }
+        if (!\array_key_exists('CreatedBy', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('CreatedBy', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
+        }
         if (\array_key_exists('CreatedBy', $data)) {
             $object->createdBy = $data['CreatedBy'];
+        }
+        if (!\array_key_exists('Tags', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Tags', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
         }
         if (\array_key_exists('Tags', $data)) {
             $values = [];
@@ -56,8 +68,14 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
             }
             $object->tags = $values;
         }
+        if (!\array_key_exists('Size', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Size', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
+        }
         if (\array_key_exists('Size', $data)) {
             $object->size = $data['Size'];
+        }
+        if (!\array_key_exists('Comment', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Comment', \Docker\Api\Model\ImagesNameHistoryGetResponse200Item::class);
         }
         if (\array_key_exists('Comment', $data)) {
             $object->comment = $data['Comment'];

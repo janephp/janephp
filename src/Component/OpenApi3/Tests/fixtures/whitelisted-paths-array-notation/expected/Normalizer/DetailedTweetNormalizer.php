@@ -44,9 +44,15 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->format = $data['format'];
             unset($data['format']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -64,9 +70,15 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('text', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('text', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
+        }
         if (\array_key_exists('text', $data)) {
             $object->text = $data['text'];
             unset($data['text']);
+        }
+        if (!\array_key_exists('author_id', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('author_id', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
         }
         if (\array_key_exists('author_id', $data)) {
             $object->authorId = $data['author_id'];
@@ -100,6 +112,9 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->entities = $this->denormalizer->denormalize($data['entities'], \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\FullTextEntities::class, 'json', $context);
             unset($data['entities']);
         }
+        if (!\array_key_exists('stats', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('stats', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
+        }
         if (\array_key_exists('stats', $data)) {
             $object->stats = $this->denormalizer->denormalize($data['stats'], \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweetFieldsStats::class, 'json', $context);
             unset($data['stats']);
@@ -111,6 +126,9 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->contextAnnotation = $values_1;
             unset($data['context_annotation']);
+        }
+        if (!\array_key_exists('possibly_sensitive', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('possibly_sensitive', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\DetailedTweet::class);
         }
         if (\array_key_exists('possibly_sensitive', $data)) {
             $object->possiblySensitive = $data['possibly_sensitive'];

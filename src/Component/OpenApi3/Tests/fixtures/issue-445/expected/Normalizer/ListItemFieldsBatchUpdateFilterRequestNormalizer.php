@@ -43,12 +43,18 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('filterRequest', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('filterRequest', \PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest::class);
+        }
         if (\array_key_exists('filterRequest', $data)) {
             $value = $data['filterRequest'];
             if (is_array($data['filterRequest']) and \array_key_exists('includeAllSchemaChildren', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
                 $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ListItemFilterRequest::class, 'json', $context);
             }
             $object->filterRequest = $value;
+        }
+        if (!\array_key_exists('changeCommands', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('changeCommands', \PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest::class);
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];
@@ -57,8 +63,14 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
             }
             $object->changeCommands = $values;
         }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest::class);
+        }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

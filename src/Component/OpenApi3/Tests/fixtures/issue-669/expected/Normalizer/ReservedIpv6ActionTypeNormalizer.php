@@ -43,6 +43,9 @@ class ReservedIpv6ActionTypeNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('type', $data) and 'unassign' === $data['type']) {
             return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\ReservedIpv6ActionUnassign', $format, $context);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\ReservedIpv6ActionType::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);

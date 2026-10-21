@@ -45,6 +45,9 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\MatchRegexCondition::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);

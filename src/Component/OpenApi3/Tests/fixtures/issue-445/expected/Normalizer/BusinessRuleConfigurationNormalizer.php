@@ -40,6 +40,9 @@ class BusinessRuleConfigurationNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('disableRuleEngine', $data) && \is_int($data['disableRuleEngine'])) {
             $data['disableRuleEngine'] = (bool) $data['disableRuleEngine'];
         }
+        if (!\array_key_exists('disableRuleEngine', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('disableRuleEngine', \PicturePark\API\Model\BusinessRuleConfiguration::class);
+        }
         if (\array_key_exists('disableRuleEngine', $data)) {
             $object->disableRuleEngine = $data['disableRuleEngine'];
         }

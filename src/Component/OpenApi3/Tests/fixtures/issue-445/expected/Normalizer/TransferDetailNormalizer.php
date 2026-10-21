@@ -37,13 +37,22 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\TransferDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\TransferDetail::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\TransferDetail::class);
         }
         if (\array_key_exists('state', $data)) {
             $value = $data['state'];
@@ -52,6 +61,9 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->state = $value;
             unset($data['state']);
+        }
+        if (!\array_key_exists('transferType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferType', \PicturePark\API\Model\TransferDetail::class);
         }
         if (\array_key_exists('transferType', $data)) {
             $value_1 = $data['transferType'];
@@ -69,6 +81,9 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
+        if (!\array_key_exists('fileTransferCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fileTransferCount', \PicturePark\API\Model\TransferDetail::class);
+        }
         if (\array_key_exists('fileTransferCount', $data)) {
             $object->fileTransferCount = $data['fileTransferCount'];
             unset($data['fileTransferCount']);
@@ -80,6 +95,9 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('collectionId', $data)) {
             $object->collectionId = null;
             unset($data['collectionId']);
+        }
+        if (!\array_key_exists('audit', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('audit', \PicturePark\API\Model\TransferDetail::class);
         }
         if (\array_key_exists('audit', $data)) {
             $value_2 = $data['audit'];

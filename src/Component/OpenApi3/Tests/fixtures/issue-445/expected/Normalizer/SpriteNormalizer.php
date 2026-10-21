@@ -37,20 +37,38 @@ class SpriteNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('width', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('width', \PicturePark\API\Model\Sprite::class);
+        }
         if (\array_key_exists('width', $data)) {
             $object->width = $data['width'];
+        }
+        if (!\array_key_exists('height', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('height', \PicturePark\API\Model\Sprite::class);
         }
         if (\array_key_exists('height', $data)) {
             $object->height = $data['height'];
         }
+        if (!\array_key_exists('y', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('y', \PicturePark\API\Model\Sprite::class);
+        }
         if (\array_key_exists('y', $data)) {
             $object->y = $data['y'];
+        }
+        if (!\array_key_exists('x', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('x', \PicturePark\API\Model\Sprite::class);
         }
         if (\array_key_exists('x', $data)) {
             $object->x = $data['x'];
         }
+        if (!\array_key_exists('start', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('start', \PicturePark\API\Model\Sprite::class);
+        }
         if (\array_key_exists('start', $data)) {
             $object->start = $data['start'];
+        }
+        if (!\array_key_exists('end', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('end', \PicturePark\API\Model\Sprite::class);
         }
         if (\array_key_exists('end', $data)) {
             $object->end = $data['end'];

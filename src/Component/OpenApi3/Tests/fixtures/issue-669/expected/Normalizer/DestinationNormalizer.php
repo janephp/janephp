@@ -49,6 +49,9 @@ class DestinationNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->type = $data['type'];
             unset($data['type']);
         }
+        if (!\array_key_exists('config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('config', \Jane\Generated\DigitalOcean\Model\Destination::class);
+        }
         if (\array_key_exists('config', $data)) {
             $object->config = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\OpensearchConfig::class, 'json', $context);
             unset($data['config']);

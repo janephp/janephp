@@ -37,9 +37,15 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('code', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Normalizer\MissingRequiredPropertyException('code', \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error::class);
+        }
         if (\array_key_exists('code', $data)) {
             $object->code = $data['code'];
             unset($data['code']);
+        }
+        if (!\array_key_exists('message', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Normalizer\MissingRequiredPropertyException('message', \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error::class);
         }
         if (\array_key_exists('message', $data)) {
             $object->message = $data['message'];

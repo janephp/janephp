@@ -37,13 +37,22 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('config', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('config', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
         }
         if (\array_key_exists('config', $data)) {
             $value = $data['config'];
@@ -55,6 +64,9 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->config = $value;
             unset($data['config']);
         }
+        if (!\array_key_exists('droplet_template', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('droplet_template', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
+        }
         if (\array_key_exists('droplet_template', $data)) {
             $object->dropletTemplate = $this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context);
             unset($data['droplet_template']);
@@ -62,6 +74,9 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('current_utilization', $data)) {
             $object->currentUtilization = $this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\CurrentUtilization::class, 'json', $context);
             unset($data['current_utilization']);
+        }
+        if (!\array_key_exists('created_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('created_at', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
         }
         if (\array_key_exists('created_at', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
@@ -79,6 +94,9 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->createdAt = $date;
             unset($data['created_at']);
         }
+        if (!\array_key_exists('updated_at', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('updated_at', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
+        }
         if (\array_key_exists('updated_at', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_1) {
@@ -95,9 +113,15 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
+        if (!\array_key_exists('status', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('status', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
+        }
         if (\array_key_exists('status', $data)) {
             $object->status = $data['status'];
             unset($data['status']);
+        }
+        if (!\array_key_exists('active_resources_count', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('active_resources_count', \Jane\Generated\DigitalOcean\Model\AutoscalePool::class);
         }
         if (\array_key_exists('active_resources_count', $data)) {
             $object->activeResourcesCount = $data['active_resources_count'];

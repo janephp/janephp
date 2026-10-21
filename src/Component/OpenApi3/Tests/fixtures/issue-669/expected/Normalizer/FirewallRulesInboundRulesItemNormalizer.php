@@ -37,13 +37,22 @@ class FirewallRulesInboundRulesItemNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('protocol', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('protocol', \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class);
+        }
         if (\array_key_exists('protocol', $data)) {
             $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
+        if (!\array_key_exists('ports', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('ports', \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class);
+        }
         if (\array_key_exists('ports', $data)) {
             $object->ports = $data['ports'];
             unset($data['ports']);
+        }
+        if (!\array_key_exists('sources', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('sources', \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class);
         }
         if (\array_key_exists('sources', $data)) {
             $object->sources = $this->denormalizer->denormalize($data['sources'], \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemSources::class, 'json', $context);

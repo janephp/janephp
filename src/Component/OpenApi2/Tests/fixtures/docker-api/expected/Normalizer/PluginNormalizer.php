@@ -46,17 +46,29 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('Id', $data)) {
             $object->id = $data['Id'];
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\Plugin::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }
+        if (!\array_key_exists('Enabled', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Enabled', \Docker\Api\Model\Plugin::class);
+        }
         if (\array_key_exists('Enabled', $data)) {
             $object->enabled = $data['Enabled'];
+        }
+        if (!\array_key_exists('Settings', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Settings', \Docker\Api\Model\Plugin::class);
         }
         if (\array_key_exists('Settings', $data)) {
             $object->settings = $this->denormalizer->denormalize($data['Settings'], \Docker\Api\Model\PluginSettings::class, 'json', $context);
         }
         if (\array_key_exists('PluginReference', $data)) {
             $object->pluginReference = $data['PluginReference'];
+        }
+        if (!\array_key_exists('Config', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Config', \Docker\Api\Model\Plugin::class);
         }
         if (\array_key_exists('Config', $data)) {
             $object->config = $this->denormalizer->denormalize($data['Config'], \Docker\Api\Model\PluginConfig::class, 'json', $context);

@@ -37,8 +37,14 @@ class ShareUserNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('displayName', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('displayName', \PicturePark\API\Model\ShareUser::class);
+        }
         if (\array_key_exists('displayName', $data)) {
             $object->displayName = $data['displayName'];
+        }
+        if (!\array_key_exists('emailHash', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('emailHash', \PicturePark\API\Model\ShareUser::class);
         }
         if (\array_key_exists('emailHash', $data)) {
             $object->emailHash = $data['emailHash'];

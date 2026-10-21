@@ -40,11 +40,17 @@ class AaaCreateAuthenticationServerNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('standbyServerEnabled', $data) && \is_int($data['standbyServerEnabled'])) {
             $data['standbyServerEnabled'] = (bool) $data['standbyServerEnabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('primary', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('primary', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer::class);
         }
         if (\array_key_exists('primary', $data)) {
             $object->primary = $this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServer::class, 'json', $context);

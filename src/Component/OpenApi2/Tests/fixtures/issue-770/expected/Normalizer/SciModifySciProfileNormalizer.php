@@ -40,20 +40,38 @@ class SciModifySciProfileNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('sciProfile', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciProfile', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
+        }
         if (\array_key_exists('sciProfile', $data)) {
             $object->sciProfile = $data['sciProfile'];
+        }
+        if (!\array_key_exists('sciSystemId', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciSystemId', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
         }
         if (\array_key_exists('sciSystemId', $data)) {
             $object->sciSystemId = $data['sciSystemId'];
         }
+        if (!\array_key_exists('sciServerHost', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciServerHost', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
+        }
         if (\array_key_exists('sciServerHost', $data)) {
             $object->sciServerHost = $data['sciServerHost'];
+        }
+        if (!\array_key_exists('sciServerPort', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciServerPort', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
         }
         if (\array_key_exists('sciServerPort', $data)) {
             $object->sciServerPort = $data['sciServerPort'];
         }
+        if (!\array_key_exists('sciUser', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciUser', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
+        }
         if (\array_key_exists('sciUser', $data)) {
             $object->sciUser = $data['sciUser'];
+        }
+        if (!\array_key_exists('sciPassword', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('sciPassword', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile::class);
         }
         if (\array_key_exists('sciPassword', $data)) {
             $object->sciPassword = $data['sciPassword'];

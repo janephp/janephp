@@ -40,9 +40,15 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('copyright', $data) && \is_int($data['copyright'])) {
             $data['copyright'] = (bool) $data['copyright'];
         }
+        if (!\array_key_exists('copyright', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('copyright', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetWithheld::class);
+        }
         if (\array_key_exists('copyright', $data)) {
             $object->copyright = $data['copyright'];
             unset($data['copyright']);
+        }
+        if (!\array_key_exists('country_codes', $data)) {
+            throw new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\MissingRequiredPropertyException('country_codes', \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetWithheld::class);
         }
         if (\array_key_exists('country_codes', $data)) {
             $values = [];

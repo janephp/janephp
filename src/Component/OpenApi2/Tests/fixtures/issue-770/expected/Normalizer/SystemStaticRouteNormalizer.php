@@ -37,11 +37,20 @@ class SystemStaticRouteNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('networkAddress', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('networkAddress', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRoute::class);
+        }
         if (\array_key_exists('networkAddress', $data)) {
             $object->networkAddress = $data['networkAddress'];
         }
+        if (!\array_key_exists('subnetMask', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('subnetMask', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRoute::class);
+        }
         if (\array_key_exists('subnetMask', $data)) {
             $object->subnetMask = $data['subnetMask'];
+        }
+        if (!\array_key_exists('gateway', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('gateway', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRoute::class);
         }
         if (\array_key_exists('gateway', $data)) {
             $object->gateway = $data['gateway'];

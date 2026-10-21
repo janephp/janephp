@@ -37,9 +37,15 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('domain', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('domain', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ContextAnnotation::class);
+        }
         if (\array_key_exists('domain', $data)) {
             $object->domain = $this->denormalizer->denormalize($data['domain'], \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ContextAnnotationDomainFields::class, 'json', $context);
             unset($data['domain']);
+        }
+        if (!\array_key_exists('entity', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\MissingRequiredPropertyException('entity', \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ContextAnnotation::class);
         }
         if (\array_key_exists('entity', $data)) {
             $object->entity = $this->denormalizer->denormalize($data['entity'], \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ContextAnnotationEntityFields::class, 'json', $context);

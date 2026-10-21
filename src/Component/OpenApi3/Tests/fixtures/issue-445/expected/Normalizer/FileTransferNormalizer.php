@@ -37,8 +37,14 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\FileTransfer::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\FileTransfer::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -49,11 +55,20 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('identifier', $data)) {
             $object->identifier = null;
         }
+        if (!\array_key_exists('requestId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('requestId', \PicturePark\API\Model\FileTransfer::class);
+        }
         if (\array_key_exists('requestId', $data)) {
             $object->requestId = $data['requestId'];
         }
+        if (!\array_key_exists('transferId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('transferId', \PicturePark\API\Model\FileTransfer::class);
+        }
         if (\array_key_exists('transferId', $data)) {
             $object->transferId = $data['transferId'];
+        }
+        if (!\array_key_exists('state', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('state', \PicturePark\API\Model\FileTransfer::class);
         }
         if (\array_key_exists('state', $data)) {
             $value = $data['state'];

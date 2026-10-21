@@ -43,21 +43,36 @@ class AlertPolicyRequestNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
             $data['enabled'] = (bool) $data['enabled'];
         }
+        if (!\array_key_exists('alerts', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('alerts', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('alerts', $data)) {
             $object->alerts = $this->denormalizer->denormalize($data['alerts'], \Jane\Generated\DigitalOcean\Model\Alerts::class, 'json', $context);
             unset($data['alerts']);
+        }
+        if (!\array_key_exists('compare', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('compare', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
         }
         if (\array_key_exists('compare', $data)) {
             $object->compare = $data['compare'];
             unset($data['compare']);
         }
+        if (!\array_key_exists('description', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('description', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
             unset($data['description']);
         }
+        if (!\array_key_exists('enabled', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('enabled', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('enabled', $data)) {
             $object->enabled = $data['enabled'];
             unset($data['enabled']);
+        }
+        if (!\array_key_exists('entities', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('entities', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
         }
         if (\array_key_exists('entities', $data)) {
             $values = [];
@@ -67,6 +82,9 @@ class AlertPolicyRequestNormalizer implements DenormalizerInterface, NormalizerI
             $object->entities = $values;
             unset($data['entities']);
         }
+        if (!\array_key_exists('tags', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('tags', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('tags', $data)) {
             $values_1 = [];
             foreach ($data['tags'] as $value_1) {
@@ -75,13 +93,22 @@ class AlertPolicyRequestNormalizer implements DenormalizerInterface, NormalizerI
             $object->tags = $values_1;
             unset($data['tags']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
         }
+        if (!\array_key_exists('value', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('value', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
+        }
         if (\array_key_exists('value', $data)) {
             $object->value = $data['value'];
             unset($data['value']);
+        }
+        if (!\array_key_exists('window', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('window', \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest::class);
         }
         if (\array_key_exists('window', $data)) {
             $object->window = $data['window'];

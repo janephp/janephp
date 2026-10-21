@@ -37,6 +37,9 @@ class SystemNtpServerValidationNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ntpServer', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ntpServer', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidation::class);
+        }
         if (\array_key_exists('ntpServer', $data)) {
             $object->ntpServer = $data['ntpServer'];
         }

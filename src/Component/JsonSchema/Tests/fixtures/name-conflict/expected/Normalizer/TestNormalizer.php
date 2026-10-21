@@ -37,6 +37,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('msgref', $data)) {
+            throw new \Jane\Component\JsonSchema\Tests\Expected\NameConflict\Runtime\Normalizer\MissingRequiredPropertyException('msgref', \Jane\Component\JsonSchema\Tests\Expected\NameConflict\Model\Test::class);
+        }
         if (\array_key_exists('msgref', $data)) {
             $object->msgref = $data['msgref'];
         }

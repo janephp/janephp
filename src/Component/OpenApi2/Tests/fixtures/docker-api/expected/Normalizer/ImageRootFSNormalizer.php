@@ -40,6 +40,9 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageRootFSConstraint());
         }
+        if (!\array_key_exists('Type', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Type', \Docker\Api\Model\ImageRootFS::class);
+        }
         if (\array_key_exists('Type', $data)) {
             $object->type = $data['Type'];
         }

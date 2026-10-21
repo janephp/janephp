@@ -40,6 +40,9 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('system', $data) && \is_int($data['system'])) {
             $data['system'] = (bool) $data['system'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\Schema::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -97,14 +100,26 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
+        if (!\array_key_exists('fieldCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('fieldCount', \PicturePark\API\Model\Schema::class);
+        }
         if (\array_key_exists('fieldCount', $data)) {
             $object->fieldCount = $data['fieldCount'];
+        }
+        if (!\array_key_exists('childCount', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('childCount', \PicturePark\API\Model\Schema::class);
         }
         if (\array_key_exists('childCount', $data)) {
             $object->childCount = $data['childCount'];
         }
+        if (!\array_key_exists('level', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('level', \PicturePark\API\Model\Schema::class);
+        }
         if (\array_key_exists('level', $data)) {
             $object->level = $data['level'];
+        }
+        if (!\array_key_exists('system', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('system', \PicturePark\API\Model\Schema::class);
         }
         if (\array_key_exists('system', $data)) {
             $object->system = $data['system'];

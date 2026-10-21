@@ -40,12 +40,18 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumesGetResponse200Constraint());
         }
+        if (!\array_key_exists('Volumes', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Volumes', \Docker\Api\Model\VolumesGetResponse200::class);
+        }
         if (\array_key_exists('Volumes', $data)) {
             $values = [];
             foreach ($data['Volumes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\Volume::class, 'json', $context);
             }
             $object->volumes = $values;
+        }
+        if (!\array_key_exists('Warnings', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Warnings', \Docker\Api\Model\VolumesGetResponse200::class);
         }
         if (\array_key_exists('Warnings', $data)) {
             $values_1 = [];

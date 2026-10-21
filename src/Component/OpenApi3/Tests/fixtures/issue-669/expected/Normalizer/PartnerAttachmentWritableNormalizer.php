@@ -37,21 +37,36 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('connection_bandwidth_in_mbps', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('connection_bandwidth_in_mbps', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable::class);
         }
         if (\array_key_exists('connection_bandwidth_in_mbps', $data)) {
             $object->connectionBandwidthInMbps = $data['connection_bandwidth_in_mbps'];
             unset($data['connection_bandwidth_in_mbps']);
         }
+        if (!\array_key_exists('region', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('region', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable::class);
+        }
         if (\array_key_exists('region', $data)) {
             $object->region = $data['region'];
             unset($data['region']);
         }
+        if (!\array_key_exists('naas_provider', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('naas_provider', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable::class);
+        }
         if (\array_key_exists('naas_provider', $data)) {
             $object->naasProvider = $data['naas_provider'];
             unset($data['naas_provider']);
+        }
+        if (!\array_key_exists('vpc_ids', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vpc_ids', \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable::class);
         }
         if (\array_key_exists('vpc_ids', $data)) {
             $values = [];

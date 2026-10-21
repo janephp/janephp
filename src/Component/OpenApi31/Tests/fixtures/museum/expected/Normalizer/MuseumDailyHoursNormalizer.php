@@ -40,6 +40,9 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Museum\Validator\MuseumDailyHoursConstraint());
         }
+        if (!\array_key_exists('date', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('date', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours::class);
+        }
         if (\array_key_exists('date', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['date']);
             if (false === $date) {
@@ -48,9 +51,15 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
             $object->date = $date->setTime(0, 0, 0);
             unset($data['date']);
         }
+        if (!\array_key_exists('timeOpen', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('timeOpen', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours::class);
+        }
         if (\array_key_exists('timeOpen', $data)) {
             $object->timeOpen = $data['timeOpen'];
             unset($data['timeOpen']);
+        }
+        if (!\array_key_exists('timeClose', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\MissingRequiredPropertyException('timeClose', \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours::class);
         }
         if (\array_key_exists('timeClose', $data)) {
             $object->timeClose = $data['timeClose'];

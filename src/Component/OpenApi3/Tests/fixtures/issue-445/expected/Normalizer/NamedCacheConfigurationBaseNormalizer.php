@@ -55,8 +55,14 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
         elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
+        if (!\array_key_exists('caseSensitive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('caseSensitive', \PicturePark\API\Model\NamedCacheConfigurationBase::class);
+        }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->caseSensitive = $data['caseSensitive'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\NamedCacheConfigurationBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

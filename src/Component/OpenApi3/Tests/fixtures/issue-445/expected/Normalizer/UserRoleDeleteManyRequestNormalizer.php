@@ -37,6 +37,9 @@ class UserRoleDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ids', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ids', \PicturePark\API\Model\UserRoleDeleteManyRequest::class);
+        }
         if (\array_key_exists('ids', $data)) {
             $values = [];
             foreach ($data['ids'] as $value) {

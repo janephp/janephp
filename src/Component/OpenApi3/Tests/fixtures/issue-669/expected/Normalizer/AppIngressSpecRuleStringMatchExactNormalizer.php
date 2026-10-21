@@ -37,6 +37,9 @@ class AppIngressSpecRuleStringMatchExactNormalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('exact', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('exact', \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchExact::class);
+        }
         if (\array_key_exists('exact', $data)) {
             $object->exact = $data['exact'];
             unset($data['exact']);

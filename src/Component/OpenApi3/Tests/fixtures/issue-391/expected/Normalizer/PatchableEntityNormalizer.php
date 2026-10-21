@@ -45,6 +45,9 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
             $object->nullableProperty = null;
             unset($data['nullable_property']);
         }
+        if (!\array_key_exists('nullable_and_required_property', $data)) {
+            throw new \Gounlaf\JanephpBug\Runtime\Normalizer\MissingRequiredPropertyException('nullable_and_required_property', \Gounlaf\JanephpBug\Model\PatchableEntity::class);
+        }
         if (\array_key_exists('nullable_and_required_property', $data) && $data['nullable_and_required_property'] !== null) {
             $object->nullableAndRequiredProperty = $data['nullable_and_required_property'];
             unset($data['nullable_and_required_property']);

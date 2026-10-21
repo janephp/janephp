@@ -59,6 +59,9 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('userRoleIds', $data)) {
             $object->userRoleIds = null;
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\UserWithRoles::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -74,8 +77,14 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
+        if (!\array_key_exists('emailAddress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('emailAddress', \PicturePark\API\Model\UserWithRoles::class);
+        }
         if (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = $data['emailAddress'];
+        }
+        if (!\array_key_exists('authorizationState', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('authorizationState', \PicturePark\API\Model\UserWithRoles::class);
         }
         if (\array_key_exists('authorizationState', $data)) {
             $value_1 = $data['authorizationState'];
@@ -84,6 +93,9 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->authorizationState = $value_1;
         }
+        if (!\array_key_exists('lifeCycle', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycle', \PicturePark\API\Model\UserWithRoles::class);
+        }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_2 = $data['lifeCycle'];
             if (is_string($data['lifeCycle'])) {
@@ -91,14 +103,26 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->lifeCycle = $value_2;
         }
+        if (!\array_key_exists('isLocked', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isLocked', \PicturePark\API\Model\UserWithRoles::class);
+        }
         if (\array_key_exists('isLocked', $data)) {
             $object->isLocked = $data['isLocked'];
+        }
+        if (!\array_key_exists('isSupportUser', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isSupportUser', \PicturePark\API\Model\UserWithRoles::class);
         }
         if (\array_key_exists('isSupportUser', $data)) {
             $object->isSupportUser = $data['isSupportUser'];
         }
+        if (!\array_key_exists('isReadOnly', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isReadOnly', \PicturePark\API\Model\UserWithRoles::class);
+        }
         if (\array_key_exists('isReadOnly', $data)) {
             $object->isReadOnly = $data['isReadOnly'];
+        }
+        if (!\array_key_exists('isFederated', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('isFederated', \PicturePark\API\Model\UserWithRoles::class);
         }
         if (\array_key_exists('isFederated', $data)) {
             $object->isFederated = $data['isFederated'];

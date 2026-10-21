@@ -43,8 +43,14 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetConstraint());
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('id', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];

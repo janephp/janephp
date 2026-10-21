@@ -37,9 +37,15 @@ class DatadogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('site', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('site', \Jane\Generated\DigitalOcean\Model\DatadogLogsink::class);
+        }
         if (\array_key_exists('site', $data)) {
             $object->site = $data['site'];
             unset($data['site']);
+        }
+        if (!\array_key_exists('datadog_api_key', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('datadog_api_key', \Jane\Generated\DigitalOcean\Model\DatadogLogsink::class);
         }
         if (\array_key_exists('datadog_api_key', $data)) {
             $object->datadogApiKey = $data['datadog_api_key'];

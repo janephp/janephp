@@ -37,6 +37,9 @@ class ResponseAllSizesNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('sizes', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('sizes', \Jane\Generated\DigitalOcean\Model\ResponseAllSizes::class);
+        }
         if (\array_key_exists('sizes', $data)) {
             $values = [];
             foreach ($data['sizes'] as $value) {
@@ -48,6 +51,9 @@ class ResponseAllSizesNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('links', $data)) {
             $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context);
             unset($data['links']);
+        }
+        if (!\array_key_exists('meta', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('meta', \Jane\Generated\DigitalOcean\Model\ResponseAllSizes::class);
         }
         if (\array_key_exists('meta', $data)) {
             $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context);

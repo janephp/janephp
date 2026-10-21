@@ -75,6 +75,9 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->filter = null;
             unset($data['filter']);
         }
+        if (!\array_key_exists('lifeCycleFilter', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('lifeCycleFilter', \PicturePark\API\Model\UserAggregationRequest::class);
+        }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_2 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
@@ -107,13 +110,22 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->aggregationFilters = null;
             unset($data['aggregationFilters']);
         }
+        if (!\array_key_exists('includeServiceUser', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeServiceUser', \PicturePark\API\Model\UserAggregationRequest::class);
+        }
         if (\array_key_exists('includeServiceUser', $data)) {
             $object->includeServiceUser = $data['includeServiceUser'];
             unset($data['includeServiceUser']);
         }
+        if (!\array_key_exists('editableOnly', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('editableOnly', \PicturePark\API\Model\UserAggregationRequest::class);
+        }
         if (\array_key_exists('editableOnly', $data)) {
             $object->editableOnly = $data['editableOnly'];
             unset($data['editableOnly']);
+        }
+        if (!\array_key_exists('aggregators', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('aggregators', \PicturePark\API\Model\UserAggregationRequest::class);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_3 = [];

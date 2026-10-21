@@ -37,6 +37,9 @@ class PortalserviceCreateWebAuthenticationNormalizer implements DenormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }

@@ -37,6 +37,9 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('timestamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timestamp', \PicturePark\API\Model\ContentDetailViewEvent::class);
+        }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date) {
@@ -52,6 +55,9 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
             }
             $object->timestamp = $date;
             unset($data['timestamp']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ContentDetailViewEvent::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

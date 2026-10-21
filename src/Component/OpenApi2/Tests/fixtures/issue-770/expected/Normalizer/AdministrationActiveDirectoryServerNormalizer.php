@@ -40,6 +40,9 @@ class AdministrationActiveDirectoryServerNormalizer implements DenormalizerInter
         if (\array_key_exists('tlsEnabled', $data) && \is_int($data['tlsEnabled'])) {
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationActiveDirectoryServer::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
         }
@@ -49,11 +52,20 @@ class AdministrationActiveDirectoryServerNormalizer implements DenormalizerInter
         if (\array_key_exists('cnIdentity', $data)) {
             $object->cnIdentity = $data['cnIdentity'];
         }
+        if (!\array_key_exists('ip', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('ip', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationActiveDirectoryServer::class);
+        }
         if (\array_key_exists('ip', $data)) {
             $object->ip = $data['ip'];
         }
+        if (!\array_key_exists('port', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('port', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationActiveDirectoryServer::class);
+        }
         if (\array_key_exists('port', $data)) {
             $object->port = $data['port'];
+        }
+        if (!\array_key_exists('windowsDomainName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('windowsDomainName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationActiveDirectoryServer::class);
         }
         if (\array_key_exists('windowsDomainName', $data)) {
             $object->windowsDomainName = $data['windowsDomainName'];

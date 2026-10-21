@@ -94,6 +94,9 @@ class FormatBaseNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('kind', $data) and 'VectorStillFormat' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorStillFormat', $format, $context);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\FormatBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

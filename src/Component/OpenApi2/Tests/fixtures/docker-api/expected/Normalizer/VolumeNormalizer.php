@@ -40,11 +40,20 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumeConstraint());
         }
+        if (!\array_key_exists('Name', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Name', \Docker\Api\Model\Volume::class);
+        }
         if (\array_key_exists('Name', $data)) {
             $object->name = $data['Name'];
         }
+        if (!\array_key_exists('Driver', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Driver', \Docker\Api\Model\Volume::class);
+        }
         if (\array_key_exists('Driver', $data)) {
             $object->driver = $data['Driver'];
+        }
+        if (!\array_key_exists('Mountpoint', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Mountpoint', \Docker\Api\Model\Volume::class);
         }
         if (\array_key_exists('Mountpoint', $data)) {
             $object->mountpoint = $data['Mountpoint'];
@@ -59,6 +68,9 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->status = $values;
         }
+        if (!\array_key_exists('Labels', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Labels', \Docker\Api\Model\Volume::class);
+        }
         if (\array_key_exists('Labels', $data)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_1 => $value_1) {
@@ -66,8 +78,14 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $object->labels = $values_1;
         }
+        if (!\array_key_exists('Scope', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Scope', \Docker\Api\Model\Volume::class);
+        }
         if (\array_key_exists('Scope', $data)) {
             $object->scope = $data['Scope'];
+        }
+        if (!\array_key_exists('Options', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Options', \Docker\Api\Model\Volume::class);
         }
         if (\array_key_exists('Options', $data)) {
             $values_2 = new \Docker\Api\Runtime\JsonObject();

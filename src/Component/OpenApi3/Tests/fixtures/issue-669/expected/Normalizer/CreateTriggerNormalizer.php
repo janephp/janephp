@@ -40,21 +40,36 @@ class CreateTriggerNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('is_enabled', $data) && \is_int($data['is_enabled'])) {
             $data['is_enabled'] = (bool) $data['is_enabled'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Generated\DigitalOcean\Model\CreateTrigger::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
+        }
+        if (!\array_key_exists('function', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('function', \Jane\Generated\DigitalOcean\Model\CreateTrigger::class);
         }
         if (\array_key_exists('function', $data)) {
             $object->function = $data['function'];
             unset($data['function']);
         }
+        if (!\array_key_exists('type', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('type', \Jane\Generated\DigitalOcean\Model\CreateTrigger::class);
+        }
         if (\array_key_exists('type', $data)) {
             $object->type = $data['type'];
             unset($data['type']);
         }
+        if (!\array_key_exists('is_enabled', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('is_enabled', \Jane\Generated\DigitalOcean\Model\CreateTrigger::class);
+        }
         if (\array_key_exists('is_enabled', $data)) {
             $object->isEnabled = $data['is_enabled'];
             unset($data['is_enabled']);
+        }
+        if (!\array_key_exists('scheduled_details', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('scheduled_details', \Jane\Generated\DigitalOcean\Model\CreateTrigger::class);
         }
         if (\array_key_exists('scheduled_details', $data)) {
             $object->scheduledDetails = $this->denormalizer->denormalize($data['scheduled_details'], \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class, 'json', $context);

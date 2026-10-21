@@ -37,6 +37,9 @@ class SchemaUpdateManyRequestNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('schemas', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('schemas', \PicturePark\API\Model\SchemaUpdateManyRequest::class);
+        }
         if (\array_key_exists('schemas', $data)) {
             $values = [];
             foreach ($data['schemas'] as $value) {

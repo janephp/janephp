@@ -40,11 +40,17 @@ class ProfileL3AccessControlPolicyNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicy::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('defaultAction', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('defaultAction', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicy::class);
         }
         if (\array_key_exists('defaultAction', $data)) {
             $object->defaultAction = $data['defaultAction'];

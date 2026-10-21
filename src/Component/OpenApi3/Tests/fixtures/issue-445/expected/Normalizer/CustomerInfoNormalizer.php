@@ -40,23 +40,44 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('enableQueryDetails', $data) && \is_int($data['enableQueryDetails'])) {
             $data['enableQueryDetails'] = (bool) $data['enableQueryDetails'];
         }
+        if (!\array_key_exists('customerId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('customerId', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('customerId', $data)) {
             $object->customerId = $data['customerId'];
+        }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\CustomerInfo::class);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
+        if (!\array_key_exists('customerAlias', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('customerAlias', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = $data['customerAlias'];
+        }
+        if (!\array_key_exists('identityServerUrl', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('identityServerUrl', \PicturePark\API\Model\CustomerInfo::class);
         }
         if (\array_key_exists('identityServerUrl', $data)) {
             $object->identityServerUrl = $data['identityServerUrl'];
         }
+        if (!\array_key_exists('apiUrl', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('apiUrl', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('apiUrl', $data)) {
             $object->apiUrl = $data['apiUrl'];
         }
+        if (!\array_key_exists('enableQueryDetails', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('enableQueryDetails', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('enableQueryDetails', $data)) {
             $object->enableQueryDetails = $data['enableQueryDetails'];
+        }
+        if (!\array_key_exists('languageConfiguration', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('languageConfiguration', \PicturePark\API\Model\CustomerInfo::class);
         }
         if (\array_key_exists('languageConfiguration', $data)) {
             $value = $data['languageConfiguration'];
@@ -65,6 +86,9 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->languageConfiguration = $value;
         }
+        if (!\array_key_exists('languages', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('languages', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('languages', $data)) {
             $values = [];
             foreach ($data['languages'] as $value_1) {
@@ -72,12 +96,18 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->languages = $values;
         }
+        if (!\array_key_exists('outputFormats', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputFormats', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('outputFormats', $data)) {
             $values_1 = [];
             foreach ($data['outputFormats'] as $value_2) {
                 $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\OutputFormatInfo::class, 'json', $context);
             }
             $object->outputFormats = $values_1;
+        }
+        if (!\array_key_exists('boostValues', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('boostValues', \PicturePark\API\Model\CustomerInfo::class);
         }
         if (\array_key_exists('boostValues', $data)) {
             $values_2 = [];
@@ -96,6 +126,9 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('apps', $data)) {
             $object->apps = null;
         }
+        if (!\array_key_exists('modificationDate', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('modificationDate', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('modificationDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
             if (false === $date) {
@@ -111,8 +144,14 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->modificationDate = $date;
         }
+        if (!\array_key_exists('baseUrl', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('baseUrl', \PicturePark\API\Model\CustomerInfo::class);
+        }
         if (\array_key_exists('baseUrl', $data)) {
             $object->baseUrl = $data['baseUrl'];
+        }
+        if (!\array_key_exists('logosUrl', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('logosUrl', \PicturePark\API\Model\CustomerInfo::class);
         }
         if (\array_key_exists('logosUrl', $data)) {
             $object->logosUrl = $data['logosUrl'];

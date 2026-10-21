@@ -46,6 +46,9 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
         elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
+        if (!\array_key_exists('satisfied', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('satisfied', \PicturePark\API\Model\BusinessRuleTracedEvaluationCondition::class);
+        }
         if (\array_key_exists('satisfied', $data)) {
             $object->satisfied = $data['satisfied'];
         }

@@ -43,6 +43,9 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
+        if (!\array_key_exists('listItemIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('listItemIds', \PicturePark\API\Model\ListItemDeleteManyRequest::class);
+        }
         if (\array_key_exists('listItemIds', $data)) {
             $values = [];
             foreach ($data['listItemIds'] as $value) {
@@ -50,8 +53,14 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
             }
             $object->listItemIds = $values;
         }
+        if (!\array_key_exists('forceReferenceRemoval', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('forceReferenceRemoval', \PicturePark\API\Model\ListItemDeleteManyRequest::class);
+        }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
             $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
+        }
+        if (!\array_key_exists('notifyProgress', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('notifyProgress', \PicturePark\API\Model\ListItemDeleteManyRequest::class);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->notifyProgress = $data['notifyProgress'];

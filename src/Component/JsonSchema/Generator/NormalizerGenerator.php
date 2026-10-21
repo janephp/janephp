@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\ExternalNormalizersResolver;
 use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
+use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment;
@@ -97,6 +98,10 @@ class NormalizerGenerator implements GeneratorInterface
             $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ValidationException'));
             $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'JsonObject'));
 
+            if (!$this->skipRequiredFields && $this->hasRequiredProperty($class)) {
+                $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'MissingRequiredPropertyException'));
+            }
+
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\Component\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray')))]),
@@ -133,6 +138,17 @@ class NormalizerGenerator implements GeneratorInterface
         );
         $schema->addFile($file);
         $context->dispatch(new FileGeneratedEvent($schema, $file));
+    }
+
+    private function hasRequiredProperty(ClassGuess $class): bool
+    {
+        foreach ($class->getProperties() as $property) {
+            if ($property->isRequired()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array

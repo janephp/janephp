@@ -80,6 +80,9 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
         elseif (\array_key_exists('outputFormatIds', $data)) {
             $object->outputFormatIds = null;
         }
+        if (!\array_key_exists('includeCompleted', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('includeCompleted', \PicturePark\API\Model\OutputResetRetryAttemptsRequest::class);
+        }
         if (\array_key_exists('includeCompleted', $data)) {
             $object->includeCompleted = $data['includeCompleted'];
         }

@@ -43,11 +43,17 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('IP', $data)) {
             $object->iP = $data['IP'];
         }
+        if (!\array_key_exists('PrivatePort', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('PrivatePort', \Docker\Api\Model\Port::class);
+        }
         if (\array_key_exists('PrivatePort', $data)) {
             $object->privatePort = $data['PrivatePort'];
         }
         if (\array_key_exists('PublicPort', $data)) {
             $object->publicPort = $data['PublicPort'];
+        }
+        if (!\array_key_exists('Type', $data)) {
+            throw new \Docker\Api\Runtime\Normalizer\MissingRequiredPropertyException('Type', \Docker\Api\Model\Port::class);
         }
         if (\array_key_exists('Type', $data)) {
             $object->type = $data['Type'];

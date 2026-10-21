@@ -46,6 +46,9 @@ class CommonSnmpUserNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('notificationEnabled', $data) && \is_int($data['notificationEnabled'])) {
             $data['notificationEnabled'] = (bool) $data['notificationEnabled'];
         }
+        if (!\array_key_exists('userName', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userName', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonSnmpUser::class);
+        }
         if (\array_key_exists('userName', $data)) {
             $object->userName = $data['userName'];
         }

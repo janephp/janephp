@@ -40,12 +40,18 @@ class ContentRestoreManyRequestNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('allowMissingDependencies', $data) && \is_int($data['allowMissingDependencies'])) {
             $data['allowMissingDependencies'] = (bool) $data['allowMissingDependencies'];
         }
+        if (!\array_key_exists('contentIds', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentIds', \PicturePark\API\Model\ContentRestoreManyRequest::class);
+        }
         if (\array_key_exists('contentIds', $data)) {
             $values = [];
             foreach ($data['contentIds'] as $value) {
                 $values[] = $value;
             }
             $object->contentIds = $values;
+        }
+        if (!\array_key_exists('allowMissingDependencies', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('allowMissingDependencies', \PicturePark\API\Model\ContentRestoreManyRequest::class);
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->allowMissingDependencies = $data['allowMissingDependencies'];

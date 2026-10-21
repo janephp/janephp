@@ -40,14 +40,23 @@ class IdentityCreateSubscriptionPackageNormalizer implements DenormalizerInterfa
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
         }
+        if (!\array_key_exists('expirationInterval', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('expirationInterval', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage::class);
+        }
         if (\array_key_exists('expirationInterval', $data)) {
             $object->expirationInterval = $data['expirationInterval'];
+        }
+        if (!\array_key_exists('expirationValue', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('expirationValue', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage::class);
         }
         if (\array_key_exists('expirationValue', $data)) {
             $object->expirationValue = $data['expirationValue'];

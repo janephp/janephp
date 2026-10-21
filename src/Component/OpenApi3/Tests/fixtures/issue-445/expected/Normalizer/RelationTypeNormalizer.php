@@ -37,6 +37,9 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\RelationType::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
@@ -53,6 +56,9 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('names', $data)) {
             $object->names = null;
+        }
+        if (!\array_key_exists('targetDocType', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('targetDocType', \PicturePark\API\Model\RelationType::class);
         }
         if (\array_key_exists('targetDocType', $data)) {
             $object->targetDocType = $data['targetDocType'];

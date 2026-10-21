@@ -40,11 +40,17 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('domainNames', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('domainNames', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator::class);
         }
         if (\array_key_exists('domainNames', $data)) {
             $values = [];
@@ -52,6 +58,9 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $value;
             }
             $object->domainNames = $values;
+        }
+        if (!\array_key_exists('friendlyNames', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('friendlyNames', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator::class);
         }
         if (\array_key_exists('friendlyNames', $data)) {
             $values_1 = [];

@@ -37,8 +37,14 @@ class ProfileAcctServiceRealmMappingNormalizer implements DenormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('realm', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('realm', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAcctServiceRealmMapping::class);
+        }
         if (\array_key_exists('realm', $data)) {
             $object->realm = $data['realm'];
+        }
+        if (!\array_key_exists('serviceType', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('serviceType', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAcctServiceRealmMapping::class);
         }
         if (\array_key_exists('serviceType', $data)) {
             $object->serviceType = $data['serviceType'];

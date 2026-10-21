@@ -49,33 +49,57 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('available', $data) && \is_int($data['available'])) {
             $data['available'] = (bool) $data['available'];
         }
+        if (!\array_key_exists('slug', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('slug', \Jane\Generated\DigitalOcean\Model\Size::class);
+        }
         if (\array_key_exists('slug', $data)) {
             $object->slug = $data['slug'];
             unset($data['slug']);
+        }
+        if (!\array_key_exists('memory', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('memory', \Jane\Generated\DigitalOcean\Model\Size::class);
         }
         if (\array_key_exists('memory', $data)) {
             $object->memory = $data['memory'];
             unset($data['memory']);
         }
+        if (!\array_key_exists('vcpus', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('vcpus', \Jane\Generated\DigitalOcean\Model\Size::class);
+        }
         if (\array_key_exists('vcpus', $data)) {
             $object->vcpus = $data['vcpus'];
             unset($data['vcpus']);
+        }
+        if (!\array_key_exists('disk', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('disk', \Jane\Generated\DigitalOcean\Model\Size::class);
         }
         if (\array_key_exists('disk', $data)) {
             $object->disk = $data['disk'];
             unset($data['disk']);
         }
+        if (!\array_key_exists('transfer', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('transfer', \Jane\Generated\DigitalOcean\Model\Size::class);
+        }
         if (\array_key_exists('transfer', $data)) {
             $object->transfer = $data['transfer'];
             unset($data['transfer']);
+        }
+        if (!\array_key_exists('price_monthly', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('price_monthly', \Jane\Generated\DigitalOcean\Model\Size::class);
         }
         if (\array_key_exists('price_monthly', $data)) {
             $object->priceMonthly = $data['price_monthly'];
             unset($data['price_monthly']);
         }
+        if (!\array_key_exists('price_hourly', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('price_hourly', \Jane\Generated\DigitalOcean\Model\Size::class);
+        }
         if (\array_key_exists('price_hourly', $data)) {
             $object->priceHourly = $data['price_hourly'];
             unset($data['price_hourly']);
+        }
+        if (!\array_key_exists('regions', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('regions', \Jane\Generated\DigitalOcean\Model\Size::class);
         }
         if (\array_key_exists('regions', $data)) {
             $values = [];
@@ -85,9 +109,15 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->regions = $values;
             unset($data['regions']);
         }
+        if (!\array_key_exists('available', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('available', \Jane\Generated\DigitalOcean\Model\Size::class);
+        }
         if (\array_key_exists('available', $data)) {
             $object->available = $data['available'];
             unset($data['available']);
+        }
+        if (!\array_key_exists('description', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('description', \Jane\Generated\DigitalOcean\Model\Size::class);
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];

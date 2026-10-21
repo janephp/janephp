@@ -37,6 +37,9 @@ class V2DatabasesDatabaseClusterUuidEvictionPolicyPutBodyNormalizer implements D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('eviction_policy', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('eviction_policy', \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidEvictionPolicyPutBody::class);
+        }
         if (\array_key_exists('eviction_policy', $data)) {
             $object->evictionPolicy = $data['eviction_policy'];
             unset($data['eviction_policy']);

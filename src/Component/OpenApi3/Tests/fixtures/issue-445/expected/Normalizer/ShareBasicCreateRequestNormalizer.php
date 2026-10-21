@@ -40,6 +40,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('suppressNotifications', $data) && \is_int($data['suppressNotifications'])) {
             $data['suppressNotifications'] = (bool) $data['suppressNotifications'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('name', \PicturePark\API\Model\ShareBasicCreateRequest::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
             unset($data['name']);
@@ -72,6 +75,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $object->expirationDate = null;
             unset($data['expirationDate']);
         }
+        if (!\array_key_exists('contents', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contents', \PicturePark\API\Model\ShareBasicCreateRequest::class);
+        }
         if (\array_key_exists('contents', $data)) {
             $values = [];
             foreach ($data['contents'] as $value) {
@@ -92,6 +98,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $object->layerSchemaIds = null;
             unset($data['layerSchemaIds']);
         }
+        if (!\array_key_exists('outputAccess', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('outputAccess', \PicturePark\API\Model\ShareBasicCreateRequest::class);
+        }
         if (\array_key_exists('outputAccess', $data)) {
             $value_2 = $data['outputAccess'];
             if (is_string($data['outputAccess'])) {
@@ -99,6 +108,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             }
             $object->outputAccess = $value_2;
             unset($data['outputAccess']);
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ShareBasicCreateRequest::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
@@ -115,6 +127,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         elseif (\array_key_exists('recipientEmails', $data)) {
             $object->recipientEmails = null;
             unset($data['recipientEmails']);
+        }
+        if (!\array_key_exists('languageCode', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('languageCode', \PicturePark\API\Model\ShareBasicCreateRequest::class);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->languageCode = $data['languageCode'];

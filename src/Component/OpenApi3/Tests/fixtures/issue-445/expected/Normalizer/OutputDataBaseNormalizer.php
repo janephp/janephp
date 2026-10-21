@@ -85,6 +85,9 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('originalFileName', $data)) {
             $object->originalFileName = null;
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\OutputDataBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

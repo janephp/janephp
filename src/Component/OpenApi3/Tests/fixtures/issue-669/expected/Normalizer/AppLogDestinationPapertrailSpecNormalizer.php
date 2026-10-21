@@ -37,6 +37,9 @@ class AppLogDestinationPapertrailSpecNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('endpoint', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('endpoint', \Jane\Generated\DigitalOcean\Model\AppLogDestinationPapertrailSpec::class);
+        }
         if (\array_key_exists('endpoint', $data)) {
             $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);

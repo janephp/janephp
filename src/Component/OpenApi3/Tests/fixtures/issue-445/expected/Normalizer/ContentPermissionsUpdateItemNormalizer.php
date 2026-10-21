@@ -49,6 +49,9 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
             $object->contentPermissionSetIds = null;
             unset($data['contentPermissionSetIds']);
         }
+        if (!\array_key_exists('contentId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('contentId', \PicturePark\API\Model\ContentPermissionsUpdateItem::class);
+        }
         if (\array_key_exists('contentId', $data)) {
             $object->contentId = $data['contentId'];
             unset($data['contentId']);

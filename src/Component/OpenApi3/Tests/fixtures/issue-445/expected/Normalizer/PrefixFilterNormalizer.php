@@ -37,13 +37,22 @@ class PrefixFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\PrefixFilter::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
             unset($data['kind']);
         }
+        if (!\array_key_exists('field', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('field', \PicturePark\API\Model\PrefixFilter::class);
+        }
         if (\array_key_exists('field', $data)) {
             $object->field = $data['field'];
             unset($data['field']);
+        }
+        if (!\array_key_exists('prefix', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('prefix', \PicturePark\API\Model\PrefixFilter::class);
         }
         if (\array_key_exists('prefix', $data)) {
             $object->prefix = $data['prefix'];

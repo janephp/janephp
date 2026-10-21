@@ -52,6 +52,9 @@ class ApmodelLanPortAuthenticatorNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('accounting', $data)) {
             $object->accounting = $this->denormalizer->denormalize($data['accounting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context);
         }
+        if (!\array_key_exists('macAuthByPassEnabled', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('macAuthByPassEnabled', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortAuthenticator::class);
+        }
         if (\array_key_exists('macAuthByPassEnabled', $data)) {
             $object->macAuthByPassEnabled = $data['macAuthByPassEnabled'];
         }

@@ -49,6 +49,9 @@ class BusinessProcessDetailsDataBaseNormalizer implements DenormalizerInterface,
         if (array_key_exists('kind', $data) and 'BusinessProcessDetailsDataContentImport' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\BusinessProcessDetailsDataContentImport', $format, $context);
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\BusinessProcessDetailsDataBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

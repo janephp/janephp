@@ -37,6 +37,9 @@ class PurgeCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('files', $data)) {
+            throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\MissingRequiredPropertyException('files', \Jane\Generated\DigitalOcean\Model\PurgeCache::class);
+        }
         if (\array_key_exists('files', $data)) {
             $values = [];
             foreach ($data['files'] as $value) {

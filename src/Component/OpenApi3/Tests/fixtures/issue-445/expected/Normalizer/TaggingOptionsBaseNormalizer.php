@@ -73,6 +73,9 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('missingKeywordsFieldId', $data)) {
             $object->missingKeywordsFieldId = null;
         }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\TaggingOptionsBase::class);
+        }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
         }

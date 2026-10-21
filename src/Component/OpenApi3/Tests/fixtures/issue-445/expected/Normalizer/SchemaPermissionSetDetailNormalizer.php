@@ -40,9 +40,15 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('exclusive', $data) && \is_int($data['exclusive'])) {
             $data['exclusive'] = (bool) $data['exclusive'];
         }
+        if (!\array_key_exists('id', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('id', \PicturePark\API\Model\SchemaPermissionSetDetail::class);
+        }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
             unset($data['id']);
+        }
+        if (!\array_key_exists('names', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('names', \PicturePark\API\Model\SchemaPermissionSetDetail::class);
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
@@ -80,9 +86,15 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
             $object->userRolesPermissionSetRights = null;
             unset($data['userRolesPermissionSetRights']);
         }
+        if (!\array_key_exists('exclusive', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('exclusive', \PicturePark\API\Model\SchemaPermissionSetDetail::class);
+        }
         if (\array_key_exists('exclusive', $data)) {
             $object->exclusive = $data['exclusive'];
             unset($data['exclusive']);
+        }
+        if (!\array_key_exists('ownerTokenId', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('ownerTokenId', \PicturePark\API\Model\SchemaPermissionSetDetail::class);
         }
         if (\array_key_exists('ownerTokenId', $data)) {
             $object->ownerTokenId = $data['ownerTokenId'];

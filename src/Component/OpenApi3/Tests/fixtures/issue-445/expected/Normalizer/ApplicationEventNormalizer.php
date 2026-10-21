@@ -82,6 +82,9 @@ class ApplicationEventNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('kind', $data) and 'XmpWritebackCompletedEvent' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\XmpWritebackCompletedEvent', $format, $context);
         }
+        if (!\array_key_exists('timestamp', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('timestamp', \PicturePark\API\Model\ApplicationEvent::class);
+        }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date) {
@@ -96,6 +99,9 @@ class ApplicationEventNormalizer implements DenormalizerInterface, NormalizerInt
                 }
             }
             $object->timestamp = $date;
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\ApplicationEvent::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];

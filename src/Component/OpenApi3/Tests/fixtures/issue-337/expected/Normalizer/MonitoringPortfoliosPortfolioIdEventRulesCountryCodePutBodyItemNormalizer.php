@@ -37,9 +37,15 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
+        if (!\array_key_exists('ruleCode', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('ruleCode', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem::class);
+        }
         if (\array_key_exists('ruleCode', $data)) {
             $object->ruleCode = $data['ruleCode'];
             unset($data['ruleCode']);
+        }
+        if (!\array_key_exists('isActive', $data)) {
+            throw new \CreditSafe\API\Runtime\Normalizer\MissingRequiredPropertyException('isActive', \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem::class);
         }
         if (\array_key_exists('isActive', $data)) {
             $object->isActive = $data['isActive'];

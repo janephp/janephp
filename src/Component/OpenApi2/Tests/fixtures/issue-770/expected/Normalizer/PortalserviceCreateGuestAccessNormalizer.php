@@ -49,11 +49,17 @@ class PortalserviceCreateGuestAccessNormalizer implements DenormalizerInterface,
         if (\array_key_exists('requireLoginAgain', $data) && \is_int($data['requireLoginAgain'])) {
             $data['requireLoginAgain'] = (bool) $data['requireLoginAgain'];
         }
+        if (!\array_key_exists('name', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('name', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess::class);
+        }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
             $object->description = $data['description'];
+        }
+        if (!\array_key_exists('portalCustomization', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('portalCustomization', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess::class);
         }
         if (\array_key_exists('portalCustomization', $data)) {
             $object->portalCustomization = $this->denormalizer->denormalize($data['portalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonPortalCustomization::class, 'json', $context);
@@ -63,6 +69,9 @@ class PortalserviceCreateGuestAccessNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('smsGateway', $data)) {
             $object->smsGateway = $this->denormalizer->denormalize($data['smsGateway'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
+        }
+        if (!\array_key_exists('userSession', $data)) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\MissingRequiredPropertyException('userSession', \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess::class);
         }
         if (\array_key_exists('userSession', $data)) {
             $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceUserSession::class, 'json', $context);

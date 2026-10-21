@@ -46,11 +46,20 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('success', $data) && \is_int($data['success'])) {
             $data['success'] = (bool) $data['success'];
         }
+        if (!\array_key_exists('success', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('success', \PicturePark\API\Model\CdnPurgeJobBase::class);
+        }
         if (\array_key_exists('success', $data)) {
             $object->success = $data['success'];
         }
+        if (!\array_key_exists('retriesLeft', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('retriesLeft', \PicturePark\API\Model\CdnPurgeJobBase::class);
+        }
         if (\array_key_exists('retriesLeft', $data)) {
             $object->retriesLeft = $data['retriesLeft'];
+        }
+        if (!\array_key_exists('kind', $data)) {
+            throw new \PicturePark\API\Runtime\Normalizer\MissingRequiredPropertyException('kind', \PicturePark\API\Model\CdnPurgeJobBase::class);
         }
         if (\array_key_exists('kind', $data)) {
             $object->kind = $data['kind'];
