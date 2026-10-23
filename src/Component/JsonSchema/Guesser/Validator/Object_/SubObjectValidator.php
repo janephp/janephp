@@ -38,7 +38,9 @@ class SubObjectValidator implements ValidatorInterface
      */
     public function guess($object, string $name, $guess): void
     {
-        if (strpos($guess->getReference(), 'properties') !== false) {
+        // only look at the JSON pointer: the file path part of the reference may contain "properties" too
+        $pointer = strstr($guess->getReference(), '#') ?: '';
+        if (str_contains($pointer, 'properties')) {
             return; // we don't want to guess on properties here, only on classes
         }
 
