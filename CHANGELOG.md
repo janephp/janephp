@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [8.1.0] - 2026-10-23
 ### Added
 - [Jane] Installable agent skills under `skills/`, for Claude Code, OpenCode, Codex, Cursor and other agents (`npx skills add janephp/janephp --skill <name>`): `jane-openapi-sdk` generates and uses a PHP client from an OpenAPI specification, `jane-json-schema-models` generates PHP models from a JSON Schema, and `jane-upgrade` upgrades a Jane 7.x project to 8.x. The skills link to the online documentation, and the new `castor qa:skills` task (run in CI) checks their frontmatter, their links and anchors into `docs/`, and their README entries
 - [JsonSchema] [OpenApi] [GH#1113](https://github.com/janephp/janephp/issues/1113) With `enums-as-objects`, enum case names come from the `x-enum-varnames` vendor extension, matched by position (for example `case Foo = 1;` instead of `case Value1 = 1;`). Values without a usable name keep their name derived from the value. Specs without the extension generate the same output as before
@@ -1052,7 +1054,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.0.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.0...HEAD
+[8.1.0]: https://github.com/janephp/janephp/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/janephp/janephp/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/janephp/janephp/compare/v7.14.0...v8.0.0
 [7.14.4]: https://github.com/janephp/janephp/compare/v7.14.3...v7.14.4
