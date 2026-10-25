@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenAPI] A `$ref` to a string format listed in `custom-string-format-mapping`, which is used as a branch of an `anyOf`, is now denormalized into the mapped class instead of failing with a `TypeError` on the typed property.
 
 ## [8.1.0] - 2026-10-23
 ### Added
