@@ -18,26 +18,15 @@ concurrency:
 
 jobs:
   build:
-    name: Build documentation website with MkDocs
+    name: Build documentation website with Zensical
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install poetry
-        run: pip install -U poetry
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
           fetch-tags: true
-
-      - name: Install dependencies
-        run: poetry install
 
       - name: setup
         uses: castor-php/setup-castor@v0.1.0

@@ -41,7 +41,7 @@ composer require --dev jane-php/open-api-3-1
 composer require jane-php/open-api-runtime
 ```
 
-Check [Compatibility](guides/compatibility.md) for version support details.
+Check [Compatibility](../guides/compatibility.md) for version support details.
 
 With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
 installing our packages:
