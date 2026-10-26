@@ -56,6 +56,18 @@ jobs:
           version: 'v1.8.0'
       - name: 'agent skills check'
         run: 'castor qa:skills'
+  doc:
+    # Not gated by the docs-only filter: this is the job that checks the docs.
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: setup
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
+        with:
+          version: 'v1.8.0'
+      - name: 'documentation build'
+        run: 'castor doc:build'
   cs-check:
     needs: changes
     if: github.event_name != 'pull_request' || needs.changes.outputs.code == 'true'
