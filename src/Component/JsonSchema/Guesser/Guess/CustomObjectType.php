@@ -17,6 +17,7 @@ class CustomObjectType extends Type
         object $object,
         private readonly string $className,
         private readonly array $discriminants = [],
+        private readonly string $denormalizationType = self::TYPE_OBJECT,
     ) {
         parent::__construct($object, 'object');
     }
@@ -55,7 +56,12 @@ class CustomObjectType extends Type
 
     public function createConditionStatement(Expr $input): Expr
     {
-        $conditionStatement = parent::createConditionStatement($input);
+        $conditionStatement = new Expr\FuncCall(
+            new Name($this->conditionMapping[$this->denormalizationType]),
+            [
+                new Arg($input),
+            ]
+        );
 
         foreach ($this->discriminants as $key => $values) {
             $existsCondition = new Expr\FuncCall(

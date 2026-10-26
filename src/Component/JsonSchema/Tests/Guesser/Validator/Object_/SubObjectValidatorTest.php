@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Tests\Guesser\Validator\Object_;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\Object_\SubObjectValidator;
+use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuessCollector;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -64,5 +65,32 @@ class SubObjectValidatorTest extends TestCase
         (new SubObjectValidator($this->createStub(DenormalizerInterface::class), new Naming(), $registry))->guess($foo, 'Baz', $classGuess);
 
         self::assertSame([], $classGuess->getValidatorGuesses());
+    }
+
+    /**
+     * `ItemsValidator` collects the constraints of each array item. A
+     * sub-object constraint applies to one property of the item, not to the
+     * item, so it must not be collected.
+     */
+    public function testGuessSkipsArrayItemsCollector(): void
+    {
+        $bar = new JsonSchema();
+        $bar->type = 'object';
+        $foo = new JsonSchema();
+        $foo->type = 'object';
+        $foo->properties = ['bar' => $bar];
+
+        $schema = new Schema('/tmp/schemas/schema.json', 'Acme', '/tmp', 'Foo');
+        $classGuess = new ClassGuess($foo, $schema->getOrigin() . '#/definitions/Foo', 'Foo');
+        $schema->addClass($classGuess->getReference(), $classGuess);
+        $barReference = $schema->getOrigin() . '#/definitions/Foo/properties/bar';
+        $schema->addClass($barReference, new ClassGuess($bar, $barReference, 'FooBar'));
+        $registry = new Registry();
+        $registry->addSchema($schema);
+
+        $collector = new ValidatorGuessCollector();
+        (new SubObjectValidator($this->createStub(DenormalizerInterface::class), new Naming(), $registry))->guess($foo, 'Foo', $collector);
+
+        self::assertSame([], $collector->getValidatorGuesses());
     }
 }
