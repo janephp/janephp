@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [8.1.1] - 2026-10-26
 ### Fixed
 - [OpenApi] [GH#1132](https://github.com/janephp/janephp/issues/1132) A request body with a `+json` content type that has parameters (for example `application/vnd.foo+json;version=2`) is serialized as JSON. `getBody()` returned the model object itself, which the HTTP client rejects
 - [OpenAPI] A `$ref` to a string format listed in `custom-string-format-mapping`, which is used as a branch of an `anyOf`, is now denormalized into the mapped class instead of failing with a `TypeError` on the typed property.
@@ -1058,7 +1060,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.1...HEAD
+[8.1.1]: https://github.com/janephp/janephp/compare/v8.1.0...v8.1.1
 [8.1.0]: https://github.com/janephp/janephp/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/janephp/janephp/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/janephp/janephp/compare/v7.14.0...v8.0.0
