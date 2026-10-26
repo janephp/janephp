@@ -3,6 +3,7 @@
 Welcome to the documentation for **Jane**, a suite of libraries dedicated to generating high-quality PHP code from specifications.
 
 Jane helps you save time and reduce maintenance costs by automating the creation of:
+
 * **HTTP Clients** from OpenAPI / Swagger specifications.
 * **DTOs (Data Transfer Objects)** and Hydrators from JSON Schemas.
 
