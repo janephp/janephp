@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [OpenAPI] A `$ref` to a string format listed in `custom-string-format-mapping`, which is used as a branch of an `anyOf`, is now denormalized into the mapped class instead of failing with a `TypeError` on the typed property.
+- [JsonSchema] [GH#1134](https://github.com/janephp/janephp/issues/1134) With `validation`, the validator of an array of inline objects whose properties reference another object no longer contains the constraint of that object without a namespace (`new \ProductConstraint()`), which failed with `Class "ProductConstraint" not found`. Regressed in 8.1.0 by #1129
 
 ## [8.1.0] - 2026-10-23
 ### Added
