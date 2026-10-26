@@ -31,7 +31,7 @@ class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        return new CustomObjectType($object, $this->mapping[$object->format ?? null], []);
+        return new CustomObjectType($object, $this->mapping[$object->format ?? null], [], Type::TYPE_STRING);
     }
 
     protected function getSchemaClass(): string
