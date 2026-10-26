@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [JsonSchema] [GH#1134](https://github.com/janephp/janephp/issues/1134) With `validation`, the validator of an array of inline objects whose properties reference another object no longer contains the constraint of that object without a namespace (`new \ProductConstraint()`), which failed with `Class "ProductConstraint" not found`. Regressed in 8.1.0 by #1129
 
 ## [8.1.0] - 2026-10-23
 ### Added
