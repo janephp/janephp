@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApi3\JsonSchema\Model\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
+use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\AbstractBodyContentGenerator;
 use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\RequestBodyContentGeneratorInterface;
 use Jane\Component\OpenApiCommon\Generator\Traits\RequestBodyBranchesTrait;
@@ -118,7 +119,7 @@ class RequestBodyGenerator
 
             if (\array_key_exists($contentType, $this->generators)) {
                 $generator = $this->generators[$contentType];
-            } elseif (str_starts_with($contentType, 'application/json') || str_ends_with($contentType, '+json')) {
+            } elseif (str_starts_with($contentType, 'application/json') || str_ends_with(ContentType::withoutParameters($contentType), '+json')) {
                 $generator = $this->generators['application/json'];
             }
 
