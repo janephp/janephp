@@ -22,28 +22,28 @@ jobs:
     timeout-minutes: 90
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: cache-composer
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.composer/cache/
           key: composer-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.32.0
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: 8.4
           coverage: none
       - name: composer install
         run: composer update --prefer-stable
       - name: setup
-        uses: castor-php/setup-castor@v0.1.0
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
       - name: 'corpus smoke run'
         env:
           SPEC: ${{ inputs.spec }}
         run: castor qa:corpus ${SPEC:+--spec "$SPEC"}
       - name: 'upload failed generation output'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: corpus-failures
           path: .corpus/failures/
