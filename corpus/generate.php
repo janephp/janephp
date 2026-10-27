@@ -58,7 +58,7 @@ $generate->setName('generate');
 
 $output = new ConsoleOutput();
 
-$crash = static function (\Throwable $throwable): never {
+$crash = static function (Throwable $throwable): never {
     fwrite(\STDERR, sprintf("\nCRASH %s: %s\n%s\n", $throwable::class, $throwable->getMessage(), $throwable->getTraceAsString()));
     exit(3);
 };
