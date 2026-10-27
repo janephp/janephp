@@ -36,7 +36,7 @@ class CustomStringFormatNullableAnyOfTest extends TestCase
         $account = $serializer->denormalize(
             [
                 'signedUpAt' => '2026-01-01T15:04:05+00:00',
-                'emailVerifiedAt' => '2026-01-02T15:04:05+00:00'
+                'emailVerifiedAt' => '2026-01-02T15:04:05+00:00',
             ],
             self::NAMESPACE . '\Model\Account',
             'json'
