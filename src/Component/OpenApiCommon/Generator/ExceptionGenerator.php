@@ -67,6 +67,8 @@ class ExceptionGenerator
     private const BANNED_VARIABLES = ['message', 'code', 'file', 'line'];
     private ExceptionNaming $exceptionNaming;
     private array $initialized = [];
+    /** @var array<string, array<string, string>> The PHP type of each model an exception receives, keyed by its docblock type */
+    private array $modelTypes = [];
     private readonly BaseExceptionsGenerator $baseExceptionsGenerator;
 
     public function __construct()
@@ -106,11 +108,20 @@ class ExceptionGenerator
                 $propertyName = \sprintf('%sObject', $propertyName);
             }
 
+            // Each content type of a response can have its own model. This method runs once per
+            // content type and the last run writes the class, so it accepts the models of all runs.
+            $unique = $schema->getRootName() . $schema->getDirectory() . $exceptionName;
+            $this->modelTypes[$unique]['\\' . $classFqdn . ($isArray ? '[]' : '')] = $isArray ? 'array' : '\\' . $classFqdn;
+            $typeNames = array_values(array_unique($this->modelTypes[$unique]));
+            $modelType = static fn (): Node\ComplexType|Node\Identifier|Name => 1 === \count($typeNames)
+                ? ($isArray ? new Node\Identifier('array') : new Name('\\' . $classFqdn))
+                : new Node\UnionType(array_map(static fn (string $typeName): Node\Identifier|Name => 'array' === $typeName ? new Node\Identifier('array') : new Name($typeName), $typeNames));
+
             $propertyComment = \sprintf(<<<EOD
 /**
- * @var %s%s
+ * @var %s
  */
-EOD, '\\' . $classFqdn, $isArray ? '[]' : '');
+EOD, implode('|', array_keys($this->modelTypes[$unique])));
 
             $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
@@ -125,7 +136,7 @@ EOD, '\\' . $classFqdn, $isArray ? '[]' : '');
                                     new Param(
                                         new Expr\Variable($propertyName),
                                         null,
-                                        $isArray ? new Node\Identifier('array') : new Name('\\' . $classFqdn),
+                                        $modelType(),
                                         false,
                                         false,
                                         ['comments' => [new Doc($propertyComment)]],
@@ -160,7 +171,7 @@ EOD
                                         )
                                     ),
                                 ],
-                                'returnType' => ($isArray ? null : new Name('\\' . $classFqdn)),
+                                'returnType' => 1 === \count($typeNames) && $isArray ? null : $modelType(),
                             ]),
                             new Stmt\ClassMethod('getResponse', [
                                 'flags' => Modifiers::PUBLIC,

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
 
 ## [8.1.1] - 2026-10-26
 ### Fixed
