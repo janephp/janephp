@@ -1,6 +1,14 @@
 :root  > * {
     --md-primary-color: #f7d325;
     --md-typeset-a-color: #ea1340;
+
+    /* Zensical "modern" variant ignores palette primary/accent names, make them follow the link color (red in light, yellow in dark) */
+    --md-primary-fg-color: var(--md-typeset-a-color);
+    --md-primary-fg-color--light: var(--md-typeset-a-color);
+    --md-primary-fg-color--dark: var(--md-typeset-a-color);
+    --md-primary-bg-color: #fff;
+    --md-accent-fg-color: var(--md-typeset-a-color);
+    --md-accent-fg-color--transparent: color-mix(in srgb, var(--md-typeset-a-color) 10%, transparent);
 }
 
 [data-md-color-scheme=slate][data-md-color-primary=black] {
@@ -60,6 +68,10 @@
 
     a {
         text-decoration: underline;
+    }
+
+    .md-button:not(.md-button--primary) {
+        color: var(--md-typeset-a-color);
     }
 
     blockquote {

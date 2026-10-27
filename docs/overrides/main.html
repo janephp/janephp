@@ -2,9 +2,9 @@
 
 {% block htmltitle %}
     {% if page.meta and page.meta.title %}
-        <title>{{ page.meta.title }} - AutoMapper</title>
-    {% elif page.title and not page.is_homepage %}
-        <title>{{ page.title | striptags }} - AutoMapper</title>
+        <title>{{ page.meta.title }} - Jane</title>
+    {% elif page.title and page.url %}
+        <title>{{ page.title | striptags }} - Jane</title>
     {% else %}
         <title>{{ config.site_name }}</title>
     {% endif %}

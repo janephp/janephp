@@ -6,9 +6,7 @@ on:
     paths-ignore:
       - '**.md'
       - 'docs/**'
-      - 'mkdocs.yaml'
-      - 'pyproject.toml'
-      - 'poetry.lock'
+      - 'zensical.toml'
       - 'LICENSE'
       - '.editorconfig'
       - '.gitattributes'
@@ -27,10 +25,10 @@ jobs:
       code: ${{ steps.filter.outputs.code }}
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: changed files
         id: filter
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           # A filter is true as soon as one changed file matches it, so match the
           # non-docs files: with 'every', a file must satisfy all the patterns,
@@ -41,9 +39,7 @@ jobs:
               - '**'
               - '!**.md'
               - '!docs/**'
-              - '!mkdocs.yaml'
-              - '!pyproject.toml'
-              - '!poetry.lock'
+              - '!zensical.toml'
               - '!LICENSE'
               - '!.editorconfig'
               - '!.gitattributes'
@@ -53,22 +49,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: setup
-        uses: castor-php/setup-castor@v0.1.0
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
         with:
           version: 'v1.8.0'
       - name: 'agent skills check'
         run: 'castor qa:skills'
+  doc:
+    # Not gated by the docs-only filter: this is the job that checks the docs.
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: setup
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
+        with:
+          version: 'v1.8.0'
+      - name: 'documentation build'
+        run: 'castor doc:build'
   cs-check:
     needs: changes
     if: github.event_name != 'pull_request' || needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: setup
-        uses: castor-php/setup-castor@v0.1.0
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
         with:
           version: 'v1.8.0'
       - name: 'php-cs-fixer check'
@@ -79,21 +87,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: cache-composer
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.composer/cache/
           key: composer-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.32.0
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: 8.5
           coverage: none
       - name: composer install
         run: composer update --prefer-stable
       - name: setup
-        uses: castor-php/setup-castor@v0.1.0
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
         with:
           version: 'v1.8.0'
       - name: 'phpstan check'
@@ -104,21 +112,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: cache-composer
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.composer/cache/
           key: composer-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.32.0
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: 8.5
           coverage: none
       - name: composer install
         run: composer update --prefer-stable
       - name: setup
-        uses: castor-php/setup-castor@v0.1.0
+        uses: castor-php/setup-castor@2a495b8c91f00be6768ad8a040ba8634c797d386 # v1.1.0
         with:
           version: 'v1.8.0'
       - name: 'mago analysis of generated code'
@@ -155,14 +163,14 @@ jobs:
     name: tests-${{ matrix.php-versions }} - SF ${{ matrix.symfony-require }}
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: cache-composer
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.composer/cache/
           key: composer-${{ matrix.php-versions }}-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.28.0
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
@@ -174,7 +182,7 @@ jobs:
       - name: composer install
         run: composer update --prefer-dist --no-interaction --no-ansi
       - name: install node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
       - name: install prism
@@ -193,21 +201,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: cache-composer-lowest
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.composer/cache/
           key: composer-lowest-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.28.0
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: 8.3
           extensions: mbstring, fileinfo, json, intl, dom
       - name: composer install
         run: composer update --prefer-lowest --prefer-stable
       - name: install node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
       - name: install prism

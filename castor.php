@@ -175,7 +175,7 @@ function qa_skills(): int
 }
 
 /**
- * Anchors MkDocs generates for the headings of a page (Python-Markdown `toc` default slugify).
+ * Anchors Zensical generates for the headings of a page (Python-Markdown `toc` default slugify).
  *
  * @return list<string>
  */
@@ -203,24 +203,49 @@ function docs_heading_anchors(string $docFile): array
     return $anchors;
 }
 
-#[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
-function doc_install(): void
+const DOC_DOCKER_IMAGE = 'jane-doc';
+
+#[AsTask('docker-build', namespace: 'doc', description: 'Build the documentation docker image')]
+function doc_docker_build(): void
 {
-    run('poetry install');
+    run(['docker', 'build', '-t', DOC_DOCKER_IMAGE, __DIR__ . '/docs']);
 }
 
-#[AsTask('server', namespace: 'doc', description: 'Serve documentation')]
+#[AsTask('build', namespace: 'doc', description: 'Build documentation')]
+function doc_build(): void
+{
+    doc_run(['zensical', 'build', '--strict']);
+}
+
+#[AsTask('server', namespace: 'doc', description: 'Serve documentation and watch for changes')]
 function doc_serve(): void
 {
-    run('poetry run mkdocs serve -a localhost:8000');
+    doc_run(['zensical', 'serve', '--dev-addr', 'localhost:8000']);
+}
+
+function doc_run(array $command): void
+{
+    $image = run(['docker', 'image', 'inspect', DOC_DOCKER_IMAGE], context: context()->withAllowFailure()->withQuiet());
+    if (!$image->isSuccessful()) {
+        doc_docker_build();
+    }
+
+    run([
+        'docker', 'run', '--init', '--rm', '--network=host',
+        '--user', getmyuid() . ':' . getmygid(),
+        '--env', 'HOME=/tmp',
+        '--volume', __DIR__ . ':/app',
+        DOC_DOCKER_IMAGE,
+        ...$command,
+    ]);
 }
 
 #[AsTask(description: 'Fetch external assets and customize theme', namespace: 'doc')]
 function build_assets(): void
 {
-    io()->title('Fetching external assets for MkDocs documentation');
+    io()->title('Fetching external assets for documentation');
 
-    http_download('https://raw.githubusercontent.com/jolicode/oss-theme/refs/heads/main/MkDocs/extra.css', __DIR__ . '/docs/assets/stylesheets/jolicode.css');
+    http_download('https://raw.githubusercontent.com/jolicode/oss-theme/refs/heads/main/Zensical/extra.css', __DIR__ . '/docs/assets/stylesheets/jolicode.css');
     http_download('https://raw.githubusercontent.com/jolicode/oss-theme/refs/heads/main/snippet-joli-footer.html', __DIR__ . '/docs/overrides/jolicode-footer.html');
 
     $html = <<<'HTML'
@@ -237,7 +262,7 @@ function build_assets(): void
     file_put_contents(__DIR__ . '/docs/overrides/jolicode-footer.html', $footer);
 }
 
-#[AsTask('build-github-pages', namespace: 'doc', description: 'Serve documentation')]
+#[AsTask('build-github-pages', namespace: 'doc', description: 'Build every version of the documentation for GitHub Pages')]
 function doc_build_github_pages(): void
 {
     // clean .build directory
@@ -256,7 +281,7 @@ function doc_build_github_pages(): void
     run('git config receive.denyCurrentBranch ignore', context: $context);
 
     // build documentation for main branch
-    run('poetry run mike deploy --push --remote gh-pages dev');
+    doc_run(['mike', 'deploy', '--push', '--remote', 'gh-pages', 'dev']);
 
     // get the list of tags
     $tags = run('git tag --list', context: context()->withQuiet())->getOutput();
@@ -292,15 +317,15 @@ function doc_build_github_pages(): void
     }
 
     if (null === $latestVersion) {
-        run('poetry run mike deploy --push --remote gh-pages dev latest');
+        doc_run(['mike', 'deploy', '--push', '--remote', 'gh-pages', 'dev', 'latest']);
     } else {
         foreach ($buildTags as $tag) {
             run('git checkout tags/' . $tag);
 
             if ($tag === $latestVersion) {
-                run('poetry run mike deploy --push --remote gh-pages ' . $tag . ' latest');
+                doc_run(['mike', 'deploy', '--push', '--remote', 'gh-pages', $tag, 'latest']);
             } else {
-                run('poetry run mike deploy --push --remote gh-pages --update-aliases ' . $tag);
+                doc_run(['mike', 'deploy', '--push', '--remote', 'gh-pages', '--update-aliases', $tag]);
             }
         }
     }
