@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
+- [JsonSchema] [GH#1140](https://github.com/janephp/janephp/issues/1140) With `include-null-value: false`, an optional property without a native type (for example an `anyOf` of two strings, or `type: [string, integer]`) is no longer normalized as `null` when it was never set. PHP initializes such a property to `null`, so the presence check always found it. The normalizer now also skips its `null` when the schema does not allow `null`
 
 ## [8.1.1] - 2026-10-26
 ### Fixed
