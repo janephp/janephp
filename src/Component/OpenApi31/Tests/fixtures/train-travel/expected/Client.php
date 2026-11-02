@@ -21,7 +21,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetStationsInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200|string
      */
     public function getStations(array $queryParameters = [], array $accept = [])
     {
@@ -47,7 +47,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200|string
      */
     public function getTrips(array $queryParameters, array $accept = [])
     {
@@ -67,7 +67,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200|string
      */
     public function getBookings(array $queryParameters = [], array $accept = [])
     {
@@ -85,7 +85,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\CreateBookingInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostJsonResponse201
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostJsonResponse201|string
      */
     public function createBooking(\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Booking $requestBody, array $accept = [])
     {
@@ -121,7 +121,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdGetJsonResponse200|string
      */
     public function getBooking(string $bookingId, array $accept = [])
     {

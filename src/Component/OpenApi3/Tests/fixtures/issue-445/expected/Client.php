@@ -648,7 +648,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
@@ -673,7 +673,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = [], array $accept = [])
     {
@@ -1948,7 +1948,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = [])
     {
@@ -2808,7 +2808,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function shareDownload(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
@@ -2837,7 +2837,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {

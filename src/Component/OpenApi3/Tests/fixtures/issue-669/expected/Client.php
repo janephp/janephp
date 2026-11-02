@@ -1137,7 +1137,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDInternalServerErrorException
      * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return \Jane\Generated\DigitalOcean\Model\Error
+     * @return string|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetCsvByUUID(string $invoiceUuid, array $accept = [])
     {
@@ -1153,7 +1153,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDInternalServerErrorException
      * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return \Jane\Generated\DigitalOcean\Model\Error
+     * @return string|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function invoicesGetPdfByUUID(string $invoiceUuid, array $accept = [])
     {
@@ -4095,7 +4095,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigInternalServerErrorException
      * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return \Jane\Generated\DigitalOcean\Model\Error
+     * @return string|\Jane\Generated\DigitalOcean\Model\Error
      */
     public function kubernetesGetKubeconfig(string $clusterId, array $queryParameters = [], array $accept = [])
     {

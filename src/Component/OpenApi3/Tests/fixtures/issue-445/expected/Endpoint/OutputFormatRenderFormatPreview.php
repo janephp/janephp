@@ -51,13 +51,14 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatRenderFormatPreviewBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
@@ -80,7 +81,8 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatRenderFormatPreviewInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
-        if (206 === $status) {
+        if ($contentType !== null && (206 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
         if (412 === $status) {
             throw new \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException($response);

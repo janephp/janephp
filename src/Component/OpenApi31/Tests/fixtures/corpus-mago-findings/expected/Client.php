@@ -17,7 +17,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings
     /**
      * @throws \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function authorize()
     {

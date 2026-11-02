@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @param array $accept Accept content header application/json|application/xml
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200|string
      */
     public function getAllData(array $queryParameters = [], array $accept = [])
     {
@@ -27,7 +27,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreatePlanetForbiddenException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|string
      */
     public function createPlanet(?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet $requestBody = null, array $accept = [])
     {
@@ -53,7 +53,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetPlanetNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|string
      */
     public function getPlanet(int $planetId, array $accept = [])
     {
@@ -69,7 +69,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UpdatePlanetNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|string
      */
     public function updatePlanet(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet $requestBody = null, array $accept = [])
     {
@@ -85,7 +85,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ImageUploadedMessage
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ImageUploadedMessage|string
      */
     public function uploadImage(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody $requestBody = null, array $accept = [])
     {
@@ -112,7 +112,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\CreateUserUnprocessableEntityException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User|string
      */
     public function createUser(?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UserSignupPostBody $requestBody = null, array $accept = [])
     {
@@ -128,7 +128,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetTokenTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Token
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Token|string
      */
     public function getToken(?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Credentials $requestBody = null, array $accept = [])
     {
@@ -141,7 +141,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetMeForbiddenException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User|string
      */
     public function getMe(array $accept = [])
     {

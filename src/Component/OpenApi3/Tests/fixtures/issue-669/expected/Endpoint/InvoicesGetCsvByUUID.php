@@ -45,13 +45,14 @@ class InvoicesGetCsvByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDInternalServerErrorException
      * @throws \Jane\Generated\DigitalOcean\Exception\BadResponseException
      *
-     * @return \Jane\Generated\DigitalOcean\Model\Error
+     * @return string|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'text/csv') !== false)) {
+            return $body;
         }
         if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
@@ -80,6 +81,6 @@ class InvoicesGetCsvByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     }
     public function getTargetClass(): ?string
     {
-        return \Jane\Generated\DigitalOcean\Model\Error::class;
+        return null;
     }
 }
