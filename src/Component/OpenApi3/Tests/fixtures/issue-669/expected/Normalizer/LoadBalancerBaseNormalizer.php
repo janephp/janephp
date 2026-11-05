@@ -206,10 +206,13 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
             $dataArray['algorithm'] = $data->algorithm;
         }
-        $values = [];
-        foreach ($data->forwardingRules as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->forwardingRules) {
+            $values = [];
+            foreach ($data->forwardingRules as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['forwarding_rules'] = $values;
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {

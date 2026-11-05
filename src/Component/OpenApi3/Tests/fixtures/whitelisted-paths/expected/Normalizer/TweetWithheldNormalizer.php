@@ -67,9 +67,12 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $dataArray['copyright'] = $data->copyright;
-        $values = [];
-        foreach ($data->countryCodes as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->countryCodes) {
+            $values = [];
+            foreach ($data->countryCodes as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['country_codes'] = $values;
         if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {

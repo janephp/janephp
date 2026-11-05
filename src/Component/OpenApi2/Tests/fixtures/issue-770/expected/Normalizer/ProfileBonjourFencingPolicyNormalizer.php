@@ -96,10 +96,13 @@ class ProfileBonjourFencingPolicyNormalizer implements DenormalizerInterface, No
         if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
             $dataArray['zoneId'] = $data->zoneId;
         }
-        $values = [];
-        foreach ($data->bonjourFencingRuleList as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->bonjourFencingRuleList) {
+            $values = [];
+            foreach ($data->bonjourFencingRuleList as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['bonjourFencingRuleList'] = $values;
         if (array_key_exists('bonjourFencingRuleMappingList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleMappingList ?? null)) {

@@ -67,14 +67,20 @@ class PluginConfigArgsNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['Name'] = $data->name;
         $dataArray['Description'] = $data->description;
-        $values = [];
-        foreach ($data->settable as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->settable) {
+            $values = [];
+            foreach ($data->settable as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Settable'] = $values;
-        $values_1 = [];
-        foreach ($data->value as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->value) {
+            $values_1 = [];
+            foreach ($data->value as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['Value'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

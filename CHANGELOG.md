@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
+- [JsonSchema] [GH#1148](https://github.com/janephp/janephp/issues/1148) The normalizer of a nullable array property no longer iterates over `null`. A list that holds `null`, such as one the API sent as `null`, goes out as `null` instead of a PHP warning and `[]`
 - [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
 
 ## [8.1.1] - 2026-10-26

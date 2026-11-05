@@ -71,9 +71,12 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->appIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->appIds) {
+            $values = [];
+            foreach ($data->appIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['app_ids'] = $values;
         if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {

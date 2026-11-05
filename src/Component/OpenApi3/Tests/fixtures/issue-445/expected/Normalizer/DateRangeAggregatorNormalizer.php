@@ -137,10 +137,13 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['kind'] = $data->kind;
         $dataArray['field'] = $data->field;
-        $values_2 = [];
-        foreach ($data->ranges as $value_4) {
-            $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
-            $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_2 = null;
+        if (null !== $data->ranges) {
+            $values_2 = [];
+            foreach ($data->ranges as $value_4) {
+                $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['ranges'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_5) {

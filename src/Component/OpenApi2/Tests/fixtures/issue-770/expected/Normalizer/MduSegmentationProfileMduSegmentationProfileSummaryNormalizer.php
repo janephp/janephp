@@ -74,10 +74,13 @@ class MduSegmentationProfileMduSegmentationProfileSummaryNormalizer implements D
         $dataArray['id'] = $data->id;
         $dataArray['domainId'] = $data->domainId;
         $dataArray['name'] = $data->name;
-        $values = [];
-        foreach ($data->dpInfoList as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->dpInfoList) {
+            $values = [];
+            foreach ($data->dpInfoList as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['dpInfoList'] = $values;
         if (array_key_exists('apGroupInfoList', get_object_vars($data)) && null !== ($data->apGroupInfoList ?? null)) {

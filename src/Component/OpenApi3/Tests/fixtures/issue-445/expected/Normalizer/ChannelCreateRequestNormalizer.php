@@ -157,10 +157,13 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $dataArray['sort'] = $values;
         }
         $dataArray['sortOrder'] = $data->sortOrder;
-        $values_1 = [];
-        foreach ($data->sortFields as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->sortFields) {
+            $values_1 = [];
+            foreach ($data->sortFields as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['sortFields'] = $values_1;
         $value_2 = $data->names;

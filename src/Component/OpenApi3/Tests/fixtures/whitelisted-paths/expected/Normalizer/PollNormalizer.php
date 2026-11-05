@@ -84,10 +84,13 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         $dataArray['id'] = $data->id;
-        $values = [];
-        foreach ($data->options as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->options) {
+            $values = [];
+            foreach ($data->options as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['options'] = $values;
         $dataArray['voting_status'] = $data->votingStatus;

@@ -100,9 +100,12 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name;
         }
-        $values = [];
-        foreach ($data->contentIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->contentIds) {
+            $values = [];
+            foreach ($data->contentIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['contentIds'] = $values;
         $value_1 = $data->audit;

@@ -55,9 +55,12 @@ class PurgeCacheNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->files as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->files) {
+            $values = [];
+            foreach ($data->files as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['files'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

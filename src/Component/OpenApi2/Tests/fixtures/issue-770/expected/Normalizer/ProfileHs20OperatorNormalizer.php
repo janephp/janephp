@@ -113,15 +113,21 @@ class ProfileHs20OperatorNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
             $dataArray['description'] = $data->description;
         }
-        $values = [];
-        foreach ($data->domainNames as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->domainNames) {
+            $values = [];
+            foreach ($data->domainNames as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['domainNames'] = $values;
-        $values_1 = [];
-        foreach ($data->friendlyNames as $value_1) {
-            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values_1 = null;
+        if (null !== $data->friendlyNames) {
+            $values_1 = [];
+            foreach ($data->friendlyNames as $value_1) {
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['friendlyNames'] = $values_1;
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {

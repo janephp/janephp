@@ -170,16 +170,22 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['floatProperty'] = $data->floatProperty;
         }
         if (array_key_exists('arrayProperty', get_object_vars($data))) {
-            $values = [];
-            foreach ($data->arrayProperty as $value) {
-                $values[] = $value;
+            $values = null;
+            if (null !== $data->arrayProperty) {
+                $values = [];
+                foreach ($data->arrayProperty as $value) {
+                    $values[] = $value;
+                }
             }
             $dataArray['arrayProperty'] = $values;
         }
         if (array_key_exists('mapProperty', get_object_vars($data))) {
-            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject();
-            foreach ($data->mapProperty as $key => $value_1) {
-                $values_1[$key] = $value_1;
+            $values_1 = null;
+            if (null !== $data->mapProperty) {
+                $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject();
+                foreach ($data->mapProperty as $key => $value_1) {
+                    $values_1[$key] = $value_1;
+                }
             }
             $dataArray['mapProperty'] = $values_1;
         }

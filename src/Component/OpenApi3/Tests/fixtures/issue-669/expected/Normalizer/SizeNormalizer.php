@@ -122,9 +122,12 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray['transfer'] = $data->transfer;
         $dataArray['price_monthly'] = $data->priceMonthly;
         $dataArray['price_hourly'] = $data->priceHourly;
-        $values = [];
-        foreach ($data->regions as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->regions) {
+            $values = [];
+            foreach ($data->regions as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['regions'] = $values;
         $dataArray['available'] = $data->available;

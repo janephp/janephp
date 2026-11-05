@@ -59,15 +59,21 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->volumes as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->volumes) {
+            $values = [];
+            foreach ($data->volumes as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['Volumes'] = $values;
-        $values_1 = [];
-        foreach ($data->warnings as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->warnings) {
+            $values_1 = [];
+            foreach ($data->warnings as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['Warnings'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

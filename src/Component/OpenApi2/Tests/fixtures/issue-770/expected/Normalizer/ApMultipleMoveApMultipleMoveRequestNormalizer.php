@@ -59,9 +59,12 @@ class ApMultipleMoveApMultipleMoveRequestNormalizer implements DenormalizerInter
         if (array_key_exists('targetApGroupId', get_object_vars($data)) && null !== ($data->targetApGroupId ?? null)) {
             $dataArray['targetApGroupId'] = $data->targetApGroupId;
         }
-        $values = [];
-        foreach ($data->apMacs as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->apMacs) {
+            $values = [];
+            foreach ($data->apMacs as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['apMacs'] = $values;
         return $dataArray;

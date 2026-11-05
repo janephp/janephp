@@ -72,18 +72,24 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         $dataArray['type'] = $data->type;
-        $values = [];
-        foreach ($data->bbox as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->bbox) {
+            $values = [];
+            foreach ($data->bbox as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['bbox'] = $values;
         if (array_key_exists('geometry', get_object_vars($data)) && null !== ($data->geometry ?? null)) {
             $normalized = $this->normalizer->normalize($data->geometry, 'json', $context);
             $dataArray['geometry'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
         }
-        $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject();
-        foreach ($data->properties as $key => $value_1) {
-            $values_1[$key] = $value_1;
+        $values_1 = null;
+        if (null !== $data->properties) {
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject();
+            foreach ($data->properties as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
         }
         $dataArray['properties'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {

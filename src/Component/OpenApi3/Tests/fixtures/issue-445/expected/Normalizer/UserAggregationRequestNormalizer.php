@@ -173,10 +173,13 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         $dataArray['includeServiceUser'] = $data->includeServiceUser;
         $dataArray['editableOnly'] = $data->editableOnly;
-        $values_3 = [];
-        foreach ($data->aggregators as $value_5) {
-            $normalized_2 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
-            $values_3[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_3 = null;
+        if (null !== $data->aggregators) {
+            $values_3 = [];
+            foreach ($data->aggregators as $value_5) {
+                $normalized_2 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_3[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['aggregators'] = $values_3;
         foreach ($data->additionalPropertyEntries() as $key => $value_6) {

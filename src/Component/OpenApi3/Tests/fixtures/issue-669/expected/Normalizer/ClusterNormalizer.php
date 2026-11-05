@@ -250,13 +250,19 @@ class ClusterNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $dataArray['tags'] = $values;
         }
-        $values_1 = [];
-        foreach ($data->nodePools as $value_1) {
-            $values_2 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($value_1 as $key => $value_2) {
-                $values_2[$key] = $value_2;
+        $values_1 = null;
+        if (null !== $data->nodePools) {
+            $values_1 = [];
+            foreach ($data->nodePools as $value_1) {
+                $values_2 = null;
+                if (null !== $value_1) {
+                    $values_2 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value_1 as $key => $value_2) {
+                        $values_2[$key] = $value_2;
+                    }
+                }
+                $values_1[] = $values_2;
             }
-            $values_1[] = $values_2;
         }
         $dataArray['node_pools'] = $values_1;
         if (array_key_exists('maintenancePolicy', get_object_vars($data)) && null !== ($data->maintenancePolicy ?? null)) {

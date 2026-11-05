@@ -75,9 +75,12 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->provisioningProtocals as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->provisioningProtocals) {
+            $values = [];
+            foreach ($data->provisioningProtocals as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['provisioningProtocals'] = $values;
         $dataArray['osuServiceUrl'] = $data->osuServiceUrl;
@@ -86,10 +89,13 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
             $dataArray['singleSsidNai'] = $data->singleSsidNai;
         }
         $dataArray['commonLanguageIcon'] = $data->commonLanguageIcon;
-        $values_1 = [];
-        foreach ($data->subscriptionDescriptions as $value_1) {
-            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values_1 = null;
+        if (null !== $data->subscriptionDescriptions) {
+            $values_1 = [];
+            foreach ($data->subscriptionDescriptions as $value_1) {
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['subscriptionDescriptions'] = $values_1;
         if (array_key_exists('whitelistedDomains', get_object_vars($data)) && null !== ($data->whitelistedDomains ?? null)) {

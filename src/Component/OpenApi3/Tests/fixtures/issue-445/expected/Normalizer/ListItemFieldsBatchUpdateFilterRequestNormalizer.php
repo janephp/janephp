@@ -74,10 +74,13 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
             $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['filterRequest'] = $value;
-        $values = [];
-        foreach ($data->changeCommands as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values = null;
+        if (null !== $data->changeCommands) {
+            $values = [];
+            foreach ($data->changeCommands as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

@@ -206,10 +206,13 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }
-        $values_2 = [];
-        foreach ($data->relationTypes as $value_5) {
-            $normalized_1 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
-            $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_2 = null;
+        if (null !== $data->relationTypes) {
+            $values_2 = [];
+            foreach ($data->relationTypes as $value_5) {
+                $normalized_1 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['relationTypes'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {

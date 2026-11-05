@@ -59,9 +59,12 @@ class UserWithheldNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->countryCodes as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->countryCodes) {
+            $values = [];
+            foreach ($data->countryCodes as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['country_codes'] = $values;
         if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {

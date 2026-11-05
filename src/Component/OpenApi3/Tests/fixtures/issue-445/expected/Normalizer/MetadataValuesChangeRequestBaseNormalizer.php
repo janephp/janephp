@@ -76,10 +76,13 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
         if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateRequest' === $data->kind) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $values = [];
-        foreach ($data->changeCommands as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->changeCommands) {
+            $values = [];
+            foreach ($data->changeCommands as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

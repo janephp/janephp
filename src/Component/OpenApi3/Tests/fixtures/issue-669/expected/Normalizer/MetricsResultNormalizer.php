@@ -73,24 +73,33 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->metric as $key => $value) {
-            $values[$key] = $value;
+        $values = null;
+        if (null !== $data->metric) {
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+            foreach ($data->metric as $key => $value) {
+                $values[$key] = $value;
+            }
         }
         $dataArray['metric'] = $values;
-        $values_1 = [];
-        foreach ($data->values as $value_1) {
-            $values_2 = [];
-            foreach ($value_1 as $value_2) {
-                $value_3 = $value_2;
-                if (is_int($value_2)) {
-                    $value_3 = $value_2;
-                } elseif (is_string($value_2)) {
-                    $value_3 = $value_2;
+        $values_1 = null;
+        if (null !== $data->values) {
+            $values_1 = [];
+            foreach ($data->values as $value_1) {
+                $values_2 = null;
+                if (null !== $value_1) {
+                    $values_2 = [];
+                    foreach ($value_1 as $value_2) {
+                        $value_3 = $value_2;
+                        if (is_int($value_2)) {
+                            $value_3 = $value_2;
+                        } elseif (is_string($value_2)) {
+                            $value_3 = $value_2;
+                        }
+                        $values_2[] = $value_3;
+                    }
                 }
-                $values_2[] = $value_3;
+                $values_1[] = $values_2;
             }
-            $values_1[] = $values_2;
         }
         $dataArray['values'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_4) {

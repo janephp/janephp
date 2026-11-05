@@ -53,9 +53,12 @@ class DnsSpoofingProfileDnsSpoofingRuleNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $dataArray['domainName'] = $data->domainName;
-        $values = [];
-        foreach ($data->ipList as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->ipList) {
+            $values = [];
+            foreach ($data->ipList as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['ipList'] = $values;
         return $dataArray;

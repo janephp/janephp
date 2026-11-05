@@ -56,9 +56,12 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $dataArray['Id'] = $data->id;
-        $values = [];
-        foreach ($data->warnings as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->warnings) {
+            $values = [];
+            foreach ($data->warnings as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Warnings'] = $values;
         if (!($context['skip_validation'] ?? false)) {

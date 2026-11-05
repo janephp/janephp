@@ -79,9 +79,12 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
             }
             $dataArray['messages'] = $values;
         }
-        $values_1 = [];
-        foreach ($data->rootCauses as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->rootCauses) {
+            $values_1 = [];
+            foreach ($data->rootCauses as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['root_causes'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

@@ -555,10 +555,13 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('portBindings', get_object_vars($data)) && null !== ($data->portBindings ?? null)) {
             $values_10 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->portBindings as $key => $value_10) {
-                $values_11 = [];
-                foreach ($value_10 as $value_11) {
-                    $normalized_9 = $value_11 === null ? null : $this->normalizer->normalize($value_11, 'json', $context);
-                    $values_11[] = \is_iterable($normalized_9) ? new \Docker\Api\Runtime\JsonObject($normalized_9) : $normalized_9;
+                $values_11 = null;
+                if (null !== $value_10) {
+                    $values_11 = [];
+                    foreach ($value_10 as $value_11) {
+                        $normalized_9 = $value_11 === null ? null : $this->normalizer->normalize($value_11, 'json', $context);
+                        $values_11[] = \is_iterable($normalized_9) ? new \Docker\Api\Runtime\JsonObject($normalized_9) : $normalized_9;
+                    }
                 }
                 $values_10[$key] = $values_11;
             }

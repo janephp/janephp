@@ -59,9 +59,12 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->listItemIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->listItemIds) {
+            $values = [];
+            foreach ($data->listItemIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['listItemIds'] = $values;
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {

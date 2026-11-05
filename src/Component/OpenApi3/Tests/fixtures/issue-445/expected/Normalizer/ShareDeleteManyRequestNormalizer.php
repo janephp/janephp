@@ -49,9 +49,12 @@ class ShareDeleteManyRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->ids as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->ids) {
+            $values = [];
+            foreach ($data->ids as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['ids'] = $values;
         return $dataArray;

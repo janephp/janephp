@@ -78,10 +78,13 @@ class AddonsResourceNewNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['app_slug'] = $data->appSlug;
         $dataArray['plan_slug'] = $data->planSlug;
         $dataArray['name'] = $data->name;
-        $values = [];
-        foreach ($data->metadata as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->metadata) {
+            $values = [];
+            foreach ($data->metadata as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['metadata'] = $values;
         if (array_key_exists('linkedDropletId', get_object_vars($data)) && null !== ($data->linkedDropletId ?? null)) {

@@ -118,9 +118,12 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Documentation'] = $data->documentation;
         $normalized = $data->interface === null ? null : $this->normalizer->normalize($data->interface, 'json', $context);
         $dataArray['Interface'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
-        $values = [];
-        foreach ($data->entrypoint as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->entrypoint) {
+            $values = [];
+            foreach ($data->entrypoint as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Entrypoint'] = $values;
         $dataArray['WorkDir'] = $data->workDir;
@@ -135,16 +138,22 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['PropagatedMount'] = $data->propagatedMount;
         $dataArray['IpcHost'] = $data->ipcHost;
         $dataArray['PidHost'] = $data->pidHost;
-        $values_1 = [];
-        foreach ($data->mounts as $value_1) {
-            $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
+        $values_1 = null;
+        if (null !== $data->mounts) {
+            $values_1 = [];
+            foreach ($data->mounts as $value_1) {
+                $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
+            }
         }
         $dataArray['Mounts'] = $values_1;
-        $values_2 = [];
-        foreach ($data->env as $value_2) {
-            $normalized_5 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
-            $values_2[] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
+        $values_2 = null;
+        if (null !== $data->env) {
+            $values_2 = [];
+            foreach ($data->env as $value_2) {
+                $normalized_5 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
+            }
         }
         $dataArray['Env'] = $values_2;
         $normalized_6 = $data->args === null ? null : $this->normalizer->normalize($data->args, 'json', $context);
