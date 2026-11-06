@@ -17,6 +17,21 @@ class ClassGuess extends BaseClassGuess
     public function setParentClass(?ParentClass $parentClass): void
     {
         $this->parentClass = $parentClass;
+
+        if (null === $parentClass) {
+            return;
+        }
+
+        // PHP does not let a child class change the type of a property that its parent declares, so
+        // the child reads and writes such a property with the type of the parent. A schema can still
+        // narrow it, for example with a const for the discriminator value: the type stays the parent's.
+        foreach ($this->getProperties() as $property) {
+            $parentProperty = $parentClass->getProperty($property->getName());
+
+            if (null !== $parentProperty && $parentProperty->getType() !== $property->getType()) {
+                $property->setType($parentProperty->getType());
+            }
+        }
     }
 
     public function getLocalProperties(): array
