@@ -48,6 +48,18 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->priority = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Priority::from($data['priority']);
             unset($data['priority']);
         }
+        if (\array_key_exists('constType', $data)) {
+            $object->constType = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemConstType::from($data['constType']);
+            unset($data['constType']);
+        }
+        if (\array_key_exists('constStatus', $data)) {
+            $object->constStatus = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemConstStatus::from($data['constStatus']);
+            unset($data['constStatus']);
+        }
+        if (\array_key_exists('constRef', $data)) {
+            $object->constRef = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemConstType::from($data['constRef']);
+            unset($data['constRef']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -60,6 +72,9 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray = [];
         $dataArray['status'] = $data->status->value;
         $dataArray['priority'] = $data->priority->value;
+        $dataArray['constType'] = $data->constType->value;
+        $dataArray['constStatus'] = $data->constStatus->value;
+        $dataArray['constRef'] = $data->constRef->value;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

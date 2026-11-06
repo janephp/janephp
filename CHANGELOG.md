@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
+- [JsonSchema] [GH#1146](https://github.com/janephp/janephp/issues/1146) With `enums-as-objects`, a schema with `type: string|integer` and a single-value `const` now generates the same backed enum class, property type and (de)normalization code as the equivalent `enum` keyword, per JSON Schema 2020-12 §6.1.3 (`const` is functionally equivalent to an `enum` with a single value). Before, it generated a plain `string` / `int` property. The `enum` keyword still takes precedence when both are present, and OpenAPI 2 / 3.0 schemas are unchanged (they have no `const` keyword)
 - [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
 
 ## [8.1.1] - 2026-10-26

@@ -35,7 +35,12 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             return false;
         }
 
-        return null !== ($object->enum ?? null) && \count($object->enum ?? null) > 0;
+        if (null !== ($object->enum ?? null) && \count($object->enum ?? null) > 0) {
+            return true;
+        }
+
+        // JSON Schema 2020-12: "const" is functionally equivalent to an "enum" with a single value.
+        return null !== ($object->const ?? null);
     }
 
     /**
@@ -58,7 +63,7 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             $reference,
             $this->naming->getClassName($name),
             $this->getBackingType($object->type ?? null),
-            $object->enum ?? null,
+            $this->getEnumValues($object),
             property_exists($object, 'deprecated') && (($object->deprecated ?? null) ?? false),
             $this->getVarNames($object)
         ));
@@ -114,6 +119,23 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             static fn ($varName): ?string => \is_string($varName) && '' !== trim($varName) ? trim($varName) : null,
             $varNames
         );
+    }
+
+    /**
+     * The enum values: the "enum" keyword list, or a single-value list built from "const"
+     * (JSON Schema 2020-12: "const" is functionally equivalent to an "enum" with a single value).
+     *
+     * @param JsonSchema $object
+     *
+     * @return array<string|int>|null
+     */
+    private function getEnumValues($object): ?array
+    {
+        if (null !== ($object->enum ?? null)) {
+            return $object->enum;
+        }
+
+        return [$object->const];
     }
 
     private function getBackingType(string $type): string

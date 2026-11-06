@@ -19,8 +19,20 @@ class Item implements AdditionalPropertiesInterface
      * @var Priority
      */
     public Priority $priority;
+    /**
+     * @var ItemConstType
+     */
+    public ItemConstType $constType;
+    /**
+     * @var ItemConstStatus
+     */
+    public ItemConstStatus $constStatus;
+    /**
+     * @var ItemConstType
+     */
+    public ItemConstType $constRef;
     public function definedProperties(): array
     {
-        return ['status' => 'status', 'priority' => 'priority'];
+        return ['status' => 'status', 'priority' => 'priority', 'constType' => 'constType', 'constStatus' => 'constStatus', 'constRef' => 'constRef'];
     }
 }
