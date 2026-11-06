@@ -59,9 +59,12 @@ class ProfileCreateDPGroupNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
             $dataArray['description'] = $data->description;
         }
-        $values = [];
-        foreach ($data->dpGroupList as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->dpGroupList) {
+            $values = [];
+            foreach ($data->dpGroupList as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['dpGroupList'] = $values;
         return $dataArray;

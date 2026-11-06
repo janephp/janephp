@@ -91,9 +91,12 @@ class SpecialEventNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['name'] = $data->name;
         $dataArray['location'] = $data->location;
         $dataArray['eventDescription'] = $data->eventDescription;
-        $values = [];
-        foreach ($data->dates as $value) {
-            $values[] = $value->format('Y-m-d');
+        $values = null;
+        if (null !== $data->dates) {
+            $values = [];
+            foreach ($data->dates as $value) {
+                $values[] = $value->format('Y-m-d');
+            }
         }
         $dataArray['dates'] = $values;
         $dataArray['price'] = $data->price;

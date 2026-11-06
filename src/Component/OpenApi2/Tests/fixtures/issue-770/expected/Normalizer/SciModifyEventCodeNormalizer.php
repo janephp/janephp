@@ -49,9 +49,12 @@ class SciModifyEventCodeNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->sciAcceptedEventCodes as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->sciAcceptedEventCodes) {
+            $values = [];
+            foreach ($data->sciAcceptedEventCodes as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['sciAcceptedEventCodes'] = $values;
         return $dataArray;

@@ -87,9 +87,12 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
         $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps;
         $dataArray['region'] = $data->region;
         $dataArray['naas_provider'] = $data->naasProvider;
-        $values = [];
-        foreach ($data->vpcIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->vpcIds) {
+            $values = [];
+            foreach ($data->vpcIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['vpc_ids'] = $values;
         if (array_key_exists('parentUuid', get_object_vars($data)) && null !== ($data->parentUuid ?? null)) {

@@ -70,10 +70,13 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->projects as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->projects) {
+            $values = [];
+            foreach ($data->projects as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['projects'] = $values;
         $dataArray['per_page'] = $data->perPage;

@@ -89,23 +89,32 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['Id'] = $data->id;
         $dataArray['ParentId'] = $data->parentId;
-        $values = [];
-        foreach ($data->repoTags as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->repoTags) {
+            $values = [];
+            foreach ($data->repoTags as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['RepoTags'] = $values;
-        $values_1 = [];
-        foreach ($data->repoDigests as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->repoDigests) {
+            $values_1 = [];
+            foreach ($data->repoDigests as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['RepoDigests'] = $values_1;
         $dataArray['Created'] = $data->created;
         $dataArray['Size'] = $data->size;
         $dataArray['SharedSize'] = $data->sharedSize;
         $dataArray['VirtualSize'] = $data->virtualSize;
-        $values_2 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->labels as $key => $value_2) {
-            $values_2[$key] = $value_2;
+        $values_2 = null;
+        if (null !== $data->labels) {
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
+            foreach ($data->labels as $key => $value_2) {
+                $values_2[$key] = $value_2;
+            }
         }
         $dataArray['Labels'] = $values_2;
         $dataArray['Containers'] = $data->containers;

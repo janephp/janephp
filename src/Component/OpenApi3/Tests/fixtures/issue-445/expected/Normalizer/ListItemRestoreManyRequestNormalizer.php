@@ -55,9 +55,12 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->listItemIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->listItemIds) {
+            $values = [];
+            foreach ($data->listItemIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['listItemIds'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

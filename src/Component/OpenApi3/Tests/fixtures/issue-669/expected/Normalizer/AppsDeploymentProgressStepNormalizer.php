@@ -136,9 +136,12 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
             foreach ($data->steps as $value) {
-                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($value as $key => $value_1) {
-                    $values_1[$key] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

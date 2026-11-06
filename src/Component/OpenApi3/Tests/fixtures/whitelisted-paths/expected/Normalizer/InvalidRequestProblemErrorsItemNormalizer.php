@@ -66,9 +66,12 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
         if (array_key_exists('parameters', get_object_vars($data)) && null !== ($data->parameters ?? null)) {
             $values = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject();
             foreach ($data->parameters as $key => $value) {
-                $values_1 = [];
-                foreach ($value as $value_1) {
-                    $values_1[] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = [];
+                    foreach ($value as $value_1) {
+                        $values_1[] = $value_1;
+                    }
                 }
                 $values[$key] = $values_1;
             }

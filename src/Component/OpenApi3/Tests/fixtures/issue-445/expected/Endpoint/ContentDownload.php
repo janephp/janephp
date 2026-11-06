@@ -80,7 +80,7 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @throws \PicturePark\API\Exception\ContentDownloadPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -107,9 +107,11 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentDownloadInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
-        if (206 === $status) {
+        if ($contentType !== null && (206 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ContentDownloadPreconditionFailedException($response);

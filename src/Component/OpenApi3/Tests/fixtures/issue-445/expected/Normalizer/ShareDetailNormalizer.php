@@ -160,10 +160,13 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['audit'] = $value_1;
-        $values = [];
-        foreach ($data->contentSelections as $value_2) {
-            $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
-            $values[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values = null;
+        if (null !== $data->contentSelections) {
+            $values = [];
+            foreach ($data->contentSelections as $value_2) {
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['contentSelections'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {

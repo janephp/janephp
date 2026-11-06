@@ -26,13 +26,14 @@ class Authorize extends \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindi
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'text/html') !== false)) {
+            return $body;
         }
         throw new \Jane\Component\OpenApi31\Tests\Expected\CorpusMagoFindings\Exception\BadResponseException($status, $body, $response);
     }

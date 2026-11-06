@@ -44,17 +44,20 @@ model:
 
 From what you can see here, we have some validation rules used in that
 schema for each properties. To enable the validation features in Jane,
-you'll have to set the `validation` parameter to `true` as following:
+you'll have to set the `validation` parameter to
+`ValidationOption::Both` as following:
 
 ```php
 <?php
+
+use Jane\Component\JsonSchema\Generator\ValidationOption;
 
 return [
     'json-schema-file' => __DIR__ . '/beer.json',
     'root-class' => 'Beer',
     'namespace' => 'App\Generated',
     'directory' => __DIR__ . '/generated',
-    'validation' => true,
+    'validation' => ValidationOption::Both,
 ];
 ```
 
@@ -205,6 +208,38 @@ This allows the validation to be done without having anything else than
 the configuration to do. Also you can use the Validator out of Jane
 normalization by doing exactly the same as in the Normalizer.
 
+### API clients
+
+When generating an OpenAPI client, you mostly need to validate what your
+application **sends**: request bodies are serialized by the generated
+`normalize()` method. Responses, on the other hand, describe what the remote
+API returns, and failing to decode a valid server response just because it
+carries an extra key is usually unwanted.
+
+For such clients, prefer `ValidationOption::NormalizeOnly` over
+`ValidationOption::Both`:
+
+```php
+<?php
+
+use Jane\Component\JsonSchema\Generator\ValidationOption;
+
+return [
+    'openapi-file' => __DIR__ . '/petstore.json',
+    'namespace' => 'Acme\Petstore',
+    'directory' => __DIR__ . '/generated',
+    'validation' => ValidationOption::NormalizeOnly,
+];
+```
+
+If you need the validator on a single call instead, the `skip_validation`
+context option still bypasses the generated validation per call:
+
+```php
+$_normalizer = new Acme\Petstore\Normalizer\PetNormalizer();
+$_normalizer->denormalize($data, Acme\Petstore\Model\Pet::class, 'json', ['skip_validation' => true]);
+```
+
 ## Sharing the validator
 
 The generated normalizers do not build a Symfony validator on each
@@ -238,12 +273,14 @@ dependencies (like allowed values, configuration, or services).
 ```php
 <?php
 
+use Jane\Component\JsonSchema\Generator\ValidationOption;
+
 return [
     'json-schema-file' => __DIR__ . '/price.json',
     'root-class' => 'Price',
     'namespace' => 'App\Generated',
     'directory' => __DIR__ . '/generated',
-    'validation' => true,
+    'validation' => ValidationOption::Both,
     'validators' => [
         new class implements ValidatorInterface {
             public function supports($object): bool

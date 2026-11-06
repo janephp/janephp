@@ -65,10 +65,13 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
         $dataArray = [];
         $dataArray['kind'] = $data->kind;
         $dataArray['serializedCdnConfiguration'] = $data->serializedCdnConfiguration;
-        $values = [];
-        foreach ($data->jobs as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->jobs) {
+            $values = [];
+            foreach ($data->jobs as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['jobs'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

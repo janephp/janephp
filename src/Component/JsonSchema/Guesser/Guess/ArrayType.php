@@ -88,11 +88,6 @@ class ArrayType extends Type
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
-        $statements = [
-            // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement($context))),
-        ];
-
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
         $loopKeyVar = $this->createLoopKeyStatement($context);
 
@@ -104,10 +99,28 @@ class ArrayType extends Type
             new Stmt\Expression(new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
-        $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
-            'keyVar' => $loopKeyVar,
-            'stmts' => $loopStatements,
-        ]);
+        $fillStatements = [
+            // $values = [];
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement($context))),
+            new Stmt\Foreach_($input, $loopValueVar, [
+                'keyVar' => $loopKeyVar,
+                'stmts' => $loopStatements,
+            ]),
+        ];
+
+        if (!$inputMayBeNull) {
+            return [$fillStatements, $valuesVar];
+        }
+
+        // The input may hold null, such as a nullable list that the API sent as null:
+        // keep it null instead of iterating over it.
+        // $values = null; if (null !== $input) { $values = []; foreach (...) { ... } }
+        $statements = [
+            new Stmt\Expression(new Expr\Assign($valuesVar, new Expr\ConstFetch(new Name('null')))),
+            new Stmt\If_(new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $input), [
+                'stmts' => $fillStatements,
+            ]),
+        ];
 
         return [$statements, $valuesVar];
     }

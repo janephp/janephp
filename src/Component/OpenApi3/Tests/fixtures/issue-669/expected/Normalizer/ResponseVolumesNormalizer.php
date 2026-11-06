@@ -67,13 +67,19 @@ class ResponseVolumesNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->volumes as $value) {
-            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($value as $key => $value_1) {
-                $values_1[$key] = $value_1;
+        $values = null;
+        if (null !== $data->volumes) {
+            $values = [];
+            foreach ($data->volumes as $value) {
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
+                }
+                $values[] = $values_1;
             }
-            $values[] = $values_1;
         }
         $dataArray['volumes'] = $values;
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {

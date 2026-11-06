@@ -202,28 +202,40 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['kernel'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
-        $values_1 = [];
-        foreach ($data->features as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->features) {
+            $values_1 = [];
+            foreach ($data->features as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['features'] = $values_1;
-        $values_2 = [];
-        foreach ($data->backupIds as $value_2) {
-            $values_2[] = $value_2;
+        $values_2 = null;
+        if (null !== $data->backupIds) {
+            $values_2 = [];
+            foreach ($data->backupIds as $value_2) {
+                $values_2[] = $value_2;
+            }
         }
         $dataArray['backup_ids'] = $values_2;
         $normalized_2 = $data->nextBackupWindow === null ? null : $this->normalizer->normalize($data->nextBackupWindow, 'json', $context);
         $dataArray['next_backup_window'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
-        $values_3 = [];
-        foreach ($data->snapshotIds as $value_3) {
-            $values_3[] = $value_3;
+        $values_3 = null;
+        if (null !== $data->snapshotIds) {
+            $values_3 = [];
+            foreach ($data->snapshotIds as $value_3) {
+                $values_3[] = $value_3;
+            }
         }
         $dataArray['snapshot_ids'] = $values_3;
         $normalized_3 = $data->image === null ? null : $this->normalizer->normalize($data->image, 'json', $context);
         $dataArray['image'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
-        $values_4 = [];
-        foreach ($data->volumeIds as $value_4) {
-            $values_4[] = $value_4;
+        $values_4 = null;
+        if (null !== $data->volumeIds) {
+            $values_4 = [];
+            foreach ($data->volumeIds as $value_4) {
+                $values_4[] = $value_4;
+            }
         }
         $dataArray['volume_ids'] = $values_4;
         $normalized_4 = $data->size === null ? null : $this->normalizer->normalize($data->size, 'json', $context);
@@ -233,9 +245,12 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['networks'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         $normalized_6 = $data->region === null ? null : $this->normalizer->normalize($data->region, 'json', $context);
         $dataArray['region'] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
-        $values_5 = [];
-        foreach ($data->tags as $value_5) {
-            $values_5[] = $value_5;
+        $values_5 = null;
+        if (null !== $data->tags) {
+            $values_5 = [];
+            foreach ($data->tags as $value_5) {
+                $values_5[] = $value_5;
+            }
         }
         $dataArray['tags'] = $values_5;
         if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {

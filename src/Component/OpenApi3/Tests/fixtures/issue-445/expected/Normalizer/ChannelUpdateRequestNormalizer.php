@@ -144,15 +144,21 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             $dataArray['sort'] = $values;
         }
         $dataArray['sortOrder'] = $data->sortOrder;
-        $values_1 = [];
-        foreach ($data->sortFields as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->sortFields) {
+            $values_1 = [];
+            foreach ($data->sortFields as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['sortFields'] = $values_1;
-        $values_2 = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->names as $key => $value_2) {
-            $values_2[$key] = $value_2;
+        $values_2 = null;
+        if (null !== $data->names) {
+            $values_2 = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->names as $key => $value_2) {
+                $values_2[$key] = $value_2;
+            }
         }
         $dataArray['names'] = $values_2;
         if (array_key_exists('searchIndexId', get_object_vars($data)) && null !== ($data->searchIndexId ?? null)) {

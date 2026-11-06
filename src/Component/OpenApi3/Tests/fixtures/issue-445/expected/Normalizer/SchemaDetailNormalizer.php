@@ -216,9 +216,12 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('parentSchemaId', get_object_vars($data)) && null !== ($data->parentSchemaId ?? null)) {
             $dataArray['parentSchemaId'] = $data->parentSchemaId;
         }
-        $values = [];
-        foreach ($data->types as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->types) {
+            $values = [];
+            foreach ($data->types as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['types'] = $values;
         if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
@@ -250,10 +253,13 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $dataArray['layerSchemaIds'] = $values_3;
         }
-        $values_4 = [];
-        foreach ($data->displayPatterns as $value_6) {
-            $normalized = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
-            $values_4[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values_4 = null;
+        if (null !== $data->displayPatterns) {
+            $values_4 = [];
+            foreach ($data->displayPatterns as $value_6) {
+                $normalized = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
+                $values_4[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['displayPatterns'] = $values_4;
         if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {

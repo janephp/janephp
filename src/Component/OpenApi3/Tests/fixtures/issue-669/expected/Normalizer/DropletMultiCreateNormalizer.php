@@ -154,9 +154,12 @@ class DropletMultiCreateNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->names as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->names) {
+            $values = [];
+            foreach ($data->names as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['names'] = $values;
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {

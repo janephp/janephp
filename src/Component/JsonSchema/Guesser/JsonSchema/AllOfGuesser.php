@@ -116,6 +116,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     {
         $type = null;
         $allOfType = null;
+        $ownType = $object->type ?? null;
 
         // Mainly a merged class
         if ($registry->hasClass($reference)) {
@@ -144,6 +145,11 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             }
 
             if (null !== ($allOfSchema->type ?? null)) {
+                // The schema's own type wins over a conflicting member type.
+                if (null !== $ownType && $ownType !== ($allOfSchema->type ?? null)) {
+                    continue;
+                }
+
                 if (null !== $type && $allOfType !== ($allOfSchema->type ?? null)) {
                     throw new \RuntimeException('an allOf instruction with 2 or more types is strictly impossible, check your schema');
                 }
@@ -153,11 +159,27 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             }
         }
 
+        if (null === $type && null !== $ownType) {
+            // allOf members without a type only add constraints: the schema's own type applies.
+            return $this->chainGuesser->guessType($this->withoutAllOf($object), $name, $reference, $registry);
+        }
+
         if (null === $type) {
             return new Type($object, 'mixed');
         }
 
         return $type;
+    }
+
+    /**
+     * A copy of the schema without its allOf keyword, so the chain guesses it from its own keywords.
+     */
+    private function withoutAllOf(object $object): object
+    {
+        $withoutAllOf = clone $object;
+        $withoutAllOf->allOf = null;
+
+        return $withoutAllOf;
     }
 
     public function supportObject($object): bool

@@ -67,16 +67,22 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
         $dataArray = [];
         $dataArray['domainId'] = $data->domainId;
         $dataArray['name'] = $data->name;
-        $values = [];
-        foreach ($data->dpInfoList as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->dpInfoList) {
+            $values = [];
+            foreach ($data->dpInfoList as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['dpInfoList'] = $values;
-        $values_1 = [];
-        foreach ($data->apGroupInfoList as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->apGroupInfoList) {
+            $values_1 = [];
+            foreach ($data->apGroupInfoList as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['apGroupInfoList'] = $values_1;
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {

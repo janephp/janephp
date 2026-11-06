@@ -60,9 +60,12 @@ class PointNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         $dataArray['type'] = $data->type;
-        $values = [];
-        foreach ($data->coordinates as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->coordinates) {
+            $values = [];
+            foreach ($data->coordinates as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['coordinates'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

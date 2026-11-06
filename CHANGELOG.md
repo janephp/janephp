@@ -6,10 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [JsonSchema] [OpenApi] [GH#1147](https://github.com/janephp/janephp/issues/1147) The `validation` generation option now accepts `false` or a `ValidationOption` enum case instead of `true`: `false` (the default) generates no validation at all, `ValidationOption::NormalizeOnly` emits the generated `$this->validate()` call only in the generated `normalize()` (recommended for API clients, which validate the request bodies they send), `ValidationOption::DenormalizeOnly` only in the generated `denormalize()`, and `ValidationOption::Both` in both directions — the historical behavior of `true`. Validators and their constraints are generated with every other value than `false`. Any other configuration value than `false`, a `ValidationOption` case, `true` (converted to `ValidationOption::Both`) or `null` (converted to `false`) is rejected with an `\InvalidArgumentException`
+
 ### Changed
 - [JsonSchema] [OpenApi] [GH#1142](https://github.com/janephp/janephp/issues/1142) With `validation`, the generated normalizers no longer build a new Symfony validator on every `validate()` call. All the normalizers of a generated namespace (one client) share one validator, held by the new `Runtime\Normalizer\ValidatorRegistry` runtime class and built once per process. `ValidatorRegistry::set()` swaps in another validator, such as the one of the Symfony container. Constraints, `ValidationException` and violations are unchanged
+
 ### Fixed
+- [JsonSchema] [GH#1148](https://github.com/janephp/janephp/issues/1148) The normalizer of a nullable array property no longer iterates over `null`. A list that holds `null`, such as one the API sent as `null`, goes out as `null` instead of a PHP warning and `[]`
 - [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
+- [JsonSchema] [GH#1140](https://github.com/janephp/janephp/issues/1140) With `include-null-value: false`, an optional property without a native type (for example an `anyOf` of two strings, or `type: [string, integer]`) is no longer normalized as `null` when it was never set. PHP initializes such a property to `null`, so the presence check always found it. The normalizer now also skips its `null` when the schema does not allow `null`
+
+### Deprecated
+- [JsonSchema] [OpenApi] [GH#1147](https://github.com/janephp/janephp/issues/1147) Passing `true` to the `validation` option is deprecated, use `ValidationOption::Both` instead; passing `null` is deprecated, use `false` instead. Both keep working with a deprecation notice (`trigger_deprecation()`, `symfony/deprecation-contracts` is now a direct dependency of `jane-php/json-schema`) in this major and are removed in the next one, which accepts only `false` or a `ValidationOption` case
 
 ## [8.1.1] - 2026-10-26
 ### Fixed

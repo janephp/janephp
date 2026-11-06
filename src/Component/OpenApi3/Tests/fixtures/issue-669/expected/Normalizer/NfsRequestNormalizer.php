@@ -70,9 +70,12 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['name'] = $data->name;
         $dataArray['size_gib'] = $data->sizeGib;
         $dataArray['region'] = $data->region;
-        $values = [];
-        foreach ($data->vpcIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->vpcIds) {
+            $values = [];
+            foreach ($data->vpcIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['vpc_ids'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

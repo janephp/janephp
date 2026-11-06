@@ -63,15 +63,21 @@ class NotificationNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->email as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->email) {
+            $values = [];
+            foreach ($data->email as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['email'] = $values;
-        $values_1 = [];
-        foreach ($data->slack as $value_1) {
-            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values_1 = null;
+        if (null !== $data->slack) {
+            $values_1 = [];
+            foreach ($data->slack as $value_1) {
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['slack'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

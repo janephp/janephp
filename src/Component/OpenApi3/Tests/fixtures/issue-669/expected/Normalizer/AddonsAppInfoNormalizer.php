@@ -70,10 +70,13 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['app_slug'] = $data->appSlug;
         $dataArray['tos'] = $data->tos;
         $dataArray['eula'] = $data->eula;
-        $values = [];
-        foreach ($data->plans as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->plans) {
+            $values = [];
+            foreach ($data->plans as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['plans'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

@@ -55,9 +55,12 @@ class V2FirewallsFirewallIdDropletsPostBodyNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->dropletIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->dropletIds) {
+            $values = [];
+            foreach ($data->dropletIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['droplet_ids'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

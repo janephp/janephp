@@ -106,14 +106,20 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['compare'] = $data->compare;
         $dataArray['description'] = $data->description;
         $dataArray['enabled'] = $data->enabled;
-        $values = [];
-        foreach ($data->entities as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->entities) {
+            $values = [];
+            foreach ($data->entities as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['entities'] = $values;
-        $values_1 = [];
-        foreach ($data->tags as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->tags) {
+            $values_1 = [];
+            foreach ($data->tags as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['tags'] = $values_1;
         $dataArray['type'] = $data->type;

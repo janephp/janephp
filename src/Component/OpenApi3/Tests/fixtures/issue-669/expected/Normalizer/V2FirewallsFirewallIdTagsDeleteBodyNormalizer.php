@@ -55,9 +55,12 @@ class V2FirewallsFirewallIdTagsDeleteBodyNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->tags as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->tags) {
+            $values = [];
+            foreach ($data->tags as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['tags'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

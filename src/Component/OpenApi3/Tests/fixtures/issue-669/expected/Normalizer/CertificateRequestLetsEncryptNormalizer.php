@@ -67,9 +67,12 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
         if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
             $dataArray['type'] = $data->type;
         }
-        $values = [];
-        foreach ($data->dnsNames as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->dnsNames) {
+            $values = [];
+            foreach ($data->dnsNames as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['dns_names'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

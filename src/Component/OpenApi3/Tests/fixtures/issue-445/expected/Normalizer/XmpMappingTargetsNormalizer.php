@@ -56,16 +56,22 @@ class XmpMappingTargetsNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->xmpFields as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->xmpFields) {
+            $values = [];
+            foreach ($data->xmpFields as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['xmpFields'] = $values;
-        $values_1 = [];
-        foreach ($data->metadataFields as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->metadataFields) {
+            $values_1 = [];
+            foreach ($data->metadataFields as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['metadataFields'] = $values_1;
         return $dataArray;

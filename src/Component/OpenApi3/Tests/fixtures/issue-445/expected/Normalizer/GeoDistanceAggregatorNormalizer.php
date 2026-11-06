@@ -151,10 +151,13 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
             $value_4 = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['location'] = $value_4;
-        $values_2 = [];
-        foreach ($data->ranges as $value_5) {
-            $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
-            $values_2[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
+        $values_2 = null;
+        if (null !== $data->ranges) {
+            $values_2 = [];
+            foreach ($data->ranges as $value_5) {
+                $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_2[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
+            }
         }
         $dataArray['ranges'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_6) {
