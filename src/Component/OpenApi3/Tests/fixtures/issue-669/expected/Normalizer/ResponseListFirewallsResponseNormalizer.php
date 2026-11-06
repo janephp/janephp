@@ -70,9 +70,12 @@ class ResponseListFirewallsResponseNormalizer implements DenormalizerInterface, 
         if (array_key_exists('firewalls', get_object_vars($data)) && null !== ($data->firewalls ?? null)) {
             $values = [];
             foreach ($data->firewalls as $value) {
-                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($value as $key => $value_1) {
-                    $values_1[$key] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

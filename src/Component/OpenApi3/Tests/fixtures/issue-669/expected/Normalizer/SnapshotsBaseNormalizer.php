@@ -88,9 +88,12 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $dataArray['name'] = $data->name;
         $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
-        $values = [];
-        foreach ($data->regions as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->regions) {
+            $values = [];
+            foreach ($data->regions as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['regions'] = $values;
         $dataArray['min_disk_size'] = $data->minDiskSize;

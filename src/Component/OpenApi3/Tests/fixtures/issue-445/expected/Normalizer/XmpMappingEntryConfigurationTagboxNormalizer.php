@@ -74,9 +74,12 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         $dataArray['kind'] = $data->kind;
-        $values = [];
-        foreach ($data->keyFieldIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->keyFieldIds) {
+            $values = [];
+            foreach ($data->keyFieldIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['keyFieldIds'] = $values;
         $dataArray['caseSensitive'] = $data->caseSensitive;

@@ -1,0 +1,37 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Nullable array with include-null-value false",
+        "version": "1.0.0"
+    },
+    "paths": {},
+    "components": {
+        "schemas": {
+            "Shipment": {
+                "type": "object",
+                "properties": {
+                    "shipped_items": {
+                        "type": ["null", "array"],
+                        "items": {
+                            "$ref": "#/components/schemas/ShippedItem"
+                        }
+                    },
+                    "tags": {
+                        "type": ["null", "array"],
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ShippedItem": {
+                "type": "object",
+                "properties": {
+                    "quantity": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -146,10 +146,13 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->ports as $key => $value) {
-                $values_1 = [];
-                foreach ($value as $value_1) {
-                    $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-                    $values_1[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = [];
+                    foreach ($value as $value_1) {
+                        $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                        $values_1[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+                    }
                 }
                 $values[$key] = $values_1;
             }

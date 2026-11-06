@@ -70,9 +70,12 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         $dataArray['Id'] = $data->id;
         $dataArray['Created'] = $data->created;
         $dataArray['CreatedBy'] = $data->createdBy;
-        $values = [];
-        foreach ($data->tags as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->tags) {
+            $values = [];
+            foreach ($data->tags as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Tags'] = $values;
         $dataArray['Size'] = $data->size;

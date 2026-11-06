@@ -65,16 +65,22 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->capabilities as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->capabilities) {
+            $values = [];
+            foreach ($data->capabilities as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Capabilities'] = $values;
         $dataArray['AllowAllDevices'] = $data->allowAllDevices;
-        $values_1 = [];
-        foreach ($data->devices as $value_1) {
-            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values_1 = null;
+        if (null !== $data->devices) {
+            $values_1 = [];
+            foreach ($data->devices as $value_1) {
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['Devices'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

@@ -80,10 +80,13 @@ class AddonsDimensionWithPriceNormalizer implements DenormalizerInterface, Norma
         $dataArray['slug'] = $data->slug;
         $dataArray['display_name'] = $data->displayName;
         $dataArray['feature_name'] = $data->featureName;
-        $values = [];
-        foreach ($data->volumes as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->volumes) {
+            $values = [];
+            foreach ($data->volumes as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['volumes'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

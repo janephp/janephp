@@ -65,9 +65,12 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $dataArray['kind'] = $data->kind;
         $dataArray['field'] = $data->field;
-        $values = [];
-        foreach ($data->terms as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->terms) {
+            $values = [];
+            foreach ($data->terms as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['terms'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

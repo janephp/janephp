@@ -53,9 +53,12 @@ class FileTransferDeleteRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $dataArray['transferId'] = $data->transferId;
-        $values = [];
-        foreach ($data->fileTransferIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->fileTransferIds) {
+            $values = [];
+            foreach ($data->fileTransferIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['fileTransferIds'] = $values;
         return $dataArray;

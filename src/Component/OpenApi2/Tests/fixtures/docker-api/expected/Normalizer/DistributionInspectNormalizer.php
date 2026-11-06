@@ -57,10 +57,13 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $normalized = $data->descriptor === null ? null : $this->normalizer->normalize($data->descriptor, 'json', $context);
         $dataArray['Descriptor'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
-        $values = [];
-        foreach ($data->platforms as $value) {
-            $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values = null;
+        if (null !== $data->platforms) {
+            $values = [];
+            foreach ($data->platforms as $value) {
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['Platforms'] = $values;
         if (!($context['skip_validation'] ?? false)) {

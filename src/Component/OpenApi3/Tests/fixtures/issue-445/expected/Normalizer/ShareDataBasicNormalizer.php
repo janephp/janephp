@@ -81,16 +81,22 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['url'] = $data->url;
         $dataArray['kind'] = $data->kind;
-        $values = [];
-        foreach ($data->mailRecipients as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->mailRecipients) {
+            $values = [];
+            foreach ($data->mailRecipients as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['mailRecipients'] = $values;
-        $values_1 = [];
-        foreach ($data->internalRecipients as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->internalRecipients) {
+            $values_1 = [];
+            foreach ($data->internalRecipients as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['internalRecipients'] = $values_1;
         if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {

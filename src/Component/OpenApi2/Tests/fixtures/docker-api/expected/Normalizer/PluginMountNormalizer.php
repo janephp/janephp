@@ -76,17 +76,23 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $dataArray['Name'] = $data->name;
         $dataArray['Description'] = $data->description;
-        $values = [];
-        foreach ($data->settable as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->settable) {
+            $values = [];
+            foreach ($data->settable as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Settable'] = $values;
         $dataArray['Source'] = $data->source;
         $dataArray['Destination'] = $data->destination;
         $dataArray['Type'] = $data->type;
-        $values_1 = [];
-        foreach ($data->options as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->options) {
+            $values_1 = [];
+            foreach ($data->options as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['Options'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

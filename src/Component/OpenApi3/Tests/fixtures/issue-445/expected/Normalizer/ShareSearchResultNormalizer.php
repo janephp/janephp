@@ -111,10 +111,13 @@ class ShareSearchResultNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $dataArray['totalResults'] = $data->totalResults;
-        $values = [];
-        foreach ($data->results as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->results) {
+            $values = [];
+            foreach ($data->results as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;

@@ -84,9 +84,12 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
             $dataArray['gracePeriod'] = $data->gracePeriod;
         }
         $dataArray['blackList'] = $data->blackList;
-        $values = [];
-        foreach ($data->whiteList as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->whiteList) {
+            $values = [];
+            foreach ($data->whiteList as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['whiteList'] = $values;
         if (array_key_exists('dnatPortMapping', get_object_vars($data)) && null !== ($data->dnatPortMapping ?? null)) {

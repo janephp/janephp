@@ -105,9 +105,12 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('fieldIdsToCleanup', get_object_vars($data)) && null !== ($data->fieldIdsToCleanup ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->fieldIdsToCleanup as $key => $value_3) {
-                $values_3 = [];
-                foreach ($value_3 as $value_4) {
-                    $values_3[] = $value_4;
+                $values_3 = null;
+                if (null !== $value_3) {
+                    $values_3 = [];
+                    foreach ($value_3 as $value_4) {
+                        $values_3[] = $value_4;
+                    }
                 }
                 $values_2[$key] = $values_3;
             }

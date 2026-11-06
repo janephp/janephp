@@ -49,9 +49,12 @@ class UserManyRequestBaseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->userIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->userIds) {
+            $values = [];
+            foreach ($data->userIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['userIds'] = $values;
         return $dataArray;

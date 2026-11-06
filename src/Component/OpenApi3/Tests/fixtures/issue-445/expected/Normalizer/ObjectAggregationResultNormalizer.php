@@ -75,10 +75,13 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;
-        $values = [];
-        foreach ($data->aggregationResults as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->aggregationResults) {
+            $values = [];
+            foreach ($data->aggregationResults as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['aggregationResults'] = $values;
         if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {

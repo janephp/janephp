@@ -143,10 +143,13 @@ class SocialMediaLoginProfileSocialMediaLoginProfileNormalizer implements Denorm
         if (array_key_exists('facebookSecret', get_object_vars($data)) && null !== ($data->facebookSecret ?? null)) {
             $dataArray['facebookSecret'] = $data->facebookSecret;
         }
-        $values = [];
-        foreach ($data->whitelistedDomains as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->whitelistedDomains) {
+            $values = [];
+            foreach ($data->whitelistedDomains as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['whitelistedDomains'] = $values;
         return $dataArray;

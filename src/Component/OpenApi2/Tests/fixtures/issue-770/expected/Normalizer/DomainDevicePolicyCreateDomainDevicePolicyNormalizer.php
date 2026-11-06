@@ -66,10 +66,13 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
             $dataArray['description'] = $data->description;
         }
         $dataArray['defaultAction'] = $data->defaultAction;
-        $values = [];
-        foreach ($data->rule as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->rule) {
+            $values = [];
+            foreach ($data->rule as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['rule'] = $values;
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {

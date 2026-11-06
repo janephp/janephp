@@ -49,9 +49,12 @@ class OutputResolveManyRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->contentIds as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->contentIds) {
+            $values = [];
+            foreach ($data->contentIds as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['contentIds'] = $values;
         return $dataArray;

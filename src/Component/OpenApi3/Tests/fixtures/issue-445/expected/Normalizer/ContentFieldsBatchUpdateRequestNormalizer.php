@@ -81,18 +81,24 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->changeCommands as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->changeCommands) {
+            $values = [];
+            foreach ($data->changeCommands as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;
         $dataArray['notifyProgress'] = $data->notifyProgress;
         $dataArray['kind'] = $data->kind;
-        $values_1 = [];
-        foreach ($data->contentIds as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->contentIds) {
+            $values_1 = [];
+            foreach ($data->contentIds as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['contentIds'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

@@ -111,9 +111,12 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
         $dataArray['region'] = $data->region;
         $dataArray['size'] = $data->size;
         $dataArray['image'] = $data->image;
-        $values = [];
-        foreach ($data->sshKeys as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->sshKeys) {
+            $values = [];
+            foreach ($data->sshKeys as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['ssh_keys'] = $values;
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {

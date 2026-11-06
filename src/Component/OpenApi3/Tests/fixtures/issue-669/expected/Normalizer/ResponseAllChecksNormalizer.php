@@ -70,9 +70,12 @@ class ResponseAllChecksNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('checks', get_object_vars($data)) && null !== ($data->checks ?? null)) {
             $values = [];
             foreach ($data->checks as $value) {
-                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($value as $key => $value_1) {
-                    $values_1[$key] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

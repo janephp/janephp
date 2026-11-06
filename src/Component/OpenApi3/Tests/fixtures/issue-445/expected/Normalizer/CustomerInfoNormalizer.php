@@ -134,21 +134,30 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['languageConfiguration'] = $value;
-        $values = [];
-        foreach ($data->languages as $value_1) {
-            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
-            $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values = null;
+        if (null !== $data->languages) {
+            $values = [];
+            foreach ($data->languages as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['languages'] = $values;
-        $values_1 = [];
-        foreach ($data->outputFormats as $value_2) {
-            $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
-            $values_1[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_1 = null;
+        if (null !== $data->outputFormats) {
+            $values_1 = [];
+            foreach ($data->outputFormats as $value_2) {
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['outputFormats'] = $values_1;
-        $values_2 = [];
-        foreach ($data->boostValues as $value_3) {
-            $values_2[] = $value_3;
+        $values_2 = null;
+        if (null !== $data->boostValues) {
+            $values_2 = [];
+            foreach ($data->boostValues as $value_3) {
+                $values_2[] = $value_3;
+            }
         }
         $dataArray['boostValues'] = $values_2;
         if (array_key_exists('apps', get_object_vars($data)) && null !== ($data->apps ?? null)) {
