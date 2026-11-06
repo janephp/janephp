@@ -67,7 +67,7 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -94,7 +94,8 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentDownloadThumbnailInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException($response);

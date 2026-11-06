@@ -76,7 +76,7 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @throws \PicturePark\API\Exception\ShareDownloadPreconditionFailedException
      * @throws \PicturePark\API\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -103,9 +103,11 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareDownloadInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
-        if (206 === $status) {
+        if ($contentType !== null && (206 === $status && stripos(strtolower($contentType), 'application/octet-stream') !== false)) {
+            return $body;
         }
         if (412 === $status) {
             throw new \PicturePark\API\Exception\ShareDownloadPreconditionFailedException($response);

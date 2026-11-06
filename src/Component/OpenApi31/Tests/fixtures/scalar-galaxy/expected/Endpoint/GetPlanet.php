@@ -42,14 +42,19 @@ class GetPlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Ru
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetPlanetNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+        if (200 === $status) {
+            if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+            }
+            if (stripos(strtolower((string) $contentType), 'application/xml') !== false) {
+                return $body;
+            }
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\GetPlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError', 'json'), $response);
@@ -66,6 +71,6 @@ class GetPlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Ru
     }
     public function getTargetClass(): ?string
     {
-        return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class;
+        return null;
     }
 }

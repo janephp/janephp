@@ -120,7 +120,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     public function getTicketCode(string $ticketId, array $accept = [])
     {
