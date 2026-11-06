@@ -16,8 +16,8 @@ class RuntimeGenerator implements GeneratorInterface
     /**
      * `requires` lists builders a runtime class depends on from inside its own
      * template, invisible to require-sites: ValidatorTrait throws
-     * ValidationException, so emitting the trait without the exception makes
-     * generated clients fatal instead of throwing it.
+     * ValidationException and takes its validator from ValidatorRegistry, so
+     * emitting the trait without them makes generated clients fatal.
      *
      * @var array<string, array{class: string, namespace: string[], source: string, file: string, requires?: string[]}>
      */
@@ -26,7 +26,8 @@ class RuntimeGenerator implements GeneratorInterface
         'AdditionalPropertiesInterface' => ['class' => 'AdditionalPropertiesInterface', 'namespace' => [], 'source' => 'AdditionalPropertiesInterface.php', 'file' => 'AdditionalPropertiesInterface.php'],
         'JsonObject' => ['class' => 'JsonObject', 'namespace' => [], 'source' => 'JsonObject.php', 'file' => 'JsonObject.php'],
         'CheckArray' => ['class' => 'CheckArray', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/CheckArray.php', 'file' => 'CheckArray.php'],
-        'ValidatorTrait' => ['class' => 'ValidatorTrait', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorTrait.php', 'file' => 'ValidatorTrait.php', 'requires' => ['ValidationException']],
+        'ValidatorTrait' => ['class' => 'ValidatorTrait', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorTrait.php', 'file' => 'ValidatorTrait.php', 'requires' => ['ValidationException', 'ValidatorRegistry']],
+        'ValidatorRegistry' => ['class' => 'ValidatorRegistry', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorRegistry.php', 'file' => 'ValidatorRegistry.php'],
         'ReferenceNormalizer' => ['class' => 'ReferenceNormalizer', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ReferenceNormalizer.php', 'file' => 'ReferenceNormalizer.php'],
         'InvalidDateException' => ['class' => 'InvalidDateException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/InvalidDateException.php', 'file' => 'InvalidDateException.php'],
         'ValidationException' => ['class' => 'ValidationException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidationException.php', 'file' => 'ValidationException.php'],
