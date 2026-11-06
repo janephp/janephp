@@ -31,6 +31,7 @@
         "jane-php/json-schema-runtime": "^8.0",
         "nikic/php-parser": "^4.19 || ^5.1",
         "symfony/console": "^7.0 || ^8.0",
+        "symfony/deprecation-contracts": "^2.5 || ^3",
         "symfony/event-dispatcher": "^7.0 || ^8.0",
         "symfony/filesystem": "^7.0 || ^8.0",
         "symfony/options-resolver": "^7.0 || ^8.0",

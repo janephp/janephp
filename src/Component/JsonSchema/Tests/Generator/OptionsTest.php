@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Tests\Generator;
 
 use Jane\Component\JsonSchema\Generator\Options;
+use Jane\Component\JsonSchema\Generator\ValidationOption;
 use PHPUnit\Framework\TestCase;
 
 final class OptionsTest extends TestCase
@@ -51,5 +52,46 @@ final class OptionsTest extends TestCase
         $this->expectExceptionMessage('The "enums-unknown-value" option must be one of "throw", "null", "scalar"; "ignore" given.');
 
         Options::fromArray(['enums-unknown-value' => 'ignore']);
+    }
+
+    public function testValidationDefaultsToFalse(): void
+    {
+        self::assertFalse(Options::defaults()->validation);
+        self::assertFalse(Options::fromArray([])->validation);
+        self::assertFalse(Options::fromArray([])->toArray()['validation']);
+    }
+
+    public function testAMissingValidationKeyDoesNotTriggerADeprecation(): void
+    {
+        set_error_handler(static function (int $errno, string $errstr): void {
+            if (\E_USER_DEPRECATED === $errno) {
+                throw new \UnexpectedValueException('An unexpected deprecation notice has been triggered: ' . $errstr);
+            }
+        }, \E_USER_DEPRECATED);
+
+        try {
+            self::assertFalse(Options::fromArray([])->validation);
+            self::assertFalse(Options::fromArray(['other-option' => true])->validation);
+        } finally {
+            restore_error_handler();
+        }
+    }
+
+    public function testValidationEnumRoundTripsThroughFromArrayAndToArray(): void
+    {
+        foreach ([ValidationOption::NormalizeOnly, ValidationOption::DenormalizeOnly, ValidationOption::Both] as $case) {
+            $options = Options::fromArray(['validation' => $case]);
+
+            self::assertSame($case, $options->validation);
+            self::assertSame($case, $options->toArray()['validation']);
+        }
+    }
+
+    public function testAnUnsupportedValidationValueIsRejected(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The "validation" option must be false or a ValidationOption enum case ("NormalizeOnly", "DenormalizeOnly", "Both"); "string" given.');
+
+        Options::fromArray(['validation' => 'both']);
     }
 }
