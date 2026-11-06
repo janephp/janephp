@@ -121,7 +121,7 @@ class Jane extends ChainGenerator
         $self->addGenerator(new ModelGenerator($naming, $parser));
         $self->addGenerator(new NormalizerGenerator($naming, $parser, $options->reference, $options->useCacheableSupportsMethod ?? false, $options->skipNullValues, $options->skipRequiredFields, $options->validation, $options->includeNullValue));
         $self->addGenerator(new RuntimeGenerator($naming, $parser));
-        if ($options->validation) {
+        if (false !== $options->validation) {
             $self->addGenerator(new ValidatorGenerator($naming, $options->defaultAdditionalProperties));
         }
         if ($options->enumsAsObjects) {

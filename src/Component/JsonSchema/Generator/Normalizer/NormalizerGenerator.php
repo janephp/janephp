@@ -126,7 +126,7 @@ trait NormalizerGenerator
         $statements = array_merge($statements, $this->createPropertyNormalizationStatements($classGuess, $context, $objectVariable, $dataVariable, $skipNullValues, $skipRequiredFields, $includeNullValue));
         $statements = array_merge($statements, $this->createPatternPropertiesNormalizationStatements($classGuess, $context, $dataVariable, $objectVariable));
 
-        if ($this->validation) {
+        if (false !== $this->validation && $this->validation->validatesNormalization()) {
             $statements[] = $this->createValidationStatement($context, $classGuess, $dataVariable);
         }
 

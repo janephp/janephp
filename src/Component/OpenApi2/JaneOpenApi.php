@@ -49,7 +49,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $operationNaming = OperationNamingFactory::create($options->operationNamings);
         yield GeneratorFactory::build($denormalizer, $options->endpointGenerator ?? EndpointGenerator::class, $operationNaming);
         yield new RuntimeGenerator($naming, $parser);
-        if ($options->validation) {
+        if (false !== $options->validation) {
             yield new ValidatorGenerator($naming, $options->defaultAdditionalProperties);
         }
         if ($options->enumsAsObjects) {

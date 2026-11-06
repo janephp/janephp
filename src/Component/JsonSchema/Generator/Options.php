@@ -45,7 +45,7 @@ final class Options
         public readonly bool $skipRequiredFields = false,
         /** @var array<string, string> */
         public readonly array $customStringFormatMapping = [],
-        public readonly bool $validation = false,
+        public readonly false|ValidationOption $validation = false,
         /** @var list<\Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface> */
         public readonly array $validators = [],
         public readonly bool $includeNullValue = true,
@@ -108,7 +108,9 @@ final class Options
             skipNullValues: $options['skip-null-values'] ?? true,
             skipRequiredFields: $options['skip-required-fields'] ?? false,
             customStringFormatMapping: $options['custom-string-format-mapping'] ?? [],
-            validation: $options['validation'] ?? false,
+            // An explicit 'validation' => null must reach the converter: the
+            // `??` operator below would silently swallow it.
+            validation: \array_key_exists('validation', $options) ? ValidationOption::fromConfig($options['validation']) : false,
             validators: $options['validators'] ?? [],
             includeNullValue: $options['include-null-value'] ?? true,
             enumsAsObjects: $options['enums-as-objects'] ?? false,

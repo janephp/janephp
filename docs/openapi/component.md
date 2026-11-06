@@ -169,8 +169,17 @@ Other options are available to customize the generated code:
   behavior that forces them to be always present in the normalization output. Denormalization never enforces
   required fields: only the keys present in the payload are assigned, so a missing required property is left
   uninitialized. Enable `validation` to reject payloads missing required properties. By default it is disabled
-- `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
-  can read more about it on the dedicated guide: [Validation guide](../guides/validation.md).
+- `validation`: Whether and where to run validation following the JSON Schema validation specification. By default it
+  is disabled. Accepted values:
+  - `false` (default): no validation at all.
+  - `ValidationOption::NormalizeOnly`: the validator runs in the generated `normalize()` only (recommended for API
+    clients, which validate what they send).
+  - `ValidationOption::DenormalizeOnly`: the validator runs in the generated `denormalize()` only.
+  - `ValidationOption::Both`: both directions, the historical behavior of the boolean `true`.
+
+  The boolean `true` (deprecated, behaves as `ValidationOption::Both`) and an explicit `null` (deprecated, behaves as
+  `false`) still work in this major but will be removed in the next one. Any other value is rejected with an
+  `\InvalidArgumentException`. You can read more about it on the dedicated guide: [Validation guide](../guides/validation.md).
 - `validators`: An array of `Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface` instances to register
   additional validators during generation. Only meaningful when `validation` is enabled. See the
   [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
