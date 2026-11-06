@@ -12,6 +12,64 @@ use PHPUnit\Framework\TestCase;
 
 class EnumGuesserTest extends TestCase
 {
+    public function testValuesWithConstKeyword(): void
+    {
+        // JSON Schema 2020-12: "const" is functionally equivalent to an "enum" with a single value.
+        self::assertSame(['DPoP'], $this->guessValues('string', null, 'DPoP'));
+        self::assertSame([400], $this->guessValues('integer', null, 400));
+    }
+
+    public function testConstKeywordTakesBackSeatToEnumKeyword(): void
+    {
+        self::assertSame(['Low', 'High'], $this->guessValues('string', ['Low', 'High'], 'Low'));
+    }
+
+    public function testSupportObjectIsFalseWithoutEnumNorConst(): void
+    {
+        $object = new JsonSchema();
+        $object->type = 'string';
+
+        self::assertFalse((new EnumGuesser())->supportObject($object));
+    }
+
+    /**
+     * @param array<string|int>|null $enum  the "enum" keyword of the schema, when present
+     * @param string|int|null        $const the "const" keyword of the schema, when present
+     *
+     * @return list<string|int>|null
+     */
+    private function guessValues(string $type, ?array $enum, mixed $const): ?array
+    {
+        $object = new JsonSchema();
+        $object->type = $type;
+
+        if (null !== $enum) {
+            $object->enum = $enum;
+        }
+
+        if (null !== $const) {
+            $object->const = $const;
+        }
+
+        $reference = 'schema.json#/definitions/Example';
+        $registry = new Registry();
+        $registry->addSchema(new Schema('schema.json', 'Vendor\Api', '/tmp/generated', 'Example'));
+
+        (new EnumGuesser())->guessClass($object, 'Example', $reference, $registry);
+
+        $class = $registry->getClass($reference);
+
+        if (null === $enum && null === $const) {
+            self::assertNull($class);
+
+            return null;
+        }
+
+        self::assertInstanceOf(EnumGuess::class, $class);
+
+        return $class->getValues();
+    }
+
     /**
      * @param array<string|int> $values
      * @param list<string|null> $expected

@@ -33,11 +33,25 @@
                     },
                     "priority": {
                         "$ref": "#/components/schemas/Priority"
+                    },
+                    "constType": {
+                        "type": "string",
+                        "const": "DPoP"
+                    },
+                    "constStatus": {
+                        "type": "integer",
+                        "const": 400
+                    },
+                    "constRef": {
+                        "$ref": "#/components/schemas/ItemConstType"
                     }
                 },
                 "required": [
                     "status",
-                    "priority"
+                    "priority",
+                    "constType",
+                    "constStatus",
+                    "constRef"
                 ]
             },
             "ItemStatus": {
@@ -59,6 +73,10 @@
                     2,
                     3
                 ]
+            },
+            "ItemConstType": {
+                "type": "string",
+                "const": "DPoP"
             }
         }
     }
