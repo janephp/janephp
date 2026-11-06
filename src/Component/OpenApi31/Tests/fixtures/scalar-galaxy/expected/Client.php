@@ -95,7 +95,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
      * @param mixed $requestBody
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite
      */
     public function createCelestialBody($requestBody)
     {
