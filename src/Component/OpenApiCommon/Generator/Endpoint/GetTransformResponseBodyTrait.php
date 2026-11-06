@@ -239,16 +239,27 @@ EOD
         $throwTypes = [];
         $statements = [];
         $strtolowerCalls = [];
+        $rawBodyContentTypes = [];
 
         foreach (($response->content ?? null ?? []) as $contentType => $content) {
             $baseContentType = ContentType::withoutParameters($contentType);
 
-            $format = 'raw';
             if (\in_array($baseContentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($baseContentType, '+json')) {
                 $format = 'json';
             } elseif ('application/x-www-form-urlencoded' === $baseContentType) {
                 $format = 'form';
-            } elseif ('default' !== $status && !str_starts_with($status, '2')) {
+            } elseif ($this->isSuccessStatus($status)) {
+                // A success response's content type that is not JSON or form
+                // data (a PDF, a CSV, a wildcard such as application/*...)
+                // returns the raw body. The branches are appended after the
+                // JSON and form ones so a wildcard never shadows them, the
+                // most specific content types first.
+                $rawBodyContentTypes[] = $baseContentType;
+
+                continue;
+            } else {
+                // Other statuses (an error response with a raw content type)
+                // keep the historical behavior of the generator.
                 continue;
             }
 
@@ -286,6 +297,15 @@ EOD
                     'stmts' => $returnStatement,
                 ]
             );
+        }
+
+        // Any other content type of a success response (a PDF, a CSV, a
+        // wildcard such as application/*...) returns the raw body. These
+        // branches come after the JSON and form ones so a wildcard never
+        // shadows them, the most specific content types first.
+        if ([] !== $rawBodyContentTypes) {
+            $returnTypes[] = 'string';
+            $statements = array_merge($statements, $this->createRawBodyStatements($rawBodyContentTypes, $strtolowerCalls));
         }
 
         if ('default' === $status) {
@@ -326,6 +346,71 @@ EOD
     }
 
     /**
+     * A 2xx status or status range: only those return a raw body for a
+     * content type the generator does not deserialize.
+     */
+    private function isSuccessStatus(string $status): bool
+    {
+        if ('default' === $status) {
+            return false;
+        }
+
+        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+
+        return $lowerBound >= 200 && $lowerBound < 300;
+    }
+
+    /**
+     * Statements returning the raw body for the given content types: a
+     * concrete type (application/pdf) matches like the JSON ones, a wildcard
+     * (application/*) matches the content types starting with its type and
+     * the any-type wildcard (*\/*) returns the body unconditionally. Concrete
+     * types come first, then the wildcards, the any-type one last.
+     *
+     * @param string[] $contentTypes
+     *
+     * @return Stmt[]
+     */
+    private function createRawBodyStatements(array $contentTypes, array &$strtolowerCalls): array
+    {
+        $specificity = static fn (string $contentType): int => match (true) {
+            '*/*' === $contentType || '*' === $contentType => 2,
+            str_ends_with($contentType, '/*') => 1,
+            default => 0,
+        };
+
+        $contentTypes = array_values(array_unique($contentTypes));
+        usort($contentTypes, static fn (string $a, string $b): int => $specificity($a) <=> $specificity($b));
+
+        $returnBody = [new Stmt\Return_(new Expr\Variable('body'))];
+        $statements = [];
+
+        foreach ($contentTypes as $contentType) {
+            if (2 === $specificity($contentType)) {
+                // Nothing can match after it.
+                return array_merge($statements, $returnBody);
+            }
+
+            $condition = 1 === $specificity($contentType)
+                ? new Expr\FuncCall(new Name('str_starts_with'), [
+                    new Arg($this->createStrtolowerContentTypeExpression($strtolowerCalls)),
+                    new Arg(new Scalar\String_(substr($contentType, 0, -1))),
+                ])
+                : new Expr\BinaryOp\NotIdentical(
+                    new Expr\FuncCall(new Name('stripos'), [
+                        new Arg($this->createStrtolowerContentTypeExpression($strtolowerCalls)),
+                        new Arg(new Scalar\String_($contentType)),
+                    ]),
+                    new Expr\ConstFetch(new Name('false'))
+                );
+
+            $statements[] = new Stmt\If_($condition, ['stmts' => $returnBody]);
+        }
+
+        return $statements;
+    }
+
+    /**
      * Collect the strtolower("content-type" header) call sites so their
      * argument can receive an explicit (string) cast on code paths that are
      * not guarded by a "null !== $contentType" check: the header may be
@@ -350,10 +435,6 @@ EOD
 
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, string $format = 'json'): array
     {
-        if ('raw' === $format) {
-            return ['string', null, [new Stmt\Return_(new Expr\Variable('body'))]];
-        }
-
         $originalSchema = $schema;
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
 

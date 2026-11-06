@@ -75,6 +75,26 @@ class UndeclaredStatusResponseTest extends TestCase
     }
 
     /**
+     * When no declared response yields a value (here: a binary `default`
+     * response, only a 2xx response returns a raw body), the docblock falls
+     * back to the `mixed` of the abstract method instead of an empty
+     * `@return`.
+     */
+    public function testTheReturnTypeFallsBackToMixedWhenNoResponseYieldsAValue(): void
+    {
+        [$fixtureDirectory, $generatedDirectory] = $this->generateClient([], false, 'image/png', 'default');
+
+        try {
+            $endpointContent = file_get_contents($generatedDirectory . '/Endpoint/GetPet.php');
+            self::assertIsString($endpointContent);
+            self::assertStringContainsString("     * @return mixed\n     */\n    protected function transformResponseBody(", $endpointContent);
+            self::assertStringContainsString("throw new \\Jane\\Component\\OpenApi3\\Tests\\UndeclaredStatusExpected\\Exception\\BadResponseException(\$status, \$body, \$response);\n    }", $endpointContent);
+        } finally {
+            $this->removeDirectory($fixtureDirectory);
+        }
+    }
+
+    /**
      * A `default` response without content already closes the chain with an
      * unconditional return: nothing is appended after it.
      */
@@ -97,14 +117,14 @@ class UndeclaredStatusResponseTest extends TestCase
      *
      * @return array{0: string, 1: string} The fixture directory and the generated directory
      */
-    private function generateClient(array $options, bool $withDefaultResponse = false, string $contentType = 'application/json'): array
+    private function generateClient(array $options, bool $withDefaultResponse = false, string $contentType = 'application/json', string $status = '200'): array
     {
         $fixtureDirectory = sys_get_temp_dir() . '/jane-openapi3-undeclared-status-' . bin2hex(random_bytes(8));
         $generatedDirectory = $fixtureDirectory . '/generated';
         mkdir($generatedDirectory, 0777, true);
 
         $responses = [
-            '200' => [
+            $status => [
                 'description' => 'The pet',
                 'content' => [
                     $contentType => [
