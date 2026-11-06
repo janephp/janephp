@@ -89,13 +89,12 @@ class BinaryResponseTest extends TestCase
             $clientClass = self::className($namespace . '\\Client');
             $bytes = "%PDF-1.7\n\0\xffdocument";
             foreach ([
-                ['getPdf', 200, 'Application/PDF; charset=binary', $bytes],
-                ['getBytes', 200, 'application/octet-stream', $bytes],
-                ['getMixed', 200, 'application/pdf', $bytes],
-                ['getText', 200, 'text/plain; charset=utf-8', 'hello'],
-                ['getRange', 206, 'application/pdf', $bytes],
-                ['getDefault', 200, 'application/pdf', $bytes],
-            ] as [$operation, $status, $contentType, $body]) {
+                ['getPdf', 200, 'Application/PDF; charset=binary', $bytes, '@return string'],
+                ['getBytes', 200, 'application/octet-stream', $bytes, '@return string'],
+                ['getMixed', 200, 'application/pdf', $bytes, '@return \\' . $namespace . '\Model\Message|string'],
+                ['getText', 200, 'text/plain; charset=utf-8', 'hello', '@return string'],
+                ['getRange', 206, 'application/pdf', $bytes, '@return string'],
+            ] as [$operation, $status, $contentType, $body, $returnDoc]) {
                 $client = $clientClass::create(new MockHttpClient(new MockResponse($body, [
                     'http_code' => $status,
                     'response_headers' => ['content-type: ' . $contentType],
@@ -103,7 +102,7 @@ class BinaryResponseTest extends TestCase
                 self::assertSame($body, $client->$operation(), $operation);
                 $endpoint = file_get_contents($directory . '/generated/Endpoint/' . ucfirst($operation) . '.php');
                 self::assertIsString($endpoint);
-                self::assertStringContainsString('@return string', $endpoint);
+                self::assertStringContainsString($returnDoc, $endpoint);
             }
             $clientCode = file_get_contents($directory . '/generated/Client.php');
             self::assertIsString($clientCode);
@@ -123,6 +122,10 @@ class BinaryResponseTest extends TestCase
                 ['getPdf', 200, null, $bytes, 'BadResponseException'],
                 ['getMixed', 200, null, $bytes, 'BadResponseException'],
                 ['getError', 400, 'application/pdf', $bytes, 'BadResponseException'],
+                // Only a 2xx response of a status the generator does not
+                // deserialize returns a raw body: a binary `default` response
+                // yields no value.
+                ['getDefault', 200, 'application/pdf', $bytes, 'BadResponseException'],
             ] as [$operation, $status, $contentType, $body, $exception]) {
                 $client = $clientClass::create(new MockHttpClient(new MockResponse($body, [
                     'http_code' => $status,
