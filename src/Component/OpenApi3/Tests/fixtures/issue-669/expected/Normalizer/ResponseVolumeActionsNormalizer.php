@@ -70,9 +70,12 @@ class ResponseVolumeActionsNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
             foreach ($data->actions as $value) {
-                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-                foreach ($value as $key => $value_1) {
-                    $values_1[$key] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

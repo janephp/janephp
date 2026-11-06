@@ -65,9 +65,12 @@ class MetadataValuesSchemaUpsertCommandNormalizer implements DenormalizerInterfa
         $dataArray = [];
         $dataArray['schemaId'] = $data->schemaId;
         $dataArray['kind'] = $data->kind;
-        $values = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->value as $key => $value) {
-            $values[$key] = $value;
+        $values = null;
+        if (null !== $data->value) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->value as $key => $value) {
+                $values[$key] = $value;
+            }
         }
         $dataArray['value'] = $values;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {

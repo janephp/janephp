@@ -43,13 +43,14 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runt
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeNotFoundException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
      *
-     * @return mixed
+     * @return string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if (200 === $status) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'image/png') !== false)) {
+            return $body;
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);

@@ -92,9 +92,12 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $value = $values;
         }
         $dataArray['names'] = $value;
-        $values_1 = [];
-        foreach ($data->userRights as $value_2) {
-            $values_1[] = $value_2;
+        $values_1 = null;
+        if (null !== $data->userRights) {
+            $values_1 = [];
+            foreach ($data->userRights as $value_2) {
+                $values_1[] = $value_2;
+            }
         }
         $dataArray['userRights'] = $values_1;
         $dataArray['id'] = $data->id;

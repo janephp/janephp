@@ -30,14 +30,24 @@ class NormalizerGenerator implements GeneratorInterface
     public const FILE_TYPE_NORMALIZER = 'normalizer';
 
     /**
-     * @param Naming $naming                     The naming service
-     * @param Parser $parser                     PHP Parser
-     * @param bool   $useReference               Whether to generate the JSON Reference system
-     * @param bool   $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
-     * @param bool   $skipNullValues             Skip null values or not
-     * @param bool   $skipRequiredFields         if we handle required fields or not during Normalizer generation
-     * @param bool   $validation                 if we run validation or not during normalization/denormalization
-     * @param bool   $includeNullValue           include null value in conditions
+     * Validation policy applied to the generated `normalize()` / `denormalize()`
+     * methods; never `true`: boolean inputs of the constructor are converted
+     * (`true` becomes {@see ValidationOption::Both}, `null` and `false` become `false`).
+     */
+    protected false|ValidationOption $validation;
+
+    /**
+     * @param Naming                     $naming                     The naming service
+     * @param Parser                     $parser                     PHP Parser
+     * @param bool                       $useReference               Whether to generate the JSON Reference system
+     * @param ?bool                      $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @param bool                       $skipNullValues             Skip null values or not
+     * @param bool                       $skipRequiredFields         if we handle required fields or not during Normalizer generation
+     * @param bool|ValidationOption|null $validation                 whether and where validation runs during normalization/denormalization; the
+     *                                                               boolean and null values are only kept for backward compatibility and go away in the next
+     *                                                               major: pass `false` or a ValidationOption case instead (`true` becomes ValidationOption::Both,
+     *                                                               `null` behaves as `false`)
+     * @param bool                       $includeNullValue           include null value in conditions
      */
     public function __construct(
         protected Naming $naming,
@@ -46,9 +56,10 @@ class NormalizerGenerator implements GeneratorInterface
         protected ?bool $useCacheableSupportsMethod = null,
         protected bool $skipNullValues = true,
         protected bool $skipRequiredFields = false,
-        protected bool $validation = false,
+        bool|ValidationOption|null $validation = false,
         protected bool $includeNullValue = true,
     ) {
+        $this->validation = $validation instanceof ValidationOption ? $validation : (true === $validation ? ValidationOption::Both : false);
     }
 
     /**

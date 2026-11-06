@@ -80,15 +80,21 @@ class LoadBalancerRegionNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         $dataArray['name'] = $data->name;
         $dataArray['slug'] = $data->slug;
-        $values = [];
-        foreach ($data->features as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->features) {
+            $values = [];
+            foreach ($data->features as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['features'] = $values;
         $dataArray['available'] = $data->available;
-        $values_1 = [];
-        foreach ($data->sizes as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->sizes) {
+            $values_1 = [];
+            foreach ($data->sizes as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['sizes'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

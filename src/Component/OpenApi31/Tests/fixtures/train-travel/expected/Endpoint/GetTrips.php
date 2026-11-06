@@ -69,14 +69,19 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsInternalServerErrorException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200|string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200', 'json');
+        if (200 === $status) {
+            if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200', 'json');
+            }
+            if (stripos(strtolower((string) $contentType), 'application/xml') !== false) {
+                return $body;
+            }
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
@@ -105,6 +110,6 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
     }
     public function getTargetClass(): ?string
     {
-        return \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200::class;
+        return null;
     }
 }

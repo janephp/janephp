@@ -49,9 +49,12 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingEventCodesNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->northboundDataStreamingAcceptedEventCodes as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->northboundDataStreamingAcceptedEventCodes) {
+            $values = [];
+            foreach ($data->northboundDataStreamingAcceptedEventCodes as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['northboundDataStreamingAcceptedEventCodes'] = $values;
         return $dataArray;

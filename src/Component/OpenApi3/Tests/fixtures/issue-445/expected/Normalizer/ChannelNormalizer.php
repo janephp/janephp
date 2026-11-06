@@ -151,32 +151,47 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $value_1 = $values;
         }
         $dataArray['names'] = $value_1;
-        $values_1 = [];
-        foreach ($data->sort as $value_3) {
-            $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
-            $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $values_1 = null;
+        if (null !== $data->sort) {
+            $values_1 = [];
+            foreach ($data->sort as $value_3) {
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
+            }
         }
         $dataArray['sort'] = $values_1;
-        $values_2 = [];
-        foreach ($data->sortFields as $value_4) {
-            $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
-            $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_2 = null;
+        if (null !== $data->sortFields) {
+            $values_2 = [];
+            foreach ($data->sortFields as $value_4) {
+                $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['sortFields'] = $values_2;
-        $values_3 = [];
-        foreach ($data->aggregations as $value_5) {
-            $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
-            $values_3[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
+        $values_3 = null;
+        if (null !== $data->aggregations) {
+            $values_3 = [];
+            foreach ($data->aggregations as $value_5) {
+                $normalized_3 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
+            }
         }
         $dataArray['aggregations'] = $values_3;
-        $values_4 = [];
-        foreach ($data->extendedSimpleSearchFields as $value_6) {
-            $values_4[] = $value_6;
+        $values_4 = null;
+        if (null !== $data->extendedSimpleSearchFields) {
+            $values_4 = [];
+            foreach ($data->extendedSimpleSearchFields as $value_6) {
+                $values_4[] = $value_6;
+            }
         }
         $dataArray['extendedSimpleSearchFields'] = $values_4;
-        $values_5 = [];
-        foreach ($data->grantedUserRoleIds as $value_7) {
-            $values_5[] = $value_7;
+        $values_5 = null;
+        if (null !== $data->grantedUserRoleIds) {
+            $values_5 = [];
+            foreach ($data->grantedUserRoleIds as $value_7) {
+                $values_5[] = $value_7;
+            }
         }
         $dataArray['grantedUserRoleIds'] = $values_5;
         $value_8 = $data->missingResultsDisplayPatterns;

@@ -335,9 +335,12 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('driverStatus', get_object_vars($data)) && null !== ($data->driverStatus ?? null)) {
             $values = [];
             foreach ($data->driverStatus as $value) {
-                $values_1 = [];
-                foreach ($value as $value_1) {
-                    $values_1[] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = [];
+                    foreach ($value as $value_1) {
+                        $values_1[] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

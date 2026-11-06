@@ -89,10 +89,13 @@ class PortalserviceCreateHotspot20VenueProfileNormalizer implements Denormalizer
         if (array_key_exists('uplinkSpeedInKbps', get_object_vars($data)) && null !== ($data->uplinkSpeedInKbps ?? null)) {
             $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps;
         }
-        $values = [];
-        foreach ($data->venueNames as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->venueNames) {
+            $values = [];
+            foreach ($data->venueNames as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['venueNames'] = $values;
         return $dataArray;

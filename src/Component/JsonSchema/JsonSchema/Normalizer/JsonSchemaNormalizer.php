@@ -1263,9 +1263,12 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('dependentRequired', get_object_vars($data)) && null !== ($data->dependentRequired ?? null)) {
             $values_13 = new \Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject();
             foreach ($data->dependentRequired as $key_5 => $value_33) {
-                $values_14 = [];
-                foreach ($value_33 as $value_34) {
-                    $values_14[] = $value_34;
+                $values_14 = null;
+                if (null !== $value_33) {
+                    $values_14 = [];
+                    foreach ($value_33 as $value_34) {
+                        $values_14[] = $value_34;
+                    }
                 }
                 $values_13[$key_5] = $values_14;
             }

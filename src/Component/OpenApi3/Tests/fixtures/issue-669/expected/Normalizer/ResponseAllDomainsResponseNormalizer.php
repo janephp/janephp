@@ -63,10 +63,13 @@ class ResponseAllDomainsResponseNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->domains as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->domains) {
+            $values = [];
+            foreach ($data->domains as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['domains'] = $values;
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {

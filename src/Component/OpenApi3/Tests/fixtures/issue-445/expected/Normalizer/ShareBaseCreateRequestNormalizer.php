@@ -115,10 +115,13 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
             $dataArray['expirationDate'] = $data->expirationDate?->format('Y-m-d\TH:i:sP');
         }
-        $values = [];
-        foreach ($data->contents as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->contents) {
+            $values = [];
+            foreach ($data->contents as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['contents'] = $values;
         if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {

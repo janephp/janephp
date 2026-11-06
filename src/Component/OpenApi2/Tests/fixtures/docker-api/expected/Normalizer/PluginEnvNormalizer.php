@@ -63,9 +63,12 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray = [];
         $dataArray['Name'] = $data->name;
         $dataArray['Description'] = $data->description;
-        $values = [];
-        foreach ($data->settable as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->settable) {
+            $values = [];
+            foreach ($data->settable as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['Settable'] = $values;
         $dataArray['Value'] = $data->value;

@@ -53,14 +53,19 @@ class GetAllData extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\R
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200|string
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = $response->getContent(false);
-        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200', 'json');
+        if (200 === $status) {
+            if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200', 'json');
+            }
+            if (stripos(strtolower((string) $contentType), 'application/xml') !== false) {
+                return $body;
+            }
         }
         throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException($status, $body, $response);
     }
@@ -74,6 +79,6 @@ class GetAllData extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\R
     }
     public function getTargetClass(): ?string
     {
-        return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200::class;
+        return null;
     }
 }

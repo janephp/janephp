@@ -125,10 +125,13 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
-        $values_2 = [];
-        foreach ($data->aggregators as $value_3) {
-            $normalized_2 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
-            $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_2 = null;
+        if (null !== $data->aggregators) {
+            $values_2 = [];
+            foreach ($data->aggregators as $value_3) {
+                $normalized_2 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['aggregators'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {

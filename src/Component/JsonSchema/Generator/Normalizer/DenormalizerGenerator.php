@@ -81,7 +81,7 @@ trait DenormalizerGenerator
             $statements = array_merge($statements, $this->createScalarCastStatements($classGuess, $dataVariable, $typeName, $cast));
         }
 
-        if ($this->validation) {
+        if (false !== $this->validation && $this->validation->validatesDenormalization()) {
             $statements[] = $this->createValidationStatement($context, $classGuess, $dataVariable);
         }
 

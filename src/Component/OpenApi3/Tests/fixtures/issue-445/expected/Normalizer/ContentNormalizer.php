@@ -140,9 +140,12 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        $values_1 = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->displayValues as $key => $value_3) {
-            $values_1[$key] = $value_3;
+        $values_1 = null;
+        if (null !== $data->displayValues) {
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->displayValues as $key => $value_3) {
+                $values_1[$key] = $value_3;
+            }
         }
         $dataArray['displayValues'] = $values_1;
         $dataArray['id'] = $data->id;

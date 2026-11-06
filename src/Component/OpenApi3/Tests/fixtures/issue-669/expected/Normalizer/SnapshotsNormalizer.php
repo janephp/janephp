@@ -113,18 +113,24 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray['id'] = $data->id;
         $dataArray['name'] = $data->name;
         $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
-        $values = [];
-        foreach ($data->regions as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->regions) {
+            $values = [];
+            foreach ($data->regions as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['regions'] = $values;
         $dataArray['min_disk_size'] = $data->minDiskSize;
         $dataArray['size_gigabytes'] = $data->sizeGigabytes;
         $dataArray['resource_id'] = $data->resourceId;
         $dataArray['resource_type'] = $data->resourceType;
-        $values_1 = [];
-        foreach ($data->tags as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->tags) {
+            $values_1 = [];
+            foreach ($data->tags as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['tags'] = $values_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

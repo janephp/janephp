@@ -100,15 +100,21 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $dataArray['Status'] = $values;
         }
-        $values_1 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->labels as $key_1 => $value_1) {
-            $values_1[$key_1] = $value_1;
+        $values_1 = null;
+        if (null !== $data->labels) {
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
+            foreach ($data->labels as $key_1 => $value_1) {
+                $values_1[$key_1] = $value_1;
+            }
         }
         $dataArray['Labels'] = $values_1;
         $dataArray['Scope'] = $data->scope;
-        $values_2 = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->options as $key_2 => $value_2) {
-            $values_2[$key_2] = $value_2;
+        $values_2 = null;
+        if (null !== $data->options) {
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
+            foreach ($data->options as $key_2 => $value_2) {
+                $values_2[$key_2] = $value_2;
+            }
         }
         $dataArray['Options'] = $values_2;
         if (array_key_exists('usageData', get_object_vars($data)) && null !== ($data->usageData ?? null)) {

@@ -59,9 +59,12 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->addonSlugs as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->addonSlugs) {
+            $values = [];
+            foreach ($data->addonSlugs as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['addon_slugs'] = $values;
         $dataArray['cluster_uuid'] = $data->clusterUuid;

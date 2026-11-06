@@ -58,18 +58,16 @@ class UndeclaredStatusResponseTest extends TestCase
     }
 
     /**
-     * When no declared response yields a value (here: a binary 200 the
-     * generator does not deserialize), the docblock falls back to the
-     * `mixed` of the abstract method instead of an empty `@return`.
+     * A binary response returns the raw body and documents its string type.
      */
-    public function testTheReturnTypeFallsBackToMixedWhenNoResponseYieldsAValue(): void
+    public function testTheReturnTypeIsStringForABinaryResponse(): void
     {
         [$fixtureDirectory, $generatedDirectory] = $this->generateClient([], false, 'image/png');
 
         try {
             $endpointContent = file_get_contents($generatedDirectory . '/Endpoint/GetPet.php');
             self::assertIsString($endpointContent);
-            self::assertStringContainsString("     * @return mixed\n     */\n    protected function transformResponseBody(", $endpointContent);
+            self::assertStringContainsString("     * @return string\n     */\n    protected function transformResponseBody(", $endpointContent);
             self::assertStringContainsString("throw new \\Jane\\Component\\OpenApi3\\Tests\\UndeclaredStatusExpected\\Exception\\BadResponseException(\$status, \$body, \$response);\n    }", $endpointContent);
         } finally {
             $this->removeDirectory($fixtureDirectory);

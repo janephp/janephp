@@ -72,9 +72,12 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
             $values = [];
             foreach ($data->config as $value) {
-                $values_1 = new \Docker\Api\Runtime\JsonObject();
-                foreach ($value as $key => $value_1) {
-                    $values_1[$key] = $value_1;
+                $values_1 = null;
+                if (null !== $value) {
+                    $values_1 = new \Docker\Api\Runtime\JsonObject();
+                    foreach ($value as $key => $value_1) {
+                        $values_1[$key] = $value_1;
+                    }
                 }
                 $values[] = $values_1;
             }

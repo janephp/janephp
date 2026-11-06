@@ -81,10 +81,13 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->changeCommands as $value) {
-            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->changeCommands) {
+            $values = [];
+            foreach ($data->changeCommands as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies;

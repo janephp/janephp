@@ -175,7 +175,7 @@ trait GetTransformResponseBodyTrait
             $outputStatements = $this->appendUnmatchedResponseStatement($outputStatements, new Stmt\Return_(new Expr\ConstFetch(new Name('null'))));
         }
 
-        $returnDoc = implode('', array_map(function ($value) {
+        $returnDoc = implode('', array_map(static function ($value) {
             return ' * @throws ' . $value . "\n";
         }, $throwTypes))
             . " *\n"
@@ -243,76 +243,49 @@ EOD
         foreach (($response->content ?? null ?? []) as $contentType => $content) {
             $baseContentType = ContentType::withoutParameters($contentType);
 
+            $format = 'raw';
             if (\in_array($baseContentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($baseContentType, '+json')) {
-                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
-                    $name,
-                    $status,
-                    $content->schema ?? null,
-                    $context,
-                    $reference . '/content/' . $contentType . '/schema',
-                    $description,
-                    $guessClass,
-                    $exceptionGenerator
-                );
-
-                if ($returnType !== null) {
-                    $returnTypes[] = $returnType;
-                }
-
-                if ($throwType !== null) {
-                    $throwTypes[] = $throwType;
-                }
-
-                $statements[] = new Stmt\If_(
-                    new Expr\BinaryOp\NotIdentical(
-                        new Expr\FuncCall(new Name('stripos'), [
-                            new Arg(
-                                $this->createStrtolowerContentTypeExpression($strtolowerCalls)
-                            ),
-                            new Arg(new Scalar\String_($baseContentType)),
-                        ]),
-                        new Expr\ConstFetch(new Name('false'))
-                    ),
-                    [
-                        'stmts' => $returnStatement,
-                    ]
-                );
+                $format = 'json';
             } elseif ('application/x-www-form-urlencoded' === $baseContentType) {
-                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
-                    $name,
-                    $status,
-                    $content->schema ?? null,
-                    $context,
-                    $reference . '/content/' . $contentType . '/schema',
-                    $description,
-                    $guessClass,
-                    $exceptionGenerator,
-                    'form'
-                );
-
-                if ($returnType !== null) {
-                    $returnTypes[] = $returnType;
-                }
-
-                if ($throwType !== null) {
-                    $throwTypes[] = $throwType;
-                }
-
-                $statements[] = new Stmt\If_(
-                    new Expr\BinaryOp\NotIdentical(
-                        new Expr\FuncCall(new Name('stripos'), [
-                            new Arg(
-                                $this->createStrtolowerContentTypeExpression($strtolowerCalls)
-                            ),
-                            new Arg(new Scalar\String_($baseContentType)),
-                        ]),
-                        new Expr\ConstFetch(new Name('false'))
-                    ),
-                    [
-                        'stmts' => $returnStatement,
-                    ]
-                );
+                $format = 'form';
+            } elseif ('default' !== $status && !str_starts_with($status, '2')) {
+                continue;
             }
+
+            [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                $name,
+                $status,
+                $content->schema ?? null,
+                $context,
+                $reference . '/content/' . $contentType . '/schema',
+                $description,
+                $guessClass,
+                $exceptionGenerator,
+                $format
+            );
+
+            if ($returnType !== null) {
+                $returnTypes[] = $returnType;
+            }
+
+            if ($throwType !== null) {
+                $throwTypes[] = $throwType;
+            }
+
+            $statements[] = new Stmt\If_(
+                new Expr\BinaryOp\NotIdentical(
+                    new Expr\FuncCall(new Name('stripos'), [
+                        new Arg(
+                            $this->createStrtolowerContentTypeExpression($strtolowerCalls)
+                        ),
+                        new Arg(new Scalar\String_($baseContentType)),
+                    ]),
+                    new Expr\ConstFetch(new Name('false'))
+                ),
+                [
+                    'stmts' => $returnStatement,
+                ]
+            );
         }
 
         if ('default' === $status) {
@@ -377,6 +350,10 @@ EOD
 
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, string $format = 'json'): array
     {
+        if ('raw' === $format) {
+            return ['string', null, [new Stmt\Return_(new Expr\Variable('body'))]];
+        }
+
         $originalSchema = $schema;
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
 
@@ -529,7 +506,7 @@ EOD
         $type = ($schema->type ?? null);
 
         if (\is_array($type)) {
-            $type = array_filter($type, fn ($t) => $t !== 'null');
+            $type = array_filter($type, static fn ($t) => $t !== 'null');
             $type = reset($type) ?: null;
         }
 

@@ -205,10 +205,13 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             $value_6 = $data->searchType;
         }
         $dataArray['searchType'] = $value_6;
-        $values_3 = [];
-        foreach ($data->aggregators as $value_7) {
-            $normalized_2 = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
-            $values_3[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $values_3 = null;
+        if (null !== $data->aggregators) {
+            $values_3 = [];
+            foreach ($data->aggregators as $value_7) {
+                $normalized_2 = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
+                $values_3[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
+            }
         }
         $dataArray['aggregators'] = $values_3;
         foreach ($data->additionalPropertyEntries() as $key => $value_8) {

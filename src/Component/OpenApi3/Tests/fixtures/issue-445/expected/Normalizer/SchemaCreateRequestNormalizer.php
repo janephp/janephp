@@ -205,10 +205,13 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             }
             $dataArray['descriptions'] = $value_3;
         }
-        $values_3 = [];
-        foreach ($data->displayPatterns as $value_5) {
-            $normalized = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
-            $values_3[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+        $values_3 = null;
+        if (null !== $data->displayPatterns) {
+            $values_3 = [];
+            foreach ($data->displayPatterns as $value_5) {
+                $normalized = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_3[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['displayPatterns'] = $values_3;
         if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
