@@ -38,6 +38,30 @@ trait NormalizerGenerator
         ]);
     }
 
+    /**
+     * Tell whether the model declares the property with a native type, the same way as
+     * PropertyGenerator. PHP initializes a property without a native type to null, so
+     * get_object_vars() always lists it, also when it was never set.
+     */
+    private function hasNativeType(Property $property, ClassGuess $classGuess, Context $context): bool
+    {
+        $modelNamespace = $this->getNaming()->getModelNamespace($context->getCurrentSchema()->getNamespace(), $classGuess->getSubNamespace());
+
+        return null !== $property->getType()->getNativeTypeHint($modelNamespace, $property->acceptsNull($context->isStrict()));
+    }
+
+    /**
+     * Tell whether the schema of the property allows null, whatever the strict option.
+     */
+    private function schemaAllowsNull(Property $property): bool
+    {
+        $type = $property->getType();
+
+        return $property->acceptsNull(true)
+            || ($type instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $type->getTypes())) === 1)
+            || $type->getName() === Type::TYPE_NULL;
+    }
+
     protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false): Stmt\Class_
     {
         $traits = [
@@ -168,7 +192,7 @@ trait NormalizerGenerator
             }
 
             if (!$includeNullValue) {
-                $statements[] = $this->createIncludeNullDisabledStatement($objectVariable, $property, $guardedPropertyVar, $normalizationStatements);
+                $statements[] = $this->createIncludeNullDisabledStatement($objectVariable, $property, $guardedPropertyVar, $normalizationStatements, $classGuess, $context);
 
                 continue;
             }
@@ -179,13 +203,21 @@ trait NormalizerGenerator
         return $statements;
     }
 
-    private function createIncludeNullDisabledStatement(Expr\Variable $objectVariable, Property $property, Expr $guardedPropertyVar, array $normalizationStatements): Stmt\If_
+    private function createIncludeNullDisabledStatement(Expr\Variable $objectVariable, Property $property, Expr $guardedPropertyVar, array $normalizationStatements, ClassGuess $classGuess, Context $context): Stmt\If_
     {
         if (!$property->isRequired()) {
-            return new Stmt\If_(
-                $this->isPropertyInitialized($objectVariable, $property),
-                ['stmts' => $normalizationStatements]
-            );
+            $condition = $this->isPropertyInitialized($objectVariable, $property);
+
+            // The presence check alone also sends a property without a native type that was
+            // never set, as null. Skip that null when the schema does not allow it.
+            if (!$this->hasNativeType($property, $classGuess, $context) && !$this->schemaAllowsNull($property)) {
+                $condition = new Expr\BinaryOp\BooleanAnd(
+                    $condition,
+                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $guardedPropertyVar)
+                );
+            }
+
+            return new Stmt\If_($condition, ['stmts' => $normalizationStatements]);
         }
 
         return new Stmt\If_(
