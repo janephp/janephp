@@ -205,6 +205,25 @@ This allows the validation to be done without having anything else than
 the configuration to do. Also you can use the Validator out of Jane
 normalization by doing exactly the same as in the Normalizer.
 
+## Sharing the validator
+
+The generated normalizers do not build a Symfony validator on each
+validation. All the normalizers of a generated namespace share one validator,
+held by the generated `Runtime\Normalizer\ValidatorRegistry` class. It is
+built on first use and then kept for the rest of the process, which long-running
+runtimes (RoadRunner, FrankenPHP worker mode, Swoole) reuse across requests.
+
+To validate with another validator, for example the one of the Symfony
+container, register it once at boot:
+
+```php
+use App\Generated\Runtime\Normalizer\ValidatorRegistry;
+
+ValidatorRegistry::set($validator);
+```
+
+`ValidatorRegistry::set(null)` restores the default validator.
+
 ## Custom validators
 
 Sometimes the built-in validators are not enough for your specific

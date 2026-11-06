@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- [JsonSchema] [OpenApi] [GH#1142](https://github.com/janephp/janephp/issues/1142) With `validation`, the generated normalizers no longer build a new Symfony validator on every `validate()` call. All the normalizers of a generated namespace (one client) share one validator, held by the new `Runtime\Normalizer\ValidatorRegistry` runtime class and built once per process. `ValidatorRegistry::set()` swaps in another validator, such as the one of the Symfony container. Constraints, `ValidationException` and violations are unchanged
 ### Fixed
 - [OpenApi] [GH#1138](https://github.com/janephp/janephp/issues/1138) An error response with a different model per content type throws its exception for each content type. The exception accepted only the model of the last content type, so the other content types threw a `TypeError`. The constructor parameter and the getter are now typed with the union of the models, and keep their names
 
