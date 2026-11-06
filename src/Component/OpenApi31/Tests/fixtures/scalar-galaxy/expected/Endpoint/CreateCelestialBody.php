@@ -36,7 +36,7 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
      *
      * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
      *
-     * @return null
+     * @return \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -45,6 +45,26 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                if (is_object($decodedBody)) {
+                    switch ($decodedBody->type ?? null) {
+                        case 'terrestrial':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+                        case 'gas_giant':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+                        case 'ice_giant':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+                        case 'dwarf':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+                        case 'super_earth':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet', 'json');
+                        case 'moon':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite', 'json');
+                        case 'asteroid':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite', 'json');
+                        case 'comet':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite', 'json');
+                    }
+                }
                 return $decodedBody;
             } catch (\JsonException $jsonException) {
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);

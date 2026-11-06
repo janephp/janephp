@@ -65,7 +65,7 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Whitelisted
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Exception\BadResponseException
      *
-     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error|null
+     * @return \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\GenericProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\InvalidRequestProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ClientForbiddenProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceNotFoundProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DisallowedResourceProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UnsupportedAuthenticationProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UsageCapExceededProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ConnectionExceptionProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ClientDisconnectedProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\OperationalDisconnectProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\RulesCapProblem|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\InvalidRuleProblem
      */
     protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +80,36 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Whitelisted
         if (stripos(strtolower((string) $contentType), 'application/problem+json') !== false) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                if (is_object($decodedBody)) {
+                    switch ($decodedBody->type ?? null) {
+                        case 'about:blank':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\GenericProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/invalid-request':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\InvalidRequestProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/client-forbidden':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ClientForbiddenProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/resource-not-found':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceNotFoundProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/not-authorized-for-resource':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ResourceUnauthorizedProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/disallowed-resource':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DisallowedResourceProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/unsupported-authentication':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UnsupportedAuthenticationProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/usage-capped':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\UsageCapExceededProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/streaming-connection':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ConnectionExceptionProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/client-disconnected':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\ClientDisconnectedProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/operational-disconnect':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\OperationalDisconnectProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/rule-cap':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\RulesCapProblem', 'json');
+                        case 'https://api.twitter.com/labs/1/problems/invalid-rules':
+                            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\InvalidRuleProblem', 'json');
+                    }
+                }
                 return $decodedBody;
             } catch (\JsonException $jsonException) {
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
