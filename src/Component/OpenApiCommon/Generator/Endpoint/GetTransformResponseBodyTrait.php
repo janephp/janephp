@@ -479,18 +479,30 @@ EOD
             }
         }
 
+        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+
+        // A oneOf or anyOf response has no class of its own. With a discriminator, the response
+        // picks the model of the branch that the discriminator value names.
+        $dispatchStatements = null;
+        if (null === $classGuess && 'json' === $format && $lowerBound < 400) {
+            $dispatch = $this->createDiscriminatedResponseDispatch($originalSchema, $reference, $context, $guessClass, $format);
+
+            if (null !== $dispatch) {
+                [$returnType, $dispatchStatements] = $dispatch;
+                $isBareJsonDecode = true;
+            }
+        }
+
         // A list response is deserialized through a class-string with an
         // array suffix (e.g. 'Acme\Item[]') that no static analyser maps
         // back to the documented array<array-key, Item> shape: route the
         // call through the runtime helper which validates the value so the
         // return statement stays statically verifiable.
-        $contentStatement = null !== $classGuess
+        $contentStatement = $dispatchStatements ?? (null !== $classGuess
             ? ($array
                 ? [new Stmt\Return_($this->createDeserializeListCall($class, $format))]
                 : [new Stmt\Return_($serializeStmt)])
-            : [new Stmt\Return_($serializeStmt)];
-
-        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+            : [new Stmt\Return_($serializeStmt)]);
         if ($lowerBound >= 400 && $registry->getGenerateErrorExceptions()) {
             $exceptionName = $exceptionGenerator->generate(
                 $name,
@@ -514,6 +526,106 @@ EOD
         }
 
         return [$returnType, $throwType, $contentStatement];
+    }
+
+    /**
+     * Pick the model of a oneOf or anyOf response through its discriminator.
+     *
+     * A composite schema registers no class of its own, so such a response came back as decoded
+     * JSON. The discriminator property names the branch: the mapping gives the schema of each
+     * value, and without a mapping the value is the schema name. A value that names no branch
+     * still gives the decoded JSON.
+     *
+     * @return array{string, Stmt[]}|null The return types and the statements, or null without a discriminator
+     */
+    private function createDiscriminatedResponseDispatch($schema, string $reference, Context $context, GuessClass $guessClass, string $format): ?array
+    {
+        // The JSON Schema model of a resolved reference has no discriminator, so read the raw document.
+        $resolvedSchema = $schema;
+
+        while ($resolvedSchema instanceof Reference) {
+            $resolvedSchema = $resolvedSchema->resolve();
+        }
+
+        $discriminator = self::documentValue($resolvedSchema, 'discriminator');
+        $property = self::documentValue($discriminator, 'propertyName');
+
+        if (!\is_string($property) || '' === $property) {
+            return null;
+        }
+
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $classesBySchemaName = [];
+
+        foreach ($guessClass->guessCompositeClasses($schema, $reference, $registry) as $classGuess) {
+            $schemaName = substr((string) strrchr($classGuess->getReference(), '/'), 1);
+            $classesBySchemaName[$schemaName] = $registry->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
+        }
+
+        $mapping = self::documentValue($discriminator, 'mapping');
+        $mapping = \is_object($mapping) || \is_array($mapping) ? (array) $mapping : [];
+        $cases = [];
+
+        if ([] !== $mapping) {
+            foreach ($mapping as $value => $entryReference) {
+                $schemaName = substr((string) strrchr((string) $entryReference, '/'), 1);
+
+                if (isset($classesBySchemaName[$schemaName])) {
+                    $cases[(string) $value] = $classesBySchemaName[$schemaName];
+                }
+            }
+        } else {
+            $cases = $classesBySchemaName;
+        }
+
+        if ([] === $cases) {
+            return null;
+        }
+
+        $switchCases = [];
+        foreach ($cases as $value => $class) {
+            $switchCases[] = new Stmt\Case_(new Scalar\String_($value), [
+                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('serializer'), 'deserialize', [
+                    new Arg(new Expr\Variable('body')),
+                    new Arg(new Scalar\String_($class)),
+                    new Arg(new Scalar\String_($format)),
+                ])),
+            ]);
+        }
+
+        $propertyName = preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $property)
+            ? new Node\Identifier($property)
+            : new Scalar\String_($property);
+
+        $statements = [
+            new Stmt\If_(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('decodedBody'))]), [
+                'stmts' => [
+                    new Stmt\Switch_(
+                        new Expr\BinaryOp\Coalesce(
+                            new Expr\PropertyFetch(new Expr\Variable('decodedBody'), $propertyName),
+                            new Expr\ConstFetch(new Name('null'))
+                        ),
+                        $switchCases
+                    ),
+                ],
+            ]),
+            new Stmt\Return_(new Expr\Variable('decodedBody')),
+        ];
+
+        return [implode('|', array_unique(array_map(static fn (string $class): string => '\\' . $class, $cases))), $statements];
+    }
+
+    /**
+     * Read a key of a document node that is an object, an array, or a model.
+     */
+    private static function documentValue(mixed $node, string $key): mixed
+    {
+        if (\is_array($node)) {
+            return $node[$key] ?? null;
+        }
+
+        return \is_object($node) ? ($node->{$key} ?? null) : null;
     }
 
     /**
