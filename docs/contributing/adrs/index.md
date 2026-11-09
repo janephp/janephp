@@ -31,6 +31,7 @@ Each record follows a lightweight ADR format:
 | [0011](0011-static-analysis-of-generated-code.md) | Generated code is statically analysed with Mago | Accepted |
 | [0012](0012-symfony-httpclient-migration-x-fetch-mode.md) | Symfony HttpClient migration and `x-fetch-mode` (GET/HEAD only) | Accepted |
 | [0013](0013-generation-events.md) | Generation events — internal dispatcher for progress and customization | Accepted |
+| [0014](0014-server-generator.md) | Server generator — version-agnostic server component with prioritized extension points | Proposed |
 ## Adding a new record
 
 1. Copy an existing record as a template into `NNNN-short-title.md`, using the
