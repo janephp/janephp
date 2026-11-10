@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [8.1.2] - 2026-11-10
 ### Added
 - [OpenApi] [GH#1156](https://github.com/janephp/janephp/issues/1156) A response whose schema is a `oneOf` or `anyOf` of object schemas with a `discriminator` now returns the model that the discriminator value names, through the `mapping` or the schema name, and the client method documents the union of the models. Before, such a response came back as decoded JSON with `@return null`. A value that names no branch still gives the decoded JSON
 - [JsonSchema] [OpenApi] [GH#1147](https://github.com/janephp/janephp/issues/1147) The `validation` generation option now accepts `false` or a `ValidationOption` enum case instead of `true`: `false` (the default) generates no validation at all, `ValidationOption::NormalizeOnly` emits the generated `$this->validate()` call only in the generated `normalize()` (recommended for API clients, which validate the request bodies they send), `ValidationOption::DenormalizeOnly` only in the generated `denormalize()`, and `ValidationOption::Both` in both directions — the historical behavior of `true`. Validators and their constraints are generated with every other value than `false`. Any other configuration value than `false`, a `ValidationOption` case, `true` (converted to `ValidationOption::Both`) or `null` (converted to `false`) is rejected with an `\InvalidArgumentException`
@@ -1079,7 +1081,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.2...HEAD
+[8.1.2]: https://github.com/janephp/janephp/compare/v8.1.1...v8.1.2
 [8.1.1]: https://github.com/janephp/janephp/compare/v8.1.0...v8.1.1
 [8.1.0]: https://github.com/janephp/janephp/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/janephp/janephp/compare/v8.0.0...v8.0.1
