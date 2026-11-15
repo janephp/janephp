@@ -1,0 +1,15 @@
+<?php
+
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue1162Ref\Runtime\Normalizer;
+
+use Symfony\Component\Validator\Constraint;
+trait ValidatorTrait
+{
+    protected function validate(array $data, Constraint $constraint): void
+    {
+        $violations = ValidatorRegistry::get()->validate($data, $constraint);
+        if ($violations->count() > 0) {
+            throw new ValidationException($violations);
+        }
+    }
+}

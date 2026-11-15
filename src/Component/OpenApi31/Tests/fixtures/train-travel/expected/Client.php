@@ -146,6 +146,18 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint\CreateBookingPayment($bookingId, $requestBody, $accept));
     }
     /**
+     * Subscribe to new bookings being created, to update integrations for your users.  Related data is available via the links provided in the request.
+     *
+     * @param \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\WebhooksNewBookingPostBody $requestBody
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\BadResponseException
+     *
+     * @return null
+     */
+    public function newBooking(\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\WebhooksNewBookingPostBody $requestBody)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint\NewBooking($requestBody));
+    }
+    /**
      * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
      * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
      */
