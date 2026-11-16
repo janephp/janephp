@@ -8,6 +8,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\Discriminator;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DiscriminatorMappingResolver;
 
 class SchemaGuesser extends ObjectGuesser
 {
@@ -40,16 +41,8 @@ class SchemaGuesser extends ObjectGuesser
             $classGuess = new ParentClass($classGuess, $discriminator->propertyName ?? null);
 
             foreach ((($discriminator->mapping ?? []) ?? null) as $discriminatorValue => $entryReference) {
-                $subClassName = str_replace('#/components/schemas/', '', $entryReference);
-                $classGuess->addChildEntry(
-                    $subClassName,
-                    preg_replace(
-                        '#components/schemas\/.+$#',
-                        \sprintf('components/schemas/%s', $subClassName),
-                        $reference
-                    ),
-                    $discriminatorValue
-                );
+                [$subClassName, $subReference] = DiscriminatorMappingResolver::resolve($reference, $entryReference);
+                $classGuess->addChildEntry($subClassName, $subReference, $discriminatorValue);
             }
 
             return $classGuess;
