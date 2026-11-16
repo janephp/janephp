@@ -204,14 +204,48 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $this->convertParameterType($schema);
     }
 
+    /**
+     * Maps the OpenAPI type(s) of a schema to PHP types.
+     *
+     * JSON Schema 2020-12 (which OpenAPI 3.1 is a superset of) allows "type"
+     * to be a list: every non-null entry must be kept, so that a union-typed
+     * parameter is documented and validated with all of its types (issue #1166).
+     *
+     * @return list<string>
+     */
     private function convertParameterType(JsonSchema $schema): array
     {
         $type = ($schema->type ?? null);
+
         if (\is_array($type)) {
-            $type = array_filter($type, fn ($t) => $t !== 'null');
-            $type = reset($type) ?: null;
+            $types = array_values(array_filter($type, fn ($t) => $t !== 'null'));
+
+            // A list reduced to "null" only is not a real type: keep the
+            // legacy scalar handling (enum fallback, "mixed") for it.
+            if ([] !== $types) {
+                $convertedTypes = array_merge(...array_map(
+                    fn ($t) => $this->convertSingleParameterType($schema, \is_string($t) ? $t : null),
+                    $types
+                ));
+
+                return array_values(array_unique($convertedTypes));
+            }
+
+            $type = null;
         }
 
+        return $this->convertSingleParameterType($schema, \is_string($type) ? $type : null);
+    }
+
+    /**
+     * "number" resolves through the schema level "format"/"default"/"enum"
+     * constraints: ambiguous when the schema declares several types, but
+     * consistent with the single-type behavior.
+     *
+     * @return list<string>
+     */
+    private function convertSingleParameterType(JsonSchema $schema, ?string $type): array
+    {
         $additionalProperties = $schema->additionalProperties;
 
         if (null === $type && null !== ($schema->enum ?? null) && \count($schema->enum ?? null) > 0) {
