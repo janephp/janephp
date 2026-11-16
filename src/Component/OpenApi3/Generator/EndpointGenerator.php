@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetConstructorTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetBodyTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetOptionsResolverTrait;
+use Jane\Component\OpenApi3\Generator\Endpoint\GetGetPathStylesTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetQueryAllowReservedTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetQueryStylesTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetUriTrait;
@@ -40,6 +41,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
     use GetGetExtraHeadersTrait;
     use GetGetMethodTrait;
     use GetGetOptionsResolverTrait;
+    use GetGetPathStylesTrait;
     use GetGetQueryAllowReservedTrait;
     use GetGetQueryStylesTrait;
     use GetGetUriTrait;
@@ -110,6 +112,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
         $queryAllowReservedMethod = $this->getQueryAllowReservedMethod($operation, 'getQueryAllowReserved', $this->guessClass);
         $queryStylesMethod = $this->getQueryStylesMethod($operation, 'getQueryStyles', $this->guessClass);
+        $pathStylesMethod = $this->getPathStylesMethod($operation, 'getPathStyles', $this->guessClass);
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
@@ -129,6 +132,10 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
         if ($queryStylesMethod) {
             $class->stmts[] = $queryStylesMethod;
+        }
+
+        if ($pathStylesMethod) {
+            $class->stmts[] = $pathStylesMethod;
         }
 
         $class->stmts[] = $transformBodyMethod;

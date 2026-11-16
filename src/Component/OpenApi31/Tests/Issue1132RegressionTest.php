@@ -113,9 +113,14 @@ class Issue1132RegressionTest extends TestCase
 
         // Generated files depend on each other and are not autoloadable: require them in passes. A file included with `require_once` stays marked as loaded even when it threw, so a repeated `require_once` would silently do nothing and the class would never get defined: use `require` and let the passes retry the deferred files.
         $pending = $files;
+        $includedBefore = get_included_files();
         while ([] !== $pending) {
             $deferred = [];
             foreach ($pending as $file) {
+                if (\in_array(realpath($file), $includedBefore, true)) {
+                    continue;
+                }
+
                 try {
                     require $file;
                 } catch (\Error $error) {

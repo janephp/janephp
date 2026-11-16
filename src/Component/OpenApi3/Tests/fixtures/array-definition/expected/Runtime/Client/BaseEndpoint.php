@@ -95,6 +95,99 @@ abstract class BaseEndpoint implements Endpoint
     {
         return new OptionsResolver();
     }
+    /**
+     * Declares the OpenAPI serialization style of path parameters.
+     *
+     * Keys are path parameter names, values follow the shape
+     * ['style' => string, 'explode' => bool]. Parameters without a
+     * declaration are serialized with the OpenAPI defaults
+     * (`simple`, not exploded).
+     *
+     * @return array<string, array{style?: string, explode?: bool}>
+     */
+    protected function getPathStyles(): array
+    {
+        return [];
+    }
+    /**
+     * Serializes a path parameter value following the OpenAPI style examples
+     * (https://spec.openapis.org/oas/v3.1.0.html#style-examples).
+     *
+     * The returned string replaces the `{name}` placeholder in the generated
+     * URI. Delimiters (`,`, `.`, `;`, `=`) stay literal, values are percent
+     * encoded. Unlike the inline casts this never fails on array or object
+     * values, whatever the schema of the parameter.
+     */
+    protected function encodePathStyledValue(string $name, mixed $value): string
+    {
+        $styleConfig = $this->getPathStyles()[$name] ?? [];
+        $style = $styleConfig['style'] ?? 'simple';
+        $explode = $styleConfig['explode'] ?? false;
+        return match ($style) {
+            'simple' => $this->encodeSimplePathStyle($value, $explode),
+            'label' => $this->encodeLabelPathStyle($value, $explode),
+            'matrix' => $this->encodeMatrixPathStyle($name, $value, $explode),
+            default => throw new \InvalidArgumentException(sprintf('Unsupported path parameter style "%s" for parameter "%s".', $style, $name)),
+        };
+    }
+    private function encodeSimplePathStyle(mixed $value, bool $explode): string
+    {
+        return implode(',', $this->encodeStyledPathParts($value, $explode));
+    }
+    private function encodeLabelPathStyle(mixed $value, bool $explode): string
+    {
+        $parts = $this->encodeStyledPathParts($value, $explode);
+        if ([] === $parts) {
+            return '';
+        }
+        return '.' . implode($explode ? '.' : ',', $parts);
+    }
+    private function encodeMatrixPathStyle(string $name, mixed $value, bool $explode): string
+    {
+        $parts = $this->encodeStyledPathParts($value, $explode);
+        if ([] === $parts) {
+            return '';
+        }
+        $encodedName = rawurlencode($name);
+        if (!$explode) {
+            return sprintf(';%s=%s', $encodedName, implode(',', $parts));
+        }
+        return implode('', array_map(fn(string $part): string => sprintf(';%s=%s', $encodedName, $part), $parts));
+    }
+    /**
+     * Builds the percent-encoded parts of a styled path value.
+     *
+     * Objects are serialized as key/value pairs: exploded pairs use `=`,
+     * non exploded ones interleave keys and values, separated by `,` (the
+     * style specific join). Arrays and objects must be flat.
+     *
+     * @return string[]
+     */
+    private function encodeStyledPathParts(mixed $value, bool $explode): array
+    {
+        if (!\is_array($value)) {
+            return [rawurlencode($this->stringifyScalar($value))];
+        }
+        $isList = \array_is_list($value);
+        $parts = [];
+        foreach ($value as $subKey => $subValue) {
+            if (\is_array($subValue)) {
+                throw new \InvalidArgumentException('Path values only support flat values with the simple, label and matrix styles, nested arrays or objects are not supported.');
+            }
+            if (null === $subValue) {
+                continue;
+            }
+            if (!$isList) {
+                // Objects are serialized as key/value pairs.
+                $encodedKey = rawurlencode((string) $subKey);
+                $encodedValue = rawurlencode($this->stringifyScalar($subValue));
+                $parts[] = $explode ? sprintf('%s=%s', $encodedKey, $encodedValue) : sprintf('%s,%s', $encodedKey, $encodedValue);
+                continue;
+            }
+            $parts[] = rawurlencode($this->stringifyScalar($subValue));
+        }
+        return $parts;
+    }
     // ----------------------------------------------------------------------------------------------------
     // Used for OpenApi2 compatibility
     protected function getFormBody(): array
@@ -321,7 +414,7 @@ abstract class BaseEndpoint implements Endpoint
         return match (true) {
             \is_bool($value) => (string) (int) $value,
             \is_int($value), \is_float($value), \is_string($value) => (string) $value,
-            default => throw new \InvalidArgumentException(sprintf('Query value must be either int|string|float|bool|array|null, %s given', gettype($value))),
+            default => throw new \InvalidArgumentException(sprintf('Value must be either int|string|float|bool, %s given', gettype($value))),
         };
     }
 }

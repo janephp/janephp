@@ -547,6 +547,124 @@ final class BaseEndpointTest extends TestCase
         self::assertSame(['b' => 'two', 'a' => 'one'], $endpoint->callDeserializeListResponse($serializer, 'body', 'Acme\Model\Item[]'));
     }
 
+    public static function styledPathParamsProvider(): iterable
+    {
+        // OpenAPI style examples, https://spec.openapis.org/oas/v3.1.0.html#style-examples
+        yield 'simple primitive' => ['id', 5, ['id' => ['style' => 'simple', 'explode' => false]], '5'];
+        yield 'simple array' => ['id', [3, 4, 5], ['id' => ['style' => 'simple', 'explode' => false]], '3,4,5'];
+        yield 'simple object non exploded' => ['role', ['role' => 'admin', 'firstName' => 'Alex'], ['role' => ['style' => 'simple', 'explode' => false]], 'role,admin,firstName,Alex'];
+        yield 'simple object exploded' => ['role', ['role' => 'admin', 'firstName' => 'Alex'], ['role' => ['style' => 'simple', 'explode' => true]], 'role=admin,firstName=Alex'];
+        yield 'label primitive' => ['id', 5, ['id' => ['style' => 'label', 'explode' => false]], '.5'];
+        yield 'label array non exploded' => ['id', [3, 4, 5], ['id' => ['style' => 'label', 'explode' => false]], '.3,4,5'];
+        yield 'label array exploded' => ['id', [3, 4, 5], ['id' => ['style' => 'label', 'explode' => true]], '.3.4.5'];
+        yield 'label object non exploded' => ['role', ['role' => 'admin', 'firstName' => 'Alex'], ['role' => ['style' => 'label', 'explode' => false]], '.role,admin,firstName,Alex'];
+        yield 'label object exploded' => ['role', ['role' => 'admin', 'firstName' => 'Alex'], ['role' => ['style' => 'label', 'explode' => true]], '.role=admin.firstName=Alex'];
+        yield 'matrix primitive' => ['id', 5, ['id' => ['style' => 'matrix', 'explode' => false]], ';id=5'];
+        yield 'matrix array non exploded' => ['id', [3, 4, 5], ['id' => ['style' => 'matrix', 'explode' => false]], ';id=3,4,5'];
+        yield 'matrix array exploded' => ['id', [3, 4, 5], ['id' => ['style' => 'matrix', 'explode' => true]], ';id=3;id=4;id=5'];
+        yield 'matrix object non exploded' => ['id', ['role' => 'admin', 'firstName' => 'Alex'], ['id' => ['style' => 'matrix', 'explode' => false]], ';id=role,admin,firstName,Alex'];
+        yield 'matrix object exploded' => ['id', ['role' => 'admin', 'firstName' => 'Alex'], ['id' => ['style' => 'matrix', 'explode' => true]], ';id=role=admin;id=firstName=Alex'];
+
+        yield 'default style keeps separators literal (issue #1165)' => ['ids', ['1', '2', '3'], [], '1,2,3'];
+        yield 'default style on an object' => ['role', ['role' => 'admin'], [], 'role,admin'];
+        yield 'values are percent encoded, delimiters stay literal' => ['ids', ['a b', 'c?d'], [], 'a%20b,c%3Fd'];
+        yield 'matrix name is percent encoded' => ['unit:mm', 5, ['unit:mm' => ['style' => 'matrix']], ';unit%3Amm=5'];
+        yield 'null items are skipped' => ['ids', ['a', null, 'b'], [], 'a,b'];
+        yield 'empty array with label style' => ['ids', [], ['ids' => ['style' => 'label']], ''];
+        yield 'int and bool values are stringified' => ['id', [1, false], [], '1,0'];
+    }
+
+    #[DataProvider('styledPathParamsProvider')]
+    public function testStyledPathParamsWillBeProperlyEncoded(string $name, mixed $value, array $pathStyles, string $expected): void
+    {
+        $endpoint = $this->getPathEndpoint($pathStyles);
+
+        self::assertSame($expected, $endpoint->callEncodePathStyledValue($name, $value));
+    }
+
+    public function testUnsupportedPathStyleThrowsException(): void
+    {
+        $endpoint = $this->getPathEndpoint(['id' => ['style' => 'form']]);
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $endpoint->callEncodePathStyledValue('id', ['a']);
+    }
+
+    public function testNestedPathValueThrowsException(): void
+    {
+        $endpoint = $this->getPathEndpoint(['ids' => ['style' => 'simple']]);
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $endpoint->callEncodePathStyledValue('ids', [['nested']]);
+    }
+
+    private function getPathEndpoint(array $pathStyles = []): object
+    {
+        return new class($pathStyles) extends \BaseEndpoint {
+            private array $pathStyles;
+
+            public function __construct(array $pathStyles)
+            {
+                $this->pathStyles = $pathStyles;
+            }
+
+            public function callEncodePathStyledValue(string $name, mixed $value): string
+            {
+                return $this->encodePathStyledValue($name, $value);
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function getFetchMode(): string
+            {
+                return 'lazy';
+            }
+
+            public function getTargetClass(): ?string
+            {
+                return null;
+            }
+
+            public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
+            {
+                return $response;
+            }
+
+            protected function getPathStyles(): array
+            {
+                return $this->pathStyles;
+            }
+        };
+    }
+
     private function getEndpoint(array $queryParams, array $allowReserved = [], array $queryStyles = []): object
     {
         return new class($queryParams, $allowReserved, $queryStyles) extends \BaseEndpoint {

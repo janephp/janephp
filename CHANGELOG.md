@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi] [GH#1165](https://github.com/janephp/janephp/issues/1165) Path parameters are serialized following the OpenAPI style examples: the `style` (`simple`, `label`, `matrix`) and `explode` declared on a path parameter are honored through the generated `getPathStyles()` declaration and the runtime `encodePathStyledValue()` of the endpoint, and the OpenAPI defaults (`simple`, not exploded) apply when nothing is declared. Delimiters (`,`, `.`, `;`, `=`) stay literal while values are percent encoded, so `["1", "2", "3"]` now serializes `1,2,3` in the path instead of `1%2C2%2C3`. Collection-shaped schemas (`type` list, `anyOf`/`oneOf`) and untyped schemas are also handled: such a parameter no longer fails with a `TypeError` from `rawurlencode()` or with the literal `Array` from a string cast, and objects serialize as key/value pairs. OpenAPI 2 output is unchanged. The shared collection check also serves the OpenAPI 3 / 3.0 query side: a schema allowing an array or an object through a `type` list or `anyOf`/`oneOf` branches now gets its style declaration ([GH#1164](https://github.com/janephp/janephp/issues/1164))
 
 ## [8.1.2] - 2026-11-10
 ### Added

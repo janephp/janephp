@@ -25,7 +25,7 @@ trait GetGetUriTrait
 
     public function getGetUri(OperationGuess $operation, GuessClass $guessClass): Stmt\ClassMethod
     {
-        $placeholders = $propertyNames = $types = [];
+        $placeholders = $propertyNames = $types = $styledParameterNames = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -41,9 +41,18 @@ trait GetGetUriTrait
                 [, $schema] = $guessClass->resolve($parameter->schema ?? null, Schema::class);
             }
 
+            $index = \count($placeholders);
             $placeholders[] = ($parameter->name ?? null);
             $propertyNames[] = $this->normalizePathPropertyName($parameter->name ?? null);
-            $types[] = $schema instanceof Schema ? ($schema->type ?? null) : null;
+            $types[] = $this->getPathSchemaType($schema, $guessClass);
+
+            // Parameters declaring a non-default style are serialized by the
+            // runtime encoder, their declaration lives in getPathStyles().
+            $style = ($parameter->style ?? null) ?? 'simple';
+            $explode = ($parameter->explode ?? null) ?? false;
+            if ('simple' !== $style || $explode) {
+                $styledParameterNames[$index] = ($parameter->name ?? null);
+            }
         }
 
         if (\count($placeholders) === 0) {
@@ -63,11 +72,40 @@ trait GetGetUriTrait
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Scalar\String_('{' . $name . '}'));
                     }, $placeholders))),
-                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames, $types))),
+                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames, $types, $styledParameterNames))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],
             'returnType' => new Name('string'),
         ]);
+    }
+
+    /**
+     * Returns the serialization shape of a path parameter schema: the
+     * collection shape ('array' or 'object') when the schema allows one
+     * through its type, a type list or anyOf/oneOf branches (issue #1165),
+     * the scalar type for the inline casts, or null when unknown. Untyped
+     * schemas are routed to the runtime encoder, which handles every shape
+     * without the legacy `Array to string conversion` TypeError.
+     */
+    private function getPathSchemaType(mixed $schema, GuessClass $guessClass): ?string
+    {
+        $collection = $guessClass->allowsCollection($schema);
+
+        if (null !== $collection) {
+            return $collection;
+        }
+
+        $schemaType = $schema instanceof Schema ? ($schema->type ?? null) : null;
+
+        if (\is_array($schemaType)) {
+            // A type list without any collection shape stays untyped: the
+            // runtime encoder handles every branch safely. Full multi-type
+            // support (casts) is handled in issue #1166.
+            $scalarTypes = array_filter($schemaType, fn ($type) => null !== $type && 'null' !== $type);
+            $schemaType = 1 === \count($scalarTypes) ? reset($scalarTypes) : null;
+        }
+
+        return $schemaType;
     }
 }

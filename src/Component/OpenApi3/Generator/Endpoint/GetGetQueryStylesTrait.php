@@ -42,7 +42,7 @@ trait GetGetQueryStylesTrait
             $style = ($parameter->style ?? null) ?? 'form';
             $explode = ($parameter->explode ?? null) ?? ('form' === $style);
 
-            $isCollectionType = $schema instanceof Schema && \in_array($schema->type ?? null, ['object', 'array'], true);
+            $isCollectionType = null !== $guessClass->allowsCollection($schema);
 
             // Only emit a style declaration when it changes the legacy runtime behavior.
             if (null === ($parameter->style ?? null) && null === ($parameter->explode ?? null) && !$isCollectionType) {

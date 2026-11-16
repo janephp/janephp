@@ -41,6 +41,64 @@ class GuessClass
     }
 
     /**
+     * Returns the collection shape a schema allows at its top level: 'array',
+     * 'object', or null when the schema only allows plain scalars.
+     *
+     * The top-level `type` is checked first (as a string or as a type list,
+     * issue #1166); when it allows no collection, each anyOf/oneOf branch is
+     * resolved and inspected. References are resolved, so both inline and
+     * referenced schemas work.
+     */
+    public function allowsCollection($schema): ?string
+    {
+        if ($schema instanceof Reference) {
+            [, $schema] = $this->resolve($schema, $this->schemaClass);
+        }
+
+        if (!$schema instanceof $this->schemaClass) {
+            return null;
+        }
+
+        $types = ($schema->type ?? null);
+
+        if (\is_array($types)) {
+            if (\in_array('array', $types, true)) {
+                return 'array';
+            }
+
+            if (\in_array('object', $types, true)) {
+                return 'object';
+            }
+        } elseif ('array' === $types) {
+            return 'array';
+        } elseif ('object' === $types) {
+            return 'object';
+        }
+
+        foreach (['anyOf', 'oneOf'] as $keyword) {
+            if (!property_exists($schema, $keyword)) {
+                continue;
+            }
+
+            $branches = $schema->{$keyword} ?? null;
+
+            if (!\is_array($branches)) {
+                continue;
+            }
+
+            foreach ($branches as $branch) {
+                $collection = $this->allowsCollection($branch);
+
+                if (null !== $collection) {
+                    return $collection;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Collects the ClassGuess registered for each branch of a root-level anyOf/oneOf schema.
      *
      * Unlike allOf, anyOf/oneOf schemas have no ClassGuess registered at their own reference,
