@@ -76,6 +76,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdPaymentPostResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer::class,
         
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\WebhooksNewBookingPostBody::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyNormalizer::class,
+        
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\WebhooksNewBookingPostBodyLinks::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyLinksNormalizer::class,
+        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
@@ -134,6 +138,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer(),
             \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer(),
             \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyNormalizer(),
+            \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyLinksNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WebhooksNewBookingPostBodyLinksNormalizer(),
             \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer::class => new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer(),
             default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
         };

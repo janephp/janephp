@@ -148,6 +148,16 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runti
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Endpoint\GetMe($accept));
     }
     /**
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet $requestBody
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\BadResponseException
+     *
+     * @return null
+     */
+    public function postWebhooksNewPlanet(?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet $requestBody = null)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Endpoint\PostWebhooksNewPlanet($requestBody));
+    }
+    /**
      * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
      * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
      */

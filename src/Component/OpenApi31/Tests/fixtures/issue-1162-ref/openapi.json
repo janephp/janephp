@@ -1,0 +1,41 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "webhook body reference",
+        "version": "1.0.0"
+    },
+    "components": {
+        "pathItems": {
+            "petDeleted": {
+                "post": {
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": ["id"],
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "202": {
+                            "description": "Accepted"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "webhooks": {
+        "petDeleted": {
+            "$ref": "#/components/pathItems/petDeleted"
+        }
+    }
+}

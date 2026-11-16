@@ -17,6 +17,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
+use Jane\Component\OpenApi31\JsonSchema\Normalizer\PathItemNormalizer;
 use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\FetchModeResolver;
@@ -182,6 +183,14 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
 
         foreach (($object->webhooks ?? null ?? []) as $webhookName => $pathItem) {
+            if (\is_array($pathItem)) {
+                $pathItem = $this->denormalizePathItemData($pathItem, $reference . '/webhooks/' . $webhookName);
+            }
+
+            if ($pathItem instanceof Reference) {
+                $pathItem = $this->resolve($pathItem, PathItem::class);
+            }
+
             if (!$pathItem instanceof PathItem) {
                 continue;
             }
@@ -353,6 +362,25 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         return $normalizer->denormalize(
             $responseData,
             Response::class,
+            'json',
+            ['document-origin' => strstr($reference, '#', true) ?: $reference]
+        );
+    }
+
+    private function denormalizePathItemData(array $pathItemData, string $reference): mixed
+    {
+        if (isset($pathItemData['$ref'])) {
+            $origin = strstr($reference, '#', true) ?: $reference;
+
+            return new Reference($pathItemData['$ref'], $origin);
+        }
+
+        $normalizer = new PathItemNormalizer();
+        $normalizer->setDenormalizer($this->denormalizer);
+
+        return $normalizer->denormalize(
+            $pathItemData,
+            PathItem::class,
             'json',
             ['document-origin' => strstr($reference, '#', true) ?: $reference]
         );

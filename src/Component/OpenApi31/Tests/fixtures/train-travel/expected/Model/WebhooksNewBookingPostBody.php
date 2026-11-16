@@ -1,0 +1,48 @@
+<?php
+
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model;
+
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\AdditionalPropertiesInterface;
+class WebhooksNewBookingPostBody implements AdditionalPropertiesInterface
+{
+    use AdditionalAndPatternProperties;
+    /**
+     * Unique identifier for the booking
+     *
+     * @var string
+     */
+    public string $id;
+    /**
+     * Identifier of the booked trip
+     *
+     * @var string
+     */
+    public string $tripId;
+    /**
+     * Name of the passenger
+     *
+     * @var string
+     */
+    public string $passengerName;
+    /**
+     * Indicates whether the passenger has a bicycle.
+     *
+     * @var bool
+     */
+    public bool $hasBicycle;
+    /**
+     * Indicates whether the passenger has a dog.
+     *
+     * @var bool
+     */
+    public bool $hasDog;
+    /**
+     * @var WebhooksNewBookingPostBodyLinks
+     */
+    public WebhooksNewBookingPostBodyLinks $links;
+    public function definedProperties(): array
+    {
+        return ['id' => 'id', 'tripId' => 'trip_id', 'passengerName' => 'passenger_name', 'hasBicycle' => 'has_bicycle', 'hasDog' => 'has_dog', 'links' => 'links'];
+    }
+}

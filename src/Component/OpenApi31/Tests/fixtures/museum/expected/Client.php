@@ -127,6 +127,17 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Cli
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint\GetTicketCode($ticketId, $accept));
     }
     /**
+     * Publish details of a new or updated event.
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent $requestBody
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\BadResponseException
+     *
+     * @return null
+     */
+    public function publishNewEvent(?\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent $requestBody = null)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint\PublishNewEvent($requestBody));
+    }
+    /**
      * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
      * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
      */

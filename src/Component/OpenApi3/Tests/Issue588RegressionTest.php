@@ -199,7 +199,7 @@ YAML);
 
             foreach ($pending as $file) {
                 try {
-                    require_once $file;
+                    require $file;
                 } catch (\Error $error) {
                     $deferred[] = $file;
                 }
@@ -207,7 +207,7 @@ YAML);
 
             if (\count($deferred) === \count($pending)) {
                 // No progress: a real broken dependency, rethrow the actual error.
-                require_once $pending[0];
+                require $pending[0];
             }
 
             $pending = $deferred;
