@@ -49,10 +49,12 @@ trait GetGetUriTrait
             $propertyNames[] = $this->normalizePathPropertyName($parameter->name ?? null);
             $schemaType = null;
             if ($schema instanceof JsonSchema) {
+                // JSON Schema 2020-12 (OpenAPI 3.1) allows "type" to be a list:
+                // keep every non-null entry so the serialization below knows
+                // the parameter accepts several types (issue #1166).
                 $schemaType = ($schema->type ?? null);
                 if (\is_array($schemaType)) {
-                    $schemaType = array_filter($schemaType, fn ($t) => $t !== 'null');
-                    $schemaType = reset($schemaType) ?: null;
+                    $schemaType = array_values(array_filter($schemaType, fn ($t) => $t !== 'null'));
                 }
             }
             $types[] = $schemaType;

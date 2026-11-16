@@ -33,21 +33,35 @@ trait PathParameterNameTrait
     }
 
     /**
-     * @param string[]          $propertyNames
-     * @param array<int, mixed> $types
+     * @param string[]                             $propertyNames
+     * @param array<int, string|list<string>|null> $types
      *
      * @return ArrayItem[]
      */
     protected function buildPathPropertyFetchArrayItems(array $propertyNames, array $types = []): array
     {
         return array_map(function ($index, $name) use ($types) {
+            $propertyFetch = new Expr\PropertyFetch(new Expr\Variable('this'), $name);
             $type = $types[$index] ?? null;
+            $typeList = \is_array($type)
+                ? array_values(array_filter($type, fn ($t) => $t !== 'null'))
+                : [$type];
 
-            if ('array' === $type) {
-                return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))]));
+            // A union-typed path value (OpenAPI 3.1 "type" list) cannot be
+            // safely coerced, so it is URL-encoded as-is (issue #1166).
+            if (\count($typeList) !== 1) {
+                return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg($propertyFetch)]));
             }
 
-            $propertyFetch = new Expr\PropertyFetch(new Expr\Variable('this'), $name);
+            $type = $typeList[0];
+
+            if (null === $type) {
+                return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg($propertyFetch)]));
+            }
+
+            if ('array' === $type) {
+                return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg($propertyFetch)]))]));
+            }
 
             if ('boolean' === $type) {
                 $propertyFetch = new Expr\Cast\String_(new Expr\Cast\Int_($propertyFetch));

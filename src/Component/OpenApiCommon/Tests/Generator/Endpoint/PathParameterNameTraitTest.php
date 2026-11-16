@@ -43,14 +43,15 @@ final class PathParameterNameTraitTest extends TestCase
     }
 
     #[DataProvider('providePathPropertyTypes')]
-    public function testBuildPathPropertyFetchArrayItemsCastsNonStringScalars(?string $type, string $expected): void
+    public function testBuildPathPropertyFetchArrayItemsCastsNonStringScalars(array|string|null $type, string $expected): void
     {
         $subject = new class() {
             use InflectorTrait;
             use PathParameterNameTrait;
 
             /**
-             * @param string[] $propertyNames
+             * @param string[]                             $propertyNames
+             * @param array<int, string|list<string>|null> $types
              *
              * @return ArrayItem[]
              */
@@ -74,5 +75,13 @@ final class PathParameterNameTraitTest extends TestCase
         yield 'boolean is cast to 1/0' => ['boolean', 'rawurlencode((string) (int) $this->id)'];
         yield 'array is imploded' => ['array', "rawurlencode(implode(',', \$this->id))"];
         yield 'unknown type is left as-is' => [null, 'rawurlencode($this->id)'];
+
+        // OpenAPI 3.1 "type" lists (issue #1166): a single non-null entry keeps
+        // the scalar behavior, a real union cannot be safely coerced.
+        yield 'list with single entry is imploded' => [['array'], "rawurlencode(implode(',', \$this->id))"];
+        yield 'nullable list with single entry is imploded' => [['array', 'null'], "rawurlencode(implode(',', \$this->id))"];
+        yield 'union list is left as-is' => [['integer', 'string'], 'rawurlencode($this->id)'];
+        yield 'union list with array is left as-is' => [['integer', 'string', 'array'], 'rawurlencode($this->id)'];
+        yield 'list reduced to null only is left as-is' => [['null'], 'rawurlencode($this->id)'];
     }
 }
