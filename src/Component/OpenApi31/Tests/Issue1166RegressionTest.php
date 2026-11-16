@@ -78,9 +78,11 @@ class Issue1166RegressionTest extends TestCase
             $this->assertStringContainsString('int|string', $endpointContents);
 
             // The path parameter documents every declared type and is not
-            // coerced: a union-typed value cannot be safely cast.
+            // coerced: a union-typed value cannot be safely cast. As the union
+            // allows an array, it is serialized by the runtime style encoder
+            // (issue #1165) rather than a bare rawurlencode.
             $this->assertStringContainsString('int|string|array', $endpointContents);
-            $this->assertStringContainsString('rawurlencode($this->thingId)', $endpointContents);
+            $this->assertStringContainsString("encodePathStyledValue('thingId', \$this->thingId)", $endpointContents);
             $this->assertStringNotContainsString('(string) $this->thingId', $endpointContents);
             $this->assertStringNotContainsString("implode(',', \$this->thingId)", $endpointContents);
         } finally {

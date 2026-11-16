@@ -84,4 +84,39 @@ final class PathParameterNameTraitTest extends TestCase
         yield 'union list with array is left as-is' => [['integer', 'string', 'array'], 'rawurlencode($this->id)'];
         yield 'list reduced to null only is left as-is' => [['null'], 'rawurlencode($this->id)'];
     }
+
+    #[DataProvider('provideStyledPathPropertyTypes')]
+    public function testBuildPathPropertyFetchArrayItemsRoutesCollectionsAndStyledValues(?string $type, ?string $parameterName, string $expected): void
+    {
+        $subject = new class() {
+            use InflectorTrait;
+            use PathParameterNameTrait;
+
+            /**
+             * @param string[]                $propertyNames
+             * @param array<int, string|null> $types
+             * @param array<int, string>      $styledParameterNames
+             *
+             * @return ArrayItem[]
+             */
+            public function items(array $propertyNames, array $types, array $styledParameterNames = []): array
+            {
+                return $this->buildPathPropertyFetchArrayItems($propertyNames, $types, $styledParameterNames);
+            }
+        };
+
+        $items = $subject->items(['id'], [$type], null !== $parameterName ? [0 => $parameterName] : []);
+
+        self::assertCount(1, $items);
+        self::assertSame($expected, (new Standard())->prettyPrint($items));
+    }
+
+    public static function provideStyledPathPropertyTypes(): iterable
+    {
+        yield 'collection shaped array is routed to the runtime encoder' => ['array', 'ids', '$this->encodePathStyledValue(\'ids\', $this->id)'];
+        yield 'collection shaped object is routed to the runtime encoder' => ['object', 'role', '$this->encodePathStyledValue(\'role\', $this->id)'];
+        yield 'unknown type is routed to the runtime encoder' => [null, null, '$this->encodePathStyledValue(\'id\', $this->id)'];
+        yield 'explicit style on a scalar type is routed to the runtime encoder' => ['string', 'id', '$this->encodePathStyledValue(\'id\', $this->id)'];
+        yield 'normalized property name is used when the parameter has no raw name' => ['array', null, '$this->encodePathStyledValue(\'id\', $this->id)'];
+    }
 }
