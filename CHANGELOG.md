@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [8.1.3] - 2026-11-20
 ### Security
 - [JsonSchema] Pattern property expressions are emitted as string literals in generated normalizers
 - [OpenApi] The variable name generated for an OpenAPI 2 body parameter is normalized like the other parameter names
@@ -1094,7 +1096,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v8.1.3...HEAD
+[8.1.3]: https://github.com/janephp/janephp/compare/v8.1.2...v8.1.3
 [8.1.2]: https://github.com/janephp/janephp/compare/v8.1.1...v8.1.2
 [8.1.1]: https://github.com/janephp/janephp/compare/v8.1.0...v8.1.1
 [8.1.0]: https://github.com/janephp/janephp/compare/v8.0.1...v8.1.0
