@@ -58,7 +58,7 @@ trait GetConstructorTrait
             if ($parameter instanceof BodyParameter) {
                 $bodyParam = $bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $bodyDoc = $bodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->getInflector()->camelize($parameter->name))));
+                $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->normalizePathVariableName($parameter->name ?? ''))));
             }
 
             if ($parameter instanceof QueryParameterSubSchema) {
