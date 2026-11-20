@@ -157,7 +157,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = 'mixed';
         $schema = ($parameter->schema ?? null);
 
-        if ($schema instanceof Schema) {
+        // anyOf parameters are short-circuited by the generators (see
+        // generateMethodDocParameter): their scalar branches stay 'mixed'.
+        if ($schema instanceof Schema && (null === ($schema->anyOf ?? null) || \count($schema->anyOf ?? null) === 0)) {
             $type = implode('|', $this->convertParameterType($schema));
         }
 
