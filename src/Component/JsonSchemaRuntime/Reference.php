@@ -462,11 +462,21 @@ class Reference
             }
 
             if ('..' === $part && \count($resultPathParts) > 0) {
-                array_pop($resultPathParts);
+                // The leading empty part is the root of an absolute path:
+                // ".." cannot climb above it, and popping it would turn the
+                // path into a relative one.
+                if ([''] !== $resultPathParts) {
+                    array_pop($resultPathParts);
+                }
+
                 continue;
             }
 
             $resultPathParts[] = $part;
+        }
+
+        if ([''] === $resultPathParts) {
+            return '/';
         }
 
         return implode('/', $resultPathParts);
