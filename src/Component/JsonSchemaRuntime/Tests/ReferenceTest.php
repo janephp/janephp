@@ -675,6 +675,30 @@ PHP;
         }
     }
 
+    public function testYamlObjectTagIsRejected(): void
+    {
+        $treeRoot = $this->createTempTree();
+        ReferenceYamlProbe::$woken = false;
+
+        try {
+            foreach (['stdClass', ReferenceYamlProbe::class] as $index => $class) {
+                $file = \sprintf('object-%d.yaml', $index);
+                file_put_contents($treeRoot . '/base/' . $file, \sprintf("foo: !php/object 'O:%d:\"%s\":0:{}'\n", \strlen($class), $class));
+
+                try {
+                    (new Reference($file, $treeRoot . '/base/schema.json'))->resolve();
+                    self::fail('Expected ReferenceDecodeException to be thrown');
+                } catch (ReferenceDecodeException $exception) {
+                    self::assertStringContainsString('neither valid JSON nor valid YAML', $exception->getMessage());
+                }
+            }
+
+            self::assertFalse(ReferenceYamlProbe::$woken);
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
     /**
      * A temp tree whose path can be written after a "file://host" prefix.
      */
@@ -770,5 +794,15 @@ PHP;
         }
 
         rmdir($path);
+    }
+}
+
+class ReferenceYamlProbe
+{
+    public static bool $woken = false;
+
+    public function __wakeup(): void
+    {
+        self::$woken = true;
     }
 }

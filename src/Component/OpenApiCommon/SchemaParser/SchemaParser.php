@@ -44,7 +44,7 @@ abstract class SchemaParser
             try {
                 $content = Yaml::parse(
                     $openApiSpecContents,
-                    Yaml::PARSE_OBJECT | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
+                    Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
                 );
 
                 return $this->parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
