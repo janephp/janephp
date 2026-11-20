@@ -223,6 +223,11 @@ return [
 
   Roots are normalized with `realpath()`: if your layout involves symlinks, declare the real target path.
 
+  A local reference is a plain path or a `file://localhost/path` URI: a `file://` URI naming another host is
+  rejected. A relative path is resolved against the working directory, like the specification path itself. A
+  document fetched over HTTP(S) has no directory on your machine, so a local reference found in it is only
+  accepted inside one of these roots.
+
 ## Using a generated Model
 
 This library generates basics P.O.P.O. objects (Plain Old PHP Objects) with a bunch of setters / getters. It also

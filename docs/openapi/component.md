@@ -236,6 +236,11 @@ return [
 ```
 
   Roots are normalized with `realpath()`: if your layout involves symlinks, declare the real target path.
+
+  A local reference is a plain path or a `file://localhost/path` URI: a `file://` URI naming another host is
+  rejected. A relative path is resolved against the working directory, like the specification path itself. A
+  document fetched over HTTP(S) has no directory on your machine, so a local reference found in it is only
+  accepted inside one of these roots.
 - `whitelisted-paths`: This option allows you to generate only needed endpoints and related models. Be carefull,
   that option will filter models used by whitelisted endpoints and generate model & normalizer only for them.
   Models that are not reachable from any whitelisted endpoint are skipped entirely: an invalid schema referenced

@@ -87,10 +87,10 @@ class Reference
         $fragment = (string) $this->mergedUri->withFragment('');
         $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
-        $this->validateReference($fragment);
+        $location = $this->validateReference($fragment);
 
         if (!$this->resolver->hasFile($fragment)) {
-            $this->resolver->setFile($fragment, $this->fetchAndNormalizeContents($fragment));
+            $this->resolver->setFile($fragment, $this->fetchAndNormalizeContents($fragment, $location));
         }
 
         if (!$this->resolver->hasArray($reference)) {
@@ -122,8 +122,12 @@ class Reference
      * JSON is tried first (valid JSON roots such as "[]" / "0" / "null" must
      * not be misrouted through the YAML parser); YAML is the fallback for
      * YAML documents.
+     *
+     * @param string $fragment document identifier, used in messages
+     * @param string $location what is actually read: the validated filesystem
+     *                         path for a local document, the URL otherwise
      */
-    private function fetchAndNormalizeContents(string $fragment): string
+    private function fetchAndNormalizeContents(string $fragment, string $location): string
     {
         // Redirects are not followed by default (see setFollowRedirects()): an
         // allowlisted host must not be able to bounce the fetch to an
@@ -137,7 +141,7 @@ class Reference
         // every other wrapper: initialize it so the read below is always safe.
         $http_response_header = [];
 
-        $contents = @file_get_contents($fragment, false, $context);
+        $contents = @file_get_contents($location, false, $context);
 
         if (false === $contents) {
             throw new ReferenceFetchException(\sprintf('Unable to fetch reference document "%s".', $fragment));
@@ -161,7 +165,7 @@ class Reference
 
         try {
             $decoded = Yaml::parse($contents,
-                Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
+                Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
         } catch (ParseException $exception) {
             throw new ReferenceDecodeException(\sprintf('Unable to parse reference document "%s": content is neither valid JSON nor valid YAML.', $fragment), 0, $exception);
         }
@@ -227,7 +231,11 @@ class Reference
         return $this->originUri;
     }
 
-    private function validateReference(string $fragment): void
+    /**
+     * @return string the location to read the document from: the validated
+     *                filesystem path for a local reference, the URL otherwise
+     */
+    private function validateReference(string $fragment): string
     {
         $scheme = $this->mergedUri->getScheme();
 
@@ -237,55 +245,96 @@ class Reference
         }
 
         if ('' === $scheme || 'file' === $scheme) {
-            $this->validateLocalPath($fragment);
+            return $this->validateLocalPath($fragment);
         }
 
-        if (\in_array($scheme, ['http', 'https'], true)) {
-            $this->validateRemoteRef();
-        }
+        $this->validateRemoteRef();
+
+        return $fragment;
     }
 
-    private function validateLocalPath(string $fragment): void
+    /**
+     * Check a local reference against the allowed directories.
+     *
+     * The path is derived once from the parsed URI and that very path is both
+     * checked and returned for reading, so what is validated is what is read.
+     */
+    private function validateLocalPath(string $fragment): string
     {
-        $originPath = $this->originUri->getPath();
+        $path = $this->toLocalPath($this->mergedUri);
 
-        // An empty or root origin path degenerates to an empty base directory,
-        // which authorizes absolute paths only: containment logic still runs,
-        // there is just no meaningful directory to stay under.
-        $baseDir = \dirname($originPath);
-        $basePath = is_dir($baseDir) ? realpath($baseDir) : false;
-
-        if (false === $basePath) {
-            $basePath = $baseDir;
+        if (null === $path) {
+            throw new InvalidReferenceException(\sprintf('Local reference "%s" must not name a host: use a plain path or "file://localhost/path".', $fragment));
         }
 
-        $basePath = rtrim(str_replace('\\', '/', $basePath), '/');
-
-        $path = $fragment;
-        if (str_starts_with($path, 'file://')) {
-            $path = substr($path, 7);
-        }
-
-        if (!str_starts_with($path, '/') && !preg_match('#^[a-zA-Z]:/#', $path)) {
-            $path = $basePath . '/' . $path;
-        }
-
-        $normalized = file_exists($path) ? realpath($path) : false;
-        if (false === $normalized) {
-            $normalized = $this->normalizePath($path);
-        }
-
-        $normalized = str_replace('\\', '/', $normalized);
-
-        $allowedBases = $this->getAllowedLocalBases($basePath);
+        $normalized = $this->canonicalizeLocalPath($path);
+        $allowedBases = $this->getAllowedLocalBases();
 
         foreach ($allowedBases as $base) {
             if ($normalized === $base || str_starts_with($normalized, $base . '/')) {
-                return;
+                return $normalized;
             }
         }
 
         throw new InvalidReferenceException(\sprintf('Local reference "%s" resolves outside the allowed directories [%s]. Add its location to "allowed-local-ref-roots" in your Jane configuration.', $fragment, implode(', ', $allowedBases)));
+    }
+
+    /**
+     * Filesystem path designated by a schemeless or "file" URI, or null when
+     * the URI names anything but the local machine.
+     */
+    private function toLocalPath(UriInterface $uri): ?string
+    {
+        $scheme = strtolower($uri->getScheme());
+        $host = strtolower($uri->getHost());
+
+        if ('' !== $scheme && 'file' !== $scheme) {
+            return null;
+        }
+
+        if ('' !== $uri->getUserInfo() || null !== $uri->getPort()) {
+            return null;
+        }
+
+        if ('' !== $host && ('file' !== $scheme || 'localhost' !== $host)) {
+            return null;
+        }
+
+        $path = $uri->getPath();
+
+        if ('' !== $uri->getQuery()) {
+            $path .= '?' . $uri->getQuery();
+        }
+
+        // "file:///C:/dir/file.json" designates "C:/dir/file.json".
+        if ('file' === $scheme && 1 === preg_match('#^/[a-zA-Z]:/#', $path)) {
+            $path = substr($path, 1);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Absolute, normalized form of a local path. A relative path is resolved
+     * against the working directory, as the filesystem functions do.
+     */
+    private function canonicalizeLocalPath(string $path): string
+    {
+        $path = str_replace('\\', '/', $path);
+
+        if (!str_starts_with($path, '/') && 1 !== preg_match('#^[a-zA-Z]:/#', $path)) {
+            $workingDirectory = getcwd();
+
+            if (false === $workingDirectory) {
+                throw new InvalidReferenceException(\sprintf('Unable to resolve relative local reference "%s": the working directory is not available.', $path));
+            }
+
+            $path = rtrim(str_replace('\\', '/', $workingDirectory), '/') . '/' . $path;
+        }
+
+        $real = file_exists($path) ? realpath($path) : false;
+
+        return str_replace('\\', '/', false !== $real ? $real : $this->normalizePath($path));
     }
 
     /**
@@ -294,9 +343,21 @@ class Reference
      *
      * @return string[]
      */
-    private function getAllowedLocalBases(string $basePath): array
+    private function getAllowedLocalBases(): array
     {
-        $bases = [$basePath];
+        $bases = [];
+
+        // Only a local referencing document lends its directory: the path of a
+        // remote document says nothing about the local filesystem.
+        $originPath = $this->toLocalPath($this->originUri);
+
+        if (null !== $originPath) {
+            // An empty or root origin path degenerates to an empty base directory,
+            // which authorizes absolute paths only: containment logic still runs,
+            // there is just no meaningful directory to stay under.
+            $baseDir = \dirname($originPath);
+            $bases[] = \in_array($baseDir, ['', '/', '\\'], true) ? '' : rtrim($this->canonicalizeLocalPath($baseDir), '/');
+        }
 
         foreach ($this->resolver->getAllowedLocalRefRoots() as $root) {
             if (!\is_string($root) || '' === $root) {
@@ -401,11 +462,21 @@ class Reference
             }
 
             if ('..' === $part && \count($resultPathParts) > 0) {
-                array_pop($resultPathParts);
+                // The leading empty part is the root of an absolute path:
+                // ".." cannot climb above it, and popping it would turn the
+                // path into a relative one.
+                if ([''] !== $resultPathParts) {
+                    array_pop($resultPathParts);
+                }
+
                 continue;
             }
 
             $resultPathParts[] = $part;
+        }
+
+        if ([''] === $resultPathParts) {
+            return '/';
         }
 
         return implode('/', $resultPathParts);

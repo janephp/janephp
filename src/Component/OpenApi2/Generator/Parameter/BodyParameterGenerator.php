@@ -8,6 +8,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Parser;
@@ -15,6 +16,8 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
 {
+    use PathParameterNameTrait;
+
     private GuessClass $guessClass;
 
     public function __construct(Parser $parser, DenormalizerInterface $denormalizer)
@@ -29,7 +32,7 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = $this->getInflector()->camelize($parameter->name ?? null);
+        $name = $this->normalizePathVariableName($parameter->name ?? '');
 
         $guessedType = $this->getClass($parameter, $context, $reference);
         if (false === $guessedType) {
@@ -58,7 +61,7 @@ class BodyParameterGenerator extends ParameterGenerator
             [$class] = $guessedType;
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->name ?? null)), str_replace('*/', '*\\/', ($parameter->description ?? null) ?: '')));
+        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->name ?? '')), str_replace('*/', '*\\/', ($parameter->description ?? null) ?: '')));
     }
 
     /**

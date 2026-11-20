@@ -274,7 +274,7 @@ trait DenormalizerGenerator
 
             $patternCondition[] = new Stmt\If_(
                 new Expr\FuncCall(new Name('preg_match'), [
-                    new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                    new Arg(new Scalar\String_('/' . str_replace('/', '\/', (string) $pattern) . '/')),
                     new Arg(new Expr\Cast\String_($loopKeyVar)),
                 ]),
                 [

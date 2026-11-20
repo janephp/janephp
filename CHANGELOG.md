@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Security
+- [JsonSchema] Pattern property expressions are emitted as string literals in generated normalizers
+- [OpenApi] The variable name generated for an OpenAPI 2 body parameter is normalized like the other parameter names
+- [JsonSchema] [OpenApi] Local `$ref` resolution reads the exact path that was checked against the allowed directories. A `file://` reference may only name the local machine (`file://localhost/path`), a relative path is resolved against the working directory, and a document fetched over HTTP(S) no longer lends its path as a local base directory: use `allowed-local-ref-roots`
+- [JsonSchema] [OpenApi] YAML documents are parsed as plain data: a `!php/object` tag is now a parse error
+
 ### Fixed
 - [OpenApi] [GH#1162](https://github.com/janephp/janephp/issues/1162) A request body declared on an OpenAPI 3.1 webhook operation now generates its model, like the same body on a path does. Webhook entries were kept as raw maps, so the guesser skipped them; they are now denormalized to `PathItem` and `$ref` entries are resolved
 - [OpenApi] [GH#1163](https://github.com/janephp/janephp/issues/1163) The entries of a discriminator `mapping` are resolved against their own schema instead of the reference of the parent. A mapping declared on an inline schema (for example a request body) now finds its children, and the pointer without its leading `#` (`components/schemas/Foo`) and the bare schema name (`Foo`) are accepted. Entries pointing at an external document are skipped

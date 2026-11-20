@@ -522,6 +522,198 @@ PHP;
         }
     }
 
+    #[DataProvider('localhostAuthorityOutsideBaseProvider')]
+    public function testFileUriWithLocalhostAuthorityOutsideBaseBlocked(string $prefix): void
+    {
+        $treeRoot = $this->createPosixTempTree();
+
+        try {
+            $ref = new Reference($prefix . $treeRoot . '/sibling/other.json', $treeRoot . '/base/schema.json');
+
+            $this->expectException(InvalidReferenceException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    /**
+     * @return iterable<string, array{0: string}>
+     */
+    public static function localhostAuthorityOutsideBaseProvider(): iterable
+    {
+        yield 'localhost' => ['file://localhost'];
+        yield 'mixed case' => ['File://LocalHost'];
+        yield 'parent segment' => ['file://localhost/..'];
+    }
+
+    public function testFileUriWithLocalhostAuthorityInsideBaseAllowed(): void
+    {
+        $treeRoot = $this->createPosixTempTree();
+
+        try {
+            $ref = new Reference('file://localhost' . $treeRoot . '/base/schema.json', $treeRoot . '/base/other.json');
+
+            self::assertSame(['type' => 'object'], $ref->resolve());
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    #[DataProvider('foreignAuthorityProvider')]
+    public function testFileUriWithForeignAuthorityRejected(string $prefix): void
+    {
+        $treeRoot = $this->createPosixTempTree();
+
+        try {
+            $ref = new Reference($prefix . $treeRoot . '/base/schema.json', $treeRoot . '/base/other.json');
+
+            $this->expectException(InvalidReferenceException::class);
+            $this->expectExceptionMessage('must not name a host');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    /**
+     * @return iterable<string, array{0: string}>
+     */
+    public static function foreignAuthorityProvider(): iterable
+    {
+        yield 'file with a foreign host' => ['file://evil.example'];
+        yield 'file with an address' => ['file://127.0.0.1'];
+        yield 'network path with a foreign host' => ['//evil.example'];
+        yield 'network path with localhost' => ['//localhost'];
+    }
+
+    public function testRelativeOriginDoesNotWidenContainment(): void
+    {
+        $treeRoot = $this->createTempTree();
+        $workingDirectory = getcwd();
+
+        if (false === $workingDirectory) {
+            $this->removeDirectory($treeRoot);
+            self::markTestSkipped('The working directory is not available.');
+        }
+
+        try {
+            chdir($treeRoot);
+
+            self::assertSame(['type' => 'object'], (new Reference('schema.json', 'base/other.json'))->resolve());
+
+            // Read relatively to the working directory, the target is
+            // "elsewhere/outside.json": it must be checked as such.
+            $ref = new Reference('../elsewhere/outside.json', 'base/schema.json');
+
+            try {
+                $ref->resolve();
+                self::fail('Expected InvalidReferenceException to be thrown');
+            } catch (InvalidReferenceException $exception) {
+                self::assertStringContainsString('outside the allowed directories', $exception->getMessage());
+            }
+        } finally {
+            chdir($workingDirectory);
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testRemoteOriginDoesNotAuthorizeLocalReferences(): void
+    {
+        $treeRoot = $this->createPosixTempTree();
+
+        try {
+            // The path of the remote document mirrors a local directory.
+            $ref = new Reference('file://localhost' . $treeRoot . '/base/schema.json', 'https://example.com' . $treeRoot . '/base/remote.json');
+
+            $this->expectException(InvalidReferenceException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testRemoteOriginLocalReferenceAllowedByConfiguredRoot(): void
+    {
+        $treeRoot = $this->createPosixTempTree();
+
+        try {
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/base']);
+            $ref = new Reference('file://localhost' . $treeRoot . '/base/schema.json', 'https://example.com' . $treeRoot . '/base/remote.json');
+
+            self::assertSame(['type' => 'object'], $ref->resolve());
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testFileUriOriginWithDriveLetter(): void
+    {
+        if ('\\' !== \DIRECTORY_SEPARATOR) {
+            self::markTestSkipped('Drive letters only exist on Windows.');
+        }
+
+        $treeRoot = $this->createTempTree();
+
+        try {
+            $origin = 'file:///' . str_replace('\\', '/', $treeRoot) . '/base/other.json';
+
+            self::assertSame(['type' => 'object'], (new Reference('schema.json', $origin))->resolve());
+
+            $ref = new Reference('../sibling/other.json', $origin);
+
+            try {
+                $ref->resolve();
+                self::fail('Expected InvalidReferenceException to be thrown');
+            } catch (InvalidReferenceException $exception) {
+                self::assertStringContainsString('outside the allowed directories', $exception->getMessage());
+            }
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testYamlObjectTagIsRejected(): void
+    {
+        $treeRoot = $this->createTempTree();
+        ReferenceYamlProbe::$woken = false;
+
+        try {
+            foreach (['stdClass', ReferenceYamlProbe::class] as $index => $class) {
+                $file = \sprintf('object-%d.yaml', $index);
+                file_put_contents($treeRoot . '/base/' . $file, \sprintf("foo: !php/object 'O:%d:\"%s\":0:{}'\n", \strlen($class), $class));
+
+                try {
+                    (new Reference($file, $treeRoot . '/base/schema.json'))->resolve();
+                    self::fail('Expected ReferenceDecodeException to be thrown');
+                } catch (ReferenceDecodeException $exception) {
+                    self::assertStringContainsString('neither valid JSON nor valid YAML', $exception->getMessage());
+                }
+            }
+
+            self::assertFalse(ReferenceYamlProbe::$woken);
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    /**
+     * A temp tree whose path can be written after a "file://host" prefix.
+     */
+    private function createPosixTempTree(): string
+    {
+        if ('/' !== \DIRECTORY_SEPARATOR) {
+            self::markTestSkipped('The reference is built from a POSIX absolute path.');
+        }
+
+        $treeRoot = $this->createTempTree();
+        $realRoot = realpath($treeRoot);
+
+        return false === $realRoot ? $treeRoot : $realRoot;
+    }
+
     /**
      * @return array{0: resource, 1: int} the server socket and its port
      */
@@ -602,5 +794,15 @@ PHP;
         }
 
         rmdir($path);
+    }
+}
+
+class ReferenceYamlProbe
+{
+    public static bool $woken = false;
+
+    public function __wakeup(): void
+    {
+        self::$woken = true;
     }
 }
