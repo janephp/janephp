@@ -7,6 +7,7 @@ use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Name\FullyQualified;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 
 class PatternMultipleType extends Type
@@ -71,7 +72,7 @@ class PatternMultipleType extends Type
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\FuncCall(new Name('preg_match'), [
-                            new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                            new Arg(new Scalar\String_('/' . str_replace('/', '\/', (string) $pattern) . '/')),
                             new Arg(new Expr\Cast\String_($loopKeyVar)),
                         ]),
                         $type->createConditionStatement($loopValueVar)
@@ -112,7 +113,7 @@ class PatternMultipleType extends Type
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\FuncCall(new Name('preg_match'), [
-                            new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                            new Arg(new Scalar\String_('/' . str_replace('/', '\/', (string) $pattern) . '/')),
                             new Arg(new Expr\Cast\String_($loopKeyVar)),
                         ]),
                         $type->createNormalizationConditionStatement($loopValueVar)
