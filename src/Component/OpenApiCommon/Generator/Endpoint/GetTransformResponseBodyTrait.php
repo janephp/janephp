@@ -482,7 +482,8 @@ EOD
         $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
 
         // A oneOf or anyOf response has no class of its own. With a discriminator, the response
-        // picks the model of the branch that the discriminator value names.
+        // picks the model of the branch that the discriminator value names. An array response
+        // whose items are such a oneOf or anyOf picks the model of each item.
         $dispatchStatements = null;
         if (null === $classGuess && 'json' === $format && $lowerBound < 400) {
             $dispatch = $this->createDiscriminatedResponseDispatch($originalSchema, $reference, $context, $guessClass, $format);
@@ -536,9 +537,103 @@ EOD
      * value, and without a mapping the value is the schema name. A value that names no branch
      * still gives the decoded JSON.
      *
+     * An array response whose items schema is such a oneOf or anyOf gets the same dispatch for
+     * each item.
+     *
      * @return array{string, Stmt[]}|null The return types and the statements, or null without a discriminator
      */
     private function createDiscriminatedResponseDispatch($schema, string $reference, Context $context, GuessClass $guessClass, string $format): ?array
+    {
+        $branches = $this->guessDiscriminatedClasses($schema, $reference, $context, $guessClass);
+
+        if (null !== $branches) {
+            [$property, $cases] = $branches;
+            $decodedBody = new Expr\Variable('decodedBody');
+
+            // The body is one object: return the model of its branch.
+            $statements = [
+                new Stmt\If_(new Expr\FuncCall(new Name('is_object'), [new Arg($decodedBody)]), [
+                    'stmts' => [
+                        $this->createDiscriminatorSwitch($decodedBody, $property, $cases, static fn (string $class): array => [
+                            new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('serializer'), 'deserialize', [
+                                new Arg(new Expr\Variable('body')),
+                                new Arg(new Scalar\String_($class)),
+                                new Arg(new Scalar\String_($format)),
+                            ])),
+                        ]),
+                    ],
+                ]),
+                new Stmt\Return_($decodedBody),
+            ];
+
+            return [implode('|', self::discriminatedClassTypes($cases)), $statements];
+        }
+
+        $items = $this->resolveListItems($schema, $reference, $guessClass);
+
+        if (null === $items) {
+            return null;
+        }
+
+        $branches = $this->guessDiscriminatedClasses($items[0], $items[1], $context, $guessClass);
+
+        if (null === $branches) {
+            return null;
+        }
+
+        [$property, $cases] = $branches;
+        $decodedBody = new Expr\Variable('decodedBody');
+        $key = new Expr\Variable('key');
+        $item = new Expr\Variable('item');
+
+        // The body is a list: replace each item by the model of its branch. The serializer reads
+        // a document, so each item goes back to JSON first. An item whose value names no branch
+        // stays the decoded JSON.
+        $statements = [
+            new Stmt\If_(new Expr\FuncCall(new Name('is_array'), [new Arg($decodedBody)]), [
+                'stmts' => [
+                    new Stmt\Foreach_($decodedBody, $item, [
+                        'keyVar' => $key,
+                        'stmts' => [
+                            new Stmt\If_(new Expr\FuncCall(new Name('is_object'), [new Arg($item)]), [
+                                'stmts' => [
+                                    $this->createDiscriminatorSwitch($item, $property, $cases, static fn (string $class): array => [
+                                        new Stmt\Expression(new Expr\Assign(
+                                            new Expr\ArrayDimFetch($decodedBody, $key),
+                                            new Expr\MethodCall(new Expr\Variable('serializer'), 'deserialize', [
+                                                new Arg(new Expr\FuncCall(new Name('json_encode'), [
+                                                    new Arg($item),
+                                                    new Arg(new Expr\BinaryOp\BitwiseOr(
+                                                        new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR')),
+                                                        new Expr\ConstFetch(new Name('JSON_PRESERVE_ZERO_FRACTION'))
+                                                    )),
+                                                ])),
+                                                new Arg(new Scalar\String_($class)),
+                                                new Arg(new Scalar\String_($format)),
+                                            ])
+                                        )),
+                                        new Stmt\Break_(),
+                                    ]),
+                                ],
+                            ]),
+                        ],
+                    ]),
+                ],
+            ]),
+            new Stmt\Return_($decodedBody),
+        ];
+
+        $types = self::discriminatedClassTypes($cases);
+
+        return [(1 === \count($types) ? $types[0] : '(' . implode('|', $types) . ')') . '[]', $statements];
+    }
+
+    /**
+     * Find the discriminator property of a oneOf or anyOf schema and the model class of each value.
+     *
+     * @return array{string, array<int|string, string>}|null The property name and the class of each value, or null without a discriminator
+     */
+    private function guessDiscriminatedClasses($schema, string $reference, Context $context, GuessClass $guessClass): ?array
     {
         // The JSON Schema model of a resolved reference has no discriminator, so read the raw document.
         $resolvedSchema = $schema;
@@ -579,41 +674,80 @@ EOD
             $cases = $classesBySchemaName;
         }
 
-        if ([] === $cases) {
+        return [] === $cases ? null : [$property, $cases];
+    }
+
+    /**
+     * Give the items schema of an array schema and the reference of these items.
+     *
+     * @return array{mixed, string}|null The items schema and its reference, or null when the schema is no array
+     */
+    private function resolveListItems($schema, string $reference, GuessClass $guessClass): ?array
+    {
+        $schemaClassName = $this->schemaClassName();
+
+        if ($schema instanceof Reference) {
+            [$reference, $schema] = $guessClass->resolve($schema, $schemaClassName);
+        }
+
+        if (!$schema instanceof $schemaClassName) {
             return null;
         }
 
+        $type = $schema->type ?? null;
+
+        if (!(\is_array($type) ? \in_array('array', $type, true) : 'array' === $type)) {
+            return null;
+        }
+
+        $items = $schema->items ?? null;
+
+        if (!$items instanceof Reference && !$items instanceof $schemaClassName) {
+            return null;
+        }
+
+        return [$items, $reference . '/items'];
+    }
+
+    /**
+     * Build the switch on the discriminator value of a decoded JSON object.
+     *
+     * The mapping keys of an OpenAPI document are strings, so each case is a string. A switch
+     * compares loosely: the integer 202 of a payload matches the case '202'.
+     *
+     * @param array<int|string, string>    $cases          The model class of each discriminator value. PHP turns a key such as "202" into an integer
+     * @param callable(string): list<Stmt> $caseStatements Gives the statements of a case from its model class
+     */
+    private function createDiscriminatorSwitch(Expr $object, string $property, array $cases, callable $caseStatements): Stmt\Switch_
+    {
         $switchCases = [];
         foreach ($cases as $value => $class) {
-            $switchCases[] = new Stmt\Case_(new Scalar\String_($value), [
-                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('serializer'), 'deserialize', [
-                    new Arg(new Expr\Variable('body')),
-                    new Arg(new Scalar\String_($class)),
-                    new Arg(new Scalar\String_($format)),
-                ])),
-            ]);
+            $switchCases[] = new Stmt\Case_(new Scalar\String_((string) $value), $caseStatements($class));
         }
 
         $propertyName = preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $property)
             ? new Node\Identifier($property)
             : new Scalar\String_($property);
 
-        $statements = [
-            new Stmt\If_(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('decodedBody'))]), [
-                'stmts' => [
-                    new Stmt\Switch_(
-                        new Expr\BinaryOp\Coalesce(
-                            new Expr\PropertyFetch(new Expr\Variable('decodedBody'), $propertyName),
-                            new Expr\ConstFetch(new Name('null'))
-                        ),
-                        $switchCases
-                    ),
-                ],
-            ]),
-            new Stmt\Return_(new Expr\Variable('decodedBody')),
-        ];
+        return new Stmt\Switch_(
+            new Expr\BinaryOp\Coalesce(
+                new Expr\PropertyFetch($object, $propertyName),
+                new Expr\ConstFetch(new Name('null'))
+            ),
+            $switchCases
+        );
+    }
 
-        return [implode('|', array_unique(array_map(static fn (string $class): string => '\\' . $class, $cases))), $statements];
+    /**
+     * Give the docblock type of each model class, without duplicates.
+     *
+     * @param array<int|string, string> $cases The model class of each discriminator value
+     *
+     * @return list<string>
+     */
+    private static function discriminatedClassTypes(array $cases): array
+    {
+        return array_values(array_unique(array_map(static fn (string $class): string => '\\' . $class, $cases)));
     }
 
     /**
