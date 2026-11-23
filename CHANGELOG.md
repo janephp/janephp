@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [OpenApi] [GH#1176](https://github.com/janephp/janephp/issues/1176) An array response whose `items` schema is a `oneOf` or `anyOf` of object schemas with a `discriminator` now returns an array with, for each item, the model that the discriminator value names, through the `mapping` or the schema name. The client method documents the models, for example `(\App\Model\Accepted|\App\Model\ProblemDetails)[]`. Before, such a response came back as decoded JSON with `@return array`. An integer value such as `202` matches the mapping key `"202"`. An item whose value names no branch stays the decoded JSON, and an array whose items have no `discriminator` is unchanged
 
 ## [8.1.3] - 2026-11-20
 ### Security
